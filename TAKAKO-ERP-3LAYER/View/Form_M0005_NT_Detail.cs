@@ -13,11 +13,14 @@ namespace TAKAKO_ERP_3LAYER.View
         public M0005_DAO M0005_DAO;
         public M0004_DAO M0004_DAO;
         public DataTable initTable;
-        public Boolean inActive;
-        public string Memo;
 
         //Tạo biến để ghi nhận New / Edit
-        private Boolean IsNewValue = false;
+        private Boolean IsNewValue = true;
+        //
+        public Form_M0005_NT_Detail()
+        {
+            InitializeComponent();
+        }
 
         //Tạo mới form theo kiểu True/False
         public Form_M0005_NT_Detail(Boolean _isNewValue)
@@ -45,9 +48,9 @@ namespace TAKAKO_ERP_3LAYER.View
             //
             M0005_DAO = new M0005_DAO();
             //
-            Initialization_Value();
-            //
             Initialization_Control();
+            //
+            Initialization_Value();
             //
             Setting_Init_Control();
             //
@@ -66,11 +69,11 @@ namespace TAKAKO_ERP_3LAYER.View
             initTable.Columns.Add("Nation");
             initTable.Columns.Add("Date_Manufacture", typeof(DateTime));
             initTable.Columns.Add("Longevity",typeof(Int32));
-            initTable.Columns.Add("Stage");
+            initTable.Columns.Add("Progress_Group");
             initTable.Columns.Add("Line_ID");
             initTable.Columns.Add("Group_Line_ACC");
             initTable.Columns.Add("Production_Dept");
-            initTable.Columns.Add("Date_Depreciation", typeof(DateTime));
+            initTable.Columns.Add("Start_Date_Depreciation", typeof(DateTime));
             initTable.Columns.Add("End_Date_Depreciation", typeof(DateTime));
             initTable.Columns.Add("Status", typeof(Boolean));
             initTable.Columns.Add("Results");
@@ -87,11 +90,12 @@ namespace TAKAKO_ERP_3LAYER.View
             comboBox.Properties.Items.AddRange(Boolean);
         }
 
+        #region Add data to control
         //Điền dữ liệu cho ô NameEN
         private void sLookUpEdit_NameEN()
         {
             DataTable tempTable = new DataTable();
-            tempTable = M0004_DAO.GetInfo_M0001_Name();
+            tempTable = M0004_DAO.GetInfo_Maker();
             if (tempTable.Rows.Count > 0)
             {
                 sLookEdit_NameEN.Properties.DataSource = tempTable;
@@ -100,35 +104,97 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
+        private void sLookUpEdit_Nation()
+        {
+            DataTable tempTable = new DataTable();
+            tempTable = M0004_DAO.GetInfo_NationMF();
+            if (tempTable.Rows.Count > 0)
+            {
+                sLookEdit_Nation.Properties.DataSource = tempTable;
+                sLookEdit_Nation.Properties.ValueMember = "NATION_CODE";
+                sLookEdit_Nation.Properties.DisplayMember = "NATION_NAME";
+            }
+        }
+
+        private void sLookUpEdit_ProgressGroup()
+        {
+            DataTable tempTable = new DataTable();
+            tempTable = M0004_DAO.GetInfo_ProgressGroup();
+            if (tempTable.Rows.Count > 0)
+            {
+                sLookEdit_ProgressGroup.Properties.DataSource = tempTable;
+                sLookEdit_ProgressGroup.Properties.ValueMember = "ProcessGroup";
+                sLookEdit_ProgressGroup.Properties.DisplayMember = "ProcessEN";
+            }
+        }
+
+        private void AddValue_CBox_NT()
+        {
+            cBox_Result.Properties.Items.Add("OK");
+            cBox_Result.Properties.Items.Add("NG");
+        }
+
+        private void AddValue_CBox_Status()
+        {
+            cBox_Status.Properties.Items.Add("Mới");
+            cBox_Status.Properties.Items.Add("Cũ");
+        }
+        #endregion
+
+        #region event
+        private void sLookEdit_NameEN_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
         //Tạo form trong điều kiện thêm mới hoặc sửa/xóa
         private void Initialization_Value()
         {
+            DataRow dr = initTable.NewRow();
             if (IsNewValue) //Nếu IsNewValue = true
             {
-                //NameEN = String.Empty;
-                //NameVN = String.Empty;
-                //NameJP = String.Empty;
-                //Maker = String.Empty;
-                //Model = String.Empty;
-                inActive = false;
-                Memo = String.Empty;
+
             }
             else
             {
-                //NameEN = Convert.ToString(dataRow[0]);
-                //NameVN = Convert.ToString(dataRow[1]);
-                //NameJP = Convert.ToString(dataRow[2]);
-                //Maker = Convert.ToString(dataRow[5]);
-                //Model = Convert.ToString(dataRow[6]);
-                inActive = Convert.ToBoolean(dataRow[7]);
-                Memo = Convert.ToString(dataRow[8]);
+                dr["Code"] = Convert.ToString(dataRow[0]);
+                dr["ACCCode"] = Convert.ToString(dataRow[1]);
+                dr["NameEN"] = Convert.ToString(dataRow[2]);
+                dr["Maker"] = Convert.ToString(dataRow[3]);
+                dr["Moder"] = Convert.ToString(dataRow[4]);
+                dr["Series"] = Convert.ToString(dataRow[5]);
+                dr["Nation"] = Convert.ToString(dataRow[6]);
+                dr["Date_Manufacture"] = Convert.ToDateTime(dataRow[7]);
+                dr["Longevity"] = Convert.ToInt32(dataRow[8]);
+                dr["Progress_Group"] = Convert.ToString(dataRow[9]);
+                dr["Line_ID"] = Convert.ToString(dataRow[10]);
+                dr["Group_Line_ACC"] = Convert.ToString(dataRow[11]);
+                dr["Production_Dept"] = Convert.ToString(dataRow[12]);
+                dr["Start_Date_Depreciation"] = Convert.ToString(dataRow[13]);
+                dr["End_Date_Depreciation"] = Convert.ToString(dataRow[14]);
+                dr["Status"] = Convert.ToInt32(dataRow[15]);
+                dr["Results"] = Convert.ToString(dataRow[16]);
+                dr["Note"] = Convert.ToString(dataRow[17]);
+                dr["Guide"] = Convert.ToString(dataRow[18]);
             }
+            initTable.Rows.Add(dataRow);
         }
 
         //
         private void Initialization_Control()
         {
+            AddValue_CBox_NT();
+
+            AddValue_CBox_Status();
+
+            define_initTable();
+
             sLookUpEdit_NameEN();
+
+            sLookUpEdit_Nation();
+
+            sLookUpEdit_ProgressGroup();
         }
 
         //Kiểm soát key NameEN: cho thêm mới hoặc không được chỉnh sửa nếu trường hợp là Edit/Delete
@@ -136,6 +202,8 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             if (IsNewValue)
             {
+                cBox_Result.SelectedIndex = 0;
+                cBox_Status.SelectedIndex = 0;
                 //sLook_Code.Enabled = true;
                 txt_Maker.Enabled = true;
                 txt_Model.Enabled = true;
@@ -144,7 +212,7 @@ namespace TAKAKO_ERP_3LAYER.View
             else
             {
                 //sLook_Code.Enabled = false;
-                txt_Maker.Enabled = false;
+                txt_Maker.Enabled = false; 
                 txt_Model.Enabled = false;
                 bbiDelete.Enabled = true;
             }
@@ -153,20 +221,30 @@ namespace TAKAKO_ERP_3LAYER.View
         //Lấy dữ liệu trên form
         private void Update_Control()
         {
-            //sLook_Code.Text = NameEN;
-            //txt_ACCCode.Text = NameVN;
-            //txt_NameJP.Text = NameJP;
-            //txt_Maker.Text = Maker;
-            //txt_Model.Text = Model;
-            //if (inActive)
-            //{
-            //    cbx_InActive.SelectedIndex = 1;
-            //}
-            //else
-            //{
-            //    cbx_InActive.SelectedIndex = 0;
-            //}
-            //txt_Memo.Text = Memo;
+            foreach (DataRow dr in initTable.Rows)
+            {
+                txt_Code.EditValue = Convert.ToString(dr["Code"]);
+                txt_ACCCode.EditValue = Convert.ToString(dr["ACCCode"]);
+                sLookEdit_NameEN.EditValue = Convert.ToString(dr["NameEN"]);
+                txt_Maker.EditValue = Convert.ToString(dr["Maker"]);
+                txt_Model.EditValue = Convert.ToString(dr["Moder"]);
+                txt_Series.EditValue = Convert.ToString(dr["Series"]);
+                sLookEdit_Nation.EditValue = Convert.ToString(dr["Nation"]);
+                date_Manufacture.EditValue = Convert.ToDateTime(dr["Date_Manufacture"]);
+                txt_Longevity.EditValue = Convert.ToInt32(dr["Longevity"]);
+                sLookEdit_ProgressGroup.EditValue = Convert.ToString(dr["Progress_Group"]);
+                sLookEdit_Line.EditValue = Convert.ToString(dr["Line_ID"]);
+                txt_GroupLineACC.EditValue = Convert.ToString(dr["Group_Line_ACC"]);
+                txt_Production_Dept.EditValue = Convert.ToString(dr["Production_Dept"]);
+                dateEdit_StartDepreciation.EditValue = Convert.ToDateTime(dr["Start_Date_Depreciation"]);
+                dateEdit_EndDepreciation.EditValue = Convert.ToDateTime(dr["End_Date_Depreciation"]);
+                cBox_Status.SelectedText = Convert.ToString(dr["Status"]);
+                cBox_Result.SelectedText = Convert.ToString(dr["Results"]);
+                cBox_Status.SelectedText = Convert.ToString(dr["Status"]);
+                cBox_Status.SelectedText = Convert.ToString(dr["Status"]);
+                txt_Note.EditValue = Convert.ToString(dr["Note"]);
+                txt_Guide.EditValue = Convert.ToString(dr["Guide"]);
+            }
         }
 
         //Click nút New

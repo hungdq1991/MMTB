@@ -21,44 +21,45 @@ namespace TAKAKO_ERP_3LAYER.DAO
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
-            StrQuery = @"SELECT 
-                             Code
-                            ,ACCcode
-                            ,NameEN
-                            ,NameVN
-                            ,NameJP
-                            ,Maker
-                            ,Model
-                            ,Series
-                            ,OrgCountry
-                            ,ProDate
-                            ,Lifetime
-                            ,StartDeprDate
-                            ,EndDeprDate
-                            ,Status
-                            ,Result
-                            ,Memo
-                            ,InstDoc
-                            ,ACCDoc
-                            ,DocNo_Disposal
-                            ,ACCDoc_Disposal
-                            ,DisposalDate
-                            ,DocNo
-                            ,Doc_Date
-                            ,SupplierID
-                            ,SupplierName
-                            ,InvNo
-                            ,InvDate
-                            ,ReceiptDate
-                            ,ConfirmDate
-                            ,ControlDept
-                            ,Column1
-                            ,Column2
-                            ,Column3
-                            ,Column4
-                            ,Column5                        
-                        FROM 
-	                        M0005_ListMMTB";
+            StrQuery = @"SELECT
+                        	 Code
+                        	,ACCcode
+                        	,NameEN
+                        	,NameVN
+                        	,NameJP
+                        	,Maker
+                        	,Model
+                        	,Series
+                        	,OrgCountry
+                        	,ProDate
+                        	,Lifetime
+                        	,StartDeprDate
+                        	,EndDeprDate
+                        	,Status
+                        	,Result
+                        	,Memo
+                        	,InstDoc
+                        	,ACCDoc
+                        	,DocNo_Disposal
+                        	,ACCDoc_Disposal
+                        	,DisposalDate
+                        	,DocNo
+                        	,DocDate
+                        	,EF_VendID
+                        	,SupplierID
+                        	,SupplierName
+                        	,InvNo
+                        	,InvDate
+                        	,ReceiptDate
+                        	,ConfirmDate
+                        	,ControlDept
+                        	,Column1
+                        	,Column2
+                        	,Column3
+                        	,Column4
+                        	,Column5
+                        FROM
+                        	M0005_ListMMTB";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");

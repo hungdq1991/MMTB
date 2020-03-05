@@ -273,5 +273,64 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
+
+        public DataTable GetInfo_Maker()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             NameEN
+                            ,NameVN
+                            ,NameJP
+                            ,Maker
+                            ,Model
+                        FROM
+                            M0004_MakerModel";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
+        public DataTable GetInfo_NationMF()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	 NATION_CODE
+                            ,NATION_NAME
+                        FROM
+                            [Takako_1].[dbo].[NATIONMF]";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Nation", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
+        public DataTable GetInfo_ProgressGroup()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             ProcessGroup
+                            ,ProcessEN
+                            ,ProcessVN
+                            ,ProcessJP
+                            ,Point
+                            ,ApplyDate
+                        FROM
+                            M0003_ProcessGroup";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ProgressGroup", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
     }
 }
