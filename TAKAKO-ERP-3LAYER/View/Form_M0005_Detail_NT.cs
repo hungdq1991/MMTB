@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using DevExpress.XtraBars;
 using TAKAKO_ERP_3LAYER.DAO;
-using DevExpress.XtraGrid.Views.Grid;
-
-
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -15,9 +13,12 @@ namespace TAKAKO_ERP_3LAYER.View
         #region Tạo biến
         public DataTable _InitHeaderTable;
         public DataTable _InitDetailTable;
-        public DataRow dataRow;
+        public DataTable _HeaderTable;
+        public DataTable _DetailTable;
         public M0005_DAO M0005_DAO;
         public M0004_DAO M0004_DAO;
+        public String DocNo = "";
+        public Boolean InitValue = true;
         //public M0005_Line_DAO M0005_Line_DAO;
 
         ////Các biến theo bảng thông tin tổng hợp
@@ -33,7 +34,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //public string ControlDept;
         //public DateTime ApplyDate;
         //Tạo biến để ghi nhận New / Edit / Confirm
-        private Boolean IsNewValue = false;
+        //private Boolean IsNewValue = false;
         //private Boolean IsCheck;
         #endregion
         public Form_M0005_Detail_NT()
@@ -41,17 +42,11 @@ namespace TAKAKO_ERP_3LAYER.View
             InitializeComponent();
         }
 
-        //Tạo mới form theo kiểu True/False
-        public Form_M0005_Detail_NT(Boolean _isNewValue)
-        {
-            InitializeComponent();
-            IsNewValue = _isNewValue;
-        }
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0005_Detail_NT(DataRow _mainDataRow)
+        public Form_M0005_Detail_NT(String _docNo)
         {
             InitializeComponent();
-            dataRow = _mainDataRow;
+            DocNo = _docNo;
         }
 
         //Load Form_M0005_Detail_NT
@@ -59,30 +54,20 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             M0004_DAO = new M0004_DAO();
             M0005_DAO = new M0005_DAO();
-            //M0005_Line_DAO = new M0005_Line_DAO();
 
-            Initialization_Control();
+            Setting_Init_Control();
 
-            ////Truyền table vào gridControl
-            //gridControl.DataSource = _InitDetailTable;
-            //sLookUpEdit_DocNo();
-            //sLookUpEdit_Supplier();
-            ////Combo box
-            //SetValue_Combobox(cbx_Check);
-            //cbx_Check.SelectedIndex = 0;
-            //Initialization_Control();
-            //Update_Control();
-            //sLook_DocNo.Focus();
+            Setting_Init_Value();
         }
 
         //Dữ liệu trên Form_M0005_Detail_NT
-        private void Initialization_Control()
+        private void Setting_Init_Control()
         {
-            //Khởi tạo bảng _InitHeaderTable
-            _InitHeaderTable = new DataTable();
+            //Định nghĩa datatable gán cho header
+            Define_HeaderTable();
 
             //Định nghĩa datatable gán cho gridview
-            Define_InitDetailTable();
+            Define_DetailTable();
 
             //Khởi tạo bảng _InitDetailTable
 
@@ -92,6 +77,8 @@ namespace TAKAKO_ERP_3LAYER.View
 
             Add_Value_sLookUp_DocNo();
 
+            AddValue_sLook_ControlDept();
+
             AddValue_sLookUp_Supplier();
 
             Add_Value_repo_sLookUp_NameEN();
@@ -99,141 +86,101 @@ namespace TAKAKO_ERP_3LAYER.View
             Add_Value_repo_sLookUp_Nation();
 
             Add_Value_repo_sLookUp_ProgressGroup();
+        }
 
-            //if (IsNewValue)
-            //{
-            //    sLook_DocNo.Text = "";
-            //    DocDate = DateTime.Now.Date;
-            //    sLook_Supplier.Text = "";
-            //    SupplierID = "";
-            //    SupplierName = "";
-            //    InvNo = "";
-            //    InvDate = DateTime.Now.Date;
-            //    ReceiptDate = DateTime.Now.Date;
-            //    ConfirmDate = DateTime.Now.Date;
-            //    sLook_ControlDept.Text = "";
-            //    IsCheck = false;
-            //    gridControl.DataSource = _InitDetailTable;
-            //    _InitDetailTable.Clear();
-            //}
-            //else
-            //{
-            //    DocNo = sLook_DocNo.Text.Trim();
-            //    DataTable tempTable = new DataTable();
-            //    if (!String.IsNullOrEmpty(DocNo))
-            //    {
-            //        tempTable = M0005_DAO.GetInfo_M0005_NT(DocNo);
-            //        if (tempTable.Rows.Count > 0)
-            //        {
-            //            foreach (DataRow row in tempTable.Rows)
-            //            {
-            //                DocDate = Convert.ToDateTime(row.Field<DateTime>("DocDate"));
-            //                EF_VendID = Convert.ToString(row.Field<string>("EF_VendID"));
-            //                SupplierID = Convert.ToString(row.Field<string>("SupplierID"));
-            //                SupplierName = Convert.ToString(row.Field<string>("SupplierName"));
-            //                InvNo = Convert.ToString(row.Field<string>("InvNo"));
-            //                InvDate = Convert.ToDateTime(row.Field<DateTime>("InvDate"));
-            //                ReceiptDate = Convert.ToDateTime(row.Field<DateTime>("ReceiptDate"));
-            //                ConfirmDate = Convert.ToDateTime(row.Field<DateTime>("ConfirmDate"));
-            //                ControlDept = Convert.ToString(row.Field<string>("ControlDept"));
-            //                IsCheck = Convert.ToBoolean(row.Field<Byte>("DocStatus")); ;
-            //                gridControl.DataSource = tempTable;
-            //            }
-            //        }
-            //    }
-            //}
+        private void Setting_Init_Value()
+        {
+            if(String.IsNullOrEmpty(DocNo))
+            {
+                Clear_Data();
+            } else
+            {
+                sLook_DocNo.EditValue = DocNo;
+            }
+        }
+
+        private void Define_HeaderTable()
+        {
+            //Các cột theo bảng M0005_ListMMTB
+            _HeaderTable = new DataTable();
+            _HeaderTable.Columns.Add("DocNo", typeof(string));
+            _HeaderTable.Columns.Add("DocDate", typeof(DateTime));
+            _HeaderTable.Columns.Add("EF_VendID", typeof(string));
+            _HeaderTable.Columns.Add("InvNo", typeof(string));
+            _HeaderTable.Columns.Add("InvDate", typeof(DateTime));
+            _HeaderTable.Columns.Add("ReceiptDate", typeof(DateTime));
+            _HeaderTable.Columns.Add("ConfirmDate", typeof(DateTime));
+            _HeaderTable.Columns.Add("ControlDept", typeof(string));
+            _HeaderTable.Columns.Add("DocStatus", typeof(string));
+            _HeaderTable.Columns.Add("Column1", typeof(string));
+            _HeaderTable.Columns.Add("Column2", typeof(string));
+            _HeaderTable.Columns.Add("Column3", typeof(string));
+            _HeaderTable.Columns.Add("Column4", typeof(string));
+            _HeaderTable.Columns.Add("Column5", typeof(string));
+        }
+
+        private void AddValue_Header(DataTable _tempTable)
+        {
+            date_Doc.EditValue = _tempTable.Rows[0].Field<DateTime>("DocDate");
+            sLook_Supplier.EditValue = _tempTable.Rows[0].Field<string>("EF_VendID").Trim();
+            txt_InvNo.Text = _tempTable.Rows[0].Field<string>("InvNo").ToString();
+            date_Inv.EditValue = _tempTable.Rows[0].Field<DateTime>("InvDate");
+            date_Receipt.EditValue = _tempTable.Rows[0].Field<DateTime>("ReceiptDate");
+            date_Confirm.EditValue = _tempTable.Rows[0].Field<DateTime>("ConfirmDate");
+            sLook_ControlDept.EditValue = _tempTable.Rows[0].Field<string>("ControlDept").ToString().Trim();
+            if (_tempTable.Rows[0].Field<Boolean>("DocStatus"))
+            {
+                cbx_Status.SelectedIndex = 1;
+            }
+            else
+            {
+                cbx_Status.SelectedIndex = 0;
+            }
         }
 
         //Định nghĩa cấu trúc datatable gán cho grid control
-        private void Define_InitDetailTable()
+        private void Define_DetailTable()
         {
             //Các cột theo bảng M0005_ListMMTB
-            _InitDetailTable = new DataTable();
-            _InitDetailTable.Columns.Add("Code", typeof(string));
-            _InitDetailTable.Columns.Add("ACCcode", typeof(string));
-            _InitDetailTable.Columns.Add("NameEN", typeof(string));
-            _InitDetailTable.Columns.Add("NameVN", typeof(string));
-            _InitDetailTable.Columns.Add("NameJP", typeof(string));
-            _InitDetailTable.Columns.Add("Maker", typeof(string));
-            _InitDetailTable.Columns.Add("Model", typeof(string));
-            _InitDetailTable.Columns.Add("Series", typeof(string));
-            _InitDetailTable.Columns.Add("OrgCountry", typeof(string));
-            _InitDetailTable.Columns.Add("ProDate", typeof(DateTime));
-            _InitDetailTable.Columns.Add("Lifetime", typeof(int));
-            _InitDetailTable.Columns.Add("StartDeprDate", typeof(DateTime));
-            _InitDetailTable.Columns.Add("EndDeprDate", typeof(DateTime));
-            _InitDetailTable.Columns.Add("ACCDoc", typeof(string));
-            _InitDetailTable.Columns.Add("InstDoc", typeof(string));
-            _InitDetailTable.Columns.Add("Status", typeof(string));
-            _InitDetailTable.Columns.Add("Result", typeof(string));
-            _InitDetailTable.Columns.Add("Memo", typeof(string));
-            _InitDetailTable.Columns.Add("OrgProcessCode", typeof(string));
-            _InitDetailTable.Columns.Add("OrgLineCode", typeof(string));
-            _InitDetailTable.Columns.Add("OrgGroupLineACC", typeof(string));
-            _InitDetailTable.Columns.Add("OrgUsingDept", typeof(string));
-            _InitDetailTable.Columns.Add("OrgLineEN", typeof(string));
-        }
-
-        //Kiểm soát key: cho thêm mới hoặc không được chỉnh sửa nếu trường hợp cần cập nhật thông tin
-        private void Setting_Init_Control()
-        {
-            //if (IsCheck)
-            //{
-            //    sLook_Supplier.Enabled = false;
-            //    txt_SupplierID.Enabled = false;
-            //    txt_SupplierName.Enabled = false;
-            //    txt_InvNo.Enabled = false;
-            //    date_Inv.Enabled = false;
-            //    date_Receipt.Enabled = false;
-            //    date_Confirm.Enabled = false;
-            //    txt_ControlDept.Enabled = false;
-            //    cbx_Check.Enabled = false;
-            //    gridView.OptionsBehavior.ReadOnly = true;
-            //}
-            //else
-            //{
-            //    sLook_Supplier.Enabled = true;
-            //    txt_SupplierID.Enabled = false;
-            //    txt_SupplierName.Enabled = false;
-            //    txt_InvNo.Enabled = true;
-            //    date_Inv.Enabled = true;
-            //    date_Receipt.Enabled = true;
-            //    date_Confirm.Enabled = true;
-            //    txt_ControlDept.Enabled = true;
-            //    cbx_Check.Enabled = true;
-            //    gridView.OptionsBehavior.ReadOnly = false;
-            //}
-        }
-        //Đưa dữ liệu trên form
-        private void Update_Control()
-        {
-            //sLook_DocNo.Text = DocNo;
-            //date_Doc.DateTime = DocDate;
-            //sLook_Supplier.EditValue = EF_VendID;
-            //txt_SupplierID.EditValue = SupplierID;
-            //txt_SupplierName.Text = SupplierName;
-            //txt_InvNo.Text = InvNo;
-            //date_Inv.DateTime = InvDate;
-            //date_Receipt.DateTime = ReceiptDate;
-            //date_Confirm.DateTime = ConfirmDate;
-            //sLook_ControlDept.Text = ControlDept;
-            //if (IsCheck)
-            //{
-            //    cbx_Check.SelectedIndex = 1;
-            //}
-            //else
-            //{
-            //    cbx_Check.SelectedIndex = 0;
-            //}
-            //_InitDetailTable = new DataTable();
-            ////Lấy các cột đã tạo
-            //Define_InitDetailTable();
-            ////Truyền table vào gridControl
-            //gridControl.DataSource = _InitDetailTable;
-            //_InitDetailTable.Clear();
+            _DetailTable = new DataTable();
+            _DetailTable.Columns.Add("Code", typeof(string));
+            _DetailTable.Columns.Add("ACCcode", typeof(string));
+            _DetailTable.Columns.Add("NameEN", typeof(string));
+            _DetailTable.Columns.Add("NameVN", typeof(string));
+            _DetailTable.Columns.Add("NameJP", typeof(string));
+            _DetailTable.Columns.Add("Maker", typeof(string));
+            _DetailTable.Columns.Add("Model", typeof(string));
+            _DetailTable.Columns.Add("Series", typeof(string));
+            _DetailTable.Columns.Add("OrgCountry", typeof(string));
+            _DetailTable.Columns.Add("ProDate", typeof(DateTime));
+            _DetailTable.Columns.Add("Lifetime", typeof(int));
+            _DetailTable.Columns.Add("StartDeprDate", typeof(DateTime));
+            _DetailTable.Columns.Add("EndDeprDate", typeof(DateTime));
+            _DetailTable.Columns.Add("ACCDoc", typeof(string));
+            _DetailTable.Columns.Add("InstDoc", typeof(string));
+            _DetailTable.Columns.Add("Status", typeof(string));
+            _DetailTable.Columns.Add("Result", typeof(string));
+            _DetailTable.Columns.Add("Memo", typeof(string));
+            _DetailTable.Columns.Add("OrgProcessCode", typeof(string));
+            _DetailTable.Columns.Add("OrgLineCode", typeof(string));
+            _DetailTable.Columns.Add("OrgGroupLineACC", typeof(string));
+            _DetailTable.Columns.Add("OrgUsingDept", typeof(string));
+            _DetailTable.Columns.Add("OrgLineEN", typeof(string));
         }
 
         #region Add data to control
+        private void AddValue_sLook_ControlDept()
+        {
+            DataTable tempTable = new DataTable();
+            tempTable = M0005_DAO.GetInfo_ControlDept();
+            if (tempTable.Rows.Count > 0)
+            {
+                sLook_ControlDept.Properties.DataSource = tempTable;
+                sLook_ControlDept.Properties.ValueMember = "SectionID";
+                sLook_ControlDept.Properties.DisplayMember = "SectionID";
+            }
+        }
+
         //Điền dữ liệu cho ô NameEN
         private void Add_Value_repo_sLookUp_NameEN()
         {
@@ -326,7 +273,7 @@ namespace TAKAKO_ERP_3LAYER.View
         private void SLook_Supplier_TextChanged(object sender, EventArgs e)
         {
             DataTable tempTable = new DataTable();
-            string tempCode = sLook_Supplier.EditValue.ToString().Trim();
+            string tempCode = Convert.ToString(sLook_Supplier.EditValue);
             try
             {
                 if (!String.IsNullOrEmpty(tempCode))
@@ -353,120 +300,84 @@ namespace TAKAKO_ERP_3LAYER.View
         //Lấy số chứng từ, điền thông tin vào Form_M0005_Detail_NT 
         private void SLook_DocNo_TextChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    string tempDocNo = sLook_DocNo.Text.Trim();
-            //    DataTable _tempTable = new DataTable();
-            //    if (!string.IsNullOrEmpty(tempDocNo))
-            //    {
-            //        _tempTable = M0005_DAO.GetInfo_M0005_NT(tempDocNo);
+            string _docNo = "";
+            if (sLook_DocNo.EditValue != null)
+            { 
+                _docNo = sLook_DocNo.EditValue.ToString();
+            }
+            try
+            {
+                if (!string.IsNullOrEmpty(_docNo))
+                {
+                    _HeaderTable.Clear();
+                    _HeaderTable = M0005_DAO.GetInfo_M0005_NT_Header(_docNo);
 
-            //        if (_tempTable.Rows.Count > 0)
-            //        {
-            //            gridControl.DataSource = _tempTable;
-            //            bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-            //            foreach (DataRow row in _tempTable.Rows)
-            //            {
-            //                date_Doc.EditValue = row.Field<DateTime>("DocDate");
-            //                sLook_Supplier.EditValue = row.Field<string>("EF_VendID").Trim();
-            //                txt_SupplierID.Text = row.Field<string>("SupplierID");
-            //                txt_SupplierName.Text = row.Field<string>("SupplierName");
-            //                txt_InvNo.Text = row.Field<string>("InvNo");
-            //                date_Inv.EditValue = row.Field<DateTime>("InvDate");
-            //                date_Receipt.EditValue = row.Field<DateTime>("ReceiptDate");
-            //                date_Confirm.EditValue = row.Field<DateTime>("ConfirmDate");
-            //                txt_ControlDept.Text = row.Field<string>("ControlDept");
-            //                IsCheck = row.Field<Boolean>("DocStatus");
-            //                if (IsCheck)
-            //                {
-            //                    cbx_Check.SelectedIndex = 1;
-            //                    Setting_Init_Control();
-            //                }
-            //                else
-            //                {
-            //                    cbx_Check.SelectedIndex = 0;
-            //                    Setting_Init_Control();
-            //                }
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+                    if (_HeaderTable.Rows.Count > 0)
+                    {
+                        AddValue_Header(_HeaderTable);
+                    }
+
+                    _DetailTable.Clear();
+                    _DetailTable = M0005_DAO.GetInfo_M0005_NT_Detail(_docNo);
+                    if (_DetailTable.Rows.Count > 0)
+                    {
+                        gridControl.DataSource = _DetailTable;
+                        bsiRecordsCount.Caption = "Records: " + _DetailTable.Rows.Count;
+                    }
+
+                    if (InitValue)
+                    {
+                        _InitHeaderTable = _HeaderTable.Copy();
+                        _InitDetailTable = _DetailTable.Copy();
+                        InitValue = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Clear_Data()
+        {
+            sLook_DocNo.EditValue = null;
+            date_Doc.EditValue = DateTime.Now;
+            sLook_Supplier.EditValue = null;
+            txt_SupplierID.EditValue = null;
+            txt_SupplierName.EditValue = null;
+            txt_InvNo.EditValue = null;
+            date_Inv.EditValue = DateTime.Now;
+            date_Receipt.EditValue = DateTime.Now;
+            date_Confirm.EditValue = DateTime.Now;
+            sLook_ControlDept.EditValue = null;
+            cbx_Status.SelectedIndex = 0;
+
+            _DetailTable.Clear();
+            gridControl.DataSource = _DetailTable;
         }
 
         //Click nút thêm mới
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IsNewValue = true;
-            Initialization_Control();
-            Update_Control();
-            Setting_Init_Control();
-            //sLookUpEdit_DocNo();
-            //sLookUpEdit_Supplier();
-            _InitDetailTable.Clear();
-            gridControl.DataSource = _InitDetailTable;
+            var result = MessageBox.Show("Bạn có muốn xóa dữ liệu hiện tại và tạo mới biên bản nghiệm thu?", "Xác nhận", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                InitValue = true;
+                Clear_Data();
+            }
         }
 
         //Click nút Reset
         private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //try
-            //{
-            //    string tempDocNo = sLook_DocNo.Text.Trim();
-            //    DataTable _tempTable = new DataTable();
-            //    if (!string.IsNullOrEmpty(tempDocNo))
-            //    {
-            //        sLook_DocNo.Focus();
-            //        _tempTable = M0005_DAO.GetInfo_M0005_NT(tempDocNo);
-
-            //        if (_tempTable.Rows.Count > 0)
-            //        {
-            //            gridControl.DataSource = _tempTable;
-            //            bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-            //            foreach (DataRow row in _tempTable.Rows)
-            //            {
-            //                date_Doc.EditValue = row.Field<DateTime>("DocDate");
-            //                sLook_Supplier.EditValue = row.Field<string>("EF_VendID").Trim();
-            //                txt_SupplierID.Text = row.Field<string>("SupplierID");
-            //                txt_SupplierName.Text = row.Field<string>("SupplierName");
-            //                txt_InvNo.Text = row.Field<string>("InvNo");
-            //                date_Inv.EditValue = row.Field<DateTime>("InvDate");
-            //                date_Receipt.EditValue = row.Field<DateTime>("ReceiptDate");
-            //                date_Confirm.EditValue = row.Field<DateTime>("ConfirmDate");
-            //                txt_ControlDept.Text = row.Field<string>("ControlDept");
-            //                IsCheck = row.Field<Boolean>("DocStatus");
-            //                if (IsCheck)
-            //                {
-            //                    cbx_Check.SelectedIndex = 1;
-            //                    Setting_Init_Control();
-            //                }
-            //                else
-            //                {
-            //                    cbx_Check.SelectedIndex = 0;
-            //                    Setting_Init_Control();
-            //                }
-            //            }
-            //        }
-            //        else
-            //        {
-            //            IsNewValue = true;
-            //            Initialization_Control();
-            //            Update_Control();
-            //            Setting_Init_Control();
-            //            sLookUpEdit_DocNo();
-            //            sLookUpEdit_Supplier();
-            //            _InitDetailTable.Clear();
-            //            gridControl.DataSource = _InitDetailTable;
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    sLook_DocNo.Focus();
-            //}
+            if (String.IsNullOrEmpty(DocNo))
+            {
+                Clear_Data();
+            } else
+            {
+                SLook_DocNo_TextChanged(sender, e);
+            }
         }
 
         //Click nút Close
@@ -475,154 +386,71 @@ namespace TAKAKO_ERP_3LAYER.View
             this.Close();
         }
 
-        //Cảnh báo khi nhập liệu thiếu thông tin
-        private void SLook_Supplier_Leave(object sender, EventArgs e)
+        private void cbx_Status_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (String.IsNullOrEmpty(sLook_Supplier.Text.Trim()))
-            //{
-            //    MessageBox.Show("Chưa nhập Mã NCC", "Xác nhận", MessageBoxButtons.OK);
-            //    sLook_Supplier.Focus();
-            //}
+            if (cbx_Status.SelectedIndex == 0)
+            {
+                Set_Enable_Control(true);
+            } else if (cbx_Status.SelectedIndex == 1)
+            {
+                Set_Enable_Control(false);
+            }
+        }
+
+        private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var row = gridView.FocusedRowHandle;
+            gridView.DeleteRow(row);
+        }
+
+        private void bbi_PopUp_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            gridView.AddNewRow();
+        }
+
+        private void bbi_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            gridView.AddNewRow();
+        }
+
+        private void bbiSave_ItemClick(object sender, ItemClickEventArgs e)
+        {    
+            if (String.IsNullOrEmpty(DocNo))
+            {
+
+            } else
+            {
+
+            }
         }
         #endregion
 
-
-
-        //Click nút Save
-        //private void BbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        #region
-        //    string Message = "";
-        //    string MessageResult = "";
-        //    string curr_EF_VendID = sLook_Supplier.Text.Trim();
-        //    string curr_SupplierID = txt_SupplierID.Text.Trim();
-        //    string curr_SupplierName = txt_SupplierName.Text.Trim();
-        //    string curr_InvNo = txt_InvNo.Text.Trim();
-        //    DateTime curr_InvDate = DateTime.Parse(date_Inv.Text.Trim());
-        //    DateTime curr_ReceiptDate = DateTime.Parse(date_Receipt.Text.Trim());
-        //    DateTime curr_ConfirmDate = DateTime.Parse(date_Confirm.Text.Trim());
-        //    string curr_ControlDept = sLook_ControlDept.Text.Trim();
-        //    int curr_DocStatus = 0;
-        #endregion
-        //    Trường hợp thêm mới
-        //    if (IsNewValue)
-        //    {
-        //        Message = "Bạn muốn tạo Biên bản nghiệm thu MMTB\"" + "\"?";
-        //        if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-        //            , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
-        //        {
-        //            if (CheckError() == true)
-        //            {
-        //                Lưu thông tin chung MMTB
-        //                if (M0006_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
-        //                        curr_NameJP, curr_Maker, curr_Model, curr_Level, curr_SizeL, curr_SizeW,
-        //                        curr_SizeH, curr_Chuck3Jaw, curr_Collet1, curr_Collet2, curr_Collet3,
-        //                        curr_Voltage, curr_OperatingSys, curr_Wattage, curr_InActive, "IT"))
-        //                {
-        //                    Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
-        //                }
-        //                Lưu thông tin Máy tiện
-        //                if (grctr_Tien.Visible == true)
-        //                {
-        //                    if (M0006_MayTien_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
-        //                        curr_NameJP, curr_Maker, curr_Model, curr_Turret, curr_Horizontal, curr_Tailstock,
-        //                        curr_AxisC, curr_InActive_T, "IT"))
-        //                    {
-        //                        Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
-        //                    }
-        //                }
-        //                Lưu thông tin Máy phay
-        //                if (grctr_Phay.Visible == true)
-        //                {
-        //                    if (M0006_MayPhay_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
-        //                        curr_NameJP, curr_Maker, curr_Model, curr_TableL, curr_TableW, curr_Speed,
-        //                        curr_BTSize, curr_TipQty, curr_WaterLine, curr_AxisXYZ, curr_AxisA, curr_AxisB,
-        //                        curr_AxisC_P, curr_InActive_P, "IT"))
-        //                    {
-        //                        Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
-        //                    }
-        //                }
-        //                MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //            }
-        //        }
-        //        IsNewValue = true;
-        //        Initialization_Control();
-        //        Update_Control();
-        //        Setting_Init_Control();
-        //        lbl_ChiTiet.Visible = false;
-        //        grctr_Tien.Visible = false;
-        //        grctr_Phay.Visible = false;
-        //    }
-        //    Trường hợp sửa
-        //    else
-        //    {
-        //        if (CheckError() == true)
-        //        {
-        //            Message = "Bạn muốn cập nhật Mã MMTB: " + sLook_Code.Text.ToString() + "?";
-        //            if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-        //            , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
-        //            {
-        //                Cập nhật thông tin chung
-        //                if (CheckError_MMTB() == true)
-        //                {
-        //                    M0006_DAO.Update(curr_Code, "IT");
-        //                    if (M0006_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
-        //                        curr_NameJP, curr_Maker, curr_Model, curr_Level, curr_SizeL, curr_SizeW,
-        //                        curr_SizeH, curr_Chuck3Jaw, curr_Collet1, curr_Collet2, curr_Collet3,
-        //                        curr_Voltage, curr_OperatingSys, curr_Wattage, curr_InActive, "IT"))
-        //                    {
-        //                        MessageResult = "Đã cập nhật Thông tin chung:      " + sLook_Code.Text.ToString() + " !";
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    MessageResult = "Thông tin chung MMTB không đổi !";
-        //                }
-        //                Cập nhật thông tin Máy tiện
-        //                if (grctr_Tien.Visible == true)
-        //                {
-        //                    if (CheckError_MMTB_T() == true)
-        //                    {
-        //                        M0006_MayTien_DAO.Update(curr_Code, "IT");
-        //                        if ((M0006_MayTien_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
-        //                        curr_NameJP, curr_Maker, curr_Model, curr_Turret, curr_Horizontal, curr_Tailstock,
-        //                        curr_AxisC, curr_InActive, "IT")))
-        //                        {
-        //                            MessageResult = MessageResult + "\n" + "Đã cập nhật Thông tin Máy tiện:  " + sLook_Code.Text.ToString() + " !";
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageResult = MessageResult + "\n" + "Thông tin Máy tiện không đổi !";
-        //                    }
-        //                }
-        //                Cập nhật thông tin Máy phay
-        //                if (grctr_Phay.Visible == true)
-        //                {
-        //                    if (CheckError_MMTB_P() == true)
-        //                    {
-        //                        M0006_MayPhay_DAO.Update(curr_Code, "IT");
-        //                        if ((M0006_MayPhay_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
-        //                        curr_NameJP, curr_Maker, curr_Model, curr_TableL, curr_TableW, curr_Speed,
-        //                        curr_BTSize, curr_TipQty, curr_WaterLine, curr_AxisXYZ, curr_AxisA, curr_AxisB,
-        //                        curr_AxisC_P, curr_InActive_P, "IT")))
-        //                        {
-        //                            MessageResult = MessageResult + "\n" + "Đã cập nhật Thông tin Máy phay: " + sLook_Code.Text.ToString() + " !";
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageResult = MessageResult + "\n" + "Thông tin Máy phay không đổi !";
-        //                    }
-        //                }
-        //                MessageBox.Show(MessageResult, "Xác nhận");
-        //                sLookUpEdit_Code1();
-        //            }
-        //        }
-        //    }
-        //}
-
-
+        private void Set_Enable_Control(Boolean IsEnable)
+        {
+            //Menu
+            bbiSave.Enabled = IsEnable;
+            bbiRefresh.Enabled = IsEnable;
+            bbi_AddNewRow.Enabled = IsEnable;
+            bbi_DeleteRow.Enabled = IsEnable;
+            //PopUp
+            bbi_PopUp_AddNewRow.Enabled = IsEnable;
+            bbi_PopUp_DeleteRow.Enabled = IsEnable;
+            //Header
+            date_Doc.Enabled = IsEnable;
+            sLook_Supplier.Enabled = IsEnable;
+            txt_SupplierID.Enabled = IsEnable;
+            txt_SupplierName.Enabled = IsEnable;
+            txt_InvNo.Enabled = IsEnable;
+            date_Inv.Enabled = IsEnable;
+            date_Receipt.Enabled = IsEnable;
+            date_Confirm.Enabled = IsEnable;
+            sLook_ControlDept.Enabled = IsEnable;
+            cbx_Status.Enabled = IsEnable;
+            //GridView
+            gridView.OptionsBehavior.Editable = IsEnable;
+            gridControl.EmbeddedNavigator.Buttons.Append.Visible = IsEnable;
+            gridControl.EmbeddedNavigator.Buttons.Remove.Visible = IsEnable;
+        }
 
         //Các tình huống cần kiểm tra lỗi
         public Boolean CheckError()
@@ -642,38 +470,40 @@ namespace TAKAKO_ERP_3LAYER.View
             return true;
         }
 
-        //Check thông tin MMTB chung
-        //public Boolean CheckError_MMTB()
+        #region event Gridview
+        private void gridControl_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right) return;
+            var currentRow = gridView.FocusedRowHandle;
+            var focusRowView = (DataRowView)gridView.GetFocusedRow();
+
+            if (focusRowView == null || focusRowView.IsNew) return;
+
+            if (currentRow >= 0)
+            {
+                popupMenu1.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
+            }
+            else
+            {
+                popupMenu1.HidePopup();
+            }
+        }
+
+        //private void gridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
         //{
-        //    DataTable _check = new DataTable();
-        //    _check = M0005_DAO.GetInfo_M0005_Check(
-        //                        );
-        //    if (_check.Rows.Count > 0)
+        //    if (e.Column.FieldName == "Code")
         //    {
-        //        //MessageBox.Show("Mã MMTB: " + sLook_Code.Text.ToString() + " đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        //sLook_Code.Focus();
-        //        return false;
+        //        GridCellInfo cellInfo = e.Cell as GridCellInfo;
+        //        if (cellInfo == null)
+        //        {
+        //            if (!Directory.Exists(e.CellValue.ToString()))
+        //            {
+        //                cellInfo.ViewInfo.ErrorIconText = "No path exists";
+        //                cellInfo.ViewInfo.ShowErrorIcon = true;
+        //            }
+        //        }
         //    }
-        //    return true;
         //}
-
-
-
-        void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //gridControl.ShowRibbonPrintPreview();
-        }
-
-        private void GridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            //string tempCode = e.Value.ToString();
-            //DataTable tempTable = M0005_DAO.GetInfo_M0005_Check(tempCode);
-            //if (tempTable.Rows.Count > 0)
-            //{
-            //    gridView.FocusedColumn = gridView.Columns[0];
-            //    MessageBox.Show("Mã MMTB: " + tempCode + "đã có!", "Xác nhận", MessageBoxButtons.OK);
-            //}
-        }
+        #endregion
     }
 }
-

@@ -7,7 +7,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
     public class M0005_DAO
     {
         private DBConnection conn;
-        const String sp_Update_MMTB = "SP_TVC_UPDATE_MMTB";
         /// <constructor>
         /// Constructor M0005_DAO
         /// </constructor>
@@ -15,6 +14,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
         {
             conn = new DBConnection();
         }
+
         //Lấy thông tin trên gridControl
         public DataTable GetInfo_M0005()
         {
@@ -65,6 +65,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
         //Lấy dữ liệu số chứng từ trên Form_M0005_Detail_NT
         public DataTable GetInfo_M0005_DocNT()
         {
@@ -90,101 +91,96 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
         //Lấy dữ liệu lên Form_M0005_Detail_NT khi có số chứng từ
-        public DataTable GetInfo_M0005_NT(string DocNo)
+        public DataTable GetInfo_M0005_NT_Header(string DocNo)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+            StrQuery = @"SELECT 
+                             DocNo
+                            ,DocDate
+                            ,EF_VendID
+                            ,InvNo
+                            ,InvDate
+                            ,ReceiptDate
+                            ,ConfirmDate
+                            ,ControlDept
+                            ,DocStatus
+                            ,Column1
+                            ,Column2
+                            ,Column3
+                            ,Column4
+                            ,Column5
+                        FROM 
+                            M0005_ListMMTBDoc1
+                        WHERE 
+                            DocNo = @DocNo";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(DocNo);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
+        //Lấy dữ liệu lên Form_M0005_Detail_NT khi có số chứng từ
+        public DataTable GetInfo_M0005_NT_Detail(string DocNo)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT 
-			                     M.Code
-		                        ,M.ACCcode
-		                        ,M.NameEN
-		                        ,M.NameVN
-		                        ,M.NameJP
-		                        ,M.Maker
-		                        ,M.Model
-		                        ,M.Series
-		                        ,M.OrgCountry
-		                        ,M.ProDate
-		                        ,M.Lifetime
-		                        ,M.StartDeprDate
-		                        ,M.EndDeprDate
-		                        ,M.Status
-		                        ,M.Result
-		                        ,M.Memo
-		                        ,M.InstDoc
-		                        ,M.ACCDoc
-		                        ,M.DocNo_Disposal
-		                        ,M.ACCDoc_Disposal
-		                        ,M.DisposalDate
-		                        ,D.DocNo
-		                        ,D.DocDate
-		                        ,D.EF_VendID
-		                        ,D.SupplierID
-		                        ,D.SupplierName
-		                        ,D.InvNo
-		                        ,D.InvDate
-		                        ,D.ReceiptDate
-		                        ,D.ConfirmDate
-		                        ,D.ControlDept
-                                ,D.DocStatus
-		                        ,M.Column1
-		                        ,M.Column2
-		                        ,M.Column3
-		                        ,M.Column4
-		                        ,M.Column5
-		                        ,L.OrgProcessCode
-		                        ,L.OrgLineCode
-		                        ,L.OrgLineEN
-		                        ,L.OrgGroupLineACC
-		                        ,L.OrgUsingDept
-	                        FROM 
-		                        M0005_ListMMTB M
-	                        LEFT JOIN
-		                        (SELECT 
-			                         Code
-			                        ,OrgProcessCode
-			                        ,OrgLineCode
-			                        ,OrgLineEN
-			                        ,OrgGroupLineACC
-			                        ,OrgUsingDept
-			                        ,MIN(ApplyDate) ApplyDate
-		                        FROM 
-			                        M0005_ListMMTBLine
-		                        GROUP BY
-			                         Code
-			                        ,OrgProcessCode
-			                        ,OrgLineCode
-			                        ,OrgLineEN
-			                        ,OrgGroupLineACC
-			                        ,OrgUsingDept) L
-	                        ON
-	                            M.Code = L.Code
-                            JOIN 
-								(SELECT 
-                                     DocNo
-		                            ,DocDate
-		                            ,EF_VendID
-		                            ,SupplierID
-		                            ,SupplierName
-		                            ,InvNo
-		                            ,InvDate
-		                            ,ReceiptDate
-		                            ,ConfirmDate
-		                            ,ControlDept
-                                    ,DocStatus
-		                            ,Column1
-		                            ,Column2
-		                            ,Column3
-		                            ,Column4
-		                            ,Column5
-                                FROM 
-								    M0005_ListMMTBDoc1 ) D
-							    ON
-								    M.DocNo = D.DocNo 
+			                 M.Code
+		                    ,M.ACCcode
+		                    ,M.NameEN
+		                    ,M.NameVN
+		                    ,M.NameJP
+		                    ,M.Maker
+		                    ,M.Model
+		                    ,M.Series
+		                    ,M.OrgCountry
+		                    ,M.ProDate
+		                    ,M.Lifetime
+		                    ,M.StartDeprDate
+		                    ,M.EndDeprDate
+                            ,M.ACCDoc
+                            ,M.InstDoc
+		                    ,M.Status
+		                    ,M.Result
+		                    ,M.Memo
+		                    ,L.OrgProcessCode
+		                    ,L.OrgLineCode
+		                    ,L.OrgLineEN
+		                    ,L.OrgGroupLineACC
+		                    ,L.OrgUsingDept
+	                    FROM 
+		                    M0005_ListMMTB M
+	                    LEFT JOIN
+		                    (SELECT 
+                                 DocNo_Confirm
+                                ,ACCCode
+			                    ,OrgProcessCode
+			                    ,OrgLineCode
+			                    ,OrgGroupLineACC
+			                    ,OrgUsingDept
+			                    ,OrgLineEN
+			                    ,MIN(ApplyDate) ApplyDate
+		                    FROM 
+			                    M0005_ListMMTBLine
                             WHERE 
-                                M.DocNo like @DocNo";
+                                DocNo_Confirm = @DocNo
+		                    GROUP BY
+			                     DocNo_Confirm
+                                ,ACCCode
+			                    ,OrgProcessCode
+			                    ,OrgLineCode
+			                    ,OrgGroupLineACC
+			                    ,OrgUsingDept
+			                    ,OrgLineEN) L
+	                    ON
+	                        M.DocNo     =   L.DocNo_Confirm
+                        AND M.ACCCode   =   L.ACCCode
+                        WHERE 
+                            M.DocNo     =   @DocNo";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(DocNo);
@@ -198,8 +194,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             StrQuery = @"SELECT 
 	                         RTRIM(EF_VendID) AS EF_VendID
-                            ,VendID
-                            ,VendName
+                            ,[VendID]
+                            ,[VendName]
                         FROM 
 	                        [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapVend]
                         WHERE 
@@ -216,8 +212,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                             VendID
-                            ,VendName
+                             [VendID]
+                            ,[VendName]
                         FROM 
 	                        [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapVend]
                         WHERE 
@@ -225,6 +221,22 @@ namespace TAKAKO_ERP_3LAYER.DAO
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@EF_VendID", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(EF_VendID);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
+        public DataTable GetInfo_ControlDept()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             [SectionID]
+                            ,[SectionName]
+                        FROM
+                            [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFASection]";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Dept", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
 
@@ -246,9 +258,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Update info MMTB
-        public int Update_MMTB(DataTable listMMTB, DataTable listMMTBLine)
+        public bool Update_MMTB(DataTable listMMTB, DataTable listMMTBDoc1, DataTable listMMTBLine)
         {
-            return conn.Update_MMTB(listMMTB, listMMTBLine, sp_Update_MMTB);
+            return conn.Update_MMTB(listMMTB, listMMTBDoc1, listMMTBLine);
         }
     }
 }

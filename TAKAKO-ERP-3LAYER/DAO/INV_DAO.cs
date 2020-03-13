@@ -68,13 +68,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
 
-        public Boolean insertInvoice(DataTable _invoiceMS
-                                    ,DataTable _invoiceDetail
-                                    ,DataTable _plDetail
-                                    ,DataTable _shippingNo)
-        {
-            return conn.Update_InvoiceNo(_invoiceMS, _invoiceDetail, _plDetail, _shippingNo);
-        }
+        //public Boolean insertInvoice(DataTable _invoiceMS
+        //                            ,DataTable _invoiceDetail
+        //                            ,DataTable _plDetail
+        //                            ,DataTable _shippingNo)
+        //{
+            //return conn.Update_InvoiceNo(_invoiceMS, _invoiceDetail, _plDetail, _shippingNo);
+        //}
 
         public DataTable GetInfo_Invoice(string _invoiceNo)
         {

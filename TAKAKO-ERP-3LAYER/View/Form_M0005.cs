@@ -53,16 +53,31 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BarCheckItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            gridControl.DataSource = _tempTable.AsEnumerable()
-                .Where(row => row.Field<DateTime?>("DisposalDate") != null).CopyToDataTable();
-            
+            if (barCheckItem1.Checked) { 
+                gridControl.DataSource = _tempTable.AsEnumerable()
+                    .Where(row => row.Field<DateTime?>("DisposalDate") != null).CopyToDataTable();
+            } else
+            {
+                gridControl.DataSource = _tempTable;
+            }
             ////Load Init
             //GetInfo_Gridview1();
         }
 
         private void gridControl_DoubleClick(object sender, EventArgs e)
         {
-            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(gridView.GetFocusedDataRow()))
+            //String param_DocNo = gridView.GetFocusedDataRow()["DocNo_Confirm"].ToString();
+            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(gridView.GetFocusedDataRow()["DocNo"].ToString()))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
+            }
+        }
+
+        private void bbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            //String param_DocNo = gridView.GetFocusedDataRow()["DocNo_Confirm"].ToString();
+            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT())
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;

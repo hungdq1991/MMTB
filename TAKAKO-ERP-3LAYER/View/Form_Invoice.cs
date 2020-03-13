@@ -2466,31 +2466,31 @@ namespace TAKAKO_ERP_3LAYER
 
                     try
                     {
-                        if (_invDAO.insertInvoice(dtInvoiceMS, dtInvoiceDetail, dtPackingListDetail, dtShippingNo) == true)
-                        {
-                            string Message = "";
-                            if (!String.IsNullOrEmpty(txtInvoiceNo.Text.Trim()))
-                            {
-                                Message = "Lưu thành công Invoice: \"" + txtInvoiceNo.Text + "\"!";
+                        //if (_invDAO.insertInvoice(dtInvoiceMS, dtInvoiceDetail, dtPackingListDetail, dtShippingNo) == true)
+                        //{
+                        //    string Message = "";
+                        //    if (!String.IsNullOrEmpty(txtInvoiceNo.Text.Trim()))
+                        //    {
+                        //        Message = "Lưu thành công Invoice: \"" + txtInvoiceNo.Text + "\"!";
 
-                                //Write Lock
-                                string _typeLock = "";
-                                DataTable _tempTable = new DataTable();
-                                _tempTable = _invDAO.CheckInv(txtInvoiceNo.Text);
-                                if (_tempTable.Rows.Count > 0)
-                                {
-                                    _typeLock = "EDIT";
-                                }
-                                else if (_tempTable.Rows.Count == 0)
-                                {
-                                    _typeLock = "NEW";
-                                }
-                                _logDAO.InsertLog(_systemDAL.CompanyCode, _systemDAL.UserName, _typeLock, Message);
-                            }
-                            MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ClearData();
-                            txtInvoiceNo.Focus();
-                        }
+                        //        //Write Lock
+                        //        string _typeLock = "";
+                        //        DataTable _tempTable = new DataTable();
+                        //        _tempTable = _invDAO.CheckInv(txtInvoiceNo.Text);
+                        //        if (_tempTable.Rows.Count > 0)
+                        //        {
+                        //            _typeLock = "EDIT";
+                        //        }
+                        //        else if (_tempTable.Rows.Count == 0)
+                        //        {
+                        //            _typeLock = "NEW";
+                        //        }
+                        //        _logDAO.InsertLog(_systemDAL.CompanyCode, _systemDAL.UserName, _typeLock, Message);
+                        //    }
+                        //    MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //    ClearData();
+                        //    txtInvoiceNo.Focus();
+                        //}
                     }
                     catch (ApplicationException ex)
                     {

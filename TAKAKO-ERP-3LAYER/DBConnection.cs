@@ -131,20 +131,19 @@ namespace TAKAKO_ERP_3LAYER
         /// <method>
         /// SP Insert Invoice
         /// </method>
-        public bool Update_InvoiceNo(DataTable _invoiceMS,DataTable _invoiceDetail,DataTable _PackingListDetail,DataTable _shippingNo)
+        public bool Update_MMTB(DataTable _listMMTB,DataTable _listMMTBDoc1,DataTable _listMMTBLine)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_INV_NORMAL", conn)
+            var cmd = new SqlCommand("SP_TVC_UPDATE_MMTB", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
             //Set timeout
             cmd.CommandTimeout = 300;
             //Add param
-            SqlParameter param = cmd.Parameters.AddWithValue("@tblInvoiceMS", _invoiceMS);
-            param = cmd.Parameters.AddWithValue("@tblInvoiceDetail", _invoiceDetail);
-            param = cmd.Parameters.AddWithValue("@tblPackingListDetail", _PackingListDetail);
-            param = cmd.Parameters.AddWithValue("@tblShippingNo", _shippingNo);
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc1", _listMMTBDoc1);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBLine", _listMMTBLine);
             try
             {
                 cmd.ExecuteNonQuery();
@@ -502,40 +501,6 @@ namespace TAKAKO_ERP_3LAYER
             }
             conn.Close();
             return dt;
-        }
-        /// <method>
-        /// SP Update Info MMBT
-        /// </method>
-        public int Update_MMTB(DataTable listMMTB, DataTable listMMTBLine, String spName)
-        {
-            int returnValue = 0;
-            conn.Open();
-            var cmd = new SqlCommand(spName, conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            //Set timeout
-            cmd.CommandTimeout = 300;
-            //Add param
-            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", listMMTB);
-            param = cmd.Parameters.AddWithValue("@tblListMMTBLine", listMMTBLine);
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return returnValue;
         }
     }
 }
