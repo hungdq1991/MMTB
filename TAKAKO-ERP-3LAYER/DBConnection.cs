@@ -131,7 +131,7 @@ namespace TAKAKO_ERP_3LAYER
         /// <method>
         /// SP Insert Invoice
         /// </method>
-        public bool Update_MMTB(DataTable _listMMTB,DataTable _listMMTBDoc1,DataTable _listMMTBLine)
+        public bool Update_MMTB(DataTable _listMMTB,DataTable _listMMTBDoc1)
         {
             conn.Open();
             var cmd = new SqlCommand("SP_TVC_UPDATE_MMTB", conn)
@@ -143,7 +143,6 @@ namespace TAKAKO_ERP_3LAYER
             //Add param
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
             param = cmd.Parameters.AddWithValue("@tblListMMTBDoc1", _listMMTBDoc1);
-            param = cmd.Parameters.AddWithValue("@tblListMMTBLine", _listMMTBLine);
             try
             {
                 cmd.ExecuteNonQuery();

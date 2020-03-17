@@ -160,9 +160,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 ,ACCCode
 			                    ,OrgProcessCode
 			                    ,OrgLineCode
+                                ,OrgLineEN
 			                    ,OrgGroupLineACC
 			                    ,OrgUsingDept
-			                    ,OrgLineEN
 			                    ,MIN(ApplyDate) ApplyDate
 		                    FROM 
 			                    M0005_ListMMTBLine
@@ -258,9 +258,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Update info MMTB
-        public bool Update_MMTB(DataTable listMMTB, DataTable listMMTBDoc1, DataTable listMMTBLine)
+        public bool Update_MMTB(DataTable listMMTB, DataTable listMMTBDoc1)
         {
-            return conn.Update_MMTB(listMMTB, listMMTBDoc1, listMMTBLine);
+            return conn.Update_MMTB(listMMTB, listMMTBDoc1);
         }
     }
 }
