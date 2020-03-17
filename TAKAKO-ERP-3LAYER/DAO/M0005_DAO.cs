@@ -24,9 +24,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
             StrQuery = @"SELECT
                         	 Code
                         	,ACCcode
-                        	,NameEN
-                        	,NameVN
-                        	,NameJP
+                        	,L.NameEN
+                        	,L.NameVN
+                        	,L.NameJP
                         	,Maker
                         	,Model
                         	,Series
@@ -53,13 +53,19 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         	,ReceiptDate
                         	,ConfirmDate
                         	,ControlDept
-                        	,Column1
-                        	,Column2
-                        	,Column3
-                        	,Column4
-                        	,Column5
+                         	,L.Column1
+                        	,L.Column2
+                        	,L.Column3
+                        	,L.Column4
+                        	,L.Column5
+                            ,N.Group1
+                            ,N.Group2
                         FROM
-                        	M0005_ListMMTB";
+                        	M0005_ListMMTB L
+                        JOIN 
+                            M0002_GroupName N
+                        ON 
+                            L.NameEN = N.NameEN";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
