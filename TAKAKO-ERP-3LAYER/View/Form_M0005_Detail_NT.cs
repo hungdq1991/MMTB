@@ -146,12 +146,13 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             DataTable _tempTable = new DataTable();
             _tempTable = _HeaderTable.Clone();
+
             DataRow dtRow = _tempTable.NewRow();
             dtRow["DocNo"] = sLook_DocNo.EditValue;
             dtRow["DocDate"] = date_Doc.EditValue;
             dtRow["EF_VendID"] = sLook_Supplier.EditValue;
-            dtRow["SupplierID"] = txt_SupplierID.EditValue;
-            dtRow["SupplierName"] = txt_SupplierName.EditValue;
+            dtRow["SupplierID"] = txt_SupplierID.EditValue.ToString();
+            dtRow["SupplierName"] = txt_SupplierName.EditValue.ToString();
             dtRow["InvNo"] = txt_InvNo.Text;
             dtRow["InvDate"] = date_Inv.EditValue;
             dtRow["ReceiptDate"] = date_Receipt.EditValue;
@@ -183,7 +184,7 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Series", typeof(string));
             _DetailTable.Columns.Add("OrgCountry", typeof(string));
             _DetailTable.Columns.Add("ProDate", typeof(DateTime));
-            _DetailTable.Columns.Add("Lifetime", typeof(int));
+            _DetailTable.Columns.Add("Lifetime", typeof(Decimal));
             _DetailTable.Columns.Add("StartDeprDate", typeof(DateTime));
             _DetailTable.Columns.Add("EndDeprDate", typeof(DateTime));
             _DetailTable.Columns.Add("OrgProcessCode", typeof(string));
@@ -191,7 +192,7 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("OrgLineEN", typeof(string));
             _DetailTable.Columns.Add("OrgGroupLineACC", typeof(string));
             _DetailTable.Columns.Add("OrgUsingDept", typeof(string));
-            _DetailTable.Columns.Add("Result", typeof(string));
+            _DetailTable.Columns.Add("Result", typeof(int));
             _DetailTable.Columns.Add("Status", typeof(string));
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
@@ -464,9 +465,16 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             try
             {
-                if (M0005_DAO.Update_MMTB(GetValue_Header(), _DetailTable))
+                //string sLookup_DocNo_Result = "";
+                //sLookup_DocNo_Result = M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header());
+                //if (!String.IsNullOrEmpty(sLookup_DocNo_Result))
+                //{
+                //    sLook_DocNo.EditValue = sLookup_DocNo_Result;
+                //}
+
+                if (M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header()))
                 {
-                    MessageBox.Show("OK!","Title",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("OK");
                 }
             }
             catch (Exception ex)

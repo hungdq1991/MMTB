@@ -749,6 +749,8 @@
             this.gridCol_NameVN.FieldName = "NameVN";
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.OptionsColumn.FixedWidth = true;
+            this.gridCol_NameVN.Visible = true;
+            this.gridCol_NameVN.VisibleIndex = 3;
             this.gridCol_NameVN.Width = 130;
             // 
             // gridCol_NameJP
@@ -762,9 +764,11 @@
             this.gridCol_NameJP.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameJP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_NameJP.Caption = "Tên (Tiếng Nhật)";
-            this.gridCol_NameJP.FieldName = "NameVN";
+            this.gridCol_NameJP.FieldName = "NameJP";
             this.gridCol_NameJP.Name = "gridCol_NameJP";
             this.gridCol_NameJP.OptionsColumn.FixedWidth = true;
+            this.gridCol_NameJP.Visible = true;
+            this.gridCol_NameJP.VisibleIndex = 4;
             this.gridCol_NameJP.Width = 130;
             // 
             // gridCol_Maker
@@ -782,7 +786,7 @@
             this.gridCol_Maker.Name = "gridCol_Maker";
             this.gridCol_Maker.OptionsColumn.FixedWidth = true;
             this.gridCol_Maker.Visible = true;
-            this.gridCol_Maker.VisibleIndex = 3;
+            this.gridCol_Maker.VisibleIndex = 5;
             this.gridCol_Maker.Width = 130;
             // 
             // gridCol_Model
@@ -800,7 +804,7 @@
             this.gridCol_Model.Name = "gridCol_Model";
             this.gridCol_Model.OptionsColumn.FixedWidth = true;
             this.gridCol_Model.Visible = true;
-            this.gridCol_Model.VisibleIndex = 4;
+            this.gridCol_Model.VisibleIndex = 6;
             this.gridCol_Model.Width = 130;
             // 
             // gridCol_Series
@@ -818,7 +822,7 @@
             this.gridCol_Series.Name = "gridCol_Series";
             this.gridCol_Series.OptionsColumn.FixedWidth = true;
             this.gridCol_Series.Visible = true;
-            this.gridCol_Series.VisibleIndex = 5;
+            this.gridCol_Series.VisibleIndex = 7;
             // 
             // gridCol_OrgCountry
             // 
@@ -836,7 +840,7 @@
             this.gridCol_OrgCountry.Name = "gridCol_OrgCountry";
             this.gridCol_OrgCountry.OptionsColumn.FixedWidth = true;
             this.gridCol_OrgCountry.Visible = true;
-            this.gridCol_OrgCountry.VisibleIndex = 6;
+            this.gridCol_OrgCountry.VisibleIndex = 8;
             this.gridCol_OrgCountry.Width = 60;
             // 
             // repo_sLookUp_Nation
@@ -874,7 +878,7 @@
             this.gridCol_ProDate.Name = "gridCol_ProDate";
             this.gridCol_ProDate.OptionsColumn.FixedWidth = true;
             this.gridCol_ProDate.Visible = true;
-            this.gridCol_ProDate.VisibleIndex = 7;
+            this.gridCol_ProDate.VisibleIndex = 9;
             this.gridCol_ProDate.Width = 90;
             // 
             // gridCol_Lifetime
@@ -894,7 +898,7 @@
             this.gridCol_Lifetime.Name = "gridCol_Lifetime";
             this.gridCol_Lifetime.OptionsColumn.FixedWidth = true;
             this.gridCol_Lifetime.Visible = true;
-            this.gridCol_Lifetime.VisibleIndex = 8;
+            this.gridCol_Lifetime.VisibleIndex = 10;
             this.gridCol_Lifetime.Width = 60;
             // 
             // gridCol_StartDeprDate
@@ -918,7 +922,7 @@
             this.gridCol_StartDeprDate.Name = "gridCol_StartDeprDate";
             this.gridCol_StartDeprDate.OptionsColumn.FixedWidth = true;
             this.gridCol_StartDeprDate.Visible = true;
-            this.gridCol_StartDeprDate.VisibleIndex = 14;
+            this.gridCol_StartDeprDate.VisibleIndex = 16;
             this.gridCol_StartDeprDate.Width = 90;
             // 
             // repo_ItemDate_StartDerprDate
@@ -951,7 +955,7 @@
             this.gridCol_EndDeprDate.Name = "gridCol_EndDeprDate";
             this.gridCol_EndDeprDate.OptionsColumn.FixedWidth = true;
             this.gridCol_EndDeprDate.Visible = true;
-            this.gridCol_EndDeprDate.VisibleIndex = 15;
+            this.gridCol_EndDeprDate.VisibleIndex = 17;
             this.gridCol_EndDeprDate.Width = 90;
             // 
             // repo_ItemDate_EndDerprDate
@@ -975,7 +979,7 @@
             this.gridCol_ProcessID.FieldName = "OrgProcessCode";
             this.gridCol_ProcessID.Name = "gridCol_ProcessID";
             this.gridCol_ProcessID.Visible = true;
-            this.gridCol_ProcessID.VisibleIndex = 9;
+            this.gridCol_ProcessID.VisibleIndex = 11;
             // 
             // gridCol_LineID
             // 
@@ -990,7 +994,7 @@
             this.gridCol_LineID.FieldName = "OrgLineCode";
             this.gridCol_LineID.Name = "gridCol_LineID";
             this.gridCol_LineID.Visible = true;
-            this.gridCol_LineID.VisibleIndex = 10;
+            this.gridCol_LineID.VisibleIndex = 12;
             this.gridCol_LineID.Width = 85;
             // 
             // repo_sLookUp_LineID
@@ -1011,7 +1015,7 @@
             // 
             // gridCol_LineName_EN
             // 
-            this.gridCol_LineName_EN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridCol_LineName_EN.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.gridCol_LineName_EN.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_LineName_EN.AppearanceHeader.Options.UseFont = true;
             this.gridCol_LineName_EN.AppearanceHeader.Options.UseForeColor = true;
@@ -1021,7 +1025,7 @@
             this.gridCol_LineName_EN.FieldName = "OrgLineEN";
             this.gridCol_LineName_EN.Name = "gridCol_LineName_EN";
             this.gridCol_LineName_EN.Visible = true;
-            this.gridCol_LineName_EN.VisibleIndex = 11;
+            this.gridCol_LineName_EN.VisibleIndex = 13;
             this.gridCol_LineName_EN.Width = 100;
             // 
             // gridCol_GroupLineACC
@@ -1036,7 +1040,7 @@
             this.gridCol_GroupLineACC.FieldName = "OrgGroupLineACC";
             this.gridCol_GroupLineACC.Name = "gridCol_GroupLineACC";
             this.gridCol_GroupLineACC.Visible = true;
-            this.gridCol_GroupLineACC.VisibleIndex = 12;
+            this.gridCol_GroupLineACC.VisibleIndex = 14;
             // 
             // gridCol_UsingDept
             // 
@@ -1048,10 +1052,10 @@
             this.gridCol_UsingDept.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_UsingDept.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridCol_UsingDept.Caption = "Bộ phận SX";
-            this.gridCol_UsingDept.FieldName = "OrgUsedDept";
+            this.gridCol_UsingDept.FieldName = "OrgUsingDept";
             this.gridCol_UsingDept.Name = "gridCol_UsingDept";
             this.gridCol_UsingDept.Visible = true;
-            this.gridCol_UsingDept.VisibleIndex = 13;
+            this.gridCol_UsingDept.VisibleIndex = 15;
             // 
             // gridCol_Result
             // 
@@ -1066,7 +1070,7 @@
             this.gridCol_Result.FieldName = "Result";
             this.gridCol_Result.Name = "gridCol_Result";
             this.gridCol_Result.Visible = true;
-            this.gridCol_Result.VisibleIndex = 17;
+            this.gridCol_Result.VisibleIndex = 19;
             // 
             // repo_Check_Status
             // 
@@ -1090,7 +1094,7 @@
             this.gridCol_Status.Name = "gridCol_Status";
             this.gridCol_Status.OptionsColumn.FixedWidth = true;
             this.gridCol_Status.Visible = true;
-            this.gridCol_Status.VisibleIndex = 16;
+            this.gridCol_Status.VisibleIndex = 18;
             // 
             // repo_cBox_Status
             // 
@@ -1111,7 +1115,7 @@
             this.gridCol_Memo.FieldName = "Memo";
             this.gridCol_Memo.Name = "gridCol_Memo";
             this.gridCol_Memo.Visible = true;
-            this.gridCol_Memo.VisibleIndex = 18;
+            this.gridCol_Memo.VisibleIndex = 20;
             // 
             // gridCol_InstDoc
             // 
@@ -1127,7 +1131,7 @@
             this.gridCol_InstDoc.FieldName = "InstDoc";
             this.gridCol_InstDoc.Name = "gridCol_InstDoc";
             this.gridCol_InstDoc.Visible = true;
-            this.gridCol_InstDoc.VisibleIndex = 19;
+            this.gridCol_InstDoc.VisibleIndex = 21;
             this.gridCol_InstDoc.Width = 120;
             // 
             // contextMenuStrip1

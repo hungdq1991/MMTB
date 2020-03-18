@@ -107,6 +107,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
                              DocNo
                             ,DocDate
                             ,EF_VendID
+                            ,SupplierID
+                            ,SupplierName
                             ,InvNo
                             ,InvDate
                             ,ReceiptDate
@@ -148,16 +150,15 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                    ,M.Lifetime
 		                    ,M.StartDeprDate
 		                    ,M.EndDeprDate
-                            ,M.ACCDoc
-                            ,M.InstDoc
-		                    ,M.Status
-		                    ,M.Result
-		                    ,M.Memo
 		                    ,L.OrgProcessCode
 		                    ,L.OrgLineCode
 		                    ,L.OrgLineEN
 		                    ,L.OrgGroupLineACC
 		                    ,L.OrgUsingDept
+		                    ,M.Result
+		                    ,M.Status
+		                    ,M.Memo
+                            ,M.InstDoc
 	                    FROM 
 		                    M0005_ListMMTB M
 	                    LEFT JOIN
