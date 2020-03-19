@@ -29,12 +29,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,Maker
                             ,Model
                             ,ItemCode
+                            ,ItemNameEN
+                            ,ItemNameVN
+                            ,ItemNameJP
                             ,Unit
-                            ,PriceRef
                             ,QtyNeed
                             ,LifeTime
                             ,Location
-                            ,PurCode
                             ,ApplyDate
                             ,InActive
                             ,Memo

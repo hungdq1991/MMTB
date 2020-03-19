@@ -1,6 +1,6 @@
 ﻿namespace TAKAKO_ERP_3LAYER.View
 {
-    partial class Form_M0014
+    partial class Form_M0015_Master
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            this.gridCol_EffDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -40,8 +45,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridCol_Code = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_ACCcode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_NameEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_NameVN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_NameJP = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,19 +55,42 @@
             this.gridCol_ItemCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ItemNameEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ItemNameVN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ItemNameJP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Unit = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_PriceRef = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_QtyNeed = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Lifetime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Location = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_PurCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_PurCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_PurUnit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_PriceRef = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_Cury = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_SupplierID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_Supplier = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gridCol_EffDate
+            // 
+            this.gridCol_EffDate.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_EffDate.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_EffDate.AppearanceCell.Options.UseTextOptions = true;
+            this.gridCol_EffDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_EffDate.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_EffDate.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_EffDate.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_EffDate.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_EffDate.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_EffDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_EffDate.Caption = "Ngày hiệu lực giá";
+            this.gridCol_EffDate.FieldName = "EF_EffDate";
+            this.gridCol_EffDate.Name = "gridCol_EffDate";
+            this.gridCol_EffDate.Visible = true;
+            this.gridCol_EffDate.VisibleIndex = 18;
             // 
             // ribbonControl
             // 
@@ -173,8 +199,6 @@
             // 
             this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridCol_Code,
-            this.gridCol_ACCcode,
             this.gridCol_NameEN,
             this.gridCol_NameVN,
             this.gridCol_NameJP,
@@ -185,15 +209,39 @@
             this.gridCol_ItemCode,
             this.gridCol_ItemNameEN,
             this.gridCol_ItemNameVN,
+            this.gridCol_ItemNameJP,
             this.gridCol_Unit,
-            this.gridCol_PriceRef,
             this.gridCol_QtyNeed,
             this.gridCol_Lifetime,
             this.gridCol_Location,
-            this.gridCol_PurCode,
             this.gridCol_ApplyDate,
             this.gridCol_InActive,
-            this.gridCol_Memo});
+            this.gridCol_Memo,
+            this.gridCol_PurCode,
+            this.gridCol_PurUnit,
+            this.gridCol_PriceRef,
+            this.gridCol_Cury,
+            this.gridCol_EffDate,
+            this.gridCol_SupplierID,
+            this.gridCol_Supplier});
+            gridFormatRule1.Column = this.gridCol_EffDate;
+            gridFormatRule1.ColumnApplyTo = this.gridCol_EffDate;
+            gridFormatRule1.Name = "DateNull";
+            formatConditionRuleExpression1.Appearance.Options.HighPriority = true;
+            formatConditionRuleExpression1.Expression = "IsNullOrEmpty([EF_EffDate])";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            gridFormatRule2.Column = this.gridCol_EffDate;
+            gridFormatRule2.ColumnApplyTo = this.gridCol_EffDate;
+            gridFormatRule2.Name = "Date";
+            formatConditionRuleExpression2.AllowAnimation = DevExpress.Utils.DefaultBoolean.True;
+            formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            formatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            formatConditionRuleExpression2.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleExpression2.Expression = "[EF_EffDate] < AddYears(Today(), -2)";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.gridView.FormatRules.Add(gridFormatRule1);
+            this.gridView.FormatRules.Add(gridFormatRule2);
             this.gridView.GridControl = this.gridControl;
             this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
@@ -202,40 +250,6 @@
             this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gridView.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
-            // 
-            // gridCol_Code
-            // 
-            this.gridCol_Code.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_Code.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_Code.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_Code.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_Code.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_Code.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_Code.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_Code.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_Code.Caption = "Mã MMTB";
-            this.gridCol_Code.FieldName = "Code";
-            this.gridCol_Code.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.gridCol_Code.Name = "gridCol_Code";
-            this.gridCol_Code.Visible = true;
-            this.gridCol_Code.VisibleIndex = 0;
-            // 
-            // gridCol_ACCcode
-            // 
-            this.gridCol_ACCcode.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_ACCcode.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_ACCcode.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_ACCcode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_ACCcode.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_ACCcode.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_ACCcode.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_ACCcode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ACCcode.Caption = "Mã MMTB (ACC)";
-            this.gridCol_ACCcode.FieldName = "ACCcode";
-            this.gridCol_ACCcode.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.gridCol_ACCcode.Name = "gridCol_ACCcode";
-            this.gridCol_ACCcode.Visible = true;
-            this.gridCol_ACCcode.VisibleIndex = 1;
             // 
             // gridCol_NameEN
             // 
@@ -252,8 +266,8 @@
             this.gridCol_NameEN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameEN.Name = "gridCol_NameEN";
             this.gridCol_NameEN.Visible = true;
-            this.gridCol_NameEN.VisibleIndex = 2;
-            this.gridCol_NameEN.Width = 120;
+            this.gridCol_NameEN.VisibleIndex = 0;
+            this.gridCol_NameEN.Width = 95;
             // 
             // gridCol_NameVN
             // 
@@ -271,8 +285,8 @@
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.OptionsColumn.AllowShowHide = false;
             this.gridCol_NameVN.Visible = true;
-            this.gridCol_NameVN.VisibleIndex = 3;
-            this.gridCol_NameVN.Width = 120;
+            this.gridCol_NameVN.VisibleIndex = 1;
+            this.gridCol_NameVN.Width = 98;
             // 
             // gridCol_NameJP
             // 
@@ -306,8 +320,8 @@
             this.gridCol_Maker.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_Maker.Name = "gridCol_Maker";
             this.gridCol_Maker.Visible = true;
-            this.gridCol_Maker.VisibleIndex = 4;
-            this.gridCol_Maker.Width = 120;
+            this.gridCol_Maker.VisibleIndex = 2;
+            this.gridCol_Maker.Width = 92;
             // 
             // gridCol_Model
             // 
@@ -324,8 +338,8 @@
             this.gridCol_Model.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_Model.Name = "gridCol_Model";
             this.gridCol_Model.Visible = true;
-            this.gridCol_Model.VisibleIndex = 5;
-            this.gridCol_Model.Width = 120;
+            this.gridCol_Model.VisibleIndex = 3;
+            this.gridCol_Model.Width = 89;
             // 
             // gridCol_Group1
             // 
@@ -372,7 +386,7 @@
             this.gridCol_ItemCode.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_ItemCode.Name = "gridCol_ItemCode";
             this.gridCol_ItemCode.Visible = true;
-            this.gridCol_ItemCode.VisibleIndex = 6;
+            this.gridCol_ItemCode.VisibleIndex = 4;
             this.gridCol_ItemCode.Width = 120;
             // 
             // gridCol_ItemNameEN
@@ -387,10 +401,11 @@
             this.gridCol_ItemNameEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ItemNameEN.Caption = "Tên (t.Anh)";
             this.gridCol_ItemNameEN.FieldName = "ItemNameEN";
+            this.gridCol_ItemNameEN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_ItemNameEN.Name = "gridCol_ItemNameEN";
             this.gridCol_ItemNameEN.Visible = true;
-            this.gridCol_ItemNameEN.VisibleIndex = 7;
-            this.gridCol_ItemNameEN.Width = 60;
+            this.gridCol_ItemNameEN.VisibleIndex = 5;
+            this.gridCol_ItemNameEN.Width = 96;
             // 
             // gridCol_ItemNameVN
             // 
@@ -404,10 +419,19 @@
             this.gridCol_ItemNameVN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ItemNameVN.Caption = "Tên (t.Việt)";
             this.gridCol_ItemNameVN.FieldName = "ItemNameVN";
+            this.gridCol_ItemNameVN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_ItemNameVN.Name = "gridCol_ItemNameVN";
             this.gridCol_ItemNameVN.Visible = true;
-            this.gridCol_ItemNameVN.VisibleIndex = 8;
-            this.gridCol_ItemNameVN.Width = 60;
+            this.gridCol_ItemNameVN.VisibleIndex = 6;
+            this.gridCol_ItemNameVN.Width = 99;
+            // 
+            // gridCol_ItemNameJP
+            // 
+            this.gridCol_ItemNameJP.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ItemNameJP.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_ItemNameJP.Caption = "Tên (t.Nhật)";
+            this.gridCol_ItemNameJP.FieldName = "ItemNameJP";
+            this.gridCol_ItemNameJP.Name = "gridCol_ItemNameJP";
             // 
             // gridCol_Unit
             // 
@@ -423,25 +447,8 @@
             this.gridCol_Unit.FieldName = "Unit";
             this.gridCol_Unit.Name = "gridCol_Unit";
             this.gridCol_Unit.Visible = true;
-            this.gridCol_Unit.VisibleIndex = 9;
+            this.gridCol_Unit.VisibleIndex = 7;
             this.gridCol_Unit.Width = 60;
-            // 
-            // gridCol_PriceRef
-            // 
-            this.gridCol_PriceRef.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_PriceRef.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_PriceRef.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_PriceRef.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_PriceRef.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_PriceRef.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_PriceRef.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_PriceRef.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_PriceRef.Caption = "Giá tham khảo";
-            this.gridCol_PriceRef.FieldName = "Price";
-            this.gridCol_PriceRef.Name = "gridCol_PriceRef";
-            this.gridCol_PriceRef.Visible = true;
-            this.gridCol_PriceRef.VisibleIndex = 17;
-            this.gridCol_PriceRef.Width = 90;
             // 
             // gridCol_QtyNeed
             // 
@@ -459,7 +466,7 @@
             this.gridCol_QtyNeed.FieldName = "QtyNeed";
             this.gridCol_QtyNeed.Name = "gridCol_QtyNeed";
             this.gridCol_QtyNeed.Visible = true;
-            this.gridCol_QtyNeed.VisibleIndex = 10;
+            this.gridCol_QtyNeed.VisibleIndex = 8;
             this.gridCol_QtyNeed.Width = 90;
             // 
             // gridCol_Lifetime
@@ -478,7 +485,7 @@
             this.gridCol_Lifetime.FieldName = "LifeTime";
             this.gridCol_Lifetime.Name = "gridCol_Lifetime";
             this.gridCol_Lifetime.Visible = true;
-            this.gridCol_Lifetime.VisibleIndex = 11;
+            this.gridCol_Lifetime.VisibleIndex = 9;
             this.gridCol_Lifetime.Width = 90;
             // 
             // gridCol_Location
@@ -495,25 +502,8 @@
             this.gridCol_Location.FieldName = "Location";
             this.gridCol_Location.Name = "gridCol_Location";
             this.gridCol_Location.Visible = true;
-            this.gridCol_Location.VisibleIndex = 12;
+            this.gridCol_Location.VisibleIndex = 10;
             this.gridCol_Location.Width = 90;
-            // 
-            // gridCol_PurCode
-            // 
-            this.gridCol_PurCode.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_PurCode.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_PurCode.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_PurCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_PurCode.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_PurCode.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_PurCode.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_PurCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_PurCode.Caption = "Mã mua hàng";
-            this.gridCol_PurCode.FieldName = "PurCode";
-            this.gridCol_PurCode.Name = "gridCol_PurCode";
-            this.gridCol_PurCode.Visible = true;
-            this.gridCol_PurCode.VisibleIndex = 16;
-            this.gridCol_PurCode.Width = 120;
             // 
             // gridCol_ApplyDate
             // 
@@ -531,7 +521,7 @@
             this.gridCol_ApplyDate.FieldName = "ApplyDate";
             this.gridCol_ApplyDate.Name = "gridCol_ApplyDate";
             this.gridCol_ApplyDate.Visible = true;
-            this.gridCol_ApplyDate.VisibleIndex = 13;
+            this.gridCol_ApplyDate.VisibleIndex = 11;
             this.gridCol_ApplyDate.Width = 90;
             // 
             // gridCol_InActive
@@ -548,7 +538,7 @@
             this.gridCol_InActive.FieldName = "InActive";
             this.gridCol_InActive.Name = "gridCol_InActive";
             this.gridCol_InActive.Visible = true;
-            this.gridCol_InActive.VisibleIndex = 14;
+            this.gridCol_InActive.VisibleIndex = 12;
             this.gridCol_InActive.Width = 90;
             // 
             // gridCol_Memo
@@ -565,10 +555,114 @@
             this.gridCol_Memo.FieldName = "Memo";
             this.gridCol_Memo.Name = "gridCol_Memo";
             this.gridCol_Memo.Visible = true;
-            this.gridCol_Memo.VisibleIndex = 15;
+            this.gridCol_Memo.VisibleIndex = 13;
             this.gridCol_Memo.Width = 150;
             // 
-            // Form_M0014
+            // gridCol_PurCode
+            // 
+            this.gridCol_PurCode.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_PurCode.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_PurCode.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_PurCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_PurCode.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_PurCode.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_PurCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_PurCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_PurCode.Caption = "Mã mua hàng";
+            this.gridCol_PurCode.FieldName = "PurCode";
+            this.gridCol_PurCode.Name = "gridCol_PurCode";
+            this.gridCol_PurCode.Visible = true;
+            this.gridCol_PurCode.VisibleIndex = 14;
+            this.gridCol_PurCode.Width = 120;
+            // 
+            // gridCol_PurUnit
+            // 
+            this.gridCol_PurUnit.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_PurUnit.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_PurUnit.AppearanceCell.Options.UseTextOptions = true;
+            this.gridCol_PurUnit.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_PurUnit.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_PurUnit.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_PurUnit.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_PurUnit.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_PurUnit.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_PurUnit.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_PurUnit.Caption = "Đvt mua hàng";
+            this.gridCol_PurUnit.FieldName = "EF_PurUnit";
+            this.gridCol_PurUnit.Name = "gridCol_PurUnit";
+            this.gridCol_PurUnit.Visible = true;
+            this.gridCol_PurUnit.VisibleIndex = 15;
+            // 
+            // gridCol_PriceRef
+            // 
+            this.gridCol_PriceRef.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_PriceRef.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_PriceRef.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_PriceRef.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_PriceRef.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_PriceRef.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_PriceRef.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_PriceRef.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_PriceRef.Caption = "Giá tham khảo";
+            this.gridCol_PriceRef.DisplayFormat.FormatString = "#,###.##";
+            this.gridCol_PriceRef.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridCol_PriceRef.FieldName = "EF_PurCuryPrice";
+            this.gridCol_PriceRef.Name = "gridCol_PriceRef";
+            this.gridCol_PriceRef.Visible = true;
+            this.gridCol_PriceRef.VisibleIndex = 16;
+            this.gridCol_PriceRef.Width = 90;
+            // 
+            // gridCol_Cury
+            // 
+            this.gridCol_Cury.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Cury.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_Cury.AppearanceCell.Options.UseTextOptions = true;
+            this.gridCol_Cury.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_Cury.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_Cury.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Cury.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_Cury.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_Cury.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_Cury.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_Cury.Caption = "Loại tiền";
+            this.gridCol_Cury.FieldName = "EF_PurCuryID";
+            this.gridCol_Cury.Name = "gridCol_Cury";
+            this.gridCol_Cury.Visible = true;
+            this.gridCol_Cury.VisibleIndex = 17;
+            // 
+            // gridCol_SupplierID
+            // 
+            this.gridCol_SupplierID.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_SupplierID.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_SupplierID.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_SupplierID.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_SupplierID.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_SupplierID.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_SupplierID.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_SupplierID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_SupplierID.Caption = "Mã số nhà cung cấp";
+            this.gridCol_SupplierID.FieldName = "EF_VendID";
+            this.gridCol_SupplierID.Name = "gridCol_SupplierID";
+            this.gridCol_SupplierID.Visible = true;
+            this.gridCol_SupplierID.VisibleIndex = 19;
+            // 
+            // gridCol_Supplier
+            // 
+            this.gridCol_Supplier.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Supplier.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_Supplier.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_Supplier.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Supplier.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_Supplier.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_Supplier.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_Supplier.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_Supplier.Caption = "Nhà cung cấp";
+            this.gridCol_Supplier.FieldName = "EF_VendName";
+            this.gridCol_Supplier.Name = "gridCol_Supplier";
+            this.gridCol_Supplier.Visible = true;
+            this.gridCol_Supplier.VisibleIndex = 20;
+            // 
+            // Form_M0015_Master
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -576,11 +670,13 @@
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0014";
+            this.Name = "Form_M0015_Master";
             this.Ribbon = this.ribbonControl;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "QUẢN LÝ PIN THEO MMTB";
-            this.Load += new System.EventHandler(this.Form_M0014_Load);
+            this.Text = "QUẢN LÝ LINH KIỆN THEO MMTB";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form_M0015_Master_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
@@ -602,8 +698,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_Code;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ACCcode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_NameEN;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_NameVN;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_NameJP;
@@ -623,5 +717,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Memo;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItemNameEN;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItemNameVN;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItemNameJP;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_Cury;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_EffDate;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_SupplierID;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_Supplier;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_PurUnit;
     }
 }

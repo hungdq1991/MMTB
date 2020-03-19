@@ -190,6 +190,12 @@
     <Compile Include="View\Form_M0006_Detail.Designer.cs">
       <DependentUpon>Form_M0006_Detail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Form_M0015_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0015_Master.Designer.cs">
+      <DependentUpon>Form_M0015_Master.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form_M0015.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,11 +312,11 @@
     <Compile Include="View\Form_M0005.Designer.cs">
       <DependentUpon>Form_M0005.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_M0009.cs">
+    <Compile Include="View\Form_M0005_Line.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_M0009.Designer.cs">
-      <DependentUpon>Form_M0009.cs</DependentUpon>
+    <Compile Include="View\Form_M0005_Line.Designer.cs">
+      <DependentUpon>Form_M0005_Line.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_M0012.cs">
       <SubType>Form</SubType>
@@ -421,14 +427,17 @@
     <EmbeddedResource Include="View\Form_M0005.resx">
       <DependentUpon>Form_M0005.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_M0009.resx">
-      <DependentUpon>Form_M0009.cs</DependentUpon>
+    <EmbeddedResource Include="View\Form_M0005_Line.resx">
+      <DependentUpon>Form_M0005_Line.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0012.resx">
       <DependentUpon>Form_M0012.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0013.resx">
       <DependentUpon>Form_M0013.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0015_Master.resx">
+      <DependentUpon>Form_M0015_Master.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0015.resx">
       <DependentUpon>Form_M0015.cs</DependentUpon>
