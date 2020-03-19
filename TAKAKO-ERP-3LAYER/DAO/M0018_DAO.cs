@@ -37,11 +37,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,InputUser
                             ,ModifyDate
                             ,ModifyUser
-                            ,Column1
-                            ,Column2
-                            ,Column3
-                            ,Column4
-                            ,Column5
                         FROM 
 	                        M0018_SkillEmployee";
             SqlParameter[] sqlParameters = new SqlParameter[1];
