@@ -15,8 +15,9 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataTable _InitDetailTable;
         public DataTable _HeaderTable;
         public DataTable _DetailTable;
-        public M0005_DAO M0005_DAO;
+        public M0003_Line_DAO M0003_Line_DAO;
         public M0004_DAO M0004_DAO;
+        public M0005_DAO M0005_DAO;
         public String DocNo = "";
         public Boolean InitValue = true;
         //public M0005_Line_DAO M0005_Line_DAO;
@@ -52,6 +53,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Load Form_M0005_Detail_NT
         private void Form_M0005_Detail_NT_Load(object sender, EventArgs e)
         {
+            M0003_Line_DAO = new M0003_Line_DAO();
             M0004_DAO = new M0004_DAO();
             M0005_DAO = new M0005_DAO();
 
@@ -106,12 +108,14 @@ namespace TAKAKO_ERP_3LAYER.View
             _HeaderTable.Columns.Add("DocNo", typeof(string));
             _HeaderTable.Columns.Add("DocDate", typeof(DateTime));
             _HeaderTable.Columns.Add("EF_VendID", typeof(string));
+            _HeaderTable.Columns.Add("SupplierID", typeof(string));
+            _HeaderTable.Columns.Add("SupplierName", typeof(string));
             _HeaderTable.Columns.Add("InvNo", typeof(string));
             _HeaderTable.Columns.Add("InvDate", typeof(DateTime));
             _HeaderTable.Columns.Add("ReceiptDate", typeof(DateTime));
             _HeaderTable.Columns.Add("ConfirmDate", typeof(DateTime));
             _HeaderTable.Columns.Add("ControlDept", typeof(string));
-            _HeaderTable.Columns.Add("DocStatus", typeof(string));
+            _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("Column1", typeof(string));
             _HeaderTable.Columns.Add("Column2", typeof(string));
             _HeaderTable.Columns.Add("Column3", typeof(string));
@@ -138,6 +142,33 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
+        private DataTable GetValue_Header()
+        {
+            DataTable _tempTable = new DataTable();
+            _tempTable = _HeaderTable.Clone();
+
+            DataRow dtRow = _tempTable.NewRow();
+            dtRow["DocNo"] = sLook_DocNo.EditValue;
+            dtRow["DocDate"] = date_Doc.EditValue;
+            dtRow["EF_VendID"] = sLook_Supplier.EditValue;
+            dtRow["SupplierID"] = txt_SupplierID.EditValue.ToString();
+            dtRow["SupplierName"] = txt_SupplierName.EditValue.ToString();
+            dtRow["InvNo"] = txt_InvNo.Text;
+            dtRow["InvDate"] = date_Inv.EditValue;
+            dtRow["ReceiptDate"] = date_Receipt.EditValue;
+            dtRow["ConfirmDate"] = date_Confirm.EditValue;
+            dtRow["ControlDept"] = sLook_ControlDept.EditValue;
+            dtRow["DocStatus"] = cbx_Status.SelectedIndex;
+            dtRow["Column1"] = "";
+            dtRow["Column2"] = "";
+            dtRow["Column3"] = "";
+            dtRow["Column4"] = "";
+            dtRow["Column5"] = "";
+            _tempTable.Rows.Add(dtRow);
+
+            return _tempTable;
+        }
+
         //Định nghĩa cấu trúc datatable gán cho grid control
         private void Define_DetailTable()
         {
@@ -153,19 +184,36 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Series", typeof(string));
             _DetailTable.Columns.Add("OrgCountry", typeof(string));
             _DetailTable.Columns.Add("ProDate", typeof(DateTime));
-            _DetailTable.Columns.Add("Lifetime", typeof(int));
+            _DetailTable.Columns.Add("Lifetime", typeof(Decimal));
             _DetailTable.Columns.Add("StartDeprDate", typeof(DateTime));
             _DetailTable.Columns.Add("EndDeprDate", typeof(DateTime));
-            _DetailTable.Columns.Add("ACCDoc", typeof(string));
-            _DetailTable.Columns.Add("InstDoc", typeof(string));
-            _DetailTable.Columns.Add("Status", typeof(string));
-            _DetailTable.Columns.Add("Result", typeof(string));
-            _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("OrgProcessCode", typeof(string));
             _DetailTable.Columns.Add("OrgLineCode", typeof(string));
+            _DetailTable.Columns.Add("OrgLineEN", typeof(string));
             _DetailTable.Columns.Add("OrgGroupLineACC", typeof(string));
             _DetailTable.Columns.Add("OrgUsingDept", typeof(string));
-            _DetailTable.Columns.Add("OrgLineEN", typeof(string));
+            _DetailTable.Columns.Add("Result", typeof(int));
+            _DetailTable.Columns.Add("Status", typeof(string));
+            _DetailTable.Columns.Add("Memo", typeof(string));
+            _DetailTable.Columns.Add("InstDoc", typeof(string));
+            //_DetailTable.Columns.Add("ACCDoc", typeof(string));
+            //_DetailTable.Columns.Add("DocNo_Disposal", typeof(string));
+            //_DetailTable.Columns.Add("ACCDoc_Disposal", typeof(string));
+            //_DetailTable.Columns.Add("DisposalDate", typeof(string));
+            //_DetailTable.Columns.Add("DocNo", typeof(string));
+            //_DetailTable.Columns.Add("DocDate", typeof(string));
+            //_DetailTable.Columns.Add("SupplierID", typeof(string));
+            //_DetailTable.Columns.Add("SupplierName", typeof(string));
+            //_DetailTable.Columns.Add("InvNo", typeof(string));
+            //_DetailTable.Columns.Add("InvDate", typeof(string));
+            //_DetailTable.Columns.Add("ReceiptDate", typeof(string));
+            //_DetailTable.Columns.Add("ConfirmDate", typeof(string));
+            //_DetailTable.Columns.Add("ControlDept", typeof(string));
+            //_DetailTable.Columns.Add("Column1", typeof(string));
+            //_DetailTable.Columns.Add("Column2", typeof(string));
+            //_DetailTable.Columns.Add("Column3", typeof(string));
+            //_DetailTable.Columns.Add("Column4", typeof(string));
+            //_DetailTable.Columns.Add("Column5", typeof(string));
         }
 
         #region Add data to control
@@ -209,12 +257,12 @@ namespace TAKAKO_ERP_3LAYER.View
         private void Add_Value_repo_sLookUp_ProgressGroup()
         {
             DataTable tempTable = new DataTable();
-            tempTable = M0004_DAO.GetInfo_ProgressGroup();
+            tempTable = M0003_Line_DAO.GetInfo_M0003_ProgressGroup();
             if (tempTable.Rows.Count > 0)
             {
                 repo_sLookUp_LineID.DataSource = tempTable;
-                repo_sLookUp_LineID.ValueMember = "ProcessGroup";
-                repo_sLookUp_LineID.DisplayMember = "ProcessEN";
+                repo_sLookUp_LineID.ValueMember = "LineID";
+                repo_sLookUp_LineID.DisplayMember = "LineEN";
             }
         }
 
@@ -414,13 +462,24 @@ namespace TAKAKO_ERP_3LAYER.View
         }
 
         private void bbiSave_ItemClick(object sender, ItemClickEventArgs e)
-        {    
-            if (String.IsNullOrEmpty(DocNo))
+        {
+            try
             {
+                //string sLookup_DocNo_Result = "";
+                //sLookup_DocNo_Result = M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header());
+                //if (!String.IsNullOrEmpty(sLookup_DocNo_Result))
+                //{
+                //    sLook_DocNo.EditValue = sLookup_DocNo_Result;
+                //}
 
-            } else
+                if (M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header()))
+                {
+                    MessageBox.Show("OK");
+                }
+            }
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion

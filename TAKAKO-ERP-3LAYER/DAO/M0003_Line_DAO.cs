@@ -374,5 +374,30 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
+        public DataTable GetInfo_M0003_ProgressGroup()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                               TVC 
+                              ,LineID
+                              ,LineEN
+                              ,LineVN
+                              ,LineJP
+                              ,ProcessGroup
+                              ,GroupLineACC
+                              ,ProductionDept
+                              ,ApplyDate
+                              ,InActive                  
+                            FROM 
+	                           M0003_Line";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@LineID", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
     }
 }

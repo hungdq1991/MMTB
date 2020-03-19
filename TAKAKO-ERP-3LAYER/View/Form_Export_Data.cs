@@ -280,7 +280,7 @@ namespace TAKAKO_ERP_3LAYER
             DateTime _ETDTo = dtpDueDateTo.Value;
             string _revenue = dtpRevenue.Value.ToString("MM/yyyy");
             string _invoiceNo = txtInvoiceNo.Text;
-            string _fileName = "";
+            //string _fileName = "";
 
             OpenFileDialog theDialog = new OpenFileDialog();
             theDialog.Title = "Chose Template Export";

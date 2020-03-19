@@ -107,6 +107,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
                              DocNo
                             ,DocDate
                             ,EF_VendID
+                            ,SupplierID
+                            ,SupplierName
                             ,InvNo
                             ,InvDate
                             ,ReceiptDate
@@ -148,16 +150,15 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                    ,M.Lifetime
 		                    ,M.StartDeprDate
 		                    ,M.EndDeprDate
-                            ,M.ACCDoc
-                            ,M.InstDoc
-		                    ,M.Status
-		                    ,M.Result
-		                    ,M.Memo
 		                    ,L.OrgProcessCode
 		                    ,L.OrgLineCode
 		                    ,L.OrgLineEN
 		                    ,L.OrgGroupLineACC
 		                    ,L.OrgUsingDept
+		                    ,M.Result
+		                    ,M.Status
+		                    ,M.Memo
+                            ,M.InstDoc
 	                    FROM 
 		                    M0005_ListMMTB M
 	                    LEFT JOIN
@@ -166,9 +167,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 ,ACCCode
 			                    ,OrgProcessCode
 			                    ,OrgLineCode
+                                ,OrgLineEN
 			                    ,OrgGroupLineACC
 			                    ,OrgUsingDept
-			                    ,OrgLineEN
 			                    ,MIN(ApplyDate) ApplyDate
 		                    FROM 
 			                    M0005_ListMMTBLine
@@ -264,9 +265,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Update info MMTB
-        public bool Update_MMTB(DataTable listMMTB, DataTable listMMTBDoc1, DataTable listMMTBLine)
+        public bool Update_MMTB(DataTable listMMTB, DataTable listMMTBDoc1)
         {
-            return conn.Update_MMTB(listMMTB, listMMTBDoc1, listMMTBLine);
+            return conn.Update_MMTB(listMMTB, listMMTBDoc1);
         }
     }
 }
