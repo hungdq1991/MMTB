@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
 
 namespace TAKAKO_ERP_3LAYER.View
@@ -131,7 +133,7 @@ namespace TAKAKO_ERP_3LAYER.View
             date_Inv.EditValue = _tempTable.Rows[0].Field<DateTime>("InvDate");
             date_Receipt.EditValue = _tempTable.Rows[0].Field<DateTime>("ReceiptDate");
             date_Confirm.EditValue = _tempTable.Rows[0].Field<DateTime>("ConfirmDate");
-            sLook_ControlDept.EditValue = _tempTable.Rows[0].Field<string>("ControlDept").ToString().Trim();
+            sLook_ControlDept.EditValue = _tempTable.Rows[0].Field<string>("ControlDept").Trim();
             if (_tempTable.Rows[0].Field<Boolean>("DocStatus"))
             {
                 cbx_Status.SelectedIndex = 1;
@@ -273,7 +275,7 @@ namespace TAKAKO_ERP_3LAYER.View
         }
 
         //Tạo nội dung combo box cho user lựa chọn: Yes/No
-        private void AddValue_CBox_Status(DevExpress.XtraEditors.ComboBoxEdit comboBox)
+        private void AddValue_CBox_Status(ComboBoxEdit comboBox)
         {
             List<string> Boolean = new List<string>();
             Boolean.Add("Chuẩn bị");
@@ -463,23 +465,31 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void bbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
-            try
+            //string sLookup_DocNo_Result = "";
+            //sLookup_DocNo_Result = M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header());
+            //if (!String.IsNullOrEmpty(sLookup_DocNo_Result))
+            //{
+            //    sLook_DocNo.EditValue = sLookup_DocNo_Result;
+            //}
+            if ((MessageBox.Show("Bạn muốn lưu dữ liệu?", "Xác nhận"
+            , MessageBoxButtons.YesNo
+            , MessageBoxIcon.Question
+            , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
             {
-                //string sLookup_DocNo_Result = "";
-                //sLookup_DocNo_Result = M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header());
-                //if (!String.IsNullOrEmpty(sLookup_DocNo_Result))
-                //{
-                //    sLook_DocNo.EditValue = sLookup_DocNo_Result;
-                //}
-
-                if (M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header()))
+                if (CheckError() == true)
                 {
-                    MessageBox.Show("OK");
+                    try
+                    {
+                        if (M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header()))
+                        {
+                            MessageBox.Show("OK");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
@@ -548,21 +558,99 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        //private void gridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        //{
-        //    if (e.Column.FieldName == "Code")
-        //    {
-        //        GridCellInfo cellInfo = e.Cell as GridCellInfo;
-        //        if (cellInfo == null)
-        //        {
-        //            if (!Directory.Exists(e.CellValue.ToString()))
-        //            {
-        //                cellInfo.ViewInfo.ErrorIconText = "No path exists";
-        //                cellInfo.ViewInfo.ShowErrorIcon = true;
-        //            }
-        //        }
-        //    }
-        //}
+        private void repo_sLookUp_NameEN_CloseUp(object sender, CloseUpEventArgs e)
+        {
+            if (e.CloseMode == PopupCloseMode.Normal)
+            {
+                string _nameVN = "1";
+                string _nameJP = "2";
+                string _maker = "3";
+                string _model = "4";
+
+                //Get index
+                SearchLookUpEdit editor = sender as SearchLookUpEdit;
+                int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
+
+                ////Get value from repo_sLookUp_NameEN
+                //DataRow row = (editor.Properties.DataSource as DataTable).Rows[index];
+
+                //if (row != null)
+                //{
+                //    if (row["NameVN"] != null)
+                //    {
+                //        _nameVN = row["NameVN"].ToString();
+                //    }
+
+                //    if (row["NameJP"] != null)
+                //    {
+                //        _nameJP = row["NameJP"].ToString();
+                //    }
+
+                //    if (row["Maker"] != null)
+                //    {
+                //        _maker = row["Maker"].ToString();
+                //    }
+
+                //    if (row["Model"] != null)
+                //    {
+                //        _model = row["Model"].ToString();
+                //    }
+
+                    //Set value to column NameVN, NameJP, Maker, Model
+                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
+                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
+                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "Maker", _maker);
+                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "Model", _model);
+                //}
+            }
+        }
+
+        private void repo_sLookUp_LineID_CloseUp(object sender, CloseUpEventArgs e)
+        {
+            if (e.CloseMode == PopupCloseMode.Normal)
+            {
+                string _orgLineEN = "";
+                string _orgProcessCode = "";
+                string _orgGroupLineACC = "";
+                string _orgUsingDept = "";
+
+                ////Get index
+                //SearchLookUpEdit editor = sender as SearchLookUpEdit;
+                //int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
+
+                ////Get value from repo_sLookUp_LineID
+                //DataRow row = (editor.Properties.DataSource as DataTable).Rows[index];
+
+                //if (row != null)
+                //{
+                //    if (row["LineEN"] != null)
+                //    {
+                //        _orgLineEN = row["LineEN"].ToString();
+                //    }
+
+                //    if (row["ProcessGroup"] != null)
+                //    {
+                //        _orgProcessCode = row["ProcessGroup"].ToString();
+                //    }
+
+                //    if (row["GroupLineACC"] != null)
+                //    {
+                //        _orgGroupLineACC = row["GroupLineACC"].ToString();
+                //    }
+
+                //    if (row["ProductionDept"] != null)
+                //    {
+                //        _orgUsingDept = row["ProductionDept"].ToString();
+                //    }
+
+                    //Set value to column OrgLineEN, OrgProcessCode, OrgGroupLineACC, OrgUsingDept
+                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgLineEN", _orgLineEN);
+                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgProcessCode", _orgProcessCode);
+                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgGroupLineACC", _orgGroupLineACC);
+                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgUsingDept", _orgUsingDept);
+                //}
+            }
+        }
         #endregion
     }
 }

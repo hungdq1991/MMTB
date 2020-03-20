@@ -91,7 +91,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                        ,ConfirmDate
 		                        ,ControlDept
 	                        FROM 
-		                        M0005_ListMMTB";
+		                        M0005_ListMMTBDoc1";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -237,7 +237,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                             [SectionID]
+                             RTRIM([SectionID])   As SectionID
                             ,[SectionName]
                         FROM
                             [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFASection]";

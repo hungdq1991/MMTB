@@ -196,7 +196,6 @@
             this.barCheckItem1.AllowRightClickInMenu = false;
             this.barCheckItem1.Caption = "Đã thanh lý";
             this.barCheckItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
-            this.barCheckItem1.CloseSubMenuOnClick = false;
             this.barCheckItem1.Id = 20;
             this.barCheckItem1.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.barCheckItem1.ItemAppearance.Normal.Options.UseBackColor = true;
@@ -760,7 +759,7 @@
             this.Name = "Form_M0005";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Danh sách MMTB";
+            this.Text = "DANH SÁCH MMTB";
             this.Load += new System.EventHandler(this.Form_M0005_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
