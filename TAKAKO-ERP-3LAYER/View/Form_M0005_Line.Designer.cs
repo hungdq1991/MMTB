@@ -1,6 +1,6 @@
 ﻿namespace TAKAKO_ERP_3LAYER.View
 {
-    partial class Form_M0009
+    partial class Form_M0005_Line
     {
         /// <summary>
         /// Required designer variable.

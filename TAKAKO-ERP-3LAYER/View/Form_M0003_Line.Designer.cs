@@ -437,7 +437,7 @@
             this.barButtonItem5.ImageOptions.ImageUri.Uri = "Delete";
             this.barButtonItem5.Name = "barButtonItem5";
             // 
-            // Form_M0003
+            // Form_M0003_Line
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -445,9 +445,10 @@
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0003";
+            this.Name = "Form_M0003_Line";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
+            this.Text = "DANH MỤC LINE SẢN XUẤT";
             this.Load += new System.EventHandler(this.Form_M0003_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();

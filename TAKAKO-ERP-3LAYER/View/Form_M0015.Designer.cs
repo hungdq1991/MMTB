@@ -253,7 +253,7 @@
             this.gridCol_NameEN.Name = "gridCol_NameEN";
             this.gridCol_NameEN.Visible = true;
             this.gridCol_NameEN.VisibleIndex = 2;
-            this.gridCol_NameEN.Width = 120;
+            this.gridCol_NameEN.Width = 95;
             // 
             // gridCol_NameVN
             // 
@@ -270,7 +270,9 @@
             this.gridCol_NameVN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.OptionsColumn.AllowShowHide = false;
-            this.gridCol_NameVN.Width = 120;
+            this.gridCol_NameVN.Visible = true;
+            this.gridCol_NameVN.VisibleIndex = 3;
+            this.gridCol_NameVN.Width = 98;
             // 
             // gridCol_NameJP
             // 
@@ -304,8 +306,8 @@
             this.gridCol_Maker.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_Maker.Name = "gridCol_Maker";
             this.gridCol_Maker.Visible = true;
-            this.gridCol_Maker.VisibleIndex = 3;
-            this.gridCol_Maker.Width = 120;
+            this.gridCol_Maker.VisibleIndex = 4;
+            this.gridCol_Maker.Width = 92;
             // 
             // gridCol_Model
             // 
@@ -322,8 +324,8 @@
             this.gridCol_Model.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_Model.Name = "gridCol_Model";
             this.gridCol_Model.Visible = true;
-            this.gridCol_Model.VisibleIndex = 4;
-            this.gridCol_Model.Width = 120;
+            this.gridCol_Model.VisibleIndex = 5;
+            this.gridCol_Model.Width = 89;
             // 
             // gridCol_Group1
             // 
@@ -338,8 +340,6 @@
             this.gridCol_Group1.Caption = "Nhóm trung";
             this.gridCol_Group1.FieldName = "Group1";
             this.gridCol_Group1.Name = "gridCol_Group1";
-            this.gridCol_Group1.Visible = true;
-            this.gridCol_Group1.VisibleIndex = 5;
             this.gridCol_Group1.Width = 120;
             // 
             // gridCol_Group2
@@ -355,8 +355,6 @@
             this.gridCol_Group2.Caption = "Nhóm đại";
             this.gridCol_Group2.FieldName = "Group2";
             this.gridCol_Group2.Name = "gridCol_Group2";
-            this.gridCol_Group2.Visible = true;
-            this.gridCol_Group2.VisibleIndex = 6;
             this.gridCol_Group2.Width = 120;
             // 
             // gridCol_ItemCode
@@ -371,9 +369,10 @@
             this.gridCol_ItemCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ItemCode.Caption = "Mã hàng";
             this.gridCol_ItemCode.FieldName = "ItemCode";
+            this.gridCol_ItemCode.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_ItemCode.Name = "gridCol_ItemCode";
             this.gridCol_ItemCode.Visible = true;
-            this.gridCol_ItemCode.VisibleIndex = 7;
+            this.gridCol_ItemCode.VisibleIndex = 6;
             this.gridCol_ItemCode.Width = 120;
             // 
             // gridCol_NameEN1
@@ -388,10 +387,11 @@
             this.gridCol_NameEN1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_NameEN1.Caption = "Tên (t.Anh)";
             this.gridCol_NameEN1.FieldName = "NameEN1";
+            this.gridCol_NameEN1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameEN1.Name = "gridCol_NameEN1";
             this.gridCol_NameEN1.Visible = true;
-            this.gridCol_NameEN1.VisibleIndex = 8;
-            this.gridCol_NameEN1.Width = 120;
+            this.gridCol_NameEN1.VisibleIndex = 7;
+            this.gridCol_NameEN1.Width = 96;
             // 
             // gridCol_NameVN1
             // 
@@ -405,10 +405,11 @@
             this.gridCol_NameVN1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_NameVN1.Caption = "Tên (t.Việt)";
             this.gridCol_NameVN1.FieldName = "NameVN1";
+            this.gridCol_NameVN1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameVN1.Name = "gridCol_NameVN1";
             this.gridCol_NameVN1.Visible = true;
-            this.gridCol_NameVN1.VisibleIndex = 9;
-            this.gridCol_NameVN1.Width = 120;
+            this.gridCol_NameVN1.VisibleIndex = 8;
+            this.gridCol_NameVN1.Width = 99;
             // 
             // gridCol_Unit
             // 
@@ -424,7 +425,7 @@
             this.gridCol_Unit.FieldName = "Unit";
             this.gridCol_Unit.Name = "gridCol_Unit";
             this.gridCol_Unit.Visible = true;
-            this.gridCol_Unit.VisibleIndex = 10;
+            this.gridCol_Unit.VisibleIndex = 9;
             this.gridCol_Unit.Width = 60;
             // 
             // gridCol_PriceRef
@@ -441,7 +442,7 @@
             this.gridCol_PriceRef.FieldName = "PriceRef";
             this.gridCol_PriceRef.Name = "gridCol_PriceRef";
             this.gridCol_PriceRef.Visible = true;
-            this.gridCol_PriceRef.VisibleIndex = 11;
+            this.gridCol_PriceRef.VisibleIndex = 17;
             this.gridCol_PriceRef.Width = 90;
             // 
             // gridCol_QtyNeed
@@ -458,7 +459,7 @@
             this.gridCol_QtyNeed.FieldName = "QtyNeed";
             this.gridCol_QtyNeed.Name = "gridCol_QtyNeed";
             this.gridCol_QtyNeed.Visible = true;
-            this.gridCol_QtyNeed.VisibleIndex = 12;
+            this.gridCol_QtyNeed.VisibleIndex = 10;
             this.gridCol_QtyNeed.Width = 90;
             // 
             // gridCol_Lifetime
@@ -475,7 +476,7 @@
             this.gridCol_Lifetime.FieldName = "Lifetime";
             this.gridCol_Lifetime.Name = "gridCol_Lifetime";
             this.gridCol_Lifetime.Visible = true;
-            this.gridCol_Lifetime.VisibleIndex = 13;
+            this.gridCol_Lifetime.VisibleIndex = 11;
             this.gridCol_Lifetime.Width = 90;
             // 
             // gridCol_Location
@@ -492,7 +493,7 @@
             this.gridCol_Location.FieldName = "Location";
             this.gridCol_Location.Name = "gridCol_Location";
             this.gridCol_Location.Visible = true;
-            this.gridCol_Location.VisibleIndex = 14;
+            this.gridCol_Location.VisibleIndex = 12;
             this.gridCol_Location.Width = 90;
             // 
             // gridCol_PurCode
@@ -509,7 +510,7 @@
             this.gridCol_PurCode.FieldName = "PurCode";
             this.gridCol_PurCode.Name = "gridCol_PurCode";
             this.gridCol_PurCode.Visible = true;
-            this.gridCol_PurCode.VisibleIndex = 15;
+            this.gridCol_PurCode.VisibleIndex = 16;
             this.gridCol_PurCode.Width = 120;
             // 
             // gridCol_ApplyDate
@@ -526,7 +527,7 @@
             this.gridCol_ApplyDate.FieldName = "ApplyDate";
             this.gridCol_ApplyDate.Name = "gridCol_ApplyDate";
             this.gridCol_ApplyDate.Visible = true;
-            this.gridCol_ApplyDate.VisibleIndex = 16;
+            this.gridCol_ApplyDate.VisibleIndex = 13;
             this.gridCol_ApplyDate.Width = 90;
             // 
             // gridCol_InActive
@@ -543,7 +544,7 @@
             this.gridCol_InActive.FieldName = "InActive";
             this.gridCol_InActive.Name = "gridCol_InActive";
             this.gridCol_InActive.Visible = true;
-            this.gridCol_InActive.VisibleIndex = 17;
+            this.gridCol_InActive.VisibleIndex = 14;
             this.gridCol_InActive.Width = 90;
             // 
             // gridCol_Memo
@@ -560,7 +561,7 @@
             this.gridCol_Memo.FieldName = "Memo";
             this.gridCol_Memo.Name = "gridCol_Memo";
             this.gridCol_Memo.Visible = true;
-            this.gridCol_Memo.VisibleIndex = 18;
+            this.gridCol_Memo.VisibleIndex = 15;
             this.gridCol_Memo.Width = 150;
             // 
             // Form_M0015

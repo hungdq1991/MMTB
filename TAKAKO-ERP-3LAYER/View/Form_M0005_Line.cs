@@ -5,13 +5,13 @@ using TAKAKO_ERP_3LAYER.DAO;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
-    public partial class Form_M0009 : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Form_M0005_Line : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public DataTable _tempTable;
         public M0009_DAO M0009_DAO;
         public DataTable _tempTable1;
         public M00091_DAO M00091_DAO;
-        public Form_M0009()
+        public Form_M0005_Line()
         {
             InitializeComponent();
         }
