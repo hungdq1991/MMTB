@@ -185,9 +185,127 @@ namespace TAKAKO_ERP_3LAYER.DAO
 			                    ,OrgLineEN) L
 	                    ON
 	                        M.DocNo     =   L.DocNo_Confirm
-                        AND M.ACCCode   =   L.ACCCode
+                        AND M.Code   =   L.Code
                         WHERE 
                             M.DocNo     =   @DocNo";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(DocNo);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Lấy dữ liệu số chứng từ trên Form_M0005_Detail_TL
+        public DataTable GetInfo_M0005_DocTL()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"	SELECT 
+		                         DISTINCT 
+                                 DocNo
+		                        ,DocDate
+		                        ,DisposalDate
+		                        ,case when EF_VendID is null then '' else RTRIM(EF_VendID) end as EF_VendID
+                                ,case when SupplierID is null then '' else SupplierID end as SupplierID
+		                        ,case when SupplierName is null then '' else SupplierName end as SupplierName
+		                        ,case when InvNo is null then '' else InvNo end as InvNo
+	                        FROM 
+		                        M0005_ListMMTBDoc2";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
+        //Lấy dữ liệu lên Form_M0005_Detail_TL khi có số chứng từ
+        public DataTable GetInfo_M0005_TL_Header(string DocNo)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+            StrQuery = @"SELECT 
+                             DocNo
+                            ,DocDate
+		                    ,case when EF_VendID is null then '' else RTRIM(EF_VendID) end as EF_VendID
+                            ,isNull(SupplierID,'') as SupplierID
+		                    ,case when SupplierName is null then '' else SupplierName end as SupplierName
+		                    ,case when InvNo is null then '' else InvNo end as InvNo
+                            ,isNull(InvDate,convert(DateTime,'2000-01-01')) as InvDate
+                            ,DisposalDate
+                            ,ControlDept
+                            ,DocStatus
+                            ,Column1
+                            ,Column2
+                            ,Column3
+                            ,Column4
+                            ,Column5
+                        FROM 
+                            M0005_ListMMTBDoc2
+                        WHERE 
+                            DocNo = @DocNo";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(DocNo);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
+        //Lấy dữ liệu lên Form_M0005_Detail_TL khi có số chứng từ
+        public DataTable GetInfo_M0005_TL_Detail(string DocNo)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+			                 M.Code
+		                    ,M.ACCcode
+		                    ,M.NameEN
+		                    ,M.NameVN
+		                    ,M.NameJP
+		                    ,M.Maker
+		                    ,M.Model
+		                    ,M.Series
+		                    ,M.OrgCountry
+		                    ,M.ProDate
+		                    ,M.Lifetime
+		                    ,M.StartDeprDate
+		                    ,M.EndDeprDate
+		                    ,L.DesProcessCode
+		                    ,L.DesLineCode
+		                    ,L.DesLineEN
+		                    ,L.DesGroupLineACC
+		                    ,L.DesUsingDept
+		                    ,M.ControlDept
+		                    ,M.DisposalMemo
+	                    FROM 
+		                    M0005_ListMMTB M
+	                    LEFT JOIN
+		                    (SELECT 
+                                 DocNo_Disposal
+                                ,Code
+                                ,ACCCode
+			                    ,DesProcessCode
+			                    ,DesLineCode
+                                ,DesLineEN
+			                    ,DesGroupLineACC
+			                    ,DesUsingDept
+			                    ,MAX(ApplyDate) ApplyDate
+		                    FROM 
+			                    M0005_ListMMTBLine
+                            WHERE 
+                                DocNo_Disposal = @DocNo
+		                    GROUP BY
+			                     DocNo_Disposal
+                                ,Code
+                                ,ACCCode
+			                    ,DesProcessCode
+			                    ,DesLineCode
+                                ,DesLineEN
+			                    ,DesGroupLineACC
+			                    ,DesUsingDept) L
+	                    ON
+	                        M.DocNo_Disposal    =   L.DocNo_Disposal
+                        AND M.Code   =   L.Code
+                        WHERE 
+                            M.DocNo_Disposal     =   @DocNo";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(DocNo);
@@ -230,7 +348,25 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString(EF_VendID);
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        //NCC cũ không có trong table xt_CPMapVend
+        public DataTable GetInfo_VendorName1(string EF_VendID)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
 
+            StrQuery = @"SELECT
+                              [EF_VendID]
+                             ,[SupplierID]
+                             ,[SupplierName]
+                        FROM 
+	                        M0005_ListMMTBDoc1
+                        WHERE 
+                            EF_VendID like @EF_VendID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@EF_VendID", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(EF_VendID);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
         public DataTable GetInfo_ControlDept()
         {
             string StrQuery = "";
@@ -246,7 +382,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
-
         //Check mã TS đã có
         public DataTable GetInfo_M0005_Check(string Code)
         {

@@ -147,7 +147,6 @@ namespace TAKAKO_ERP_3LAYER
             //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
             //returnParameter.Direction = ParameterDirection.ReturnValue;
             //string result = "";
-
             try
             {
                 cmd.ExecuteNonQuery();
