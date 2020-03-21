@@ -159,6 +159,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                    ,M.Status
 		                    ,M.Memo
                             ,M.InstDoc
+                            ,M.DocNo
 	                    FROM 
 		                    M0005_ListMMTB M
 	                    LEFT JOIN

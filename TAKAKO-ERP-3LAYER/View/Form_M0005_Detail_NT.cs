@@ -7,6 +7,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -178,11 +179,8 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Status", typeof(string));
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
-            //_DetailTable.Columns.Add("Column1", typeof(string));
-            //_DetailTable.Columns.Add("Column2", typeof(string));
-            //_DetailTable.Columns.Add("Column3", typeof(string));
-            //_DetailTable.Columns.Add("Column4", typeof(string));
-            //_DetailTable.Columns.Add("Column5", typeof(string));
+            //_DetailTable.Columns.Add("DocNo", typeof(string));
+
         }
         #region Add data to control
         private void AddValue_sLook_ControlDept()
@@ -443,9 +441,9 @@ namespace TAKAKO_ERP_3LAYER.View
         private void bbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
             if ((MessageBox.Show("Bạn muốn lưu dữ liệu?", "Xác nhận"
-            , MessageBoxButtons.YesNo
-            , MessageBoxIcon.Question
-            , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+                , MessageBoxButtons.YesNo
+                , MessageBoxIcon.Question
+                , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
             {
                 if (CheckError() == true)
                 {
@@ -471,9 +469,11 @@ namespace TAKAKO_ERP_3LAYER.View
             bbiRefresh.Enabled = IsEnable;
             bbi_AddNewRow.Enabled = IsEnable;
             bbi_DeleteRow.Enabled = IsEnable;
+
             //PopUp
             bbi_PopUp_AddNewRow.Enabled = IsEnable;
             bbi_PopUp_DeleteRow.Enabled = IsEnable;
+
             //Header
             date_Doc.Enabled = IsEnable;
             sLook_Supplier.Enabled = IsEnable;
@@ -485,6 +485,7 @@ namespace TAKAKO_ERP_3LAYER.View
             date_Confirm.Enabled = IsEnable;
             sLook_ControlDept.Enabled = IsEnable;
             cbx_Status.Enabled = IsEnable;
+
             //GridView
             gridView.OptionsBehavior.Editable = IsEnable;
             gridControl.EmbeddedNavigator.Buttons.Append.Visible = IsEnable;
@@ -532,44 +533,25 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             if (e.CloseMode == PopupCloseMode.Normal)
             {
-                string _nameVN = "1";
-                string _nameJP = "2";
-                string _maker = "3";
-                string _model = "4";
+                string _nameVN = "";
+                string _nameJP = "";
+                string _maker = "";
+                string _model = "";
                 //Get index
                 SearchLookUpEdit editor = sender as SearchLookUpEdit;
                 int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
+                
+                //Set value to variables
+                _nameVN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameVN"));
+                _nameJP = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameJP"));
+                _maker = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Maker"));
+                _model = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Model"));
 
-                ////Get value from repo_sLookUp_NameEN
-                //DataRow row = (editor.Properties.DataSource as DataTable).Rows[index];
-
-                //if (row != null)
-                //{
-                //    if (row["NameVN"] != null)
-                //    {
-                //        _nameVN = row["NameVN"].ToString();
-                //    }
-
-                //    if (row["NameJP"] != null)
-                //    {
-                //        _nameJP = row["NameJP"].ToString();
-                //    }
-
-                //    if (row["Maker"] != null)
-                //    {
-                //        _maker = row["Maker"].ToString();
-                //    }
-
-                //    if (row["Model"] != null)
-                //    {
-                //        _model = row["Model"].ToString();
-                //    }
-
-                    //Set value to column NameVN, NameJP, Maker, Model
-                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
-                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
-                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "Maker", _maker);
-                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "Model", _model);
+                //Set value to column NameVN, NameJP, Maker, Model
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Maker", _maker);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Model", _model);
                 //}
             }
         }
@@ -583,42 +565,29 @@ namespace TAKAKO_ERP_3LAYER.View
                 string _orgGroupLineACC = "";
                 string _orgUsingDept = "";
 
-                ////Get index
-                //SearchLookUpEdit editor = sender as SearchLookUpEdit;
-                //int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
+                //Get index
+                SearchLookUpEdit editor = sender as SearchLookUpEdit;
 
-                ////Get value from repo_sLookUp_LineID
-                //DataRow row = (editor.Properties.DataSource as DataTable).Rows[index];
+                //Set value variables
+                _orgLineEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("LineEN"));
+                _orgProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProcessGroup"));
+                _orgGroupLineACC = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("GroupLineACC"));
+                _orgUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProductionDept"));
 
-                //if (row != null)
-                //{
-                //    if (row["LineEN"] != null)
-                //    {
-                //        _orgLineEN = row["LineEN"].ToString();
-                //    }
-
-                //    if (row["ProcessGroup"] != null)
-                //    {
-                //        _orgProcessCode = row["ProcessGroup"].ToString();
-                //    }
-
-                //    if (row["GroupLineACC"] != null)
-                //    {
-                //        _orgGroupLineACC = row["GroupLineACC"].ToString();
-                //    }
-
-                //    if (row["ProductionDept"] != null)
-                //    {
-                //        _orgUsingDept = row["ProductionDept"].ToString();
-                //    }
-
-                    //Set value to column OrgLineEN, OrgProcessCode, OrgGroupLineACC, OrgUsingDept
-                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgLineEN", _orgLineEN);
-                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgProcessCode", _orgProcessCode);
-                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgGroupLineACC", _orgGroupLineACC);
-                    gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgUsingDept", _orgUsingDept);
+                //Set value to column OrgLineEN, OrgProcessCode, OrgGroupLineACC, OrgUsingDept
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgLineEN", _orgLineEN);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgProcessCode", _orgProcessCode);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgGroupLineACC", _orgGroupLineACC);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgUsingDept", _orgUsingDept);
                 //}
             }
+        }
+
+        private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            gridView.SetRowCellValue(e.RowHandle, "ProDate", DateTime.Now);
+            gridView.SetRowCellValue(e.RowHandle, "StartDeprDate", DateTime.Now);
+            gridView.SetRowCellValue(e.RowHandle, "EndDeprDate", DateTime.Now);
         }
         #endregion
     }
