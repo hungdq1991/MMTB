@@ -138,20 +138,17 @@ namespace TAKAKO_ERP_3LAYER
             {
                 CommandType = CommandType.StoredProcedure
             };
+
             //Set timeout
             cmd.CommandTimeout = 300;
-            ////Add param
-            //SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
-            //param = cmd.Parameters.AddWithValue("@tblListMMTBDoc1", _listMMTBDoc1);
 
-            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
-            //returnParameter.Direction = ParameterDirection.ReturnValue;
-            //string result = "";
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc1", _listMMTBDoc1);
 
             try
             {
                 cmd.ExecuteNonQuery();
-                //result = returnParameter.ToString();
             }
             catch (Exception ex)
             {
@@ -160,13 +157,11 @@ namespace TAKAKO_ERP_3LAYER
             }
             finally
             {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
                 conn.Close();
             }
             conn.Close();
-            //return result;
             return true;
         }
 

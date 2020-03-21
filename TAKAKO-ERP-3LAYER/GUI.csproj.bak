@@ -56,27 +56,32 @@
     <ApplicationIcon>logo_takako_pts.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Images.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -101,7 +106,23 @@
     <Compile Include="DAO\EXPORT_DAO.cs" />
     <Compile Include="DAO\M0002_DAO.cs" />
     <Compile Include="DAO\M0001_DAO.cs" />
-    <Compile Include="DAO\M0003_DAO.cs" />
+    <Compile Include="DAO\M0003_ProcessGroup_DAO.cs" />
+    <Compile Include="DAO\M0003_Process_DAO.cs" />
+    <Compile Include="DAO\M0003_Line_DAO.cs" />
+    <Compile Include="DAO\M0004_DAO.cs" />
+    <Compile Include="DAO\M0006_MayTien_DAO.cs" />
+    <Compile Include="DAO\M0006_MayPhay_DAO.cs" />
+    <Compile Include="DAO\M0006_DAO.cs" />
+    <Compile Include="DAO\M0005_Line_DAO.cs" />
+    <Compile Include="DAO\M0005_DAO.cs" />
+    <Compile Include="DAO\M00091_DAO.cs" />
+    <Compile Include="DAO\M0009_DAO.cs" />
+    <Compile Include="DAO\M0012_DAO.cs" />
+    <Compile Include="DAO\M0013_DAO.cs" />
+    <Compile Include="DAO\M0014_DAO.cs" />
+    <Compile Include="DAO\M0015_DAO.cs" />
+    <Compile Include="DAO\M0018_DAO.cs" />
+    <Compile Include="DAO\M01_Session_DAO.cs" />
     <Compile Include="DAO\SHIPPING_DAO.cs" />
     <Compile Include="DAO\INV_DAO.cs" />
     <Compile Include="DAO\LOG_DAO.cs" />
@@ -132,6 +153,60 @@
     </Compile>
     <Compile Include="View\Form_Invoice.Designer.cs">
       <DependentUpon>Form_Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0003_ProcessGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0003_ProcessGroup.Designer.cs">
+      <DependentUpon>Form_M0003_ProcessGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0005_NT_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0005_NT_Detail.Designer.cs">
+      <DependentUpon>Form_M0005_NT_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0006.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0006.Designer.cs">
+      <DependentUpon>Form_M0006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0006_Detail_P.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0006_Detail_P.Designer.cs">
+      <DependentUpon>Form_M0006_Detail_P.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0006_Detail_T.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0006_Detail_T.Designer.cs">
+      <DependentUpon>Form_M0006_Detail_T.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0006_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0006_Detail.Designer.cs">
+      <DependentUpon>Form_M0006_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0015_Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0015_Master.Designer.cs">
+      <DependentUpon>Form_M0015_Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0015.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0015.Designer.cs">
+      <DependentUpon>Form_M0015.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0014.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0014.Designer.cs">
+      <DependentUpon>Form_M0014.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_Search_ShippingNo.cs">
       <SubType>Form</SubType>
@@ -213,11 +288,77 @@
     <Compile Include="View\Form_M0002.Designer.cs">
       <DependentUpon>Form_M0002.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_M0003.cs">
+    <Compile Include="View\Form_M0003_Line.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_M0003.Designer.cs">
-      <DependentUpon>Form_M0003.cs</DependentUpon>
+    <Compile Include="View\Form_M0003_Line.Designer.cs">
+      <DependentUpon>Form_M0003_Line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0004.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0004.Designer.cs">
+      <DependentUpon>Form_M0004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0003_Process.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0003_Process.Designer.cs">
+      <DependentUpon>Form_M0003_Process.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0005.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0005.Designer.cs">
+      <DependentUpon>Form_M0005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0005_Line.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0005_Line.Designer.cs">
+      <DependentUpon>Form_M0005_Line.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0012.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0012.Designer.cs">
+      <DependentUpon>Form_M0012.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0013.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0013.Designer.cs">
+      <DependentUpon>Form_M0013.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0002_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0002_Detail.Designer.cs">
+      <DependentUpon>Form_M0002_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0003_Line_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0003_Line_Detail.Designer.cs">
+      <DependentUpon>Form_M0003_Line_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0003_ProcessGroup_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0003_ProcessGroup_Detail.Designer.cs">
+      <DependentUpon>Form_M0003_ProcessGroup_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0004_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0004_Detail.Designer.cs">
+      <DependentUpon>Form_M0004_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0005_Detail_NT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0005_Detail_NT.Designer.cs">
+      <DependentUpon>Form_M0005_Detail_NT.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="View\Form_Flash.resx">
@@ -241,8 +382,68 @@
     <EmbeddedResource Include="View\Form_M0002.resx">
       <DependentUpon>Form_M0002.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_M0003.resx">
-      <DependentUpon>Form_M0003.cs</DependentUpon>
+    <EmbeddedResource Include="View\Form_M0002_Detail.resx">
+      <DependentUpon>Form_M0002_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0003_Line.resx">
+      <DependentUpon>Form_M0003_Line.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0003_ProcessGroup.resx">
+      <DependentUpon>Form_M0003_ProcessGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0003_Process.resx">
+      <DependentUpon>Form_M0003_Process.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0003_ProcessGroup_Detail.resx">
+      <DependentUpon>Form_M0003_ProcessGroup_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0003_Line_Detail.resx">
+      <DependentUpon>Form_M0003_Line_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0004.resx">
+      <DependentUpon>Form_M0004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0005_NT_Detail.resx">
+      <DependentUpon>Form_M0005_NT_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0004_Detail.resx">
+      <DependentUpon>Form_M0004_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0005_Detail_NT.resx">
+      <DependentUpon>Form_M0005_Detail_NT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0006.resx">
+      <DependentUpon>Form_M0006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0006_Detail_P.resx">
+      <DependentUpon>Form_M0006_Detail_P.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0006_Detail_T.resx">
+      <DependentUpon>Form_M0006_Detail_T.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0006_Detail.resx">
+      <DependentUpon>Form_M0006_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0005.resx">
+      <DependentUpon>Form_M0005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0005_Line.resx">
+      <DependentUpon>Form_M0005_Line.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0012.resx">
+      <DependentUpon>Form_M0012.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0013.resx">
+      <DependentUpon>Form_M0013.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0015_Master.resx">
+      <DependentUpon>Form_M0015_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0015.resx">
+      <DependentUpon>Form_M0015.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0014.resx">
+      <DependentUpon>Form_M0014.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Search_ShippingNo.resx">
       <DependentUpon>Form_Search_ShippingNo.cs</DependentUpon>
@@ -314,6 +515,60 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo_takako_pts.ico" />
+    <None Include="Resources\edit.svg" />
+    <None Include="Resources\new_16x166.png" />
+    <None Include="Resources\new_32x326.png" />
+    <None Include="Resources\new_16x165.png" />
+    <None Include="Resources\new_32x325.png" />
+    <None Include="Resources\del.svg" />
+    <None Include="Resources\delete_16x16.png" />
+    <None Include="Resources\delete_32x32.png" />
+    <None Include="Resources\cancel_16x163.png" />
+    <None Include="Resources\cancel_32x323.png" />
+    <None Include="Resources\edit_16x164.png" />
+    <None Include="Resources\edit_32x324.png" />
+    <None Include="Resources\new_16x164.png" />
+    <None Include="Resources\new_32x324.png" />
+    <None Include="Resources\copy_16x16.png" />
+    <None Include="Resources\copy_32x32.png" />
+    <None Include="Resources\cancel_16x162.png" />
+    <None Include="Resources\cancel_32x322.png" />
+    <None Include="Resources\cancel_16x161.png" />
+    <None Include="Resources\cancel_32x321.png" />
+    <None Include="Resources\close_16x162.png" />
+    <None Include="Resources\close_32x322.png" />
+    <None Include="Resources\close_16x161.png" />
+    <None Include="Resources\close_32x321.png" />
+    <None Include="Resources\cancel_16x16.png" />
+    <None Include="Resources\cancel_32x32.png" />
+    <None Include="Resources\close_16x16.png" />
+    <None Include="Resources\close_32x32.png" />
+    <None Include="Resources\edit_16x163.png" />
+    <None Include="Resources\edit_32x323.png" />
+    <None Include="Resources\new_16x163.png" />
+    <None Include="Resources\new_32x323.png" />
+    <None Include="Resources\new_16x162.png" />
+    <None Include="Resources\new_32x322.png" />
+    <None Include="Resources\new_16x161.png" />
+    <None Include="Resources\new_32x321.png" />
+    <None Include="Resources\save_16x162.png" />
+    <None Include="Resources\save_32x322.png" />
+    <None Include="Resources\edit_16x162.png" />
+    <None Include="Resources\edit_32x322.png" />
+    <None Include="Resources\edit_16x161.png" />
+    <None Include="Resources\edit_32x321.png" />
+    <None Include="Resources\edit_16x16.png" />
+    <None Include="Resources\edit_32x32.png" />
+    <None Include="Resources\reset_16x161.png" />
+    <None Include="Resources\reset_32x321.png" />
+    <None Include="Resources\reset_16x16.png" />
+    <None Include="Resources\reset_32x32.png" />
+    <None Include="Resources\save_16x161.png" />
+    <None Include="Resources\save_32x321.png" />
+    <None Include="Resources\new_16x16.png" />
+    <None Include="Resources\new_32x32.png" />
+    <None Include="Resources\save_16x16.png" />
+    <None Include="Resources\save_32x32.png" />
     <None Include="Resources\icons8-trash-18.png" />
     <None Include="Resources\icons8-trash-20.png" />
     <None Include="Resources\icons8-cancel-201.png" />

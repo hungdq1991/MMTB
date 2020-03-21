@@ -117,6 +117,7 @@
             this.gridCol_InstDoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridCol_DocNo = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -410,6 +411,7 @@
             this.sLook_DocNo.Properties.Appearance.Options.UseBackColor = true;
             this.sLook_DocNo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sLook_DocNo.Properties.PopupFormSize = new System.Drawing.Size(750, 0);
             this.sLook_DocNo.Properties.PopupView = this.gridView2;
             this.sLook_DocNo.Size = new System.Drawing.Size(126, 20);
             this.sLook_DocNo.TabIndex = 0;
@@ -452,6 +454,7 @@
             this.sLook_Supplier.Properties.Appearance.Options.UseBackColor = true;
             this.sLook_Supplier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.sLook_Supplier.Properties.PopupFormSize = new System.Drawing.Size(550, 0);
             this.sLook_Supplier.Properties.PopupView = this.searchLookUpEdit1View;
             this.sLook_Supplier.Size = new System.Drawing.Size(71, 20);
             this.sLook_Supplier.TabIndex = 2;
@@ -678,7 +681,8 @@
             this.gridCol_Result,
             this.gridCol_Status,
             this.gridCol_Memo,
-            this.gridCol_InstDoc});
+            this.gridCol_InstDoc,
+            this.gridCol_DocNo});
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Name = "Disposal";
             gridFormatRule1.Rule = formatConditionRuleDateOccuring1;
@@ -697,6 +701,7 @@
             this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gridView.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView_InitNewRow);
             // 
             // gridCol_Code
             // 
@@ -1203,6 +1208,15 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
+            // gridCol_DocNo
+            // 
+            this.gridCol_DocNo.Caption = "DocNo";
+            this.gridCol_DocNo.FieldName = "DocNo";
+            this.gridCol_DocNo.Name = "gridCol_DocNo";
+            this.gridCol_DocNo.Visible = true;
+            this.gridCol_DocNo.VisibleIndex = 22;
+            this.gridCol_DocNo.Width = 120;
+            // 
             // Form_M0005_Detail_NT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1345,5 +1359,6 @@
         private DevExpress.XtraBars.BarButtonItem bbi_PopUp_DeleteRow;
         private DevExpress.XtraBars.BarButtonItem bbi_PopUp_AddNewRow;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_LineName_EN;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_DocNo;
     }
 }
