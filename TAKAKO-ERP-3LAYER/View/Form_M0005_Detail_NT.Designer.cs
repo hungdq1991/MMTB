@@ -115,9 +115,10 @@
             this.repo_cBox_Status = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InstDoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_DocNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridCol_DocNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repo_cBox_Result = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -156,6 +157,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_Check_Status)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_cBox_Status)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_cBox_Result)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -649,7 +651,8 @@
             this.repo_ItemDate_EndDerprDate,
             this.repo_sLookUp_LineID,
             this.repo_Check_Status,
-            this.repo_cBox_Status});
+            this.repo_cBox_Status,
+            this.repo_cBox_Result});
             this.gridControl.Size = new System.Drawing.Size(848, 328);
             this.gridControl.TabIndex = 8;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -695,6 +698,7 @@
             this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
             this.gridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.Inplace;
             this.gridView.OptionsNavigation.AutoFocusNewRow = true;
             this.gridView.OptionsPrint.EnableAppearanceEvenRow = true;
@@ -1151,7 +1155,7 @@
             this.gridCol_Status.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_Status.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridCol_Status.Caption = "Tình trạng MMTB";
-            this.gridCol_Status.ColumnEdit = this.repo_cBox_Status;
+            this.gridCol_Status.ColumnEdit = this.repo_cBox_Result;
             this.gridCol_Status.FieldName = "Status";
             this.gridCol_Status.Name = "gridCol_Status";
             this.gridCol_Status.OptionsColumn.FixedWidth = true;
@@ -1196,6 +1200,19 @@
             this.gridCol_InstDoc.VisibleIndex = 21;
             this.gridCol_InstDoc.Width = 120;
             // 
+            // gridCol_DocNo
+            // 
+            this.gridCol_DocNo.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_DocNo.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_DocNo.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_DocNo.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_DocNo.Caption = "DocNo";
+            this.gridCol_DocNo.FieldName = "DocNo";
+            this.gridCol_DocNo.Name = "gridCol_DocNo";
+            this.gridCol_DocNo.Visible = true;
+            this.gridCol_DocNo.VisibleIndex = 22;
+            this.gridCol_DocNo.Width = 120;
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -1208,14 +1225,12 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // gridCol_DocNo
+            // repo_cBox_Result
             // 
-            this.gridCol_DocNo.Caption = "DocNo";
-            this.gridCol_DocNo.FieldName = "DocNo";
-            this.gridCol_DocNo.Name = "gridCol_DocNo";
-            this.gridCol_DocNo.Visible = true;
-            this.gridCol_DocNo.VisibleIndex = 22;
-            this.gridCol_DocNo.Width = 120;
+            this.repo_cBox_Result.AutoHeight = false;
+            this.repo_cBox_Result.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repo_cBox_Result.Name = "repo_cBox_Result";
             // 
             // Form_M0005_Detail_NT
             // 
@@ -1270,6 +1285,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_Check_Status)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_cBox_Status)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_cBox_Result)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1360,5 +1376,6 @@
         private DevExpress.XtraBars.BarButtonItem bbi_PopUp_AddNewRow;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_LineName_EN;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_DocNo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repo_cBox_Result;
     }
 }

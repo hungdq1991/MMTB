@@ -7,7 +7,6 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
-using DevExpress.XtraGrid.Views.Grid;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -18,6 +17,7 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataTable _InitDetailTable;
         public DataTable _HeaderTable;
         public DataTable _DetailTable;
+        public DataTable _DeleteRowTable;
         public M0003_Line_DAO M0003_Line_DAO;
         public M0004_DAO M0004_DAO;
         public M0005_DAO M0005_DAO;
@@ -60,6 +60,10 @@ namespace TAKAKO_ERP_3LAYER.View
             M0004_DAO = new M0004_DAO();
             M0005_DAO = new M0005_DAO();
 
+            _HeaderTable = new DataTable();
+            _DetailTable = new DataTable();
+            _DeleteRowTable = new DataTable();
+
             Setting_Init_Control();
 
             Setting_Init_Value();
@@ -74,9 +78,14 @@ namespace TAKAKO_ERP_3LAYER.View
             //Định nghĩa datatable gán cho gridview
             Define_DetailTable();
 
-            //Khởi tạo bảng _InitDetailTable
+            //
+            Define_DeleteRowTable();
 
+            //
             AddValue_CBox_Status();
+
+            //
+            AddValue_CBox_Result();
 
             AddValue_CBox_Status(cbx_Status);
 
@@ -107,7 +116,6 @@ namespace TAKAKO_ERP_3LAYER.View
         private void Define_HeaderTable()
         {
             //Các cột theo bảng M0005_ListMMTB
-            _HeaderTable = new DataTable();
             _HeaderTable.Columns.Add("DocNo", typeof(string));
             _HeaderTable.Columns.Add("DocDate", typeof(DateTime));
             _HeaderTable.Columns.Add("EF_VendID", typeof(string));
@@ -176,7 +184,6 @@ namespace TAKAKO_ERP_3LAYER.View
         private void Define_DetailTable()
         {
             //Các cột theo bảng M0005_ListMMTB
-            _DetailTable = new DataTable();
             _DetailTable.Columns.Add("Code", typeof(string));
             _DetailTable.Columns.Add("ACCcode", typeof(string));
             _DetailTable.Columns.Add("NameEN", typeof(string));
@@ -200,6 +207,12 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
             _DetailTable.Columns.Add("DocNo", typeof(string));
+        }
+
+        private void Define_DeleteRowTable()
+        {
+            _DeleteRowTable.Columns.Add("Code", typeof(string));
+            _DeleteRowTable.Columns.Add("ApplyDate", typeof(DateTime));
         }
 
         #region Add data to control
@@ -256,6 +269,12 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             repo_cBox_Status.Items.Add("Mới");
             repo_cBox_Status.Items.Add("Cũ");
+        }
+
+        private void AddValue_CBox_Result()
+        {
+            repo_cBox_Status.Items.Add("OK");
+            repo_cBox_Status.Items.Add("NG");
         }
 
         //Tạo nội dung combo box cho user lựa chọn: Yes/No
@@ -433,6 +452,13 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
         {
+            //
+            DataRow dtrow = _DeleteRowTable.NewRow();
+            dtrow["Code"] = gridView.GetRowCellValue(gridView.FocusedRowHandle, "Code");
+            dtrow["ApplyDate"] = date_Confirm.EditValue;
+            _DeleteRowTable.Rows.Add(dtrow);
+
+            //
             var row = gridView.FocusedRowHandle;
             gridView.DeleteRow(row);
         }
