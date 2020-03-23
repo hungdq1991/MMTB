@@ -1,6 +1,6 @@
 ﻿namespace TAKAKO_ERP_3LAYER.View
 {
-    partial class Form_M0005_NT_Detail
+    partial class Form_M0005_NT_Detail_Cancel
     {
         /// <summary>
         /// Required designer variable.
@@ -427,7 +427,6 @@
             this.sLookEdit_NameEN.Properties.PopupView = this.gridView2;
             this.sLookEdit_NameEN.Size = new System.Drawing.Size(257, 20);
             this.sLookEdit_NameEN.TabIndex = 2;
-            this.sLookEdit_NameEN.EditValueChanged += new System.EventHandler(this.sLookEdit_NameEN_EditValueChanged);
             // 
             // gridView2
             // 

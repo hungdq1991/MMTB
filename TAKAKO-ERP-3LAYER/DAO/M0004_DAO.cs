@@ -273,8 +273,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
-
-
         public DataTable GetInfo_Maker()
         {
             string StrQuery = "";
@@ -294,7 +292,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
-
         public DataTable GetInfo_NationMF()
         {
             string StrQuery = "";
@@ -311,7 +308,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
-
         public DataTable GetInfo_ProgressGroup()
         {
             string StrQuery = "";

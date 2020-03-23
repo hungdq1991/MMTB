@@ -10,14 +10,13 @@ using TAKAKO_ERP_3LAYER.DAO;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
-    public partial class Form_M0005_Detail_NT : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Form_M0005_Detail_TL : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         #region Tạo biến
         public DataTable _InitHeaderTable;
         public DataTable _InitDetailTable;
         public DataTable _HeaderTable;
         public DataTable _DetailTable;
-        public DataTable _DeleteRowTable;
         public M0003_Line_DAO M0003_Line_DAO;
         public M0004_DAO M0004_DAO;
         public M0005_DAO M0005_DAO;
@@ -25,32 +24,27 @@ namespace TAKAKO_ERP_3LAYER.View
         public Boolean InitValue = true;
         #endregion
         //Khởi tạo form
-        public Form_M0005_Detail_NT()
+        public Form_M0005_Detail_TL()
         {
             InitializeComponent();
         }
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0005_Detail_NT(String _docNo)
+        public Form_M0005_Detail_TL(String _docNo)
         {
             InitializeComponent();
             DocNo = _docNo;
         }
-        //Load Form_M0005_Detail_NT
-        private void Form_M0005_Detail_NT_Load(object sender, EventArgs e)
+        //Load Form_M0005_Detail_TL
+        private void Form_M0005_Detail_TL_Load(object sender, EventArgs e)
         {
             M0003_Line_DAO = new M0003_Line_DAO();
             M0004_DAO = new M0004_DAO();
             M0005_DAO = new M0005_DAO();
-
-            _HeaderTable = new DataTable();
-            _DetailTable = new DataTable();
-            _DeleteRowTable = new DataTable();
-
             Setting_Init_Control();
             Setting_Init_Value();
         }
 
-        //Dữ liệu trên Form_M0005_Detail_NT
+        //Dữ liệu trên Form_M0005_Detail_TL
         private void Setting_Init_Control()
         {
             //Định nghĩa datatable gán cho header
@@ -59,14 +53,7 @@ namespace TAKAKO_ERP_3LAYER.View
             //Định nghĩa datatable gán cho gridview
             Define_DetailTable();
 
-            //
-            Define_DeleteRowTable();
-
-            //
-            AddValue_CBox_Status();
-
-            //
-            AddValue_CBox_Result();
+            //Khởi tạo bảng _InitDetailTable
 
             AddValue_CBox_Status(cbx_Status);
 
@@ -75,14 +62,14 @@ namespace TAKAKO_ERP_3LAYER.View
             AddValue_sLook_ControlDept();
 
             AddValue_sLookUp_Supplier();
-
-            Add_Value_repo_sLookUp_NameEN();
-
-            Add_Value_repo_sLookUp_Nation();
-
-            Add_Value_repo_sLookUp_ProgressGroup();
         }
-
+        private void AddValue_CBox_Status(ComboBoxEdit comboBox)
+        {
+            List<string> Boolean = new List<string>();
+            Boolean.Add("Chuẩn bị");
+            Boolean.Add("Xác nhận");
+            comboBox.Properties.Items.AddRange(Boolean);
+        }
         private void Setting_Init_Value()
         {
             if(String.IsNullOrEmpty(DocNo))
@@ -97,7 +84,8 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void Define_HeaderTable()
         {
-            //Các cột theo bảng M0005_ListMMTB
+            //Các cột theo bảng M0005_ListMMTB_Doc2
+            _HeaderTable = new DataTable();
             _HeaderTable.Columns.Add("DocNo", typeof(string));
             _HeaderTable.Columns.Add("DocDate", typeof(DateTime));
             _HeaderTable.Columns.Add("EF_VendID", typeof(string));
@@ -105,9 +93,8 @@ namespace TAKAKO_ERP_3LAYER.View
             _HeaderTable.Columns.Add("SupplierName", typeof(string));
             _HeaderTable.Columns.Add("InvNo", typeof(string));
             _HeaderTable.Columns.Add("InvDate", typeof(DateTime));
-            _HeaderTable.Columns.Add("ReceiptDate", typeof(DateTime));
-            _HeaderTable.Columns.Add("ConfirmDate", typeof(DateTime));
-            _HeaderTable.Columns.Add("ControlDept", typeof(string));
+            _HeaderTable.Columns.Add("DisposalDate", typeof(DateTime));
+            _HeaderTable.Columns.Add("ControlDept", typeof(int));
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("Column1", typeof(string));
             _HeaderTable.Columns.Add("Column2", typeof(string));
@@ -119,12 +106,11 @@ namespace TAKAKO_ERP_3LAYER.View
         private void AddValue_Header(DataTable _tempTable)
         {
             date_Doc.EditValue = _tempTable.Rows[0].Field<DateTime>("DocDate");
-            sLook_Supplier.EditValue = _tempTable.Rows[0].Field<string>("EF_VendID").Trim();
-            txt_InvNo.Text = _tempTable.Rows[0].Field<string>("InvNo").ToString();
+            sLook_Supplier.EditValue = _tempTable.Rows[0].Field<string>("EF_VendID");
+            txt_InvNo.Text = _tempTable.Rows[0].Field<string>("InvNo");
             date_Inv.EditValue = _tempTable.Rows[0].Field<DateTime>("InvDate");
-            date_Receipt.EditValue = _tempTable.Rows[0].Field<DateTime>("ReceiptDate");
-            date_Confirm.EditValue = _tempTable.Rows[0].Field<DateTime>("ConfirmDate");
-            sLook_ControlDept.EditValue = _tempTable.Rows[0].Field<string>("ControlDept").Trim();
+            sLook_ControlDept.EditValue = _tempTable.Rows[0].Field<string>("ControlDept");
+            date_Disposal.EditValue = _tempTable.Rows[0].Field<DateTime>("DisposalDate");
             if (_tempTable.Rows[0].Field<Boolean>("DocStatus"))
             {
                 cbx_Status.SelectedIndex = 1;
@@ -147,8 +133,7 @@ namespace TAKAKO_ERP_3LAYER.View
             dtRow["SupplierName"] = txt_SupplierName.EditValue.ToString();
             dtRow["InvNo"] = txt_InvNo.Text;
             dtRow["InvDate"] = date_Inv.EditValue;
-            dtRow["ReceiptDate"] = date_Receipt.EditValue;
-            dtRow["ConfirmDate"] = date_Confirm.EditValue;
+            dtRow["DisposalDate"] = date_Disposal.EditValue;
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
             dtRow["Column1"] = "";
@@ -165,6 +150,7 @@ namespace TAKAKO_ERP_3LAYER.View
         private void Define_DetailTable()
         {
             //Các cột theo bảng M0005_ListMMTB
+            _DetailTable = new DataTable();
             _DetailTable.Columns.Add("Code", typeof(string));
             _DetailTable.Columns.Add("ACCcode", typeof(string));
             _DetailTable.Columns.Add("NameEN", typeof(string));
@@ -178,23 +164,18 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Lifetime", typeof(Decimal));
             _DetailTable.Columns.Add("StartDeprDate", typeof(DateTime));
             _DetailTable.Columns.Add("EndDeprDate", typeof(DateTime));
-            _DetailTable.Columns.Add("OrgProcessCode", typeof(string));
-            _DetailTable.Columns.Add("OrgLineCode", typeof(string));
-            _DetailTable.Columns.Add("OrgLineEN", typeof(string));
-            _DetailTable.Columns.Add("OrgGroupLineACC", typeof(string));
-            _DetailTable.Columns.Add("OrgUsingDept", typeof(string));
-            _DetailTable.Columns.Add("Result", typeof(int));
-            _DetailTable.Columns.Add("Status", typeof(string));
-            _DetailTable.Columns.Add("Memo", typeof(string));
-            _DetailTable.Columns.Add("InstDoc", typeof(string));
-            //_DetailTable.Columns.Add("DocNo", typeof(string));
-
-        private void Define_DeleteRowTable()
-        {
-            _DeleteRowTable.Columns.Add("Code", typeof(string));
-            _DeleteRowTable.Columns.Add("ApplyDate", typeof(DateTime));
+            _DetailTable.Columns.Add("DesProcessCode", typeof(string));
+            _DetailTable.Columns.Add("DesLineCode", typeof(string));
+            _DetailTable.Columns.Add("DesLineEN", typeof(string));
+            _DetailTable.Columns.Add("DesGroupLineACC", typeof(string));
+            _DetailTable.Columns.Add("DesUsingDept", typeof(string));
+            _DetailTable.Columns.Add("DisposalMemo", typeof(int));
+            //_DetailTable.Columns.Add("Column1", typeof(string));
+            //_DetailTable.Columns.Add("Column2", typeof(string));
+            //_DetailTable.Columns.Add("Column3", typeof(string));
+            //_DetailTable.Columns.Add("Column4", typeof(string));
+            //_DetailTable.Columns.Add("Column5", typeof(string));
         }
-
         #region Add data to control
         private void AddValue_sLook_ControlDept()
         {
@@ -207,70 +188,11 @@ namespace TAKAKO_ERP_3LAYER.View
                 sLook_ControlDept.Properties.DisplayMember = "SectionID";
             }
         }
-
-        //Điền dữ liệu cho ô NameEN
-        private void Add_Value_repo_sLookUp_NameEN()
-        {
-            DataTable tempTable = new DataTable();
-            tempTable = M0004_DAO.GetInfo_Maker();
-            if (tempTable.Rows.Count > 0)
-            {
-                repo_sLookUp_NameEN.DataSource = tempTable;
-                repo_sLookUp_NameEN.ValueMember = "NameEN";
-                repo_sLookUp_NameEN.DisplayMember = "NameEN";
-            }
-        }
-
-        private void Add_Value_repo_sLookUp_Nation()
-        {
-            DataTable tempTable = new DataTable();
-            tempTable = M0004_DAO.GetInfo_NationMF();
-            if (tempTable.Rows.Count > 0)
-            {
-                repo_sLookUp_Nation.DataSource = tempTable;
-                repo_sLookUp_Nation.ValueMember = "NATION_CODE";
-                repo_sLookUp_Nation.DisplayMember = "NATION_NAME";
-            }
-        }
-
-        private void Add_Value_repo_sLookUp_ProgressGroup()
-        {
-            DataTable tempTable = new DataTable();
-            tempTable = M0003_Line_DAO.GetInfo_M0003_ProgressGroup();
-            if (tempTable.Rows.Count > 0)
-            {
-                repo_sLookUp_LineID.DataSource = tempTable;
-                repo_sLookUp_LineID.ValueMember = "LineID";
-                repo_sLookUp_LineID.DisplayMember = "LineEN";
-            }
-        }
-
-        private void AddValue_CBox_Status()
-        {
-            repo_cBox_Status.Items.Add("Mới");
-            repo_cBox_Status.Items.Add("Cũ");
-        }
-
-        private void AddValue_CBox_Result()
-        {
-            repo_cBox_Status.Items.Add("OK");
-            repo_cBox_Status.Items.Add("NG");
-        }
-
-        //Tạo nội dung combo box cho user lựa chọn: Yes/No
-        private void AddValue_CBox_Status(ComboBoxEdit comboBox)
-        {
-            List<string> Boolean = new List<string>();
-            Boolean.Add("Chuẩn bị");
-            Boolean.Add("Xác nhận");
-            comboBox.Properties.Items.AddRange(Boolean);
-        }
-
         //Điền dữ liệu cho ô Số chứng từ
         private void Add_Value_sLookUp_DocNo()
         {
             DataTable tempTable = new DataTable();
-            tempTable = M0005_DAO.GetInfo_M0005_DocNT();
+            tempTable = M0005_DAO.GetInfo_M0005_DocTL();
             if (tempTable.Rows.Count > 0)
             {
                 sLook_DocNo.Properties.DataSource = tempTable;
@@ -339,7 +261,7 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        //Lấy số chứng từ, điền thông tin vào Form_M0005_Detail_NT 
+        //Lấy số chứng từ, điền thông tin vào Form_M0005_Detail_TL 
         private void SLook_DocNo_TextChanged(object sender, EventArgs e)
         {
             string _docNo = "";
@@ -352,7 +274,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (!string.IsNullOrEmpty(_docNo))
                 {
                     _HeaderTable.Clear();
-                    _HeaderTable = M0005_DAO.GetInfo_M0005_NT_Header(_docNo);
+                    _HeaderTable = M0005_DAO.GetInfo_M0005_TL_Header(_docNo);
 
                     if (_HeaderTable.Rows.Count > 0)
                     {
@@ -360,7 +282,7 @@ namespace TAKAKO_ERP_3LAYER.View
                     }
 
                     _DetailTable.Clear();
-                    _DetailTable = M0005_DAO.GetInfo_M0005_NT_Detail(_docNo);
+                    _DetailTable = M0005_DAO.GetInfo_M0005_TL_Detail(_docNo);
                     if (_DetailTable.Rows.Count > 0)
                     {
                         gridControl.DataSource = _DetailTable;
@@ -390,8 +312,7 @@ namespace TAKAKO_ERP_3LAYER.View
             txt_SupplierName.EditValue = null;
             txt_InvNo.EditValue = null;
             date_Inv.EditValue = DateTime.Now;
-            date_Receipt.EditValue = DateTime.Now;
-            date_Confirm.EditValue = DateTime.Now;
+            date_Disposal.EditValue = DateTime.Now;
             sLook_ControlDept.EditValue = null;
             cbx_Status.SelectedIndex = 0;
 
@@ -402,7 +323,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Click nút thêm mới
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var result = MessageBox.Show("Bạn muốn tạo mới biên bản nghiệm thu?", "Xác nhận", MessageBoxButtons.OKCancel);
+            var result = MessageBox.Show("Bạn muốn tạo mới biên bản thanh lý?", "Xác nhận", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
                 InitValue = true;
@@ -443,13 +364,6 @@ namespace TAKAKO_ERP_3LAYER.View
         //Click chuột phải chọn Delete row
         private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //
-            DataRow dtrow = _DeleteRowTable.NewRow();
-            dtrow["Code"] = gridView.GetRowCellValue(gridView.FocusedRowHandle, "Code");
-            dtrow["ApplyDate"] = date_Confirm.EditValue;
-            _DeleteRowTable.Rows.Add(dtrow);
-
-            //
             var row = gridView.FocusedRowHandle;
             gridView.DeleteRow(row);
         }
@@ -467,9 +381,9 @@ namespace TAKAKO_ERP_3LAYER.View
         private void bbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
             if ((MessageBox.Show("Bạn muốn lưu dữ liệu?", "Xác nhận"
-                , MessageBoxButtons.YesNo
-                , MessageBoxIcon.Question
-                , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+            , MessageBoxButtons.YesNo
+            , MessageBoxIcon.Question
+            , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
             {
                 if (CheckError() == true)
                 {
@@ -495,11 +409,9 @@ namespace TAKAKO_ERP_3LAYER.View
             bbiRefresh.Enabled = IsEnable;
             bbi_AddNewRow.Enabled = IsEnable;
             bbi_DeleteRow.Enabled = IsEnable;
-
             //PopUp
             bbi_PopUp_AddNewRow.Enabled = IsEnable;
             bbi_PopUp_DeleteRow.Enabled = IsEnable;
-
             //Header
             date_Doc.Enabled = IsEnable;
             sLook_Supplier.Enabled = IsEnable;
@@ -507,11 +419,9 @@ namespace TAKAKO_ERP_3LAYER.View
             txt_SupplierName.Enabled = IsEnable;
             txt_InvNo.Enabled = IsEnable;
             date_Inv.Enabled = IsEnable;
-            date_Receipt.Enabled = IsEnable;
-            date_Confirm.Enabled = IsEnable;
+            date_Disposal.Enabled = IsEnable;
             sLook_ControlDept.Enabled = IsEnable;
             cbx_Status.Enabled = IsEnable;
-
             //GridView
             gridView.OptionsBehavior.Editable = IsEnable;
             gridControl.EmbeddedNavigator.Buttons.Append.Visible = IsEnable;
@@ -521,12 +431,6 @@ namespace TAKAKO_ERP_3LAYER.View
         //Các tình huống cần kiểm tra lỗi
         public Boolean CheckError()
         {
-            if (String.IsNullOrEmpty(txt_InvNo.Text.Trim()))
-            {
-                MessageBox.Show("Hãy nhập \"Số hóa đơn\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txt_InvNo.Focus();
-                return false;
-            }
             if (String.IsNullOrEmpty(sLook_ControlDept.Text.Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Bộ phận quản lý MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -553,67 +457,6 @@ namespace TAKAKO_ERP_3LAYER.View
             {
                 popupMenu1.HidePopup();
             }
-        }
-
-        private void repo_sLookUp_NameEN_CloseUp(object sender, CloseUpEventArgs e)
-        {
-            if (e.CloseMode == PopupCloseMode.Normal)
-            {
-                string _nameVN = "";
-                string _nameJP = "";
-                string _maker = "";
-                string _model = "";
-                //Get index
-                SearchLookUpEdit editor = sender as SearchLookUpEdit;
-                int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
-                
-                //Set value to variables
-                _nameVN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameVN"));
-                _nameJP = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameJP"));
-                _maker = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Maker"));
-                _model = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Model"));
-
-                //Set value to column NameVN, NameJP, Maker, Model
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Maker", _maker);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Model", _model);
-                //}
-            }
-        }
-
-        private void repo_sLookUp_LineID_CloseUp(object sender, CloseUpEventArgs e)
-        {
-            if (e.CloseMode == PopupCloseMode.Normal)
-            {
-                string _orgLineEN = "";
-                string _orgProcessCode = "";
-                string _orgGroupLineACC = "";
-                string _orgUsingDept = "";
-
-                //Get index
-                SearchLookUpEdit editor = sender as SearchLookUpEdit;
-
-                //Set value variables
-                _orgLineEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("LineEN"));
-                _orgProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProcessGroup"));
-                _orgGroupLineACC = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("GroupLineACC"));
-                _orgUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProductionDept"));
-
-                //Set value to column OrgLineEN, OrgProcessCode, OrgGroupLineACC, OrgUsingDept
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgLineEN", _orgLineEN);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgProcessCode", _orgProcessCode);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgGroupLineACC", _orgGroupLineACC);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgUsingDept", _orgUsingDept);
-                //}
-            }
-        }
-
-        private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
-        {
-            gridView.SetRowCellValue(e.RowHandle, "ProDate", DateTime.Now);
-            gridView.SetRowCellValue(e.RowHandle, "StartDeprDate", DateTime.Now);
-            gridView.SetRowCellValue(e.RowHandle, "EndDeprDate", DateTime.Now);
         }
         #endregion
     }

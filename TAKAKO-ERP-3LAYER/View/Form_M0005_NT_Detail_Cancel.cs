@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
-    public partial class Form_M0005_NT_Detail : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Form_M0005_NT_Detail_Cancel : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public DataRow dataRow;
         public M0005_DAO M0005_DAO;
@@ -17,20 +17,20 @@ namespace TAKAKO_ERP_3LAYER.View
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = true;
         //
-        public Form_M0005_NT_Detail()
+        public Form_M0005_NT_Detail_Cancel()
         {
             InitializeComponent();
         }
 
         //Tạo mới form theo kiểu True/False
-        public Form_M0005_NT_Detail(Boolean _isNewValue)
+        public Form_M0005_NT_Detail_Cancel(Boolean _isNewValue)
         {
             InitializeComponent();
             IsNewValue = _isNewValue;
         }
 
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0005_NT_Detail(DataRow _mainDataRow)
+        public Form_M0005_NT_Detail_Cancel(DataRow _mainDataRow)
         {
             //
             InitializeComponent();
@@ -103,7 +103,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 sLookEdit_NameEN.Properties.DisplayMember = "NameEN";
             }
         }
-
+        //Điền dữ liệu cho ô Quốc gia (xuất xứ)
         private void sLookUpEdit_Nation()
         {
             DataTable tempTable = new DataTable();
@@ -115,7 +115,6 @@ namespace TAKAKO_ERP_3LAYER.View
                 sLookEdit_Nation.Properties.DisplayMember = "NATION_NAME";
             }
         }
-
         private void sLookUpEdit_ProgressGroup()
         {
             DataTable tempTable = new DataTable();
@@ -127,7 +126,6 @@ namespace TAKAKO_ERP_3LAYER.View
                 sLookEdit_ProgressGroup.Properties.DisplayMember = "ProcessEN";
             }
         }
-
         private void AddValue_CBox_NT()
         {
             cBox_Result.Properties.Items.Add("OK");
@@ -141,13 +139,7 @@ namespace TAKAKO_ERP_3LAYER.View
         }
         #endregion
 
-        #region event
-        private void sLookEdit_NameEN_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
+        //Event
         //Tạo form trong điều kiện thêm mới hoặc sửa/xóa
         private void Initialization_Value()
         {
@@ -181,7 +173,6 @@ namespace TAKAKO_ERP_3LAYER.View
             initTable.Rows.Add(dataRow);
         }
 
-        //
         private void Initialization_Control()
         {
             AddValue_CBox_NT();
@@ -197,27 +188,24 @@ namespace TAKAKO_ERP_3LAYER.View
             sLookUpEdit_ProgressGroup();
         }
 
-        //Kiểm soát key NameEN: cho thêm mới hoặc không được chỉnh sửa nếu trường hợp là Edit/Delete
+        //Kiểm soát cho thêm mới, chỉnh sửa hoặc không được chỉnh sửa
         private void Setting_Init_Control()
         {
             if (IsNewValue)
             {
                 cBox_Result.SelectedIndex = 0;
                 cBox_Status.SelectedIndex = 0;
-                //sLook_Code.Enabled = true;
                 txt_Maker.Enabled = true;
                 txt_Model.Enabled = true;
                 bbiDelete.Enabled = false;
             }
             else
             {
-                //sLook_Code.Enabled = false;
                 txt_Maker.Enabled = false; 
                 txt_Model.Enabled = false;
                 bbiDelete.Enabled = true;
             }
         }
-
         //Lấy dữ liệu trên form
         private void Update_Control()
         {
