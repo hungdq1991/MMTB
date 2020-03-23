@@ -85,7 +85,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void Setting_Init_Value()
         {
-            if(String.IsNullOrEmpty(DocNo))
+            if (String.IsNullOrEmpty(DocNo))
             {
                 Clear_Data();
             }
@@ -188,6 +188,7 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
             //_DetailTable.Columns.Add("DocNo", typeof(string));
+        }
 
         private void Define_DeleteRowTable()
         {
