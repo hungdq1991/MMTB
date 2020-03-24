@@ -65,9 +65,6 @@ namespace TAKAKO_ERP_3LAYER.View
             //
             AddValue_CBox_Status();
 
-            //
-            AddValue_CBox_Result();
-
             AddValue_CBox_Status(cbx_Status);
 
             Add_Value_sLookUp_DocNo();
@@ -80,7 +77,30 @@ namespace TAKAKO_ERP_3LAYER.View
 
             Add_Value_repo_sLookUp_Nation();
 
+            Add_Value_repo_sLookUp_Result();
+
             Add_Value_repo_sLookUp_ProgressGroup();
+        }
+
+        private void Add_Value_repo_sLookUp_Result()
+        {
+            DataTable _ResultTable = new DataTable();
+            _ResultTable.Columns.Add("Value", typeof(int));
+            _ResultTable.Columns.Add("Name", typeof(string));
+
+            DataRow dtRow = _ResultTable.NewRow();
+            dtRow["Value"] = 0;
+            dtRow["Name"] = "OK";
+            _ResultTable.Rows.Add(dtRow);
+
+            DataRow dtRow2 = _ResultTable.NewRow();
+            dtRow2["Value"] = 1;
+            dtRow2["Name"] = "NG";
+            _ResultTable.Rows.Add(dtRow2);
+
+            repo_sLookUp_Result.DataSource = _ResultTable;
+            repo_sLookUp_Result.ValueMember = "Value";
+            repo_sLookUp_Result.DisplayMember = "Name";
         }
 
         private void Setting_Init_Value()
@@ -184,7 +204,7 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("OrgGroupLineACC", typeof(string));
             _DetailTable.Columns.Add("OrgUsingDept", typeof(string));
             _DetailTable.Columns.Add("Result", typeof(int));
-            _DetailTable.Columns.Add("Status", typeof(string));
+            _DetailTable.Columns.Add("Status", typeof(int));
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
             //_DetailTable.Columns.Add("DocNo", typeof(string));
@@ -193,7 +213,6 @@ namespace TAKAKO_ERP_3LAYER.View
         private void Define_DeleteRowTable()
         {
             _DeleteRowTable.Columns.Add("Code", typeof(string));
-            _DeleteRowTable.Columns.Add("ApplyDate", typeof(DateTime));
         }
 
         #region Add data to control
@@ -248,14 +267,23 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void AddValue_CBox_Status()
         {
-            repo_cBox_Status.Items.Add("Mới");
-            repo_cBox_Status.Items.Add("Cũ");
-        }
+            DataTable _ResultTable = new DataTable();
+            _ResultTable.Columns.Add("Value", typeof(int));
+            _ResultTable.Columns.Add("Name", typeof(string));
 
-        private void AddValue_CBox_Result()
-        {
-            repo_cBox_Status.Items.Add("OK");
-            repo_cBox_Status.Items.Add("NG");
+            DataRow dtRow = _ResultTable.NewRow();
+            dtRow["Value"] = 0;
+            dtRow["Name"] = "Mới";
+            _ResultTable.Rows.Add(dtRow);
+
+            DataRow dtRow2 = _ResultTable.NewRow();
+            dtRow2["Value"] = 1;
+            dtRow2["Name"] = "Cũ";
+            _ResultTable.Rows.Add(dtRow2);
+
+            repo_sLookUp_Status.DataSource = _ResultTable;
+            repo_sLookUp_Status.ValueMember = "Value";
+            repo_sLookUp_Status.DisplayMember = "Name";
         }
 
         //Tạo nội dung combo box cho user lựa chọn: Yes/No
@@ -441,24 +469,27 @@ namespace TAKAKO_ERP_3LAYER.View
                 Set_Enable_Control(false);
             }
         }
+
         //Click chuột phải chọn Delete row
         private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
         {
             //
             DataRow dtrow = _DeleteRowTable.NewRow();
             dtrow["Code"] = gridView.GetRowCellValue(gridView.FocusedRowHandle, "Code");
-            dtrow["ApplyDate"] = date_Confirm.EditValue;
             _DeleteRowTable.Rows.Add(dtrow);
 
             //
             var row = gridView.FocusedRowHandle;
             gridView.DeleteRow(row);
+            _DetailTable.AcceptChanges();
         }
+
         //Click chuột phải chọn Add new row
         private void bbi_PopUp_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
         {
             gridView.AddNewRow();
         }
+
         //Click nút Add new row
         private void bbi_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -476,7 +507,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     try
                     {
-                        if (M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header()))
+                        if (M0005_DAO.Update_MMTB(_DetailTable, _DeleteRowTable, GetValue_Header()))
                         {
                             MessageBox.Show("OK");
                         }
@@ -539,7 +570,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         #region event Gridview
         private void gridControl_MouseUp(object sender, MouseEventArgs e)
-        {
+        {   
             if (e.Button != MouseButtons.Right) return;
             var currentRow = gridView.FocusedRowHandle;
             var focusRowView = (DataRowView)gridView.GetFocusedRow();
@@ -564,6 +595,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 string _nameJP = "";
                 string _maker = "";
                 string _model = "";
+
                 //Get index
                 SearchLookUpEdit editor = sender as SearchLookUpEdit;
                 int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
@@ -606,7 +638,6 @@ namespace TAKAKO_ERP_3LAYER.View
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgProcessCode", _orgProcessCode);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgGroupLineACC", _orgGroupLineACC);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgUsingDept", _orgUsingDept);
-                //}
             }
         }
 
@@ -614,8 +645,17 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             gridView.SetRowCellValue(e.RowHandle, "ProDate", DateTime.Now);
             gridView.SetRowCellValue(e.RowHandle, "StartDeprDate", DateTime.Now);
-            gridView.SetRowCellValue(e.RowHandle, "EndDeprDate", DateTime.Now);
+            gridView.SetRowCellValue(e.RowHandle, "Lifetime", 0);
+            gridView.SetRowCellValue(e.RowHandle, "Status", 0);
+            gridView.SetRowCellValue(e.RowHandle, "Result", 0);
         }
         #endregion
+
+        private void repo_ItemDate_StartDerprDate_EditValueChanged(object sender, EventArgs e)
+        {
+            int lifetime = Convert.ToInt32(gridView.GetRowCellValue(gridView.FocusedRowHandle, "Lifetime"));
+            DateTime endDerprDate = (sender as DevExpress.XtraEditors.DateEdit).DateTime.AddMonths(lifetime);
+            gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", endDerprDate);
+        }
     }
 }
