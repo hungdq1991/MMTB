@@ -165,6 +165,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 	                    LEFT JOIN
 		                    (SELECT 
                                  DocNo_Confirm
+                                ,Code
                                 ,ACCCode
 			                    ,OrgProcessCode
 			                    ,OrgLineCode
@@ -178,6 +179,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 DocNo_Confirm = @DocNo
 		                    GROUP BY
 			                     DocNo_Confirm
+                                ,Code
                                 ,ACCCode
 			                    ,OrgProcessCode
 			                    ,OrgLineCode
@@ -186,7 +188,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 			                    ,OrgLineEN) L
 	                    ON
 	                        M.DocNo     =   L.DocNo_Confirm
-                        AND M.Code   =   L.Code
+                        AND M.Code      =   L.Code
                         WHERE 
                             M.DocNo     =   @DocNo";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -304,9 +306,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
 			                    ,DesUsingDept) L
 	                    ON
 	                        M.DocNo_Disposal    =   L.DocNo_Disposal
-                        AND M.Code   =   L.Code
+                        AND M.Code              =   L.Code
                         WHERE 
-                            M.DocNo_Disposal     =   @DocNo";
+                            M.DocNo_Disposal    =   @DocNo";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(DocNo);
@@ -423,9 +425,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Update info MMTB
-        public bool Update_MMTB(DataTable listMMTB, DataTable listMMTBDoc1)
+        public bool Update_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
         {
-            return conn.Update_MMTB(listMMTB, listMMTBDoc1);
+            return conn.Update_MMTB(listMMTB, _listDelete , listMMTBDoc1);
         }
         //Disposal MMTB
         public bool Disposal_MMTB(DataTable listMMTB, DataTable listMMTBDoc2)

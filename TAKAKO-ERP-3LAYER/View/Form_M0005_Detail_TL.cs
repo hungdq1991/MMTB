@@ -368,10 +368,10 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     try
                     {
-                        if (M0005_DAO.Disposal_MMTB(_DetailTable, GetValue_Header()))
-                        {
-                            MessageBox.Show("OK");
-                        }
+                        //if (M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header()))
+                        //{
+                        //    MessageBox.Show("OK");
+                        //}
                     }
                     catch (Exception ex)
                     {
