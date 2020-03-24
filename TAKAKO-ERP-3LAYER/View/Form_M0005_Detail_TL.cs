@@ -94,7 +94,7 @@ namespace TAKAKO_ERP_3LAYER.View
             _HeaderTable.Columns.Add("InvNo", typeof(string));
             _HeaderTable.Columns.Add("InvDate", typeof(DateTime));
             _HeaderTable.Columns.Add("DisposalDate", typeof(DateTime));
-            _HeaderTable.Columns.Add("ControlDept", typeof(int));
+            _HeaderTable.Columns.Add("ControlDept", typeof(string));
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("Column1", typeof(string));
             _HeaderTable.Columns.Add("Column2", typeof(string));
@@ -149,32 +149,11 @@ namespace TAKAKO_ERP_3LAYER.View
         //Định nghĩa cấu trúc datatable gán cho grid control
         private void Define_DetailTable()
         {
-            //Các cột theo bảng M0005_ListMMTB
+            //Các cột theo bảng M0005_ListMMTB+M0005_ListMMTBLine
             _DetailTable = new DataTable();
             _DetailTable.Columns.Add("Code", typeof(string));
-            _DetailTable.Columns.Add("ACCcode", typeof(string));
-            _DetailTable.Columns.Add("NameEN", typeof(string));
-            _DetailTable.Columns.Add("NameVN", typeof(string));
-            _DetailTable.Columns.Add("NameJP", typeof(string));
-            _DetailTable.Columns.Add("Maker", typeof(string));
-            _DetailTable.Columns.Add("Model", typeof(string));
-            _DetailTable.Columns.Add("Series", typeof(string));
-            _DetailTable.Columns.Add("OrgCountry", typeof(string));
-            _DetailTable.Columns.Add("ProDate", typeof(DateTime));
-            _DetailTable.Columns.Add("Lifetime", typeof(Decimal));
-            _DetailTable.Columns.Add("StartDeprDate", typeof(DateTime));
-            _DetailTable.Columns.Add("EndDeprDate", typeof(DateTime));
-            _DetailTable.Columns.Add("DesProcessCode", typeof(string));
-            _DetailTable.Columns.Add("DesLineCode", typeof(string));
-            _DetailTable.Columns.Add("DesLineEN", typeof(string));
-            _DetailTable.Columns.Add("DesGroupLineACC", typeof(string));
-            _DetailTable.Columns.Add("DesUsingDept", typeof(string));
-            _DetailTable.Columns.Add("DisposalMemo", typeof(int));
-            //_DetailTable.Columns.Add("Column1", typeof(string));
-            //_DetailTable.Columns.Add("Column2", typeof(string));
-            //_DetailTable.Columns.Add("Column3", typeof(string));
-            //_DetailTable.Columns.Add("Column4", typeof(string));
-            //_DetailTable.Columns.Add("Column5", typeof(string));
+            _DetailTable.Columns.Add("DisposalDate", typeof(DateTime));
+            _DetailTable.Columns.Add("DisposalMemo", typeof(string));
         }
         #region Add data to control
         private void AddValue_sLook_ControlDept()
@@ -389,7 +368,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     try
                     {
-                        if (M0005_DAO.Update_MMTB(_DetailTable, GetValue_Header()))
+                        if (M0005_DAO.Disposal_MMTB(_DetailTable, GetValue_Header()))
                         {
                             MessageBox.Show("OK");
                         }

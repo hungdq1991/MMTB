@@ -400,10 +400,37 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString(Code);
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        //Load mã TS đã có
+        public DataTable GetInfo_M0005_MMTB()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             Code
+                            ,ACCCode
+                            ,NameEN
+                            ,NameVN
+                            ,Maker
+                            ,Model
+                        FROM 
+                             M0005_ListMMTB
+                        WHERE 
+                            DocNo_Disposal = ''";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Code", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
         //Update info MMTB
         public bool Update_MMTB(DataTable listMMTB, DataTable listMMTBDoc1)
         {
             return conn.Update_MMTB(listMMTB, listMMTBDoc1);
+        }
+        //Disposal MMTB
+        public bool Disposal_MMTB(DataTable listMMTB, DataTable listMMTBDoc2)
+        {
+            return conn.Disposal_MMTB(listMMTB, listMMTBDoc2);
         }
     }
 }

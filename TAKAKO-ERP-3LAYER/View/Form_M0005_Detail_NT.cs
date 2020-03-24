@@ -97,7 +97,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void Define_HeaderTable()
         {
-            //Các cột theo bảng M0005_ListMMTB
+            //Các cột theo bảng M0005_ListMMTBDoc1
             _HeaderTable.Columns.Add("DocNo", typeof(string));
             _HeaderTable.Columns.Add("DocDate", typeof(DateTime));
             _HeaderTable.Columns.Add("EF_VendID", typeof(string));
