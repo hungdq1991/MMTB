@@ -207,7 +207,7 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Status", typeof(int));
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
-            //_DetailTable.Columns.Add("DocNo", typeof(string));
+            _DetailTable.Columns.Add("DocNo", typeof(string));
         }
 
         private void Define_DeleteRowTable()
@@ -261,7 +261,7 @@ namespace TAKAKO_ERP_3LAYER.View
             {
                 repo_sLookUp_LineID.DataSource = tempTable;
                 repo_sLookUp_LineID.ValueMember = "LineID";
-                repo_sLookUp_LineID.DisplayMember = "LineEN";
+                repo_sLookUp_LineID.DisplayMember = "LineID";
             }
         }
 

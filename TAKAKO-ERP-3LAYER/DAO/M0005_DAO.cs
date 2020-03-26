@@ -276,8 +276,11 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                    ,L.DesLineEN
 		                    ,L.DesGroupLineACC
 		                    ,L.DesUsingDept
-		                    ,M.ControlDept
+                            ,M.DisposalDate            
 		                    ,M.DisposalMemo
+                            ,M.DisposalStatus
+                            ,M.DocNo_Disposal
+                            ,M.ControlDept
 	                    FROM 
 		                    M0005_ListMMTB M
 	                    LEFT JOIN
@@ -306,12 +309,12 @@ namespace TAKAKO_ERP_3LAYER.DAO
 			                    ,DesUsingDept) L
 	                    ON
 	                        M.DocNo_Disposal    =   L.DocNo_Disposal
-                        AND M.Code              =   L.Code
                         WHERE 
                             M.DocNo_Disposal    =   @DocNo";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(DocNo);
+
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Lấy mã NCC từ Solomon
@@ -408,21 +411,61 @@ namespace TAKAKO_ERP_3LAYER.DAO
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
-            StrQuery = @"SELECT
-                             Code
-                            ,ACCCode
-                            ,NameEN
-                            ,NameVN
-                            ,Maker
-                            ,Model
-                        FROM 
-                             M0005_ListMMTB
-                        WHERE 
-                            DocNo_Disposal = ''";
+            StrQuery = @"SELECT 
+			                 M.Code
+		                    ,M.ACCcode
+		                    ,M.NameEN
+		                    ,M.NameVN
+		                    ,M.NameJP
+		                    ,M.Maker
+		                    ,M.Model
+		                    ,M.Series
+		                    ,M.OrgCountry
+		                    ,M.ProDate
+		                    ,M.Lifetime
+		                    ,M.StartDeprDate
+		                    ,M.EndDeprDate
+		                    ,L.DesProcessCode
+		                    ,L.DesLineCode
+		                    ,L.DesLineEN
+		                    ,L.DesGroupLineACC
+		                    ,L.DesUsingDept
+                            ,M.DisposalDate            
+		                    ,M.DisposalMemo
+                            ,M.DisposalStatus
+                            ,M.DocNo_Disposal
+                            ,M.ControlDept
+	                    FROM 
+		                    M0005_ListMMTB M
+	                    LEFT JOIN
+		                    (SELECT 
+                                 DocNo_Disposal
+                                ,Code
+                                ,ACCCode
+			                    ,DesProcessCode
+			                    ,DesLineCode
+                                ,DesLineEN
+			                    ,DesGroupLineACC
+			                    ,DesUsingDept
+			                    ,MAX(ApplyDate) ApplyDate
+		                    FROM 
+			                    M0005_ListMMTBLine
+		                    GROUP BY
+			                     DocNo_Disposal
+                                ,Code
+                                ,ACCCode
+			                    ,DesProcessCode
+			                    ,DesLineCode
+                                ,DesLineEN
+			                    ,DesGroupLineACC
+			                    ,DesUsingDept) L
+	                    ON
+                            M.Code              =   L.Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@Code", SqlDbType.VarChar);
+            sqlParameters[0] = new SqlParameter("@Code", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");
-            return conn.executeSelectQuery(StrQuery, sqlParameters);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters); 
         }
         //Update info MMTB
         public bool Update_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
