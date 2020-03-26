@@ -207,7 +207,8 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Status", typeof(int));
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
-            //_DetailTable.Columns.Add("DocNo", typeof(string));
+            _DetailTable.Columns.Add("DocNo", typeof(string));
+            _DetailTable.Columns.Add("DisposalStatus", typeof(int));
         }
 
         private void Define_DeleteRowTable()
@@ -460,14 +461,14 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void cbx_Status_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbx_Status.SelectedIndex == 0)
-            {
-                Set_Enable_Control(true);
-            }
-            else if (cbx_Status.SelectedIndex == 1)
-            {
-                Set_Enable_Control(false);
-            }
+            //if (cbx_Status.SelectedIndex == 0)
+            //{
+            //    Set_Enable_Control(true);
+            //}
+            //else if (cbx_Status.SelectedIndex == 1)
+            //{
+            //    Set_Enable_Control(false);
+            //}
         }
 
         //Click chuột phải chọn Delete row
@@ -535,14 +536,14 @@ namespace TAKAKO_ERP_3LAYER.View
             //Header
             date_Doc.Enabled = IsEnable;
             sLook_Supplier.Enabled = IsEnable;
-            txt_SupplierID.Enabled = IsEnable;
-            txt_SupplierName.Enabled = IsEnable;
+            //txt_SupplierID.Enabled = IsEnable;
+            //txt_SupplierName.Enabled = IsEnable;
             txt_InvNo.Enabled = IsEnable;
             date_Inv.Enabled = IsEnable;
             date_Receipt.Enabled = IsEnable;
             date_Confirm.Enabled = IsEnable;
             sLook_ControlDept.Enabled = IsEnable;
-            cbx_Status.Enabled = IsEnable;
+            //cbx_Status.Enabled = IsEnable;
 
             //GridView
             gridView.OptionsBehavior.Editable = IsEnable;
@@ -565,6 +566,35 @@ namespace TAKAKO_ERP_3LAYER.View
                 sLook_ControlDept.Focus();
                 return false;
             }
+
+            for (int rows = 0; rows < gridView.RowCount; rows++)
+            {
+                if ((gridView.GetRowCellValue(rows, "Code")) == null)
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + " chưa nhập \"Mã MMTB\"","Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return false;
+                    
+                }
+
+                if ((gridView.GetRowCellValue(rows, "Series")) == null)
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + " chưa nhập số \"Series MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if ((gridView.GetRowCellValue(rows, "OrgCountry")) == null)
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + " chưa nhập \"Xuất xứ MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+                if ((gridView.GetRowCellValue(rows, "Lifetime")) == null)
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + " chưa nhập \"Tuổi thọ MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -656,6 +686,26 @@ namespace TAKAKO_ERP_3LAYER.View
             int lifetime = Convert.ToInt32(gridView.GetRowCellValue(gridView.FocusedRowHandle, "Lifetime"));
             DateTime endDerprDate = (sender as DevExpress.XtraEditors.DateEdit).DateTime.AddMonths(lifetime);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", endDerprDate);
+        }
+
+        private void repo_TextEdit_Lifetime_EditValueChanged(object sender, EventArgs e)
+        {
+            int lifetime = Convert.ToInt32(sender as DevExpress.XtraEditors.TextEdit);
+            DateTime _endDerprDate = Convert.ToDateTime(gridView.GetRowCellValue(gridView.FocusedRowHandle, "StartDeprDate")).AddMonths(lifetime);
+            gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDerprDate);
+        }
+
+        private void gridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
+        {
+            ////DevExpress.XtraGrid.Views.Grid.GridView view = new DevExpress.XtraGrid.Views.Grid.GridView();
+            //if (gridView.FocusedColumn == gridCol_Code)
+            //{
+            //    if(String.IsNullOrEmpty(e.Value as string))
+            //    {
+            //        e.Valid = false;
+            //        e.ErrorText = "Xin nhập mã MMTB";
+            //    }
+            //}
         }
     }
 }
