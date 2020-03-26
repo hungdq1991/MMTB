@@ -788,7 +788,7 @@
             this.gridCol_ACCCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ACCCode.Caption = "Mã MMTB (Kế toán)";
             this.gridCol_ACCCode.ColumnEdit = this.repo_TextEdit_ACCCode;
-            this.gridCol_ACCCode.FieldName = "ACCcode";
+            this.gridCol_ACCCode.FieldName = "ACCCode";
             this.gridCol_ACCCode.Name = "gridCol_ACCCode";
             this.gridCol_ACCCode.OptionsColumn.FixedWidth = true;
             this.gridCol_ACCCode.Visible = true;
