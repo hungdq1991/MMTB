@@ -105,9 +105,10 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void Setting_Init_Value()
         {
+            Clear_Data();
             if (String.IsNullOrEmpty(DocNo))
             {
-                Clear_Data();
+                
             }
             else
             {
@@ -148,10 +149,12 @@ namespace TAKAKO_ERP_3LAYER.View
             if (_tempTable.Rows[0].Field<Boolean>("DocStatus"))
             {
                 cbx_Status.SelectedIndex = 1;
+                Set_Enable_Control(false);
             }
             else
             {
                 cbx_Status.SelectedIndex = 0;
+                Set_Enable_Control(true);
             }
         }
         private DataTable GetValue_Header()
@@ -208,7 +211,6 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
             _DetailTable.Columns.Add("DocNo", typeof(string));
-            _DetailTable.Columns.Add("DisposalStatus", typeof(int));
         }
 
         private void Define_DeleteRowTable()
@@ -508,9 +510,11 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     try
                     {
+                        _DetailTable = gridView.GridControl.DataSource as DataTable;
                         if (M0005_DAO.Update_MMTB(_DetailTable, _DeleteRowTable, GetValue_Header()))
                         {
                             MessageBox.Show("OK");
+                            Clear_Data();
                         }
                     }
                     catch (Exception ex)
@@ -567,34 +571,72 @@ namespace TAKAKO_ERP_3LAYER.View
                 return false;
             }
 
+
+
             for (int rows = 0; rows < gridView.RowCount; rows++)
             {
-                if ((gridView.GetRowCellValue(rows, "Code")) == null)
-                {
-                    MessageBox.Show("Dòng " + (rows + 1) + " chưa nhập \"Mã MMTB\"","Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                    return false;
-                    
-                }
+                string _code, _nameEN, _series, _orgCountry, _orgLineCode;
 
-                if ((gridView.GetRowCellValue(rows, "Series")) == null)
+                //Code
+                _code = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["Code"]));
+                if (String.IsNullOrEmpty(_code))
                 {
-                    MessageBox.Show("Dòng " + (rows + 1) + " chưa nhập số \"Series MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                if ((gridView.GetRowCellValue(rows, "OrgCountry")) == null)
-                {
-                    MessageBox.Show("Dòng " + (rows + 1) + " chưa nhập \"Xuất xứ MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã MMTB\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.FocusedRowHandle = rows;
+                    gridView.FocusedColumn = gridView.Columns["Code"];
                     return false;
                 }
 
-                if ((gridView.GetRowCellValue(rows, "Lifetime")) == null)
+                //NameEN
+                _nameEN = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["NameEN"]));
+                if (String.IsNullOrEmpty(_nameEN))
                 {
-                    MessageBox.Show("Dòng " + (rows + 1) + " chưa nhập \"Tuổi thọ MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Tên tiếng anh\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.FocusedRowHandle = rows;
+                    gridView.FocusedColumn = gridView.Columns["NameEN"];
+                    return false;
+                }
+
+                //Series
+                _series = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["Series"]));
+                if (String.IsNullOrEmpty(_series))
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Series\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.FocusedRowHandle = rows;
+                    gridView.FocusedColumn = gridView.Columns["Series"];
+                    return false;
+                }
+
+                //OrgCountry
+                _orgCountry = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["OrgCountry"]));
+                if (String.IsNullOrEmpty(_orgCountry))
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Xuất xứ\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.FocusedRowHandle = rows;
+                    gridView.FocusedColumn = gridView.Columns["OrgCountry"];
+                    return false;
+                }
+
+                //LineCode
+                _orgLineCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["OrgLineCode"]));
+                if (String.IsNullOrEmpty(_orgLineCode))
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Line sử dụng\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.FocusedRowHandle = rows;
+                    gridView.FocusedColumn = gridView.Columns["OrgLineCode"];
+                    return false;
+                }
+
+                //Lifetime
+                int lifeTime = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["Lifetime"]));
+                if (lifeTime < 36)
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Tuổi thọ máy\" phải lớn hơn hoặc bằng 36", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.FocusedRowHandle = rows;
+                    gridView.FocusedColumn = gridView.Columns["Lifetime"];
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -690,7 +732,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void repo_TextEdit_Lifetime_EditValueChanged(object sender, EventArgs e)
         {
-            int lifetime = Convert.ToInt32(sender as DevExpress.XtraEditors.TextEdit);
+            int lifetime = Convert.ToInt32((sender as DevExpress.XtraEditors.TextEdit).EditValue);
             DateTime _endDerprDate = Convert.ToDateTime(gridView.GetRowCellValue(gridView.FocusedRowHandle, "StartDeprDate")).AddMonths(lifetime);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDerprDate);
         }

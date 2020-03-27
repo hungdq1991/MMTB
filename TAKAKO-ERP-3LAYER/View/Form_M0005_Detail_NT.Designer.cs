@@ -788,7 +788,7 @@
             this.gridCol_ACCCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ACCCode.Caption = "Mã MMTB (Kế toán)";
             this.gridCol_ACCCode.ColumnEdit = this.repo_TextEdit_ACCCode;
-            this.gridCol_ACCCode.FieldName = "ACCCode";
+            this.gridCol_ACCCode.FieldName = "ACCcode";
             this.gridCol_ACCCode.Name = "gridCol_ACCCode";
             this.gridCol_ACCCode.OptionsColumn.FixedWidth = true;
             this.gridCol_ACCCode.Visible = true;
@@ -1022,6 +1022,7 @@
             // repo_TextEdit_Lifetime
             // 
             this.repo_TextEdit_Lifetime.AutoHeight = false;
+            this.repo_TextEdit_Lifetime.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.repo_TextEdit_Lifetime.Name = "repo_TextEdit_Lifetime";
             this.repo_TextEdit_Lifetime.EditValueChanged += new System.EventHandler(this.repo_TextEdit_Lifetime_EditValueChanged);
             // 
