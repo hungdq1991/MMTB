@@ -168,6 +168,7 @@ namespace TAKAKO_ERP_3LAYER
             //return result;
             return true;
         }
+        //Thanh lý MMTB
         public bool Disposal_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
         {
             conn.Open();
@@ -177,7 +178,7 @@ namespace TAKAKO_ERP_3LAYER
             };
             //Set timeout
             cmd.CommandTimeout = 300;
-            ////Add param
+            //Add param
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
             param = cmd.Parameters.AddWithValue("@tblListMMTBDoc2", _listMMTBDoc2);
 
@@ -196,9 +197,8 @@ namespace TAKAKO_ERP_3LAYER
             }
             finally
             {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
                 conn.Close();
             }
             conn.Close();
