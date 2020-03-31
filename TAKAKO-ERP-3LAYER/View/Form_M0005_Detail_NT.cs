@@ -427,8 +427,11 @@ namespace TAKAKO_ERP_3LAYER.View
             sLook_ControlDept.EditValue = null;
             cbx_Status.SelectedIndex = 0;
 
+            //
             _DetailTable.Clear();
             gridControl.DataSource = _DetailTable;
+            //
+            sLook_DocNo.Focus();
         }
 
         //Click nút thêm mới
@@ -582,6 +585,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (String.IsNullOrEmpty(_code))
                 {
                     MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã MMTB\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.Focus();
                     gridView.FocusedRowHandle = rows;
                     gridView.FocusedColumn = gridView.Columns["Code"];
                     return false;
@@ -592,6 +596,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (String.IsNullOrEmpty(_nameEN))
                 {
                     MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Tên tiếng anh\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.Focus();
                     gridView.FocusedRowHandle = rows;
                     gridView.FocusedColumn = gridView.Columns["NameEN"];
                     return false;
@@ -602,6 +607,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (String.IsNullOrEmpty(_series))
                 {
                     MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Series\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.Focus();
                     gridView.FocusedRowHandle = rows;
                     gridView.FocusedColumn = gridView.Columns["Series"];
                     return false;
@@ -612,6 +618,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (String.IsNullOrEmpty(_orgCountry))
                 {
                     MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Xuất xứ\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.Focus();
                     gridView.FocusedRowHandle = rows;
                     gridView.FocusedColumn = gridView.Columns["OrgCountry"];
                     return false;
@@ -622,6 +629,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (String.IsNullOrEmpty(_orgLineCode))
                 {
                     MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Line sử dụng\" chưa được nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.Focus();
                     gridView.FocusedRowHandle = rows;
                     gridView.FocusedColumn = gridView.Columns["OrgLineCode"];
                     return false;
@@ -632,6 +640,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (lifeTime < 36)
                 {
                     MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Tuổi thọ máy\" phải lớn hơn hoặc bằng 36", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.Focus();
                     gridView.FocusedRowHandle = rows;
                     gridView.FocusedColumn = gridView.Columns["Lifetime"];
                     return false;

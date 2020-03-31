@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring1 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring2 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
+            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring3 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring4 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -230,6 +230,7 @@
             this.bbiNew.Caption = "Thêm mới";
             this.bbiNew.Id = 16;
             this.bbiNew.ImageOptions.ImageUri.Uri = "New";
+            this.bbiNew.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N));
             this.bbiNew.Name = "bbiNew";
             this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNew_ItemClick);
             // 
@@ -252,6 +253,7 @@
             this.bbiRefresh.Caption = "Refresh";
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
+            this.bbiRefresh.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R));
             this.bbiRefresh.Name = "bbiRefresh";
             this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiRefresh_ItemClick);
             // 
@@ -271,7 +273,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
+            this.workspaceManager1.TransitionType = pushTransition2;
             // 
             // barSubItem2
             // 
@@ -284,6 +286,7 @@
             this.bbiSave.Caption = "Lưu";
             this.bbiSave.Id = 23;
             this.bbiSave.ImageOptions.ImageUri.Uri = "Save";
+            this.bbiSave.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S));
             this.bbiSave.Name = "bbiSave";
             this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
             // 
@@ -292,6 +295,7 @@
             this.bbiClose.Caption = "Close";
             this.bbiClose.Id = 24;
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
+            this.bbiClose.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C));
             this.bbiClose.Name = "bbiClose";
             this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiClose_ItemClick);
             // 
@@ -725,14 +729,14 @@
             this.gridCol_InstDoc,
             this.gridCol_DocNo,
             this.gridCol_DisposalStatus});
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Name = "Disposal";
-            gridFormatRule1.Rule = formatConditionRuleDateOccuring1;
-            gridFormatRule2.Name = "Format0";
-            gridFormatRule2.Rule = formatConditionRuleDateOccuring2;
-            gridFormatRule2.Tag = new System.DateTime(2020, 3, 19, 14, 3, 58, 0);
-            this.gridView.FormatRules.Add(gridFormatRule1);
-            this.gridView.FormatRules.Add(gridFormatRule2);
+            gridFormatRule3.ApplyToRow = true;
+            gridFormatRule3.Name = "Disposal";
+            gridFormatRule3.Rule = formatConditionRuleDateOccuring3;
+            gridFormatRule4.Name = "Format0";
+            gridFormatRule4.Rule = formatConditionRuleDateOccuring4;
+            gridFormatRule4.Tag = new System.DateTime(2020, 3, 19, 14, 3, 58, 0);
+            this.gridView.FormatRules.Add(gridFormatRule3);
+            this.gridView.FormatRules.Add(gridFormatRule4);
             this.gridView.GridControl = this.gridControl;
             this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
