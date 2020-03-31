@@ -14,7 +14,7 @@ namespace TAKAKO_ERP_3LAYER
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_M0005_Detail_NT());
+            Application.Run(new Form_M0005_Detail_TL());
         }
     }
 }
