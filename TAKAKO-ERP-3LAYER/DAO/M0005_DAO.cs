@@ -190,12 +190,15 @@ namespace TAKAKO_ERP_3LAYER.DAO
 	                        M.DocNo     =   L.DocNo_Confirm
                         AND M.Code      =   L.Code
                         WHERE 
-                            M.DocNo     =   @DocNo";
+                            M.DocNo     =   @DocNo
+                        ORDER BY
+                            Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(DocNo);
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
         //Lấy dữ liệu số chứng từ trên Form_M0005_Detail_TL
         public DataTable GetInfo_M0005_DocTL()
         {
@@ -403,7 +406,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Update info MMTB
-        public bool Update_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
+        public string Update_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
         {
             return conn.Update_MMTB(listMMTB, _listDelete , listMMTBDoc1);
         }
