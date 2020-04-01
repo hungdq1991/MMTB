@@ -131,32 +131,34 @@ namespace TAKAKO_ERP_3LAYER
         /// <method>
         /// SP Insert Invoice
         /// </method>
-        public bool Update_MMTB(DataTable _listMMTB,DataTable _listDelete,DataTable _listMMTBDoc1)
+        public string Update_MMTB(DataTable _listMMTB,DataTable _listDelete,DataTable _listMMTBDoc1)
         {
             conn.Open();
             var cmd = new SqlCommand("SP_TVC_UPDATE_MMTB", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
+
             //Set timeout
             cmd.CommandTimeout = 300;
+
             //Add param
-            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);    
             param = cmd.Parameters.AddWithValue("@tblList_Code_MMTB", _listDelete);
             param = cmd.Parameters.AddWithValue("@tblListMMTBDoc1", _listMMTBDoc1);
 
-            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
-            //returnParameter.Direction = ParameterDirection.ReturnValue;
-            //string result = "";
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
             try
             {
                 cmd.ExecuteNonQuery();
-                //result = returnParameter.ToString();
+                result = Convert.ToString(returnParameter.Value);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return false;
+                //return false;
             }
             finally
             {
@@ -165,8 +167,8 @@ namespace TAKAKO_ERP_3LAYER
                 conn.Close();
             }
             conn.Close();
-            //return result;
-            return true;
+            return result;
+            //return true;
         }
 
         /// <method>
