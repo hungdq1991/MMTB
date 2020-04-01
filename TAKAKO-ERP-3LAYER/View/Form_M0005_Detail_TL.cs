@@ -169,12 +169,11 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("DesLineEN", typeof(string));
             _DetailTable.Columns.Add("DesGroupLineACC", typeof(string));
             _DetailTable.Columns.Add("DesUsingDept", typeof(string));
-            _DetailTable.Columns.Add("DisposalMemo", typeof(int));
-            //_DetailTable.Columns.Add("Column1", typeof(string));
-            //_DetailTable.Columns.Add("Column2", typeof(string));
-            //_DetailTable.Columns.Add("Column3", typeof(string));
-            //_DetailTable.Columns.Add("Column4", typeof(string));
-            //_DetailTable.Columns.Add("Column5", typeof(string));
+            _DetailTable.Columns.Add("DisposalDate", typeof(DateTime));
+            _DetailTable.Columns.Add("DisposalMemo", typeof(string));
+            _DetailTable.Columns.Add("DisposalStatus", typeof(int));
+            _DetailTable.Columns.Add("DocNo", typeof(string));
+            _DetailTable.Columns.Add("ControlDept", typeof(string));
         }
         #region Add data to control
         private void AddValue_sLook_ControlDept()
@@ -459,5 +458,13 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
         #endregion
+
+        private void GridView_CustomRowCellEditForEditing(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
+        {
+            if (e.Column == gridCol_Code)
+            {
+                e.RepositoryItem = repo_sLookUp_MMTB;
+            }
+        }
     }
 }

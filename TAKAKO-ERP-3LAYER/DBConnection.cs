@@ -170,6 +170,43 @@ namespace TAKAKO_ERP_3LAYER
             return result;
             //return true;
         }
+        //Thanh lý MMTB
+        public bool Disposal_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_DISPOSAL_MMTB", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc2", _listMMTBDoc2);
+
+            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
+            //returnParameter.Direction = ParameterDirection.ReturnValue;
+            //string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                //result = returnParameter.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
 
         /// <method>
         /// SP Insert Invoice

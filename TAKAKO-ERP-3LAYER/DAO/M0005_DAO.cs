@@ -71,7 +71,35 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        //Lấy list MMTB chưa thanh lý
+        public DataTable GetInfo_MMTB()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
 
+            StrQuery = @"SELECT
+                        	 Code
+                        	,ACCcode
+                        	,NameEN
+                        	,NameVN
+                        	,NameJP
+                        	,Maker
+                        	,Model
+                        	,Series
+                        	,OrgCountry
+                        	,ProDate
+                        	,Lifetime
+                        	,StartDeprDate
+                        	,EndDeprDate
+                        FROM
+                        	M0005_ListMMTB L
+                        WHERE 
+                            DocNo_Disposal <> ''";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
         //Lấy dữ liệu số chứng từ trên Form_M0005_Detail_NT
         public DataTable GetInfo_M0005_DocNT()
         {
@@ -409,6 +437,11 @@ namespace TAKAKO_ERP_3LAYER.DAO
         public string Update_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
         {
             return conn.Update_MMTB(listMMTB, _listDelete , listMMTBDoc1);
+        }
+        //Update info MMTB
+        public bool Disposal_MMTB(DataTable listMMTB, DataTable listMMTBDoc2)
+        {
+            return conn.Disposal_MMTB(listMMTB, listMMTBDoc2);
         }
     }
 }
