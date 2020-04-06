@@ -219,6 +219,9 @@ namespace TAKAKO_ERP_3LAYER.View
         }
 
         #region Add data to control
+        /// <summary>
+        /// 
+        /// </summary>
         private void AddValue_sLook_ControlDept()
         {
             DataTable tempTable = new DataTable();
@@ -464,19 +467,11 @@ namespace TAKAKO_ERP_3LAYER.View
             this.Close();
         }
 
-        private void cbx_Status_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //if (cbx_Status.SelectedIndex == 0)
-            //{
-            //    Set_Enable_Control(true);
-            //}
-            //else if (cbx_Status.SelectedIndex == 1)
-            //{
-            //    Set_Enable_Control(false);
-            //}
-        }
-
-        //Click chuột phải chọn Delete row
+        /// <summary>
+        /// Click chuột phải chọn Delete row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
         {
             //
@@ -501,7 +496,12 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             gridView.AddNewRow();
         }
-        //Click nút Save
+
+        /// <summary>
+        /// Click nút Save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
             if ((MessageBox.Show("Bạn muốn lưu dữ liệu?", "Xác nhận"
@@ -516,7 +516,8 @@ namespace TAKAKO_ERP_3LAYER.View
                         _DetailTable = gridView.GridControl.DataSource as DataTable;
                         if (M0005_DAO.Update_MMTB(_DetailTable, _DeleteRowTable, GetValue_Header()))
                         {
-                            MessageBox.Show("OK");
+                            MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
+                                , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_Data();
                         }
                     }
@@ -528,17 +529,49 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
         #endregion
-        private void Set_Enable_Control(Boolean IsEnable)
-        {
-            //Menu
-            bbiSave.Enabled = IsEnable;
-            bbiRefresh.Enabled = IsEnable;
-            bbi_AddNewRow.Enabled = IsEnable;
-            bbi_DeleteRow.Enabled = IsEnable;
 
-            //PopUp
-            bbi_PopUp_AddNewRow.Enabled = IsEnable;
-            bbi_PopUp_DeleteRow.Enabled = IsEnable;
+        #region event Gridview
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gridControl_MouseUp(object sender, MouseEventArgs e)
+        {   
+            if (e.Button != MouseButtons.Right) return;
+            var currentRow = gridView.FocusedRowHandle;
+            var focusRowView = (DataRowView)gridView.GetFocusedRow();
+
+            if (focusRowView == null || focusRowView.IsNew) return;
+
+            if (currentRow >= 0)
+            {
+                popupMenu1.ShowPopup(new Point(MousePosition.X, MousePosition.Y));
+            }
+            else
+            {
+                popupMenu1.HidePopup();
+            }
+        }
+
+        private void repo_sLookUp_NameEN_CloseUp(object sender, CloseUpEventArgs e)
+        {
+            if (e.CloseMode == PopupCloseMode.Normal)
+            {
+                string _nameVN = "";
+                string _nameJP = "";
+                string _maker = "";
+                string _model = "";
+
+                //Get index
+                SearchLookUpEdit editor = sender as SearchLookUpEdit;
+                int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
+                
+                //Set value to variables
+                _nameVN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameVN"));
+                _nameJP = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameJP"));
+                _maker = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Maker"));
+                _model = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Model"));
 
             //Header
             date_Doc.Enabled = IsEnable;
