@@ -54,7 +54,9 @@ namespace TAKAKO_ERP_3LAYER.View
         }
 
         #region Add data to control
-        //
+        /// <summary>
+        /// 
+        /// </summary>
         private void AddValue_sLook_ControlDept()
         {
             DataTable tempTable = new DataTable();
@@ -67,7 +69,9 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        //Điền dữ liệu cho ô NameEN
+        /// <summary>
+        /// Điền dữ liệu cho ô NameEN
+        /// </summary>
         private void Add_Value_repo_sLookUp_NameEN()
         {
             DataTable tempTable = new DataTable();
@@ -80,6 +84,9 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Add_Value_repo_sLookUp_Nation()
         {
             DataTable tempTable = new DataTable();
@@ -92,6 +99,9 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Add_Value_repo_sLookUp_ProgressGroup()
         {
             DataTable tempTable = new DataTable();
@@ -104,6 +114,9 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void AddValue_CBox_Status()
         {
             DataTable _ResultTable = new DataTable();
@@ -125,7 +138,10 @@ namespace TAKAKO_ERP_3LAYER.View
             repo_sLookUp_Status.DisplayMember = "Name";
         }
 
-        //Tạo nội dung combo box cho user lựa chọn: Yes/No
+        /// <summary>
+        /// Tạo nội dung combo box cho user lựa chọn: Yes/No
+        /// </summary>
+        /// <param name="comboBox"></param>
         private void AddValue_CBox_Status(ComboBoxEdit comboBox)
         {
             List<string> Boolean = new List<string>();
@@ -134,7 +150,9 @@ namespace TAKAKO_ERP_3LAYER.View
             comboBox.Properties.Items.AddRange(Boolean);
         }
 
-        //Điền dữ liệu cho ô Số chứng từ
+        /// <summary>
+        /// Điền dữ liệu cho ô Số chứng từ
+        /// </summary>
         private void Add_Value_sLookUp_DocNo()
         {
             DataTable tempTable = new DataTable();
@@ -151,7 +169,9 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        //Điền dữ liệu cho ô Supplier
+        /// <summary>
+        /// Điền dữ liệu cho ô Supplier
+        /// </summary>
         private void AddValue_sLookUp_Supplier()
         {
             DataTable tempTable = new DataTable();
@@ -170,7 +190,11 @@ namespace TAKAKO_ERP_3LAYER.View
         #endregion
 
         #region event
-        //Lấy kết quả ô NCC, điền dữ liệu tương ứng cho tên NCC
+        /// <summary>
+        /// Lấy kết quả ô NCC, điền dữ liệu tương ứng cho tên NCC
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SLook_Supplier_TextChanged(object sender, EventArgs e)
         {
             DataTable tempTable = new DataTable();
@@ -207,7 +231,11 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        //Lấy số chứng từ, điền thông tin vào Form_M0005_Detail_NT 
+        /// <summary>
+        /// Lấy số chứng từ, điền thông tin vào Form_M0005_Detail_NT
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SLook_DocNo_TextChanged(object sender, EventArgs e)
         {
             if (sLook_DocNo.EditValue != null)
@@ -248,10 +276,14 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        //Click nút thêm mới
+        /// <summary>
+        /// Click nút thêm mới
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var result = MessageBox.Show("Bạn muốn tạo mới biên bản nghiệm thu?", "Xác nhận", MessageBoxButtons.OKCancel);
+            var result = MessageBox.Show("Bạn muốn tạo mới biên bản nghiệm thu?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result == DialogResult.OK)
             {
                 InitValue = true;
@@ -259,7 +291,11 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        //Click nút Reset
+        /// <summary>
+        /// Click nút Reset
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (String.IsNullOrEmpty(DocNo))
@@ -272,13 +308,21 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        //Click nút Close
+        /// <summary>
+        /// Click nút Close
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
         }
 
-        //Click chuột phải chọn Delete row
+        /// <summary>
+        /// Click chuột phải chọn Delete row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
         {
             //Add value to datatable Delete
@@ -292,19 +336,31 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.AcceptChanges();
         }
 
-        //Click chuột phải chọn Add new row
+        /// <summary>
+        /// Click chuột phải chọn Add new row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bbi_PopUp_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
         {
             gridView.AddNewRow();
         }
 
-        //Click nút Add new row
+        /// <summary>
+        /// Click nút Add new row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bbi_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
         {
             gridView.AddNewRow();
         }
 
-        //Click nút Save
+        /// <summary>
+        /// Click nút Save
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bbiSave_ItemClick(object sender, ItemClickEventArgs e)
         {
             if ((MessageBox.Show("Bạn muốn lưu dữ liệu?", "Xác nhận"
@@ -323,7 +379,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
                         if (!String.IsNullOrEmpty(DocNo))
                         {
-                            MessageBox.Show("Thêm/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
+                            MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
                                 , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_Data();
                         } else
@@ -347,6 +403,11 @@ namespace TAKAKO_ERP_3LAYER.View
         #endregion
 
         #region event Gridview
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridControl_MouseUp(object sender, MouseEventArgs e)
         {   
             if (e.Button != MouseButtons.Right) return;

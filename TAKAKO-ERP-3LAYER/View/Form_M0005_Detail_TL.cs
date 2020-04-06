@@ -463,7 +463,7 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             if (e.Column == gridCol_Code)
             {
-                e.RepositoryItem = repo_sLookUp_MMTB;
+                //e.RepositoryItem = repo_sLookUp_MMTB;
             }
         }
     }
