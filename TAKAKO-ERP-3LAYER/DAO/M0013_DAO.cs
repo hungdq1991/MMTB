@@ -23,31 +23,31 @@ namespace TAKAKO_ERP_3LAYER.DAO
             StrQuery = @"SELECT 
 	                         Code
                             ,ACCcode
-                            ,NameEN
-                            ,NameVN
-                            ,NameJP
-                            ,Maker
-                            ,Model
-                            ,ItemCode
-                            ,ItemNameEN
-                            ,ItemNameVN
-                            ,Unit
+                            ,L.NameEN
+                            ,L.NameVN
+                            ,L.NameJP
+                            ,L.Maker
+                            ,L.Model
+                            ,L.ItemCode
+                            ,S.NameEN
+                            ,S.NameVN
+                            ,S.Unit
                             ,QtyNeed
                             ,Period
                             ,QtyPerPcs
                             ,Using
-                            ,ApplyDate
-                            ,InActive
-                            ,Memo
-                            ,InputDate
-                            ,InputUser
-                            ,ModifyDate
-                            ,ModifyUser
-                            ,Column1
-                            ,Column2
-                            ,Column3
-                            ,Column4
-                            ,Column5
+                            ,L.ApplyDate
+                            ,L.InActive
+                            ,L.Memo
+                            ,L.InputDate
+                            ,L.InputUser
+                            ,L.ModifyDate
+                            ,L.ModifyUser
+                            ,L.Column1
+                            ,L.Column2
+                            ,L.Column3
+                            ,L.Column4
+                            ,L.Column5
 							,CASE WHEN P.EF_PurCuryID IS NULL THEN '' ELSE P.EF_PurCuryID END AS EF_PurCuryID
 							,CASE WHEN P.EF_PurCuryPrice IS NULL THEN 0 ELSE P.EF_PurCuryPrice END AS EF_PurCuryPrice
 							,CASE WHEN P.EF_EffDate is null THEN NULL ELSE P.EF_EffDate END AS EF_EffDate

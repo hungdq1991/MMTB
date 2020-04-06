@@ -53,7 +53,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         	,ReceiptDate
                         	,ConfirmDate
                         	,ControlDept
-                         	,L.Column1
+                         	,DisposalStatus
                         	,L.Column2
                         	,L.Column3
                         	,L.Column4
@@ -78,23 +78,56 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                        	 Code
-                        	,ACCcode
-                        	,NameEN
-                        	,NameVN
-                        	,NameJP
-                        	,Maker
-                        	,Model
-                        	,Series
-                        	,OrgCountry
-                        	,ProDate
-                        	,Lifetime
-                        	,StartDeprDate
-                        	,EndDeprDate
-                        FROM
-                        	M0005_ListMMTB L
-                        WHERE 
-                            DocNo_Disposal <> ''";
+                        	 M.Code
+		                    ,M.ACCcode
+		                    ,M.NameEN
+		                    ,M.NameVN
+		                    ,M.NameJP
+		                    ,M.Maker
+		                    ,M.Model
+		                    ,M.Series
+		                    ,M.OrgCountry
+		                    ,M.ProDate
+		                    ,M.Lifetime
+		                    ,M.StartDeprDate
+		                    ,M.EndDeprDate
+		                    ,L.DesProcessCode
+		                    ,L.DesLineCode
+		                    ,L.DesLineEN
+		                    ,L.DesGroupLineACC
+		                    ,L.DesUsingDept
+                            ,M.DisposalDate            
+		                    ,M.DisposalMemo
+                            ,M.DisposalStatus
+                            ,M.DocNo_Disposal
+                            ,M.ControlDept
+	                    FROM 
+		                    M0005_ListMMTB M
+	                    LEFT JOIN
+		                    (SELECT 
+                                 DocNo_Disposal
+                                ,Code
+                                ,ACCCode
+			                    ,DesProcessCode
+			                    ,DesLineCode
+                                ,DesLineEN
+			                    ,DesGroupLineACC
+			                    ,DesUsingDept
+			                    ,MAX(ApplyDate) ApplyDate
+		                    FROM 
+			                    M0005_ListMMTBLine
+		                    GROUP BY
+			                     DocNo_Disposal
+                                ,Code
+                                ,ACCCode
+			                    ,DesProcessCode
+			                    ,DesLineCode
+                                ,DesLineEN
+			                    ,DesGroupLineACC
+			                    ,DesUsingDept) L
+	                    ON
+                                M.Code         =   L.Code
+                        WHERE M.DocNo_Disposal = ''";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -259,7 +292,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,isNull(SupplierID,'') as SupplierID
 		                    ,case when SupplierName is null then '' else SupplierName end as SupplierName
 		                    ,case when InvNo is null then '' else InvNo end as InvNo
-                            ,isNull(InvDate,convert(DateTime,'2000-01-01')) as InvDate
+                            ,isNull(InvDate,convert(DateTime,'')) as InvDate
                             ,DisposalDate
                             ,ControlDept
                             ,DocStatus
@@ -304,8 +337,11 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                    ,L.DesLineEN
 		                    ,L.DesGroupLineACC
 		                    ,L.DesUsingDept
+                            ,M.DisposalDate
+                            ,M.DisposalMemo
+                            ,M.DisposalStatus
+                            ,M.DocNo_Disposal
 		                    ,M.ControlDept
-		                    ,M.DisposalMemo
 	                    FROM 
 		                    M0005_ListMMTB M
 	                    LEFT JOIN
@@ -335,6 +371,68 @@ namespace TAKAKO_ERP_3LAYER.DAO
 	                    ON
 	                        M.DocNo_Disposal    =   L.DocNo_Disposal
                         AND M.Code              =   L.Code
+                        WHERE 
+                            M.DocNo_Disposal    =   @DocNo";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(DocNo);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        public DataTable GetInfo_M0005_TL_Detail_Temp(string DocNo)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+			                 M.Code
+		                    ,M.ACCcode
+		                    ,M.NameEN
+		                    ,M.NameVN
+		                    ,M.NameJP
+		                    ,M.Maker
+		                    ,M.Model
+		                    ,M.Series
+		                    ,M.OrgCountry
+		                    ,M.ProDate
+		                    ,M.Lifetime
+		                    ,M.StartDeprDate
+		                    ,M.EndDeprDate
+		                    ,L.DesProcessCode
+		                    ,L.DesLineCode
+		                    ,L.DesLineEN
+		                    ,L.DesGroupLineACC
+		                    ,L.DesUsingDept
+                            ,M.DisposalDate
+                            ,M.DisposalMemo
+                            ,M.DisposalStatus
+                            ,M.DocNo_Disposal
+		                    ,M.ControlDept
+	                    FROM 
+		                    M0005_ListMMTBDisposal_Temp M
+	                    LEFT JOIN
+		                    (SELECT 
+                                 DocNo_Disposal
+                                ,Code
+                                ,ACCCode
+			                    ,DesProcessCode
+			                    ,DesLineCode
+                                ,DesLineEN
+			                    ,DesGroupLineACC
+			                    ,DesUsingDept
+			                    ,MAX(ApplyDate) ApplyDate
+		                    FROM 
+			                    M0005_ListMMTBLine
+		                    GROUP BY
+			                     DocNo_Disposal
+                                ,Code
+                                ,ACCCode
+			                    ,DesProcessCode
+			                    ,DesLineCode
+                                ,DesLineEN
+			                    ,DesGroupLineACC
+			                    ,DesUsingDept) L
+	                    ON
+                            M.Code              =   L.Code
                         WHERE 
                             M.DocNo_Disposal    =   @DocNo";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -430,6 +528,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString(Code);
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        
         //Update info MMTB
         public bool Update_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
         {
@@ -440,5 +539,19 @@ namespace TAKAKO_ERP_3LAYER.DAO
         {
             return conn.Disposal_MMTB(listMMTB, listMMTBDoc2);
         }
+        public bool Confirm_Disposal_MMTB(DataTable listMMTB, DataTable listMMTBDoc2)
+        {
+            return conn.Confirm_Disposal_MMTB(listMMTB, listMMTBDoc2);
+        }
+        #region Di dời MMTB
+        public bool Move_MMTB(DataTable listMMTB, DataTable listMMTBDoc3)
+        {
+            return conn.Move_MMTB(listMMTB, listMMTBDoc3);
+        }
+        public bool Confirm_Move_MMTB(DataTable listMMTB, DataTable listMMTBDoc3)
+        {
+            return conn.Confirm_Move_MMTB(listMMTB, listMMTBDoc3);
+        }
+        #endregion
     }
 }

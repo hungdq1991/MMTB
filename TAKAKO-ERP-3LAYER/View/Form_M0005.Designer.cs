@@ -38,7 +38,7 @@
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDisposal = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -69,6 +69,8 @@
             this.gridCol_DisposalDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InstDoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ControlDept = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbiMoving = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -135,11 +137,12 @@
             this.bsiRecordsCount,
             this.bbiNew,
             this.bbiEdit,
-            this.bbiDelete,
+            this.bbiDisposal,
             this.bbiRefresh,
-            this.barCheckItem1});
+            this.barCheckItem1,
+            this.bbiMoving});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 21;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -172,17 +175,18 @@
             // 
             // bbiEdit
             // 
-            this.bbiEdit.Caption = "Edit";
+            this.bbiEdit.Caption = "Thanh lý";
             this.bbiEdit.Id = 17;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEdit.Name = "bbiEdit";
             // 
-            // bbiDelete
+            // bbiDisposal
             // 
-            this.bbiDelete.Caption = "Delete";
-            this.bbiDelete.Id = 18;
-            this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
-            this.bbiDelete.Name = "bbiDelete";
+            this.bbiDisposal.Caption = "Thanh lý";
+            this.bbiDisposal.Id = 18;
+            this.bbiDisposal.ImageOptions.ImageUri.Uri = "Delete";
+            this.bbiDisposal.Name = "bbiDisposal";
+            this.bbiDisposal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiDisposal_ItemClick);
             // 
             // bbiRefresh
             // 
@@ -211,7 +215,8 @@
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
@@ -222,8 +227,8 @@
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup1.ItemLinks.Add(this.barCheckItem1, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiMoving);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
@@ -747,6 +752,18 @@
             this.gridCol_ControlDept.Visible = true;
             this.gridCol_ControlDept.VisibleIndex = 23;
             // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            // 
+            // bbiMoving
+            // 
+            this.bbiMoving.Caption = "Di dời";
+            this.bbiMoving.Id = 21;
+            this.bbiMoving.ImageOptions.ImageUri.Uri = "Replace";
+            this.bbiMoving.Name = "bbiMoving";
+            // 
             // Form_M0005
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -778,7 +795,7 @@
         private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
         private DevExpress.XtraBars.BarButtonItem bbiNew;
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
-        private DevExpress.XtraBars.BarButtonItem bbiDelete;
+        private DevExpress.XtraBars.BarButtonItem bbiDisposal;
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
@@ -809,5 +826,7 @@
         private DevExpress.XtraBars.BarCheckItem barCheckItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Group1;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Group2;
+        private DevExpress.XtraBars.BarButtonItem bbiMoving;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }

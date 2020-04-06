@@ -63,7 +63,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 ,L.NameJP
                                 ,CASE WHEN SessionID = 1 THEN 'LK' ELSE (CASE WHEN SessionID = 4 THEN N'Dầu' ELSE  'Pin' END ) END as SessionID
                                 ,Maker
-                                ,PurUnit
                                 ,Unit
                                 ,UnitMulDiv
                                 ,CnvtQty

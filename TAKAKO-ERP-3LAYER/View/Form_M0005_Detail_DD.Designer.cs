@@ -1,6 +1,6 @@
 ﻿namespace TAKAKO_ERP_3LAYER.View
 {
-    partial class Form_M0005_Detail_TL
+    partial class Form_M0005_Detail_DD
     {
         /// <summary>
         /// Required designer variable.
@@ -63,21 +63,14 @@
             this.sLook_ControlDept = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.cbx_Status = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.txt_SupplierID = new DevExpress.XtraEditors.TextEdit();
             this.sLook_DocNo = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.sLook_Supplier = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_InvNo = new DevExpress.XtraEditors.TextEdit();
-            this.txt_SupplierName = new DevExpress.XtraEditors.TextEdit();
-            this.date_Inv = new DevExpress.XtraEditors.DateEdit();
-            this.date_Disposal = new DevExpress.XtraEditors.DateEdit();
+            this.txt_Memo = new DevExpress.XtraEditors.TextEdit();
+            this.date_Move = new DevExpress.XtraEditors.DateEdit();
             this.date_Doc = new DevExpress.XtraEditors.DateEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -129,17 +122,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.sLook_ControlDept.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Status.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_SupplierID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sLook_DocNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sLook_Supplier.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_InvNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_SupplierName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_Inv.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_Inv.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_Disposal.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_Disposal.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.date_Move.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.date_Move.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_Doc.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_Doc.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
@@ -387,33 +374,27 @@
             this.panelControl1.Appearance.Options.UseBorderColor = true;
             this.panelControl1.Controls.Add(this.sLook_ControlDept);
             this.panelControl1.Controls.Add(this.cbx_Status);
-            this.panelControl1.Controls.Add(this.txt_SupplierID);
             this.panelControl1.Controls.Add(this.sLook_DocNo);
-            this.panelControl1.Controls.Add(this.sLook_Supplier);
             this.panelControl1.Controls.Add(this.labelControl9);
-            this.panelControl1.Controls.Add(this.txt_InvNo);
-            this.panelControl1.Controls.Add(this.txt_SupplierName);
-            this.panelControl1.Controls.Add(this.date_Inv);
-            this.panelControl1.Controls.Add(this.date_Disposal);
+            this.panelControl1.Controls.Add(this.txt_Memo);
+            this.panelControl1.Controls.Add(this.date_Move);
             this.panelControl1.Controls.Add(this.date_Doc);
             this.panelControl1.Controls.Add(this.labelControl8);
-            this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl4);
-            this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 157);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(848, 92);
+            this.panelControl1.Size = new System.Drawing.Size(848, 72);
             this.panelControl1.TabIndex = 9;
             // 
             // sLook_ControlDept
             // 
             this.sLook_ControlDept.EditValue = "";
             this.sLook_ControlDept.EnterMoveNextControl = true;
-            this.sLook_ControlDept.Location = new System.Drawing.Point(513, 62);
+            this.sLook_ControlDept.Location = new System.Drawing.Point(513, 39);
             this.sLook_ControlDept.MenuManager = this.ribbonControl;
             this.sLook_ControlDept.Name = "sLook_ControlDept";
             this.sLook_ControlDept.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -443,15 +424,6 @@
             this.cbx_Status.Size = new System.Drawing.Size(106, 20);
             this.cbx_Status.TabIndex = 8;
             // 
-            // txt_SupplierID
-            // 
-            this.txt_SupplierID.Enabled = false;
-            this.txt_SupplierID.Location = new System.Drawing.Point(149, 34);
-            this.txt_SupplierID.MenuManager = this.ribbonControl;
-            this.txt_SupplierID.Name = "txt_SupplierID";
-            this.txt_SupplierID.Size = new System.Drawing.Size(56, 20);
-            this.txt_SupplierID.TabIndex = 5;
-            // 
             // sLook_DocNo
             // 
             this.sLook_DocNo.Location = new System.Drawing.Point(79, 6);
@@ -473,28 +445,6 @@
             this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
-            // sLook_Supplier
-            // 
-            this.sLook_Supplier.EnterMoveNextControl = true;
-            this.sLook_Supplier.Location = new System.Drawing.Point(79, 34);
-            this.sLook_Supplier.MenuManager = this.ribbonControl;
-            this.sLook_Supplier.Name = "sLook_Supplier";
-            this.sLook_Supplier.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.sLook_Supplier.Properties.Appearance.Options.UseBackColor = true;
-            this.sLook_Supplier.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.sLook_Supplier.Properties.PopupView = this.searchLookUpEdit1View;
-            this.sLook_Supplier.Size = new System.Drawing.Size(71, 20);
-            this.sLook_Supplier.TabIndex = 2;
-            this.sLook_Supplier.TextChanged += new System.EventHandler(this.SLook_Supplier_TextChanged);
-            // 
-            // searchLookUpEdit1View
-            // 
-            this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
-            this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
             // labelControl9
             // 
             this.labelControl9.Location = new System.Drawing.Point(646, 11);
@@ -503,60 +453,36 @@
             this.labelControl9.TabIndex = 0;
             this.labelControl9.Text = "Trạng thái";
             // 
-            // txt_InvNo
+            // txt_Memo
             // 
-            this.txt_InvNo.Location = new System.Drawing.Point(79, 62);
-            this.txt_InvNo.Name = "txt_InvNo";
-            this.txt_InvNo.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txt_InvNo.Properties.Appearance.Options.UseBackColor = true;
-            this.txt_InvNo.Size = new System.Drawing.Size(126, 20);
-            this.txt_InvNo.TabIndex = 3;
+            this.txt_Memo.Location = new System.Drawing.Point(79, 40);
+            this.txt_Memo.Name = "txt_Memo";
+            this.txt_Memo.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_Memo.Properties.Appearance.Options.UseBackColor = true;
+            this.txt_Memo.Size = new System.Drawing.Size(320, 20);
+            this.txt_Memo.TabIndex = 3;
             // 
-            // txt_SupplierName
+            // date_Move
             // 
-            this.txt_SupplierName.Enabled = false;
-            this.txt_SupplierName.Location = new System.Drawing.Point(204, 34);
-            this.txt_SupplierName.Name = "txt_SupplierName";
-            this.txt_SupplierName.Size = new System.Drawing.Size(198, 20);
-            this.txt_SupplierName.TabIndex = 2;
-            // 
-            // date_Inv
-            // 
-            this.date_Inv.EditValue = null;
-            this.date_Inv.Location = new System.Drawing.Point(296, 62);
-            this.date_Inv.Name = "date_Inv";
-            this.date_Inv.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.date_Inv.Properties.Appearance.Options.UseBackColor = true;
-            this.date_Inv.Properties.Appearance.Options.UseTextOptions = true;
-            this.date_Inv.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.date_Inv.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.date_Move.EditValue = null;
+            this.date_Move.Location = new System.Drawing.Point(513, 5);
+            this.date_Move.Name = "date_Move";
+            this.date_Move.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.date_Move.Properties.Appearance.Options.UseBackColor = true;
+            this.date_Move.Properties.Appearance.Options.UseTextOptions = true;
+            this.date_Move.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.date_Move.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_Inv.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.date_Move.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_Inv.Size = new System.Drawing.Size(106, 20);
-            this.date_Inv.TabIndex = 4;
-            // 
-            // date_Disposal
-            // 
-            this.date_Disposal.EditValue = null;
-            this.date_Disposal.Location = new System.Drawing.Point(513, 5);
-            this.date_Disposal.Name = "date_Disposal";
-            this.date_Disposal.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.date_Disposal.Properties.Appearance.Options.UseBackColor = true;
-            this.date_Disposal.Properties.Appearance.Options.UseTextOptions = true;
-            this.date_Disposal.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.date_Disposal.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_Disposal.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.date_Disposal.Size = new System.Drawing.Size(106, 20);
-            this.date_Disposal.TabIndex = 6;
+            this.date_Move.Size = new System.Drawing.Size(106, 20);
+            this.date_Move.TabIndex = 6;
             // 
             // date_Doc
             // 
             this.date_Doc.EditValue = null;
             this.date_Doc.Enabled = false;
-            this.date_Doc.Location = new System.Drawing.Point(296, 6);
+            this.date_Doc.Location = new System.Drawing.Point(293, 6);
             this.date_Doc.MenuManager = this.ribbonControl;
             this.date_Doc.Name = "date_Doc";
             this.date_Doc.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -579,46 +505,29 @@
             this.labelControl8.TabIndex = 0;
             this.labelControl8.Text = "Ngày";
             // 
-            // labelControl5
-            // 
-            this.labelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl5.Location = new System.Drawing.Point(224, 64);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(67, 13);
-            this.labelControl5.TabIndex = 0;
-            this.labelControl5.Text = "Ngày hóa đơn";
-            // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(8, 64);
+            this.labelControl4.Location = new System.Drawing.Point(8, 42);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(54, 13);
             this.labelControl4.TabIndex = 0;
-            this.labelControl4.Text = "Số hóa đơn";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(8, 38);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(21, 13);
-            this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "NCC";
+            this.labelControl4.Text = "Lý do di dời";
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(419, 64);
+            this.labelControl1.Location = new System.Drawing.Point(419, 41);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(81, 13);
+            this.labelControl1.Size = new System.Drawing.Size(88, 13);
             this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Bộ phận thanh lý";
+            this.labelControl1.Text = "Bộ phận phụ trách";
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(419, 9);
+            this.labelControl6.Location = new System.Drawing.Point(442, 9);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(67, 13);
+            this.labelControl6.Size = new System.Drawing.Size(53, 13);
             this.labelControl6.TabIndex = 0;
-            this.labelControl6.Text = "Ngày thanh lý";
+            this.labelControl6.Text = "Ngày di dời";
             // 
             // labelControl2
             // 
@@ -632,10 +541,10 @@
             // 
             this.gridSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridSplitContainer1.Grid = this.gridControl;
-            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 249);
+            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 229);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(848, 328);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(848, 348);
             this.gridSplitContainer1.TabIndex = 12;
             // 
             // gridControl
@@ -662,7 +571,7 @@
             this.repo_cBox_Status,
             this.repo_TextEdit_Code,
             this.repo_sLookUp_Code});
-            this.gridControl.Size = new System.Drawing.Size(848, 328);
+            this.gridControl.Size = new System.Drawing.Size(848, 348);
             this.gridControl.TabIndex = 8;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -1263,7 +1172,7 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // Form_M0005_Detail_TL
+            // Form_M0005_Detail_DD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1272,11 +1181,11 @@
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0005_Detail_TL";
+            this.Name = "Form_M0005_Detail_DD";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "MÀN HÌNH CHI TIẾT THANH LÝ MMTB";
-            this.Load += new System.EventHandler(this.Form_M0005_Detail_TL_Load);
+            this.Text = "MÀN HÌNH CHI TIẾT DI DỜI MMTB";
+            this.Load += new System.EventHandler(this.Form_M0005_Detail_DD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -1284,17 +1193,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.sLook_ControlDept.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_Status.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_SupplierID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sLook_DocNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sLook_Supplier.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_InvNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_SupplierName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_Inv.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_Inv.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_Disposal.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.date_Disposal.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.date_Move.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.date_Move.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_Doc.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_Doc.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
@@ -1338,16 +1241,10 @@
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.SearchLookUpEdit sLook_Supplier;
-        private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
-        private DevExpress.XtraEditors.TextEdit txt_InvNo;
-        private DevExpress.XtraEditors.TextEdit txt_SupplierName;
-        private DevExpress.XtraEditors.DateEdit date_Inv;
-        private DevExpress.XtraEditors.DateEdit date_Disposal;
+        private DevExpress.XtraEditors.TextEdit txt_Memo;
+        private DevExpress.XtraEditors.DateEdit date_Move;
         private DevExpress.XtraEditors.DateEdit date_Doc;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl8;
@@ -1376,7 +1273,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_UsingDept;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ControlDept;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_DisposalMemo;
-        private DevExpress.XtraEditors.TextEdit txt_SupplierID;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private DevExpress.XtraEditors.ComboBoxEdit cbx_Status;
         private DevExpress.XtraEditors.LabelControl labelControl9;
