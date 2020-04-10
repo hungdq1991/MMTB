@@ -22,5 +22,15 @@ namespace TAKAKO_ERP_3LAYER.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PC;Initial Catalog=MMTB_TVC;User ID=sa;Password=adm1nTVC")]
+        public string MMTB_TVCConnectionString {
+            get {
+                return ((string)(this["MMTB_TVCConnectionString"]));
+            }
+        }
     }
 }

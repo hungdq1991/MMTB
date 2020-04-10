@@ -7,6 +7,10 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
+using System.IO;
+using OfficeOpenXml;
+using TAKAKO_ERP_3LAYER.Report;
+using DevExpress.XtraReports.UI;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -721,6 +725,7 @@ namespace TAKAKO_ERP_3LAYER.View
             //Clear detail
             _DetailTable.Clear();
             gridControl.DataSource = _DetailTable;
+            gridView.AddNewRow();
 
             //Refresh value for sLookUp DocNo
             Add_Value_sLookUp_DocNo();
@@ -732,13 +737,13 @@ namespace TAKAKO_ERP_3LAYER.View
         //Các tình huống cần kiểm tra lỗi
         private Boolean CheckError()
         {
-            if (String.IsNullOrEmpty(txt_InvNo.Text.Trim()))
+            if (String.IsNullOrEmpty(txt_InvNo.EditValue.ToString().Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Số hóa đơn\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_InvNo.Focus();
                 return false;
             }
-            if (String.IsNullOrEmpty(sLook_ControlDept.Text.Trim()))
+            if (String.IsNullOrEmpty(sLook_ControlDept.EditValue.ToString().Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Bộ phận quản lý MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sLook_ControlDept.Focus();
@@ -859,5 +864,102 @@ namespace TAKAKO_ERP_3LAYER.View
             return false;
         }
         #endregion
+
+        private void bbi_Eport_Excel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string DocNo = sLook_DocNo.EditValue.ToString();
+            M0005_NT_Report rpt_NT = new M0005_NT_Report(DocNo);
+            ReportPrintTool print = new ReportPrintTool(rpt_NT);
+            rpt_NT.ShowPreviewDialog();
+            //OpenFileDialog theDialog = new OpenFileDialog();
+            //theDialog.Title = "Chọn template nghiệm thu MMTB";
+            //theDialog.Filter = "Files Excel|*.xlsx";
+            //if (theDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    try
+            //    {
+            //        string _filePath = theDialog.FileName;
+
+            //        //Create fileinfo object of an excel file
+            //        FileInfo _fileInfo = new FileInfo(_filePath);
+
+            //        //Create a new Excel package from the file
+            //        using (ExcelPackage _excelPackage = new ExcelPackage(_fileInfo))
+            //        {
+            //            int rowCount = 0;
+            //            DataRow drLocal = null;
+
+            //            #region Header
+            //            ExcelWorksheet _headerSheet = _excelPackage.Workbook.Worksheets[1];
+            //            _headerSheet.Cells["C12"].Value = date_Confirm.EditValue;
+            //            _headerSheet.Cells["G12"].Value = txt_InvNo.EditValue;
+            //            _headerSheet.Cells["K12"].Value = date_Receipt.EditValue;
+            //            _headerSheet.Cells["O12"].Value = sLook_ControlDept.EditValue;
+
+            //            ////
+            //            //DataTable _tempPackingList = new DataTable();
+            //            //_tempPackingList.Columns.Add("NameEN");
+            //            //_tempPackingList.Columns.Add("Model");
+            //            //_tempPackingList.Columns.Add("Series");
+            //            //_tempPackingList.Columns.Add("Maker");
+            //            //_tempPackingList.Columns.Add("ProDate");
+            //            //_tempPackingList.Columns["ProDate"].DataType = typeof(DateTime);
+            //            //_tempPackingList.Columns.Add("Code");
+            //            //_tempPackingList.Columns.Add("OrgLineCode");
+            //            //_tempPackingList.Columns.Add("Status");
+            //            //_tempPackingList.Columns.Add("Result");
+            //            //_tempPackingList.Columns.Add("Memo");
+
+            //            //foreach (DataRow dr in _DetailTable.Rows)
+            //            //{
+            //            //    drLocal = _tempPackingList.NewRow();
+            //            //    drLocal["NameEN"] = dr["NameEN"];
+            //            //    drLocal["Model"] = dr["Model"];
+            //            //    drLocal["Series"] = dr["Series"];
+            //            //    drLocal["Maker"] = dr["Maker"];
+            //            //    drLocal["ProDate"] = dr["ProDate"];
+            //            //    drLocal["Code"] = dr["Code"];
+            //            //    drLocal["OrgLineCode"] = dr["OrgLineCode"];
+            //            //    drLocal["Status"] = dr["Status"];
+            //            //    drLocal["Result"] = dr["Result"];
+            //            //    drLocal["Memo"] = dr["Memo"];
+            //            //    _tempPackingList.Rows.Add(drLocal);
+            //            //}
+
+            //            //rowCount = _tempPackingList.Rows.Count;
+
+            //            //if (rowCount > 0)
+            //            //{
+            //            //    _headerSheet.InsertRow(22, rowCount - 1, 21);
+            //            //    _headerSheet.Cells["B22"].LoadFromDataTable(_tempPackingList, false);
+            //            //}
+            //            #endregion
+
+            //            //Focus A1, sheet Invoice
+            //            _headerSheet.Select("A1");
+
+            //            byte[] bin = _excelPackage.GetAsByteArray();
+
+            //            //Create a SaveFileDialog instance with some properties
+            //            SaveFileDialog _saveFileDialog = new SaveFileDialog();
+            //            _saveFileDialog.Title = "Lưu đường dẫn file nghiệm thu MMTB";
+            //            _saveFileDialog.Filter = "Excel files|*.xlxs|All files|*.*";
+            //            _saveFileDialog.FileName = DocNo.Trim().Replace("/", ".") + "_" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".xlsx";
+
+            //            //Check if user clicked the save button
+            //            if (_saveFileDialog.ShowDialog() == DialogResult.OK)
+            //            {
+            //                //write the file to the disk
+            //                File.WriteAllBytes(_saveFileDialog.FileName, bin);
+            //                MessageBox.Show("Tạo file nghiệm thu MMTB thành công!", "Hoàn Thành", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Lỗi: " + ex.Message);
+            //    }
+            //}
+        }
     }
 }

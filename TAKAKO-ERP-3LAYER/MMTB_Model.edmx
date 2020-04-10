@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MMTB_TVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="M0005_ListMMTB">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ACCcode" Type="varchar" MaxLength="10" />
+          <Property Name="NameEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NameVN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NameJP" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Maker" Type="varchar" MaxLength="30" />
+          <Property Name="Model" Type="varchar" MaxLength="30" />
+          <Property Name="Series" Type="varchar" MaxLength="30" />
+          <Property Name="OrgCountry" Type="varchar" MaxLength="3" />
+          <Property Name="ProDate" Type="datetime" />
+          <Property Name="Lifetime" Type="decimal" Precision="9" Scale="4" Nullable="false" />
+          <Property Name="StartDeprDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDeprDate" Type="datetime" />
+          <Property Name="Result" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Memo" Type="nvarchar" MaxLength="250" />
+          <Property Name="InstDoc" Type="varchar" MaxLength="500" />
+          <Property Name="ACCDoc" Type="varchar" MaxLength="50" />
+          <Property Name="DocNo_Disposal" Type="varchar" MaxLength="50" />
+          <Property Name="ACCDoc_Disposal" Type="varchar" MaxLength="50" />
+          <Property Name="DisposalDate" Type="datetime" />
+          <Property Name="DisposalMemo" Type="nvarchar" MaxLength="100" />
+          <Property Name="DocNo" Type="varchar" MaxLength="50" />
+          <Property Name="DocDate" Type="datetime" />
+          <Property Name="EF_VendID" Type="varchar" MaxLength="10" />
+          <Property Name="SupplierID" Type="varchar" MaxLength="10" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="60" />
+          <Property Name="InvNo" Type="varchar" MaxLength="20" />
+          <Property Name="InvDate" Type="date" />
+          <Property Name="ReceiptDate" Type="date" />
+          <Property Name="ConfirmDate" Type="datetime" />
+          <Property Name="ControlDept" Type="varchar" MaxLength="8" />
+          <Property Name="DisposalStatus" Type="int" />
+          <Property Name="Column2" Type="varchar" MaxLength="10" />
+          <Property Name="Column3" Type="varchar" MaxLength="10" />
+          <Property Name="Column4" Type="varchar" MaxLength="10" />
+          <Property Name="Column5" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="M0005_ListMMTBDoc1">
+          <Key>
+            <PropertyRef Name="DocNo" />
+          </Key>
+          <Property Name="DocNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DocDate" Type="datetime" />
+          <Property Name="EF_VendID" Type="varchar" MaxLength="10" />
+          <Property Name="SupplierID" Type="varchar" MaxLength="10" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="60" />
+          <Property Name="InvNo" Type="varchar" MaxLength="20" />
+          <Property Name="InvDate" Type="date" />
+          <Property Name="ReceiptDate" Type="date" />
+          <Property Name="ConfirmDate" Type="datetime" Nullable="false" />
+          <Property Name="ControlDept" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DocStatus" Type="bit" Nullable="false" />
+          <Property Name="Column1" Type="varchar" MaxLength="10" />
+          <Property Name="Column2" Type="varchar" MaxLength="10" />
+          <Property Name="Column3" Type="varchar" MaxLength="10" />
+          <Property Name="Column4" Type="varchar" MaxLength="10" />
+          <Property Name="Column5" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MMTB_TVC.dbo.M0005_ListMMTBDoc2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="M0005_ListMMTBDoc2">
+          <Key>
+            <PropertyRef Name="DocNo" />
+            <PropertyRef Name="DisposalDate" />
+            <PropertyRef Name="ControlDept" />
+            <PropertyRef Name="DocStatus" />
+          </Key>
+          <Property Name="DocNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DocDate" Type="datetime" />
+          <Property Name="EF_VendID" Type="varchar" MaxLength="10" />
+          <Property Name="SupplierID" Type="varchar" MaxLength="10" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="60" />
+          <Property Name="InvNo" Type="varchar" MaxLength="20" />
+          <Property Name="InvDate" Type="date" />
+          <Property Name="DisposalDate" Type="datetime" Nullable="false" />
+          <Property Name="ControlDept" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DocStatus" Type="bit" Nullable="false" />
+          <Property Name="Column1" Type="varchar" MaxLength="10" />
+          <Property Name="Column2" Type="varchar" MaxLength="10" />
+          <Property Name="Column3" Type="varchar" MaxLength="10" />
+          <Property Name="Column4" Type="varchar" MaxLength="10" />
+          <Property Name="Column5" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MMTB_TVC.dbo.M0005_ListMMTBDoc3' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="M0005_ListMMTBDoc3">
+          <Key>
+            <PropertyRef Name="DocNo" />
+            <PropertyRef Name="MoveDate" />
+            <PropertyRef Name="ControlDept" />
+            <PropertyRef Name="DocStatus" />
+            <PropertyRef Name="Memo" />
+          </Key>
+          <Property Name="DocNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DocDate" Type="datetime" />
+          <Property Name="MoveDate" Type="datetime" Nullable="false" />
+          <Property Name="ControlDept" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DocStatus" Type="bit" Nullable="false" />
+          <Property Name="Memo" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Column1" Type="varchar" MaxLength="10" />
+          <Property Name="Column2" Type="varchar" MaxLength="10" />
+          <Property Name="Column3" Type="varchar" MaxLength="10" />
+          <Property Name="Column4" Type="varchar" MaxLength="10" />
+          <Property Name="Column5" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="M0005_ListMMTBLine">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ApplyDate" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ACCcode" Type="varchar" MaxLength="10" />
+          <Property Name="NameEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NameVN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NameJP" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Maker" Type="varchar" MaxLength="30" />
+          <Property Name="Model" Type="varchar" MaxLength="30" />
+          <Property Name="ConfDate" Type="datetime" Nullable="false" />
+          <Property Name="DocNo_Confirm" Type="varchar" MaxLength="50" />
+          <Property Name="ControlDept" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="OrgUsingDept" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="OrgLineCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="OrgGroupLineACC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="OrgLineEN" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="OrgProcessCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SourceUsingDept" Type="varchar" MaxLength="10" />
+          <Property Name="SourceLineCode" Type="varchar" MaxLength="10" />
+          <Property Name="SourceGroupLineACC" Type="varchar" MaxLength="10" />
+          <Property Name="SourceLineEN" Type="varchar" MaxLength="30" />
+          <Property Name="SourceProcessCode" Type="varchar" MaxLength="20" />
+          <Property Name="DesUsingDept" Type="varchar" MaxLength="10" />
+          <Property Name="DesLineCode" Type="varchar" MaxLength="10" />
+          <Property Name="DesGroupLineACC" Type="varchar" MaxLength="10" />
+          <Property Name="DesLineEN" Type="varchar" MaxLength="30" />
+          <Property Name="DesProcessCode" Type="varchar" MaxLength="20" />
+          <Property Name="MoveDate" Type="datetime" />
+          <Property Name="DocNo_Move" Type="varchar" MaxLength="50" />
+          <Property Name="DocNo_Disposal" Type="varchar" MaxLength="10" />
+          <Property Name="ACCDoc_Disposal" Type="varchar" MaxLength="50" />
+          <Property Name="DisposalDate" Type="datetime" />
+          <Property Name="ApplyDate" Type="datetime" Nullable="false" />
+          <Property Name="DisposalStatus" Type="int" />
+          <Property Name="Column2" Type="nchar" MaxLength="10" />
+          <Property Name="Column3" Type="nchar" MaxLength="10" />
+          <Property Name="Column4" Type="nchar" MaxLength="10" />
+          <Property Name="Column5" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="MMTB_TVCModelStoreContainer">
+          <EntitySet Name="M0005_ListMMTB" EntityType="Self.M0005_ListMMTB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M0005_ListMMTBDoc1" EntityType="Self.M0005_ListMMTBDoc1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M0005_ListMMTBLine" EntityType="Self.M0005_ListMMTBLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="M0005_ListMMTBDoc2" EntityType="Self.M0005_ListMMTBDoc2" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[M0005_ListMMTBDoc2].[DocNo] AS [DocNo], 
+[M0005_ListMMTBDoc2].[DocDate] AS [DocDate], 
+[M0005_ListMMTBDoc2].[EF_VendID] AS [EF_VendID], 
+[M0005_ListMMTBDoc2].[SupplierID] AS [SupplierID], 
+[M0005_ListMMTBDoc2].[SupplierName] AS [SupplierName], 
+[M0005_ListMMTBDoc2].[InvNo] AS [InvNo], 
+[M0005_ListMMTBDoc2].[InvDate] AS [InvDate], 
+[M0005_ListMMTBDoc2].[DisposalDate] AS [DisposalDate], 
+[M0005_ListMMTBDoc2].[ControlDept] AS [ControlDept], 
+[M0005_ListMMTBDoc2].[DocStatus] AS [DocStatus], 
+[M0005_ListMMTBDoc2].[Column1] AS [Column1], 
+[M0005_ListMMTBDoc2].[Column2] AS [Column2], 
+[M0005_ListMMTBDoc2].[Column3] AS [Column3], 
+[M0005_ListMMTBDoc2].[Column4] AS [Column4], 
+[M0005_ListMMTBDoc2].[Column5] AS [Column5]
+FROM [dbo].[M0005_ListMMTBDoc2] AS [M0005_ListMMTBDoc2]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="M0005_ListMMTBDoc3" EntityType="Self.M0005_ListMMTBDoc3" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[M0005_ListMMTBDoc3].[DocNo] AS [DocNo], 
+[M0005_ListMMTBDoc3].[DocDate] AS [DocDate], 
+[M0005_ListMMTBDoc3].[MoveDate] AS [MoveDate], 
+[M0005_ListMMTBDoc3].[ControlDept] AS [ControlDept], 
+[M0005_ListMMTBDoc3].[DocStatus] AS [DocStatus], 
+[M0005_ListMMTBDoc3].[Memo] AS [Memo], 
+[M0005_ListMMTBDoc3].[Column1] AS [Column1], 
+[M0005_ListMMTBDoc3].[Column2] AS [Column2], 
+[M0005_ListMMTBDoc3].[Column3] AS [Column3], 
+[M0005_ListMMTBDoc3].[Column4] AS [Column4], 
+[M0005_ListMMTBDoc3].[Column5] AS [Column5]
+FROM [dbo].[M0005_ListMMTBDoc3] AS [M0005_ListMMTBDoc3]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MMTB_TVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="M0005_ListMMTB">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACCcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NameEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameVN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameJP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Maker" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Series" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="OrgCountry" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ProDate" Type="DateTime" Precision="3" />
+          <Property Name="Lifetime" Type="Decimal" Precision="9" Scale="4" Nullable="false" />
+          <Property Name="StartDeprDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDeprDate" Type="DateTime" Precision="3" />
+          <Property Name="Result" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Memo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InstDoc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ACCDoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocNo_Disposal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACCDoc_Disposal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisposalDate" Type="DateTime" Precision="3" />
+          <Property Name="DisposalMemo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DocNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocDate" Type="DateTime" Precision="3" />
+          <Property Name="EF_VendID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="InvNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InvDate" Type="DateTime" Precision="0" />
+          <Property Name="ReceiptDate" Type="DateTime" Precision="0" />
+          <Property Name="ConfirmDate" Type="DateTime" Precision="3" />
+          <Property Name="ControlDept" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="DisposalStatus" Type="Int32" />
+          <Property Name="Column2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="M0005_ListMMTBDoc1">
+          <Key>
+            <PropertyRef Name="DocNo" />
+          </Key>
+          <Property Name="DocNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DocDate" Type="DateTime" Precision="3" />
+          <Property Name="EF_VendID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="InvNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InvDate" Type="DateTime" Precision="0" />
+          <Property Name="ReceiptDate" Type="DateTime" Precision="0" />
+          <Property Name="ConfirmDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ControlDept" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DocStatus" Type="Boolean" Nullable="false" />
+          <Property Name="Column1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="M0005_ListMMTBLine">
+          <Key>
+            <PropertyRef Name="Code" />
+            <PropertyRef Name="ApplyDate" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ACCcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NameEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameVN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameJP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Maker" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ConfDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DocNo_Confirm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ControlDept" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrgUsingDept" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrgLineCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrgGroupLineACC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrgLineEN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrgProcessCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SourceUsingDept" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SourceLineCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SourceGroupLineACC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SourceLineEN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SourceProcessCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DesUsingDept" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DesLineCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DesGroupLineACC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DesLineEN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DesProcessCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MoveDate" Type="DateTime" Precision="3" />
+          <Property Name="DocNo_Move" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocNo_Disposal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ACCDoc_Disposal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisposalDate" Type="DateTime" Precision="3" />
+          <Property Name="ApplyDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DisposalStatus" Type="Int32" />
+          <Property Name="Column2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Column3" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Column4" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Column5" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="M0005_ListMMTBDoc2">
+          <Key>
+            <PropertyRef Name="DocNo" />
+            <PropertyRef Name="DisposalDate" />
+            <PropertyRef Name="ControlDept" />
+            <PropertyRef Name="DocStatus" />
+          </Key>
+          <Property Name="DocNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DocDate" Type="DateTime" Precision="3" />
+          <Property Name="EF_VendID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="InvNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InvDate" Type="DateTime" Precision="0" />
+          <Property Name="DisposalDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ControlDept" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DocStatus" Type="Boolean" Nullable="false" />
+          <Property Name="Column1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="M0005_ListMMTBDoc3">
+          <Key>
+            <PropertyRef Name="DocNo" />
+            <PropertyRef Name="MoveDate" />
+            <PropertyRef Name="ControlDept" />
+            <PropertyRef Name="DocStatus" />
+            <PropertyRef Name="Memo" />
+          </Key>
+          <Property Name="DocNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DocDate" Type="DateTime" Precision="3" />
+          <Property Name="MoveDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ControlDept" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DocStatus" Type="Boolean" Nullable="false" />
+          <Property Name="Memo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Column1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column4" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Column5" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="MMTB_TVC_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="M0005_ListMMTB" EntityType="Self.M0005_ListMMTB" />
+          <EntitySet Name="M0005_ListMMTBDoc1" EntityType="Self.M0005_ListMMTBDoc1" />
+          <EntitySet Name="M0005_ListMMTBLine" EntityType="Self.M0005_ListMMTBLine" />
+          <EntitySet Name="M0005_ListMMTBDoc2" EntityType="Self.M0005_ListMMTBDoc2" />
+          <EntitySet Name="M0005_ListMMTBDoc3" EntityType="Self.M0005_ListMMTBDoc3" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MMTB_TVCModelStoreContainer" CdmEntityContainer="MMTB_TVC_Entities">
+          <EntitySetMapping Name="M0005_ListMMTB">
+            <EntityTypeMapping TypeName="MMTB_TVCModel.M0005_ListMMTB">
+              <MappingFragment StoreEntitySet="M0005_ListMMTB">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ACCcode" ColumnName="ACCcode" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="NameVN" ColumnName="NameVN" />
+                <ScalarProperty Name="NameJP" ColumnName="NameJP" />
+                <ScalarProperty Name="Maker" ColumnName="Maker" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Series" ColumnName="Series" />
+                <ScalarProperty Name="OrgCountry" ColumnName="OrgCountry" />
+                <ScalarProperty Name="ProDate" ColumnName="ProDate" />
+                <ScalarProperty Name="Lifetime" ColumnName="Lifetime" />
+                <ScalarProperty Name="StartDeprDate" ColumnName="StartDeprDate" />
+                <ScalarProperty Name="EndDeprDate" ColumnName="EndDeprDate" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="InstDoc" ColumnName="InstDoc" />
+                <ScalarProperty Name="ACCDoc" ColumnName="ACCDoc" />
+                <ScalarProperty Name="DocNo_Disposal" ColumnName="DocNo_Disposal" />
+                <ScalarProperty Name="ACCDoc_Disposal" ColumnName="ACCDoc_Disposal" />
+                <ScalarProperty Name="DisposalDate" ColumnName="DisposalDate" />
+                <ScalarProperty Name="DisposalMemo" ColumnName="DisposalMemo" />
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="EF_VendID" ColumnName="EF_VendID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="InvNo" ColumnName="InvNo" />
+                <ScalarProperty Name="InvDate" ColumnName="InvDate" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+                <ScalarProperty Name="ControlDept" ColumnName="ControlDept" />
+                <ScalarProperty Name="DisposalStatus" ColumnName="DisposalStatus" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M0005_ListMMTBDoc1">
+            <EntityTypeMapping TypeName="MMTB_TVCModel.M0005_ListMMTBDoc1">
+              <MappingFragment StoreEntitySet="M0005_ListMMTBDoc1">
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="EF_VendID" ColumnName="EF_VendID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="InvNo" ColumnName="InvNo" />
+                <ScalarProperty Name="InvDate" ColumnName="InvDate" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="ConfirmDate" ColumnName="ConfirmDate" />
+                <ScalarProperty Name="ControlDept" ColumnName="ControlDept" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M0005_ListMMTBLine">
+            <EntityTypeMapping TypeName="MMTB_TVCModel.M0005_ListMMTBLine">
+              <MappingFragment StoreEntitySet="M0005_ListMMTBLine">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ACCcode" ColumnName="ACCcode" />
+                <ScalarProperty Name="NameEN" ColumnName="NameEN" />
+                <ScalarProperty Name="NameVN" ColumnName="NameVN" />
+                <ScalarProperty Name="NameJP" ColumnName="NameJP" />
+                <ScalarProperty Name="Maker" ColumnName="Maker" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ConfDate" ColumnName="ConfDate" />
+                <ScalarProperty Name="DocNo_Confirm" ColumnName="DocNo_Confirm" />
+                <ScalarProperty Name="ControlDept" ColumnName="ControlDept" />
+                <ScalarProperty Name="OrgUsingDept" ColumnName="OrgUsingDept" />
+                <ScalarProperty Name="OrgLineCode" ColumnName="OrgLineCode" />
+                <ScalarProperty Name="OrgGroupLineACC" ColumnName="OrgGroupLineACC" />
+                <ScalarProperty Name="OrgLineEN" ColumnName="OrgLineEN" />
+                <ScalarProperty Name="OrgProcessCode" ColumnName="OrgProcessCode" />
+                <ScalarProperty Name="SourceUsingDept" ColumnName="SourceUsingDept" />
+                <ScalarProperty Name="SourceLineCode" ColumnName="SourceLineCode" />
+                <ScalarProperty Name="SourceGroupLineACC" ColumnName="SourceGroupLineACC" />
+                <ScalarProperty Name="SourceLineEN" ColumnName="SourceLineEN" />
+                <ScalarProperty Name="SourceProcessCode" ColumnName="SourceProcessCode" />
+                <ScalarProperty Name="DesUsingDept" ColumnName="DesUsingDept" />
+                <ScalarProperty Name="DesLineCode" ColumnName="DesLineCode" />
+                <ScalarProperty Name="DesGroupLineACC" ColumnName="DesGroupLineACC" />
+                <ScalarProperty Name="DesLineEN" ColumnName="DesLineEN" />
+                <ScalarProperty Name="DesProcessCode" ColumnName="DesProcessCode" />
+                <ScalarProperty Name="MoveDate" ColumnName="MoveDate" />
+                <ScalarProperty Name="DocNo_Move" ColumnName="DocNo_Move" />
+                <ScalarProperty Name="DocNo_Disposal" ColumnName="DocNo_Disposal" />
+                <ScalarProperty Name="ACCDoc_Disposal" ColumnName="ACCDoc_Disposal" />
+                <ScalarProperty Name="DisposalDate" ColumnName="DisposalDate" />
+                <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+                <ScalarProperty Name="DisposalStatus" ColumnName="DisposalStatus" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M0005_ListMMTBDoc2">
+            <EntityTypeMapping TypeName="MMTB_TVCModel.M0005_ListMMTBDoc2">
+              <MappingFragment StoreEntitySet="M0005_ListMMTBDoc2">
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="EF_VendID" ColumnName="EF_VendID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="InvNo" ColumnName="InvNo" />
+                <ScalarProperty Name="InvDate" ColumnName="InvDate" />
+                <ScalarProperty Name="DisposalDate" ColumnName="DisposalDate" />
+                <ScalarProperty Name="ControlDept" ColumnName="ControlDept" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="M0005_ListMMTBDoc3">
+            <EntityTypeMapping TypeName="MMTB_TVCModel.M0005_ListMMTBDoc3">
+              <MappingFragment StoreEntitySet="M0005_ListMMTBDoc3">
+                <ScalarProperty Name="DocNo" ColumnName="DocNo" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="MoveDate" ColumnName="MoveDate" />
+                <ScalarProperty Name="ControlDept" ColumnName="ControlDept" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

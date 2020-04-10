@@ -443,6 +443,49 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString(DocNo);
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
+        //Lấy dữ liệu lên Form_M0005_Detail_Report
+        public DataTable GetInfo_M0005_NT_Report(string DocNo)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+			                 Doc1.DocNo
+		                    ,Doc1.InvNo
+		                    ,Doc1.ReceiptDate
+		                    ,Doc1.ControlDept
+                            ,MMTB.NameEN
+                            ,MMTB.Model
+                            ,MMTB.Series
+                            ,MMTB.Maker
+                            ,MMTB.ProDate
+                            ,MMTB.Code
+                            ,Line.OrgLineCode
+                            ,MMTB.Status
+                            ,MMTB.Result
+                            ,MMTB.Memo
+	                    FROM 
+                            M0005_ListMMTBDoc1  Doc1
+                        INNER JOIN
+                            M0005_ListMMTB		MMTB
+                        ON
+                            Doc1.DocNo		=   MMTB.DocNo
+                        INNER JOIN
+                        	M0005_ListMMTBLine	Line
+                        ON
+                            MMTB.DocNo		=   Line.DocNo_Confirm
+                        AND	MMTB.Code		=   Line.Code
+                        WHERE 
+                            Doc1.DocNo      =   @DocNo
+                        ORDER BY
+                            Code";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(DocNo);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
         //Lấy mã NCC từ Solomon
         public DataTable GetInfo_VendorSolomon()
         {
