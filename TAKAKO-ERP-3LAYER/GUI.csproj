@@ -160,6 +160,12 @@
     <Compile Include="View\Form_M0003_ProcessGroup.Designer.cs">
       <DependentUpon>Form_M0003_ProcessGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Form_M0005_Detail_ACC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0005_Detail_ACC.Designer.cs">
+      <DependentUpon>Form_M0005_Detail_ACC.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form_M0005_Detail_DD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,12 +177,6 @@
     </Compile>
     <Compile Include="View\Form_M0005_Detail_TL.Designer.cs">
       <DependentUpon>Form_M0005_Detail_TL.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_M0005_NT_Detail_Cancel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_M0005_NT_Detail_Cancel.Designer.cs">
-      <DependentUpon>Form_M0005_NT_Detail_Cancel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_M0006.cs">
       <SubType>Form</SubType>
@@ -422,14 +422,14 @@
     <EmbeddedResource Include="View\Form_M0004.resx">
       <DependentUpon>Form_M0004.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0005_Detail_ACC.resx">
+      <DependentUpon>Form_M0005_Detail_ACC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0005_Detail_DD.resx">
       <DependentUpon>Form_M0005_Detail_DD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0005_Detail_TL.resx">
       <DependentUpon>Form_M0005_Detail_TL.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_M0005_NT_Detail_Cancel.resx">
-      <DependentUpon>Form_M0005_NT_Detail_Cancel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0004_Detail.resx">
       <DependentUpon>Form_M0004_Detail.cs</DependentUpon>
