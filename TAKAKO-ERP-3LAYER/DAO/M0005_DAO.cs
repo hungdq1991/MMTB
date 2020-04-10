@@ -614,8 +614,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
 
-        //Lấy mã NCC từ Solomon
-        public DataTable GetInfo_VendorSolomon()
         //Lưu chứng từ thanh lý MMTB
         public bool Disposal_MMTB(DataTable listMMTB, DataTable listMMTBDoc2)
         {
