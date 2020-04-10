@@ -143,5 +143,13 @@ namespace TAKAKO_ERP_3LAYER.View
                 formDetail.ShowDialog();
             }
         }
+
+        private void BbiACC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0005_Detail_ACC formDetail = new Form_M0005_Detail_ACC())
+            {
+                formDetail.ShowDialog();
+            }
+        }
     }
 }

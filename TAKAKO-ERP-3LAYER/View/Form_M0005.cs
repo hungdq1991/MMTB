@@ -12,6 +12,7 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataTable _tempTable;
         public M0005_DAO M0005_DAO;
         public M0005_Line_DAO M0005_Line_DAO;
+        //Khởi tạo Form_M0005
         public Form_M0005()
         {
             InitializeComponent();
@@ -26,10 +27,10 @@ namespace TAKAKO_ERP_3LAYER.View
             //
             M0005_Line_DAO = new M0005_Line_DAO();
             //Load Init
-            GetInfo_Gridview();
+            GetInfo_advBandedGridView1();
         }
         //Load dữ liệu
-        private void GetInfo_Gridview()
+        private void GetInfo_advBandedGridView1()
         {
             try
             {
@@ -37,8 +38,8 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (_tempTable.Rows.Count > 0)
                 {
                     gridControl.DataSource = _tempTable;
-                    gridView.FormatRules[0].ApplyToRow = true;
-                    bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                    advBandedGridView1.FormatRules[0].ApplyToRow = true;
+                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                 }
             }
             catch (Exception ex)
@@ -47,27 +48,30 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
         //Thay đổi thông tin số lượng records khi filter
-        private void GridView_ColumnFilterChanged(object sender, EventArgs e)
+        private void advBandedGridView1_ColumnFilterChanged(object sender, EventArgs e)
         {
-            bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+            bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
         }
         //Lọc lại danh sách MMTB đã thanh lý
-        private void BarCheckItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bCheck_Disposal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (barCheckItem1.Checked)
+            if (bCheck_Disposal.Checked)
             { 
                 gridControl.DataSource = _tempTable.AsEnumerable()
-                    .Where(row => row.Field<DateTime?>("DisposalDate") != null).CopyToDataTable();
-            } else
+                    .Where(row => row.Field<string>("DocNo_Disposal") != null ).CopyToDataTable();
+                bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+            }
+            else
             {
                 gridControl.DataSource = _tempTable;
+                bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
             }
         }
         //Xem chứng từ nghiệm thu MMTB
         private void gridControl_DoubleClick(object sender, EventArgs e)
         {
-            //String param_DocNo = gridView.GetFocusedDataRow()["DocNo_Confirm"].ToString();
-            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(gridView.GetFocusedDataRow()["DocNo"].ToString()))
+            //String param_DocNo = advBandedGridView1.GetFocusedDataRow()["DocNo_Confirm"].ToString();
+            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(advBandedGridView1.GetFocusedDataRow()["DocNo"].ToString()))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
@@ -91,6 +95,17 @@ namespace TAKAKO_ERP_3LAYER.View
                 formDetail.StartPosition = FormStartPosition.CenterParent;
             }
         }
-
+        //Hiển thị dữ liệu trên cột, ngày tháng không có
+        private void AdvBandedGridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "ProDate" && e.DisplayText == "01/01/1900")
+            {
+                e.DisplayText = "";
+            }
+            if (e.Column.FieldName == "DisposalDate" && e.DisplayText == "01/01/1900")
+            {
+                e.DisplayText = "";
+            }
+        }
     }
 }

@@ -194,11 +194,13 @@ namespace TAKAKO_ERP_3LAYER.View
             _DetailTable.Columns.Add("DocNo", typeof(string));
             _DetailTable.Columns.Add("ControlDept", typeof(string));
         }
+        //Xóa dòng trên gridView
         private void Define_DeleteRowTable()
         {
             _DeleteRowTable.Columns.Add("Code", typeof(string));
         }
         #region Add data to control
+        //Điền dữ liệu bộ phận
         private void AddValue_sLook_ControlDept()
         {
             DataTable tempTable = new DataTable();
@@ -333,6 +335,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Xóa dữ liệu header & gridView
         private void Clear_Data()
         {
             sLook_DocNo.EditValue = null;
@@ -364,7 +367,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 repo_sLookUp_Code.DisplayMember = "Code";
             }
         }
-        //Hiển thị thông tin MMTB chưa thanh lý sau khi chọn
+        //Hiển thị thông tin MMTB chưa thanh lý sau khi chọn lên gridView
         private void repo_sLookUp_Code_CloseUp(object sender, CloseUpEventArgs e)
         {
             if (e.CloseMode == PopupCloseMode.Normal)
@@ -479,9 +482,20 @@ namespace TAKAKO_ERP_3LAYER.View
             this.Close();
         }
         
-
         //Click chuột phải chọn Delete row
         private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DataRow dtrow = _DeleteRowTable.NewRow();
+            dtrow["Code"] = gridView.GetRowCellValue(gridView.FocusedRowHandle, "Code");
+            _DeleteRowTable.Rows.Add(dtrow);
+
+            //
+            var row = gridView.FocusedRowHandle;
+            gridView.DeleteRow(row);
+            _DetailTable.AcceptChanges();
+        }
+        //Click nút Delete row
+        private void Bbi_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
         {
             DataRow dtrow = _DeleteRowTable.NewRow();
             dtrow["Code"] = gridView.GetRowCellValue(gridView.FocusedRowHandle, "Code");
@@ -520,8 +534,6 @@ namespace TAKAKO_ERP_3LAYER.View
                             if (M0005_DAO.Disposal_MMTB(_DetailTable, GetValue_Header()))
                             {
                                 MessageBox.Show("Đã lưu thành công chứng từ nghiệm thu!", "Thông báo",     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Clear_Data();
-                                Add_Value_sLookUp_DocNo();  
                             }
                         }
                         if (cbx_Status.SelectedIndex == 1)
@@ -529,10 +541,11 @@ namespace TAKAKO_ERP_3LAYER.View
                             if (M0005_DAO.Confirm_Disposal_MMTB(_DetailTable, GetValue_Header()))
                             {
                                 MessageBox.Show("Đã lưu thành công chứng từ nghiệm thu!", "Thông báo",             MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                Clear_Data();
-                                Add_Value_sLookUp_DocNo();
                             }
                         }
+                        Clear_Data();
+                        Add_Value_sLookUp_DocNo();
+                        gridView.AddNewRow();
                     }
                     catch (Exception ex)
                     {
@@ -580,8 +593,6 @@ namespace TAKAKO_ERP_3LAYER.View
             for (int rows = 0; rows < gridView.RowCount; rows++)
             {
                 string _disposalMemo;
-
-                //Disposal memo
                 _disposalMemo = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["DisposalMemo"]));
                 if (String.IsNullOrEmpty(_disposalMemo))
                 {
@@ -592,10 +603,22 @@ namespace TAKAKO_ERP_3LAYER.View
                     return false;
                 }
             }
+            for (int rows = 0; rows < gridView.RowCount; rows++)
+            {
+                string _code;
+                _code = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["Code"]));
+                if (String.IsNullOrEmpty(_code))
+                {
+                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã MMTB\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    gridView.Focus();
+                    gridView.FocusedRowHandle = rows;
+                    gridView.FocusedColumn = gridView.Columns["Code"];
+                    return false;
+                }
+            }
             return true;
         }
-
-        #region event Gridview
+        #region event Gridview - hiển thị pop up
         private void gridControl_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Right) return;
@@ -614,7 +637,7 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
         #endregion
-
+        //Thông tin cột Code (TextEdit / Repo_sLookUp_Code)
         private void GridView_CustomRowCellEditForEditing(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
             if (e.Column == gridCol_Code)
@@ -622,5 +645,6 @@ namespace TAKAKO_ERP_3LAYER.View
                 e.RepositoryItem = repo_sLookUp_Code;
             }
         }
+
     }
 }

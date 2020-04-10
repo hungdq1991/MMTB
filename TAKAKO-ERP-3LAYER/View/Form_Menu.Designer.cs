@@ -46,11 +46,12 @@
             this.bbiOil = new DevExpress.XtraBars.BarButtonItem();
             this.bbiStock = new DevExpress.XtraBars.BarButtonItem();
             this.bbiStop = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTech = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiACC = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiTech = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,9 +77,10 @@
             this.bbiOil,
             this.bbiStock,
             this.bbiStop,
-            this.bbiTech});
+            this.bbiTech,
+            this.bbiACC});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 21;
+            this.mainRibbonControl.MaxItemId = 22;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage});
@@ -99,7 +101,7 @@
             // 
             this.bbiGroup.Caption = "Danh mục phân nhóm Đại-Trung-Tiểu";
             this.bbiGroup.Id = 3;
-            this.bbiGroup.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSaveAndClose.ImageOptions.SvgImage")));
+            this.bbiGroup.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiGroup.ImageOptions.SvgImage")));
             this.bbiGroup.Name = "bbiGroup";
             this.bbiGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiGroup_ItemClick);
             // 
@@ -107,8 +109,8 @@
             // 
             this.bbiMakerModel.Caption = "Danh mục Maker-Model MMTB";
             this.bbiMakerModel.Id = 4;
-            this.bbiMakerModel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSaveAndNew.ImageOptions.Image")));
-            this.bbiMakerModel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSaveAndNew.ImageOptions.LargeImage")));
+            this.bbiMakerModel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiMakerModel.ImageOptions.Image")));
+            this.bbiMakerModel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiMakerModel.ImageOptions.LargeImage")));
             this.bbiMakerModel.Name = "bbiMakerModel";
             this.bbiMakerModel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiMakerModel_ItemClick);
             // 
@@ -116,8 +118,8 @@
             // 
             this.bbiLine.Caption = "Danh mục Line SX";
             this.bbiLine.Id = 5;
-            this.bbiLine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReset.ImageOptions.Image")));
-            this.bbiLine.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReset.ImageOptions.LargeImage")));
+            this.bbiLine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiLine.ImageOptions.Image")));
+            this.bbiLine.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiLine.ImageOptions.LargeImage")));
             this.bbiLine.Name = "bbiLine";
             this.bbiLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiLine_ItemClick);
             // 
@@ -125,8 +127,8 @@
             // 
             this.bbiProcess.Caption = "Danh mục Process";
             this.bbiProcess.Id = 6;
-            this.bbiProcess.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDelete.ImageOptions.Image")));
-            this.bbiProcess.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDelete.ImageOptions.LargeImage")));
+            this.bbiProcess.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiProcess.ImageOptions.Image")));
+            this.bbiProcess.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiProcess.ImageOptions.LargeImage")));
             this.bbiProcess.Name = "bbiProcess";
             this.bbiProcess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiProcess_ItemClick);
             // 
@@ -141,8 +143,8 @@
             // 
             this.bbiList.Caption = "Danh sách MMTB";
             this.bbiList.Id = 10;
-            this.bbiList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.bbiList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiList.ImageOptions.Image")));
+            this.bbiList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiList.ImageOptions.LargeImage")));
             this.bbiList.Name = "bbiList";
             this.bbiList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiList_ItemClick);
             // 
@@ -150,7 +152,8 @@
             // 
             this.bbiConfirm.Caption = "Nghiệm thu MMTB";
             this.bbiConfirm.Id = 11;
-            this.bbiConfirm.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.bbiConfirm.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiConfirm.ImageOptions.Image")));
+            this.bbiConfirm.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiConfirm.ImageOptions.LargeImage")));
             this.bbiConfirm.Name = "bbiConfirm";
             this.bbiConfirm.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiConfirm_ItemClick);
             // 
@@ -158,7 +161,7 @@
             // 
             this.bbiPartList.Caption = "Danh mục LK, Pin, Dầu";
             this.bbiPartList.Id = 12;
-            this.bbiPartList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.bbiPartList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPartList.ImageOptions.SvgImage")));
             this.bbiPartList.Name = "bbiPartList";
             this.bbiPartList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiPartList_ItemClick);
             // 
@@ -166,7 +169,7 @@
             // 
             this.bbiPart.Caption = "LK";
             this.bbiPart.Id = 13;
-            this.bbiPart.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
+            this.bbiPart.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPart.ImageOptions.SvgImage")));
             this.bbiPart.Name = "bbiPart";
             this.bbiPart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiPart_ItemClick);
             // 
@@ -174,8 +177,8 @@
             // 
             this.bbiDisposal.Caption = "Thanh lý MMTB";
             this.bbiDisposal.Id = 14;
-            this.bbiDisposal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.bbiDisposal.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.bbiDisposal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDisposal.ImageOptions.Image")));
+            this.bbiDisposal.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDisposal.ImageOptions.LargeImage")));
             this.bbiDisposal.Name = "bbiDisposal";
             this.bbiDisposal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiDisposal_ItemClick);
             // 
@@ -183,7 +186,7 @@
             // 
             this.bbiMoving.Caption = "Di dời MMTB";
             this.bbiMoving.Id = 15;
-            this.bbiMoving.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem6.ImageOptions.SvgImage")));
+            this.bbiMoving.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiMoving.ImageOptions.SvgImage")));
             this.bbiMoving.Name = "bbiMoving";
             this.bbiMoving.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiMoving_ItemClick);
             // 
@@ -191,7 +194,7 @@
             // 
             this.bbiBattery.Caption = "Pin";
             this.bbiBattery.Id = 16;
-            this.bbiBattery.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem7.ImageOptions.SvgImage")));
+            this.bbiBattery.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiBattery.ImageOptions.SvgImage")));
             this.bbiBattery.Name = "bbiBattery";
             this.bbiBattery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiBattery_ItemClick);
             // 
@@ -199,7 +202,7 @@
             // 
             this.bbiOil.Caption = "Dầu";
             this.bbiOil.Id = 17;
-            this.bbiOil.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem8.ImageOptions.SvgImage")));
+            this.bbiOil.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiOil.ImageOptions.SvgImage")));
             this.bbiOil.Name = "bbiOil";
             this.bbiOil.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiOil_ItemClick);
             // 
@@ -207,7 +210,7 @@
             // 
             this.bbiStock.Caption = "Tồn kho LK";
             this.bbiStock.Id = 18;
-            this.bbiStock.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem9.ImageOptions.SvgImage")));
+            this.bbiStock.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiStock.ImageOptions.SvgImage")));
             this.bbiStock.Name = "bbiStock";
             this.bbiStock.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiStock_ItemClick);
             // 
@@ -215,9 +218,27 @@
             // 
             this.bbiStop.Caption = "Danh mục LK ngưng SX";
             this.bbiStop.Id = 19;
-            this.bbiStop.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem10.ImageOptions.SvgImage")));
+            this.bbiStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiStop.ImageOptions.Image")));
+            this.bbiStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiStop.ImageOptions.LargeImage")));
             this.bbiStop.Name = "bbiStop";
             this.bbiStop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiStop_ItemClick);
+            // 
+            // bbiTech
+            // 
+            this.bbiTech.Caption = "Thông số kỹ thuật";
+            this.bbiTech.Id = 20;
+            this.bbiTech.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiTech.ImageOptions.SvgImage")));
+            this.bbiTech.Name = "bbiTech";
+            this.bbiTech.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiTech_ItemClick);
+            // 
+            // bbiACC
+            // 
+            this.bbiACC.Caption = "ACC bổ sung thông tin";
+            this.bbiACC.Id = 21;
+            this.bbiACC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.bbiACC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiACC.Name = "bbiACC";
+            this.bbiACC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiACC_ItemClick);
             // 
             // mainRibbonPage
             // 
@@ -249,6 +270,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiMoving);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiTech);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiACC);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Quản lý MMTB";
             // 
@@ -261,14 +283,6 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiStop);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Quản lý LK, Pin, Dầu";
-            // 
-            // bbiTech
-            // 
-            this.bbiTech.Caption = "Thông số kỹ thuật";
-            this.bbiTech.Id = 20;
-            this.bbiTech.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.bbiTech.Name = "bbiTech";
-            this.bbiTech.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiTech_ItemClick);
             // 
             // Form_Menu
             // 
@@ -308,5 +322,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiStock;
         private DevExpress.XtraBars.BarButtonItem bbiStop;
         private DevExpress.XtraBars.BarButtonItem bbiTech;
+        private DevExpress.XtraBars.BarButtonItem bbiACC;
     }
 }

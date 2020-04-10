@@ -245,7 +245,7 @@ namespace TAKAKO_ERP_3LAYER
             return true;
         }
         //Thanh lý MMTB_Chưa xác nhận
-        public bool Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
+        public bool Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc3)
         {
             conn.Open();
             var cmd = new SqlCommand("SP_TVC_TEMP_MOVE_MMTB", conn)
@@ -256,7 +256,7 @@ namespace TAKAKO_ERP_3LAYER
             cmd.CommandTimeout = 300;
             //Add param
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
-            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc3", _listMMTBDoc2);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc3", _listMMTBDoc3);
 
             //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
             //returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -282,7 +282,7 @@ namespace TAKAKO_ERP_3LAYER
             return true;
         }
         //Di dời MMTB_Xác nhận
-        public bool Confirm_Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
+        public bool Confirm_Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc3)
         {
             conn.Open();
             var cmd = new SqlCommand("SP_TVC_MOVE_MMTB", conn)
@@ -293,7 +293,7 @@ namespace TAKAKO_ERP_3LAYER
             cmd.CommandTimeout = 300;
             //Add param
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
-            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc3", _listMMTBDoc2);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc3", _listMMTBDoc3);
 
             //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
             //returnParameter.Direction = ParameterDirection.ReturnValue;
@@ -318,6 +318,42 @@ namespace TAKAKO_ERP_3LAYER
             //return result;
             return true;
         }
+        //ACC bổ sung thông tin MMTB
+        public bool ACC_Update_MMTB(DataTable _listMMTB)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_UPDATE_MMTB_ACC", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
+            //returnParameter.Direction = ParameterDirection.ReturnValue;
+            //string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                //result = returnParameter.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+
         /// <method>
         /// SP Insert Invoice
         /// </method>

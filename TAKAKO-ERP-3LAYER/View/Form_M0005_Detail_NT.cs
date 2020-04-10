@@ -288,6 +288,7 @@ namespace TAKAKO_ERP_3LAYER.View
             {
                 InitValue = true;
                 Clear_Data();
+                gridView.AddNewRow();
             }
         }
 
@@ -382,6 +383,7 @@ namespace TAKAKO_ERP_3LAYER.View
                             MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
                                 , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_Data();
+                            gridView.AddNewRow();
                         }
                         else
                         {
@@ -732,19 +734,27 @@ namespace TAKAKO_ERP_3LAYER.View
         //Các tình huống cần kiểm tra lỗi
         private Boolean CheckError()
         {
+            //NCC
+            if (String.IsNullOrEmpty(sLook_Supplier.Text.Trim()))
+            {
+                MessageBox.Show("Hãy nhập \"NCC\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sLook_Supplier.Focus();
+                return false;
+            }
+            //Số hóa đơn
             if (String.IsNullOrEmpty(txt_InvNo.Text.Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Số hóa đơn\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_InvNo.Focus();
                 return false;
             }
+            //Bộ phận quản lý
             if (String.IsNullOrEmpty(sLook_ControlDept.Text.Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Bộ phận quản lý MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sLook_ControlDept.Focus();
                 return false;
             }
-
             for (int rows = 0; rows < gridView.RowCount; rows++)
             {
                 string _code, _nameEN, _series, _orgCountry, _orgLineCode;
