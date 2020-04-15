@@ -17,5 +17,9 @@ namespace TAKAKO_ERP_3LAYER.Report
             MMTB_DataSetTableAdapters.mmtb_NT_TableAdapter mmtb_NT_TableAdapter = new MMTB_DataSetTableAdapters.mmtb_NT_TableAdapter();
             mmtb_NT_TableAdapter.Fill(this.mmtB_DataSet1.MMTB_NT_Table, DocNo);
         }
+
+        private void M0005_NT_Report_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+        }
     }
 }
