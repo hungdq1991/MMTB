@@ -353,7 +353,81 @@ namespace TAKAKO_ERP_3LAYER
             //return result;
             return true;
         }
+        //Bổ sung thông tin MMTB không sử dụng
+        public string Update_MMTB_No_Used(DataTable _listMMTB, DataTable _listDelete, DataTable _listMMTBDoc4)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_MMTB_NO_USED", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
 
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblList_Code_MMTB", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc4", _listMMTBDoc4);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
+        //Bổ sung danh mục LK, dầu, pin
+        public bool Update_M0012(DataTable _listM0012)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_UPDATE_M0012", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListM0012", _listM0012);
+            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
+            //returnParameter.Direction = ParameterDirection.ReturnValue;
+            //string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                //result = returnParameter.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
         /// <method>
         /// SP Insert Invoice
         /// </method>

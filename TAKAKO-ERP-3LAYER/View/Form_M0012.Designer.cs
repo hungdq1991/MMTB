@@ -48,6 +48,8 @@
             this.gridCol_Group1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Group2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Maker = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_MinimumQty = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_Lifetime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_PurUnit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Unit = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_UnitMulDiv = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,8 +59,6 @@
             this.gridCol_EffDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_SupplierID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Supplier = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_MinimumQty = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_LifeTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_PurCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_WH1Code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_WH2Code = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -185,8 +185,10 @@
             this.gridCol_Group1,
             this.gridCol_Group2,
             this.gridCol_Maker,
-            this.gridCol_PurUnit,
+            this.gridCol_MinimumQty,
+            this.gridCol_Lifetime,
             this.gridCol_Unit,
+            this.gridCol_PurUnit,
             this.gridCol_UnitMulDiv,
             this.gridCol_CnvtQty,
             this.gridCol_PriceRef,
@@ -194,8 +196,6 @@
             this.gridCol_EffDate,
             this.gridCol_SupplierID,
             this.gridCol_Supplier,
-            this.gridCol_MinimumQty,
-            this.gridCol_LifeTime,
             this.gridCol_PurCode,
             this.gridCol_WH1Code,
             this.gridCol_WH2Code,
@@ -353,6 +353,43 @@
             this.gridCol_Maker.VisibleIndex = 6;
             this.gridCol_Maker.Width = 120;
             // 
+            // gridCol_MinimumQty
+            // 
+            this.gridCol_MinimumQty.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_MinimumQty.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_MinimumQty.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_MinimumQty.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_MinimumQty.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_MinimumQty.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_MinimumQty.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_MinimumQty.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_MinimumQty.Caption = "Tồn kho tối thiểu";
+            this.gridCol_MinimumQty.DisplayFormat.FormatString = "#,###";
+            this.gridCol_MinimumQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridCol_MinimumQty.FieldName = "MinimumQty";
+            this.gridCol_MinimumQty.Name = "gridCol_MinimumQty";
+            this.gridCol_MinimumQty.Visible = true;
+            this.gridCol_MinimumQty.VisibleIndex = 8;
+            this.gridCol_MinimumQty.Width = 90;
+            // 
+            // gridCol_Lifetime
+            // 
+            this.gridCol_Lifetime.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Lifetime.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_Lifetime.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_Lifetime.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Lifetime.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_Lifetime.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_Lifetime.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_Lifetime.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_Lifetime.Caption = "Tuổi thọ (tháng)";
+            this.gridCol_Lifetime.DisplayFormat.FormatString = "#,###";
+            this.gridCol_Lifetime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridCol_Lifetime.FieldName = "Lifetime";
+            this.gridCol_Lifetime.Name = "gridCol_Lifetime";
+            this.gridCol_Lifetime.Visible = true;
+            this.gridCol_Lifetime.VisibleIndex = 7;
+            // 
             // gridCol_PurUnit
             // 
             this.gridCol_PurUnit.AppearanceCell.ForeColor = System.Drawing.Color.Black;
@@ -367,7 +404,7 @@
             this.gridCol_PurUnit.FieldName = "EF_PurUnit";
             this.gridCol_PurUnit.Name = "gridCol_PurUnit";
             this.gridCol_PurUnit.Visible = true;
-            this.gridCol_PurUnit.VisibleIndex = 8;
+            this.gridCol_PurUnit.VisibleIndex = 10;
             this.gridCol_PurUnit.Width = 60;
             // 
             // gridCol_Unit
@@ -384,7 +421,7 @@
             this.gridCol_Unit.FieldName = "Unit";
             this.gridCol_Unit.Name = "gridCol_Unit";
             this.gridCol_Unit.Visible = true;
-            this.gridCol_Unit.VisibleIndex = 7;
+            this.gridCol_Unit.VisibleIndex = 9;
             this.gridCol_Unit.Width = 60;
             // 
             // gridCol_UnitMulDiv
@@ -401,7 +438,7 @@
             this.gridCol_UnitMulDiv.FieldName = "UnitMulDiv";
             this.gridCol_UnitMulDiv.Name = "gridCol_UnitMulDiv";
             this.gridCol_UnitMulDiv.Visible = true;
-            this.gridCol_UnitMulDiv.VisibleIndex = 9;
+            this.gridCol_UnitMulDiv.VisibleIndex = 11;
             this.gridCol_UnitMulDiv.Width = 60;
             // 
             // gridCol_CnvtQty
@@ -420,7 +457,7 @@
             this.gridCol_CnvtQty.FieldName = "CnvtQty";
             this.gridCol_CnvtQty.Name = "gridCol_CnvtQty";
             this.gridCol_CnvtQty.Visible = true;
-            this.gridCol_CnvtQty.VisibleIndex = 10;
+            this.gridCol_CnvtQty.VisibleIndex = 12;
             this.gridCol_CnvtQty.Width = 60;
             // 
             // gridCol_PriceRef
@@ -439,7 +476,7 @@
             this.gridCol_PriceRef.FieldName = "Price";
             this.gridCol_PriceRef.Name = "gridCol_PriceRef";
             this.gridCol_PriceRef.Visible = true;
-            this.gridCol_PriceRef.VisibleIndex = 11;
+            this.gridCol_PriceRef.VisibleIndex = 13;
             this.gridCol_PriceRef.Width = 90;
             // 
             // gridCol_Cury
@@ -458,7 +495,7 @@
             this.gridCol_Cury.FieldName = "Cury";
             this.gridCol_Cury.Name = "gridCol_Cury";
             this.gridCol_Cury.Visible = true;
-            this.gridCol_Cury.VisibleIndex = 12;
+            this.gridCol_Cury.VisibleIndex = 14;
             // 
             // gridCol_EffDate
             // 
@@ -476,7 +513,7 @@
             this.gridCol_EffDate.FieldName = "EffDate";
             this.gridCol_EffDate.Name = "gridCol_EffDate";
             this.gridCol_EffDate.Visible = true;
-            this.gridCol_EffDate.VisibleIndex = 13;
+            this.gridCol_EffDate.VisibleIndex = 15;
             // 
             // gridCol_SupplierID
             // 
@@ -494,7 +531,7 @@
             this.gridCol_SupplierID.FieldName = "EF_VendID";
             this.gridCol_SupplierID.Name = "gridCol_SupplierID";
             this.gridCol_SupplierID.Visible = true;
-            this.gridCol_SupplierID.VisibleIndex = 14;
+            this.gridCol_SupplierID.VisibleIndex = 16;
             // 
             // gridCol_Supplier
             // 
@@ -510,44 +547,7 @@
             this.gridCol_Supplier.FieldName = "EF_VendName";
             this.gridCol_Supplier.Name = "gridCol_Supplier";
             this.gridCol_Supplier.Visible = true;
-            this.gridCol_Supplier.VisibleIndex = 15;
-            // 
-            // gridCol_MinimumQty
-            // 
-            this.gridCol_MinimumQty.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_MinimumQty.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_MinimumQty.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_MinimumQty.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_MinimumQty.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_MinimumQty.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_MinimumQty.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_MinimumQty.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_MinimumQty.Caption = "Tồn kho tối thiểu";
-            this.gridCol_MinimumQty.DisplayFormat.FormatString = "#,###";
-            this.gridCol_MinimumQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridCol_MinimumQty.FieldName = "MinimumQty";
-            this.gridCol_MinimumQty.Name = "gridCol_MinimumQty";
-            this.gridCol_MinimumQty.Visible = true;
-            this.gridCol_MinimumQty.VisibleIndex = 16;
-            this.gridCol_MinimumQty.Width = 90;
-            // 
-            // gridCol_LifeTime
-            // 
-            this.gridCol_LifeTime.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_LifeTime.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_LifeTime.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_LifeTime.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_LifeTime.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_LifeTime.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_LifeTime.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_LifeTime.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_LifeTime.Caption = "Tuổi thọ (tháng)";
-            this.gridCol_LifeTime.DisplayFormat.FormatString = "#,###";
-            this.gridCol_LifeTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridCol_LifeTime.FieldName = "LifeTime";
-            this.gridCol_LifeTime.Name = "gridCol_LifeTime";
-            this.gridCol_LifeTime.Visible = true;
-            this.gridCol_LifeTime.VisibleIndex = 17;
+            this.gridCol_Supplier.VisibleIndex = 17;
             // 
             // gridCol_PurCode
             // 
@@ -701,7 +701,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_CnvtQty;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_PriceRef;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_MinimumQty;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_LifeTime;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_Lifetime;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_PurCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_WH1Code;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_WH2Code;

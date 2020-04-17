@@ -43,7 +43,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         FROM
                         	M0001_Name";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@DueDateFrom", SqlDbType.Text);
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);

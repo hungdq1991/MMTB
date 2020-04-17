@@ -7,6 +7,8 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.Report;
+using DevExpress.XtraReports.UI;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -203,14 +205,14 @@ namespace TAKAKO_ERP_3LAYER.View
         //Điền dữ liệu bộ phận
         private void AddValue_sLook_ControlDept()
         {
-            DataTable tempTable = new DataTable();
-            tempTable = M0005_DAO.GetInfo_ControlDept();
-            if (tempTable.Rows.Count > 0)
-            {
-                sLook_ControlDept.Properties.DataSource = tempTable;
-                sLook_ControlDept.Properties.ValueMember = "SectionID";
-                sLook_ControlDept.Properties.DisplayMember = "SectionID";
-            }
+            //DataTable tempTable = new DataTable();
+            //tempTable = M0005_DAO.GetInfo_ControlDept();
+            //if (tempTable.Rows.Count > 0)
+            //{
+            //    sLook_ControlDept.Properties.DataSource = tempTable;
+            //    sLook_ControlDept.Properties.ValueMember = "SectionID";
+            //    sLook_ControlDept.Properties.DisplayMember = "SectionID";
+            //}
         }
         //Điền dữ liệu cho ô Số chứng từ
         private void Add_Value_sLookUp_DocNo()
@@ -232,18 +234,18 @@ namespace TAKAKO_ERP_3LAYER.View
         //Điền dữ liệu cho ô Supplier
         private void AddValue_sLookUp_Supplier()
         {
-            DataTable tempTable = new DataTable();
-            tempTable = M0005_DAO.GetInfo_VendorSolomon();
-            if (tempTable.Rows.Count > 0)
-            {
-                sLook_Supplier.Properties.DataSource = tempTable;
-                sLook_Supplier.Properties.ValueMember = "EF_VendID";
-                sLook_Supplier.Properties.DisplayMember = "EF_VendID";
-            }
-            else
-            {
-                sLook_Supplier.Properties.DataSource = "";
-            }
+            //DataTable tempTable = new DataTable();
+            //tempTable = M0005_DAO.GetInfo_VendorSolomon();
+            //if (tempTable.Rows.Count > 0)
+            //{
+            //    sLook_Supplier.Properties.DataSource = tempTable;
+            //    sLook_Supplier.Properties.ValueMember = "EF_VendID";
+            //    sLook_Supplier.Properties.DisplayMember = "EF_VendID";
+            //}
+            //else
+            //{
+            //    sLook_Supplier.Properties.DataSource = "";
+            //}
         }
         #endregion
 
@@ -645,6 +647,21 @@ namespace TAKAKO_ERP_3LAYER.View
                 e.RepositoryItem = repo_sLookUp_Code;
             }
         }
-
+        //Xuất báo cáo thanh lý
+        private void BbiReport_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            int docStatus = cbx_Status.SelectedIndex;
+            if (docStatus == 1)
+            { 
+            string DocNo = sLook_DocNo.EditValue.ToString();
+            M0005_TL_Report rpt_TL = new M0005_TL_Report(DocNo);
+            ReportPrintTool print = new ReportPrintTool(rpt_TL);
+            rpt_TL.ShowPreviewDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chứng từ thanh lý chưa được xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

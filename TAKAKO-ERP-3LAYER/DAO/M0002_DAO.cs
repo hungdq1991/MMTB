@@ -43,7 +43,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         FROM 
 	                        M0002_GroupName";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@DueDateFrom", SqlDbType.Text);
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
@@ -385,6 +385,32 @@ namespace TAKAKO_ERP_3LAYER.DAO
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ClassifyID", SqlDbType.Int);
             sqlParameters[0].Value = Convert.ToString(ClassifyID);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Load dữ liệu từ table M0002
+        public DataTable GetInfo_M0002_LK()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+	                         NameEN
+	                        ,NameVN
+	                        ,NameJP
+	                        ,Max(ApplyDate)
+                        FROM 
+	                        M0002_GroupName
+                        WHERE 
+                                ClassifyID in (1,3)
+                            and InActive = 0
+                        GROUP BY
+                        	 NameEN
+	                        ,NameVN
+	                        ,NameJP";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }

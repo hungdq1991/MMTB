@@ -52,20 +52,51 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
         }
-        //Lọc lại danh sách MMTB đã thanh lý
-        private void bCheck_Disposal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        //Lọc lại danh sách MMTB đã thanh lý/ngưng sử dụng
+        private void filter_List()
         {
-            if (bCheck_Disposal.Checked)
-            { 
+            Boolean _disposal = bCheck_Disposal.Checked;
+            Boolean _noUsed = bCheck_NoUsed.Checked;
+            if ( _disposal == true && _noUsed == true)
+            {
                 gridControl.DataSource = _tempTable.AsEnumerable()
-                    .Where(row => row.Field<string>("DocNo_Disposal") != null ).CopyToDataTable();
+                        .Where(row => row.Field<string>("DocNo_Disposal") != null && row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
                 bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
             }
-            else
+            if (_disposal == false && _noUsed == true)
+            {
+                DataTable _tempTable = M0005_DAO.GetInfo_M0005_NoUsed();
+                if (_tempTable.Rows.Count > 0)
+                {
+                    gridControl.DataSource = _tempTable.AsEnumerable().Where(row => row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
+                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                }
+                else
+                {
+                    MessageBox.Show("Không có MMTB không sử dụng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            if (_disposal == true && _noUsed == false)
+            {
+                gridControl.DataSource = _tempTable.AsEnumerable()
+                        .Where(row => row.Field<string>("DocNo_Disposal") != null).CopyToDataTable();
+                bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+            }
+            if (_disposal == false && _noUsed == false)
             {
                 gridControl.DataSource = _tempTable;
                 bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
             }
+        }
+        //Disposal check changed
+        private void BCheck_Disposal_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            filter_List();
+        }
+        //NoUsed check changed
+        private void BCheck_NoUsed_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            filter_List();
         }
         //Xem chứng từ nghiệm thu MMTB
         private void gridControl_DoubleClick(object sender, EventArgs e)
@@ -90,6 +121,15 @@ namespace TAKAKO_ERP_3LAYER.View
         private void BbiDisposal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             using (Form_M0005_Detail_TL formDetail = new Form_M0005_Detail_TL())
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
+            }
+        }
+        //Tạo chứng từ di dời
+        private void BbiMoving_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0005_Detail_DD formDetail = new Form_M0005_Detail_DD())
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
