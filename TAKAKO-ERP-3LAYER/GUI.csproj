@@ -112,13 +112,6 @@
     <Compile Include="BUS\SEARCH_BUS.cs" />
     <Compile Include="BUS\USER_BUS.cs" />
     <Compile Include="Common.cs" />
-    <Compile Include="DAL\InvDetail_DAL.cs" />
-    <Compile Include="DAL\InvMS_DAL.cs" />
-    <Compile Include="DAL\PLDetail_DAL.cs" />
-    <Compile Include="DAL\PO_DAL.cs" />
-    <Compile Include="DAL\SYSTEM_DAL.cs" />
-    <Compile Include="DAL\USER_DAL.cs" />
-    <Compile Include="DAO\EXPORT_DAO.cs" />
     <Compile Include="DAO\M0002_DAO.cs" />
     <Compile Include="DAO\M0001_DAO.cs" />
     <Compile Include="DAO\M0003_ProcessGroup_DAO.cs" />
@@ -138,13 +131,7 @@
     <Compile Include="DAO\M0015_DAO.cs" />
     <Compile Include="DAO\M0018_DAO.cs" />
     <Compile Include="DAO\M01_Session_DAO.cs" />
-    <Compile Include="DAO\SHIPPING_DAO.cs" />
-    <Compile Include="DAO\INV_DAO.cs" />
-    <Compile Include="DAO\LOG_DAO.cs" />
-    <Compile Include="DAO\PO_DAO.cs" />
-    <Compile Include="DAO\SEARCH_DAO.cs" />
     <Compile Include="DAO\SYS_USER_DAO.cs" />
-    <Compile Include="DAO\USER_DAO.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="M0005_ListMMTB.cs">
       <DependentUpon>MMTB_Model.tt</DependentUpon>
@@ -641,6 +628,7 @@
     <None Include="Resources\Zoom-full1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DAL\" />
     <Folder Include="DataSet\Tables\" />
   </ItemGroup>
   <ItemGroup>
