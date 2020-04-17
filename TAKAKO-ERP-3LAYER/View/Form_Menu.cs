@@ -151,5 +151,10 @@ namespace TAKAKO_ERP_3LAYER.View
                 formDetail.ShowDialog();
             }
         }
+
+        private void Form_Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

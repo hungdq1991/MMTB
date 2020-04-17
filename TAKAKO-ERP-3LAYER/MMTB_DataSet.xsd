@@ -12,7 +12,8 @@
               <DbSource ConnectionRef="MMTB_TVCConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT        D.DocNo, D.ReceiptDate, D.InvNo, D.ConfirmDate, D.ControlDept, M.NameEN, M.Model, M.Series, M.Maker, M.ProDate, M.Code, L.OrgUsingDept, M.Status, M.Result, M.Memo
+                    <CommandText>SELECT        D.DocNo, D.ReceiptDate, D.InvNo, D.ConfirmDate, D.ControlDept, M.NameEN, M.Model, M.Series, M.Maker, M.ProDate, M.Code, L.OrgUsingDept, 
+                         CASE WHEN M.Status = 0 THEN N'Mới' WHEN M.Status = 1 THEN N'Cũ' END AS Status, CASE WHEN M.Result = 0 THEN N'Đạt (OK)' WHEN M.Result = 1 THEN N'Không đạt (NG)' END AS Result, M.Memo
 FROM            M0005_ListMMTBDoc1 AS D INNER JOIN
                          M0005_ListMMTB AS M ON D.DocNo = M.DocNo LEFT OUTER JOIN
                              (SELECT        DocNo_Confirm, Code, OrgUsingDept, MIN(ApplyDate) AS ApplyDate
@@ -38,12 +39,12 @@ ORDER BY M.Code</CommandText>
               <Mapping SourceColumn="Maker" DataSetColumn="Maker" />
               <Mapping SourceColumn="ProDate" DataSetColumn="ProDate" />
               <Mapping SourceColumn="Code" DataSetColumn="Code" />
-              <Mapping SourceColumn="Status" DataSetColumn="Status" />
-              <Mapping SourceColumn="Result" DataSetColumn="Result" />
               <Mapping SourceColumn="Memo" DataSetColumn="Memo" />
               <Mapping SourceColumn="DocNo" DataSetColumn="DocNo" />
               <Mapping SourceColumn="InvNo" DataSetColumn="InvNo" />
               <Mapping SourceColumn="OrgUsingDept" DataSetColumn="OrgUsingDept" />
+              <Mapping SourceColumn="Status" DataSetColumn="Status" />
+              <Mapping SourceColumn="Result" DataSetColumn="Result" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -55,7 +56,7 @@ ORDER BY M.Code</CommandText>
   <xs:element name="MMTB_DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MMTB_DataSet" msprop:Generator_UserDSName="MMTB_DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MMTB_NT_Table" msprop:Generator_TableClassName="MMTB_NT_TableDataTable" msprop:Generator_TableVarName="tableMMTB_NT_Table" msprop:Generator_RowChangedName="MMTB_NT_TableRowChanged" msprop:Generator_TablePropName="MMTB_NT_Table" msprop:Generator_RowDeletingName="MMTB_NT_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_NT_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_NT_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_NT_TableRowDeleted" msprop:Generator_RowClassName="MMTB_NT_TableRow" msprop:Generator_UserTableName="MMTB_NT_Table" msprop:Generator_RowEvArgName="MMTB_NT_TableRowChangeEvent">
+        <xs:element name="MMTB_NT_Table" msprop:Generator_TableClassName="MMTB_NT_TableDataTable" msprop:Generator_TableVarName="tableMMTB_NT_Table" msprop:Generator_TablePropName="MMTB_NT_Table" msprop:Generator_RowDeletingName="MMTB_NT_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_NT_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_NT_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_NT_TableRowDeleted" msprop:Generator_UserTableName="MMTB_NT_Table" msprop:Generator_RowChangedName="MMTB_NT_TableRowChanged" msprop:Generator_RowEvArgName="MMTB_NT_TableRowChangeEvent" msprop:Generator_RowClassName="MMTB_NT_TableRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ConfirmDate" msprop:Generator_ColumnVarNameInTable="columnConfirmDate" msprop:Generator_ColumnPropNameInRow="ConfirmDate" msprop:Generator_ColumnPropNameInTable="ConfirmDateColumn" msprop:Generator_UserColumnName="ConfirmDate" type="xs:dateTime" />
@@ -103,8 +104,6 @@ ORDER BY M.Code</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" minOccurs="0" />
-              <xs:element name="Result" msprop:Generator_ColumnVarNameInTable="columnResult" msprop:Generator_ColumnPropNameInRow="Result" msprop:Generator_ColumnPropNameInTable="ResultColumn" msprop:Generator_UserColumnName="Result" type="xs:int" minOccurs="0" />
               <xs:element name="Memo" msprop:Generator_ColumnVarNameInTable="columnMemo" msprop:Generator_ColumnPropNameInRow="Memo" msprop:Generator_ColumnPropNameInTable="MemoColumn" msprop:Generator_UserColumnName="Memo" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -130,6 +129,20 @@ ORDER BY M.Code</CommandText>
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Status" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Result" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnResult" msprop:Generator_ColumnPropNameInRow="Result" msprop:Generator_ColumnPropNameInTable="ResultColumn" msprop:Generator_UserColumnName="Result" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="14" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

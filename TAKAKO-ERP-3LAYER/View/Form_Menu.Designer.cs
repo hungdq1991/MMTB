@@ -235,8 +235,8 @@
             // 
             this.bbiACC.Caption = "ACC bổ sung thông tin";
             this.bbiACC.Id = 21;
-            this.bbiACC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.bbiACC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiACC.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiACC.ImageOptions.Image")));
+            this.bbiACC.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiACC.ImageOptions.LargeImage")));
             this.bbiACC.Name = "bbiACC";
             this.bbiACC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiACC_ItemClick);
             // 
@@ -293,6 +293,7 @@
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "Form_Menu";
             this.Ribbon = this.mainRibbonControl;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Menu_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

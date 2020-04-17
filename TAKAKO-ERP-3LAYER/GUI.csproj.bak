@@ -56,23 +56,36 @@
     <ApplicationIcon>logo_takako_pts.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Images.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraRichEdit.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v19.2.Export, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v19.2.UI, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v19.2.Extensions, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v19.2.Core, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
     </Reference>
@@ -81,7 +94,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -128,8 +143,53 @@
     <Compile Include="DAO\LOG_DAO.cs" />
     <Compile Include="DAO\PO_DAO.cs" />
     <Compile Include="DAO\SEARCH_DAO.cs" />
+    <Compile Include="DAO\SYS_USER_DAO.cs" />
     <Compile Include="DAO\USER_DAO.cs" />
     <Compile Include="DBConnection.cs" />
+    <Compile Include="M0005_ListMMTB.cs">
+      <DependentUpon>MMTB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M0005_ListMMTBDoc1.cs">
+      <DependentUpon>MMTB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M0005_ListMMTBDoc2.cs">
+      <DependentUpon>MMTB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M0005_ListMMTBDoc3.cs">
+      <DependentUpon>MMTB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M0005_ListMMTBLine.cs">
+      <DependentUpon>MMTB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MMTB_DataSet.cs">
+      <DependentUpon>MMTB_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MMTB_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTB_DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MMTB_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTB_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MMTB_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MMTB_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTB_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\M0005_NT_Report.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\M0005_NT_Report.Designer.cs">
+      <DependentUpon>M0005_NT_Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form_Flash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,11 +214,23 @@
     <Compile Include="View\Form_Invoice.Designer.cs">
       <DependentUpon>Form_Invoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form_M0003_ProcessGroup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Form_M0003_ProcessGroup.Designer.cs">
       <DependentUpon>Form_M0003_ProcessGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0005_Detail_ACC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0005_Detail_ACC.Designer.cs">
+      <DependentUpon>Form_M0005_Detail_ACC.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_M0005_Detail_DD.cs">
       <SubType>Form</SubType>
@@ -171,12 +243,6 @@
     </Compile>
     <Compile Include="View\Form_M0005_Detail_TL.Designer.cs">
       <DependentUpon>Form_M0005_Detail_TL.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_M0005_NT_Detail_Cancel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_M0005_NT_Detail_Cancel.Designer.cs">
-      <DependentUpon>Form_M0005_NT_Detail_Cancel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_M0006.cs">
       <SubType>Form</SubType>
@@ -243,12 +309,6 @@
     </Compile>
     <Compile Include="View\Form_Main.Designer.cs">
       <DependentUpon>Form_Main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Login.Designer.cs">
-      <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_PO.cs">
       <SubType>Form</SubType>
@@ -379,6 +439,9 @@
       <DependentUpon>Form_Menu.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Report\M0005_NT_Report.resx">
+      <DependentUpon>M0005_NT_Report.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Flash.resx">
       <DependentUpon>Form_Flash.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Invoice.resx">
       <DependentUpon>Form_Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0001.resx">
       <DependentUpon>Form_M0001.cs</DependentUpon>
@@ -422,14 +488,14 @@
     <EmbeddedResource Include="View\Form_M0004.resx">
       <DependentUpon>Form_M0004.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0005_Detail_ACC.resx">
+      <DependentUpon>Form_M0005_Detail_ACC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0005_Detail_DD.resx">
       <DependentUpon>Form_M0005_Detail_DD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0005_Detail_TL.resx">
       <DependentUpon>Form_M0005_Detail_TL.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_M0005_NT_Detail_Cancel.resx">
-      <DependentUpon>Form_M0005_NT_Detail_Cancel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0004_Detail.resx">
       <DependentUpon>Form_M0004_Detail.cs</DependentUpon>
@@ -485,9 +551,6 @@
     <EmbeddedResource Include="View\Form_Main.resx">
       <DependentUpon>Form_Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Login.resx">
-      <DependentUpon>Form_Login.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Form_PO.resx">
       <DependentUpon>Form_PO.cs</DependentUpon>
     </EmbeddedResource>
@@ -508,6 +571,24 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="MMTB_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MMTB_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MMTB_DataSet.xsc">
+      <DependentUpon>MMTB_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MMTB_DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MMTB_DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MMTB_DataSet.xss">
+      <DependentUpon>MMTB_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MMTB_Model.edmx.diagram">
+      <DependentUpon>MMTB_Model.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -543,6 +624,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo_takako_pts.ico" />
+    <Content Include="MMTB_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MMTB_Model.Context.cs</LastGenOutput>
+      <DependentUpon>MMTB_Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="MMTB_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MMTB_Model.edmx</DependentUpon>
+      <LastGenOutput>MMTB_Model.cs</LastGenOutput>
+    </Content>
     <None Include="Resources\edit.svg" />
     <None Include="Resources\new_16x166.png" />
     <None Include="Resources\new_32x326.png" />
@@ -623,6 +714,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataSet\Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
