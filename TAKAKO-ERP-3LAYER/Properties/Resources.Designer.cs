@@ -19,7 +19,7 @@ namespace TAKAKO_ERP_3LAYER.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -57,16 +57,6 @@ namespace TAKAKO_ERP_3LAYER.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Arrow_pointing {
-            get {
-                object obj = ResourceManager.GetObject("Arrow-pointing", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -216,26 +206,6 @@ namespace TAKAKO_ERP_3LAYER.Properties {
         public static System.Drawing.Bitmap close_32x322 {
             get {
                 object obj = ResourceManager.GetObject("close_32x322", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Close_window {
-            get {
-                object obj = ResourceManager.GetObject("Close-window", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Close_window_IOS {
-            get {
-                object obj = ResourceManager.GetObject("Close-window_IOS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,36 +403,6 @@ namespace TAKAKO_ERP_3LAYER.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap excel_export {
-            get {
-                object obj = ResourceManager.GetObject("excel_export", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap eye_gray {
-            get {
-                object obj = ResourceManager.GetObject("eye_gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap eye_gray_plus {
-            get {
-                object obj = ResourceManager.GetObject("eye_gray_plus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap icon_close {
             get {
                 object obj = ResourceManager.GetObject("icon_close", resourceCulture);
@@ -473,179 +413,9 @@ namespace TAKAKO_ERP_3LAYER.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap icon_eye {
-            get {
-                object obj = ResourceManager.GetObject("icon_eye", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icon_eye_gray {
-            get {
-                object obj = ResourceManager.GetObject("icon_eye_gray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icon_eye_gray1 {
-            get {
-                object obj = ResourceManager.GetObject("icon_eye_gray1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icon_LogOut {
-            get {
-                object obj = ResourceManager.GetObject("icon_LogOut", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap Icon_search {
             get {
                 object obj = ResourceManager.GetObject("Icon_search", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icons8_cancel_16 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-cancel-16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icons8_cancel_18 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-cancel-18", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icons8_cancel_20 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-cancel-20", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icons8_cancel_201 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-cancel-201", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icons8_cancel_21 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-cancel-21", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icons8_cancel_22 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-cancel-22", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icons8_trash_18 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-trash-18", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap icons8_trash_20 {
-            get {
-                object obj = ResourceManager.GetObject("icons8-trash-20", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap img_454673 {
-            get {
-                object obj = ResourceManager.GetObject("img_454673", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap img_customer {
-            get {
-                object obj = ResourceManager.GetObject("img_customer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap img_system {
-            get {
-                object obj = ResourceManager.GetObject("img_system", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap img_user {
-            get {
-                object obj = ResourceManager.GetObject("img_user", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Invoice_icon {
-            get {
-                object obj = ResourceManager.GetObject("Invoice_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -666,46 +436,6 @@ namespace TAKAKO_ERP_3LAYER.Properties {
         public static System.Drawing.Bitmap Logo_TAKAKO_PTS {
             get {
                 object obj = ResourceManager.GetObject("Logo_TAKAKO_PTS", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Maximize_window {
-            get {
-                object obj = ResourceManager.GetObject("Maximize-window", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap menu {
-            get {
-                object obj = ResourceManager.GetObject("menu", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Menu_List {
-            get {
-                object obj = ResourceManager.GetObject("Menu_List", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Minimize_window {
-            get {
-                object obj = ResourceManager.GetObject("Minimize-window", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -946,26 +676,6 @@ namespace TAKAKO_ERP_3LAYER.Properties {
         public static System.Drawing.Bitmap save_32x322 {
             get {
                 object obj = ResourceManager.GetObject("save_32x322", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Shipping {
-            get {
-                object obj = ResourceManager.GetObject("Shipping", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap Zoom_full {
-            get {
-                object obj = ResourceManager.GetObject("Zoom-full", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
