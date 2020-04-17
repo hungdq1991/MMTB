@@ -852,5 +852,140 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.ACC_Update_MMTB(listMMTB);
         }
         #endregion
+        #region MMTB không sử dụng
+        //Số chứng từ MMTB NoUsed
+        public DataTable GetInfo_M0005_Doc_NoUsed()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             DocNo
+                            ,DocDate
+                            ,FromDate
+                            ,ToDate
+                            ,case when DocStatus = 0 then N'Chuẩn bị' else N'Xác nhận' end as   DocStatus
+                        FROM 
+                            M0005_ListMMTBDoc4
+                        ORDER BY DocNo DESC";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Số chứng từ MMTB NoUsed _ Header
+        public DataTable GetInfo_M0005_NoUsed_Header(string DocNo)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             DocDate
+                            ,FromDate
+                            ,ToDate
+                            ,DocStatus
+                            ,ControlDept
+                        FROM 
+                            M0005_ListMMTBDoc4
+                        WHERE 
+                            DocNo = @DocNo";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(DocNo);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Danh sách MMTB NoUsed _ Detail
+        public DataTable GetInfo_M0005_NoUsed_Detail(string DocNo)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                            [Code]
+                            ,[ACCcode]
+                            ,[NameEN]
+                            ,[NameVN]
+                            ,[NameJP]
+                            ,[Maker]
+                            ,[Model]
+                            ,[Series]
+                            ,[OrgCountry]
+                            ,[ProDate]
+                            ,[Lifetime]
+                            ,[NetValue]
+                            ,[StartDeprDate]
+                            ,[EndDeprDate]
+                            ,[Reason]
+                            ,[CurStatus]
+                            ,[CurPlan]
+                            ,[Solve]                        
+                        FROM 
+                            M0005_ListMMTBNoUsed
+                        WHERE 
+                            DocNo = @DocNo";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(DocNo);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        public DataTable GetInfo_M0005_NoUsed()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	 L.Code
+                        	,ACCcode
+                        	,L.NameEN
+                        	,L.NameVN
+                        	,L.NameJP
+                        	,Maker
+                        	,Model
+                        	,Series
+                        	,OrgCountry
+                        	,ProDate
+                        	,Lifetime
+                            ,0 as NetValue
+                        	,StartDeprDate
+                        	,EndDeprDate
+                            ,'' as Reason
+                            ,'' as CurStatus
+                            ,'' as CurPlan
+                            ,'' as Solve
+                        FROM
+                        	M0005_ListMMTB L
+						LEFT JOIN
+							(SELECT
+								 L1.Code
+								,L1.DesProcessCode
+								,L1.DesLineCode
+								,L1.DesLineEN
+								,L1.DesGroupLineACC
+								,L1.DesUsingDept 
+							FROM M0005_ListMMTBLine L1 
+							JOIN (SELECT 
+									 Code
+									,Max(ApplyDate) as ApplyDate
+								  FROM M0005_ListMMTBLine 
+								  GROUP BY Code) L2 
+							ON		L1.Code = L2.Code 
+								AND L1.ApplyDate = L2.ApplyDate) L1
+						ON
+							L.Code = L1.Code
+                        WHERE L1.DesLineCode = 'NoUsed'
+                        ORDER BY L.Code";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Xác nhận bổ sung thông tin
+        public string Update_MMTB_No_Used(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc4 )
+        {
+            return conn.Update_MMTB_No_Used(listMMTB,_listDelete, listMMTBDoc4);
+        }
+        #endregion
     }
 }

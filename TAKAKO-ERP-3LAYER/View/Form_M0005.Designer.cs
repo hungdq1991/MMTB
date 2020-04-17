@@ -40,8 +40,10 @@
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bCheck_Disposal = new DevExpress.XtraBars.BarCheckItem();
             this.bbiMoving = new DevExpress.XtraBars.BarButtonItem();
+            this.bCheck_NoUsed = new DevExpress.XtraBars.BarCheckItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.advBandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
@@ -113,9 +115,10 @@
             this.bbiDisposal,
             this.bbiRefresh,
             this.bCheck_Disposal,
-            this.bbiMoving});
+            this.bbiMoving,
+            this.bCheck_NoUsed});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 22;
+            this.ribbonControl.MaxItemId = 23;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -171,7 +174,7 @@
             // bCheck_Disposal
             // 
             this.bCheck_Disposal.AllowRightClickInMenu = false;
-            this.bCheck_Disposal.Caption = "Đã thanh lý";
+            this.bCheck_Disposal.Caption = "Đã thanh lý      ";
             this.bCheck_Disposal.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
             this.bCheck_Disposal.Id = 20;
             this.bCheck_Disposal.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -183,7 +186,7 @@
             this.bCheck_Disposal.ItemAppearance.Pressed.Options.UseFont = true;
             this.bCheck_Disposal.ItemAppearance.Pressed.Options.UseForeColor = true;
             this.bCheck_Disposal.Name = "bCheck_Disposal";
-            this.bCheck_Disposal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bCheck_Disposal_ItemClick);
+            this.bCheck_Disposal.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BCheck_Disposal_CheckedChanged);
             // 
             // bbiMoving
             // 
@@ -191,11 +194,23 @@
             this.bbiMoving.Id = 21;
             this.bbiMoving.ImageOptions.ImageUri.Uri = "Replace";
             this.bbiMoving.Name = "bbiMoving";
+            this.bbiMoving.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiMoving_ItemClick);
+            // 
+            // bCheck_NoUsed
+            // 
+            this.bCheck_NoUsed.Caption = "Ngưng sử dụng";
+            this.bCheck_NoUsed.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
+            this.bCheck_NoUsed.Id = 22;
+            this.bCheck_NoUsed.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.bCheck_NoUsed.ItemAppearance.Normal.Options.UseBackColor = true;
+            this.bCheck_NoUsed.Name = "bCheck_NoUsed";
+            this.bCheck_NoUsed.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BCheck_NoUsed_CheckedChanged);
             // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
@@ -204,13 +219,19 @@
             // 
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup1.ItemLinks.Add(this.bCheck_Disposal, true);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiMoving);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_Disposal);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_NoUsed);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
             // 
             // ribbonStatusBar
             // 
@@ -1017,5 +1038,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraBars.BarCheckItem bCheck_NoUsed;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }

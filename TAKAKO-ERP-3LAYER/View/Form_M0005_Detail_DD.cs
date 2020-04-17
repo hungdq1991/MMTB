@@ -7,6 +7,8 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.Report;
+using DevExpress.XtraReports.UI;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -225,14 +227,14 @@ namespace TAKAKO_ERP_3LAYER.View
         #region Add data to control
         private void AddValue_sLook_ControlDept()
         {
-            DataTable tempTable = new DataTable();
-            tempTable = M0005_DAO.GetInfo_ControlDept();
-            if (tempTable.Rows.Count > 0)
-            {
-                sLook_ControlDept.Properties.DataSource = tempTable;
-                sLook_ControlDept.Properties.ValueMember = "SectionID";
-                sLook_ControlDept.Properties.DisplayMember = "SectionID";
-            }
+            //DataTable tempTable = new DataTable();
+            //tempTable = M0005_DAO.GetInfo_ControlDept();
+            //if (tempTable.Rows.Count > 0)
+            //{
+            //    sLook_ControlDept.Properties.DataSource = tempTable;
+            //    sLook_ControlDept.Properties.ValueMember = "SectionID";
+            //    sLook_ControlDept.Properties.DisplayMember = "SectionID";
+            //}
         }
         //Điền dữ liệu cho ô Số chứng từ
         private void Add_Value_sLookUp_DocNo()
@@ -596,5 +598,21 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
         #endregion
+
+        private void BbiReport_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            int docStatus = cbx_Status.SelectedIndex;
+            if (docStatus == 1)
+            {
+                string DocNo = sLook_DocNo.EditValue.ToString();
+                M0005_DD_Report rpt_DD = new M0005_DD_Report(DocNo);
+                ReportPrintTool print = new ReportPrintTool(rpt_DD);
+                rpt_DD.ShowPreviewDialog();
+            }
+            else
+            {
+                MessageBox.Show("Chứng từ di dời chưa được xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
