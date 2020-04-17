@@ -208,24 +208,6 @@
     <Compile Include="View\Form_Flash.Designer.cs">
       <DependentUpon>Form_Flash.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_Export_Data.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Export_Data.Designer.cs">
-      <DependentUpon>Form_Export_Data.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Import_PO.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Import_PO.Designer.cs">
-      <DependentUpon>Form_Import_PO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Invoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Invoice.Designer.cs">
-      <DependentUpon>Form_Invoice.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\Form_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,60 +291,6 @@
     </Compile>
     <Compile Include="View\Form_M0014.Designer.cs">
       <DependentUpon>Form_M0014.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Search_ShippingNo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Search_ShippingNo.Designer.cs">
-      <DependentUpon>Form_Search_ShippingNo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Shipping_Instruction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Shipping_Instruction.Designer.cs">
-      <DependentUpon>Form_Shipping_Instruction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Log.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Log.Designer.cs">
-      <DependentUpon>Form_Log.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Main.Designer.cs">
-      <DependentUpon>Form_Main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_PO.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_PO.Designer.cs">
-      <DependentUpon>Form_PO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Search_PO.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Search_PO.Designer.cs">
-      <DependentUpon>Form_Search_PO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Search.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Search.Designer.cs">
-      <DependentUpon>Form_Search.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Select_DB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Select_DB.Designer.cs">
-      <DependentUpon>Form_Select_DB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Select_Company.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Select_Company.Designer.cs">
-      <DependentUpon>Form_Select_Company.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -475,15 +403,6 @@
     <EmbeddedResource Include="View\Form_Flash.resx">
       <DependentUpon>Form_Flash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Export_Data.resx">
-      <DependentUpon>Form_Export_Data.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Import_PO.resx">
-      <DependentUpon>Form_Import_PO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Invoice.resx">
-      <DependentUpon>Form_Invoice.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -574,33 +493,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Menu.resx">
       <DependentUpon>Form_Menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Search_ShippingNo.resx">
-      <DependentUpon>Form_Search_ShippingNo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Shipping_Instruction.resx">
-      <DependentUpon>Form_Shipping_Instruction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Log.resx">
-      <DependentUpon>Form_Log.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Main.resx">
-      <DependentUpon>Form_Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_PO.resx">
-      <DependentUpon>Form_PO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Search_PO.resx">
-      <DependentUpon>Form_Search_PO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Search.resx">
-      <DependentUpon>Form_Search.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Select_DB.resx">
-      <DependentUpon>Form_Select_DB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Select_Company.resx">
-      <DependentUpon>Form_Select_Company.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
