@@ -839,7 +839,7 @@ namespace TAKAKO_ERP_3LAYER.View
             bbiRefresh.Enabled = IsEnable;
             bbi_AddNewRow.Enabled = IsEnable;
             bbi_DeleteRow.Enabled = IsEnable;
-            bbi_Eport_Excel.Enabled = !Enabled;
+            bbi_Eport_Excel.Enabled = !IsEnable;
 
             //PopUp
             bbi_PopUp_AddNewRow.Enabled = IsEnable;
@@ -864,12 +864,16 @@ namespace TAKAKO_ERP_3LAYER.View
         bool IsDublicatedRowFound(string _value, string column)
         {
             for (int rows = 0; rows < gridView.DataRowCount; rows++)
-                if (rows != gridView.FocusedRowHandle && gridView.GetRowCellValue(rows, gridView.Columns[column]) != null)
+                if (rows != gridView.FocusedRowHandle)
                 {
                     string _rowCodeValue = "";
-                    _rowCodeValue = (string)gridView.GetRowCellValue(rows, gridView.Columns[column]);
-                    if (Equals(_value, _rowCodeValue))
-                        return true;
+                    string _rowFocusValue = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns[column]));
+                    if (!String.IsNullOrEmpty(_rowFocusValue))
+                    { 
+                        _rowCodeValue = (string)gridView.GetRowCellValue(rows, gridView.Columns[column]);
+                        if (Equals(_value, _rowCodeValue))
+                            return true;
+                    }
                 }
             return false;
         }
