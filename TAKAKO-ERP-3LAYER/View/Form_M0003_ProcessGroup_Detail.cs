@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using DevExpress.XtraEditors.Repository;
 using System.Collections.Generic;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -19,14 +19,17 @@ namespace TAKAKO_ERP_3LAYER.View
         public DateTime applyDate;
         public Boolean inActive;
         public string Memo;
+
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = false;
+
         //Tạo mới form theo kiểu True/False
         public Form_M0003_ProcessGroup_Detail(Boolean _isNewValue)
         {
             InitializeComponent();
             IsNewValue = _isNewValue;
         }
+
         //Update, delete _ form theo kiểu dữ liệu
         public Form_M0003_ProcessGroup_Detail(DataRow _mainDataRow)
         {

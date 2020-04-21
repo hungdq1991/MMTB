@@ -1,29 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using DevExpress.XtraLayout.Helpers;
-using DevExpress.XtraLayout;
+﻿using System.Windows.Forms;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
     public partial class Form_Menu : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         public Form_Menu()
         {
             InitializeComponent();
         }
+
+        public Form_Menu(System_DAL systemDAL)
+        {
+            InitializeComponent();
+            _systemDAL = systemDAL;
+        }
+
         private void BbiName_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0001 formDetail = new Form_M0001())
+            using (Form_M0001 formDetail = new Form_M0001(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -124,7 +122,6 @@ namespace TAKAKO_ERP_3LAYER.View
         private void BbiStock_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-
         }
 
         private void BbiPart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

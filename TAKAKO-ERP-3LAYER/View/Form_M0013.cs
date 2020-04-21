@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
-
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -10,9 +10,19 @@ namespace TAKAKO_ERP_3LAYER.View
     {
         public DataTable _tempTable;
         public M0013_DAO M0013_DAO;
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         public Form_M0013()
         {
             InitializeComponent();
+        }
+
+        public Form_M0013(System_DAL systemDAL)
+        {
+            InitializeComponent();
+            _systemDAL = systemDAL;
         }
 
         private void GetInfo_GridView()

@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
+    <Compile Include="DAL\System_DAL.cs" />
     <Compile Include="DAO\M0002_DAO.cs" />
     <Compile Include="DAO\M0001_DAO.cs" />
     <Compile Include="DAO\M0003_ProcessGroup_DAO.cs" />
@@ -643,7 +644,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BUS\" />
-    <Folder Include="DAL\" />
     <Folder Include="DataSet\" />
   </ItemGroup>
   <ItemGroup>

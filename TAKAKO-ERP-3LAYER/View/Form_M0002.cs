@@ -3,25 +3,39 @@ using System.Linq;
 using System.Data;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
-
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
     public partial class Form_M0002 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        //
         public DataTable _tempTable;
         public M0002_DAO M0002_DAO;
         public const Boolean AddNew = true;
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         public Form_M0002()
         {
             InitializeComponent();
         }
+
+        public Form_M0002(System_DAL systemDAL)
+        {
+            InitializeComponent();
+            _systemDAL = systemDAL;
+        }
+
         private void Form_M0002_Load(object sender, EventArgs e)
         {
             //
             _tempTable = new DataTable();
             //
             M0002_DAO = new M0002_DAO();
+            //
+            bsiUser.Caption = _systemDAL.userName;
             //Load Init
             GetInfo_Gridview();
         }
@@ -57,6 +71,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow()))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 Setting_Init_Form();
             }
         }
@@ -65,6 +80,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0002_Detail formDetail = new Form_M0002_Detail(AddNew))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 Setting_Init_Form();
             }
         }
@@ -73,6 +89,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow()))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 Setting_Init_Form();
             }
         }
@@ -81,6 +98,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow()))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 Setting_Init_Form();
             }
         }

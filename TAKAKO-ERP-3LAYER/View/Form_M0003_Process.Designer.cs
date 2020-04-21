@@ -68,7 +68,7 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2});
-            this.gridControl.Size = new System.Drawing.Size(1198, 440);
+            this.gridControl.Size = new System.Drawing.Size(771, 440);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -90,7 +90,7 @@
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsBehavior.ReadOnly = true;
-            this.gridView.OptionsView.ShowFooter = true;
+            this.gridView.OptionsView.ColumnAutoWidth = false;
             // 
             // gridCol_ProcessID
             // 
@@ -202,6 +202,7 @@
             this.gridCol_isOutsource.OptionsColumn.FixedWidth = true;
             this.gridCol_isOutsource.Visible = true;
             this.gridCol_isOutsource.VisibleIndex = 5;
+            this.gridCol_isOutsource.Width = 96;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -265,7 +266,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1198, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(771, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -334,13 +335,13 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1198, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(771, 22);
             // 
             // Form_M0003_Process
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1198, 599);
+            this.ClientSize = new System.Drawing.Size(771, 599);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonControl);

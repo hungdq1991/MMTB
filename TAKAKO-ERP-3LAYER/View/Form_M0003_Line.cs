@@ -2,19 +2,33 @@
 using System.Data;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
     public partial class Form_M0003_Line : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        public string _username = "";
         public DataTable _tempTable;
         public M0003_Line_DAO M0003_Line_DAO;
         public const Boolean AddNew = true;
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         //Khởi tạo form M0003
         public Form_M0003_Line()
         {
             InitializeComponent();
         }
+
+        //Khởi tạo form M0003
+        public Form_M0003_Line(System_DAL systemDAL)
+        {
+            InitializeComponent();
+            _systemDAL = systemDAL;
+        }
+
         //Load form M0003
         private void Form_M0003_Load(object sender, System.EventArgs e)
         {
@@ -22,6 +36,8 @@ namespace TAKAKO_ERP_3LAYER.View
             _tempTable = new DataTable();
             //Sử dụng DAO của M0003
             M0003_Line_DAO = new M0003_Line_DAO();
+            //
+            bsiUser.Caption = _systemDAL.userName;
             //Load Init
             GetInfo_Gridview();
         }

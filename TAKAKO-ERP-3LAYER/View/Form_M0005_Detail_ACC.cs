@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 using System.Globalization;
 
 namespace TAKAKO_ERP_3LAYER.View
@@ -17,14 +15,17 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataTable _InitDetailTable;
         public DataTable _DetailTable;
         public M0005_DAO M0005_DAO;
+        public System_DAL _systemDAL = new System_DAL();
         public String DocNo = "";
         public Boolean InitValue = true;
         #endregion
+
         //Khởi tạo form
         public Form_M0005_Detail_ACC()
         {
             InitializeComponent();
         }
+
         //Update, delete _ form theo kiểu dữ liệu
         public Form_M0005_Detail_ACC(String _docNo)
         {
