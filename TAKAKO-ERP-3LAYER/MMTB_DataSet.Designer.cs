@@ -30,6 +30,8 @@ namespace TAKAKO_ERP_3LAYER {
         
         private MMTB_DD_TableDataTable tableMMTB_DD_Table;
         
+        private MMTB_NoUsed_TableDataTable tableMMTB_NoUsed_Table;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -66,6 +68,9 @@ namespace TAKAKO_ERP_3LAYER {
                 }
                 if ((ds.Tables["MMTB_DD_Table"] != null)) {
                     base.Tables.Add(new MMTB_DD_TableDataTable(ds.Tables["MMTB_DD_Table"]));
+                }
+                if ((ds.Tables["MMTB_NoUsed_Table"] != null)) {
+                    base.Tables.Add(new MMTB_NoUsed_TableDataTable(ds.Tables["MMTB_NoUsed_Table"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -112,6 +117,16 @@ namespace TAKAKO_ERP_3LAYER {
         public MMTB_DD_TableDataTable MMTB_DD_Table {
             get {
                 return this.tableMMTB_DD_Table;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public MMTB_NoUsed_TableDataTable MMTB_NoUsed_Table {
+            get {
+                return this.tableMMTB_NoUsed_Table;
             }
         }
         
@@ -191,6 +206,9 @@ namespace TAKAKO_ERP_3LAYER {
                 if ((ds.Tables["MMTB_DD_Table"] != null)) {
                     base.Tables.Add(new MMTB_DD_TableDataTable(ds.Tables["MMTB_DD_Table"]));
                 }
+                if ((ds.Tables["MMTB_NoUsed_Table"] != null)) {
+                    base.Tables.Add(new MMTB_NoUsed_TableDataTable(ds.Tables["MMTB_NoUsed_Table"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -242,6 +260,12 @@ namespace TAKAKO_ERP_3LAYER {
                     this.tableMMTB_DD_Table.InitVars();
                 }
             }
+            this.tableMMTB_NoUsed_Table = ((MMTB_NoUsed_TableDataTable)(base.Tables["MMTB_NoUsed_Table"]));
+            if ((initTable == true)) {
+                if ((this.tableMMTB_NoUsed_Table != null)) {
+                    this.tableMMTB_NoUsed_Table.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +282,8 @@ namespace TAKAKO_ERP_3LAYER {
             base.Tables.Add(this.tableMMTB_TL_Table);
             this.tableMMTB_DD_Table = new MMTB_DD_TableDataTable();
             base.Tables.Add(this.tableMMTB_DD_Table);
+            this.tableMMTB_NoUsed_Table = new MMTB_NoUsed_TableDataTable();
+            base.Tables.Add(this.tableMMTB_NoUsed_Table);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -275,6 +301,12 @@ namespace TAKAKO_ERP_3LAYER {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeMMTB_DD_Table() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeMMTB_NoUsed_Table() {
             return false;
         }
         
@@ -341,6 +373,9 @@ namespace TAKAKO_ERP_3LAYER {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void MMTB_DD_TableRowChangeEventHandler(object sender, MMTB_DD_TableRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void MMTB_NoUsed_TableRowChangeEventHandler(object sender, MMTB_NoUsed_TableRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -486,7 +521,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn StatusColumn {
+            public global::System.Data.DataColumn MemoColumn {
                 get {
                     return this.columnMemo;
                 }
@@ -494,7 +529,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ResultColumn {
+            public global::System.Data.DataColumn DocNoColumn {
                 get {
                     return this.columnDocNo;
                 }
@@ -502,7 +537,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn MemoColumn {
+            public global::System.Data.DataColumn InvNoColumn {
                 get {
                     return this.columnInvNo;
                 }
@@ -510,7 +545,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn DocNoColumn {
+            public global::System.Data.DataColumn OrgUsingDeptColumn {
                 get {
                     return this.columnOrgUsingDept;
                 }
@@ -518,7 +553,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn InvNoColumn {
+            public global::System.Data.DataColumn StatusColumn {
                 get {
                     return this.columnStatus;
                 }
@@ -526,7 +561,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn OrgUsingDeptColumn {
+            public global::System.Data.DataColumn ResultColumn {
                 get {
                     return this.columnResult;
                 }
@@ -569,7 +604,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public MMTB_NT_TableRow AddMMTB_NT_TableRow(System.DateTime ConfirmDate, System.DateTime ReceiptDate, string ControlDept, string NameEN, string Model, string Series, string Maker, System.DateTime ProDate, string Code, int Status, int Result, string Memo, string DocNo, string InvNo, string OrgUsingDept) {
+            public MMTB_NT_TableRow AddMMTB_NT_TableRow(System.DateTime ConfirmDate, System.DateTime ReceiptDate, string ControlDept, string NameEN, string Model, string Series, string Maker, System.DateTime ProDate, string Code, string Memo, string DocNo, string InvNo, string OrgUsingDept, string Status, string Result) {
                 MMTB_NT_TableRow rowMMTB_NT_TableRow = ((MMTB_NT_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfirmDate,
@@ -1743,6 +1778,544 @@ namespace TAKAKO_ERP_3LAYER {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class MMTB_NoUsed_TableDataTable : global::System.Data.TypedTableBase<MMTB_NoUsed_TableRow> {
+            
+            private global::System.Data.DataColumn columnDocNo;
+            
+            private global::System.Data.DataColumn columnDocDate;
+            
+            private global::System.Data.DataColumn columnFromDate;
+            
+            private global::System.Data.DataColumn columnToDate;
+            
+            private global::System.Data.DataColumn columnControlDept;
+            
+            private global::System.Data.DataColumn columnCode;
+            
+            private global::System.Data.DataColumn columnACCcode;
+            
+            private global::System.Data.DataColumn columnNameEN;
+            
+            private global::System.Data.DataColumn columnMaker;
+            
+            private global::System.Data.DataColumn columnModel;
+            
+            private global::System.Data.DataColumn columnSeries;
+            
+            private global::System.Data.DataColumn columnLifetime;
+            
+            private global::System.Data.DataColumn columnNetValue;
+            
+            private global::System.Data.DataColumn columnStartDeprDate;
+            
+            private global::System.Data.DataColumn columnEndDeprDate;
+            
+            private global::System.Data.DataColumn columnReason;
+            
+            private global::System.Data.DataColumn columnCurStatus;
+            
+            private global::System.Data.DataColumn columnCurPlan;
+            
+            private global::System.Data.DataColumn columnSolve;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MMTB_NoUsed_TableDataTable() {
+                this.TableName = "MMTB_NoUsed_Table";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal MMTB_NoUsed_TableDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected MMTB_NoUsed_TableDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DocNoColumn {
+                get {
+                    return this.columnDocNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DocDateColumn {
+                get {
+                    return this.columnDocDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn FromDateColumn {
+                get {
+                    return this.columnFromDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ToDateColumn {
+                get {
+                    return this.columnToDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ControlDeptColumn {
+                get {
+                    return this.columnControlDept;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CodeColumn {
+                get {
+                    return this.columnCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ACCcodeColumn {
+                get {
+                    return this.columnACCcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NameENColumn {
+                get {
+                    return this.columnNameEN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MakerColumn {
+                get {
+                    return this.columnMaker;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ModelColumn {
+                get {
+                    return this.columnModel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SeriesColumn {
+                get {
+                    return this.columnSeries;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn LifetimeColumn {
+                get {
+                    return this.columnLifetime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NetValueColumn {
+                get {
+                    return this.columnNetValue;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StartDeprDateColumn {
+                get {
+                    return this.columnStartDeprDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EndDeprDateColumn {
+                get {
+                    return this.columnEndDeprDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ReasonColumn {
+                get {
+                    return this.columnReason;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CurStatusColumn {
+                get {
+                    return this.columnCurStatus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn CurPlanColumn {
+                get {
+                    return this.columnCurPlan;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SolveColumn {
+                get {
+                    return this.columnSolve;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MMTB_NoUsed_TableRow this[int index] {
+                get {
+                    return ((MMTB_NoUsed_TableRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event MMTB_NoUsed_TableRowChangeEventHandler MMTB_NoUsed_TableRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event MMTB_NoUsed_TableRowChangeEventHandler MMTB_NoUsed_TableRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event MMTB_NoUsed_TableRowChangeEventHandler MMTB_NoUsed_TableRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event MMTB_NoUsed_TableRowChangeEventHandler MMTB_NoUsed_TableRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddMMTB_NoUsed_TableRow(MMTB_NoUsed_TableRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MMTB_NoUsed_TableRow AddMMTB_NoUsed_TableRow(
+                        string DocNo, 
+                        System.DateTime DocDate, 
+                        System.DateTime FromDate, 
+                        System.DateTime ToDate, 
+                        string ControlDept, 
+                        string Code, 
+                        string ACCcode, 
+                        string NameEN, 
+                        string Maker, 
+                        string Model, 
+                        string Series, 
+                        decimal Lifetime, 
+                        int NetValue, 
+                        System.DateTime StartDeprDate, 
+                        System.DateTime EndDeprDate, 
+                        string Reason, 
+                        string CurStatus, 
+                        string CurPlan, 
+                        string Solve) {
+                MMTB_NoUsed_TableRow rowMMTB_NoUsed_TableRow = ((MMTB_NoUsed_TableRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        DocNo,
+                        DocDate,
+                        FromDate,
+                        ToDate,
+                        ControlDept,
+                        Code,
+                        ACCcode,
+                        NameEN,
+                        Maker,
+                        Model,
+                        Series,
+                        Lifetime,
+                        NetValue,
+                        StartDeprDate,
+                        EndDeprDate,
+                        Reason,
+                        CurStatus,
+                        CurPlan,
+                        Solve};
+                rowMMTB_NoUsed_TableRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowMMTB_NoUsed_TableRow);
+                return rowMMTB_NoUsed_TableRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                MMTB_NoUsed_TableDataTable cln = ((MMTB_NoUsed_TableDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new MMTB_NoUsed_TableDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnDocNo = base.Columns["DocNo"];
+                this.columnDocDate = base.Columns["DocDate"];
+                this.columnFromDate = base.Columns["FromDate"];
+                this.columnToDate = base.Columns["ToDate"];
+                this.columnControlDept = base.Columns["ControlDept"];
+                this.columnCode = base.Columns["Code"];
+                this.columnACCcode = base.Columns["ACCcode"];
+                this.columnNameEN = base.Columns["NameEN"];
+                this.columnMaker = base.Columns["Maker"];
+                this.columnModel = base.Columns["Model"];
+                this.columnSeries = base.Columns["Series"];
+                this.columnLifetime = base.Columns["Lifetime"];
+                this.columnNetValue = base.Columns["NetValue"];
+                this.columnStartDeprDate = base.Columns["StartDeprDate"];
+                this.columnEndDeprDate = base.Columns["EndDeprDate"];
+                this.columnReason = base.Columns["Reason"];
+                this.columnCurStatus = base.Columns["CurStatus"];
+                this.columnCurPlan = base.Columns["CurPlan"];
+                this.columnSolve = base.Columns["Solve"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnDocNo = new global::System.Data.DataColumn("DocNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDocNo);
+                this.columnDocDate = new global::System.Data.DataColumn("DocDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDocDate);
+                this.columnFromDate = new global::System.Data.DataColumn("FromDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFromDate);
+                this.columnToDate = new global::System.Data.DataColumn("ToDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnToDate);
+                this.columnControlDept = new global::System.Data.DataColumn("ControlDept", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnControlDept);
+                this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCode);
+                this.columnACCcode = new global::System.Data.DataColumn("ACCcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACCcode);
+                this.columnNameEN = new global::System.Data.DataColumn("NameEN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNameEN);
+                this.columnMaker = new global::System.Data.DataColumn("Maker", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaker);
+                this.columnModel = new global::System.Data.DataColumn("Model", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnModel);
+                this.columnSeries = new global::System.Data.DataColumn("Series", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSeries);
+                this.columnLifetime = new global::System.Data.DataColumn("Lifetime", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLifetime);
+                this.columnNetValue = new global::System.Data.DataColumn("NetValue", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNetValue);
+                this.columnStartDeprDate = new global::System.Data.DataColumn("StartDeprDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStartDeprDate);
+                this.columnEndDeprDate = new global::System.Data.DataColumn("EndDeprDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEndDeprDate);
+                this.columnReason = new global::System.Data.DataColumn("Reason", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReason);
+                this.columnCurStatus = new global::System.Data.DataColumn("CurStatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCurStatus);
+                this.columnCurPlan = new global::System.Data.DataColumn("CurPlan", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCurPlan);
+                this.columnSolve = new global::System.Data.DataColumn("Solve", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSolve);
+                this.columnDocNo.AllowDBNull = false;
+                this.columnDocNo.MaxLength = 50;
+                this.columnDocDate.AllowDBNull = false;
+                this.columnFromDate.AllowDBNull = false;
+                this.columnToDate.AllowDBNull = false;
+                this.columnControlDept.MaxLength = 8;
+                this.columnCode.AllowDBNull = false;
+                this.columnCode.MaxLength = 10;
+                this.columnACCcode.MaxLength = 10;
+                this.columnNameEN.AllowDBNull = false;
+                this.columnNameEN.MaxLength = 100;
+                this.columnMaker.MaxLength = 30;
+                this.columnModel.MaxLength = 30;
+                this.columnSeries.MaxLength = 30;
+                this.columnLifetime.AllowDBNull = false;
+                this.columnStartDeprDate.AllowDBNull = false;
+                this.columnReason.MaxLength = 50;
+                this.columnCurStatus.MaxLength = 60;
+                this.columnCurPlan.MaxLength = 60;
+                this.columnSolve.MaxLength = 60;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MMTB_NoUsed_TableRow NewMMTB_NoUsed_TableRow() {
+                return ((MMTB_NoUsed_TableRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new MMTB_NoUsed_TableRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(MMTB_NoUsed_TableRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.MMTB_NoUsed_TableRowChanged != null)) {
+                    this.MMTB_NoUsed_TableRowChanged(this, new MMTB_NoUsed_TableRowChangeEvent(((MMTB_NoUsed_TableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.MMTB_NoUsed_TableRowChanging != null)) {
+                    this.MMTB_NoUsed_TableRowChanging(this, new MMTB_NoUsed_TableRowChangeEvent(((MMTB_NoUsed_TableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.MMTB_NoUsed_TableRowDeleted != null)) {
+                    this.MMTB_NoUsed_TableRowDeleted(this, new MMTB_NoUsed_TableRowChangeEvent(((MMTB_NoUsed_TableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.MMTB_NoUsed_TableRowDeleting != null)) {
+                    this.MMTB_NoUsed_TableRowDeleting(this, new MMTB_NoUsed_TableRowChangeEvent(((MMTB_NoUsed_TableRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveMMTB_NoUsed_TableRow(MMTB_NoUsed_TableRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                MMTB_DataSet ds = new MMTB_DataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "MMTB_NoUsed_TableDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class MMTB_NT_TableRow : global::System.Data.DataRow {
@@ -1882,7 +2455,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Status {
+            public string Memo {
                 get {
                     try {
                         return ((string)(this[this.tableMMTB_NT_Table.MemoColumn]));
@@ -1898,7 +2471,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Result {
+            public string DocNo {
                 get {
                     return ((string)(this[this.tableMMTB_NT_Table.DocNoColumn]));
                 }
@@ -1909,7 +2482,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Memo {
+            public string InvNo {
                 get {
                     try {
                         return ((string)(this[this.tableMMTB_NT_Table.InvNoColumn]));
@@ -1925,7 +2498,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DocNo {
+            public string OrgUsingDept {
                 get {
                     try {
                         return ((string)(this[this.tableMMTB_NT_Table.OrgUsingDeptColumn]));
@@ -1941,7 +2514,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string InvNo {
+            public string Status {
                 get {
                     try {
                         return ((string)(this[this.tableMMTB_NT_Table.StatusColumn]));
@@ -1957,7 +2530,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string OrgUsingDept {
+            public string Result {
                 get {
                     try {
                         return ((string)(this[this.tableMMTB_NT_Table.ResultColumn]));
@@ -2033,30 +2606,6 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsStatusNull() {
-                return this.IsNull(this.tableMMTB_NT_Table.StatusColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetStatusNull() {
-                this[this.tableMMTB_NT_Table.StatusColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsResultNull() {
-                return this.IsNull(this.tableMMTB_NT_Table.ResultColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetResultNull() {
-                this[this.tableMMTB_NT_Table.ResultColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsMemoNull() {
                 return this.IsNull(this.tableMMTB_NT_Table.MemoColumn);
             }
@@ -2089,6 +2638,30 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetOrgUsingDeptNull() {
                 this[this.tableMMTB_NT_Table.OrgUsingDeptColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsStatusNull() {
+                return this.IsNull(this.tableMMTB_NT_Table.StatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetStatusNull() {
+                this[this.tableMMTB_NT_Table.StatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsResultNull() {
+                return this.IsNull(this.tableMMTB_NT_Table.ResultColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetResultNull() {
+                this[this.tableMMTB_NT_Table.ResultColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2827,6 +3400,417 @@ namespace TAKAKO_ERP_3LAYER {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class MMTB_NoUsed_TableRow : global::System.Data.DataRow {
+            
+            private MMTB_NoUsed_TableDataTable tableMMTB_NoUsed_Table;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal MMTB_NoUsed_TableRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableMMTB_NoUsed_Table = ((MMTB_NoUsed_TableDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string DocNo {
+                get {
+                    return ((string)(this[this.tableMMTB_NoUsed_Table.DocNoColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.DocNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime DocDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableMMTB_NoUsed_Table.DocDateColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.DocDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime FromDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableMMTB_NoUsed_Table.FromDateColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.FromDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime ToDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableMMTB_NoUsed_Table.ToDateColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.ToDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ControlDept {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.ControlDeptColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ControlDept\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.ControlDeptColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Code {
+                get {
+                    return ((string)(this[this.tableMMTB_NoUsed_Table.CodeColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.CodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ACCcode {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.ACCcodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACCcode\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.ACCcodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NameEN {
+                get {
+                    return ((string)(this[this.tableMMTB_NoUsed_Table.NameENColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.NameENColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Maker {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.MakerColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Maker\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.MakerColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Model {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.ModelColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Model\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.ModelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Series {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.SeriesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Series\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.SeriesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Lifetime {
+                get {
+                    return ((decimal)(this[this.tableMMTB_NoUsed_Table.LifetimeColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.LifetimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int NetValue {
+                get {
+                    try {
+                        return ((int)(this[this.tableMMTB_NoUsed_Table.NetValueColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NetValue\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.NetValueColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime StartDeprDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableMMTB_NoUsed_Table.StartDeprDateColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.StartDeprDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime EndDeprDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMMTB_NoUsed_Table.EndDeprDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EndDeprDate\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.EndDeprDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Reason {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.ReasonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Reason\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.ReasonColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CurStatus {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.CurStatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CurStatus\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.CurStatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string CurPlan {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.CurPlanColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CurPlan\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.CurPlanColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Solve {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NoUsed_Table.SolveColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Solve\' in table \'MMTB_NoUsed_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NoUsed_Table.SolveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsControlDeptNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.ControlDeptColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetControlDeptNull() {
+                this[this.tableMMTB_NoUsed_Table.ControlDeptColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsACCcodeNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.ACCcodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetACCcodeNull() {
+                this[this.tableMMTB_NoUsed_Table.ACCcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMakerNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.MakerColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMakerNull() {
+                this[this.tableMMTB_NoUsed_Table.MakerColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsModelNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.ModelColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetModelNull() {
+                this[this.tableMMTB_NoUsed_Table.ModelColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSeriesNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.SeriesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSeriesNull() {
+                this[this.tableMMTB_NoUsed_Table.SeriesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNetValueNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.NetValueColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNetValueNull() {
+                this[this.tableMMTB_NoUsed_Table.NetValueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEndDeprDateNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.EndDeprDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEndDeprDateNull() {
+                this[this.tableMMTB_NoUsed_Table.EndDeprDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsReasonNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.ReasonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetReasonNull() {
+                this[this.tableMMTB_NoUsed_Table.ReasonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCurStatusNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.CurStatusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCurStatusNull() {
+                this[this.tableMMTB_NoUsed_Table.CurStatusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCurPlanNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.CurPlanColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCurPlanNull() {
+                this[this.tableMMTB_NoUsed_Table.CurPlanColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSolveNull() {
+                return this.IsNull(this.tableMMTB_NoUsed_Table.SolveColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSolveNull() {
+                this[this.tableMMTB_NoUsed_Table.SolveColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -2914,6 +3898,40 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public MMTB_DD_TableRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class MMTB_NoUsed_TableRowChangeEvent : global::System.EventArgs {
+            
+            private MMTB_NoUsed_TableRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MMTB_NoUsed_TableRowChangeEvent(MMTB_NoUsed_TableRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public MMTB_NoUsed_TableRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3611,6 +4629,210 @@ WHERE        (M0005_ListMMTBLine.DocNo_Move = @DocNo)";
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DocNo));
             }
             MMTB_DataSet.MMTB_DD_TableDataTable dataTable = new MMTB_DataSet.MMTB_DD_TableDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class mmtb_NoUsed_TableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public mmtb_NoUsed_TableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "MMTB_NoUsed_Table";
+            tableMapping.ColumnMappings.Add("DocNo", "DocNo");
+            tableMapping.ColumnMappings.Add("DocDate", "DocDate");
+            tableMapping.ColumnMappings.Add("FromDate", "FromDate");
+            tableMapping.ColumnMappings.Add("ToDate", "ToDate");
+            tableMapping.ColumnMappings.Add("ControlDept", "ControlDept");
+            tableMapping.ColumnMappings.Add("Code", "Code");
+            tableMapping.ColumnMappings.Add("ACCcode", "ACCcode");
+            tableMapping.ColumnMappings.Add("NameEN", "NameEN");
+            tableMapping.ColumnMappings.Add("Maker", "Maker");
+            tableMapping.ColumnMappings.Add("Model", "Model");
+            tableMapping.ColumnMappings.Add("Series", "Series");
+            tableMapping.ColumnMappings.Add("Lifetime", "Lifetime");
+            tableMapping.ColumnMappings.Add("NetValue", "NetValue");
+            tableMapping.ColumnMappings.Add("StartDeprDate", "StartDeprDate");
+            tableMapping.ColumnMappings.Add("EndDeprDate", "EndDeprDate");
+            tableMapping.ColumnMappings.Add("Reason", "Reason");
+            tableMapping.ColumnMappings.Add("CurStatus", "CurStatus");
+            tableMapping.ColumnMappings.Add("CurPlan", "CurPlan");
+            tableMapping.ColumnMappings.Add("Solve", "Solve");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::TAKAKO_ERP_3LAYER.Properties.Settings.Default.MMTB_TVCConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        M0005_ListMMTBDoc4.DocNo, M0005_ListMMTBDoc4.DocDate, M0005_ListMMTBDoc4.FromDate, M0005_ListMMTBDoc4.ToDate, M0005_ListMMTBDoc4.ControlDept, M0005_ListMMTBNoUsed.Code, 
+                         M0005_ListMMTBNoUsed.ACCcode, M0005_ListMMTBNoUsed.NameEN, M0005_ListMMTBNoUsed.Maker, M0005_ListMMTBNoUsed.Model, M0005_ListMMTBNoUsed.Series, M0005_ListMMTBNoUsed.Lifetime, 
+                         M0005_ListMMTBNoUsed.NetValue, M0005_ListMMTBNoUsed.StartDeprDate, M0005_ListMMTBNoUsed.EndDeprDate, M0005_ListMMTBNoUsed.Reason, M0005_ListMMTBNoUsed.CurStatus, 
+                         M0005_ListMMTBNoUsed.CurPlan, M0005_ListMMTBNoUsed.Solve
+FROM            M0005_ListMMTBNoUsed INNER JOIN
+                         M0005_ListMMTBDoc4 ON M0005_ListMMTBNoUsed.DocNo = M0005_ListMMTBDoc4.DocNo
+WHERE        (M0005_ListMMTBNoUsed.DocNo = @DocNo)";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DocNo", global::System.Data.SqlDbType.VarChar, 30, global::System.Data.ParameterDirection.Input, 0, 0, "DocNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(MMTB_DataSet.MMTB_NoUsed_TableDataTable dataTable, string DocNo) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((DocNo == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DocNo));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual MMTB_DataSet.MMTB_NoUsed_TableDataTable GetData(string DocNo) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((DocNo == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DocNo));
+            }
+            MMTB_DataSet.MMTB_NoUsed_TableDataTable dataTable = new MMTB_DataSet.MMTB_NoUsed_TableDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

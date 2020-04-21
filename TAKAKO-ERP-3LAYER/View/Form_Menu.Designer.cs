@@ -52,12 +52,18 @@
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             this.SuspendLayout();
             // 
             // mainRibbonControl
             // 
+            this.mainRibbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.mainRibbonControl.ExpandCollapseItem.Id = 0;
+            this.mainRibbonControl.ForeColor = System.Drawing.Color.White;
             this.mainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.mainRibbonControl.ExpandCollapseItem,
             this.mainRibbonControl.SearchEditItem,
@@ -78,15 +84,18 @@
             this.bbiStock,
             this.bbiStop,
             this.bbiTech,
-            this.bbiACC});
+            this.bbiACC,
+            this.barButtonItem1});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 22;
+            this.mainRibbonControl.MaxItemId = 23;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.mainRibbonPage});
+            this.mainRibbonPage,
+            this.ribbonPage1,
+            this.ribbonPage2});
             this.mainRibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.mainRibbonControl.Size = new System.Drawing.Size(1211, 157);
+            this.mainRibbonControl.Size = new System.Drawing.Size(831, 159);
             this.mainRibbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiName
@@ -150,7 +159,7 @@
             // 
             // bbiConfirm
             // 
-            this.bbiConfirm.Caption = "Nghiệm thu MMTB";
+            this.bbiConfirm.Caption = "Nghiệm thu \r\nMMTB";
             this.bbiConfirm.Id = 11;
             this.bbiConfirm.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiConfirm.ImageOptions.Image")));
             this.bbiConfirm.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiConfirm.ImageOptions.LargeImage")));
@@ -175,7 +184,7 @@
             // 
             // bbiDisposal
             // 
-            this.bbiDisposal.Caption = "Thanh lý MMTB";
+            this.bbiDisposal.Caption = "Thanh lý \r\nMMTB";
             this.bbiDisposal.Id = 14;
             this.bbiDisposal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDisposal.ImageOptions.Image")));
             this.bbiDisposal.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDisposal.ImageOptions.LargeImage")));
@@ -242,13 +251,13 @@
             // 
             // mainRibbonPage
             // 
+            this.mainRibbonPage.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.mainRibbonPage.Appearance.Options.UseFont = true;
             this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.mainRibbonPageGroup,
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.mainRibbonPageGroup});
             this.mainRibbonPage.MergeOrder = 0;
             this.mainRibbonPage.Name = "mainRibbonPage";
-            this.mainRibbonPage.Text = "Menu";
+            this.mainRibbonPage.Text = "Master";
             // 
             // mainRibbonPageGroup
             // 
@@ -256,20 +265,21 @@
             this.mainRibbonPageGroup.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiName);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiGroup);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiProcess);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiLine);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiMakerModel);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiPartList);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiProcess);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiLine);
             this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
             this.mainRibbonPageGroup.Text = "Master";
             // 
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiList);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiTech);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiConfirm);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiMoving);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiTech);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiACC);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Quản lý MMTB";
@@ -284,12 +294,54 @@
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Quản lý LK, Pin, Dầu";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "MMTB \r\nkhông sử dụng";
+            this.barButtonItem1.Id = 22;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.ribbonPage1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ribbonPage1.Appearance.Options.UseFont = true;
+            this.ribbonPage1.Appearance.Options.UseForeColor = true;
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Quản lý MMTB";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbiList);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbiConfirm);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbiDisposal);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbiMoving);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbiTech);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbiACC);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "Quản lý MMTB";
+            // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.ribbonPage2.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.ribbonPage2.Appearance.Options.UseFont = true;
+            this.ribbonPage2.Appearance.Options.UseForeColor = true;
+            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2});
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "Quản lý LK, pin, dầu";
+            // 
             // Form_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(1211, 221);
+            this.ClientSize = new System.Drawing.Size(831, 223);
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "Form_Menu";
             this.Ribbon = this.mainRibbonControl;
@@ -324,5 +376,9 @@
         private DevExpress.XtraBars.BarButtonItem bbiStop;
         private DevExpress.XtraBars.BarButtonItem bbiTech;
         private DevExpress.XtraBars.BarButtonItem bbiACC;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
     }
 }

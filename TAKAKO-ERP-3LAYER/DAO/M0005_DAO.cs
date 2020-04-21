@@ -915,6 +915,25 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        //Kiểm tra ngày bắt đầu
+        public DataTable GetInfo_M0005_Doc_NoUsed_FromDate(DateTime fromDate)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             DocNo
+                            ,DocDate
+                            ,FromDate
+                        FROM 
+                            M0005_ListMMTBDoc4
+                        WHERE FromDate > @fromDate";
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@FromDate", SqlDbType.DateTime);
+            sqlParameters[0].Value = Convert.ToDateTime(fromDate);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
 
         //Số chứng từ MMTB NoUsed _ Header
         public DataTable GetInfo_M0005_NoUsed_Header(string DocNo)

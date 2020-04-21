@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
 using TAKAKO_ERP_3LAYER.Report;
 using DevExpress.XtraReports.UI;
@@ -106,7 +105,7 @@ namespace TAKAKO_ERP_3LAYER.View
             _ResultTable.Rows.Add(dtRow1);
 
             repo_sLookUp_Plan.DataSource = _ResultTable;
-            repo_sLookUp_Plan.ValueMember = "STT";
+            repo_sLookUp_Plan.ValueMember = "Kế hoạch";
             repo_sLookUp_Plan.DisplayMember = "Kế hoạch";
         }
         //Thông tin cho repo_sLookUp_Reason
@@ -127,7 +126,7 @@ namespace TAKAKO_ERP_3LAYER.View
             _ResultTable.Rows.Add(dtRow1);
 
             repo_sLookUp_Reason.DataSource = _ResultTable;
-            repo_sLookUp_Reason.ValueMember = "STT";
+            repo_sLookUp_Reason.ValueMember = "Lý do";
             repo_sLookUp_Reason.DisplayMember = "Lý do";
         }
         //Thêm cột header
@@ -517,6 +516,18 @@ namespace TAKAKO_ERP_3LAYER.View
                 date_From.Focus();
                 return false;
             }
+            //Không cho nhập ngày bắt đầu < ngày đã có trong hệ thống
+            if (date_From.DateTime != null)
+            {
+                DateTime fromDate = date_From.DateTime;
+                DataTable _tempTable = M0005_DAO.GetInfo_M0005_Doc_NoUsed_FromDate(fromDate);
+                if (_tempTable.Rows.Count > 0)
+                {
+                    MessageBox.Show("Ngày bắt đầu đã có dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    date_From.Focus();
+                    return false;
+                }
+            }
             //Không cho nhập ngày bắt đầu (from) > ngày kết thúc (to)
             if (date_From.DateTime > date_To.DateTime)
             {
@@ -552,9 +563,9 @@ namespace TAKAKO_ERP_3LAYER.View
             if (docStatus == 1)
             { 
             string DocNo = sLook_DocNo.EditValue.ToString();
-            M0005_TL_Report rpt_TL = new M0005_TL_Report(DocNo);
-            ReportPrintTool print = new ReportPrintTool(rpt_TL);
-            rpt_TL.ShowPreviewDialog();
+            M0005_NoUsed_Report rpt_NoUsed = new M0005_NoUsed_Report(DocNo);
+            ReportPrintTool print = new ReportPrintTool(rpt_NoUsed);
+            rpt_NoUsed.ShowPreviewDialog();
             }
             else
             {

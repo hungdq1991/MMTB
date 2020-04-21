@@ -173,12 +173,6 @@
     <Compile Include="Report\M0005_DD_Report.Designer.cs">
       <DependentUpon>M0005_DD_Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\M0005_NoUsed.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Report\M0005_NoUsed.Designer.cs">
-      <DependentUpon>M0005_NoUsed.cs</DependentUpon>
-    </Compile>
     <Compile Include="Report\M0005_NoUsed_Report.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -388,9 +382,6 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Report\M0005_DD_Report.resx">
       <DependentUpon>M0005_DD_Report.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\M0005_NoUsed.resx">
-      <DependentUpon>M0005_NoUsed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\M0005_NoUsed_Report.resx">
       <DependentUpon>M0005_NoUsed_Report.cs</DependentUpon>
