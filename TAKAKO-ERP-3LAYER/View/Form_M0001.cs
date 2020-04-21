@@ -92,7 +92,7 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
         //Chọn nút Edit
-        private void BbiEdit_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             using (Form_M0001_Detail formDetail = new Form_M0001_Detail(gridView.GetFocusedDataRow()))
             {

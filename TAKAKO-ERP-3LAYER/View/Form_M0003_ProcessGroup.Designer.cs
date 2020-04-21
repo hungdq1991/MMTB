@@ -59,6 +59,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -122,7 +123,7 @@
             // 
             // bbiEdit
             // 
-            this.bbiEdit.Caption = "Chỉnh sửa";
+            this.bbiEdit.Caption = "InActive";
             this.bbiEdit.Id = 20;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEdit.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
@@ -198,7 +199,7 @@
             this.gridCol_ProcessGroup.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_ProcessGroup.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ProcessGroup.Caption = "Công đoạn";
-            this.gridCol_ProcessGroup.FieldName = "ProcessGroup";
+            this.gridCol_ProcessGroup.FieldName = "ProcessCode";
             this.gridCol_ProcessGroup.Name = "gridCol_ProcessGroup";
             this.gridCol_ProcessGroup.Visible = true;
             this.gridCol_ProcessGroup.VisibleIndex = 0;
