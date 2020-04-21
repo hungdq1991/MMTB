@@ -41,7 +41,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiProcess_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_ProcessGroup formDetail = new Form_M0003_ProcessGroup())
+            using (Form_M0003_ProcessGroup formDetail = new Form_M0003_ProcessGroup(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;

@@ -21,7 +21,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT 
-	                         ProcessGroup
+	                         ProcessCode
 	                        ,ProcessEN
 	                        ,ProcessVN
 	                        ,ProcessJP
@@ -36,13 +36,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         FROM 
 	                        M0003_ProcessGroup";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.Text);
+            sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Tạo class Insert
-        public bool Insert(string ProcessGroup,
+        public bool Insert(string ProcessCode,
                            string ProcessEN,
                            string ProcessVN,
                            string ProcessJP,
@@ -56,7 +56,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"INSERT INTO [M0003_ProcessGroup]
-                            ([ProcessGroup]
+                            ([ProcessCode]
                             ,[ProcessEN]
                             ,[ProcessVN]
                             ,[ProcessJP]
@@ -74,7 +74,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,[Column4]
                             ,[Column5])
                         VALUES
-                            (@ProcessGroup
+                            (@ProcessCode
                             ,@ProcessEN
                             ,@ProcessVN
                             ,@ProcessJP
@@ -92,8 +92,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,NULL
                             ,NULL)";
             SqlParameter[] sqlParameters = new SqlParameter[9];
-            sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
-            sqlParameters[0].Value = Convert.ToString(ProcessGroup);
+            sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(ProcessCode);
             sqlParameters[1] = new SqlParameter("@ProcessEN", SqlDbType.NVarChar);
             sqlParameters[1].Value = Convert.ToString(ProcessEN);
             sqlParameters[2] = new SqlParameter("@ProcessVN", SqlDbType.NVarChar);
@@ -114,7 +114,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeInsertQuery(StrQuery, sqlParameters);
         }
         //Tạo class Update
-        public bool Update(string ProcessGroup,
+        public bool Update(string ProcessCode,
                            string ProcessEN,
                            string ProcessVN,
                            string ProcessJP,
@@ -135,12 +135,12 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 ,ModifyDate     = GETDATE()
                                 ,ModifyUser     = @InputUser
                             WHERE 
-                                ProcessGroup    = @ProcessGroup
+                                ProcessCode    = @ProcessCode
                             AND ApplyDate       = @ApplyDate
                                     ";
             SqlParameter[] sqlParameters = new SqlParameter[8];
-            sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
-            sqlParameters[0].Value = Convert.ToString(ProcessGroup);
+            sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(ProcessCode);
             sqlParameters[1] = new SqlParameter("@ProcessEN", SqlDbType.NVarChar);
             sqlParameters[1].Value = Convert.ToString(ProcessEN);
             sqlParameters[2] = new SqlParameter("@ProcessVN", SqlDbType.NVarChar);
@@ -159,42 +159,40 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeUpdateQuery(StrQuery, sqlParameters);
         }
         //Tạo class Delete
-        public bool Delete(string ProcessGroup, DateTime ApplyDate)
+        public bool Delete(string ProcessCode, DateTime ApplyDate)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"DELETE FROM [dbo].[M0003_ProcessGroup]
-                        WHERE   ProcessGroup    = @ProcessGroup
+                        WHERE   ProcessCode     = @ProcessCode
                         AND     ApplyDate       = @ApplyDate";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
-            sqlParameters[0].Value = Convert.ToString(ProcessGroup);
+            sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(ProcessCode);
             sqlParameters[1] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
             sqlParameters[1].Value = Convert.ToDateTime(ApplyDate);
 
             return conn.executeDeleteQuery(StrQuery, sqlParameters);
         }
         //Tạo class Check
-        public DataTable GetInfo_M0003_Check(string ProcessGroup, DateTime ApplyDate)
+        public DataTable GetInfo_M0003_Check(string ProcessCode, DateTime ApplyDate)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                            ProcessGroup,
+                            ProcessCode,
                             ApplyDate,
                             InActive
                         FROM
                         	M0003_ProcessGroup
                         WHERE 
-                            (ProcessGroup   = @ProcessGroup
-                            AND ApplyDate   = @ApplyDate)
-                        OR  (ProcessGroup   = @ProcessGroup
-                            AND InActive    = 0)";
+                                ProcessCode   = @ProcessCode
+                            AND InActive    = 0";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
-            sqlParameters[0].Value = Convert.ToString(ProcessGroup);
+            sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(ProcessCode);
             sqlParameters[1] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
             sqlParameters[1].Value = Convert.ToDateTime(ApplyDate);
 
