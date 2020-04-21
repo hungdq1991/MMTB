@@ -34,7 +34,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
 	                        ,ModifyDate
 	                        ,ModifyUser
                         FROM 
-	                        M0003_ProcessGroup";
+	                        M0003_ProcessGroup
+                        ORDER BY ProcessCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -228,6 +229,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
         //Lấy dữ liệu từ bảng ProcessEF(có parammeter)
         //nhập lấy tên Process
         public DataTable GetInfo_M0003_ProcessGroup(string PROCESS_CODE)

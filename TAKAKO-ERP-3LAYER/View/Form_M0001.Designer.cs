@@ -63,6 +63,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -133,7 +134,7 @@
             this.bbiEdit.Id = 25;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEdit.Name = "bbiEdit";
-            this.bbiEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiEdit_ItemClick_1);
+            this.bbiEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiEdit_ItemClick);
             // 
             // bsiUser
             // 
@@ -322,6 +323,7 @@
             this.gridCol_Line.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_Line.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_Line.Caption = "Line";
+            this.gridCol_Line.ColumnEdit = this.repositoryItemCheckEdit1;
             this.gridCol_Line.FieldName = "Line";
             this.gridCol_Line.Name = "gridCol_Line";
             this.gridCol_Line.Visible = true;
