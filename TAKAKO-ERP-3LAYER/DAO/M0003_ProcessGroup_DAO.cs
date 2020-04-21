@@ -43,7 +43,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Tạo class Insert
-        public bool Insert(string ProcessGroup,
+        public bool Insert(string ProcessCode,
                            string ProcessEN,
                            string ProcessVN,
                            string ProcessJP,
@@ -177,7 +177,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeDeleteQuery(StrQuery, sqlParameters);
         }
         //Tạo class Check
-        public DataTable GetInfo_M0003_Check(string ProcessGroup, DateTime ApplyDate)
+        public DataTable GetInfo_M0003_Check(string ProcessCode, DateTime ApplyDate)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
