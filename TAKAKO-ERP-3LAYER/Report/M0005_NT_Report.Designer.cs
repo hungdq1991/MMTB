@@ -3249,9 +3249,9 @@
             // 
             // xrLine23
             // 
-            this.xrLine23.LocationFloat = new DevExpress.Utils.PointFloat(2F, 0F);
+            this.xrLine23.LocationFloat = new DevExpress.Utils.PointFloat(0.5F, 0F);
             this.xrLine23.Name = "xrLine23";
-            this.xrLine23.SizeF = new System.Drawing.SizeF(1127F, 2F);
+            this.xrLine23.SizeF = new System.Drawing.SizeF(1128F, 2F);
             // 
             // xrLabel10
             // 

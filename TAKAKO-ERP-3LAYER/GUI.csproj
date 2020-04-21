@@ -108,17 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BUS\PO_BUS.cs" />
-    <Compile Include="BUS\SEARCH_BUS.cs" />
-    <Compile Include="BUS\USER_BUS.cs" />
     <Compile Include="Common.cs" />
-    <Compile Include="DAL\InvDetail_DAL.cs" />
-    <Compile Include="DAL\InvMS_DAL.cs" />
-    <Compile Include="DAL\PLDetail_DAL.cs" />
-    <Compile Include="DAL\PO_DAL.cs" />
-    <Compile Include="DAL\SYSTEM_DAL.cs" />
-    <Compile Include="DAL\USER_DAL.cs" />
-    <Compile Include="DAO\EXPORT_DAO.cs" />
     <Compile Include="DAO\M0002_DAO.cs" />
     <Compile Include="DAO\M0001_DAO.cs" />
     <Compile Include="DAO\M0003_ProcessGroup_DAO.cs" />
@@ -137,13 +127,7 @@
     <Compile Include="DAO\M0014_DAO.cs" />
     <Compile Include="DAO\M0015_DAO.cs" />
     <Compile Include="DAO\M0018_DAO.cs" />
-    <Compile Include="DAO\M01_Session_DAO.cs" />
-    <Compile Include="DAO\SHIPPING_DAO.cs" />
-    <Compile Include="DAO\INV_DAO.cs" />
-    <Compile Include="DAO\LOG_DAO.cs" />
-    <Compile Include="DAO\PO_DAO.cs" />
-    <Compile Include="DAO\SEARCH_DAO.cs" />
-    <Compile Include="DAO\USER_DAO.cs" />
+    <Compile Include="DAO\SYS_USER_DAO.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="M0005_ListMMTB.cs">
       <DependentUpon>MMTB_Model.tt</DependentUpon>
@@ -219,23 +203,11 @@
     <Compile Include="View\Form_Flash.Designer.cs">
       <DependentUpon>Form_Flash.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_Export_Data.cs">
+    <Compile Include="View\Form_Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_Export_Data.Designer.cs">
-      <DependentUpon>Form_Export_Data.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Import_PO.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Import_PO.Designer.cs">
-      <DependentUpon>Form_Import_PO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Invoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Invoice.Designer.cs">
-      <DependentUpon>Form_Invoice.cs</DependentUpon>
+    <Compile Include="View\Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_M0003_ProcessGroup.cs">
       <SubType>Form</SubType>
@@ -314,66 +286,6 @@
     </Compile>
     <Compile Include="View\Form_M0014.Designer.cs">
       <DependentUpon>Form_M0014.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Search_ShippingNo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Search_ShippingNo.Designer.cs">
-      <DependentUpon>Form_Search_ShippingNo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Shipping_Instruction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Shipping_Instruction.Designer.cs">
-      <DependentUpon>Form_Shipping_Instruction.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Log.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Log.Designer.cs">
-      <DependentUpon>Form_Log.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Main.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Main.Designer.cs">
-      <DependentUpon>Form_Main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Login.Designer.cs">
-      <DependentUpon>Form_Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_PO.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_PO.Designer.cs">
-      <DependentUpon>Form_PO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Search_PO.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Search_PO.Designer.cs">
-      <DependentUpon>Form_Search_PO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Search.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Search.Designer.cs">
-      <DependentUpon>Form_Search.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Select_DB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Select_DB.Designer.cs">
-      <DependentUpon>Form_Select_DB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_Select_Company.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_Select_Company.Designer.cs">
-      <DependentUpon>Form_Select_Company.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -492,14 +404,8 @@
     <EmbeddedResource Include="View\Form_Flash.resx">
       <DependentUpon>Form_Flash.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Export_Data.resx">
-      <DependentUpon>Form_Export_Data.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Import_PO.resx">
-      <DependentUpon>Form_Import_PO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Invoice.resx">
-      <DependentUpon>Form_Invoice.cs</DependentUpon>
+    <EmbeddedResource Include="View\Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0001.resx">
       <DependentUpon>Form_M0001.cs</DependentUpon>
@@ -588,36 +494,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Menu.resx">
       <DependentUpon>Form_Menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Search_ShippingNo.resx">
-      <DependentUpon>Form_Search_ShippingNo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Shipping_Instruction.resx">
-      <DependentUpon>Form_Shipping_Instruction.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Log.resx">
-      <DependentUpon>Form_Log.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Main.resx">
-      <DependentUpon>Form_Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Login.resx">
-      <DependentUpon>Form_Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_PO.resx">
-      <DependentUpon>Form_PO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Search_PO.resx">
-      <DependentUpon>Form_Search_PO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Search.resx">
-      <DependentUpon>Form_Search.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Select_DB.resx">
-      <DependentUpon>Form_Select_DB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_Select_Company.resx">
-      <DependentUpon>Form_Select_Company.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -766,7 +642,9 @@
     <None Include="Resources\Zoom-full1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataSet\Tables\" />
+    <Folder Include="BUS\" />
+    <Folder Include="DAL\" />
+    <Folder Include="DataSet\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -367,10 +367,6 @@ namespace TAKAKO_ERP_3LAYER {
             
             private global::System.Data.DataColumn columnCode;
             
-            private global::System.Data.DataColumn columnStatus;
-            
-            private global::System.Data.DataColumn columnResult;
-            
             private global::System.Data.DataColumn columnMemo;
             
             private global::System.Data.DataColumn columnDocNo;
@@ -378,6 +374,10 @@ namespace TAKAKO_ERP_3LAYER {
             private global::System.Data.DataColumn columnInvNo;
             
             private global::System.Data.DataColumn columnOrgUsingDept;
+            
+            private global::System.Data.DataColumn columnStatus;
+            
+            private global::System.Data.DataColumn columnResult;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -488,7 +488,7 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StatusColumn {
                 get {
-                    return this.columnStatus;
+                    return this.columnMemo;
                 }
             }
             
@@ -496,7 +496,7 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ResultColumn {
                 get {
-                    return this.columnResult;
+                    return this.columnDocNo;
                 }
             }
             
@@ -504,7 +504,7 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn MemoColumn {
                 get {
-                    return this.columnMemo;
+                    return this.columnInvNo;
                 }
             }
             
@@ -512,7 +512,7 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DocNoColumn {
                 get {
-                    return this.columnDocNo;
+                    return this.columnOrgUsingDept;
                 }
             }
             
@@ -520,7 +520,7 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn InvNoColumn {
                 get {
-                    return this.columnInvNo;
+                    return this.columnStatus;
                 }
             }
             
@@ -528,7 +528,7 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn OrgUsingDeptColumn {
                 get {
-                    return this.columnOrgUsingDept;
+                    return this.columnResult;
                 }
             }
             
@@ -581,12 +581,12 @@ namespace TAKAKO_ERP_3LAYER {
                         Maker,
                         ProDate,
                         Code,
-                        Status,
-                        Result,
                         Memo,
                         DocNo,
                         InvNo,
-                        OrgUsingDept};
+                        OrgUsingDept,
+                        Status,
+                        Result};
                 rowMMTB_NT_TableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMMTB_NT_TableRow);
                 return rowMMTB_NT_TableRow;
@@ -625,12 +625,12 @@ namespace TAKAKO_ERP_3LAYER {
                 this.columnMaker = base.Columns["Maker"];
                 this.columnProDate = base.Columns["ProDate"];
                 this.columnCode = base.Columns["Code"];
-                this.columnStatus = base.Columns["Status"];
-                this.columnResult = base.Columns["Result"];
                 this.columnMemo = base.Columns["Memo"];
                 this.columnDocNo = base.Columns["DocNo"];
                 this.columnInvNo = base.Columns["InvNo"];
                 this.columnOrgUsingDept = base.Columns["OrgUsingDept"];
+                this.columnStatus = base.Columns["Status"];
+                this.columnResult = base.Columns["Result"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -654,10 +654,6 @@ namespace TAKAKO_ERP_3LAYER {
                 base.Columns.Add(this.columnProDate);
                 this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCode);
-                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStatus);
-                this.columnResult = new global::System.Data.DataColumn("Result", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnResult);
                 this.columnMemo = new global::System.Data.DataColumn("Memo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMemo);
                 this.columnDocNo = new global::System.Data.DataColumn("DocNo", typeof(string), null, global::System.Data.MappingType.Element);
@@ -666,6 +662,10 @@ namespace TAKAKO_ERP_3LAYER {
                 base.Columns.Add(this.columnInvNo);
                 this.columnOrgUsingDept = new global::System.Data.DataColumn("OrgUsingDept", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrgUsingDept);
+                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatus);
+                this.columnResult = new global::System.Data.DataColumn("Result", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnResult);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCode}, true));
                 this.columnConfirmDate.AllowDBNull = false;
@@ -684,6 +684,10 @@ namespace TAKAKO_ERP_3LAYER {
                 this.columnDocNo.MaxLength = 50;
                 this.columnInvNo.MaxLength = 20;
                 this.columnOrgUsingDept.MaxLength = 10;
+                this.columnStatus.ReadOnly = true;
+                this.columnStatus.MaxLength = 3;
+                this.columnResult.ReadOnly = true;
+                this.columnResult.MaxLength = 14;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1878,39 +1882,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Status {
-                get {
-                    try {
-                        return ((int)(this[this.tableMMTB_NT_Table.StatusColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'MMTB_NT_Table\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMMTB_NT_Table.StatusColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int Result {
-                get {
-                    try {
-                        return ((int)(this[this.tableMMTB_NT_Table.ResultColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Result\' in table \'MMTB_NT_Table\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMMTB_NT_Table.ResultColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string Memo {
+            public string Status {
                 get {
                     try {
                         return ((string)(this[this.tableMMTB_NT_Table.MemoColumn]));
@@ -1926,7 +1898,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string DocNo {
+            public string Result {
                 get {
                     return ((string)(this[this.tableMMTB_NT_Table.DocNoColumn]));
                 }
@@ -1937,7 +1909,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string InvNo {
+            public string Memo {
                 get {
                     try {
                         return ((string)(this[this.tableMMTB_NT_Table.InvNoColumn]));
@@ -1953,7 +1925,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string OrgUsingDept {
+            public string DocNo {
                 get {
                     try {
                         return ((string)(this[this.tableMMTB_NT_Table.OrgUsingDeptColumn]));
@@ -1964,6 +1936,38 @@ namespace TAKAKO_ERP_3LAYER {
                 }
                 set {
                     this[this.tableMMTB_NT_Table.OrgUsingDeptColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string InvNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NT_Table.StatusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'MMTB_NT_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.StatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string OrgUsingDept {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NT_Table.ResultColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Result\' in table \'MMTB_NT_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.ResultColumn] = value;
                 }
             }
             
@@ -3058,12 +3062,12 @@ namespace TAKAKO_ERP_3LAYER.MMTB_DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Maker", "Maker");
             tableMapping.ColumnMappings.Add("ProDate", "ProDate");
             tableMapping.ColumnMappings.Add("Code", "Code");
-            tableMapping.ColumnMappings.Add("Status", "Status");
-            tableMapping.ColumnMappings.Add("Result", "Result");
             tableMapping.ColumnMappings.Add("Memo", "Memo");
             tableMapping.ColumnMappings.Add("DocNo", "DocNo");
             tableMapping.ColumnMappings.Add("InvNo", "InvNo");
             tableMapping.ColumnMappings.Add("OrgUsingDept", "OrgUsingDept");
+            tableMapping.ColumnMappings.Add("Status", "Status");
+            tableMapping.ColumnMappings.Add("Result", "Result");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3080,7 +3084,8 @@ namespace TAKAKO_ERP_3LAYER.MMTB_DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        D.DocNo, D.ReceiptDate, D.InvNo, D.ConfirmDate, D.ControlDept, M.NameEN, M.Model, M.Series, M.Maker, M.ProDate, M.Code, L.OrgUsingDept, M.Status, M.Result, M.Memo
+            this._commandCollection[0].CommandText = @"SELECT        D.DocNo, D.ReceiptDate, D.InvNo, D.ConfirmDate, D.ControlDept, M.NameEN, M.Model, M.Series, M.Maker, M.ProDate, M.Code, L.OrgUsingDept, 
+                         CASE WHEN M.Status = 0 THEN N'Mới' WHEN M.Status = 1 THEN N'Cũ' END AS Status, CASE WHEN M.Result = 0 THEN N'Đạt (OK)' WHEN M.Result = 1 THEN N'Không đạt (NG)' END AS Result, M.Memo
 FROM            M0005_ListMMTBDoc1 AS D INNER JOIN
                          M0005_ListMMTB AS M ON D.DocNo = M.DocNo LEFT OUTER JOIN
                              (SELECT        DocNo_Confirm, Code, OrgUsingDept, MIN(ApplyDate) AS ApplyDate

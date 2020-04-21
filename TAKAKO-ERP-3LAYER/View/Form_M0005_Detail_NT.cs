@@ -435,6 +435,7 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             if (e.CloseMode == PopupCloseMode.Normal)
             {
+                string _nameEN = "";
                 string _nameVN = "";
                 string _nameJP = "";
                 string _maker = "";
@@ -445,17 +446,18 @@ namespace TAKAKO_ERP_3LAYER.View
                 int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
 
                 //Set value to variables
+                _nameEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameEN"));
                 _nameVN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameVN"));
                 _nameJP = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameJP"));
                 _maker = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Maker"));
                 _model = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Model"));
 
-                //Set value to column NameVN, NameJP, Maker, Model
+                //Set value to column NameEN,NameVN, NameJP, Maker, Model
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameEN", _nameEN);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "Maker", _maker);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "Model", _model);
-                //}
             }
         }
 
@@ -837,6 +839,7 @@ namespace TAKAKO_ERP_3LAYER.View
             bbiRefresh.Enabled = IsEnable;
             bbi_AddNewRow.Enabled = IsEnable;
             bbi_DeleteRow.Enabled = IsEnable;
+            bbi_Eport_Excel.Enabled = !IsEnable;
 
             //PopUp
             bbi_PopUp_AddNewRow.Enabled = IsEnable;
@@ -863,9 +866,11 @@ namespace TAKAKO_ERP_3LAYER.View
             for (int rows = 0; rows < gridView.DataRowCount; rows++)
                 if (rows != gridView.FocusedRowHandle)
                 {
-                    string _rowCodeValue = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns[column]));
-                    if (!String.IsNullOrEmpty(_rowCodeValue))
-                    {
+                    string _rowCodeValue = "";
+                    string _rowFocusValue = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns[column]));
+                    if (!String.IsNullOrEmpty(_rowFocusValue))
+                    { 
+                        _rowCodeValue = (string)gridView.GetRowCellValue(rows, gridView.Columns[column]);
                         if (Equals(_value, _rowCodeValue))
                             return true;
                     }
