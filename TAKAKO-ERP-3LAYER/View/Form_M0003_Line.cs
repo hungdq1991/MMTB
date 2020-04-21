@@ -76,15 +76,17 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }
         //Nội dung hiển thị khi click nút "Thêm mới"
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(AddNew))
+            using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(AddNew, _systemDAL))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }
@@ -94,6 +96,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }
@@ -103,6 +106,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }

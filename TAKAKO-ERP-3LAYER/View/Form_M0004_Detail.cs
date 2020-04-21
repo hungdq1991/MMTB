@@ -25,10 +25,12 @@ namespace TAKAKO_ERP_3LAYER.View
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = false;
         //Tạo mới form theo kiểu True/False
-        public Form_M0004_Detail(Boolean _isNewValue)
+        public Form_M0004_Detail(Boolean _isNewValue, System_DAL systemDAL)
         {
             InitializeComponent();
             IsNewValue = _isNewValue;
+            //
+            _systemDAL = systemDAL;
         }
 
         //Update, delete _ form theo kiểu dữ liệu

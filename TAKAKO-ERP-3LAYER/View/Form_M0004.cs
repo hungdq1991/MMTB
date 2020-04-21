@@ -81,7 +81,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi click nút "Thêm mới"
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0004_Detail formDetail = new Form_M0004_Detail(AddNew))
+            using (Form_M0004_Detail formDetail = new Form_M0004_Detail(AddNew, _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
