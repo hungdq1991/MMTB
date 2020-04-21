@@ -40,12 +40,14 @@ namespace TAKAKO_ERP_3LAYER.View
             IsNewValue = _isNewValue;
         }
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0003_Line_Detail(DataRow _mainDataRow)
+        public Form_M0003_Line_Detail(DataRow _mainDataRow, System_DAL systemDAL)
         {
             //
             InitializeComponent();
             //
             dataRow = _mainDataRow;
+            //
+            _systemDAL = systemDAL;
         }
         //Load form
         private void Form_M0003_Detail_Load(object sender, EventArgs e)
@@ -342,7 +344,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_Line_DAO.Insert(TVC, curr_LineID, curr_LineEN, curr_LineVN, curr_LineJP, curr_ProcessGroup, curr_GroupLineACC, curr_ProductionDept, curr_Point, curr_ExpenseGroup, curr_ApplyDate, curr_InActive, curr_Memo, "IT"))
+                        if (M0003_Line_DAO.Insert(TVC, curr_LineID, curr_LineEN, curr_LineVN, curr_LineJP, curr_ProcessGroup, curr_GroupLineACC, curr_ProductionDept, curr_Point, curr_ExpenseGroup, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName))
                         {
                             Message = "Lưu thành công tên: \"" + txt_LineID.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -359,7 +361,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_Line_DAO.Update(curr_LineID, curr_LineEN, curr_LineVN, curr_LineJP, curr_ApplyDate, curr_InActive, curr_Memo, "IT"))
+                        if (M0003_Line_DAO.Update(curr_LineID, curr_LineEN, curr_LineVN, curr_LineJP, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName))
                         {
                             Message = "Cập nhật thành công tên: \"" + txt_LineID.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

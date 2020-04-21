@@ -211,6 +211,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0006_Detail_P formDetail = new Form_M0006_Detail_P(gridView3.GetFocusedDataRow()))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }
