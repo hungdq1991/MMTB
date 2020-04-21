@@ -78,7 +78,8 @@ ORDER BY M.Code</CommandText>
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>SELECT        M0005_ListMMTB.Code, M0005_ListMMTB.ACCcode, M0005_ListMMTB.NameEN, M0005_ListMMTB.Maker, M0005_ListMMTB.Model, M0005_ListMMTB.ReceiptDate, M0005_ListMMTB.StartDeprDate, 
-                         M0005_ListMMTB.EndDeprDate, M0005_ListMMTB.DisposalDate, M0005_ListMMTB.DocNo_Disposal, M0005_ListMMTBDoc2.ControlDept, M0005_ListMMTB.Series, M0005_ListMMTB.DisposalMemo
+                         M0005_ListMMTB.EndDeprDate, M0005_ListMMTB.DisposalDate, M0005_ListMMTB.DocNo_Disposal, M0005_ListMMTBDoc2.ControlDept, M0005_ListMMTB.Series, M0005_ListMMTB.DisposalMemo, 
+                         M0005_ListMMTBDoc2.Memo, M0005_ListMMTB.NetValue_Disposal
 FROM            M0005_ListMMTB INNER JOIN
                          M0005_ListMMTBDoc2 ON M0005_ListMMTB.DocNo_Disposal = M0005_ListMMTBDoc2.DocNo
 WHERE        (M0005_ListMMTB.DocNo_Disposal = @DocNo)
@@ -139,6 +140,8 @@ SELECT Code, ACCcode, NameEN, Maker, Model, ReceiptDate, StartDeprDate, EndDeprD
               <Mapping SourceColumn="ControlDept" DataSetColumn="ControlDept" />
               <Mapping SourceColumn="Series" DataSetColumn="Series" />
               <Mapping SourceColumn="DisposalMemo" DataSetColumn="DisposalMemo" />
+              <Mapping SourceColumn="Memo" DataSetColumn="Memo" />
+              <Mapping SourceColumn="NetValue_Disposal" DataSetColumn="NetValue_Disposal" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -350,6 +353,14 @@ WHERE        (M0005_ListMMTBLine.DocNo_Move = @DocNo)</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Memo" msprop:Generator_ColumnVarNameInTable="columnMemo" msprop:Generator_ColumnPropNameInRow="Memo" msprop:Generator_ColumnPropNameInTable="MemoColumn" msprop:Generator_UserColumnName="Memo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NetValue_Disposal" msprop:Generator_ColumnVarNameInTable="columnNetValue_Disposal" msprop:Generator_ColumnPropNameInRow="NetValue_Disposal" msprop:Generator_ColumnPropNameInTable="NetValue_DisposalColumn" msprop:Generator_UserColumnName="NetValue_Disposal" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -339,6 +339,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                    ,M.Lifetime
 		                    ,M.StartDeprDate
 		                    ,M.EndDeprDate
+                            ,case when S.NetValue is null then 0 else CONVERT(decimal(16,4),S.NetValue) end as NetValue_Disposal
 		                    ,L.DesProcessCode
 		                    ,L.DesLineCode
 		                    ,L.DesLineEN
@@ -380,6 +381,24 @@ namespace TAKAKO_ERP_3LAYER.DAO
 							) L
 	                    ON
                                 M.Code         =   L.Code
+                        LEFT JOIN
+                            (SELECT 
+                                     S1.AssetID
+                                    ,S1.BookValue as NetValue
+                                FROM
+                                    [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist] S1
+                            JOIN 
+                                (SELECT
+                                     AssetID
+                                    ,MAX(Crtd_DateTime) as Crtd_DateTime
+                                FROM
+                                    [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist]
+                                GROUP BY
+                                    AssetID) S2
+                            ON      S1.AssetID = S2.AssetID
+                                AND S1.Crtd_DateTime = S2.Crtd_DateTime) S
+                        ON 
+                            M.ACCcode = S.AssetID
                         WHERE  M.DocNo_Disposal = '' 
                             OR M.DocNo_Disposal IS NULL";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -425,7 +444,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,DisposalDate
                             ,ControlDept
                             ,DocStatus
-                            ,Column1
+                            ,Memo
                             ,Column2
                             ,Column3
                             ,Column4
@@ -461,7 +480,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                    ,M.Lifetime
 		                    ,M.StartDeprDate
 		                    ,M.EndDeprDate
-		                    ,L.DesProcessCode
+                            ,M.NetValue_Disposal
+                            ,L.DesProcessCode
 		                    ,L.DesLineCode
 		                    ,L.DesLineEN
 		                    ,L.DesGroupLineACC
@@ -526,7 +546,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                    ,M.Lifetime
 		                    ,M.StartDeprDate
 		                    ,M.EndDeprDate
-		                    ,L.DesProcessCode
+                            ,M.NetValue_Disposal
+                            ,L.DesProcessCode
 		                    ,L.DesLineCode
 		                    ,L.DesLineEN
 		                    ,L.DesGroupLineACC
@@ -873,6 +894,28 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        //Số chứng từ MMTB NoUsed chưa xác nhận
+        public DataTable GetInfo_M0005_Doc_NoUsed_Pre()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             DocNo
+                            ,DocDate
+                            ,FromDate
+                            ,ToDate
+                            ,case when DocStatus = 0 then N'Chuẩn bị' else N'Xác nhận' end as   DocStatus
+                        FROM 
+                            M0005_ListMMTBDoc4
+                        WHERE DocStatus = 0
+                        ORDER BY DocNo DESC";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
         //Số chứng từ MMTB NoUsed _ Header
         public DataTable GetInfo_M0005_NoUsed_Header(string DocNo)
         {
@@ -880,7 +923,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                             DocDate
+                             DocNo
+                            ,DocDate
                             ,FromDate
                             ,ToDate
                             ,DocStatus
@@ -937,7 +981,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             StrQuery = @"SELECT
                         	 L.Code
-                        	,ACCcode
+                        	,L.ACCcode
                         	,L.NameEN
                         	,L.NameVN
                         	,L.NameJP
@@ -947,23 +991,19 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         	,OrgCountry
                         	,ProDate
                         	,Lifetime
-                            ,0 as NetValue
+                            ,case when S.NetValue is null then 0 else CONVERT(decimal(16,4),S.NetValue) end as NetValue
                         	,StartDeprDate
                         	,EndDeprDate
-                            ,'' as Reason
-                            ,'' as CurStatus
-                            ,'' as CurPlan
-                            ,'' as Solve
+                            ,L2.Reason
+                            ,L2.CurStatus
+                            ,L2.CurPlan
+                            ,L2.Solve
                         FROM
                         	M0005_ListMMTB L
 						LEFT JOIN
 							(SELECT
 								 L1.Code
-								,L1.DesProcessCode
 								,L1.DesLineCode
-								,L1.DesLineEN
-								,L1.DesGroupLineACC
-								,L1.DesUsingDept 
 							FROM M0005_ListMMTBLine L1 
 							JOIN (SELECT 
 									 Code
@@ -972,8 +1012,43 @@ namespace TAKAKO_ERP_3LAYER.DAO
 								  GROUP BY Code) L2 
 							ON		L1.Code = L2.Code 
 								AND L1.ApplyDate = L2.ApplyDate) L1
+							ON L.Code = L1.Code
+						LEFT JOIN
+							(SELECT
+								  L1.Code
+                                 ,L1.Reason
+                                 ,L1.CurStatus
+                                 ,L1.CurPlan
+                                 ,L1.Solve
+							FROM 
+                                M0005_ListMMTBNoUsed L1
+							JOIN (SELECT 
+									 Code
+									,Max(FromDate) as FromDate
+								  FROM M0005_ListMMTBNoUsed 
+								  GROUP BY Code) L2 
+							ON		L1.Code = L2.Code 
+								AND L1.FromDate = L2.FromDate) L2
 						ON
-							L.Code = L1.Code
+								L.Code = L2.Code
+                        LEFT JOIN
+                                (SELECT 
+                                     S1.AssetID
+                                    ,S1.BookValue as NetValue
+                                FROM
+                                    [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist] S1
+                            JOIN 
+                                (SELECT
+                                     AssetID
+                                    ,MAX(Crtd_DateTime) as Crtd_DateTime
+                                FROM
+                                    [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist]
+                                GROUP BY
+                                    AssetID) S2
+                            ON      S1.AssetID = S2.AssetID
+                                AND S1.Crtd_DateTime = S2.Crtd_DateTime) S
+                        ON 
+                            L.ACCcode = S.AssetID
                         WHERE L1.DesLineCode = 'NoUsed'
                         ORDER BY L.Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];

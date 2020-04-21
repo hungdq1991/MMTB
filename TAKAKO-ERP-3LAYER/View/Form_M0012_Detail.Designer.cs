@@ -80,6 +80,7 @@
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_TextEdit_Code = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.repo_TextEdit_PurCode = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -101,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Code)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_PurCode)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -253,7 +255,8 @@
             this.repo_sLookUp_WH2Code,
             this.repo_sLookUp_InActive,
             this.repo_sLookUp_ItemCode,
-            this.repo_TextEdit_Code});
+            this.repo_TextEdit_Code,
+            this.repo_TextEdit_PurCode});
             this.gridControl.Size = new System.Drawing.Size(790, 418);
             this.gridControl.TabIndex = 5;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -511,7 +514,6 @@
             this.gridCol_MinimumQty.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_MinimumQty.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_MinimumQty.Caption = "Tồn kho tối thiểu";
-            this.gridCol_MinimumQty.DisplayFormat.FormatString = "#,###";
             this.gridCol_MinimumQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridCol_MinimumQty.FieldName = "MinimumQty";
             this.gridCol_MinimumQty.Name = "gridCol_MinimumQty";
@@ -602,7 +604,7 @@
             this.gridCol_PurCode.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_PurCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_PurCode.Caption = "Mã mua hàng";
-            this.gridCol_PurCode.ColumnEdit = this.repo_sLookUp_PurCode;
+            this.gridCol_PurCode.ColumnEdit = this.repo_TextEdit_PurCode;
             this.gridCol_PurCode.FieldName = "PurCode";
             this.gridCol_PurCode.Name = "gridCol_PurCode";
             this.gridCol_PurCode.Visible = true;
@@ -774,6 +776,11 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
+            // repo_TextEdit_PurCode
+            // 
+            this.repo_TextEdit_PurCode.AutoHeight = false;
+            this.repo_TextEdit_PurCode.Name = "repo_TextEdit_PurCode";
+            // 
             // Form_M0012_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -808,6 +815,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Code)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_PurCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -865,5 +873,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_ItemCode;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_TextEdit_Code;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_TextEdit_PurCode;
     }
 }

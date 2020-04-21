@@ -192,7 +192,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             StrQuery = @"SELECT
                                  SessionID
-							    ,ItemCode
+							    ,L.ItemCode
                                 ,NameEN
                                 ,NameVN
                                 ,NameJP
@@ -206,7 +206,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 ,PurCode
                                 ,WH1Code
                                 ,WH2Code
-                                ,ApplyDate
+                                ,L.ApplyDate
                                 ,InActive
                                 ,Memo
                                 ,InputDate
@@ -219,7 +219,28 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 ,Column4
                                 ,Column5
                             FROM
-                                M0012_SupplyMMTB
+                                M0012_SupplyMMTB L
+                            JOIN
+                                (SELECT 
+                                     L1.ItemCode
+                                    ,L1.ApplyDate
+                                FROM
+                                    M0012_SupplyMMTB L1
+                                JOIN
+                                    (SELECT 
+                                         ItemCode
+                                        ,Max(ApplyDate) as ApplyDate
+                                    FROM
+                                        M0012_SupplyMMTB
+                                    GROUP BY
+										ItemCode) L2
+                                ON
+                                    L1.ItemCode = L2.ItemCode
+								AND	L1.ApplyDate = L2.ApplyDate
+									) L1
+                            ON
+                                L.ItemCode = L1.ItemCode
+                            AND L.ApplyDate = L1.ApplyDate
                             WHERE
                                 InActive = 0";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -240,9 +261,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 ,Point
                                 ,MinimumQty
                                 ,Lifetime
-                                ,PurCode
-                                ,WH1Code
-                                ,WH2Code
                             FROM
                                 M0012_SupplyMMTB
                             WHERE
@@ -250,11 +268,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             AND Maker       = @Maker
                             AND Point       = @Point
                             AND MinimumQty  = @MinimumQty
-                            AND Lifetime    = @Lifetime
-                            AND PurCode     = @PurCode
-                            AND WH1Code     = @WH1Code
-                            AND WH2Code     = @WH2Code";
-            SqlParameter[] sqlParameters = new SqlParameter[8];
+                            AND Lifetime    = @Lifetime";
+
+            SqlParameter[] sqlParameters = new SqlParameter[5];
             sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString(ItemCode);
             sqlParameters[1] = new SqlParameter("@Maker", SqlDbType.Text);
@@ -265,12 +281,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
             sqlParameters[3].Value = Convert.ToInt32(MinimumQty);
             sqlParameters[4] = new SqlParameter("@Lifetime", SqlDbType.Int);
             sqlParameters[4].Value = Convert.ToInt32(Lifetime);
-            sqlParameters[5] = new SqlParameter("@PurCode", SqlDbType.Text);
-            sqlParameters[5].Value = Convert.ToString(PurCode);
-            sqlParameters[6] = new SqlParameter("@WH1Code", SqlDbType.Text);
-            sqlParameters[6].Value = Convert.ToString(WH1Code);
-            sqlParameters[7] = new SqlParameter("@WH2Code", SqlDbType.Text);
-            sqlParameters[7].Value = Convert.ToString(WH2Code);
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
