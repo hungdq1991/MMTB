@@ -85,7 +85,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Thêm dữ liệu
         private void barBtn_AddNewRow_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0001_Detail formDetail = new Form_M0001_Detail(AddNew))
+            using (Form_M0001_Detail formDetail = new Form_M0001_Detail(AddNew, _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;

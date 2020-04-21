@@ -29,12 +29,14 @@ namespace TAKAKO_ERP_3LAYER.View
         public System_DAL _systemDAL = new System_DAL();
 
         //Tạo mới form theo kiểu True/False
-        public Form_M0002_Detail(Boolean _isNewValue)
+        public Form_M0002_Detail(Boolean _isNewValue, System_DAL systemDAL)
         {
             //
             InitializeComponent();
             //
             IsNewValue = _isNewValue;
+            //
+            _systemDAL = systemDAL;
         }
 
         //Update, delete _ form theo kiểu dữ liệu
