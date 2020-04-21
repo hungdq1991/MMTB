@@ -210,14 +210,14 @@ namespace TAKAKO_ERP_3LAYER.View
         //Điền dữ liệu bộ phận
         private void AddValue_sLook_ControlDept()
         {
-            //DataTable tempTable = new DataTable();
-            //tempTable = M0005_DAO.GetInfo_ControlDept();
-            //if (tempTable.Rows.Count > 0)
-            //{
-            //    sLook_ControlDept.Properties.DataSource = tempTable;
-            //    sLook_ControlDept.Properties.ValueMember = "SectionID";
-            //    sLook_ControlDept.Properties.DisplayMember = "SectionID";
-            //}
+            DataTable tempTable = new DataTable();
+            tempTable = M0005_DAO.GetInfo_ControlDept();
+            if (tempTable.Rows.Count > 0)
+            {
+                sLook_ControlDept.Properties.DataSource = tempTable;
+                sLook_ControlDept.Properties.ValueMember = "SectionID";
+                sLook_ControlDept.Properties.DisplayMember = "SectionID";
+            }
         }
         //Điền dữ liệu cho ô Số chứng từ
         private void Add_Value_sLookUp_DocNo()
@@ -301,17 +301,48 @@ namespace TAKAKO_ERP_3LAYER.View
 
             sLook_DocNo.Focus();
         }
+        //Click nút tạo mới
+        private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DataTable _tempTable = M0005_DAO.GetInfo_M0005_Doc_NoUsed_Pre();
+            if (_tempTable.Rows.Count > 0)
+            {
+                MessageBox.Show("Có chứng từ chưa được xác nhận, vui lòng hoàn thành chứng từ!", "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                Set_Enable_Control(true);
+                InitValue = true;
+                Clear_Data();
+            }
+        }
         //Click nút Load thông tin
         private void BbiLoad_ItemClick(object sender, ItemClickEventArgs e)
         {
             var result = MessageBox.Show("Bạn muốn load thông tin MMTB không sử dụng?", "Xác nhận", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                Set_Enable_Control(true);
-                InitValue = true;
-                Clear_Data();
-                DataTable _tempTable = M0005_DAO.GetInfo_M0005_NoUsed();
-                gridControl.DataSource = _tempTable;
+                DataTable _tempTable1 = M0005_DAO.GetInfo_M0005_Doc_NoUsed_Pre();
+                if (_tempTable1.Rows.Count > 0 && sLook_DocNo.EditValue == null)
+                {
+                    MessageBox.Show("Có chứng từ chưa được xác nhận, vui lòng hoàn thành chứng từ!", "Thông báo", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    if (sLook_DocNo.EditValue == null)
+                    {
+                        Set_Enable_Control(true);
+                        InitValue = true;
+                        Clear_Data();
+                        DataTable _tempTable = M0005_DAO.GetInfo_M0005_NoUsed();
+                        gridControl.DataSource = _tempTable;
+                    }
+                    else
+                    {
+                        DataTable _tempTable = M0005_DAO.GetInfo_M0005_NoUsed();
+                        gridControl.DataSource = _tempTable;
+                    }
+                }
             }
         }
         //Click nút Reset
@@ -390,6 +421,7 @@ namespace TAKAKO_ERP_3LAYER.View
                             MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
                                 , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_Data();
+                            Add_Value_sLookUp_DocNo();
                         }
                         else
                         {
@@ -404,11 +436,11 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
         #endregion
+        //Cài đặt hiệu lực các nút nhấn 
         private void Set_Enable_Control(Boolean IsEnable)
         {
             //Menu
             bbiSave.Enabled = IsEnable;
-            bbiRefresh.Enabled = IsEnable;
             bbi_AddNewRow.Enabled = IsEnable;
             bbi_DeleteRow.Enabled = IsEnable;
             //PopUp
@@ -430,12 +462,12 @@ namespace TAKAKO_ERP_3LAYER.View
         public Boolean CheckError()
         {
             //Thông tin bộ phận phụ trách
-            //if (String.IsNullOrEmpty(Convert.ToString(sLook_ControlDept.EditValue)))
-            //{
-            //    MessageBox.Show("Hãy nhập \"Bộ phận\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    sLook_ControlDept.Focus();
-            //    return false;
-            //}
+            if (String.IsNullOrEmpty(Convert.ToString(sLook_ControlDept.EditValue)))
+            {
+                MessageBox.Show("Hãy nhập \"Bộ phận\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sLook_ControlDept.Focus();
+                return false;
+            }
             //Nhập liệu cột Hiện trạng MMTB 
             for (int rows = 0; rows < gridView.RowCount; rows++)
             {
@@ -482,6 +514,13 @@ namespace TAKAKO_ERP_3LAYER.View
             if (date_From.DateTime.Month < DateTime.Now.Month)
             {
                 MessageBox.Show("Xem lại ngày bắt đầu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                date_From.Focus();
+                return false;
+            }
+            //Không cho nhập ngày bắt đầu (from) > ngày kết thúc (to)
+            if (date_From.DateTime > date_To.DateTime)
+            {
+                MessageBox.Show("Xem lại ngày bắt đầu/ngày kết thúc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 date_From.Focus();
                 return false;
             }

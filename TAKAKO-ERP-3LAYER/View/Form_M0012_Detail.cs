@@ -522,17 +522,23 @@ namespace TAKAKO_ERP_3LAYER.View
             {
                 e.RepositoryItem = repo_sLookUp_ItemCode;
             }
+            if (e.Column == gridCol_PurCode)
+            {
+                e.RepositoryItem = repo_sLookUp_PurCode;
+            }
         }
         //Kiểm tra mã LK bị trùng trên lưới
         bool IsDuplicatedRowFound(string _value, string column)
         {
             for (int rows = 0; rows < gridView.DataRowCount; rows++)
-                if (rows != gridView.FocusedRowHandle && gridView.GetRowCellValue(rows, gridView.Columns[column]) != null)
+                if (rows != gridView.FocusedRowHandle)
                 {
-                    string _rowCodeValue = "";
-                    _rowCodeValue = (string)gridView.GetRowCellValue(rows, gridView.Columns[column]);
-                    if (Equals(_value, _rowCodeValue))
-                    return true;
+                    string _rowCodeValue = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns[column]));
+                    if (!String.IsNullOrEmpty(_rowCodeValue))
+                    {
+                        if (Equals(_value, _rowCodeValue))
+                            return true;
+                    }
                 }
             return false;
         }
@@ -542,15 +548,6 @@ namespace TAKAKO_ERP_3LAYER.View
             if (gridView.FocusedColumn == gridCol_ItemCode)
             {
                 string _itemCode = (string)e.Value;
-                e.Valid = !IsDuplicatedRowFound(_itemCode, "ItemCode");
-                if (!e.Valid)
-                {
-                    e.ErrorText = "Mã LK/Pin/Dầu đã tồn tại trên lưới!";
-                }
-            }
-            if (!string.IsNullOrEmpty(Convert.ToString(gridView.GetFocusedRowCellValue("ItemCode"))))
-            {
-                string _itemCode = Convert.ToString(gridView.GetFocusedRowCellValue("ItemCode"));
                 e.Valid = !IsDuplicatedRowFound(_itemCode, "ItemCode");
                 if (!e.Valid)
                 {

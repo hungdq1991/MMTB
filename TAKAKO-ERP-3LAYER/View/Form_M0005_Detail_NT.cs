@@ -863,10 +863,12 @@ namespace TAKAKO_ERP_3LAYER.View
             for (int rows = 0; rows < gridView.DataRowCount; rows++)
                 if (rows != gridView.FocusedRowHandle)
                 {
-                    string _rowCodeValue = "";
-                    _rowCodeValue = (string)gridView.GetRowCellValue(rows, gridView.Columns[column]); ;
-                    if (Equals(_value, _rowCodeValue))
-                        return true;
+                    string _rowCodeValue = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns[column]));
+                    if (!String.IsNullOrEmpty(_rowCodeValue))
+                    {
+                        if (Equals(_value, _rowCodeValue))
+                            return true;
+                    }
                 }
             return false;
         }

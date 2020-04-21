@@ -843,6 +843,10 @@ namespace TAKAKO_ERP_3LAYER {
             
             private global::System.Data.DataColumn columnDisposalMemo;
             
+            private global::System.Data.DataColumn columnMemo;
+            
+            private global::System.Data.DataColumn columnNetValue_Disposal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public MMTB_TL_TableDataTable() {
@@ -982,6 +986,22 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn MemoColumn {
+                get {
+                    return this.columnMemo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NetValue_DisposalColumn {
+                get {
+                    return this.columnNetValue_Disposal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1017,7 +1037,7 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public MMTB_TL_TableRow AddMMTB_TL_TableRow(string Code, string ACCcode, string NameEN, string Maker, string Model, System.DateTime ReceiptDate, System.DateTime StartDeprDate, System.DateTime EndDeprDate, System.DateTime DisposalDate, string DocNo_Disposal, string ControlDept, string Series, string DisposalMemo) {
+            public MMTB_TL_TableRow AddMMTB_TL_TableRow(string Code, string ACCcode, string NameEN, string Maker, string Model, System.DateTime ReceiptDate, System.DateTime StartDeprDate, System.DateTime EndDeprDate, System.DateTime DisposalDate, string DocNo_Disposal, string ControlDept, string Series, string DisposalMemo, string Memo, decimal NetValue_Disposal) {
                 MMTB_TL_TableRow rowMMTB_TL_TableRow = ((MMTB_TL_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Code,
@@ -1032,7 +1052,9 @@ namespace TAKAKO_ERP_3LAYER {
                         DocNo_Disposal,
                         ControlDept,
                         Series,
-                        DisposalMemo};
+                        DisposalMemo,
+                        Memo,
+                        NetValue_Disposal};
                 rowMMTB_TL_TableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMMTB_TL_TableRow);
                 return rowMMTB_TL_TableRow;
@@ -1075,6 +1097,8 @@ namespace TAKAKO_ERP_3LAYER {
                 this.columnControlDept = base.Columns["ControlDept"];
                 this.columnSeries = base.Columns["Series"];
                 this.columnDisposalMemo = base.Columns["DisposalMemo"];
+                this.columnMemo = base.Columns["Memo"];
+                this.columnNetValue_Disposal = base.Columns["NetValue_Disposal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1106,6 +1130,10 @@ namespace TAKAKO_ERP_3LAYER {
                 base.Columns.Add(this.columnSeries);
                 this.columnDisposalMemo = new global::System.Data.DataColumn("DisposalMemo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDisposalMemo);
+                this.columnMemo = new global::System.Data.DataColumn("Memo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMemo);
+                this.columnNetValue_Disposal = new global::System.Data.DataColumn("NetValue_Disposal", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNetValue_Disposal);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCode}, true));
                 this.columnCode.AllowDBNull = false;
@@ -1122,6 +1150,7 @@ namespace TAKAKO_ERP_3LAYER {
                 this.columnControlDept.MaxLength = 8;
                 this.columnSeries.MaxLength = 30;
                 this.columnDisposalMemo.MaxLength = 100;
+                this.columnMemo.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2263,6 +2292,38 @@ namespace TAKAKO_ERP_3LAYER {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Memo {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_TL_Table.MemoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Memo\' in table \'MMTB_TL_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_TL_Table.MemoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal NetValue_Disposal {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableMMTB_TL_Table.NetValue_DisposalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NetValue_Disposal\' in table \'MMTB_TL_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_TL_Table.NetValue_DisposalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsACCcodeNull() {
                 return this.IsNull(this.tableMMTB_TL_Table.ACCcodeColumn);
             }
@@ -2367,6 +2428,30 @@ namespace TAKAKO_ERP_3LAYER {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDisposalMemoNull() {
                 this[this.tableMMTB_TL_Table.DisposalMemoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsMemoNull() {
+                return this.IsNull(this.tableMMTB_TL_Table.MemoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetMemoNull() {
+                this[this.tableMMTB_TL_Table.MemoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsNetValue_DisposalNull() {
+                return this.IsNull(this.tableMMTB_TL_Table.NetValue_DisposalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetNetValue_DisposalNull() {
+                this[this.tableMMTB_TL_Table.NetValue_DisposalColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3179,6 +3264,8 @@ ORDER BY M.Code";
             tableMapping.ColumnMappings.Add("ControlDept", "ControlDept");
             tableMapping.ColumnMappings.Add("Series", "Series");
             tableMapping.ColumnMappings.Add("DisposalMemo", "DisposalMemo");
+            tableMapping.ColumnMappings.Add("Memo", "Memo");
+            tableMapping.ColumnMappings.Add("NetValue_Disposal", "NetValue_Disposal");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -3249,7 +3336,8 @@ SELECT Code, ACCcode, NameEN, Maker, Model, ReceiptDate, StartDeprDate, EndDeprD
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT        M0005_ListMMTB.Code, M0005_ListMMTB.ACCcode, M0005_ListMMTB.NameEN, M0005_ListMMTB.Maker, M0005_ListMMTB.Model, M0005_ListMMTB.ReceiptDate, M0005_ListMMTB.StartDeprDate, 
-                         M0005_ListMMTB.EndDeprDate, M0005_ListMMTB.DisposalDate, M0005_ListMMTB.DocNo_Disposal, M0005_ListMMTBDoc2.ControlDept, M0005_ListMMTB.Series, M0005_ListMMTB.DisposalMemo
+                         M0005_ListMMTB.EndDeprDate, M0005_ListMMTB.DisposalDate, M0005_ListMMTB.DocNo_Disposal, M0005_ListMMTBDoc2.ControlDept, M0005_ListMMTB.Series, M0005_ListMMTB.DisposalMemo, 
+                         M0005_ListMMTBDoc2.Memo, M0005_ListMMTB.NetValue_Disposal
 FROM            M0005_ListMMTB INNER JOIN
                          M0005_ListMMTBDoc2 ON M0005_ListMMTB.DocNo_Disposal = M0005_ListMMTBDoc2.DocNo
 WHERE        (M0005_ListMMTB.DocNo_Disposal = @DocNo)

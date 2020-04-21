@@ -227,14 +227,14 @@ namespace TAKAKO_ERP_3LAYER.View
         #region Add data to control
         private void AddValue_sLook_ControlDept()
         {
-            //DataTable tempTable = new DataTable();
-            //tempTable = M0005_DAO.GetInfo_ControlDept();
-            //if (tempTable.Rows.Count > 0)
-            //{
-            //    sLook_ControlDept.Properties.DataSource = tempTable;
-            //    sLook_ControlDept.Properties.ValueMember = "SectionID";
-            //    sLook_ControlDept.Properties.DisplayMember = "SectionID";
-            //}
+            DataTable tempTable = new DataTable();
+            tempTable = M0005_DAO.GetInfo_ControlDept();
+            if (tempTable.Rows.Count > 0)
+            {
+                sLook_ControlDept.Properties.DataSource = tempTable;
+                sLook_ControlDept.Properties.ValueMember = "SectionID";
+                sLook_ControlDept.Properties.DisplayMember = "SectionID";
+            }
         }
         //Điền dữ liệu cho ô Số chứng từ
         private void Add_Value_sLookUp_DocNo()

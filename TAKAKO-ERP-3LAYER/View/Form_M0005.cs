@@ -57,35 +57,34 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             Boolean _disposal = bCheck_Disposal.Checked;
             Boolean _noUsed = bCheck_NoUsed.Checked;
-            if ( _disposal == true && _noUsed == true)
+            try
             {
-                gridControl.DataSource = _tempTable.AsEnumerable()
+                if (_disposal == true && _noUsed == true)
+                {
+                    gridControl.DataSource = _tempTable.AsEnumerable()
                         .Where(row => row.Field<string>("DocNo_Disposal") != null && row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
-                bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-            }
-            if (_disposal == false && _noUsed == true)
-            {
-                DataTable _tempTable = M0005_DAO.GetInfo_M0005_NoUsed();
-                if (_tempTable.Rows.Count > 0)
+                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                }
+                if (_disposal == true && _noUsed == false)
+                {
+                    gridControl.DataSource = _tempTable.AsEnumerable()
+                            .Where(row => row.Field<string>("DocNo_Disposal") != null).CopyToDataTable();
+                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                }
+                if (_disposal == false && _noUsed == false)
+                {
+                    gridControl.DataSource = _tempTable;
+                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                }
+                if (_disposal == false && _noUsed == true)
                 {
                     gridControl.DataSource = _tempTable.AsEnumerable().Where(row => row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
                     bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                 }
-                else
-                {
-                    MessageBox.Show("Không có MMTB không sử dụng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
-            if (_disposal == true && _noUsed == false)
+            catch
             {
-                gridControl.DataSource = _tempTable.AsEnumerable()
-                        .Where(row => row.Field<string>("DocNo_Disposal") != null).CopyToDataTable();
-                bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-            }
-            if (_disposal == false && _noUsed == false)
-            {
-                gridControl.DataSource = _tempTable;
-                bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                gridControl.DataSource = "";
             }
         }
         //Disposal check changed

@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0005_Detail_TL));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring1 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring2 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0005_Detail_TL));
             this.gridCol_ProDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -56,9 +56,11 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_DeleteRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_AddNewRow = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiReport = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.sLook_ControlDept = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -98,6 +100,7 @@
             this.gridCol_Lifetime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_StartDeprDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_EndDeprDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_NetValue = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_LineID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_LineName_EN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -124,8 +127,8 @@
             this.gridCol_Model1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiReport = new DevExpress.XtraBars.BarButtonItem();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.txt_Memo = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -165,6 +168,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Code)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridCol_ProDate
@@ -222,7 +226,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(848, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(848, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -348,6 +352,15 @@
             this.bbi_PopUp_AddNewRow.Name = "bbi_PopUp_AddNewRow";
             this.bbi_PopUp_AddNewRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_PopUp_AddNewRow_ItemClick);
             // 
+            // bbiReport
+            // 
+            this.bbiReport.Caption = "Xuất BB thanh lý";
+            this.bbiReport.Id = 30;
+            this.bbiReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.Image")));
+            this.bbiReport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.LargeImage")));
+            this.bbiReport.Name = "bbiReport";
+            this.bbiReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReport_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -376,6 +389,12 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "Xử lý trên lưới";
             // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiReport);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
@@ -398,6 +417,7 @@
             this.panelControl1.Controls.Add(this.sLook_Supplier);
             this.panelControl1.Controls.Add(this.labelControl9);
             this.panelControl1.Controls.Add(this.txt_InvNo);
+            this.panelControl1.Controls.Add(this.txt_Memo);
             this.panelControl1.Controls.Add(this.txt_SupplierName);
             this.panelControl1.Controls.Add(this.date_Inv);
             this.panelControl1.Controls.Add(this.date_Disposal);
@@ -407,10 +427,11 @@
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl1);
+            this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 157);
+            this.panelControl1.Location = new System.Drawing.Point(0, 159);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(848, 92);
             this.panelControl1.TabIndex = 9;
@@ -419,7 +440,7 @@
             // 
             this.sLook_ControlDept.EditValue = "";
             this.sLook_ControlDept.EnterMoveNextControl = true;
-            this.sLook_ControlDept.Location = new System.Drawing.Point(513, 62);
+            this.sLook_ControlDept.Location = new System.Drawing.Point(513, 64);
             this.sLook_ControlDept.MenuManager = this.ribbonControl;
             this.sLook_ControlDept.Name = "sLook_ControlDept";
             this.sLook_ControlDept.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -452,7 +473,7 @@
             // txt_SupplierID
             // 
             this.txt_SupplierID.Enabled = false;
-            this.txt_SupplierID.Location = new System.Drawing.Point(149, 34);
+            this.txt_SupplierID.Location = new System.Drawing.Point(149, 35);
             this.txt_SupplierID.MenuManager = this.ribbonControl;
             this.txt_SupplierID.Name = "txt_SupplierID";
             this.txt_SupplierID.Size = new System.Drawing.Size(56, 20);
@@ -482,7 +503,7 @@
             // sLook_Supplier
             // 
             this.sLook_Supplier.EnterMoveNextControl = true;
-            this.sLook_Supplier.Location = new System.Drawing.Point(79, 34);
+            this.sLook_Supplier.Location = new System.Drawing.Point(79, 35);
             this.sLook_Supplier.MenuManager = this.ribbonControl;
             this.sLook_Supplier.Name = "sLook_Supplier";
             this.sLook_Supplier.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -503,7 +524,7 @@
             // 
             // labelControl9
             // 
-            this.labelControl9.Location = new System.Drawing.Point(646, 11);
+            this.labelControl9.Location = new System.Drawing.Point(637, 9);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(49, 13);
             this.labelControl9.TabIndex = 0;
@@ -511,17 +532,17 @@
             // 
             // txt_InvNo
             // 
-            this.txt_InvNo.Location = new System.Drawing.Point(79, 62);
+            this.txt_InvNo.Location = new System.Drawing.Point(513, 35);
             this.txt_InvNo.Name = "txt_InvNo";
             this.txt_InvNo.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txt_InvNo.Properties.Appearance.Options.UseBackColor = true;
-            this.txt_InvNo.Size = new System.Drawing.Size(126, 20);
+            this.txt_InvNo.Size = new System.Drawing.Size(106, 20);
             this.txt_InvNo.TabIndex = 3;
             // 
             // txt_SupplierName
             // 
             this.txt_SupplierName.Enabled = false;
-            this.txt_SupplierName.Location = new System.Drawing.Point(204, 34);
+            this.txt_SupplierName.Location = new System.Drawing.Point(204, 35);
             this.txt_SupplierName.Name = "txt_SupplierName";
             this.txt_SupplierName.Size = new System.Drawing.Size(198, 20);
             this.txt_SupplierName.TabIndex = 2;
@@ -529,7 +550,7 @@
             // date_Inv
             // 
             this.date_Inv.EditValue = null;
-            this.date_Inv.Location = new System.Drawing.Point(296, 62);
+            this.date_Inv.Location = new System.Drawing.Point(714, 35);
             this.date_Inv.Name = "date_Inv";
             this.date_Inv.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.date_Inv.Properties.Appearance.Options.UseBackColor = true;
@@ -545,7 +566,7 @@
             // date_Disposal
             // 
             this.date_Disposal.EditValue = null;
-            this.date_Disposal.Location = new System.Drawing.Point(513, 5);
+            this.date_Disposal.Location = new System.Drawing.Point(513, 6);
             this.date_Disposal.Name = "date_Disposal";
             this.date_Disposal.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.date_Disposal.Properties.Appearance.Options.UseBackColor = true;
@@ -579,7 +600,7 @@
             // labelControl8
             // 
             this.labelControl8.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl8.Location = new System.Drawing.Point(224, 11);
+            this.labelControl8.Location = new System.Drawing.Point(224, 9);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(25, 13);
             this.labelControl8.TabIndex = 0;
@@ -588,7 +609,7 @@
             // labelControl5
             // 
             this.labelControl5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl5.Location = new System.Drawing.Point(224, 64);
+            this.labelControl5.Location = new System.Drawing.Point(637, 38);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(67, 13);
             this.labelControl5.TabIndex = 0;
@@ -596,7 +617,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(8, 64);
+            this.labelControl4.Location = new System.Drawing.Point(419, 38);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(54, 13);
             this.labelControl4.TabIndex = 0;
@@ -612,7 +633,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(419, 64);
+            this.labelControl1.Location = new System.Drawing.Point(419, 67);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(81, 13);
             this.labelControl1.TabIndex = 0;
@@ -628,7 +649,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(8, 11);
+            this.labelControl2.Location = new System.Drawing.Point(8, 9);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(59, 13);
             this.labelControl2.TabIndex = 0;
@@ -638,10 +659,10 @@
             // 
             this.gridSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridSplitContainer1.Grid = this.gridControl;
-            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 249);
+            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 251);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(848, 328);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(848, 326);
             this.gridSplitContainer1.TabIndex = 12;
             // 
             // gridControl
@@ -668,7 +689,7 @@
             this.repo_cBox_Status,
             this.repo_TextEdit_Code,
             this.repo_sLookUp_Code});
-            this.gridControl.Size = new System.Drawing.Size(848, 328);
+            this.gridControl.Size = new System.Drawing.Size(848, 326);
             this.gridControl.TabIndex = 8;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -691,6 +712,7 @@
             this.gridCol_Lifetime,
             this.gridCol_StartDeprDate,
             this.gridCol_EndDeprDate,
+            this.gridCol_NetValue,
             this.gridCol_LineID,
             this.gridCol_LineName_EN,
             this.gridCol_ProcessID,
@@ -991,6 +1013,24 @@
             this.gridCol_EndDeprDate.VisibleIndex = 16;
             this.gridCol_EndDeprDate.Width = 90;
             // 
+            // gridCol_NetValue
+            // 
+            this.gridCol_NetValue.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_NetValue.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_NetValue.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_NetValue.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_NetValue.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_NetValue.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_NetValue.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_NetValue.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_NetValue.Caption = "Giá trị còn lại";
+            this.gridCol_NetValue.DisplayFormat.FormatString = "#,##0.####";
+            this.gridCol_NetValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridCol_NetValue.FieldName = "NetValue_Disposal";
+            this.gridCol_NetValue.Name = "gridCol_NetValue";
+            this.gridCol_NetValue.Visible = true;
+            this.gridCol_NetValue.VisibleIndex = 17;
+            // 
             // gridCol_LineID
             // 
             this.gridCol_LineID.AppearanceCell.BackColor = System.Drawing.Color.White;
@@ -1094,7 +1134,7 @@
             this.gridCol_ControlDept.Name = "gridCol_ControlDept";
             this.gridCol_ControlDept.OptionsColumn.AllowEdit = false;
             this.gridCol_ControlDept.Visible = true;
-            this.gridCol_ControlDept.VisibleIndex = 18;
+            this.gridCol_ControlDept.VisibleIndex = 19;
             // 
             // gridCol_DisposalMemo
             // 
@@ -1114,7 +1154,7 @@
             this.gridCol_DisposalMemo.Name = "gridCol_DisposalMemo";
             this.gridCol_DisposalMemo.OptionsColumn.FixedWidth = true;
             this.gridCol_DisposalMemo.Visible = true;
-            this.gridCol_DisposalMemo.VisibleIndex = 17;
+            this.gridCol_DisposalMemo.VisibleIndex = 18;
             // 
             // repo_sLookUp_NameEN
             // 
@@ -1269,20 +1309,20 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // ribbonPageGroup2
+            // labelControl7
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiReport);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            this.labelControl7.Location = new System.Drawing.Point(8, 67);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(26, 13);
+            this.labelControl7.TabIndex = 0;
+            this.labelControl7.Text = "Lý do";
             // 
-            // bbiReport
+            // txt_Memo
             // 
-            this.bbiReport.Caption = "Xuất BB thanh lý";
-            this.bbiReport.Id = 30;
-            this.bbiReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.bbiReport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.bbiReport.Name = "bbiReport";
-            this.bbiReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReport_ItemClick);
+            this.txt_Memo.Location = new System.Drawing.Point(79, 64);
+            this.txt_Memo.Name = "txt_Memo";
+            this.txt_Memo.Size = new System.Drawing.Size(323, 20);
+            this.txt_Memo.TabIndex = 2;
             // 
             // Form_M0005_Detail_TL
             // 
@@ -1338,6 +1378,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Code)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1433,5 +1474,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Model1;
         private DevExpress.XtraBars.BarButtonItem bbiReport;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_NetValue;
+        private DevExpress.XtraEditors.TextEdit txt_Memo;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
     }
 }
