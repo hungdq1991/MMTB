@@ -168,7 +168,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(998, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(998, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -282,10 +282,10 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 157);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 159);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage3;
-            this.xtraTabControl1.Size = new System.Drawing.Size(998, 420);
+            this.xtraTabControl1.Size = new System.Drawing.Size(998, 418);
             this.xtraTabControl1.TabIndex = 12;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -299,7 +299,7 @@
             this.xtraTabPage3.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraTabPage3.Controls.Add(this.gridControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(996, 397);
+            this.xtraTabPage3.Size = new System.Drawing.Size(996, 395);
             this.xtraTabPage3.Text = "Máy phay";
             // 
             // gridControl3
@@ -315,7 +315,7 @@
             this.repositoryItemCheckEdit4,
             this.repositoryItemCheckEdit5,
             this.repositoryItemCheckEdit6});
-            this.gridControl3.Size = new System.Drawing.Size(996, 397);
+            this.gridControl3.Size = new System.Drawing.Size(996, 395);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -401,7 +401,7 @@
             this.gridCol_NameEN2.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameEN2.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameEN2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameEN2.Caption = "Tên (t.Anh)";
+            this.gridCol_NameEN2.Caption = "Tên (Tiếng Anh)";
             this.gridCol_NameEN2.FieldName = "NameEN";
             this.gridCol_NameEN2.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameEN2.Name = "gridCol_NameEN2";
@@ -749,7 +749,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.gridControl);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(996, 397);
+            this.xtraTabPage1.Size = new System.Drawing.Size(996, 395);
             this.xtraTabPage1.Text = "Thông số chung";
             // 
             // gridControl
@@ -766,7 +766,7 @@
             this.repositoryItemLookUpEdit1,
             this.repositoryItemRichTextEdit1,
             this.repositoryItemCheckEdit8});
-            this.gridControl.Size = new System.Drawing.Size(996, 397);
+            this.gridControl.Size = new System.Drawing.Size(996, 395);
             this.gridControl.TabIndex = 3;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -876,7 +876,7 @@
             this.gridCol_NameEN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameEN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameEN.Caption = "Tên (t.Anh)";
+            this.gridCol_NameEN.Caption = "Tên (Tiếng Anh)";
             this.gridCol_NameEN.FieldName = "NameEN";
             this.gridCol_NameEN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameEN.Name = "gridCol_NameEN";
@@ -896,7 +896,7 @@
             this.gridCol_NameVN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameVN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameVN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameVN.Caption = "Tên (t.Việt)";
+            this.gridCol_NameVN.Caption = "Tên (Tiếng Việt)";
             this.gridCol_NameVN.FieldName = "NameEN";
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.OptionsColumn.AllowEdit = false;
@@ -913,7 +913,7 @@
             this.gridCol_NameJP.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameJP.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameJP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameJP.Caption = "Tên (t.Nhật)";
+            this.gridCol_NameJP.Caption = "Tên (Tiếng Nhật)";
             this.gridCol_NameJP.FieldName = "NameJP";
             this.gridCol_NameJP.Name = "gridCol_NameJP";
             this.gridCol_NameJP.OptionsColumn.AllowEdit = false;
@@ -1267,7 +1267,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(996, 397);
+            this.xtraTabPage2.Size = new System.Drawing.Size(996, 395);
             this.xtraTabPage2.Text = "Máy tiện";
             // 
             // gridControl2
@@ -1280,7 +1280,7 @@
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit7,
             this.repositoryItemCheckEdit9});
-            this.gridControl2.Size = new System.Drawing.Size(996, 397);
+            this.gridControl2.Size = new System.Drawing.Size(996, 395);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -1367,7 +1367,7 @@
             this.gridCol_NameEN1.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameEN1.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameEN1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameEN1.Caption = "Tên (t.Anh)";
+            this.gridCol_NameEN1.Caption = "Tên (Tiếng Anh)";
             this.gridCol_NameEN1.FieldName = "NameEN";
             this.gridCol_NameEN1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameEN1.Name = "gridCol_NameEN1";
@@ -1386,7 +1386,7 @@
             this.gridCol_NameVN1.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameVN1.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameVN1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameVN1.Caption = "Tên (t.Việt)";
+            this.gridCol_NameVN1.Caption = "Tên (Tiếng Việt)";
             this.gridCol_NameVN1.FieldName = "NameVN";
             this.gridCol_NameVN1.Name = "gridCol_NameVN1";
             this.gridCol_NameVN1.OptionsColumn.AllowShowHide = false;
@@ -1401,7 +1401,7 @@
             this.gridCol_NameJP1.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameJP1.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameJP1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameJP1.Caption = "Tên (t.Nhật)";
+            this.gridCol_NameJP1.Caption = "Tên (Tiếng Nhật)";
             this.gridCol_NameJP1.FieldName = "NameJP";
             this.gridCol_NameJP1.Name = "gridCol_NameJP1";
             this.gridCol_NameJP1.OptionsColumn.AllowShowHide = false;

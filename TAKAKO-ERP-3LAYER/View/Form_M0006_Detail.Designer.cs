@@ -172,7 +172,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(839, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(839, 159);
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiPrintPreview
@@ -296,9 +296,9 @@
             // 
             this.labelControl4.Location = new System.Drawing.Point(235, 197);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(56, 13);
+            this.labelControl4.Size = new System.Drawing.Size(74, 13);
             this.labelControl4.TabIndex = 5;
-            this.labelControl4.Text = "Tên (t.Anh)";
+            this.labelControl4.Text = "Tên (TiếngAnh)";
             // 
             // txt_NameEN
             // 

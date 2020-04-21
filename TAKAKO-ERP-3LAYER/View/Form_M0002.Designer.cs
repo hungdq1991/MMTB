@@ -76,7 +76,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(830, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(830, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -154,11 +154,11 @@
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 157);
+            this.gridControl.Location = new System.Drawing.Point(0, 159);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(830, 420);
+            this.gridControl.Size = new System.Drawing.Size(830, 418);
             this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -190,7 +190,7 @@
             this.gridCol_NameEN.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_NameEN.AppearanceHeader.Options.UseFont = true;
             this.gridCol_NameEN.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_NameEN.Caption = "Tên (t.Anh)";
+            this.gridCol_NameEN.Caption = "Tên (Tiếng Anh)";
             this.gridCol_NameEN.FieldName = "NameEN";
             this.gridCol_NameEN.Name = "gridCol_NameEN";
             this.gridCol_NameEN.OptionsColumn.AllowEdit = false;
@@ -205,7 +205,7 @@
             this.gridCol_NameVN.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_NameVN.AppearanceHeader.Options.UseFont = true;
             this.gridCol_NameVN.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_NameVN.Caption = "Tên (t.Việt)";
+            this.gridCol_NameVN.Caption = "Tên (Tiếng Việt)";
             this.gridCol_NameVN.FieldName = "NameVN";
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.OptionsColumn.AllowEdit = false;
@@ -220,7 +220,7 @@
             this.gridCol_NameJP.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_NameJP.AppearanceHeader.Options.UseFont = true;
             this.gridCol_NameJP.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_NameJP.Caption = "Tên (t.Nhật)";
+            this.gridCol_NameJP.Caption = "Tên (Tiếng Nhật)";
             this.gridCol_NameJP.FieldName = "NameJP";
             this.gridCol_NameJP.Name = "gridCol_NameJP";
             this.gridCol_NameJP.OptionsColumn.AllowEdit = false;

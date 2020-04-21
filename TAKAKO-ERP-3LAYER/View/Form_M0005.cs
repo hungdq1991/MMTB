@@ -104,8 +104,8 @@ namespace TAKAKO_ERP_3LAYER.View
             //String param_DocNo = advBandedGridView1.GetFocusedDataRow()["DocNo_Confirm"].ToString();
             using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(advBandedGridView1.GetFocusedDataRow()["DocNo"].ToString()))
             {
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 formDetail.ShowDialog();
-                formDetail.StartPosition = FormStartPosition.CenterParent;
             }
         }
         //Tạo chứng từ nghiệm thu
@@ -113,8 +113,8 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT())
             {
-                formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
+                formDetail.ShowDialog();
             }
         }
         //Tạo chứng từ thanh lý 
@@ -122,8 +122,8 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             using (Form_M0005_Detail_TL formDetail = new Form_M0005_Detail_TL())
             {
-                formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
+                formDetail.ShowDialog();
             }
         }
         //Tạo chứng từ di dời
@@ -131,8 +131,8 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             using (Form_M0005_Detail_DD formDetail = new Form_M0005_Detail_DD())
             {
-                formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
+                formDetail.ShowDialog();
             }
         }
         //Hiển thị dữ liệu trên cột, ngày tháng không có

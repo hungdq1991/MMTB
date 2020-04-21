@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.gridCol_ACCDoc_Disposal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -124,7 +124,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(892, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(892, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -231,7 +231,7 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_Disposal);
             this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_NoUsed);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Filter";
             // 
             // ribbonStatusBar
             // 
@@ -245,11 +245,11 @@
             // 
             this.gridControl.AllowDrop = true;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 157);
+            this.gridControl.Location = new System.Drawing.Point(0, 159);
             this.gridControl.MainView = this.advBandedGridView1;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(892, 328);
+            this.gridControl.Size = new System.Drawing.Size(892, 326);
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridView1});
@@ -296,18 +296,18 @@
             this.gridCol_DesLineEN,
             this.gridCol_DesGroupLineACC,
             this.gridCol_DesUsingDept});
-            gridFormatRule1.ApplyToRow = true;
-            gridFormatRule1.Column = this.gridCol_ACCDoc_Disposal;
-            gridFormatRule1.ColumnApplyTo = this.gridCol_ACCDoc_Disposal;
-            gridFormatRule1.Name = "Disposal";
-            formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            formatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Black;
-            formatConditionRuleExpression1.Appearance.Options.UseBackColor = true;
-            formatConditionRuleExpression1.Appearance.Options.UseForeColor = true;
-            formatConditionRuleExpression1.Expression = "StartsWith([ACCDoc_Disposal], \'FA\')";
-            formatConditionRuleExpression1.PredefinedName = "Disposal";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.advBandedGridView1.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.ApplyToRow = true;
+            gridFormatRule2.Column = this.gridCol_ACCDoc_Disposal;
+            gridFormatRule2.ColumnApplyTo = this.gridCol_ACCDoc_Disposal;
+            gridFormatRule2.Name = "Disposal";
+            formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            formatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.Black;
+            formatConditionRuleExpression2.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleExpression2.Expression = "StartsWith([ACCDoc_Disposal], \'FA\')";
+            formatConditionRuleExpression2.PredefinedName = "Disposal";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.advBandedGridView1.FormatRules.Add(gridFormatRule2);
             this.advBandedGridView1.GridControl = this.gridControl;
             this.advBandedGridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridView1.Name = "advBandedGridView1";
@@ -389,7 +389,7 @@
             this.gridCol_NameEN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameEN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameEN.Caption = "Tên (t.Anh)";
+            this.gridCol_NameEN.Caption = "Tên (Tiếng Anh)";
             this.gridCol_NameEN.FieldName = "NameEN";
             this.gridCol_NameEN.Name = "gridCol_NameEN";
             this.gridCol_NameEN.OptionsColumn.AllowEdit = false;
@@ -408,7 +408,7 @@
             this.gridCol_NameVN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameVN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameVN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameVN.Caption = "Tên (t.Việt)";
+            this.gridCol_NameVN.Caption = "Tên (Tiếng Việt)";
             this.gridCol_NameVN.FieldName = "NameVN";
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.OptionsColumn.AllowEdit = false;
@@ -428,7 +428,7 @@
             this.gridCol_NameJP.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameJP.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameJP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameJP.Caption = "Tên (t.Nhật)";
+            this.gridCol_NameJP.Caption = "Tên (Tiếng Nhật)";
             this.gridCol_NameJP.FieldName = "NameVN";
             this.gridCol_NameJP.Name = "gridCol_NameJP";
             this.gridCol_NameJP.OptionsColumn.AllowEdit = false;

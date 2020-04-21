@@ -593,10 +593,12 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void Setting_Init_Value()
         {
-            Clear_Data();
             if (!String.IsNullOrEmpty(DocNo))
             {
                 sLook_DocNo.EditValue = DocNo;
+            } else
+            {
+                Clear_Data();
             }
         }
 

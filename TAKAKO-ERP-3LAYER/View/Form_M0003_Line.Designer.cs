@@ -82,7 +82,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(928, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(928, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above;
             // 
@@ -184,10 +184,10 @@
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 157);
+            this.gridControl.Location = new System.Drawing.Point(0, 159);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(928, 331);
+            this.gridControl.Size = new System.Drawing.Size(928, 329);
             this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -259,7 +259,7 @@
             this.gridCol_LineEN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_LineEN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_LineEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_LineEN.Caption = "Tên line (t.Anh)";
+            this.gridCol_LineEN.Caption = "Tên line (Tiếng Anh)";
             this.gridCol_LineEN.FieldName = "LineEN";
             this.gridCol_LineEN.Name = "gridCol_LineEN";
             this.gridCol_LineEN.OptionsColumn.FixedWidth = true;
