@@ -28,10 +28,12 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void Form_M0003_Load(object sender, System.EventArgs e)
         {
-
+            //
             _tempTable = new DataTable();
             //
             M0003_Process_DAO = new M0003_Process_DAO();
+            //
+            bsiUser.Caption = _systemDAL.userName;
             //Load Init
             GetInfo_Gridview();
         }

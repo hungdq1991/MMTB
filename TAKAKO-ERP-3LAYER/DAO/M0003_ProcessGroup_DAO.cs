@@ -4,17 +4,17 @@ using System.Data.SqlClient;
 
 namespace TAKAKO_ERP_3LAYER.DAO
 {
-    public class M0003_ProcessGroup_DAO
+    public class M0003_ProcessCode_DAO
     {
         private DBConnection conn;
         /// <constructor>
-        /// Constructor M0003_ProcessGroup_DAO
+        /// Constructor M0003_ProcessCode_DAO
         /// </constructor>
-        public M0003_ProcessGroup_DAO()
+        public M0003_ProcessCode_DAO()
         {
             conn = new DBConnection();
         }
-        //Load dữ liệu từ bảng M0003_ProcessGroup
+        //Load dữ liệu từ bảng M0003_ProcessCode
         public DataTable GetInfo_M0003()
         {
             string StrQuery = "";
@@ -34,7 +34,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 	                        ,ModifyDate
 	                        ,ModifyUser
                         FROM 
-	                        M0003_ProcessGroup
+	                        M0003_ProcessCode
                         ORDER BY ProcessCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.Text);
@@ -56,7 +56,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
-            StrQuery = @"INSERT INTO [M0003_ProcessGroup]
+            StrQuery = @"INSERT INTO [M0003_ProcessCode]
                             ([ProcessCode]
                             ,[ProcessEN]
                             ,[ProcessVN]
@@ -127,7 +127,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
-            StrQuery = @"UPDATE  dbo.M0003_ProcessGroup
+            StrQuery = @"UPDATE  dbo.M0003_ProcessCode
                             SET  ProcessEN      = @ProcessEN
                                 ,ProcessVN      = @ProcessVN
                                 ,ProcessJP      = @ProcessJP
@@ -165,7 +165,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
-            StrQuery = @"DELETE FROM [dbo].[M0003_ProcessGroup]
+            StrQuery = @"DELETE FROM [dbo].[M0003_ProcessCode]
                         WHERE   ProcessCode     = @ProcessCode
                         AND     ApplyDate       = @ApplyDate";
             SqlParameter[] sqlParameters = new SqlParameter[2];
@@ -187,7 +187,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ApplyDate,
                             InActive
                         FROM
-                        	M0003_ProcessGroup
+                        	M0003_ProcessCode
                         WHERE 
                                 ProcessCode   = @ProcessCode
                             AND InActive    = 0";
@@ -200,7 +200,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Lấy dữ liệu từ bảng ProcessEF(không có parammeter)
-        //nhập ProcessGroup
+        //nhập ProcessCode
         public DataTable GetInfo_M0003_Process()
         {
             string StrQuery = "";
@@ -232,7 +232,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
         //Lấy dữ liệu từ bảng ProcessEF(có parammeter)
         //nhập lấy tên Process
-        public DataTable GetInfo_M0003_ProcessGroup(string PROCESS_CODE)
+        public DataTable GetInfo_M0003_ProcessCode(string PROCESS_CODE)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();

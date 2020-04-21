@@ -1,6 +1,6 @@
 ﻿namespace TAKAKO_ERP_3LAYER.View
 {
-    partial class Form_M0003_ProcessGroup_Detail
+    partial class Form_M0003_ProcessCode_Detail
     {
         /// <summary>
         /// Required designer variable.
@@ -53,7 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.sLook_ProcessGroup = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.sLook_ProcessCode = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_ProcessEN.Properties)).BeginInit();
@@ -64,12 +64,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_ApplyDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_InActive.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sLook_ProcessGroup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sLook_ProcessCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -88,7 +89,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(540, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(540, 159);
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiPrintPreview
@@ -166,7 +167,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(25, 179);
+            this.label1.Location = new System.Drawing.Point(22, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
             this.label1.TabIndex = 4;
@@ -241,40 +242,40 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(25, 221);
+            this.label2.Location = new System.Drawing.Point(22, 216);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Tên (t.Anh)";
+            this.label2.Text = "Tên (Tiếng Anh)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(25, 263);
+            this.label3.Location = new System.Drawing.Point(22, 258);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 13);
+            this.label3.Size = new System.Drawing.Size(97, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Tên (t.Việt)";
+            this.label3.Text = "Tên (Tiếng Việt)";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(25, 305);
+            this.label4.Location = new System.Drawing.Point(22, 300);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.Size = new System.Drawing.Size(101, 13);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Tên (t.Nhật)";
+            this.label4.Text = "Tên (Tiếng Nhật)";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(25, 347);
+            this.label5.Location = new System.Drawing.Point(22, 342);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 4;
@@ -285,7 +286,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(25, 389);
+            this.label6.Location = new System.Drawing.Point(22, 384);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 13);
             this.label6.TabIndex = 4;
@@ -296,7 +297,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(25, 431);
+            this.label7.Location = new System.Drawing.Point(22, 426);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 13);
             this.label7.TabIndex = 4;
@@ -307,24 +308,24 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(261, 347);
+            this.label8.Location = new System.Drawing.Point(261, 342);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(82, 13);
             this.label8.TabIndex = 4;
             this.label8.Text = "Ngày hiệu lực";
             // 
-            // sLook_ProcessGroup
+            // sLook_ProcessCode
             // 
-            this.sLook_ProcessGroup.EnterMoveNextControl = true;
-            this.sLook_ProcessGroup.Location = new System.Drawing.Point(125, 172);
-            this.sLook_ProcessGroup.MenuManager = this.ribbonControl;
-            this.sLook_ProcessGroup.Name = "sLook_ProcessGroup";
-            this.sLook_ProcessGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.sLook_ProcessCode.EnterMoveNextControl = true;
+            this.sLook_ProcessCode.Location = new System.Drawing.Point(125, 172);
+            this.sLook_ProcessCode.MenuManager = this.ribbonControl;
+            this.sLook_ProcessCode.Name = "sLook_ProcessCode";
+            this.sLook_ProcessCode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.sLook_ProcessGroup.Properties.PopupView = this.searchLookUpEdit1View;
-            this.sLook_ProcessGroup.Size = new System.Drawing.Size(115, 20);
-            this.sLook_ProcessGroup.TabIndex = 10;
-            this.sLook_ProcessGroup.TextChanged += new System.EventHandler(this.SLook_ProcessGroup_Validated);
+            this.sLook_ProcessCode.Properties.PopupView = this.searchLookUpEdit1View;
+            this.sLook_ProcessCode.Size = new System.Drawing.Size(115, 20);
+            this.sLook_ProcessCode.TabIndex = 10;
+            this.sLook_ProcessCode.TextChanged += new System.EventHandler(this.SLook_ProcessCode_Validated);
             // 
             // searchLookUpEdit1View
             // 
@@ -333,12 +334,12 @@
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
-            // Form_M0003_ProcessGroup_Detail
+            // Form_M0003_ProcessCode_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 463);
-            this.Controls.Add(this.sLook_ProcessGroup);
+            this.Controls.Add(this.sLook_ProcessCode);
             this.Controls.Add(this.cbx_InActive);
             this.Controls.Add(this.date_ApplyDate);
             this.Controls.Add(this.txt_Memo);
@@ -355,7 +356,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0003_ProcessGroup_Detail";
+            this.Name = "Form_M0003_ProcessCode_Detail";
             this.Ribbon = this.ribbonControl;
             this.Text = "CÔNG ĐOẠN";
             this.Load += new System.EventHandler(this.Form_M0003_Detail_Load);
@@ -368,7 +369,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_ApplyDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_InActive.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sLook_ProcessGroup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sLook_ProcessCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -399,7 +400,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private DevExpress.XtraBars.BarButtonItem bbiSave;
-        private DevExpress.XtraEditors.SearchLookUpEdit sLook_ProcessGroup;
+        private DevExpress.XtraEditors.SearchLookUpEdit sLook_ProcessCode;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
         private DevExpress.XtraBars.BarButtonItem bbiReset;
         private DevExpress.XtraBars.BarButtonItem bbiClose;

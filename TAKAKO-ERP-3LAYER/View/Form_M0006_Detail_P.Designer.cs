@@ -153,6 +153,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -172,7 +173,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(839, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(839, 159);
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiPrintPreview
@@ -300,9 +301,9 @@
             // 
             this.labelControl4.Location = new System.Drawing.Point(235, 197);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(56, 13);
+            this.labelControl4.Size = new System.Drawing.Size(77, 13);
             this.labelControl4.TabIndex = 5;
-            this.labelControl4.Text = "Tên (t.Anh)";
+            this.labelControl4.Text = "Tên (Tiếng Anh)";
             // 
             // txt_NameEN
             // 

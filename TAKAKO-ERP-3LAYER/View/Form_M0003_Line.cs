@@ -12,15 +12,8 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataTable _tempTable;
         public M0003_Line_DAO M0003_Line_DAO;
         public const Boolean AddNew = true;
-
         //
         public System_DAL _systemDAL = new System_DAL();
-
-        //Khởi tạo form M0003
-        public Form_M0003_Line()
-        {
-            InitializeComponent();
-        }
 
         //Khởi tạo form M0003
         public Form_M0003_Line(System_DAL systemDAL)

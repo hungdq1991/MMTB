@@ -6,23 +6,17 @@ using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
-    public partial class Form_M0003_ProcessGroup : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Form_M0003_ProcessCode : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public DataTable _tempTable;
-        public M0003_ProcessGroup_DAO M0003_ProcessGroup_DAO;
+        public M0003_ProcessCode_DAO M0003_ProcessCode_DAO;
         public const Boolean AddNew = true;
 
         //
         public System_DAL _systemDAL = new System_DAL();
 
         //Khởi tạo form
-        public Form_M0003_ProcessGroup()
-        {
-            InitializeComponent();
-        }
-
-        //Khởi tạo form
-        public Form_M0003_ProcessGroup(System_DAL systemDAL)
+        public Form_M0003_ProcessCode(System_DAL systemDAL)
         {
             InitializeComponent();
 
@@ -34,7 +28,7 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             try
             {
-                _tempTable = M0003_ProcessGroup_DAO.GetInfo_M0003();
+                _tempTable = M0003_ProcessCode_DAO.GetInfo_M0003();
 
                 if (_tempTable.Rows.Count > 0)
                 {
@@ -50,10 +44,12 @@ namespace TAKAKO_ERP_3LAYER.View
         //Load form
         private void Form_M00031G_Load(object sender, System.EventArgs e)
         {
-
+            //
             _tempTable = new DataTable();
             //
-            M0003_ProcessGroup_DAO = new M0003_ProcessGroup_DAO();
+            M0003_ProcessCode_DAO = new M0003_ProcessCode_DAO();
+            //
+            bsiUser.Caption = _systemDAL.userName;
             //Load Init
             GetInfo_Gridview();
         }
@@ -71,7 +67,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi double click trên lưới
         private void GridControl_DoubleClick(object sender, EventArgs e)
         {
-            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow(), _systemDAL))
+            using (Form_M0003_ProcessCode_Detail formDetail = new Form_M0003_ProcessCode_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
@@ -81,7 +77,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi click nút "Thêm mới"
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(AddNew, _systemDAL))
+            using (Form_M0003_ProcessCode_Detail formDetail = new Form_M0003_ProcessCode_Detail(AddNew, _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
@@ -91,7 +87,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi click nút "Chỉnh sửa"
         private void BbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow(),_systemDAL))
+            using (Form_M0003_ProcessCode_Detail formDetail = new Form_M0003_ProcessCode_Detail(gridView.GetFocusedDataRow(),_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
@@ -101,7 +97,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi click nút "Xóa"
         private void BbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow(),_systemDAL))
+            using (Form_M0003_ProcessCode_Detail formDetail = new Form_M0003_ProcessCode_Detail(gridView.GetFocusedDataRow(),_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;

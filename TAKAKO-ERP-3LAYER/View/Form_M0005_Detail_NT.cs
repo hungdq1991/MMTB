@@ -7,8 +7,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
-using System.IO;
-using OfficeOpenXml;
+using TAKAKO_ERP_3LAYER.DAL;
 using TAKAKO_ERP_3LAYER.Report;
 using DevExpress.XtraReports.UI;
 
@@ -27,19 +26,24 @@ namespace TAKAKO_ERP_3LAYER.View
         public M0005_DAO M0005_DAO;
         public String DocNo = "";
         public Boolean InitValue = true;
+        public System_DAL _systemDAL = new System_DAL();
         #endregion
 
         //Khởi tạo form
-        public Form_M0005_Detail_NT()
+        public Form_M0005_Detail_NT(System_DAL systemDAL)
         {
             InitializeComponent();
+            //
+            _systemDAL = systemDAL;
         }
 
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0005_Detail_NT(String _docNo)
+        public Form_M0005_Detail_NT(String _docNo, System_DAL systemDAL)
         {
             InitializeComponent();
             DocNo = _docNo;
+            //
+            _systemDAL = systemDAL;
         }
 
         //Load Form_M0005_Detail_NT
@@ -112,9 +116,9 @@ namespace TAKAKO_ERP_3LAYER.View
             tempTable = M0003_Line_DAO.GetInfo_M0003_ProgressGroup();
             if (tempTable.Rows.Count > 0)
             {
-                repo_sLookUp_LineID.DataSource = tempTable;
-                repo_sLookUp_LineID.ValueMember = "LineID";
-                repo_sLookUp_LineID.DisplayMember = "LineID";
+                repo_sLookUp_LineCode.DataSource = tempTable;
+                repo_sLookUp_LineCode.ValueMember = "LineCode";
+                repo_sLookUp_LineCode.DisplayMember = "LineCode";
             }
         }
 
@@ -461,7 +465,7 @@ namespace TAKAKO_ERP_3LAYER.View
             }
         }
 
-        private void repo_sLookUp_LineID_CloseUp(object sender, CloseUpEventArgs e)
+        private void repo_sLookUp_LineCode_CloseUp(object sender, CloseUpEventArgs e)
         {
             if (e.CloseMode == PopupCloseMode.Normal)
             {
@@ -475,9 +479,9 @@ namespace TAKAKO_ERP_3LAYER.View
 
                 //Set value variables
                 _orgLineEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("LineEN"));
-                _orgProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProcessGroup"));
+                _orgProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProcessCode"));
                 _orgGroupLineACC = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("GroupLineACC"));
-                _orgUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProductionDept"));
+                _orgUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("UsingDept"));
 
                 //Set value to column OrgLineEN, OrgProcessCode, OrgGroupLineACC, OrgUsingDept
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgLineEN", _orgLineEN);

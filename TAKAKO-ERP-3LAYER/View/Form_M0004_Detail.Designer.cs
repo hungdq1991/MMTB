@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0004_Detail));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -66,6 +67,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -84,7 +86,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(452, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(452, 159);
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiPrintPreview
@@ -129,6 +131,7 @@
             this.bbiReset.Caption = "Reset";
             this.bbiReset.Id = 19;
             this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
+            this.bbiReset.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiReset.ImageOptions.SvgImage")));
             this.bbiReset.Name = "bbiReset";
             this.bbiReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReset_ItemClick);
             // 
@@ -163,9 +166,9 @@
             // 
             this.labelControl1.Location = new System.Drawing.Point(12, 177);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(56, 13);
+            this.labelControl1.Size = new System.Drawing.Size(77, 13);
             this.labelControl1.TabIndex = 4;
-            this.labelControl1.Text = "Tên (t.Anh)";
+            this.labelControl1.Text = "Tên (Tiếng Anh)";
             // 
             // sLook_NameEN
             // 
@@ -191,17 +194,17 @@
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 213);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(55, 13);
+            this.labelControl2.Size = new System.Drawing.Size(76, 13);
             this.labelControl2.TabIndex = 4;
-            this.labelControl2.Text = "Tên (t.Việt)";
+            this.labelControl2.Text = "Tên (Tiếng Việt)";
             // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(11, 249);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(60, 13);
+            this.labelControl3.Size = new System.Drawing.Size(81, 13);
             this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "Tên (t.Nhật)";
+            this.labelControl3.Text = "Tên (Tiếng Nhật)";
             // 
             // txt_NameVN
             // 

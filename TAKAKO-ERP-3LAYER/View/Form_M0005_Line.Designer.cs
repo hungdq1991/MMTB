@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.gridCol_DisposalDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -55,7 +55,7 @@
             this.gridCol_Group2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ControlDept = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_UsedDept = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_LineID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_LineCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_GroupLineACC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_DocNo_Confirm = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -95,6 +95,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -113,7 +114,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1198, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(955, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -195,10 +196,10 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 449);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 490);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1198, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(955, 22);
             // 
             // gridControl
             // 
@@ -207,7 +208,7 @@
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1198, 290);
+            this.gridControl.Size = new System.Drawing.Size(955, 331);
             this.gridControl.TabIndex = 10;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -227,7 +228,7 @@
             this.gridCol_Group2,
             this.gridCol_ControlDept,
             this.gridCol_UsedDept,
-            this.gridCol_LineID,
+            this.gridCol_LineCode,
             this.gridCol_GroupLineACC,
             this.gridCol_ProcessID,
             this.gridCol_DocNo_Confirm,
@@ -238,16 +239,16 @@
             this.gridCol_MoveDate,
             this.gridCol_DocNo_Disposal,
             this.gridCol_DisposalDate});
-            gridFormatRule1.Column = this.gridCol_DisposalDate;
-            gridFormatRule1.ColumnApplyTo = this.gridCol_DisposalDate;
-            gridFormatRule1.Name = "ThanhLy";
-            formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            formatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Black;
-            formatConditionRuleExpression1.Appearance.Options.UseBackColor = true;
-            formatConditionRuleExpression1.Appearance.Options.UseForeColor = true;
-            formatConditionRuleExpression1.Expression = "Contains([DisposalDate], \'/\')";
-            gridFormatRule1.Rule = formatConditionRuleExpression1;
-            this.gridView.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.Column = this.gridCol_DisposalDate;
+            gridFormatRule2.ColumnApplyTo = this.gridCol_DisposalDate;
+            gridFormatRule2.Name = "ThanhLy";
+            formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            formatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.Black;
+            formatConditionRuleExpression2.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleExpression2.Expression = "Contains([DisposalDate], \'/\')";
+            gridFormatRule2.Rule = formatConditionRuleExpression2;
+            this.gridView.FormatRules.Add(gridFormatRule2);
             this.gridView.GridControl = this.gridControl;
             this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
@@ -460,24 +461,24 @@
             this.gridCol_UsedDept.Visible = true;
             this.gridCol_UsedDept.VisibleIndex = 8;
             // 
-            // gridCol_LineID
+            // gridCol_LineCode
             // 
-            this.gridCol_LineID.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_LineID.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_LineID.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_LineID.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_LineID.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_LineID.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_LineID.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_LineID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_LineID.Caption = "Mã line";
-            this.gridCol_LineID.FieldName = "LineID";
-            this.gridCol_LineID.Name = "gridCol_LineID";
-            this.gridCol_LineID.OptionsColumn.AllowShowHide = false;
-            this.gridCol_LineID.OptionsColumn.FixedWidth = true;
-            this.gridCol_LineID.Visible = true;
-            this.gridCol_LineID.VisibleIndex = 11;
-            this.gridCol_LineID.Width = 90;
+            this.gridCol_LineCode.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_LineCode.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_LineCode.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_LineCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_LineCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_LineCode.Caption = "Mã line";
+            this.gridCol_LineCode.FieldName = "LineCode";
+            this.gridCol_LineCode.Name = "gridCol_LineCode";
+            this.gridCol_LineCode.OptionsColumn.AllowShowHide = false;
+            this.gridCol_LineCode.OptionsColumn.FixedWidth = true;
+            this.gridCol_LineCode.Visible = true;
+            this.gridCol_LineCode.VisibleIndex = 11;
+            this.gridCol_LineCode.Width = 90;
             // 
             // gridCol_GroupLineACC
             // 
@@ -670,7 +671,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1198, 471);
+            this.ClientSize = new System.Drawing.Size(955, 512);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -710,7 +711,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Group2;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ControlDept;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_UsedDept;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_LineID;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_LineCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_GroupLineACC;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessID;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_DocNo_Confirm;

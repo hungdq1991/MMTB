@@ -82,6 +82,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -356,6 +357,7 @@
             this.sLook_NameEN.Properties.PopupView = this.searchLookUpEdit1View;
             this.sLook_NameEN.Size = new System.Drawing.Size(300, 20);
             this.sLook_NameEN.TabIndex = 12;
+            this.sLook_NameEN.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.sLook_NameEN_CloseUp);
             this.sLook_NameEN.Validated += new System.EventHandler(this.sLook_NameEN_Validated);
             // 
             // searchLookUpEdit1View

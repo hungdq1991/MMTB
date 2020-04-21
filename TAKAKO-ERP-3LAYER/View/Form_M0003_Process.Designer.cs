@@ -38,7 +38,7 @@
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_isOutsource = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.gridCol_ProcessGroup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ProcessCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -51,6 +51,7 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -84,7 +85,7 @@
             this.gridCol_Point,
             this.gridCol_Memo,
             this.gridCol_isOutsource,
-            this.gridCol_ProcessGroup,
+            this.gridCol_ProcessCode,
             this.gridCol_InActive});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
@@ -209,21 +210,21 @@
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
-            // gridCol_ProcessGroup
+            // gridCol_ProcessCode
             // 
-            this.gridCol_ProcessGroup.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_ProcessGroup.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ProcessGroup.Caption = "Nhóm công đoạn";
-            this.gridCol_ProcessGroup.FieldName = "ProcessGroup";
-            this.gridCol_ProcessGroup.Name = "gridCol_ProcessGroup";
-            this.gridCol_ProcessGroup.OptionsColumn.FixedWidth = true;
-            this.gridCol_ProcessGroup.Visible = true;
-            this.gridCol_ProcessGroup.VisibleIndex = 2;
-            this.gridCol_ProcessGroup.Width = 130;
+            this.gridCol_ProcessCode.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_ProcessCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_ProcessCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_ProcessCode.Caption = "Nhóm công đoạn";
+            this.gridCol_ProcessCode.FieldName = "ProcessCode";
+            this.gridCol_ProcessCode.Name = "gridCol_ProcessCode";
+            this.gridCol_ProcessCode.OptionsColumn.FixedWidth = true;
+            this.gridCol_ProcessCode.Visible = true;
+            this.gridCol_ProcessCode.VisibleIndex = 2;
+            this.gridCol_ProcessCode.Width = 130;
             // 
             // gridCol_InActive
             // 
@@ -259,9 +260,10 @@
             this.bbiNew,
             this.bbiEdit,
             this.bbiDelete,
-            this.bbiRefresh});
+            this.bbiRefresh,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 20;
+            this.ribbonControl.MaxItemId = 21;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -333,10 +335,18 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(771, 22);
+            // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 20;
+            this.bsiUser.Name = "bsiUser";
             // 
             // Form_M0003_Process
             // 
@@ -382,8 +392,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Memo;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_isOutsource;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessGroup;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_InActive;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

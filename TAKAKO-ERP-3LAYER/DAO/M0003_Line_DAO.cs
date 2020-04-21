@@ -22,13 +22,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             StrQuery = @"SELECT
                                TVC 
-                              ,LineID
+                              ,LineCode
                               ,LineEN
                               ,LineVN
                               ,LineJP
-                              ,ProcessGroup
+                              ,ProcessCode
                               ,GroupLineACC
-                              ,ProductionDept
+                              ,UsingDept
                               ,Point                              
                               ,ExpenseGroup
                               ,ApplyDate
@@ -46,7 +46,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             FROM 
 	                           M0003_Line";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@LineID", SqlDbType.Text);
+            sqlParameters[0] = new SqlParameter("@LineCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
@@ -54,13 +54,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
         //Tạo class Insert
         public bool Insert(
                            string TVC,
-                           string LineID, 
+                           string LineCode, 
                            string LineEN,
                            string LineVN,
                            string LineJP,
-                           string ProcessGroup,
+                           string ProcessCode,
                            string GroupLineACC,
-                           string ProductionDept,
+                           string UsingDept,
                            int Point,
                            string ExpenseGroup,
                            DateTime ApplyDate,
@@ -73,13 +73,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             StrQuery = @"INSERT INTO [M0003_Line]
                             ([TVC]
-                            ,[LineID]
+                            ,[LineCode]
                             ,[LineEN]
                             ,[LineVN]
                             ,[LineJP]
-                            ,[ProcessGroup]
+                            ,[ProcessCode]
                             ,[GroupLineACC]
-                            ,[ProductionDept]
+                            ,[UsingDept]
                             ,[Point]
                             ,[ExpenseGroup]
                             ,[ApplyDate]
@@ -96,13 +96,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,[Column5])
                         VALUES
                             (@TVC
-                            ,@LineID
+                            ,@LineCode
                             ,@LineEN
                             ,@LineVN
                             ,@LineJP
-                            ,@ProcessGroup
+                            ,@ProcessCode
                             ,@GroupLineACC
-                            ,@ProductionDept
+                            ,@UsingDept
                             ,@Point
                             ,@ExpenseGroup
                             ,@ApplyDate
@@ -120,20 +120,20 @@ namespace TAKAKO_ERP_3LAYER.DAO
             SqlParameter[] sqlParameters = new SqlParameter[14];
             sqlParameters[0] = new SqlParameter("@TVC", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(TVC);
-            sqlParameters[1] = new SqlParameter("@LineID", SqlDbType.NVarChar);
-            sqlParameters[1].Value = Convert.ToString(LineID);
+            sqlParameters[1] = new SqlParameter("@LineCode", SqlDbType.NVarChar);
+            sqlParameters[1].Value = Convert.ToString(LineCode);
             sqlParameters[2] = new SqlParameter("@LineEN", SqlDbType.NVarChar);
             sqlParameters[2].Value = Convert.ToString(LineEN);
             sqlParameters[3] = new SqlParameter("@LineVN", SqlDbType.NVarChar);
             sqlParameters[3].Value = Convert.ToString(LineVN);
             sqlParameters[4] = new SqlParameter("@LineJP", SqlDbType.NVarChar);
             sqlParameters[4].Value = Convert.ToString(LineJP);
-            sqlParameters[5] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
-            sqlParameters[5].Value = Convert.ToString(ProcessGroup);
+            sqlParameters[5] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
+            sqlParameters[5].Value = Convert.ToString(ProcessCode);
             sqlParameters[6] = new SqlParameter("@GroupLineACC", SqlDbType.NVarChar);
             sqlParameters[6].Value = Convert.ToString(GroupLineACC);
-            sqlParameters[7] = new SqlParameter("@ProductionDept", SqlDbType.NVarChar);
-            sqlParameters[7].Value = Convert.ToString(ProductionDept);
+            sqlParameters[7] = new SqlParameter("@UsingDept", SqlDbType.NVarChar);
+            sqlParameters[7].Value = Convert.ToString(UsingDept);
             sqlParameters[8] = new SqlParameter("@Point", SqlDbType.Int);
             sqlParameters[8].Value = Convert.ToInt32(Point);
             sqlParameters[9] = new SqlParameter("@ExpenseGroup", SqlDbType.NVarChar);
@@ -150,7 +150,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeInsertQuery(StrQuery, sqlParameters);
         }
         //Tạo class Update
-        public bool Update(string LineID,
+        public bool Update(string LineCode,
                            string LineEN,
                            string LineVN,
                            string LineJP,
@@ -172,12 +172,12 @@ namespace TAKAKO_ERP_3LAYER.DAO
                                 ,ModifyDate = GETDATE()
                                 ,ModifyUser = @InputUser
                             WHERE 
-                                    LineID    = @LineID
+                                    LineCode    = @LineCode
                                 and ApplyDate = @ApplyDate
                                     ";
             SqlParameter[] sqlParameters = new SqlParameter[8];
-            sqlParameters[0] = new SqlParameter("@LineID", SqlDbType.NVarChar);
-            sqlParameters[0].Value = Convert.ToString(LineID);
+            sqlParameters[0] = new SqlParameter("@LineCode", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(LineCode);
             sqlParameters[1] = new SqlParameter("@LineEN", SqlDbType.NVarChar);
             sqlParameters[1].Value = Convert.ToString(LineEN);
             sqlParameters[2] = new SqlParameter("@LineVN", SqlDbType.NVarChar);
@@ -196,26 +196,26 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeUpdateQuery(StrQuery, sqlParameters);
         }
         //Tạo class Delete
-        public bool Delete(string LineID, DateTime ApplyDate)
+        public bool Delete(string LineCode, DateTime ApplyDate)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"DELETE FROM [dbo].[M0003_Line]
-                            WHERE LineID = @LineID and ApplyDate = @ApplyDate";
+                            WHERE LineCode = @LineCode and ApplyDate = @ApplyDate";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@LineID", SqlDbType.NVarChar);
-            sqlParameters[0].Value = Convert.ToString(LineID);
+            sqlParameters[0] = new SqlParameter("@LineCode", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(LineCode);
             sqlParameters[1] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
             sqlParameters[1].Value = Convert.ToDateTime(ApplyDate);
 
             return conn.executeDeleteQuery(StrQuery, sqlParameters);
         }
         //Tạo class Check
-        public DataTable GetInfo_M0003_Check(string LineID,
-                                             string ProcessGroup,
+        public DataTable GetInfo_M0003_Check(string LineCode,
+                                             string ProcessCode,
                                              string GroupLineACC,
-                                             string ProductionDept,
+                                             string UsingDept,
                                              string ExpenseGroup,
                                              DateTime ApplyDate)
         {
@@ -223,31 +223,31 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                        	LineID,                        
-                            ProcessGroup,
+                        	LineCode,                        
+                            ProcessCode,
                             GroupLineACC,
-                            ProductionDept,
+                            UsingDept,
                             ExpenseGroup,
                             ApplyDate,
                             InActive
                         FROM
                         	M0003_Line
                         WHERE 
-                            (   LineID         = @LineID
-                            and ProcessGroup   = @ProcessGroup
+                            (   LineCode         = @LineCode
+                            and ProcessCode   = @ProcessCode
                             and GroupLineACC   = @GroupLineACC
-                            and ProductionDept = @ProductionDept)
-                        or (LineID = @LineID and ApplyDate = @ApplyDate)
-                        or (LineID = @LineID and InActive = 0)";
+                            and UsingDept = @UsingDept)
+                        or (LineCode = @LineCode and ApplyDate = @ApplyDate)
+                        or (LineCode = @LineCode and InActive = 0)";
             SqlParameter[] sqlParameters = new SqlParameter[6];
-            sqlParameters[0] = new SqlParameter("@LineID", SqlDbType.NVarChar);
-            sqlParameters[0].Value = Convert.ToString(LineID);
+            sqlParameters[0] = new SqlParameter("@LineCode", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(LineCode);
             sqlParameters[1] = new SqlParameter("@GroupLineACC", SqlDbType.NVarChar);
             sqlParameters[1].Value = Convert.ToString(GroupLineACC);
-            sqlParameters[2] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
-            sqlParameters[2].Value = Convert.ToString(ProcessGroup);
-            sqlParameters[3] = new SqlParameter("@ProductionDept", SqlDbType.NVarChar);
-            sqlParameters[3].Value = Convert.ToString(ProductionDept);
+            sqlParameters[2] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
+            sqlParameters[2].Value = Convert.ToString(ProcessCode);
+            sqlParameters[3] = new SqlParameter("@UsingDept", SqlDbType.NVarChar);
+            sqlParameters[3].Value = Convert.ToString(UsingDept);
             sqlParameters[4] = new SqlParameter("@ExpenseGroup", SqlDbType.NVarChar);
             sqlParameters[4].Value = Convert.ToString(ExpenseGroup);
             sqlParameters[5] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
@@ -257,20 +257,20 @@ namespace TAKAKO_ERP_3LAYER.DAO
         }
 
         //Lấy dữ liệu từ bảng M0003_Process (không có parammeter)
-        //nhập ProcessGroup
-        public DataTable GetInfo_M0003_ProcessGroup()
+        //nhập ProcessCode
+        public DataTable GetInfo_M0003_ProcessCode()
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                        	ProcessGroup
+                        	ProcessCode
                         FROM
-                            M0003_ProcessGroup
+                            M0003_ProcessCode
                         ORDER BY
-                            ProcessGroup";
+                            ProcessCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
+            sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
@@ -299,20 +299,20 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Lấy dữ liệu từ bảng M0003_Line (không có parammeter)
-        //nhập ProductionDept
-        public DataTable GetInfo_M0003_ProductionDept()
+        //nhập UsingDept
+        public DataTable GetInfo_M0003_UsingDept()
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT distinct
-                        	ProductionDept
+                        	UsingDept
                         FROM
                             M0003_Line
                         ORDER BY
-                            ProductionDept";
+                            UsingDept";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@ProductionDept", SqlDbType.NVarChar);
+            sqlParameters[0] = new SqlParameter("@UsingDept", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
@@ -382,19 +382,19 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             StrQuery = @"SELECT
                                TVC 
-                              ,LineID
+                              ,LineCode
                               ,LineEN
                               ,LineVN
                               ,LineJP
-                              ,ProcessGroup
+                              ,ProcessCode
                               ,GroupLineACC
-                              ,ProductionDept
+                              ,UsingDept
                               ,ApplyDate
                               ,InActive                  
                             FROM 
 	                           M0003_Line";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@LineID", SqlDbType.Text);
+            sqlParameters[0] = new SqlParameter("@LineCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);

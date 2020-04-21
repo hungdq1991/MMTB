@@ -17,11 +17,6 @@ namespace TAKAKO_ERP_3LAYER.View
         //
         public System_DAL _systemDAL = new System_DAL();
 
-        public Form_M0002()
-        {
-            InitializeComponent();
-        }
-
         public Form_M0002(System_DAL systemDAL)
         {
             InitializeComponent();

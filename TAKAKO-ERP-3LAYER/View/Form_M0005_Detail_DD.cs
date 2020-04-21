@@ -7,6 +7,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 using TAKAKO_ERP_3LAYER.Report;
 using DevExpress.XtraReports.UI;
 
@@ -24,11 +25,13 @@ namespace TAKAKO_ERP_3LAYER.View
         public M0005_DAO M0005_DAO;
         public String DocNo = "";
         public Boolean InitValue = true;
+        public System_DAL _systemDAL = new System_DAL();
         #endregion
         //Khởi tạo form
-        public Form_M0005_Detail_DD()
+        public Form_M0005_Detail_DD(System_DAL systemDAL)
         {
             InitializeComponent();
+            _systemDAL = systemDAL;
         }
         //Update, delete _ form theo kiểu dữ liệu
         public Form_M0005_Detail_DD(String _docNo)
@@ -48,6 +51,8 @@ namespace TAKAKO_ERP_3LAYER.View
 
             Setting_Init_Control();
             Setting_Init_Value();
+
+            bsiUser.Caption = _systemDAL.userName;
 
             advBandedGridView1.AddNewRow();
         }
@@ -70,7 +75,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
             AddValue_repo_sLookUp_Code();
 
-            Add_Value_repo_sLookUp_ProcessGroup();
+            Add_Value_repo_sLookUp_ProcessCode();
         }
         //Giá trị khi khởi tạo form
         private void Setting_Init_Value()
@@ -93,19 +98,19 @@ namespace TAKAKO_ERP_3LAYER.View
             comboBox.Properties.Items.AddRange(Boolean);
         }
         //Thông tin line, process...
-        private void Add_Value_repo_sLookUp_ProcessGroup()
+        private void Add_Value_repo_sLookUp_ProcessCode()
         {
             DataTable tempTable = new DataTable();
             tempTable = M0003_Line_DAO.GetInfo_M0003_ProgressGroup();
             if (tempTable.Rows.Count > 0)
             {
-                repo_sLookup_LineID1.DataSource = tempTable;
-                repo_sLookup_LineID1.ValueMember = "LineID";
-                repo_sLookup_LineID1.DisplayMember = "LineID";
+                repo_sLookup_LineCode1.DataSource = tempTable;
+                repo_sLookup_LineCode1.ValueMember = "LineCode";
+                repo_sLookup_LineCode1.DisplayMember = "LineCode";
             }
         }
         //Điền thông tin Line
-        private void repo_sLookUp_LineID_CloseUp(object sender, CloseUpEventArgs e)
+        private void repo_sLookUp_LineCode_CloseUp(object sender, CloseUpEventArgs e)
         {
             if (e.CloseMode == PopupCloseMode.Normal)
             {
@@ -119,7 +124,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
                 //Set value variables
                 _desLineEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("LineEN"));
-                _desProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProcessGroup"));
+                _desProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProcessCode"));
                 _desGroupLineACC = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("GroupLineACC"));
                 _desUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProductionDept"));
 

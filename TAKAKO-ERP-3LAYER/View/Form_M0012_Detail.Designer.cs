@@ -66,8 +66,7 @@
             this.repo_sLookUp_WH2Code = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_PurCode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repo_sLookUp_PurCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.repo_TextEdit_PurCode = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridCol_UnitMultDiv = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_CnvFact = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -76,11 +75,12 @@
             this.repo_sLookUp_InActive = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repo_sLookUp_PurCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_sLookUp_ItemCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_TextEdit_Code = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.repo_TextEdit_PurCode = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -92,21 +92,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_WH2Code)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_PurCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_PurCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_DateEdit_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_DateEdit_.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_InActive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_PurCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_ItemCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Code)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_PurCode)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -128,7 +129,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(790, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(792, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -237,7 +238,7 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(790, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(792, 22);
             // 
             // gridControl
             // 
@@ -257,7 +258,7 @@
             this.repo_sLookUp_ItemCode,
             this.repo_TextEdit_Code,
             this.repo_TextEdit_PurCode});
-            this.gridControl.Size = new System.Drawing.Size(790, 418);
+            this.gridControl.Size = new System.Drawing.Size(792, 418);
             this.gridControl.TabIndex = 5;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -611,21 +612,10 @@
             this.gridCol_PurCode.VisibleIndex = 11;
             this.gridCol_PurCode.Width = 120;
             // 
-            // repo_sLookUp_PurCode
+            // repo_TextEdit_PurCode
             // 
-            this.repo_sLookUp_PurCode.AutoHeight = false;
-            this.repo_sLookUp_PurCode.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_sLookUp_PurCode.Name = "repo_sLookUp_PurCode";
-            this.repo_sLookUp_PurCode.PopupView = this.gridView3;
-            this.repo_sLookUp_PurCode.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.Repo_sLookUp_PurCode_CloseUp);
-            // 
-            // gridView3
-            // 
-            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.repo_TextEdit_PurCode.AutoHeight = false;
+            this.repo_TextEdit_PurCode.Name = "repo_TextEdit_PurCode";
             // 
             // gridCol_UnitMultDiv
             // 
@@ -748,6 +738,22 @@
             this.gridCol_Memo.VisibleIndex = 14;
             this.gridCol_Memo.Width = 150;
             // 
+            // repo_sLookUp_PurCode
+            // 
+            this.repo_sLookUp_PurCode.AutoHeight = false;
+            this.repo_sLookUp_PurCode.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repo_sLookUp_PurCode.Name = "repo_sLookUp_PurCode";
+            this.repo_sLookUp_PurCode.PopupView = this.gridView3;
+            this.repo_sLookUp_PurCode.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.Repo_sLookUp_PurCode_CloseUp);
+            // 
+            // gridView3
+            // 
+            this.gridView3.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView3.Name = "gridView3";
+            this.gridView3.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView3.OptionsView.ShowGroupPanel = false;
+            // 
             // repo_sLookUp_ItemCode
             // 
             this.repo_sLookUp_ItemCode.AutoHeight = false;
@@ -776,16 +782,11 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // repo_TextEdit_PurCode
-            // 
-            this.repo_TextEdit_PurCode.AutoHeight = false;
-            this.repo_TextEdit_PurCode.Name = "repo_TextEdit_PurCode";
-            // 
             // Form_M0012_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 599);
+            this.ClientSize = new System.Drawing.Size(792, 599);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -805,17 +806,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_WH2Code)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_PurCode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_PurCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_DateEdit_.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_DateEdit_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_InActive)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_PurCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_ItemCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Code)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_PurCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

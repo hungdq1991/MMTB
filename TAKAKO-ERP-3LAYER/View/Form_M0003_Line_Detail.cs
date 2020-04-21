@@ -13,13 +13,13 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataRow dataRow;
         public M0003_Line_DAO M0003_Line_DAO;
         private string TVC;
-        private string LineID;
+        private string LineCode;
         private string LineEN;
         private string LineVN;
         private string LineJP;
-        private string ProcessGroup;
+        private string ProcessCode;
         private string GroupLineACC;
-        private string ProductionDept;
+        private string UsingDept;
         private int Point;
         private string ExpenseGroup;
         private DateTime applyDate;
@@ -62,11 +62,11 @@ namespace TAKAKO_ERP_3LAYER.View
             //
             sLookUpEdit_LineEN();
             //
-            sLookUpEdit_ProcessGroup();
+            sLookUpEdit_ProcessCode();
             //
             LookUpEdit_GroupLineACC();
             //
-            LookUpEdit_ProductionDept();
+            LookUpEdit_UsingDept();
             //
             LookUpEdit_ExpenseGroup();
             //
@@ -116,16 +116,16 @@ namespace TAKAKO_ERP_3LAYER.View
             txt_LineVN.Text = tempLineEN;
             txt_LineJP.Text = tempLineEN;
         }
-        //Điền dữ liệu cho ô ProcessGroup
-        private void sLookUpEdit_ProcessGroup()
+        //Điền dữ liệu cho ô ProcessCode
+        private void sLookUpEdit_ProcessCode()
         {
             DataTable tempTable = new DataTable();
-            tempTable = M0003_Line_DAO.GetInfo_M0003_ProcessGroup();
+            tempTable = M0003_Line_DAO.GetInfo_M0003_ProcessCode();
             if (tempTable.Rows.Count > 0)
             {
-                sLook_ProcessGroup.Properties.DataSource = tempTable;
-                sLook_ProcessGroup.Properties.ValueMember = "ProcessGroup";
-                sLook_ProcessGroup.Properties.DisplayMember = "ProcessGroup";
+                sLook_ProcessCode.Properties.DataSource = tempTable;
+                sLook_ProcessCode.Properties.ValueMember = "ProcessCode";
+                sLook_ProcessCode.Properties.DisplayMember = "ProcessCode";
             }
         }
         //Điền dữ liệu cho ô GroupLineACC
@@ -146,22 +146,22 @@ namespace TAKAKO_ERP_3LAYER.View
                 txt_GroupLineACC.MaskBox.AutoCompleteCustomSource = collection;
             }
         }
-        //Điền dữ liệu cho ô ProductionDept
-        private void LookUpEdit_ProductionDept()
+        //Điền dữ liệu cho ô UsingDept
+        private void LookUpEdit_UsingDept()
         {
             AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
             DataTable tempDataTable = new DataTable();
-            tempDataTable = M0003_Line_DAO.GetInfo_M0003_ProductionDept();
+            tempDataTable = M0003_Line_DAO.GetInfo_M0003_UsingDept();
 
             if (tempDataTable.Rows.Count > 0)
             {
                 foreach (DataRow row in tempDataTable.Rows)
                 {
-                    collection.Add(row["ProductionDept"].ToString());
+                    collection.Add(row["UsingDept"].ToString());
                 }
-                txt_ProductionDept.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                txt_ProductionDept.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                txt_ProductionDept.MaskBox.AutoCompleteCustomSource = collection;
+                txt_UsingDept.MaskBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txt_UsingDept.MaskBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txt_UsingDept.MaskBox.AutoCompleteCustomSource = collection;
             }
         }
         //Điền dữ liệu cho ô ExpenseGroup
@@ -206,13 +206,13 @@ namespace TAKAKO_ERP_3LAYER.View
             if (IsNewValue) //Nếu IsNewValue = true
             {
                 TVC = "TVC1";
-                LineID = String.Empty;
+                LineCode = String.Empty;
                 LineEN = String.Empty;
                 LineVN = String.Empty;
                 LineJP = String.Empty;
-                ProcessGroup = String.Empty;
+                ProcessCode = String.Empty;
                 GroupLineACC = String.Empty;
-                ProductionDept = String.Empty;
+                UsingDept = String.Empty;
                 Point = 0;
                 ExpenseGroup = String.Empty;
                 applyDate = DateTime.Today;
@@ -222,13 +222,13 @@ namespace TAKAKO_ERP_3LAYER.View
             else
             {
                 TVC = Convert.ToString(dataRow[0]);
-                LineID = Convert.ToString(dataRow[1]);
+                LineCode = Convert.ToString(dataRow[1]);
                 LineEN = Convert.ToString(dataRow[2]);
                 LineVN = Convert.ToString(dataRow[3]);
                 LineJP = Convert.ToString(dataRow[4]);
-                ProcessGroup = Convert.ToString(dataRow[5]);
+                ProcessCode = Convert.ToString(dataRow[5]);
                 GroupLineACC = Convert.ToString(dataRow[6]);
-                ProductionDept = Convert.ToString(dataRow[7]);
+                UsingDept = Convert.ToString(dataRow[7]);
                 Point = Convert.ToInt32(dataRow[8]);
                 ExpenseGroup = Convert.ToString(dataRow[9]);
                 applyDate = Convert.ToDateTime(dataRow[10]);
@@ -236,22 +236,22 @@ namespace TAKAKO_ERP_3LAYER.View
                 Memo = Convert.ToString(dataRow[12]);
             }
         }
-        //Kiểm soát key LineID: cho thêm mới hoặc không được chỉnh sửa nếu trường hợp là Edit/Delete
+        //Kiểm soát key LineCode: cho thêm mới hoặc không được chỉnh sửa nếu trường hợp là Edit/Delete
         private void Setting_Init_Control()
         {
             if (IsNewValue)
             {
                 cbx_TVC.Enabled = true;
-                txt_LineID.Enabled = true;
+                txt_LineCode.Enabled = true;
                 bbiDelete.Enabled = false;
             }
             else
             {
                 cbx_TVC.Enabled = false;
-                txt_LineID.Enabled = false;
-                sLook_ProcessGroup.Enabled = false;
+                txt_LineCode.Enabled = false;
+                sLook_ProcessCode.Enabled = false;
                 txt_GroupLineACC.Enabled = false;
-                txt_ProductionDept.Enabled = false;
+                txt_UsingDept.Enabled = false;
                 txt_Point.Enabled = false;
                 txt_ExpenseGroup.Enabled = false;
                 date_ApplyDate.Enabled = false;
@@ -262,13 +262,13 @@ namespace TAKAKO_ERP_3LAYER.View
         private void Update_Control()
         {
             cbx_TVC.Text = TVC;
-            txt_LineID.Text = LineID;
+            txt_LineCode.Text = LineCode;
             sLook_LineEN.EditValue = LineEN;
             txt_LineVN.Text = LineVN;
             txt_LineJP.Text = LineJP;
-            sLook_ProcessGroup.Text = ProcessGroup;
+            sLook_ProcessCode.Text = ProcessCode;
             txt_GroupLineACC.Text = GroupLineACC;
-            txt_ProductionDept.Text = ProductionDept;
+            txt_UsingDept.Text = UsingDept;
             txt_Point.Text = Point.ToString();
             txt_ExpenseGroup.Text = ExpenseGroup;
             date_ApplyDate.EditValue = applyDate;
@@ -288,19 +288,19 @@ namespace TAKAKO_ERP_3LAYER.View
             IsNewValue = true;
             cbx_TVC.Enabled = true;
             cbx_TVC.Focus();
-            txt_LineID.Enabled = true;
-            txt_LineID.Text = "";
-            txt_LineID.Focus();
+            txt_LineCode.Enabled = true;
+            txt_LineCode.Text = "";
+            txt_LineCode.Focus();
             sLook_LineEN.Enabled = true;
             sLook_LineEN.Text = "";
             txt_LineVN.Text = "";
             txt_LineJP.Text = "";
-            sLook_ProcessGroup.Enabled = true;
-            sLook_ProcessGroup.Text = "";
+            sLook_ProcessCode.Enabled = true;
+            sLook_ProcessCode.Text = "";
             txt_GroupLineACC.Enabled = true;
             txt_GroupLineACC.Text = "";
-            txt_ProductionDept.Enabled = true;
-            txt_ProductionDept.Text = "";
+            txt_UsingDept.Enabled = true;
+            txt_UsingDept.Text = "";
             txt_Point.Text = "0";
             txt_ExpenseGroup.Enabled = true;
             txt_ExpenseGroup.Text = "";
@@ -325,13 +325,13 @@ namespace TAKAKO_ERP_3LAYER.View
             {
                 TVC = "TVC2";
             }
-            string curr_LineID = txt_LineID.Text.Trim();
+            string curr_LineCode = txt_LineCode.Text.Trim();
             string curr_LineEN = sLook_LineEN.Text.Trim();
             string curr_LineVN = txt_LineVN.Text.Trim();
             string curr_LineJP = txt_LineJP.Text.Trim();
-            string curr_ProcessGroup = sLook_ProcessGroup.Text.Trim();
+            string curr_ProcessCode = sLook_ProcessCode.Text.Trim();
             string curr_GroupLineACC = txt_GroupLineACC.Text.Trim();
-            string curr_ProductionDept = txt_ProductionDept.Text.Trim();
+            string curr_UsingDept = txt_UsingDept.Text.Trim();
             int curr_Point = Int32.Parse(txt_Point.Text.Trim());
             string curr_ExpenseGroup = txt_ExpenseGroup.Text.Trim();
             DateTime curr_ApplyDate = DateTime.Parse(date_ApplyDate.Text.Trim());
@@ -340,15 +340,15 @@ namespace TAKAKO_ERP_3LAYER.View
             //Trường hợp thêm mới
             if (IsNewValue)
             {
-                Message = "Bạn muốn thêm mới tên: " + txt_LineID.Text.ToString() + "?";
+                Message = "Bạn muốn thêm mới tên: " + txt_LineCode.Text.ToString() + "?";
                 if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                     , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_Line_DAO.Insert(TVC, curr_LineID, curr_LineEN, curr_LineVN, curr_LineJP, curr_ProcessGroup, curr_GroupLineACC, curr_ProductionDept, curr_Point, curr_ExpenseGroup, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName))
+                        if (M0003_Line_DAO.Insert(TVC, curr_LineCode, curr_LineEN, curr_LineVN, curr_LineJP, curr_ProcessCode, curr_GroupLineACC, curr_UsingDept, curr_Point, curr_ExpenseGroup, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName))
                         {
-                            Message = "Lưu thành công tên: \"" + txt_LineID.Text.ToString() + "\"!";
+                            Message = "Lưu thành công tên: \"" + txt_LineCode.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -357,15 +357,15 @@ namespace TAKAKO_ERP_3LAYER.View
             //Trường hợp sửa
             else
             {
-                Message = "Bạn muốn cập nhật tên: " + txt_LineID.Text.ToString() + "?";
+                Message = "Bạn muốn cập nhật tên: " + txt_LineCode.Text.ToString() + "?";
                 if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                     , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_Line_DAO.Update(curr_LineID, curr_LineEN, curr_LineVN, curr_LineJP, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName))
+                        if (M0003_Line_DAO.Update(curr_LineCode, curr_LineEN, curr_LineVN, curr_LineJP, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName))
                         {
-                            Message = "Cập nhật thành công tên: \"" + txt_LineID.Text.ToString() + "\"!";
+                            Message = "Cập nhật thành công tên: \"" + txt_LineCode.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -376,22 +376,22 @@ namespace TAKAKO_ERP_3LAYER.View
         private void BbiReset_ItemClick(object sender, ItemClickEventArgs e)
         {
             Update_Control();
-            txt_LineID.Focus();
+            txt_LineCode.Focus();
         }
 
         //Click nút Delete
         private void BbiDelete_ItemClick(object sender, ItemClickEventArgs e)
         {
             string Message = "";
-            string curr_LineID = txt_LineID.Text.Trim();
+            string curr_LineCode = txt_LineCode.Text.Trim();
             DateTime curr_ApplyDate = DateTime.Parse(date_ApplyDate.Text.Trim());
-            Message = "Bạn muốn xóa tên: " + txt_LineID.Text.ToString() + "?";
+            Message = "Bạn muốn xóa tên: " + txt_LineCode.Text.ToString() + "?";
             if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                 , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
             {
-                if (M0003_Line_DAO.Delete(curr_LineID, curr_ApplyDate))
+                if (M0003_Line_DAO.Delete(curr_LineCode, curr_ApplyDate))
                 {
-                    Message = "Xóa thành công tên: \"" + txt_LineID.Text.ToString() + "\"!";
+                    Message = "Xóa thành công tên: \"" + txt_LineCode.Text.ToString() + "\"!";
                     MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -405,10 +405,10 @@ namespace TAKAKO_ERP_3LAYER.View
         //Các tình huống cần kiểm tra lỗi
         public Boolean CheckError()
         {
-            if (String.IsNullOrEmpty(txt_LineID.Text.Trim()))
+            if (String.IsNullOrEmpty(txt_LineCode.Text.Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Mã line\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txt_LineID.Focus();
+                txt_LineCode.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(sLook_LineEN.Text.Trim()))
@@ -429,10 +429,10 @@ namespace TAKAKO_ERP_3LAYER.View
                 txt_LineJP.Focus();
                 return false;
             }
-            if (String.IsNullOrEmpty(sLook_ProcessGroup.Text.Trim()))
+            if (String.IsNullOrEmpty(sLook_ProcessCode.Text.Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Công đoạn\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                sLook_ProcessGroup.Focus();
+                sLook_ProcessCode.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(txt_GroupLineACC.Text.Trim()))
@@ -441,10 +441,10 @@ namespace TAKAKO_ERP_3LAYER.View
                 txt_GroupLineACC.Focus();
                 return false;
             }
-            if (String.IsNullOrEmpty(txt_ProductionDept.Text.Trim()))
+            if (String.IsNullOrEmpty(txt_UsingDept.Text.Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Bộ phận SX\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txt_ProductionDept.Focus();
+                txt_UsingDept.Focus();
                 return false;
             }
             if (IsNewValue && DateTime.Today > date_ApplyDate.DateTime)
@@ -455,11 +455,11 @@ namespace TAKAKO_ERP_3LAYER.View
             }
             if (IsNewValue)
             {
-                DataTable _check = M0003_Line_DAO.GetInfo_M0003_Check(txt_LineID.Text.Trim(), sLook_ProcessGroup.Text.Trim(), txt_GroupLineACC.Text.Trim(), txt_ProductionDept.Text.ToString(), txt_ExpenseGroup.Text.ToString(), DateTime.Parse(date_ApplyDate.Text.Trim()));
+                DataTable _check = M0003_Line_DAO.GetInfo_M0003_Check(txt_LineCode.Text.Trim(), sLook_ProcessCode.Text.Trim(), txt_GroupLineACC.Text.Trim(), txt_UsingDept.Text.ToString(), txt_ExpenseGroup.Text.ToString(), DateTime.Parse(date_ApplyDate.Text.Trim()));
                 if (_check.Rows.Count > 0)
                 {
-                    MessageBox.Show("Tên: " + txt_LineID.Text.ToString() + " đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txt_LineID.Focus();
+                    MessageBox.Show("Tên: " + txt_LineCode.Text.ToString() + " đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txt_LineCode.Focus();
                     return false;
                 }
             }

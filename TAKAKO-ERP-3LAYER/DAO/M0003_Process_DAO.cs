@@ -25,7 +25,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,ProcessNameEN
                             ,ProcessNameVN
                             ,ProcessNameJP
-                            ,ProcessGroup
+                            ,ProcessCode
                             ,Point
                             ,Memo
                             ,isOutsource
