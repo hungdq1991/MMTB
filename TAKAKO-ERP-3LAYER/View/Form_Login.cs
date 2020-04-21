@@ -3,11 +3,13 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
     public partial class Form_Login : DevExpress.XtraEditors.XtraForm
     {
+        public System_DAL _systemDAL;
         public SYS_USER_DAO sys_user_DAO;
 
         public Form_Login()
@@ -17,6 +19,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void Form_Login_Load(object sender, EventArgs e)
         {
+            _systemDAL = new System_DAL();
             sys_user_DAO = new SYS_USER_DAO();
         }
 
@@ -44,6 +47,7 @@ namespace TAKAKO_ERP_3LAYER.View
         }
         #endregion
 
+        #region event
         private void btnCancel_Click(object sender, System.EventArgs e)
         {
             Application.Exit();
@@ -61,7 +65,9 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     this.Hide();
 
-                    Form_Menu _fonmMain = new Form_Menu();
+                    _systemDAL.userName = _userName;
+
+                    Form_Menu _fonmMain = new Form_Menu(_systemDAL);
                     _fonmMain.StartPosition = FormStartPosition.CenterScreen;
                     _fonmMain.Show();
                 } else {
@@ -70,6 +76,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 }
             }
         }
+        #endregion
 
         private bool CheckError()
         {

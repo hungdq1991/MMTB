@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
-using static System.Windows.Forms.ImageList;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -17,10 +17,23 @@ namespace TAKAKO_ERP_3LAYER.View
         public M0006_MayTien_DAO M0006_MayTien_DAO;
         public M0006_MayPhay_DAO M0006_MayPhay_DAO;
         public const Boolean AddNew = true;
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         public Form_M0006()
         {
             InitializeComponent();
         }
+
+        public Form_M0006(System_DAL systemDAL)
+        {
+            InitializeComponent();
+
+            //
+            _systemDAL = systemDAL;
+        }
+
         //Load form M0006
         private void Form_M0006_Load(object sender, System.EventArgs e)
         {
@@ -73,7 +86,6 @@ namespace TAKAKO_ERP_3LAYER.View
             {
                 bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
             }
-
             if (xtraTabControl1.SelectedTabPage == xtraTabPage2)
             {
                 bsiRecordsCount.Caption = gridView2.RowCount.ToString() + " of " + _tempTable1.Rows.Count + " records";

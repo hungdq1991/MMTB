@@ -1,9 +1,8 @@
-﻿using DevExpress.XtraEditors.Repository;
-using System;
+﻿using System;
 using System.Data;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
-
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -12,11 +11,23 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataTable _tempTable;
         public M0005_DAO M0005_DAO;
         public M0005_Line_DAO M0005_Line_DAO;
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         //Khởi tạo Form_M0005
         public Form_M0005()
         {
             InitializeComponent();
         }
+
+        public Form_M0005(System_DAL systemDAL)
+        {
+            InitializeComponent();
+
+            _systemDAL = systemDAL;
+        }
+
         //Load form
         private void Form_M0005_Load(object sender, System.EventArgs e)
         {
@@ -103,8 +114,8 @@ namespace TAKAKO_ERP_3LAYER.View
             //String param_DocNo = advBandedGridView1.GetFocusedDataRow()["DocNo_Confirm"].ToString();
             using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(advBandedGridView1.GetFocusedDataRow()["DocNo"].ToString()))
             {
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 formDetail.ShowDialog();
-                formDetail.StartPosition = FormStartPosition.CenterParent;
             }
         }
         //Tạo chứng từ nghiệm thu
@@ -112,8 +123,8 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT())
             {
-                formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
+                formDetail.ShowDialog();
             }
         }
         //Tạo chứng từ thanh lý 
@@ -121,8 +132,8 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             using (Form_M0005_Detail_TL formDetail = new Form_M0005_Detail_TL())
             {
-                formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
+                formDetail.ShowDialog();
             }
         }
         //Tạo chứng từ di dời
@@ -130,8 +141,8 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             using (Form_M0005_Detail_DD formDetail = new Form_M0005_Detail_DD())
             {
-                formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
+                formDetail.ShowDialog();
             }
         }
         //Hiển thị dữ liệu trên cột, ngày tháng không có

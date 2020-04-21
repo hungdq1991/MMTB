@@ -36,6 +36,7 @@
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -68,15 +69,16 @@
             this.bbiDelete,
             this.bbiRefresh,
             this.bbiEdit,
-            this.bbiNew});
+            this.bbiNew,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 24;
+            this.ribbonControl.MaxItemId = 25;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(830, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(920, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -125,6 +127,13 @@
             this.bbiNew.Name = "bbiNew";
             this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNew_ItemClick);
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 24;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -146,19 +155,20 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(830, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(920, 22);
             // 
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 157);
+            this.gridControl.Location = new System.Drawing.Point(0, 159);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(830, 420);
+            this.gridControl.Size = new System.Drawing.Size(920, 418);
             this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -177,10 +187,8 @@
             this.gridCol_ApplyDate,
             this.gridCol_InActive});
             this.gridView.GridControl = this.gridControl;
-            this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ColumnAutoWidth = false;
-            this.gridView.OptionsView.ShowFooter = true;
             this.gridView.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.ColumnFilterChanged += new System.EventHandler(this.GridView_ColumnFilterChanged);
             // 
@@ -190,7 +198,7 @@
             this.gridCol_NameEN.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_NameEN.AppearanceHeader.Options.UseFont = true;
             this.gridCol_NameEN.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_NameEN.Caption = "Tên (t.Anh)";
+            this.gridCol_NameEN.Caption = "Tên (Tiếng Anh)";
             this.gridCol_NameEN.FieldName = "NameEN";
             this.gridCol_NameEN.Name = "gridCol_NameEN";
             this.gridCol_NameEN.OptionsColumn.AllowEdit = false;
@@ -205,7 +213,7 @@
             this.gridCol_NameVN.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_NameVN.AppearanceHeader.Options.UseFont = true;
             this.gridCol_NameVN.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_NameVN.Caption = "Tên (t.Việt)";
+            this.gridCol_NameVN.Caption = "Tên (Tiếng Việt)";
             this.gridCol_NameVN.FieldName = "NameVN";
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.OptionsColumn.AllowEdit = false;
@@ -220,7 +228,7 @@
             this.gridCol_NameJP.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_NameJP.AppearanceHeader.Options.UseFont = true;
             this.gridCol_NameJP.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_NameJP.Caption = "Tên (t.Nhật)";
+            this.gridCol_NameJP.Caption = "Tên (Tiếng Nhật)";
             this.gridCol_NameJP.FieldName = "NameJP";
             this.gridCol_NameJP.Name = "gridCol_NameJP";
             this.gridCol_NameJP.OptionsColumn.AllowEdit = false;
@@ -327,7 +335,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 599);
+            this.ClientSize = new System.Drawing.Size(920, 599);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -368,5 +376,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
         private DevExpress.XtraBars.BarButtonItem bbiNew;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_InActive;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

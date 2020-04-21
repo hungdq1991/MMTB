@@ -1,31 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
-using DevExpress.XtraLayout.Helpers;
-using DevExpress.XtraLayout;
+﻿using System.Windows.Forms;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
     public partial class Form_Menu : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         public Form_Menu()
         {
             InitializeComponent();
         }
+
+        public Form_Menu(System_DAL systemDAL)
+        {
+            InitializeComponent();
+            _systemDAL = systemDAL;
+        }
+
         private void BbiName_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0001 formDetail = new Form_M0001())
+            using (Form_M0001 formDetail = new Form_M0001(_systemDAL))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -34,6 +34,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0002 formDetail = new Form_M0002())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -42,6 +44,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0003_ProcessGroup formDetail = new Form_M0003_ProcessGroup())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -50,6 +54,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0003_Line formDetail = new Form_M0003_Line())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -58,6 +64,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0004 formDetail = new Form_M0004())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -66,6 +74,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0012 formDetail = new Form_M0012())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -74,6 +84,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0005 formDetail = new Form_M0005())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -82,6 +94,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -90,6 +104,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0005_Detail_TL formDetail = new Form_M0005_Detail_TL())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -98,13 +114,14 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0005_Detail_DD formDetail = new Form_M0005_Detail_DD())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
         private void BbiStock_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
-
         }
 
         private void BbiPart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -112,6 +129,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0015_Master formDetail = new Form_M0015_Master())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -120,6 +139,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0014 formDetail = new Form_M0014())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -128,6 +149,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0013 formDetail = new Form_M0013())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -141,6 +164,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0006 formDetail = new Form_M0006())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 
@@ -149,6 +174,8 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0005_Detail_ACC formDetail = new Form_M0005_Detail_ACC())
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
             }
         }
 

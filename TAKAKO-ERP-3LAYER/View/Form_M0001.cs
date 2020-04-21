@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -10,11 +11,19 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataTable _tempTable;
         public M0001_DAO M0001_DAO;
         public const Boolean AddNew = true;
+        public System_DAL _systemDAL = new System_DAL();
 
         public Form_M0001()
         {
             InitializeComponent();
         }
+
+        public Form_M0001(System_DAL systemDAL)
+        {
+            InitializeComponent();
+            _systemDAL = systemDAL;
+        }
+
         //Khởi tạo dữ liệu
         private void GetInfo_Gridview()
         {
@@ -45,6 +54,8 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             _tempTable = new DataTable();
             M0001_DAO = new M0001_DAO();
+            //
+            bsiUser.Caption = _systemDAL.userName;
             //Load Init
             GetInfo_Gridview();
         }
@@ -76,6 +87,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0001_Detail formDetail = new Form_M0001_Detail(AddNew))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 Setting_Init_Form();
             }
         }
@@ -85,6 +97,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0001_Detail formDetail = new Form_M0001_Detail(gridView.GetFocusedDataRow()))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 Setting_Init_Form();
             }
         }        
@@ -94,6 +107,7 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0001_Detail formDetail = new Form_M0001_Detail(gridView.GetFocusedDataRow()))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
                 Setting_Init_Form();
             }
         }

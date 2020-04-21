@@ -85,7 +85,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(790, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(790, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -160,11 +160,11 @@
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 157);
+            this.gridControl.Location = new System.Drawing.Point(0, 159);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(790, 420);
+            this.gridControl.Size = new System.Drawing.Size(790, 418);
             this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -247,7 +247,7 @@
             this.gridCol_NameEN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameEN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameEN.Caption = "Tên (t.Anh)";
+            this.gridCol_NameEN.Caption = "Tên (Tiếng Anh)";
             this.gridCol_NameEN.FieldName = "NameEN";
             this.gridCol_NameEN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameEN.Name = "gridCol_NameEN";
@@ -265,7 +265,7 @@
             this.gridCol_NameVN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameVN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameVN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameVN.Caption = "Tên (t.Việt)";
+            this.gridCol_NameVN.Caption = "Tên (Tiếng Việt)";
             this.gridCol_NameVN.FieldName = "NameVN";
             this.gridCol_NameVN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameVN.Name = "gridCol_NameVN";
@@ -284,7 +284,7 @@
             this.gridCol_NameJP.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameJP.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameJP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameJP.Caption = "Tên (t.Nhật)";
+            this.gridCol_NameJP.Caption = "Tên (Tiếng Nhật)";
             this.gridCol_NameJP.FieldName = "NameJP";
             this.gridCol_NameJP.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameJP.Name = "gridCol_NameJP";
@@ -419,7 +419,7 @@
             this.gridCol_Unit.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_Unit.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_Unit.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_Unit.Caption = "Đvt";
+            this.gridCol_Unit.Caption = "Đơn vị tính";
             this.gridCol_Unit.FieldName = "Unit";
             this.gridCol_Unit.Name = "gridCol_Unit";
             this.gridCol_Unit.Visible = true;

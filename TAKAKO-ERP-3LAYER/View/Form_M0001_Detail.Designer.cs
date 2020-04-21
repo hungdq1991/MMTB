@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0001_Detail));
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiReset = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
@@ -54,6 +54,10 @@
             this.label_NameJP = new DevExpress.XtraEditors.LabelControl();
             this.label_Group2 = new DevExpress.XtraEditors.LabelControl();
             this.label_NameEN = new DevExpress.XtraEditors.LabelControl();
+            this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
+            this.M0001_Detail_User = new DevExpress.XtraBars.BarButtonItem();
+            this.bsi_User1 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panel_Detail)).BeginInit();
             this.panel_Detail.SuspendLayout();
@@ -74,18 +78,20 @@
             this.mainRibbonControl.ExpandCollapseItem,
             this.mainRibbonControl.SearchEditItem,
             this.bbiSave,
-            this.bbiReset,
+            this.bbiRefresh,
             this.bbiDelete,
             this.bbiNew,
-            this.bbiClose});
+            this.bbiClose,
+            this.M0001_Detail_User,
+            this.bsi_User1});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 14;
+            this.mainRibbonControl.MaxItemId = 16;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage});
             this.mainRibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.mainRibbonControl.Size = new System.Drawing.Size(415, 157);
+            this.mainRibbonControl.Size = new System.Drawing.Size(451, 159);
             this.mainRibbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiSave
@@ -97,14 +103,15 @@
             this.bbiSave.Name = "bbiSave";
             this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiSave_ItemClick);
             // 
-            // bbiReset
+            // bbiRefresh
             // 
-            this.bbiReset.Caption = "Reset";
-            this.bbiReset.Id = 5;
-            this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
-            this.bbiReset.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R));
-            this.bbiReset.Name = "bbiReset";
-            this.bbiReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReset_ItemClick);
+            this.bbiRefresh.Caption = "Refresh";
+            this.bbiRefresh.Id = 5;
+            this.bbiRefresh.ImageOptions.ImageUri.Uri = "Reset";
+            this.bbiRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiReset.ImageOptions.SvgImage")));
+            this.bbiRefresh.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R));
+            this.bbiRefresh.Name = "bbiRefresh";
+            this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReset_ItemClick);
             // 
             // bbiDelete
             // 
@@ -129,7 +136,6 @@
             this.bbiClose.Id = 12;
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
             this.bbiClose.Name = "bbiClose";
-            this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiClose_ItemClick_1);
             // 
             // mainRibbonPage
             // 
@@ -145,8 +151,7 @@
             this.mainRibbonPageGroup.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiNew);
             this.mainRibbonPageGroup.ItemLinks.Add(this.bbiSave);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiReset);
-            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiClose);
+            this.mainRibbonPageGroup.ItemLinks.Add(this.bbiRefresh);
             this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
             this.mainRibbonPageGroup.Text = "Tasks";
             // 
@@ -169,14 +174,14 @@
             this.panel_Detail.Controls.Add(this.label_Group2);
             this.panel_Detail.Controls.Add(this.label_NameEN);
             this.panel_Detail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_Detail.Location = new System.Drawing.Point(0, 157);
+            this.panel_Detail.Location = new System.Drawing.Point(0, 159);
             this.panel_Detail.Name = "panel_Detail";
-            this.panel_Detail.Size = new System.Drawing.Size(415, 348);
+            this.panel_Detail.Size = new System.Drawing.Size(451, 346);
             this.panel_Detail.TabIndex = 2;
             // 
             // cbx_Group1
             // 
-            this.cbx_Group1.Location = new System.Drawing.Point(103, 172);
+            this.cbx_Group1.Location = new System.Drawing.Point(119, 172);
             this.cbx_Group1.MenuManager = this.mainRibbonControl;
             this.cbx_Group1.Name = "cbx_Group1";
             this.cbx_Group1.Properties.AutoComplete = false;
@@ -200,7 +205,7 @@
             // 
             // cbx_Name
             // 
-            this.cbx_Name.Location = new System.Drawing.Point(103, 131);
+            this.cbx_Name.Location = new System.Drawing.Point(119, 131);
             this.cbx_Name.MenuManager = this.mainRibbonControl;
             this.cbx_Name.Name = "cbx_Name";
             this.cbx_Name.Properties.AutoComplete = false;
@@ -218,13 +223,13 @@
             this.label_Name.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.label_Name.Location = new System.Drawing.Point(10, 124);
             this.label_Name.Name = "label_Name";
-            this.label_Name.Size = new System.Drawing.Size(87, 31);
+            this.label_Name.Size = new System.Drawing.Size(103, 31);
             this.label_Name.TabIndex = 5;
             this.label_Name.Text = "Sử dụng cho Tên";
             // 
             // cbx_InActive
             // 
-            this.cbx_InActive.Location = new System.Drawing.Point(102, 301);
+            this.cbx_InActive.Location = new System.Drawing.Point(119, 301);
             this.cbx_InActive.Name = "cbx_InActive";
             this.cbx_InActive.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -233,7 +238,7 @@
             // 
             // cbx_Line
             // 
-            this.cbx_Line.Location = new System.Drawing.Point(102, 260);
+            this.cbx_Line.Location = new System.Drawing.Point(119, 260);
             this.cbx_Line.Name = "cbx_Line";
             this.cbx_Line.Properties.AutoComplete = false;
             this.cbx_Line.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -243,7 +248,7 @@
             // 
             // cbx_Group2
             // 
-            this.cbx_Group2.Location = new System.Drawing.Point(103, 215);
+            this.cbx_Group2.Location = new System.Drawing.Point(119, 215);
             this.cbx_Group2.MenuManager = this.mainRibbonControl;
             this.cbx_Group2.Name = "cbx_Group2";
             this.cbx_Group2.Properties.AutoComplete = false;
@@ -254,14 +259,14 @@
             // 
             // txt_NameJP
             // 
-            this.txt_NameJP.Location = new System.Drawing.Point(102, 90);
+            this.txt_NameJP.Location = new System.Drawing.Point(119, 90);
             this.txt_NameJP.Name = "txt_NameJP";
             this.txt_NameJP.Size = new System.Drawing.Size(300, 20);
             this.txt_NameJP.TabIndex = 2;
             // 
             // txt_NameVN
             // 
-            this.txt_NameVN.Location = new System.Drawing.Point(102, 50);
+            this.txt_NameVN.Location = new System.Drawing.Point(119, 50);
             this.txt_NameVN.MenuManager = this.mainRibbonControl;
             this.txt_NameVN.Name = "txt_NameVN";
             this.txt_NameVN.Size = new System.Drawing.Size(300, 20);
@@ -269,7 +274,7 @@
             // 
             // txt_NameEN
             // 
-            this.txt_NameEN.Location = new System.Drawing.Point(102, 8);
+            this.txt_NameEN.Location = new System.Drawing.Point(119, 8);
             this.txt_NameEN.MenuManager = this.mainRibbonControl;
             this.txt_NameEN.Name = "txt_NameEN";
             this.txt_NameEN.Size = new System.Drawing.Size(300, 20);
@@ -295,7 +300,7 @@
             this.label_NameVN.Name = "label_NameVN";
             this.label_NameVN.Size = new System.Drawing.Size(120, 22);
             this.label_NameVN.TabIndex = 3;
-            this.label_NameVN.Text = "Tên (t.Việt)";
+            this.label_NameVN.Text = "Tên (Tiếng Việt)";
             // 
             // labelControl1
             // 
@@ -306,7 +311,7 @@
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl1.Location = new System.Drawing.Point(9, 253);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(86, 34);
+            this.labelControl1.Size = new System.Drawing.Size(98, 34);
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "Sử dụng cho Line";
             // 
@@ -319,7 +324,7 @@
             this.label_NameJP.Name = "label_NameJP";
             this.label_NameJP.Size = new System.Drawing.Size(120, 22);
             this.label_NameJP.TabIndex = 2;
-            this.label_NameJP.Text = "Tên (t.Nhật)";
+            this.label_NameJP.Text = "Tên (Tiếng Nhật)";
             // 
             // label_Group2
             // 
@@ -343,14 +348,41 @@
             this.label_NameEN.Name = "label_NameEN";
             this.label_NameEN.Size = new System.Drawing.Size(120, 22);
             this.label_NameEN.TabIndex = 0;
-            this.label_NameEN.Text = "Tên (t.Anh)";
+            this.label_NameEN.Text = "Tên (Tiếng Anh)";
+            // 
+            // bsiRecordsCount
+            // 
+            this.bsiRecordsCount.Caption = "RECORDS : 0";
+            this.bsiRecordsCount.Id = 15;
+            this.bsiRecordsCount.Name = "bsiRecordsCount";
+            // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "Username";
+            this.bsiUser.Id = 26;
+            this.bsiUser.Name = "bsiUser";
+            // 
+            // M0001_Detail_User
+            // 
+            this.M0001_Detail_User.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.M0001_Detail_User.Caption = "barButtonItem1";
+            this.M0001_Detail_User.Id = 14;
+            this.M0001_Detail_User.Name = "M0001_Detail_User";
+            // 
+            // bsi_User1
+            // 
+            this.bsi_User1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsi_User1.Caption = "barStaticItem1";
+            this.bsi_User1.Id = 15;
+            this.bsi_User1.Name = "bsi_User1";
             // 
             // Form_M0001_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(415, 505);
+            this.ClientSize = new System.Drawing.Size(451, 505);
             this.Controls.Add(this.panel_Detail);
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "Form_M0001_Detail";
@@ -378,7 +410,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage mainRibbonPage;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup mainRibbonPageGroup;
         private DevExpress.XtraBars.BarButtonItem bbiSave;
-        private DevExpress.XtraBars.BarButtonItem bbiReset;
+        private DevExpress.XtraBars.BarButtonItem bbiRefresh;
         private DevExpress.XtraEditors.PanelControl panel_Detail;
         private DevExpress.XtraEditors.TextEdit txt_NameJP;
         private DevExpress.XtraEditors.TextEdit txt_NameVN;
@@ -399,5 +431,9 @@
         private DevExpress.XtraEditors.LabelControl label_Name;
         private DevExpress.XtraEditors.ComboBoxEdit cbx_Line;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
+        private DevExpress.XtraBars.BarButtonItem M0001_Detail_User;
+        private DevExpress.XtraBars.BarStaticItem bsi_User1;
     }
 }

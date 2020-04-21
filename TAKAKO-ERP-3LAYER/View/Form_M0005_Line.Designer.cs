@@ -38,6 +38,7 @@
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -64,7 +65,6 @@
             this.gridCol_DocNo_Move = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_MoveDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_DocNo_Disposal = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -113,7 +113,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(1198, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(1198, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -158,6 +158,20 @@
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
             // 
+            // barCheckItem1
+            // 
+            this.barCheckItem1.Caption = "Đã thanh lý";
+            this.barCheckItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
+            this.barCheckItem1.Id = 20;
+            this.barCheckItem1.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.barCheckItem1.ItemAppearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.barCheckItem1.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Black;
+            this.barCheckItem1.ItemAppearance.Normal.Options.UseBackColor = true;
+            this.barCheckItem1.ItemAppearance.Normal.Options.UseFont = true;
+            this.barCheckItem1.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barCheckItem1.Name = "barCheckItem1";
+            this.barCheckItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarCheckItem1_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -189,11 +203,11 @@
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 157);
+            this.gridControl.Location = new System.Drawing.Point(0, 159);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(1198, 292);
+            this.gridControl.Size = new System.Drawing.Size(1198, 290);
             this.gridControl.TabIndex = 10;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -291,7 +305,7 @@
             this.gridCol_NameEN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameEN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameEN.Caption = "Tên (t.Anh)";
+            this.gridCol_NameEN.Caption = "Tên (Tiếng Anh)";
             this.gridCol_NameEN.FieldName = "NameEN";
             this.gridCol_NameEN.Name = "gridCol_NameEN";
             this.gridCol_NameEN.OptionsColumn.AllowShowHide = false;
@@ -310,7 +324,7 @@
             this.gridCol_NameVN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameVN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameVN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameVN.Caption = "Tên (t.Việt)";
+            this.gridCol_NameVN.Caption = "Tên (Tiếng Việt)";
             this.gridCol_NameVN.FieldName = "NameVN";
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.OptionsColumn.AllowShowHide = false;
@@ -327,7 +341,7 @@
             this.gridCol_NameJP.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_NameJP.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_NameJP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_NameJP.Caption = "Tên (t.Nhật)";
+            this.gridCol_NameJP.Caption = "Tên (Tiếng Nhật)";
             this.gridCol_NameJP.FieldName = "NameJP";
             this.gridCol_NameJP.Name = "gridCol_NameJP";
             this.gridCol_NameJP.OptionsColumn.AllowShowHide = false;
@@ -651,21 +665,7 @@
             this.gridCol_DocNo_Disposal.VisibleIndex = 18;
             this.gridCol_DocNo_Disposal.Width = 90;
             // 
-            // barCheckItem1
-            // 
-            this.barCheckItem1.Caption = "Đã thanh lý";
-            this.barCheckItem1.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
-            this.barCheckItem1.Id = 20;
-            this.barCheckItem1.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.barCheckItem1.ItemAppearance.Normal.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.barCheckItem1.ItemAppearance.Normal.ForeColor = System.Drawing.Color.Black;
-            this.barCheckItem1.ItemAppearance.Normal.Options.UseBackColor = true;
-            this.barCheckItem1.ItemAppearance.Normal.Options.UseFont = true;
-            this.barCheckItem1.ItemAppearance.Normal.Options.UseForeColor = true;
-            this.barCheckItem1.Name = "barCheckItem1";
-            this.barCheckItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarCheckItem1_ItemClick);
-            // 
-            // Form_M0009
+            // Form_M0005_Line
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -674,7 +674,7 @@
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0009";
+            this.Name = "Form_M0005_Line";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
             this.Load += new System.EventHandler(this.Form_M0009_Load);

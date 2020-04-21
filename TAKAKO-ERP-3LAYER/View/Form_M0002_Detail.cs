@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
-using DevExpress.XtraEditors.Repository;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 using System.Collections.Generic;
 
 namespace TAKAKO_ERP_3LAYER.View
@@ -24,6 +24,9 @@ namespace TAKAKO_ERP_3LAYER.View
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = false;
         private const string LinhKien = "1";
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
 
         //Tạo mới form theo kiểu True/False
         public Form_M0002_Detail(Boolean _isNewValue)

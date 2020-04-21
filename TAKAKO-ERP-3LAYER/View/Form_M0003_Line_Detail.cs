@@ -1,11 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
-using System.ComponentModel.DataAnnotations;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -26,8 +25,13 @@ namespace TAKAKO_ERP_3LAYER.View
         private DateTime applyDate;
         private Boolean inActive;
         private string Memo;
+
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = false;
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         //Tạo mới form theo kiểu True/False
         public Form_M0003_Line_Detail(Boolean _isNewValue)
         {

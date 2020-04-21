@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 using System.Windows.Forms;
-
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -18,6 +18,10 @@ namespace TAKAKO_ERP_3LAYER.View
         public string Model;
         public Boolean inActive;
         public string Memo;
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = false;
         //Tạo mới form theo kiểu True/False
@@ -26,6 +30,7 @@ namespace TAKAKO_ERP_3LAYER.View
             InitializeComponent();
             IsNewValue = _isNewValue;
         }
+
         //Update, delete _ form theo kiểu dữ liệu
         public Form_M0004_Detail(DataRow _mainDataRow)
         {

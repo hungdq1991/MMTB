@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0002_Detail));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -41,7 +42,6 @@
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.label_NameEN = new DevExpress.XtraEditors.LabelControl();
             this.label_NameVN = new DevExpress.XtraEditors.LabelControl();
             this.txt_NameVN = new DevExpress.XtraEditors.TextEdit();
@@ -102,8 +102,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(462, 157);
-            this.ribbonControl.StatusBar = this.ribbonStatusBar;
+            this.ribbonControl.Size = new System.Drawing.Size(462, 159);
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiPrintPreview
@@ -158,8 +157,7 @@
             // 
             this.bbiReset.Caption = "Reset";
             this.bbiReset.Id = 23;
-            this.bbiReset.ImageOptions.Image = global::TAKAKO_ERP_3LAYER.Properties.Resources.reset_16x161;
-            this.bbiReset.ImageOptions.LargeImage = global::TAKAKO_ERP_3LAYER.Properties.Resources.reset_32x321;
+            this.bbiReset.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiReset.ImageOptions.SvgImage")));
             this.bbiReset.Name = "bbiReset";
             this.bbiReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReset_ItemClick);
             // 
@@ -197,14 +195,6 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiClose);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
-            // 
-            // ribbonStatusBar
-            // 
-            this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 464);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(462, 22);
             // 
             // label_NameEN
             // 
@@ -437,7 +427,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 486);
+            this.ClientSize = new System.Drawing.Size(462, 467);
             this.Controls.Add(this.cbx_InActive);
             this.Controls.Add(this.sLook_Group2);
             this.Controls.Add(this.sLook_Group1);
@@ -455,11 +445,9 @@
             this.Controls.Add(this.txt_NameVN);
             this.Controls.Add(this.label_NameVN);
             this.Controls.Add(this.label_NameEN);
-            this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
             this.Name = "Form_M0002_Detail";
             this.Ribbon = this.ribbonControl;
-            this.StatusBar = this.ribbonStatusBar;
             this.Text = "PHÂN NHÓM";
             this.Load += new System.EventHandler(this.Form_M0002_Detail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
@@ -487,7 +475,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem bbiPrintPreview;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;

@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -10,11 +11,24 @@ namespace TAKAKO_ERP_3LAYER.View
         public DataTable _tempTable;
         public M0003_ProcessGroup_DAO M0003_ProcessGroup_DAO;
         public const Boolean AddNew = true;
+
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         //Khởi tạo form
         public Form_M0003_ProcessGroup()
         {
             InitializeComponent();
         }
+
+        //Khởi tạo form
+        public Form_M0003_ProcessGroup(System_DAL systemDAL)
+        {
+            InitializeComponent();
+
+            _systemDAL = systemDAL;
+        }
+
         //Load dữ liệu
         private void GetInfo_Gridview()
         {

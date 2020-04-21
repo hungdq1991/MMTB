@@ -36,6 +36,7 @@
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bbiLoad = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -74,15 +75,16 @@
             this.bbiDelete,
             this.bbiRefresh,
             this.bbiLoad,
-            this.bbiNew});
+            this.bbiNew,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 46;
+            this.ribbonControl.MaxItemId = 47;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(928, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(1086, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above;
             // 
@@ -148,6 +150,13 @@
             this.bbiNew.Name = "bbiNew";
             this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNew_ItemClick);
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 46;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -166,10 +175,11 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 488);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(928, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1086, 22);
             // 
             // barButtonItem3
             // 
@@ -184,10 +194,10 @@
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl.Location = new System.Drawing.Point(0, 157);
+            this.gridControl.Location = new System.Drawing.Point(0, 159);
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(928, 331);
+            this.gridControl.Size = new System.Drawing.Size(1086, 329);
             this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -212,12 +222,10 @@
             this.gridCol_Memo});
             this.gridView.CustomizationFormBounds = new System.Drawing.Rectangle(586, 308, 252, 266);
             this.gridView.GridControl = this.gridControl;
-            this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsBehavior.ReadOnly = true;
             this.gridView.OptionsView.ColumnAutoWidth = false;
-            this.gridView.OptionsView.ShowFooter = true;
             this.gridView.ColumnFilterChanged += new System.EventHandler(this.GridView_ColumnFilterChanged);
             // 
             // gridCol_TVC
@@ -246,7 +254,6 @@
             this.gridCol_LineCode.Caption = "Mã line";
             this.gridCol_LineCode.FieldName = "LineID";
             this.gridCol_LineCode.Name = "gridCol_LineCode";
-            this.gridCol_LineCode.OptionsColumn.FixedWidth = true;
             this.gridCol_LineCode.Visible = true;
             this.gridCol_LineCode.VisibleIndex = 1;
             this.gridCol_LineCode.Width = 90;
@@ -259,10 +266,9 @@
             this.gridCol_LineEN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_LineEN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_LineEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_LineEN.Caption = "Tên line (t.Anh)";
+            this.gridCol_LineEN.Caption = "Tên line (Tiếng Anh)";
             this.gridCol_LineEN.FieldName = "LineEN";
             this.gridCol_LineEN.Name = "gridCol_LineEN";
-            this.gridCol_LineEN.OptionsColumn.FixedWidth = true;
             this.gridCol_LineEN.Visible = true;
             this.gridCol_LineEN.VisibleIndex = 2;
             this.gridCol_LineEN.Width = 130;
@@ -279,7 +285,6 @@
             this.gridCol_LineVN.FieldName = "LineVN";
             this.gridCol_LineVN.Name = "gridCol_LineVN";
             this.gridCol_LineVN.OptionsColumn.AllowShowHide = false;
-            this.gridCol_LineVN.OptionsColumn.FixedWidth = true;
             this.gridCol_LineVN.Width = 130;
             // 
             // gridCol_LineJP
@@ -294,7 +299,6 @@
             this.gridCol_LineJP.FieldName = "LineJP";
             this.gridCol_LineJP.Name = "gridCol_LineJP";
             this.gridCol_LineJP.OptionsColumn.AllowShowHide = false;
-            this.gridCol_LineJP.OptionsColumn.FixedWidth = true;
             this.gridCol_LineJP.Width = 130;
             // 
             // gridCol_ProcessID
@@ -308,7 +312,6 @@
             this.gridCol_ProcessID.Caption = "Công đoạn";
             this.gridCol_ProcessID.FieldName = "ProcessGroup";
             this.gridCol_ProcessID.Name = "gridCol_ProcessID";
-            this.gridCol_ProcessID.OptionsColumn.FixedWidth = true;
             this.gridCol_ProcessID.Visible = true;
             this.gridCol_ProcessID.VisibleIndex = 3;
             // 
@@ -323,7 +326,6 @@
             this.gridCol_GroupLineACC.Caption = "Nhóm line ACC";
             this.gridCol_GroupLineACC.FieldName = "GroupLineACC";
             this.gridCol_GroupLineACC.Name = "gridCol_GroupLineACC";
-            this.gridCol_GroupLineACC.OptionsColumn.FixedWidth = true;
             this.gridCol_GroupLineACC.Visible = true;
             this.gridCol_GroupLineACC.VisibleIndex = 4;
             this.gridCol_GroupLineACC.Width = 90;
@@ -339,7 +341,6 @@
             this.gridCol_ProductionDept.Caption = "Bộ phận SX";
             this.gridCol_ProductionDept.FieldName = "ProductionDept";
             this.gridCol_ProductionDept.Name = "gridCol_ProductionDept";
-            this.gridCol_ProductionDept.OptionsColumn.FixedWidth = true;
             this.gridCol_ProductionDept.Visible = true;
             this.gridCol_ProductionDept.VisibleIndex = 5;
             // 
@@ -355,7 +356,6 @@
             this.gridCol_LinePoint.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridCol_LinePoint.FieldName = "Point";
             this.gridCol_LinePoint.Name = "gridCol_LinePoint";
-            this.gridCol_LinePoint.OptionsColumn.FixedWidth = true;
             this.gridCol_LinePoint.Visible = true;
             this.gridCol_LinePoint.VisibleIndex = 6;
             this.gridCol_LinePoint.Width = 65;
@@ -371,7 +371,6 @@
             this.gridCol_ItemExpenseGroup.Caption = "Nhóm chi phí";
             this.gridCol_ItemExpenseGroup.FieldName = "ExpenseGroup";
             this.gridCol_ItemExpenseGroup.Name = "gridCol_ItemExpenseGroup";
-            this.gridCol_ItemExpenseGroup.OptionsColumn.FixedWidth = true;
             this.gridCol_ItemExpenseGroup.Visible = true;
             this.gridCol_ItemExpenseGroup.VisibleIndex = 7;
             this.gridCol_ItemExpenseGroup.Width = 130;
@@ -409,7 +408,6 @@
             this.gridCol_InActive.Caption = "Ngưng sử dụng";
             this.gridCol_InActive.FieldName = "InActive";
             this.gridCol_InActive.Name = "gridCol_InActive";
-            this.gridCol_InActive.OptionsColumn.FixedWidth = true;
             this.gridCol_InActive.Visible = true;
             this.gridCol_InActive.VisibleIndex = 9;
             this.gridCol_InActive.Width = 90;
@@ -441,7 +439,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 510);
+            this.ClientSize = new System.Drawing.Size(1086, 510);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -488,5 +486,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiNew;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ApplyDate;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_TVC;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }
