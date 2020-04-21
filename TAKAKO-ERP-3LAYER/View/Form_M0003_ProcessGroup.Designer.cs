@@ -59,6 +59,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -76,7 +77,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(710, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(673, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -153,7 +154,7 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 487);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(710, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(673, 22);
             // 
             // gridControl
             // 
@@ -165,7 +166,7 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2});
-            this.gridControl.Size = new System.Drawing.Size(710, 328);
+            this.gridControl.Size = new System.Drawing.Size(673, 328);
             this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -187,6 +188,7 @@
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsBehavior.ReadOnly = true;
+            this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.ColumnFilterChanged += new System.EventHandler(this.GridView_ColumnFilterChanged);
             // 
             // gridCol_ProcessGroup
@@ -215,7 +217,6 @@
             this.gridCol_ProcessNameEN.Caption = "Tên (t.Anh)";
             this.gridCol_ProcessNameEN.FieldName = "ProcessEN";
             this.gridCol_ProcessNameEN.Name = "gridCol_ProcessNameEN";
-            this.gridCol_ProcessNameEN.OptionsColumn.FixedWidth = true;
             this.gridCol_ProcessNameEN.Visible = true;
             this.gridCol_ProcessNameEN.VisibleIndex = 1;
             this.gridCol_ProcessNameEN.Width = 130;
@@ -231,8 +232,6 @@
             this.gridCol_ProcessNameVN.Caption = "Tên (t.Việt)";
             this.gridCol_ProcessNameVN.FieldName = "ProcessVN";
             this.gridCol_ProcessNameVN.Name = "gridCol_ProcessNameVN";
-            this.gridCol_ProcessNameVN.OptionsColumn.AllowShowHide = false;
-            this.gridCol_ProcessNameVN.OptionsColumn.FixedWidth = true;
             this.gridCol_ProcessNameVN.Width = 130;
             // 
             // gridCol_ProcessNameJP
@@ -246,8 +245,6 @@
             this.gridCol_ProcessNameJP.Caption = "Tên (t.Nhật)";
             this.gridCol_ProcessNameJP.FieldName = "ProcessJP";
             this.gridCol_ProcessNameJP.Name = "gridCol_ProcessNameJP";
-            this.gridCol_ProcessNameJP.OptionsColumn.AllowShowHide = false;
-            this.gridCol_ProcessNameJP.OptionsColumn.FixedWidth = true;
             this.gridCol_ProcessNameJP.Width = 130;
             // 
             // gridCol_Point
@@ -262,7 +259,6 @@
             this.gridCol_Point.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridCol_Point.FieldName = "Point";
             this.gridCol_Point.Name = "gridCol_Point";
-            this.gridCol_Point.OptionsColumn.FixedWidth = true;
             this.gridCol_Point.Visible = true;
             this.gridCol_Point.VisibleIndex = 2;
             this.gridCol_Point.Width = 65;
@@ -278,7 +274,6 @@
             this.gridCol_Memo.Caption = "Ghi chú";
             this.gridCol_Memo.FieldName = "Memo";
             this.gridCol_Memo.Name = "gridCol_Memo";
-            this.gridCol_Memo.OptionsColumn.FixedWidth = true;
             this.gridCol_Memo.Visible = true;
             this.gridCol_Memo.VisibleIndex = 5;
             this.gridCol_Memo.Width = 150;
@@ -314,7 +309,6 @@
             this.gridCol_InActive.ColumnEdit = this.repositoryItemCheckEdit2;
             this.gridCol_InActive.FieldName = "InActive";
             this.gridCol_InActive.Name = "gridCol_InActive";
-            this.gridCol_InActive.OptionsColumn.FixedWidth = true;
             this.gridCol_InActive.Visible = true;
             this.gridCol_InActive.VisibleIndex = 4;
             this.gridCol_InActive.Width = 90;
@@ -333,7 +327,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 509);
+            this.ClientSize = new System.Drawing.Size(673, 509);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);

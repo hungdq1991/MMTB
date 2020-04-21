@@ -23,6 +23,9 @@ namespace TAKAKO_ERP_3LAYER.View
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = false;
 
+        //
+        public System_DAL _systemDAL = new System_DAL();
+
         //Tạo mới form theo kiểu True/False
         public Form_M0003_ProcessGroup_Detail(Boolean _isNewValue)
         {
@@ -31,12 +34,14 @@ namespace TAKAKO_ERP_3LAYER.View
         }
 
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0003_ProcessGroup_Detail(DataRow _mainDataRow)
+        public Form_M0003_ProcessGroup_Detail(DataRow _mainDataRow, System_DAL systemDAL)
         {
             //
             InitializeComponent();
             //
             dataRow = _mainDataRow;
+            //
+            _systemDAL = systemDAL;
         }
         //Load form
         private void Form_M0003_Detail_Load(object sender, EventArgs e)
@@ -186,18 +191,27 @@ namespace TAKAKO_ERP_3LAYER.View
             DateTime curr_ApplyDate = DateTime.Parse(date_ApplyDate.Text.Trim());
             int curr_InActive = cbx_InActive.SelectedIndex;
             string curr_Memo = txt_Memo.Text.Trim();
+
             //Trường hợp thêm mới
             if (IsNewValue)
             {
-                Message = "Bạn muốn thêm mới Công đoạn: " + sLook_ProcessGroup.Text.ToString() + "?";
+                Message = "Bạn muốn thêm mới Công đoạn: " + curr_ProcessGroup + "?";
                 if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                     , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_ProcessGroup_DAO.Insert(curr_ProcessGroup, curr_ProcessEN, curr_ProcessVN, curr_ProcessJP, curr_Point, curr_ApplyDate, curr_InActive, curr_Memo, "IT"))
+                        if (M0003_ProcessGroup_DAO.Insert(curr_ProcessGroup
+                                                        , curr_ProcessEN
+                                                        , curr_ProcessVN
+                                                        , curr_ProcessJP
+                                                        , curr_Point
+                                                        , curr_ApplyDate
+                                                        , curr_InActive
+                                                        , curr_Memo
+                                                        , _systemDAL.userName))
                         {
-                            Message = "Lưu thành công Công đoạn: \"" + sLook_ProcessGroup.Text.ToString() + "\"!";
+                            Message = "Lưu thành công Công đoạn: \"" + curr_ProcessGroup + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -206,16 +220,23 @@ namespace TAKAKO_ERP_3LAYER.View
             //Trường hợp sửa
             else
             {
-                Message = "Bạn muốn cập nhật Công đoạn: " + sLook_ProcessGroup.Text.ToString() + "?";
+                Message = "Bạn muốn cập nhật Công đoạn: " + curr_ProcessGroup + "?";
                 if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                     , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_ProcessGroup_DAO.Update(curr_ProcessGroup, curr_ProcessEN, curr_ProcessVN, curr_ProcessJP, curr_ApplyDate, curr_InActive, curr_Memo, "IT"))
+                        if (M0003_ProcessGroup_DAO.Update(curr_ProcessGroup
+                                                        , curr_ProcessEN
+                                                        , curr_ProcessVN
+                                                        , curr_ProcessJP
+                                                        , curr_ApplyDate
+                                                        , curr_InActive
+                                                        , curr_Memo
+                                                        , _systemDAL.userName))
                         {
                             {
-                                Message = "Cập nhật thành công Công đoạn: \"" + sLook_ProcessGroup.Text.ToString() + "\"!";
+                                Message = "Cập nhật thành công Công đoạn: \"" + curr_ProcessGroup + "\"!";
                                 MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
@@ -235,13 +256,13 @@ namespace TAKAKO_ERP_3LAYER.View
             string Message = "";
             string curr_ProcessGroup = sLook_ProcessGroup.Text.Trim();
             DateTime curr_ApplyDate = DateTime.Parse(date_ApplyDate.Text.Trim());
-            Message = "Bạn muốn xóa Công đoạn: " + sLook_ProcessGroup.Text.ToString() + "?";
+            Message = "Bạn muốn xóa Công đoạn: " + curr_ProcessGroup + "?";
             if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                 , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
             {
                 if (M0003_ProcessGroup_DAO.Delete(curr_ProcessGroup, curr_ApplyDate))
                 {
-                    Message = "Xóa thành công Công đoạn: \"" + sLook_ProcessGroup.Text.ToString() + "\"!";
+                    Message = "Xóa thành công Công đoạn: \"" + curr_ProcessGroup + "\"!";
                     MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }

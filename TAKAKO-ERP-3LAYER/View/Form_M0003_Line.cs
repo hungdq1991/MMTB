@@ -73,7 +73,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi double click trên lưới
         private void GridControl_DoubleClick(object sender, EventArgs e)
         {
-            using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow()))
+            using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
                 Setting_Init_Form();
@@ -91,7 +91,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi click nút "Sửa"
         private void BbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow()))
+            using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
                 Setting_Init_Form();
@@ -100,7 +100,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi click nút "Xóa"
         private void BbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow()))
+            using (Form_M0003_Line_Detail formDetail = new Form_M0003_Line_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
                 Setting_Init_Form();

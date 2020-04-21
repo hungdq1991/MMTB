@@ -71,9 +71,10 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi double click trên lưới
         private void GridControl_DoubleClick(object sender, EventArgs e)
         {
-            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow()))
+            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }
@@ -83,24 +84,27 @@ namespace TAKAKO_ERP_3LAYER.View
             using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(AddNew))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }
         //Nội dung hiển thị khi click nút "Chỉnh sửa"
         private void BbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow()))
+            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow(),_systemDAL))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }
         //Nội dung hiển thị khi click nút "Xóa"
         private void BbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow()))
+            using (Form_M0003_ProcessGroup_Detail formDetail = new Form_M0003_ProcessGroup_Detail(gridView.GetFocusedDataRow(),_systemDAL))
             {
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
                 Setting_Init_Form();
             }
         }

@@ -33,12 +33,14 @@ namespace TAKAKO_ERP_3LAYER.View
             IsNewValue = _isNewValue;
         }
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0001_Detail(DataRow _mainDataRow)
+        public Form_M0001_Detail(DataRow _mainDataRow, System_DAL systemDAL)
         {
             //
             InitializeComponent();
             //
             dataRow = _mainDataRow;
+            //
+            _systemDAL = systemDAL;
         }
         //Load form
         private void Form_M0001_Detail_Load(object sender, EventArgs e)
@@ -204,7 +206,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0001_DAO.Insert_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive,  "IT"))
+                        if (M0001_DAO.Insert_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive, _systemDAL.userName))
                         {
                             Message = "Lưu thành công name: \"" + txt_NameEN.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -221,7 +223,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0001_DAO.Update_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive, "IT"))
+                        if (M0001_DAO.Update_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive, _systemDAL.userName))
                         {
                             Message = "Cập nhật thành công name: \"" + txt_NameEN.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

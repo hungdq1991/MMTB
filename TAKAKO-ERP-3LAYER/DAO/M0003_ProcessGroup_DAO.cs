@@ -42,8 +42,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Tạo class Insert
-        public bool Insert(
-                           string ProcessGroup,
+        public bool Insert(string ProcessGroup,
                            string ProcessEN,
                            string ProcessVN,
                            string ProcessJP,
@@ -128,17 +127,16 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"UPDATE  dbo.M0003_ProcessGroup
-                            SET  
-                                 ProcessEN     = @ProcessEN
-                                ,ProcessVN     = @ProcessVN
-                                ,ProcessJP     = @ProcessJP
-                                ,InActive   = @InActive
-                                ,Memo       = @Memo
-                                ,ModifyDate = GETDATE()
-                                ,ModifyUser = @InputUser
+                            SET  ProcessEN      = @ProcessEN
+                                ,ProcessVN      = @ProcessVN
+                                ,ProcessJP      = @ProcessJP
+                                ,InActive       = @InActive
+                                ,Memo           = @Memo
+                                ,ModifyDate     = GETDATE()
+                                ,ModifyUser     = @InputUser
                             WHERE 
-                                    ProcessGroup = @ProcessGroup
-                                and ApplyDate = @ApplyDate
+                                ProcessGroup    = @ProcessGroup
+                            AND ApplyDate       = @ApplyDate
                                     ";
             SqlParameter[] sqlParameters = new SqlParameter[8];
             sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
@@ -167,7 +165,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"DELETE FROM [dbo].[M0003_ProcessGroup]
-                            WHERE ProcessGroup = @ProcessGroup and ApplyDate = @ApplyDate";
+                        WHERE   ProcessGroup    = @ProcessGroup
+                        AND     ApplyDate       = @ApplyDate";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(ProcessGroup);
@@ -177,9 +176,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeDeleteQuery(StrQuery, sqlParameters);
         }
         //Tạo class Check
-        public DataTable GetInfo_M0003_Check(
-                                             string ProcessGroup,
-                                             DateTime ApplyDate)
+        public DataTable GetInfo_M0003_Check(string ProcessGroup, DateTime ApplyDate)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
@@ -191,9 +188,10 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         FROM
                         	M0003_ProcessGroup
                         WHERE 
-                            (   ProcessGroup = @ProcessGroup
-                            and ApplyDate = @ApplyDate)
-                        or (ProcessGroup = @ProcessGroup and InActive = 0)";
+                            (ProcessGroup   = @ProcessGroup
+                            AND ApplyDate   = @ApplyDate)
+                        OR  (ProcessGroup   = @ProcessGroup
+                            AND InActive    = 0)";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@ProcessGroup", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(ProcessGroup);
@@ -220,13 +218,12 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         SELECT
                             PROCESS_CODE
                            ,PROCESS_NAME
-                         FROM
+                        FROM
                             [Takako_2].[dbo].[PROCESSMF]
                         WHERE 
                             WORK_FLAG = 1
-                         ORDER BY 
-                            PROCESS_CODE
-                            ";
+                        ORDER BY 
+                            PROCESS_CODE";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@PROCESS_CODE", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");
@@ -245,22 +242,22 @@ namespace TAKAKO_ERP_3LAYER.DAO
                            ,PROCESS_NAME
                            ,PROCESS_NAME_V
                            ,PROCESS_NAME_J
-                         FROM
+                        FROM
                             [Takako_1].[dbo].[PROCESSMF]
                         WHERE 
-                            PROCESS_CODE = @PROCESS_CODE
-                            AND WORK_FLAG = 1
+                            PROCESS_CODE    = @PROCESS_CODE
+                            AND WORK_FLAG   = 1
                         UNION
                         SELECT
                             PROCESS_CODE
                            ,PROCESS_NAME
                            ,PROCESS_NAME_V
                            ,PROCESS_NAME_J
-                         FROM
+                        FROM
                             [Takako_2].[dbo].[PROCESSMF]
                         WHERE 
-                            PROCESS_CODE = @PROCESS_CODE
-                            AND WORK_FLAG = 1";
+                            PROCESS_CODE    = @PROCESS_CODE
+                        AND WORK_FLAG       = 1";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@PROCESS_CODE", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(PROCESS_CODE);
