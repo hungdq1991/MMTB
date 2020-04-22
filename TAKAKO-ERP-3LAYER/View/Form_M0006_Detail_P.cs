@@ -30,7 +30,7 @@ namespace TAKAKO_ERP_3LAYER.View
         public int Level;
         public int SizeL;
         public int SizeW;
-        public int SizeH;
+        public int SizeH; 
         public string Chuck3Jaw;
         public string Collet1;
         public string Collet2;
