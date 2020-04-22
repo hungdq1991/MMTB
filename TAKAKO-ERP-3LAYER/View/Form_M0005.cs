@@ -70,34 +70,55 @@ namespace TAKAKO_ERP_3LAYER.View
             Boolean _noUsed = bCheck_NoUsed.Checked;
             try
             {
-                if (_disposal == true && _noUsed == true)
-                {
-                    gridControl.DataSource = _tempTable.AsEnumerable()
-                        .Where(row => row.Field<string>("DocNo_Disposal") != null && row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
-                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-                }
-                if (_disposal == true && _noUsed == false)
-                {
-                    gridControl.DataSource = _tempTable.AsEnumerable()
-                            .Where(row => row.Field<string>("DocNo_Disposal") != null).CopyToDataTable();
-                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-                }
-                if (_disposal == false && _noUsed == false)
+                _tempTable = M0005_DAO.GetInfo_M0005_Filter();
+                if (_tempTable.Rows.Count > 0)
                 {
                     gridControl.DataSource = _tempTable;
+                    advBandedGridView1.FormatRules[0].ApplyToRow = true;
                     bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-                }
-                if (_disposal == false && _noUsed == true)
-                {
-                    gridControl.DataSource = _tempTable.AsEnumerable().Where(row => row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
-                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                    try
+                    {
+
+                        if (_disposal == true && _noUsed == true)
+                        {
+                            gridControl.DataSource = _tempTable.AsEnumerable()
+                                .Where(row => row.Field<string>("DocNo_Disposal") != null && row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
+                            bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                        }
+                        if (_disposal == true && _noUsed == false)
+                        {
+                            gridControl.DataSource = _tempTable.AsEnumerable()
+                                    .Where(row => row.Field<string>("DocNo_Disposal") != null).CopyToDataTable();
+                            bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                        }
+                        if (_disposal == false && _noUsed == true)
+                        {
+                            gridControl.DataSource = _tempTable.AsEnumerable().Where(row => row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
+                            bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                        }
+                        if (_disposal == false && _noUsed == false)
+                        {
+                            _tempTable = M0005_DAO.GetInfo_M0005();
+                            if (_tempTable.Rows.Count > 0)
+                            {
+                                gridControl.DataSource = _tempTable;
+                                advBandedGridView1.FormatRules[0].ApplyToRow = true;
+                                bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                            }
+                        }
+                    }
+                    catch
+                    {
+                        gridControl.DataSource = "";
+                    }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                gridControl.DataSource = "";
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         //Disposal check changed
         private void BCheck_Disposal_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -145,6 +166,23 @@ namespace TAKAKO_ERP_3LAYER.View
                 formDetail.ShowDialog();
             }
         }
+        //Click nút Refresh 
+        private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bCheck_Disposal.Checked = false;
+            bCheck_NoUsed.Checked = false;
+            filter_List();
+        }
+        //Tạo chứng từ không sử dụng
+        private void BbiNoUsed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0005_Detail_NoUsed formDetail = new Form_M0005_Detail_NoUsed())
+            {
+                formDetail.StartPosition = FormStartPosition.CenterParent;
+                formDetail.ShowDialog();
+            }
+        }
+
         //Hiển thị dữ liệu trên cột, ngày tháng không có
         private void AdvBandedGridView1_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
@@ -157,5 +195,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 e.DisplayText = "";
             }
         }
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace TAKAKO_ERP_3LAYER.View
 {
-    partial class Form_M0003_ProcessGroup
+    partial class Form_M0003_ProcessCode
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +40,7 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridCol_ProcessGroup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ProcessCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ProcessNameEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ProcessNameVN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ProcessNameJP = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -176,7 +176,7 @@
             // 
             this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridCol_ProcessGroup,
+            this.gridCol_ProcessCode,
             this.gridCol_ProcessNameEN,
             this.gridCol_ProcessNameVN,
             this.gridCol_ProcessNameJP,
@@ -191,20 +191,20 @@
             this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.ColumnFilterChanged += new System.EventHandler(this.GridView_ColumnFilterChanged);
             // 
-            // gridCol_ProcessGroup
+            // gridCol_ProcessCode
             // 
-            this.gridCol_ProcessGroup.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_ProcessGroup.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ProcessGroup.Caption = "Công đoạn";
-            this.gridCol_ProcessGroup.FieldName = "ProcessCode";
-            this.gridCol_ProcessGroup.Name = "gridCol_ProcessGroup";
-            this.gridCol_ProcessGroup.Visible = true;
-            this.gridCol_ProcessGroup.VisibleIndex = 0;
-            this.gridCol_ProcessGroup.Width = 90;
+            this.gridCol_ProcessCode.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_ProcessCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_ProcessCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_ProcessCode.Caption = "Công đoạn";
+            this.gridCol_ProcessCode.FieldName = "ProcessCode";
+            this.gridCol_ProcessCode.Name = "gridCol_ProcessCode";
+            this.gridCol_ProcessCode.Visible = true;
+            this.gridCol_ProcessCode.VisibleIndex = 0;
+            this.gridCol_ProcessCode.Width = 90;
             // 
             // gridCol_ProcessNameEN
             // 
@@ -323,7 +323,7 @@
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
-            // Form_M0003_ProcessGroup
+            // Form_M0003_ProcessCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -331,7 +331,7 @@
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0003_ProcessGroup";
+            this.Name = "Form_M0003_ProcessCode";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "CÔNG ĐOẠN";
@@ -358,7 +358,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessGroup;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessNameEN;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessNameVN;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessNameJP;

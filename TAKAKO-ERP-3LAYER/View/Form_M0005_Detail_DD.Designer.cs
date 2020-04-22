@@ -104,7 +104,7 @@
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_DesProcessCode = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DesLineCode = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.repo_sLookup_LineID1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repo_sLookup_LineCode1 = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_DesLineEN = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DesGroupLineACC = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -115,7 +115,7 @@
             this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_ItemDate_StartDerprDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repo_ItemDate_EndDerprDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.repo_sLookUp_LineID = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repo_sLookUp_LineCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_Check_Status = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repo_cBox_Status = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -151,7 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Code)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookup_LineID1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookup_LineCode1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_NameEN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_NameEN_View)).BeginInit();
@@ -161,7 +161,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_Check_Status)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_cBox_Status)).BeginInit();
@@ -586,14 +586,14 @@
             this.repo_sLookUp_Nation,
             this.repo_ItemDate_StartDerprDate,
             this.repo_ItemDate_EndDerprDate,
-            this.repo_sLookUp_LineID,
+            this.repo_sLookUp_LineCode,
             this.repo_Check_Status,
             this.repo_cBox_Status,
             this.repo_TextEdit_Code,
             this.repo_sLookUp_Code,
             this.repositoryItemTextEdit1,
             this.repo_TextEdit_Line,
-            this.repo_sLookup_LineID1});
+            this.repo_sLookup_LineCode1});
             this.gridControl.Size = new System.Drawing.Size(848, 348);
             this.gridControl.TabIndex = 8;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1134,19 +1134,19 @@
             this.gridCol_DesLineCode.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_DesLineCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_DesLineCode.Caption = "Line";
-            this.gridCol_DesLineCode.ColumnEdit = this.repo_sLookup_LineID1;
+            this.gridCol_DesLineCode.ColumnEdit = this.repo_sLookup_LineCode1;
             this.gridCol_DesLineCode.FieldName = "DesLineCode";
             this.gridCol_DesLineCode.Name = "gridCol_DesLineCode";
             this.gridCol_DesLineCode.Visible = true;
             // 
-            // repo_sLookup_LineID1
+            // repo_sLookup_LineCode1
             // 
-            this.repo_sLookup_LineID1.AutoHeight = false;
-            this.repo_sLookup_LineID1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repo_sLookup_LineCode1.AutoHeight = false;
+            this.repo_sLookup_LineCode1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_sLookup_LineID1.Name = "repo_sLookup_LineID1";
-            this.repo_sLookup_LineID1.PopupView = this.gridView4;
-            this.repo_sLookup_LineID1.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.repo_sLookUp_LineID_CloseUp);
+            this.repo_sLookup_LineCode1.Name = "repo_sLookup_LineCode1";
+            this.repo_sLookup_LineCode1.PopupView = this.gridView4;
+            this.repo_sLookup_LineCode1.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.repo_sLookUp_LineCode_CloseUp);
             // 
             // gridView4
             // 
@@ -1256,15 +1256,15 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repo_ItemDate_EndDerprDate.Name = "repo_ItemDate_EndDerprDate";
             // 
-            // repo_sLookUp_LineID
+            // repo_sLookUp_LineCode
             // 
-            this.repo_sLookUp_LineID.AutoHeight = false;
-            this.repo_sLookUp_LineID.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repo_sLookUp_LineCode.AutoHeight = false;
+            this.repo_sLookUp_LineCode.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_sLookUp_LineID.Name = "repo_sLookUp_LineID";
-            this.repo_sLookUp_LineID.PopupFormSize = new System.Drawing.Size(950, 0);
-            this.repo_sLookUp_LineID.PopupView = this.gridView3;
-            this.repo_sLookUp_LineID.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.repo_sLookUp_LineID_CloseUp);
+            this.repo_sLookUp_LineCode.Name = "repo_sLookUp_LineCode";
+            this.repo_sLookUp_LineCode.PopupFormSize = new System.Drawing.Size(950, 0);
+            this.repo_sLookUp_LineCode.PopupView = this.gridView3;
+            this.repo_sLookUp_LineCode.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.repo_sLookUp_LineCode_CloseUp);
             // 
             // gridView3
             // 
@@ -1418,7 +1418,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Code)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookup_LineID1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookup_LineCode1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_NameEN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_NameEN_View)).EndInit();
@@ -1428,7 +1428,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_Check_Status)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_cBox_Status)).EndInit();
@@ -1480,7 +1480,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit2View;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repo_ItemDate_StartDerprDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repo_ItemDate_EndDerprDate;
-        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_LineID;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_LineCode;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repo_Check_Status;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repo_cBox_Status;
@@ -1528,7 +1528,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_TextEdit_Line;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookup_LineID1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookup_LineCode1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_ConfDate;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_DocNo_Confirm;

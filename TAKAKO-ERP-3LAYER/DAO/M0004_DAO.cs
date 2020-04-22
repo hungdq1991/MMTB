@@ -314,14 +314,14 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                             ProcessGroup
+                             ProcessCode
                             ,ProcessEN
                             ,ProcessVN
                             ,ProcessJP
                             ,Point
                             ,ApplyDate
                         FROM
-                            M0003_ProcessGroup";
+                            M0003_ProcessCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ProgressGroup", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");

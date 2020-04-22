@@ -82,6 +82,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -448,7 +449,7 @@
             this.Controls.Add(this.ribbonControl);
             this.Name = "Form_M0002_Detail";
             this.Ribbon = this.ribbonControl;
-            this.Text = "PHÂN NHÓM";
+            this.Text = "PHÂN NHÓM ĐẠI TRUNG TIỂU";
             this.Load += new System.EventHandler(this.Form_M0002_Detail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_NameVN.Properties)).EndInit();

@@ -90,6 +90,89 @@ namespace TAKAKO_ERP_3LAYER.DAO
 								AND L1.ApplyDate = L2.ApplyDate) L1
 						ON
 							L.Code = L1.Code
+                        WHERE L1.DesLineCode != 'NoUsed' 
+                        AND   L.DocNo_Disposal is null
+                        ORDER BY L.Code";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Lấy thông tin trên gridControl để lọc thông tin
+        public DataTable GetInfo_M0005_Filter()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	 L.Code
+                        	,ACCcode
+                        	,L.NameEN
+                        	,L.NameVN
+                        	,L.NameJP
+                        	,Maker
+                        	,Model
+                        	,Series
+                        	,OrgCountry
+                        	,ProDate
+                        	,Lifetime
+                        	,StartDeprDate
+                        	,EndDeprDate
+                        	,Status
+                        	,Result
+                        	,Memo
+                        	,InstDoc
+                        	,ACCDoc
+                        	,DocNo_Disposal
+                        	,ACCDoc_Disposal
+                        	,DisposalDate
+                            ,DisposalMemo
+                        	,DocNo
+                        	,DocDate
+                        	,EF_VendID
+                        	,SupplierID
+                        	,SupplierName
+                        	,InvNo
+                        	,InvDate
+                        	,ReceiptDate
+                        	,ConfirmDate
+                        	,ControlDept
+                         	,DisposalStatus
+                        	,L.Column2
+                        	,L.Column3
+                        	,L.Column4
+                        	,L.Column5
+                            ,N.Group1
+                            ,N.Group2
+							,L1.DesProcessCode
+							,L1.DesLineCode
+							,L1.DesLineEN
+							,L1.DesGroupLineACC
+							,L1.DesUsingDept 
+                        FROM
+                        	M0005_ListMMTB L
+                         JOIN 
+                            M0002_GroupName N
+                        ON 
+                            L.NameEN = N.NameEN
+						LEFT JOIN
+							(SELECT
+								 L1.Code
+								,L1.DesProcessCode
+								,L1.DesLineCode
+								,L1.DesLineEN
+								,L1.DesGroupLineACC
+								,L1.DesUsingDept 
+							FROM M0005_ListMMTBLine L1 
+							JOIN (SELECT 
+									 Code
+									,Max(ApplyDate) as ApplyDate
+								  FROM M0005_ListMMTBLine 
+								  GROUP BY Code) L2 
+							ON		L1.Code = L2.Code 
+								AND L1.ApplyDate = L2.ApplyDate) L1
+						ON
+							L.Code = L1.Code
                         ORDER BY L.Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
@@ -115,7 +198,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                        ,ConfirmDate
 		                        ,ControlDept
 	                        FROM 
-		                        M0005_ListMMTBDoc1";
+		                        M0005_ListMMTBDoc1
+                            ORDER BY
+                                DocNo DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -646,7 +731,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.Confirm_Disposal_MMTB(listMMTB, listMMTBDoc2);
         }
         #endregion
-        
         #region Di dời MMTB
         //Lấy list MMTB có thể di dời
         public DataTable GetInfo_MMTB_Move()

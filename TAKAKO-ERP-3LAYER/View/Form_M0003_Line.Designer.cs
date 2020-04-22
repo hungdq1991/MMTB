@@ -49,9 +49,9 @@
             this.gridCol_LineEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_LineVN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_LineJP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_ProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ProcessCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_GroupLineACC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_ProductionDept = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_UsingDept = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_LinePoint = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ItemExpenseGroup = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,6 +65,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -212,9 +213,9 @@
             this.gridCol_LineEN,
             this.gridCol_LineVN,
             this.gridCol_LineJP,
-            this.gridCol_ProcessID,
+            this.gridCol_ProcessCode,
             this.gridCol_GroupLineACC,
-            this.gridCol_ProductionDept,
+            this.gridCol_UsingDept,
             this.gridCol_LinePoint,
             this.gridCol_ItemExpenseGroup,
             this.gridCol_ApplyDate,
@@ -252,7 +253,7 @@
             this.gridCol_LineCode.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_LineCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_LineCode.Caption = "Mã line";
-            this.gridCol_LineCode.FieldName = "LineID";
+            this.gridCol_LineCode.FieldName = "LineCode";
             this.gridCol_LineCode.Name = "gridCol_LineCode";
             this.gridCol_LineCode.Visible = true;
             this.gridCol_LineCode.VisibleIndex = 1;
@@ -301,19 +302,19 @@
             this.gridCol_LineJP.OptionsColumn.AllowShowHide = false;
             this.gridCol_LineJP.Width = 130;
             // 
-            // gridCol_ProcessID
+            // gridCol_ProcessCode
             // 
-            this.gridCol_ProcessID.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridCol_ProcessID.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_ProcessID.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_ProcessID.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_ProcessID.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_ProcessID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ProcessID.Caption = "Công đoạn";
-            this.gridCol_ProcessID.FieldName = "ProcessGroup";
-            this.gridCol_ProcessID.Name = "gridCol_ProcessID";
-            this.gridCol_ProcessID.Visible = true;
-            this.gridCol_ProcessID.VisibleIndex = 3;
+            this.gridCol_ProcessCode.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_ProcessCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_ProcessCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_ProcessCode.Caption = "Công đoạn";
+            this.gridCol_ProcessCode.FieldName = "ProcessCode";
+            this.gridCol_ProcessCode.Name = "gridCol_ProcessCode";
+            this.gridCol_ProcessCode.Visible = true;
+            this.gridCol_ProcessCode.VisibleIndex = 3;
             // 
             // gridCol_GroupLineACC
             // 
@@ -330,19 +331,19 @@
             this.gridCol_GroupLineACC.VisibleIndex = 4;
             this.gridCol_GroupLineACC.Width = 90;
             // 
-            // gridCol_ProductionDept
+            // gridCol_UsingDept
             // 
-            this.gridCol_ProductionDept.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridCol_ProductionDept.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_ProductionDept.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_ProductionDept.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_ProductionDept.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_ProductionDept.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ProductionDept.Caption = "Bộ phận SX";
-            this.gridCol_ProductionDept.FieldName = "ProductionDept";
-            this.gridCol_ProductionDept.Name = "gridCol_ProductionDept";
-            this.gridCol_ProductionDept.Visible = true;
-            this.gridCol_ProductionDept.VisibleIndex = 5;
+            this.gridCol_UsingDept.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_UsingDept.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_UsingDept.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_UsingDept.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_UsingDept.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_UsingDept.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_UsingDept.Caption = "Bộ phận SX";
+            this.gridCol_UsingDept.FieldName = "UsingDept";
+            this.gridCol_UsingDept.Name = "gridCol_UsingDept";
+            this.gridCol_UsingDept.Visible = true;
+            this.gridCol_UsingDept.VisibleIndex = 5;
             // 
             // gridCol_LinePoint
             // 
@@ -473,8 +474,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_LinePoint;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Memo;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_GroupLineACC;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessID;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProductionDept;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessCode;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_UsingDept;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItemExpenseGroup;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_InActive;
         private DevExpress.XtraBars.BarButtonItem bbiEdit;

@@ -7,11 +7,11 @@ using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
-    public partial class Form_M0003_ProcessGroup_Detail : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Form_M0003_ProcessCode_Detail : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public DataRow dataRow;
-        public M0003_ProcessGroup_DAO M0003_ProcessGroup_DAO;
-        public string ProcessGroup;
+        public M0003_ProcessCode_DAO M0003_ProcessCode_DAO;
+        public string ProcessCode;
         public string ProcessEN;
         public string ProcessVN;
         public string ProcessJP;
@@ -27,14 +27,14 @@ namespace TAKAKO_ERP_3LAYER.View
         public System_DAL _systemDAL = new System_DAL();
 
         //Tạo mới form theo kiểu True/False
-        public Form_M0003_ProcessGroup_Detail(Boolean _isNewValue)
+        public Form_M0003_ProcessCode_Detail(Boolean _isNewValue)
         {
             InitializeComponent();
             IsNewValue = _isNewValue;
         }
 
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0003_ProcessGroup_Detail(DataRow _mainDataRow, System_DAL systemDAL)
+        public Form_M0003_ProcessCode_Detail(DataRow _mainDataRow, System_DAL systemDAL)
         {
             //
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace TAKAKO_ERP_3LAYER.View
         private void Form_M0003_Detail_Load(object sender, EventArgs e)
         {
             //
-            M0003_ProcessGroup_DAO = new M0003_ProcessGroup_DAO();
+            M0003_ProcessCode_DAO = new M0003_ProcessCode_DAO();
             //
             sLookUpEdit_Process();
             //
@@ -68,27 +68,27 @@ namespace TAKAKO_ERP_3LAYER.View
             Boolean.Add("Yes");
             comboBox.Properties.Items.AddRange(Boolean);
         }
-        //Điền dữ liệu cho ô ProcessGroup
+        //Điền dữ liệu cho ô ProcessCode
         private void sLookUpEdit_Process()
         {
             DataTable tempTable = new DataTable();
-            tempTable = M0003_ProcessGroup_DAO.GetInfo_M0003_Process();
+            tempTable = M0003_ProcessCode_DAO.GetInfo_M0003_Process();
             if (tempTable.Rows.Count > 0)
             {
-                sLook_ProcessGroup.Properties.DataSource = tempTable;
-                sLook_ProcessGroup.Properties.ValueMember = "PROCESS_CODE";
-                sLook_ProcessGroup.Properties.DisplayMember = "PROCESS_CODE";
+                sLook_ProcessCode.Properties.DataSource = tempTable;
+                sLook_ProcessCode.Properties.ValueMember = "PROCESS_CODE";
+                sLook_ProcessCode.Properties.DisplayMember = "PROCESS_CODE";
             }
         }
-        //Lấy kết quả ô ProcessGroup, điền dữ liệu tương ứng cho ô ProcessEN, ProcessVN, ProcessJP
-        private void SLook_ProcessGroup_Validated(object sender, EventArgs e)
+        //Lấy kết quả ô ProcessCode, điền dữ liệu tương ứng cho ô ProcessEN, ProcessVN, ProcessJP
+        private void SLook_ProcessCode_Validated(object sender, EventArgs e)
         {
-            string tempProcess = sLook_ProcessGroup.Text.Trim();
+            string tempProcess = sLook_ProcessCode.Text.Trim();
             DataTable tempTable = new DataTable();
 
             if (IsNewValue && !String.IsNullOrEmpty(tempProcess))
             {
-                tempTable = M0003_ProcessGroup_DAO.GetInfo_M0003_ProcessGroup(tempProcess);
+                tempTable = M0003_ProcessCode_DAO.GetInfo_M0003_ProcessCode(tempProcess);
 
                 if (tempTable.Rows.Count > 0)
                 {
@@ -106,7 +106,7 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             if (IsNewValue) //Nếu IsNewValue = true
             {
-                ProcessGroup = String.Empty;
+                ProcessCode = String.Empty;
                 ProcessEN = String.Empty;
                 ProcessVN = String.Empty;
                 ProcessJP = String.Empty;
@@ -117,7 +117,7 @@ namespace TAKAKO_ERP_3LAYER.View
             }
             else
             {
-                ProcessGroup = Convert.ToString(dataRow[0]);
+                ProcessCode = Convert.ToString(dataRow[0]);
                 ProcessEN = Convert.ToString(dataRow[1]);
                 ProcessVN = Convert.ToString(dataRow[2]);
                 ProcessJP = Convert.ToString(dataRow[3]);
@@ -127,17 +127,17 @@ namespace TAKAKO_ERP_3LAYER.View
                 Memo = Convert.ToString(dataRow[7]);
             }
         }
-        //Kiểm soát key ProcessGroup: cho thêm mới hoặc không được chỉnh sửa nếu trường hợp là Edit/Delete
+        //Kiểm soát key ProcessCode: cho thêm mới hoặc không được chỉnh sửa nếu trường hợp là Edit/Delete
         private void Setting_Init_Control()
         {
             if (IsNewValue)
             {
-                sLook_ProcessGroup.Enabled = true;
+                sLook_ProcessCode.Enabled = true;
                 bbiDelete.Enabled = false;
             }
             else
             {
-                sLook_ProcessGroup.Enabled = false;
+                sLook_ProcessCode.Enabled = false;
                 txt_Point.Enabled = false;
                 date_ApplyDate.Enabled = false;
                 bbiDelete.Enabled = true;
@@ -146,7 +146,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Lấy dữ liệu trên form
         private void Update_Control()
         {
-            sLook_ProcessGroup.Text = ProcessGroup;
+            sLook_ProcessCode.Text = ProcessCode;
             txt_ProcessEN.EditValue = ProcessEN;
             txt_ProcessVN.Text = ProcessVN;
             txt_ProcessJP.Text = ProcessJP;
@@ -166,8 +166,8 @@ namespace TAKAKO_ERP_3LAYER.View
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IsNewValue = true;
-            sLook_ProcessGroup.Enabled = true;
-            sLook_ProcessGroup.Text = "";
+            sLook_ProcessCode.Enabled = true;
+            sLook_ProcessCode.Text = "";
             txt_ProcessEN.Text = "";
             txt_ProcessVN.Text = "";
             txt_ProcessJP.Text = "";
@@ -183,7 +183,7 @@ namespace TAKAKO_ERP_3LAYER.View
         private void BbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string Message = "";
-            string curr_ProcessGroup = sLook_ProcessGroup.Text.Trim();
+            string curr_ProcessCode = sLook_ProcessCode.Text.Trim();
             string curr_ProcessEN = txt_ProcessEN.Text.Trim();
             string curr_ProcessVN = txt_ProcessVN.Text.Trim();
             string curr_ProcessJP = txt_ProcessJP.Text.Trim();
@@ -195,13 +195,13 @@ namespace TAKAKO_ERP_3LAYER.View
             //Trường hợp thêm mới
             if (IsNewValue)
             {
-                Message = "Bạn muốn thêm mới Công đoạn: " + curr_ProcessGroup + "?";
+                Message = "Bạn muốn thêm mới Công đoạn: " + curr_ProcessCode + "?";
                 if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                     , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_ProcessGroup_DAO.Insert(curr_ProcessGroup
+                        if (M0003_ProcessCode_DAO.Insert(curr_ProcessCode
                                                         , curr_ProcessEN
                                                         , curr_ProcessVN
                                                         , curr_ProcessJP
@@ -211,7 +211,7 @@ namespace TAKAKO_ERP_3LAYER.View
                                                         , curr_Memo
                                                         , _systemDAL.userName))
                         {
-                            Message = "Lưu thành công Công đoạn: \"" + curr_ProcessGroup + "\"!";
+                            Message = "Lưu thành công Công đoạn: \"" + curr_ProcessCode + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -220,13 +220,13 @@ namespace TAKAKO_ERP_3LAYER.View
             //Trường hợp sửa
             else
             {
-                Message = "Bạn muốn cập nhật Công đoạn: " + curr_ProcessGroup + "?";
+                Message = "Bạn muốn cập nhật Công đoạn: " + curr_ProcessCode + "?";
                 if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                     , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_ProcessGroup_DAO.Update(curr_ProcessGroup
+                        if (M0003_ProcessCode_DAO.Update(curr_ProcessCode
                                                         , curr_ProcessEN
                                                         , curr_ProcessVN
                                                         , curr_ProcessJP
@@ -236,7 +236,7 @@ namespace TAKAKO_ERP_3LAYER.View
                                                         , _systemDAL.userName))
                         {
                             {
-                                Message = "Cập nhật thành công Công đoạn: \"" + curr_ProcessGroup + "\"!";
+                                Message = "Cập nhật thành công Công đoạn: \"" + curr_ProcessCode + "\"!";
                                 MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
@@ -248,21 +248,21 @@ namespace TAKAKO_ERP_3LAYER.View
         private void BbiReset_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Update_Control();
-            sLook_ProcessGroup.Focus();
+            sLook_ProcessCode.Focus();
         }
         //Click nút Delete
         private void BbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string Message = "";
-            string curr_ProcessGroup = sLook_ProcessGroup.Text.Trim();
+            string curr_ProcessCode = sLook_ProcessCode.Text.Trim();
             DateTime curr_ApplyDate = DateTime.Parse(date_ApplyDate.Text.Trim());
-            Message = "Bạn muốn xóa Công đoạn: " + curr_ProcessGroup + "?";
+            Message = "Bạn muốn xóa Công đoạn: " + curr_ProcessCode + "?";
             if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                 , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
             {
-                if (M0003_ProcessGroup_DAO.Delete(curr_ProcessGroup, curr_ApplyDate))
+                if (M0003_ProcessCode_DAO.Delete(curr_ProcessCode, curr_ApplyDate))
                 {
-                    Message = "Xóa thành công Công đoạn: \"" + curr_ProcessGroup + "\"!";
+                    Message = "Xóa thành công Công đoạn: \"" + curr_ProcessCode + "\"!";
                     MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -276,10 +276,10 @@ namespace TAKAKO_ERP_3LAYER.View
         //Các tình huống cần kiểm tra lỗi
         public Boolean CheckError()
         {
-            if (String.IsNullOrEmpty(sLook_ProcessGroup.Text.Trim()))
+            if (String.IsNullOrEmpty(sLook_ProcessCode.Text.Trim()))
             {
                 MessageBox.Show("Hãy nhập \"Công đoạn\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                sLook_ProcessGroup.Focus();
+                sLook_ProcessCode.Focus();
                 return false;
             }
              if (IsNewValue && DateTime.Today > date_ApplyDate.DateTime)
@@ -291,11 +291,11 @@ namespace TAKAKO_ERP_3LAYER.View
             if (IsNewValue)
             {
                 DataTable _check = new DataTable();
-                _check = M0003_ProcessGroup_DAO.GetInfo_M0003_Check(sLook_ProcessGroup.Text.Trim(),  DateTime.Parse(date_ApplyDate.Text.Trim()));
+                _check = M0003_ProcessCode_DAO.GetInfo_M0003_Check(sLook_ProcessCode.Text.Trim(),  DateTime.Parse(date_ApplyDate.Text.Trim()));
                 if (_check.Rows.Count > 0)
                 {
-                    MessageBox.Show("Công đoạn: " + sLook_ProcessGroup.Text.ToString() + " đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    sLook_ProcessGroup.Focus();
+                    MessageBox.Show("Công đoạn: " + sLook_ProcessCode.Text.ToString() + " đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    sLook_ProcessCode.Focus();
                     return false;
                 }
             }

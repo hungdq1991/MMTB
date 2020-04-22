@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0005));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.gridCol_ACCDoc_Disposal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -82,6 +83,7 @@
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_DisposalDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DocNo_Disposal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bbiNoUsed = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView1)).BeginInit();
@@ -104,6 +106,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -116,9 +119,10 @@
             this.bbiRefresh,
             this.bCheck_Disposal,
             this.bbiMoving,
-            this.bCheck_NoUsed});
+            this.bCheck_NoUsed,
+            this.bbiNoUsed});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 23;
+            this.ribbonControl.MaxItemId = 24;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -143,9 +147,10 @@
             // 
             // bbiNew
             // 
-            this.bbiNew.Caption = "Thêm mới";
+            this.bbiNew.Caption = "Nghiệm thu";
             this.bbiNew.Id = 16;
-            this.bbiNew.ImageOptions.ImageUri.Uri = "New";
+            this.bbiNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNew.ImageOptions.Image")));
+            this.bbiNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNew.ImageOptions.LargeImage")));
             this.bbiNew.Name = "bbiNew";
             this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNew_ItemClick);
             // 
@@ -160,7 +165,8 @@
             // 
             this.bbiDisposal.Caption = "Thanh lý";
             this.bbiDisposal.Id = 18;
-            this.bbiDisposal.ImageOptions.ImageUri.Uri = "Delete";
+            this.bbiDisposal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiDisposal.ImageOptions.Image")));
+            this.bbiDisposal.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiDisposal.ImageOptions.LargeImage")));
             this.bbiDisposal.Name = "bbiDisposal";
             this.bbiDisposal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiDisposal_ItemClick);
             // 
@@ -170,6 +176,7 @@
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
+            this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiRefresh_ItemClick);
             // 
             // bCheck_Disposal
             // 
@@ -198,7 +205,7 @@
             // 
             // bCheck_NoUsed
             // 
-            this.bCheck_NoUsed.Caption = "Ngưng sử dụng";
+            this.bCheck_NoUsed.Caption = "Không sử dụng";
             this.bCheck_NoUsed.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
             this.bCheck_NoUsed.Id = 22;
             this.bCheck_NoUsed.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -220,8 +227,9 @@
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew, true);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiMoving);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNoUsed);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
@@ -965,6 +973,15 @@
             this.gridCol_DocNo_Disposal.OptionsColumn.FixedWidth = true;
             this.gridCol_DocNo_Disposal.Visible = true;
             // 
+            // bbiNoUsed
+            // 
+            this.bbiNoUsed.Caption = "Không sử dụng";
+            this.bbiNoUsed.Id = 23;
+            this.bbiNoUsed.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.bbiNoUsed.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiNoUsed.Name = "bbiNoUsed";
+            this.bbiNoUsed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNoUsed_ItemClick);
+            // 
             // Form_M0005
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1040,5 +1057,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraBars.BarCheckItem bCheck_NoUsed;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem bbiNoUsed;
     }
 }

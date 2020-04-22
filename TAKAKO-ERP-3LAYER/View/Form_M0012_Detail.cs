@@ -94,6 +94,7 @@ namespace TAKAKO_ERP_3LAYER.View
             gridControl.DataSource = _DetailTable;
             Edit = false;
             gridView.AddNewRow();
+            gridView.SetFocusedRowCellValue("ApplyDate", DateTime.Now);
             gridView.SetFocusedRowCellValue("InActive", 0);
         }
         //Nhập thông tin LK
@@ -512,6 +513,38 @@ namespace TAKAKO_ERP_3LAYER.View
                         return false;
                     }
                 }
+                //Trùng thông tin Mã hàng, Maker, Point, Lifetime, MinimumQty
+                for (int rows = 0; rows < gridView.RowCount; rows++)
+                {
+                    string _itemCode;
+                    string _maker;
+                    int _point;
+                    int _minimumQty;
+                    int _lifetime;
+                    _itemCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ItemCode"]));
+                    _maker = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["Maker"]));
+                    _point = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["Point"]));
+                    _minimumQty = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["MinimumQty"]));
+                    _lifetime = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["Lifetime"]));
+                    try
+                    {
+                        DataTable _tempTable = M0012_DAO.GetInfo_M0012_Check(_itemCode, _maker, _point, _minimumQty, _lifetime);
+                        if (_tempTable.Rows.Count > 0)
+                        {
+                            gridControl.DataSource = _tempTable;
+                            MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã hàng\" đã có (trùng Maker, Điểm, Tuổi thọ và SL tối thiểu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                        else
+                        {
+                            return true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             return true;
         }
@@ -527,7 +560,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 e.RepositoryItem = repo_sLookUp_PurCode;
             }
         }
-        //Kiểm tra mã LK bị trùng trên lưới
+        //Kiểm tra trùng trên lưới
         bool IsDuplicatedRowFound(string _value, string column)
         {
             for (int rows = 0; rows < gridView.DataRowCount; rows++)
@@ -551,7 +584,7 @@ namespace TAKAKO_ERP_3LAYER.View
                 e.Valid = !IsDuplicatedRowFound(_itemCode, "ItemCode");
                 if (!e.Valid)
                 {
-                    e.ErrorText = "Mã LK/Pin/Dầu đã tồn tại trên lưới!";
+                    e.ErrorText = "Mã LK/Dầu/Pin đã tồn tại trên lưới";
                 }
             }
         }

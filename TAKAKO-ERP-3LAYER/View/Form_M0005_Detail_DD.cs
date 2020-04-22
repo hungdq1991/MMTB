@@ -70,7 +70,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
             AddValue_repo_sLookUp_Code();
 
-            Add_Value_repo_sLookUp_ProcessGroup();
+            Add_Value_repo_sLookUp_ProcessCode();
         }
         //Giá trị khi khởi tạo form
         private void Setting_Init_Value()
@@ -93,19 +93,19 @@ namespace TAKAKO_ERP_3LAYER.View
             comboBox.Properties.Items.AddRange(Boolean);
         }
         //Thông tin line, process...
-        private void Add_Value_repo_sLookUp_ProcessGroup()
+        private void Add_Value_repo_sLookUp_ProcessCode()
         {
             DataTable tempTable = new DataTable();
             tempTable = M0003_Line_DAO.GetInfo_M0003_ProgressGroup();
             if (tempTable.Rows.Count > 0)
             {
-                repo_sLookup_LineID1.DataSource = tempTable;
-                repo_sLookup_LineID1.ValueMember = "LineID";
-                repo_sLookup_LineID1.DisplayMember = "LineID";
+                repo_sLookup_LineCode1.DataSource = tempTable;
+                repo_sLookup_LineCode1.ValueMember = "LineCode";
+                repo_sLookup_LineCode1.DisplayMember = "LineCode";
             }
         }
         //Điền thông tin Line
-        private void repo_sLookUp_LineID_CloseUp(object sender, CloseUpEventArgs e)
+        private void repo_sLookUp_LineCode_CloseUp(object sender, CloseUpEventArgs e)
         {
             if (e.CloseMode == PopupCloseMode.Normal)
             {
@@ -119,9 +119,9 @@ namespace TAKAKO_ERP_3LAYER.View
 
                 //Set value variables
                 _desLineEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("LineEN"));
-                _desProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProcessGroup"));
+                _desProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProcessCode"));
                 _desGroupLineACC = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("GroupLineACC"));
-                _desUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ProductionDept"));
+                _desUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("UsingDept"));
 
                 //Set value to column OrgLineEN, OrgProcessCode, OrgGroupLineACC, OrgUsingDept
                 advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "DesLineEN", _desLineEN);

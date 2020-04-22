@@ -237,7 +237,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             StrQuery = @"SELECT
                         	 N.NameEN
                             ,N.NameVN
-                            ,N.NameJP
+                           --,N.NameJP
                         FROM
                             M0001_Name N
                         INNER JOIN
@@ -267,6 +267,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             StrQuery = @"SELECT
                         	 N.NameEN
+                            ,N.NameVN
+                            --,N.NameJP
                         FROM
                             M0001_Name N
                         INNER JOIN
@@ -297,7 +299,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             StrQuery = @"SELECT
                         	 N.NameEN
                             ,N.NameVN
-                            ,N.NameJP
+                            --,N.NameJP
                         FROM
                             M0001_Name N
                         INNER JOIN
@@ -388,7 +390,32 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
-        //Load dữ liệu từ table M0002
+        //Lấy tên MMTB
+        public DataTable GetInfo_M0002_Name_MMTB()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	NameEN,
+                            NameVN,
+                            NameJP
+                        FROM
+                            M0002_GroupName
+                        WHERE
+                            InActive = 0
+                        and ClassifyID in (2,3)
+                        ORDER BY
+                            NameEN,
+                            NameVN,
+                            NameJP";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Lấy tên LK
         public DataTable GetInfo_M0002_LK()
         {
             string StrQuery = "";
@@ -398,7 +425,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
 	                         NameEN
 	                        ,NameVN
 	                        ,NameJP
-	                        ,Max(ApplyDate)
+	                        ,Max(ApplyDate) as ApplyDate
                         FROM 
 	                        M0002_GroupName
                         WHERE 

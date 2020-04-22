@@ -38,7 +38,7 @@
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_isOutsource = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.gridCol_ProcessGroup = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ProcessCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -84,7 +84,7 @@
             this.gridCol_Point,
             this.gridCol_Memo,
             this.gridCol_isOutsource,
-            this.gridCol_ProcessGroup,
+            this.gridCol_ProcessCode,
             this.gridCol_InActive});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
@@ -209,21 +209,21 @@
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
-            // gridCol_ProcessGroup
+            // gridCol_ProcessCode
             // 
-            this.gridCol_ProcessGroup.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_ProcessGroup.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_ProcessGroup.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ProcessGroup.Caption = "Nhóm công đoạn";
-            this.gridCol_ProcessGroup.FieldName = "ProcessGroup";
-            this.gridCol_ProcessGroup.Name = "gridCol_ProcessGroup";
-            this.gridCol_ProcessGroup.OptionsColumn.FixedWidth = true;
-            this.gridCol_ProcessGroup.Visible = true;
-            this.gridCol_ProcessGroup.VisibleIndex = 2;
-            this.gridCol_ProcessGroup.Width = 130;
+            this.gridCol_ProcessCode.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_ProcessCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_ProcessCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_ProcessCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_ProcessCode.Caption = "Nhóm công đoạn";
+            this.gridCol_ProcessCode.FieldName = "ProcessCode";
+            this.gridCol_ProcessCode.Name = "gridCol_ProcessCode";
+            this.gridCol_ProcessCode.OptionsColumn.FixedWidth = true;
+            this.gridCol_ProcessCode.Visible = true;
+            this.gridCol_ProcessCode.VisibleIndex = 2;
+            this.gridCol_ProcessCode.Width = 130;
             // 
             // gridCol_InActive
             // 
@@ -382,7 +382,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Memo;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_isOutsource;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessGroup;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_InActive;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
     }

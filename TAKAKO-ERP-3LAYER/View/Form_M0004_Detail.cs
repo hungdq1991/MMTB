@@ -10,6 +10,7 @@ namespace TAKAKO_ERP_3LAYER.View
     public partial class Form_M0004_Detail : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public DataRow dataRow;
+        public M0002_DAO M0002_DAO;
         public M0004_DAO M0004_DAO;
         public string NameEN;
         public string NameVN;
@@ -46,6 +47,7 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             //
             M0004_DAO = new M0004_DAO();
+            M0002_DAO = new M0002_DAO();
             //
             sLookUpEdit_NameEN();
             //
@@ -70,7 +72,7 @@ namespace TAKAKO_ERP_3LAYER.View
         private void sLookUpEdit_NameEN()
         {
             DataTable tempTable = new DataTable();
-            tempTable = M0004_DAO.GetInfo_M0001_Name();
+            tempTable = M0002_DAO.GetInfo_M0002_Name_MMTB();
             if (tempTable.Rows.Count > 0)
             {
                 sLook_NameEN.Properties.DataSource = tempTable;

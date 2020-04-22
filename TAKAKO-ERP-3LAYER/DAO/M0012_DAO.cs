@@ -171,7 +171,6 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,EF_PurUnit
                             ,EF_VendID
                             ,EF_VendName
-                            ,EF_PurUnit
                             ,EF_PurCuryID
                             ,UnitMultDiv
                             ,CnvFact
@@ -250,7 +249,7 @@ namespace TAKAKO_ERP_3LAYER.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Check mã trùng trên table M0012
-        public DataTable GetInfo_M0012_Check(string ItemCode, string Maker, int Point, int MinimumQty, int Lifetime, string PurCode, string WH1Code, string WH2Code)
+        public DataTable GetInfo_M0012_Check(string ItemCode, string Maker, int Point, int MinimumQty, int Lifetime)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();

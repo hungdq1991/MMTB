@@ -101,7 +101,7 @@
             this.gridCol_StartDeprDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_EndDeprDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_NetValue = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_LineID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_LineCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_LineName_EN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_GroupLineACC = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -114,7 +114,7 @@
             this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_ItemDate_StartDerprDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repo_ItemDate_EndDerprDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this.repo_sLookUp_LineID = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repo_sLookUp_LineCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_Check_Status = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repo_cBox_Status = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
@@ -161,7 +161,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_Check_Status)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_cBox_Status)).BeginInit();
@@ -684,7 +684,7 @@
             this.repo_sLookUp_Nation,
             this.repo_ItemDate_StartDerprDate,
             this.repo_ItemDate_EndDerprDate,
-            this.repo_sLookUp_LineID,
+            this.repo_sLookUp_LineCode,
             this.repo_Check_Status,
             this.repo_cBox_Status,
             this.repo_TextEdit_Code,
@@ -713,7 +713,7 @@
             this.gridCol_StartDeprDate,
             this.gridCol_EndDeprDate,
             this.gridCol_NetValue,
-            this.gridCol_LineID,
+            this.gridCol_LineCode,
             this.gridCol_LineName_EN,
             this.gridCol_ProcessID,
             this.gridCol_GroupLineACC,
@@ -1031,23 +1031,23 @@
             this.gridCol_NetValue.Visible = true;
             this.gridCol_NetValue.VisibleIndex = 17;
             // 
-            // gridCol_LineID
+            // gridCol_LineCode
             // 
-            this.gridCol_LineID.AppearanceCell.BackColor = System.Drawing.Color.White;
-            this.gridCol_LineID.AppearanceCell.Options.UseBackColor = true;
-            this.gridCol_LineID.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridCol_LineID.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_LineID.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_LineID.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_LineID.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_LineID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_LineID.Caption = "Line sử dụng";
-            this.gridCol_LineID.FieldName = "DesLineCode";
-            this.gridCol_LineID.Name = "gridCol_LineID";
-            this.gridCol_LineID.OptionsColumn.AllowEdit = false;
-            this.gridCol_LineID.Visible = true;
-            this.gridCol_LineID.VisibleIndex = 10;
-            this.gridCol_LineID.Width = 85;
+            this.gridCol_LineCode.AppearanceCell.BackColor = System.Drawing.Color.White;
+            this.gridCol_LineCode.AppearanceCell.Options.UseBackColor = true;
+            this.gridCol_LineCode.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_LineCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_LineCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_LineCode.Caption = "Line sử dụng";
+            this.gridCol_LineCode.FieldName = "DesLineCode";
+            this.gridCol_LineCode.Name = "gridCol_LineCode";
+            this.gridCol_LineCode.OptionsColumn.AllowEdit = false;
+            this.gridCol_LineCode.Visible = true;
+            this.gridCol_LineCode.VisibleIndex = 10;
+            this.gridCol_LineCode.Width = 85;
             // 
             // gridCol_LineName_EN
             // 
@@ -1206,14 +1206,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repo_ItemDate_EndDerprDate.Name = "repo_ItemDate_EndDerprDate";
             // 
-            // repo_sLookUp_LineID
+            // repo_sLookUp_LineCode
             // 
-            this.repo_sLookUp_LineID.AutoHeight = false;
-            this.repo_sLookUp_LineID.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repo_sLookUp_LineCode.AutoHeight = false;
+            this.repo_sLookUp_LineCode.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_sLookUp_LineID.Name = "repo_sLookUp_LineID";
-            this.repo_sLookUp_LineID.PopupFormSize = new System.Drawing.Size(950, 0);
-            this.repo_sLookUp_LineID.PopupView = this.gridView3;
+            this.repo_sLookUp_LineCode.Name = "repo_sLookUp_LineCode";
+            this.repo_sLookUp_LineCode.PopupFormSize = new System.Drawing.Size(950, 0);
+            this.repo_sLookUp_LineCode.PopupView = this.gridView3;
             // 
             // gridView3
             // 
@@ -1371,7 +1371,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_Check_Status)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_cBox_Status)).EndInit();
@@ -1433,7 +1433,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_StartDeprDate;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_EndDeprDate;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessID;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_LineID;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_LineCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_GroupLineACC;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_UsingDept;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ControlDept;
@@ -1449,7 +1449,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit2View;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repo_ItemDate_StartDerprDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repo_ItemDate_EndDerprDate;
-        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_LineID;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_LineCode;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repo_Check_Status;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repo_cBox_Status;

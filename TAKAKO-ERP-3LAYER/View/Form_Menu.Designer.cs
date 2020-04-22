@@ -48,14 +48,14 @@
             this.bbiStop = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTech = new DevExpress.XtraBars.BarButtonItem();
             this.bbiACC = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             this.SuspendLayout();
             // 
@@ -249,6 +249,14 @@
             this.bbiACC.Name = "bbiACC";
             this.bbiACC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiACC_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "MMTB \r\nkhông sử dụng";
+            this.barButtonItem1.Id = 22;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
@@ -272,6 +280,17 @@
             this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
             this.mainRibbonPageGroup.Text = "Master";
             // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.ribbonPage1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.ribbonPage1.Appearance.Options.UseFont = true;
+            this.ribbonPage1.Appearance.Options.UseForeColor = true;
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Quản lý MMTB";
+            // 
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiList);
@@ -284,6 +303,17 @@
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Quản lý MMTB";
             // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.ribbonPage2.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.ribbonPage2.Appearance.Options.UseFont = true;
+            this.ribbonPage2.Appearance.Options.UseForeColor = true;
+            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2});
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "Quản lý LK, pin, dầu";
+            // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiStock);
@@ -293,25 +323,6 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiStop);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Quản lý LK, Pin, Dầu";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "MMTB \r\nkhông sử dụng";
-            this.barButtonItem1.Id = 22;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.ribbonPage1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.ribbonPage1.Appearance.Options.UseFont = true;
-            this.ribbonPage1.Appearance.Options.UseForeColor = true;
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Quản lý MMTB";
             // 
             // ribbonPageGroup4
             // 
@@ -324,17 +335,6 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.bbiACC);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Quản lý MMTB";
-            // 
-            // ribbonPage2
-            // 
-            this.ribbonPage2.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.ribbonPage2.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.ribbonPage2.Appearance.Options.UseFont = true;
-            this.ribbonPage2.Appearance.Options.UseForeColor = true;
-            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
-            this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "Quản lý LK, pin, dầu";
             // 
             // Form_Menu
             // 

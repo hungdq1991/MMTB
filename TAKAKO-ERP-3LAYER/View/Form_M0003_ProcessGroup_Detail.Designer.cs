@@ -1,6 +1,6 @@
 ﻿namespace TAKAKO_ERP_3LAYER.View
 {
-    partial class Form_M0003_ProcessGroup_Detail
+    partial class Form_M0003_ProcessCode_Detail
     {
         /// <summary>
         /// Required designer variable.
@@ -53,7 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.sLook_ProcessGroup = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.sLook_ProcessCode = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_ProcessEN.Properties)).BeginInit();
@@ -64,7 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_ApplyDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_InActive.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sLook_ProcessGroup.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sLook_ProcessCode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             this.SuspendLayout();
             // 
@@ -313,18 +313,18 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "Ngày hiệu lực";
             // 
-            // sLook_ProcessGroup
+            // sLook_ProcessCode
             // 
-            this.sLook_ProcessGroup.EnterMoveNextControl = true;
-            this.sLook_ProcessGroup.Location = new System.Drawing.Point(125, 172);
-            this.sLook_ProcessGroup.MenuManager = this.ribbonControl;
-            this.sLook_ProcessGroup.Name = "sLook_ProcessGroup";
-            this.sLook_ProcessGroup.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.sLook_ProcessCode.EnterMoveNextControl = true;
+            this.sLook_ProcessCode.Location = new System.Drawing.Point(125, 172);
+            this.sLook_ProcessCode.MenuManager = this.ribbonControl;
+            this.sLook_ProcessCode.Name = "sLook_ProcessCode";
+            this.sLook_ProcessCode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.sLook_ProcessGroup.Properties.PopupView = this.searchLookUpEdit1View;
-            this.sLook_ProcessGroup.Size = new System.Drawing.Size(115, 20);
-            this.sLook_ProcessGroup.TabIndex = 10;
-            this.sLook_ProcessGroup.TextChanged += new System.EventHandler(this.SLook_ProcessGroup_Validated);
+            this.sLook_ProcessCode.Properties.PopupView = this.searchLookUpEdit1View;
+            this.sLook_ProcessCode.Size = new System.Drawing.Size(115, 20);
+            this.sLook_ProcessCode.TabIndex = 10;
+            this.sLook_ProcessCode.TextChanged += new System.EventHandler(this.SLook_ProcessCode_Validated);
             // 
             // searchLookUpEdit1View
             // 
@@ -333,12 +333,12 @@
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
-            // Form_M0003_ProcessGroup_Detail
+            // Form_M0003_ProcessCode_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 463);
-            this.Controls.Add(this.sLook_ProcessGroup);
+            this.Controls.Add(this.sLook_ProcessCode);
             this.Controls.Add(this.cbx_InActive);
             this.Controls.Add(this.date_ApplyDate);
             this.Controls.Add(this.txt_Memo);
@@ -355,7 +355,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0003_ProcessGroup_Detail";
+            this.Name = "Form_M0003_ProcessCode_Detail";
             this.Ribbon = this.ribbonControl;
             this.Text = "CÔNG ĐOẠN";
             this.Load += new System.EventHandler(this.Form_M0003_Detail_Load);
@@ -368,7 +368,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.date_ApplyDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbx_InActive.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sLook_ProcessGroup.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sLook_ProcessCode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -399,7 +399,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private DevExpress.XtraBars.BarButtonItem bbiSave;
-        private DevExpress.XtraEditors.SearchLookUpEdit sLook_ProcessGroup;
+        private DevExpress.XtraEditors.SearchLookUpEdit sLook_ProcessCode;
         private DevExpress.XtraGrid.Views.Grid.GridView searchLookUpEdit1View;
         private DevExpress.XtraBars.BarButtonItem bbiReset;
         private DevExpress.XtraBars.BarButtonItem bbiClose;

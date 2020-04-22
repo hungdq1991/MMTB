@@ -55,7 +55,7 @@
             this.gridCol_Group2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ControlDept = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_UsedDept = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_LineID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_LineCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_GroupLineACC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ProcessID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_DocNo_Confirm = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -227,7 +227,7 @@
             this.gridCol_Group2,
             this.gridCol_ControlDept,
             this.gridCol_UsedDept,
-            this.gridCol_LineID,
+            this.gridCol_LineCode,
             this.gridCol_GroupLineACC,
             this.gridCol_ProcessID,
             this.gridCol_DocNo_Confirm,
@@ -460,24 +460,24 @@
             this.gridCol_UsedDept.Visible = true;
             this.gridCol_UsedDept.VisibleIndex = 8;
             // 
-            // gridCol_LineID
+            // gridCol_LineCode
             // 
-            this.gridCol_LineID.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_LineID.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_LineID.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_LineID.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_LineID.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_LineID.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_LineID.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_LineID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_LineID.Caption = "Mã line";
-            this.gridCol_LineID.FieldName = "LineID";
-            this.gridCol_LineID.Name = "gridCol_LineID";
-            this.gridCol_LineID.OptionsColumn.AllowShowHide = false;
-            this.gridCol_LineID.OptionsColumn.FixedWidth = true;
-            this.gridCol_LineID.Visible = true;
-            this.gridCol_LineID.VisibleIndex = 11;
-            this.gridCol_LineID.Width = 90;
+            this.gridCol_LineCode.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_LineCode.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_LineCode.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_LineCode.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_LineCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_LineCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_LineCode.Caption = "Mã line";
+            this.gridCol_LineCode.FieldName = "LineCode";
+            this.gridCol_LineCode.Name = "gridCol_LineCode";
+            this.gridCol_LineCode.OptionsColumn.AllowShowHide = false;
+            this.gridCol_LineCode.OptionsColumn.FixedWidth = true;
+            this.gridCol_LineCode.Visible = true;
+            this.gridCol_LineCode.VisibleIndex = 11;
+            this.gridCol_LineCode.Width = 90;
             // 
             // gridCol_GroupLineACC
             // 
@@ -710,7 +710,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Group2;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ControlDept;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_UsedDept;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_LineID;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_LineCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_GroupLineACC;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessID;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_DocNo_Confirm;
