@@ -41,6 +41,9 @@ namespace TAKAKO_ERP_3LAYER.View
             _tempTable = new DataTable();
             M0015_DAO = new M0015_DAO();
 
+            //
+            bsiUser.Caption = _systemDAL.userName;
+
             GetInfo_GridView();
         }
     }

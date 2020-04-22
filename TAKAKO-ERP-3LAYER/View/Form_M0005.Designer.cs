@@ -228,7 +228,6 @@
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiMoving);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNoUsed);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";

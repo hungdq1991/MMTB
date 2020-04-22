@@ -222,9 +222,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(22, 209);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.Size = new System.Drawing.Size(103, 13);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Tên line (t.Anh)";
+            this.label2.Text = "Tên line (Tiếng Anh)";
             // 
             // label3
             // 
@@ -316,18 +316,18 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(22, 245);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.Size = new System.Drawing.Size(102, 13);
             this.label10.TabIndex = 5;
-            this.label10.Text = "Tên line (t.Việt)";
+            this.label10.Text = "Tên line (Tiếng Việt)";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(22, 281);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(86, 13);
+            this.label11.Size = new System.Drawing.Size(107, 13);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Tên line (t.Nhật)";
+            this.label11.Text = "Tên line (Tiếng Nhật)";
             // 
             // txt_LineVN
             // 

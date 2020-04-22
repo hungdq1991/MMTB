@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.gridCol_DisposalDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -65,6 +65,7 @@
             this.gridCol_DocNo_Move = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_MoveDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_DocNo_Disposal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -106,9 +107,10 @@
             this.bbiEdit,
             this.bbiDelete,
             this.bbiRefresh,
-            this.barCheckItem1});
+            this.barCheckItem1,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 21;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -196,6 +198,7 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 490);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
@@ -239,16 +242,16 @@
             this.gridCol_MoveDate,
             this.gridCol_DocNo_Disposal,
             this.gridCol_DisposalDate});
-            gridFormatRule2.Column = this.gridCol_DisposalDate;
-            gridFormatRule2.ColumnApplyTo = this.gridCol_DisposalDate;
-            gridFormatRule2.Name = "ThanhLy";
-            formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            formatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.Black;
-            formatConditionRuleExpression2.Appearance.Options.UseBackColor = true;
-            formatConditionRuleExpression2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleExpression2.Expression = "Contains([DisposalDate], \'/\')";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.gridView.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.Column = this.gridCol_DisposalDate;
+            gridFormatRule1.ColumnApplyTo = this.gridCol_DisposalDate;
+            gridFormatRule1.Name = "ThanhLy";
+            formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            formatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Black;
+            formatConditionRuleExpression1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleExpression1.Expression = "Contains([DisposalDate], \'/\')";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.gridView.FormatRules.Add(gridFormatRule1);
             this.gridView.GridControl = this.gridControl;
             this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
@@ -666,6 +669,13 @@
             this.gridCol_DocNo_Disposal.VisibleIndex = 18;
             this.gridCol_DocNo_Disposal.Width = 90;
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 21;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // Form_M0005_Line
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -723,5 +733,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_DocNo_Disposal;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_DisposalDate;
         private DevExpress.XtraBars.BarCheckItem barCheckItem1;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

@@ -61,6 +61,9 @@ namespace TAKAKO_ERP_3LAYER.View
         //Dữ liệu trên Form_M0005_Detail_TL
         private void Setting_Init_Control()
         {
+            //Pass username
+            bsiUser.Caption = _systemDAL.userName;
+
             //Định nghĩa datatable gán cho header
             Define_HeaderTable();
 

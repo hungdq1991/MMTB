@@ -531,7 +531,6 @@ namespace TAKAKO_ERP_3LAYER.View
                         DataTable _tempTable = M0012_DAO.GetInfo_M0012_Check(_itemCode, _maker, _point, _minimumQty, _lifetime);
                         if (_tempTable.Rows.Count > 0)
                         {
-                            gridControl.DataSource = _tempTable;
                             MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã hàng\" đã có (trùng Maker, Điểm, Tuổi thọ và SL tối thiểu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return false;
                         }

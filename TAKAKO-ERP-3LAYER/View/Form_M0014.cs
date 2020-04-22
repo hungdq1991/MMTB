@@ -14,11 +14,6 @@ namespace TAKAKO_ERP_3LAYER.View
         //
         public System_DAL _systemDAL = new System_DAL();
 
-        public Form_M0014()
-        {
-            InitializeComponent();
-        }
-
         public Form_M0014(System_DAL systemDAL)
         {
             InitializeComponent();
@@ -47,6 +42,9 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             _tempTable = new DataTable();
             M0014_DAO = new M0014_DAO();
+
+            //
+            bsiUser.Caption = _systemDAL.userName;
 
             GetInfo_GridView();
         }

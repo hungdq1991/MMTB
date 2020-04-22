@@ -248,8 +248,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
         //Check mã trùng trên table M0012
-        public DataTable GetInfo_M0012_Check(string ItemCode, string Maker, int Point, int MinimumQty, int Lifetime)
+        public DataTable GetInfo_M0012_Check(string ItemCode
+                                            ,string Maker
+                                            ,int Point
+                                            ,int MinimumQty
+                                            ,int Lifetime)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
@@ -270,9 +275,9 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             AND Lifetime    = @Lifetime";
 
             SqlParameter[] sqlParameters = new SqlParameter[5];
-            sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
+            sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(ItemCode);
-            sqlParameters[1] = new SqlParameter("@Maker", SqlDbType.Text);
+            sqlParameters[1] = new SqlParameter("@Maker", SqlDbType.VarChar);
             sqlParameters[1].Value = Convert.ToString(Maker);
             sqlParameters[2] = new SqlParameter("@Point", SqlDbType.Int);
             sqlParameters[2].Value = Convert.ToInt32(Point);

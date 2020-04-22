@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Data;
 using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;

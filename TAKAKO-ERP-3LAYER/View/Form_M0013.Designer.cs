@@ -62,6 +62,7 @@
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -79,9 +80,10 @@
             this.bbiNew,
             this.bbiEdit,
             this.bbiDelete,
-            this.bbiRefresh});
+            this.bbiRefresh,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 20;
+            this.ribbonControl.MaxItemId = 21;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -154,6 +156,7 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
@@ -579,6 +582,13 @@
             this.gridCol_Memo.VisibleIndex = 16;
             this.gridCol_Memo.Width = 150;
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 20;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // Form_M0013
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -635,5 +645,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Memo;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItenNameEN;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItemNameVN;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }
