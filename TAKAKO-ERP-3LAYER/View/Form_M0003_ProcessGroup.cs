@@ -20,11 +20,6 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             InitializeComponent();
 
-        //Khởi tạo form
-        public Form_M0003_ProcessGroup(System_DAL systemDAL)
-        {
-            InitializeComponent();
-
             _systemDAL = systemDAL;
         }
 
