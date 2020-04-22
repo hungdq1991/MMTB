@@ -403,19 +403,19 @@ namespace MMTB.View
             }
             if (String.IsNullOrEmpty(sLook_LineEN.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Anh)\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Anh)\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sLook_LineEN.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(txt_LineVN.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Việt)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Việt)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_LineVN.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(txt_LineJP.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Nhật)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Nhật)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_LineJP.Focus();
                 return false;
             }

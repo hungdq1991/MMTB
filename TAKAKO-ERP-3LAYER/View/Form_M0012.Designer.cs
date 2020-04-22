@@ -68,6 +68,7 @@
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.bbiCheckDup = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -190,6 +191,7 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
@@ -687,6 +689,13 @@
             this.gridCol_Memo.VisibleIndex = 23;
             this.gridCol_Memo.Width = 150;
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 21;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // bbiCheckDup
             // 
             this.bbiCheckDup.Caption = "Mã trùng          ";
@@ -759,5 +768,6 @@
         private DevExpress.XtraBars.BarCheckItem bCheck_Duplicate;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarCheckItem bbiCheckDup;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

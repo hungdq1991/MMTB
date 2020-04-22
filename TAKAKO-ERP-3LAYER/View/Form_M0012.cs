@@ -14,11 +14,6 @@ namespace MMTB.View
         //
         public System_DAL _systemDAL = new System_DAL();
 
-        public Form_M0012()
-        {
-            InitializeComponent();
-        }
-
         public Form_M0012(System_DAL systemDAL)
         {
             InitializeComponent();
@@ -30,6 +25,8 @@ namespace MMTB.View
             _tempTable = new DataTable();
             //
             M0012_DAO = new M0012_DAO();
+            //
+            bsiUser.Caption = _systemDAL.userName;
             //Load Init
             GetInfo_Gridview();
         }

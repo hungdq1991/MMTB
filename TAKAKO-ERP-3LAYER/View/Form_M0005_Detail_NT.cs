@@ -547,6 +547,9 @@ namespace MMTB.View
         //Dữ liệu trên Form_M0005_Detail_NT
         private void Setting_Init_Control()
         {
+            //Pass username
+            bsiUser.Caption = _systemDAL.userName;
+
             //Định nghĩa datatable gán cho header
             Define_HeaderTable();
 

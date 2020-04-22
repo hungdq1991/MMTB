@@ -264,19 +264,19 @@ namespace MMTB.View
         {
             if (String.IsNullOrEmpty(txt_NameEN.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Anh)\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Anh)\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_NameEN.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(txt_NameVN.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Việt)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Việt)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_NameVN.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(txt_NameJP.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Nhật)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Nhật)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_NameJP.Focus();
                 return false;
             }

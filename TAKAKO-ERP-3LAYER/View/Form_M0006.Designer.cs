@@ -39,6 +39,7 @@
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNew2 = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNew3 = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -149,6 +150,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -160,9 +162,10 @@
             this.bbiRefresh,
             this.bbiEdit,
             this.bbiNew2,
-            this.bbiNew3});
+            this.bbiNew3,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 23;
+            this.ribbonControl.MaxItemId = 24;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -241,6 +244,13 @@
             this.bbiNew3.ImageOptions.ImageUri.Uri = "New";
             this.bbiNew3.Name = "bbiNew3";
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 23;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -261,7 +271,8 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 574);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(998, 22);
@@ -285,7 +296,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 159);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage3;
-            this.xtraTabControl1.Size = new System.Drawing.Size(998, 418);
+            this.xtraTabControl1.Size = new System.Drawing.Size(998, 415);
             this.xtraTabControl1.TabIndex = 12;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -299,7 +310,7 @@
             this.xtraTabPage3.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraTabPage3.Controls.Add(this.gridControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(996, 395);
+            this.xtraTabPage3.Size = new System.Drawing.Size(996, 392);
             this.xtraTabPage3.Text = "Máy phay";
             // 
             // gridControl3
@@ -315,7 +326,7 @@
             this.repositoryItemCheckEdit4,
             this.repositoryItemCheckEdit5,
             this.repositoryItemCheckEdit6});
-            this.gridControl3.Size = new System.Drawing.Size(996, 395);
+            this.gridControl3.Size = new System.Drawing.Size(996, 392);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1626,7 +1637,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 599);
+            this.ClientSize = new System.Drawing.Size(998, 596);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -1763,5 +1774,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
         private DevExpress.XtraBars.BarButtonItem bbiNew2;
         private DevExpress.XtraBars.BarButtonItem bbiNew3;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

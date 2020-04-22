@@ -73,6 +73,7 @@
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.txt_InvNo = new DevExpress.XtraEditors.TextEdit();
+            this.txt_Memo = new DevExpress.XtraEditors.TextEdit();
             this.txt_SupplierName = new DevExpress.XtraEditors.TextEdit();
             this.date_Inv = new DevExpress.XtraEditors.DateEdit();
             this.date_Disposal = new DevExpress.XtraEditors.DateEdit();
@@ -82,6 +83,7 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
@@ -127,8 +129,7 @@
             this.gridCol_Model1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_Memo = new DevExpress.XtraEditors.TextEdit();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -141,6 +142,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sLook_Supplier.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_InvNo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SupplierName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_Inv.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_Inv.Properties)).BeginInit();
@@ -168,7 +170,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Code)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridCol_ProDate
@@ -198,6 +199,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -218,9 +220,10 @@
             this.barButtonItem1,
             this.bbi_PopUp_DeleteRow,
             this.bbi_PopUp_AddNewRow,
-            this.bbiReport});
+            this.bbiReport,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 31;
+            this.ribbonControl.MaxItemId = 32;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -398,6 +401,7 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
@@ -539,6 +543,13 @@
             this.txt_InvNo.Size = new System.Drawing.Size(106, 20);
             this.txt_InvNo.TabIndex = 3;
             // 
+            // txt_Memo
+            // 
+            this.txt_Memo.Location = new System.Drawing.Point(79, 64);
+            this.txt_Memo.Name = "txt_Memo";
+            this.txt_Memo.Size = new System.Drawing.Size(323, 20);
+            this.txt_Memo.TabIndex = 2;
+            // 
             // txt_SupplierName
             // 
             this.txt_SupplierName.Enabled = false;
@@ -638,6 +649,14 @@
             this.labelControl1.Size = new System.Drawing.Size(81, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Bộ phận thanh lý";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(8, 67);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(26, 13);
+            this.labelControl7.TabIndex = 0;
+            this.labelControl7.Text = "Lý do";
             // 
             // labelControl6
             // 
@@ -1309,20 +1328,12 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // labelControl7
+            // bsiUser
             // 
-            this.labelControl7.Location = new System.Drawing.Point(8, 67);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(26, 13);
-            this.labelControl7.TabIndex = 0;
-            this.labelControl7.Text = "Lý do";
-            // 
-            // txt_Memo
-            // 
-            this.txt_Memo.Location = new System.Drawing.Point(79, 64);
-            this.txt_Memo.Name = "txt_Memo";
-            this.txt_Memo.Size = new System.Drawing.Size(323, 20);
-            this.txt_Memo.TabIndex = 2;
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 31;
+            this.bsiUser.Name = "bsiUser";
             // 
             // Form_M0005_Detail_TL
             // 
@@ -1351,6 +1362,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sLook_Supplier.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_InvNo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SupplierName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_Inv.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_Inv.Properties)).EndInit();
@@ -1378,7 +1390,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Code)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Memo.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1477,5 +1488,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_NetValue;
         private DevExpress.XtraEditors.TextEdit txt_Memo;
         private DevExpress.XtraEditors.LabelControl labelControl7;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }
