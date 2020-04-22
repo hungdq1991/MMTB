@@ -2,10 +2,10 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using TAKAKO_ERP_3LAYER.DAO;
-using TAKAKO_ERP_3LAYER.DAL;
+using MMTB.DAO;
+using MMTB.DAL;
 
-namespace TAKAKO_ERP_3LAYER.View
+namespace MMTB.View
 {
     public partial class Form_M0003_ProcessCode_Detail : DevExpress.XtraBars.Ribbon.RibbonForm
     {

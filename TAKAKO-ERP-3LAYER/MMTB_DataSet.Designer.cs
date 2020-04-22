@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace TAKAKO_ERP_3LAYER {
+namespace MMTB {
     
     
     /// <summary>
@@ -4006,7 +4006,7 @@ namespace TAKAKO_ERP_3LAYER {
         }
     }
 }
-namespace TAKAKO_ERP_3LAYER.MMTB_DataSetTableAdapters {
+namespace MMTB.MMTB_DataSetTableAdapters {
     
     
     /// <summary>
@@ -4153,7 +4153,7 @@ namespace TAKAKO_ERP_3LAYER.MMTB_DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::TAKAKO_ERP_3LAYER.Properties.Settings.Default.MMTB_TVCConnectionString;
+            this._connection.ConnectionString = global::MMTB.Properties.Settings.Default.MMTB_TVCConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4409,7 +4409,7 @@ SELECT Code, ACCcode, NameEN, Maker, Model, ReceiptDate, StartDeprDate, EndDeprD
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::TAKAKO_ERP_3LAYER.Properties.Settings.Default.MMTB_TVCConnectionString;
+            this._connection.ConnectionString = global::MMTB.Properties.Settings.Default.MMTB_TVCConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4638,7 +4638,7 @@ ORDER BY M0005_ListMMTB.Code";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::TAKAKO_ERP_3LAYER.Properties.Settings.Default.MMTB_TVCConnectionString;
+            this._connection.ConnectionString = global::MMTB.Properties.Settings.Default.MMTB_TVCConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4841,7 +4841,7 @@ WHERE        (M0005_ListMMTBLine.DocNo_Move = @DocNo)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::TAKAKO_ERP_3LAYER.Properties.Settings.Default.MMTB_TVCConnectionString;
+            this._connection.ConnectionString = global::MMTB.Properties.Settings.Default.MMTB_TVCConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

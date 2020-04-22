@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TAKAKO_ERP_3LAYER
+namespace MMTB
 {
     public static class Common
     {

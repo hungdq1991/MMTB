@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
-using TAKAKO_ERP_3LAYER.DAL;
+using MMTB.DAL;
 
-namespace TAKAKO_ERP_3LAYER.View
+namespace MMTB.View
 {
     public partial class Form_Menu : DevExpress.XtraBars.Ribbon.RibbonForm
     {
@@ -182,6 +182,16 @@ namespace TAKAKO_ERP_3LAYER.View
         private void Form_Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BbiNoUsed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0005_Detail_NoUsed formDetail = new Form_M0005_Detail_NoUsed(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
         }
     }
 }

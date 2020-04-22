@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 
-namespace TAKAKO_ERP_3LAYER.DAO
+namespace MMTB.DAO
 {
     public class M00091_DAO
     {

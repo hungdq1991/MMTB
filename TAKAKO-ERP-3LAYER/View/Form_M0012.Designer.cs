@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER.View
+﻿namespace MMTB.View
 {
     partial class Form_M0012
     {
@@ -469,7 +469,7 @@
             this.gridCol_UnitMulDiv.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_UnitMulDiv.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_UnitMulDiv.Caption = "Quy đổi";
-            this.gridCol_UnitMulDiv.FieldName = "UnitMulDiv";
+            this.gridCol_UnitMulDiv.FieldName = "UnitMultDiv";
             this.gridCol_UnitMulDiv.Name = "gridCol_UnitMulDiv";
             this.gridCol_UnitMulDiv.Visible = true;
             this.gridCol_UnitMulDiv.VisibleIndex = 11;
@@ -485,10 +485,10 @@
             this.gridCol_CnvtQty.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_CnvtQty.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_CnvtQty.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_CnvtQty.Caption = "Hệ số quy đổi";
-            this.gridCol_CnvtQty.DisplayFormat.FormatString = "#,###.##";
+            this.gridCol_CnvtQty.Caption = "Hệ số quy đổi (M:Multi/D:Div)";
+            this.gridCol_CnvtQty.DisplayFormat.FormatString = "#,0";
             this.gridCol_CnvtQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridCol_CnvtQty.FieldName = "CnvtQty";
+            this.gridCol_CnvtQty.FieldName = "CnvFact";
             this.gridCol_CnvtQty.Name = "gridCol_CnvtQty";
             this.gridCol_CnvtQty.Visible = true;
             this.gridCol_CnvtQty.VisibleIndex = 12;

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Windows.Forms;
 
-namespace TAKAKO_ERP_3LAYER
+namespace MMTB
 {
     public class DBConnection
     {

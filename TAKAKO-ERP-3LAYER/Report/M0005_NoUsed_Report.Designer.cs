@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER.Report
+﻿namespace MMTB.Report
 {
     partial class M0005_NoUsed_Report
     {
@@ -141,9 +141,9 @@
             this.xrLine47 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine51 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine50 = new DevExpress.XtraReports.UI.XRLine();
-            this.mmtb_TL_TableAdapter = new TAKAKO_ERP_3LAYER.MMTB_DataSetTableAdapters.mmtb_TL_TableAdapter();
-            this.mmtb_NoUsed_TableAdapter1 = new TAKAKO_ERP_3LAYER.MMTB_DataSetTableAdapters.mmtb_NoUsed_TableAdapter();
-            this.mmtB_DataSet1 = new TAKAKO_ERP_3LAYER.MMTB_DataSet();
+            this.mmtb_TL_TableAdapter = new MMTB.MMTB_DataSetTableAdapters.mmtb_TL_TableAdapter();
+            this.mmtb_NoUsed_TableAdapter1 = new MMTB.MMTB_DataSetTableAdapters.mmtb_NoUsed_TableAdapter();
+            this.mmtB_DataSet1 = new MMTB.MMTB_DataSet();
             ((System.ComponentModel.ISupportInitialize)(this.mmtB_DataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 

@@ -5,11 +5,12 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
-using TAKAKO_ERP_3LAYER.DAO;
-using TAKAKO_ERP_3LAYER.Report;
+using MMTB.DAO;
+using MMTB.Report;
+using MMTB.DAL;
 using DevExpress.XtraReports.UI;
 
-namespace TAKAKO_ERP_3LAYER.View
+namespace MMTB.View
 {
     public partial class Form_M0005_Detail_NoUsed : DevExpress.XtraBars.Ribbon.RibbonForm
     {
@@ -22,11 +23,17 @@ namespace TAKAKO_ERP_3LAYER.View
         public M0005_DAO M0005_DAO;
         public String DocNo = "";
         public Boolean InitValue = true;
+        public System_DAL _systemDAL = new System_DAL();
         #endregion
         //Khởi tạo form
         public Form_M0005_Detail_NoUsed()
         {
             InitializeComponent();
+        }
+        public Form_M0005_Detail_NoUsed(System_DAL systemDAL)
+        {
+            InitializeComponent();
+            _systemDAL = systemDAL;
         }
         //Update, delete _ form theo kiểu dữ liệu
         public Form_M0005_Detail_NoUsed(String _docNo)

@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MMTB_TVCConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MMTB_TVCConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TAKAKO_ERP_3LAYER.Properties.Settings.GlobalReference.Default.MMTB_TVCConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MMTB_TVCConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MMTB_TVCConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.MMTB.Properties.Settings.GlobalReference.Default.MMTB_TVCConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="mmtb_NT_TableAdapter" GeneratorDataComponentClassName="mmtb_NT_TableAdapter" Name="MMTB_NT_Table" UserDataComponentName="mmtb_NT_TableAdapter">
@@ -233,7 +233,7 @@ WHERE        (M0005_ListMMTBNoUsed.DocNo = @DocNo)</CommandText>
   <xs:element name="MMTB_DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="MMTB_DataSet" msprop:Generator_UserDSName="MMTB_DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="MMTB_NT_Table" msprop:Generator_TableClassName="MMTB_NT_TableDataTable" msprop:Generator_TableVarName="tableMMTB_NT_Table" msprop:Generator_TablePropName="MMTB_NT_Table" msprop:Generator_RowDeletingName="MMTB_NT_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_NT_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_NT_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_NT_TableRowDeleted" msprop:Generator_UserTableName="MMTB_NT_Table" msprop:Generator_RowChangedName="MMTB_NT_TableRowChanged" msprop:Generator_RowEvArgName="MMTB_NT_TableRowChangeEvent" msprop:Generator_RowClassName="MMTB_NT_TableRow">
+        <xs:element name="MMTB_NT_Table" msprop:Generator_TableClassName="MMTB_NT_TableDataTable" msprop:Generator_TableVarName="tableMMTB_NT_Table" msprop:Generator_RowChangedName="MMTB_NT_TableRowChanged" msprop:Generator_TablePropName="MMTB_NT_Table" msprop:Generator_RowDeletingName="MMTB_NT_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_NT_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_NT_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_NT_TableRowDeleted" msprop:Generator_RowClassName="MMTB_NT_TableRow" msprop:Generator_UserTableName="MMTB_NT_Table" msprop:Generator_RowEvArgName="MMTB_NT_TableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ConfirmDate" msprop:Generator_ColumnVarNameInTable="columnConfirmDate" msprop:Generator_ColumnPropNameInRow="ConfirmDate" msprop:Generator_ColumnPropNameInTable="ConfirmDateColumn" msprop:Generator_UserColumnName="ConfirmDate" type="xs:dateTime" />
@@ -333,7 +333,7 @@ WHERE        (M0005_ListMMTBNoUsed.DocNo = @DocNo)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MMTB_TL_Table" msprop:Generator_TableClassName="MMTB_TL_TableDataTable" msprop:Generator_TableVarName="tableMMTB_TL_Table" msprop:Generator_TablePropName="MMTB_TL_Table" msprop:Generator_RowDeletingName="MMTB_TL_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_TL_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_TL_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_TL_TableRowDeleted" msprop:Generator_UserTableName="MMTB_TL_Table" msprop:Generator_RowChangedName="MMTB_TL_TableRowChanged" msprop:Generator_RowEvArgName="MMTB_TL_TableRowChangeEvent" msprop:Generator_RowClassName="MMTB_TL_TableRow">
+        <xs:element name="MMTB_TL_Table" msprop:Generator_TableClassName="MMTB_TL_TableDataTable" msprop:Generator_TableVarName="tableMMTB_TL_Table" msprop:Generator_RowChangedName="MMTB_TL_TableRowChanged" msprop:Generator_TablePropName="MMTB_TL_Table" msprop:Generator_RowDeletingName="MMTB_TL_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_TL_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_TL_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_TL_TableRowDeleted" msprop:Generator_RowClassName="MMTB_TL_TableRow" msprop:Generator_UserTableName="MMTB_TL_Table" msprop:Generator_RowEvArgName="MMTB_TL_TableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code">
@@ -414,7 +414,7 @@ WHERE        (M0005_ListMMTBNoUsed.DocNo = @DocNo)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MMTB_DD_Table" msprop:Generator_TableClassName="MMTB_DD_TableDataTable" msprop:Generator_TableVarName="tableMMTB_DD_Table" msprop:Generator_RowChangedName="MMTB_DD_TableRowChanged" msprop:Generator_TablePropName="MMTB_DD_Table" msprop:Generator_RowDeletingName="MMTB_DD_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_DD_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_DD_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_DD_TableRowDeleted" msprop:Generator_RowClassName="MMTB_DD_TableRow" msprop:Generator_UserTableName="MMTB_DD_Table" msprop:Generator_RowEvArgName="MMTB_DD_TableRowChangeEvent">
+        <xs:element name="MMTB_DD_Table" msprop:Generator_TableClassName="MMTB_DD_TableDataTable" msprop:Generator_TableVarName="tableMMTB_DD_Table" msprop:Generator_TablePropName="MMTB_DD_Table" msprop:Generator_RowDeletingName="MMTB_DD_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_DD_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_DD_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_DD_TableRowDeleted" msprop:Generator_UserTableName="MMTB_DD_Table" msprop:Generator_RowChangedName="MMTB_DD_TableRowChanged" msprop:Generator_RowEvArgName="MMTB_DD_TableRowChangeEvent" msprop:Generator_RowClassName="MMTB_DD_TableRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code">
@@ -519,7 +519,7 @@ WHERE        (M0005_ListMMTBNoUsed.DocNo = @DocNo)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MMTB_NoUsed_Table" msprop:Generator_TableClassName="MMTB_NoUsed_TableDataTable" msprop:Generator_TableVarName="tableMMTB_NoUsed_Table" msprop:Generator_RowChangedName="MMTB_NoUsed_TableRowChanged" msprop:Generator_TablePropName="MMTB_NoUsed_Table" msprop:Generator_RowDeletingName="MMTB_NoUsed_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_NoUsed_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_NoUsed_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_NoUsed_TableRowDeleted" msprop:Generator_RowClassName="MMTB_NoUsed_TableRow" msprop:Generator_UserTableName="MMTB_NoUsed_Table" msprop:Generator_RowEvArgName="MMTB_NoUsed_TableRowChangeEvent">
+        <xs:element name="MMTB_NoUsed_Table" msprop:Generator_TableClassName="MMTB_NoUsed_TableDataTable" msprop:Generator_TableVarName="tableMMTB_NoUsed_Table" msprop:Generator_TablePropName="MMTB_NoUsed_Table" msprop:Generator_RowDeletingName="MMTB_NoUsed_TableRowDeleting" msprop:Generator_RowChangingName="MMTB_NoUsed_TableRowChanging" msprop:Generator_RowEvHandlerName="MMTB_NoUsed_TableRowChangeEventHandler" msprop:Generator_RowDeletedName="MMTB_NoUsed_TableRowDeleted" msprop:Generator_UserTableName="MMTB_NoUsed_Table" msprop:Generator_RowChangedName="MMTB_NoUsed_TableRowChanged" msprop:Generator_RowEvArgName="MMTB_NoUsed_TableRowChangeEvent" msprop:Generator_RowClassName="MMTB_NoUsed_TableRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DocNo" msprop:Generator_ColumnVarNameInTable="columnDocNo" msprop:Generator_ColumnPropNameInRow="DocNo" msprop:Generator_ColumnPropNameInTable="DocNoColumn" msprop:Generator_UserColumnName="DocNo">

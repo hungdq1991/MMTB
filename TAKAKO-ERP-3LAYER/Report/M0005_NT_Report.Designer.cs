@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER.Report
+﻿namespace MMTB.Report
 {
     partial class M0005_NT_Report
     {
@@ -62,7 +62,7 @@
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel13 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
-            this.mmtB_DataSet1 = new TAKAKO_ERP_3LAYER.MMTB_DataSet();
+            this.mmtB_DataSet1 = new MMTB.MMTB_DataSet();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.xrLine114 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine113 = new DevExpress.XtraReports.UI.XRLine();

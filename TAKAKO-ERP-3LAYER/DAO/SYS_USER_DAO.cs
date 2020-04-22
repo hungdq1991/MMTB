@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TAKAKO_ERP_3LAYER.DAO
+namespace MMTB.DAO
 {
     public class SYS_USER_DAO
     {

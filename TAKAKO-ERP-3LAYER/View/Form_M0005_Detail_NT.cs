@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
-using TAKAKO_ERP_3LAYER.DAO;
-using TAKAKO_ERP_3LAYER.DAL;
-using TAKAKO_ERP_3LAYER.Report;
+using MMTB.DAO;
+using MMTB.DAL;
+using MMTB.Report;
 using DevExpress.XtraReports.UI;
 
-namespace TAKAKO_ERP_3LAYER.View
+namespace MMTB.View
 {
     public partial class Form_M0005_Detail_NT : DevExpress.XtraBars.Ribbon.RibbonForm
     {

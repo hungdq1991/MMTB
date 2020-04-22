@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TAKAKO_ERP_3LAYER.View;
+using MMTB.View;
 
-namespace TAKAKO_ERP_3LAYER
+namespace MMTB
 {
     public partial class Form_Flash : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER.View
+﻿namespace MMTB.View
 {
     partial class Form_Menu
     {
@@ -253,9 +253,10 @@
             // 
             this.bbiNoUsed.Caption = "MMTB \r\nkhông sử dụng";
             this.bbiNoUsed.Id = 22;
-            this.bbiNoUsed.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.bbiNoUsed.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiNoUsed.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNoUsed.ImageOptions.Image")));
+            this.bbiNoUsed.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNoUsed.ImageOptions.LargeImage")));
             this.bbiNoUsed.Name = "bbiNoUsed";
+            this.bbiNoUsed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNoUsed_ItemClick);
             // 
             // mainRibbonPage
             // 

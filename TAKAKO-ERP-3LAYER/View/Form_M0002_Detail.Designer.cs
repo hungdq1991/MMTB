@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER.View
+﻿namespace MMTB.View
 {
     partial class Form_M0002_Detail
     {
@@ -123,9 +123,9 @@
             // 
             this.bbiEdit.Caption = "Save";
             this.bbiEdit.Id = 17;
-            this.bbiEdit.ImageOptions.Image = global::TAKAKO_ERP_3LAYER.Properties.Resources.save_32x32;
+            this.bbiEdit.ImageOptions.Image = global::MMTB.Properties.Resources.save_32x32;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
-            this.bbiEdit.ImageOptions.LargeImage = global::TAKAKO_ERP_3LAYER.Properties.Resources.save_32x32;
+            this.bbiEdit.ImageOptions.LargeImage = global::MMTB.Properties.Resources.save_32x32;
             this.bbiEdit.Name = "bbiEdit";
             // 
             // bbiDelete
@@ -140,17 +140,17 @@
             // 
             this.bbiRefresh.Caption = "Refresh";
             this.bbiRefresh.Id = 19;
-            this.bbiRefresh.ImageOptions.Image = global::TAKAKO_ERP_3LAYER.Properties.Resources.reset_16x16;
+            this.bbiRefresh.ImageOptions.Image = global::MMTB.Properties.Resources.reset_16x16;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
-            this.bbiRefresh.ImageOptions.LargeImage = global::TAKAKO_ERP_3LAYER.Properties.Resources.reset_32x32;
+            this.bbiRefresh.ImageOptions.LargeImage = global::MMTB.Properties.Resources.reset_32x32;
             this.bbiRefresh.Name = "bbiRefresh";
             // 
             // bbiSave
             // 
             this.bbiSave.Caption = "Lưu";
             this.bbiSave.Id = 22;
-            this.bbiSave.ImageOptions.Image = global::TAKAKO_ERP_3LAYER.Properties.Resources.save_16x161;
-            this.bbiSave.ImageOptions.LargeImage = global::TAKAKO_ERP_3LAYER.Properties.Resources.save_32x321;
+            this.bbiSave.ImageOptions.Image = global::MMTB.Properties.Resources.save_16x161;
+            this.bbiSave.ImageOptions.LargeImage = global::MMTB.Properties.Resources.save_32x321;
             this.bbiSave.Name = "bbiSave";
             this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiSave_ItemClick);
             // 

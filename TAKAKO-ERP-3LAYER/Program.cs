@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using TAKAKO_ERP_3LAYER.View;
+using MMTB.View;
 
-namespace TAKAKO_ERP_3LAYER
+namespace MMTB
 {
     static class Program
     {
@@ -14,7 +14,7 @@ namespace TAKAKO_ERP_3LAYER
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Menu());
+            Application.Run(new Form_Login());
         }
     }
 }

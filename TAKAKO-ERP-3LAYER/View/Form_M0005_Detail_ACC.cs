@@ -3,11 +3,11 @@ using System.Data;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors.Controls;
-using TAKAKO_ERP_3LAYER.DAO;
-using TAKAKO_ERP_3LAYER.DAL;
+using MMTB.DAO;
+using MMTB.DAL;
 using System.Globalization;
 
-namespace TAKAKO_ERP_3LAYER.View
+namespace MMTB.View
 {
     public partial class Form_M0005_Detail_ACC : DevExpress.XtraBars.Ribbon.RibbonForm
     {
@@ -117,7 +117,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Click nút Reset
         private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            Clear_Data();
         }
         //Click nút Close
         private void BbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -184,31 +184,45 @@ namespace TAKAKO_ERP_3LAYER.View
         //Hiển thị các MMTB nghiệm thu chờ bổ sung chứng từ thanh lý ACC
         private void BCheck_Confirm_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-            if (bCheck_Confirm.Checked)
+            try
             {
-                gridControl.DataSource = _DetailTable.AsEnumerable()
-                    .Where(row => row.Field<string>("ACCcode") == null || row.Field<string>("ACCcode") == "").CopyToDataTable();
-                bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
+                if (bCheck_Confirm.Checked)
+                {
+                    gridControl.DataSource = _DetailTable.AsEnumerable()
+                        .Where(row => row.Field<string>("ACCcode") == null || row.Field<string>("ACCcode") == "").CopyToDataTable();
+                    bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
+                }
+                else
+                {
+                    gridControl.DataSource = _DetailTable;
+                    bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
+                }
             }
-            else
+            catch
             {
-                gridControl.DataSource = _DetailTable;
-                bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
+                gridControl.DataSource = "";
             }
         }
         //Hiển thị các MMTB thanh lý chờ bổ sung chứng từ thanh lý ACC
         private void BCheck_Disposal_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-            if (bCheck_Disposal.Checked)
+            try
             {
-                gridControl.DataSource = _DetailTable.AsEnumerable()
-                    .Where(row => (row.Field<string>("ACCDoc_Disposal") == null && row.Field<string>("DocNo_Disposal") != null) || (row.Field<string>("ACCDoc_Disposal") == "" && row.Field<string>("DocNo_Disposal") != null)).CopyToDataTable();
-                bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
+                if (bCheck_Disposal.Checked)
+                {
+                    gridControl.DataSource = _DetailTable.AsEnumerable()
+                        .Where(row => (row.Field<string>("ACCDoc_Disposal") == null && row.Field<string>("DocNo_Disposal") != null) || (row.Field<string>("ACCDoc_Disposal") == "" && row.Field<string>("DocNo_Disposal") != null)).CopyToDataTable();
+                    bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
+                }
+                else
+                {
+                    gridControl.DataSource = _DetailTable;
+                    bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
+                }
             }
-            else
+            catch
             {
-                gridControl.DataSource = _DetailTable;
-                bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
+                gridControl.DataSource = "";
             }
         }
         //Kiểm tra mã ACC bị trùng trên lưới
@@ -218,9 +232,13 @@ namespace TAKAKO_ERP_3LAYER.View
                 if (rows != gridView.FocusedRowHandle)
                 {
                     string _rowCodeValue = "";
-                    _rowCodeValue = (string)gridView.GetRowCellValue(rows, gridView.Columns[column]); ;
-                    if (Equals(_value, _rowCodeValue))
-                        return true;
+                    string _rowFocusValue = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns[column]));
+                    if (!String.IsNullOrEmpty(_rowFocusValue))
+                    {
+                        _rowCodeValue = (string)gridView.GetRowCellValue(rows, gridView.Columns[column]);
+                        if (Equals(_value, _rowCodeValue))
+                            return true;
+                    }
                 }
             return false;
         }

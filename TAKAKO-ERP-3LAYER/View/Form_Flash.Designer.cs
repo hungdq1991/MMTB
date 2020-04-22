@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER
+﻿namespace MMTB
 {
     partial class Form_Flash
     {
@@ -60,7 +60,7 @@
             // 
             // panel_Detail
             // 
-            this.panel_Detail.BackgroundImage = global::TAKAKO_ERP_3LAYER.Properties.Resources.Background_Takako;
+            this.panel_Detail.BackgroundImage = global::MMTB.Properties.Resources.Background_Takako;
             this.panel_Detail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel_Detail.Controls.Add(this.label3);
             this.panel_Detail.Controls.Add(this.label2);

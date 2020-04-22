@@ -5,7 +5,7 @@ using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 using DevExpress;
 
-namespace TAKAKO_ERP_3LAYER.Report
+namespace MMTB.Report
 {
     public partial class M0005_TL_Report : DevExpress.XtraReports.UI.XtraReport
     {

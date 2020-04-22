@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER.Report
+﻿namespace MMTB.Report
 {
     partial class M0005_DD_Report
     {
@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(M0005_DD_Report));
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrLabel22 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel21 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel38 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine19 = new DevExpress.XtraReports.UI.XRLine();
@@ -57,7 +59,7 @@
             this.xrLabel15 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel14 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel13 = new DevExpress.XtraReports.UI.XRLabel();
-            this.mmtB_DataSet1 = new TAKAKO_ERP_3LAYER.MMTB_DataSet();
+            this.mmtB_DataSet1 = new MMTB.MMTB_DataSet();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel26 = new DevExpress.XtraReports.UI.XRLabel();
@@ -135,12 +137,13 @@
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 32.14391F;
+            this.BottomMargin.HeightF = 32F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel22,
             this.xrLabel21,
             this.xrLabel38,
             this.xrLine19,
@@ -168,6 +171,24 @@
             this.xrLabel13});
             this.Detail.HeightF = 45.26091F;
             this.Detail.Name = "Detail";
+            // 
+            // xrLabel22
+            // 
+            this.xrLabel22.AutoWidth = true;
+            this.xrLabel22.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumRecordNumber()")});
+            this.xrLabel22.Font = new System.Drawing.Font("Arial", 8F);
+            this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(8.999984F, 0F);
+            this.xrLabel22.Multiline = true;
+            this.xrLabel22.Name = "xrLabel22";
+            this.xrLabel22.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel22.SizeF = new System.Drawing.SizeF(30F, 42.73914F);
+            this.xrLabel22.StylePriority.UseFont = false;
+            this.xrLabel22.StylePriority.UseTextAlignment = false;
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Group;
+            this.xrLabel22.Summary = xrSummary1;
+            this.xrLabel22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrLabel22.TextFormatString = "{0:#}";
             // 
             // xrLabel21
             // 
@@ -1161,7 +1182,7 @@
             this.GroupHeader1});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.mmtB_DataSet1});
-            this.DataMember = "MMTB_TL_Table";
+            this.DataMember = "MMTB_DD_Table";
             this.DataSource = this.mmtB_DataSet1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Landscape = true;
@@ -1274,5 +1295,6 @@
         private DevExpress.XtraReports.UI.XRLine xrLine49;
         private DevExpress.XtraReports.UI.ReportHeaderBand ReportHeader;
         private DevExpress.XtraReports.UI.XRLine xrLine13;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel22;
     }
 }

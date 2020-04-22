@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER.View
+﻿namespace MMTB.View
 {
     partial class Form_M0006_Detail_P
     {

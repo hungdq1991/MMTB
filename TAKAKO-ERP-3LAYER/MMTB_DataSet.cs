@@ -1,4 +1,4 @@
-﻿namespace TAKAKO_ERP_3LAYER
+﻿namespace MMTB
 {
     public partial class MMTB_DataSet
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TAKAKO_ERP_3LAYER
+namespace MMTB
 {
     using System;
     using System.Collections.Generic;
