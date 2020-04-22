@@ -49,9 +49,10 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             ,Column4
                             ,Column5
                         FROM 
-	                        M0014_BatteryMMTB";
+	                        M0014_BatteryMMTB
+                        ORDER BY NameEN, Model";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@DueDateFrom", SqlDbType.Text);
+            sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }

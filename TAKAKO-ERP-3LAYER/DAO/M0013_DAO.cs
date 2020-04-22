@@ -78,9 +78,10 @@ namespace TAKAKO_ERP_3LAYER.DAO
                             AND P.EF_EffDate = D.EF_EffDate
                             WHERE P.S4Future10 = 1) P
                         ON
-                            S.PurCode = P.EF_InvtID";
+                            S.PurCode = P.EF_InvtID
+                        ORDER BY L.NameEN, L.Model";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@DueDateFrom", SqlDbType.Text);
+            sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }

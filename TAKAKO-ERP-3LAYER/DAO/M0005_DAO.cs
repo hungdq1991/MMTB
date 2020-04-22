@@ -507,7 +507,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
 		                        ,case when SupplierName is null then '' else SupplierName end as SupplierName
 		                        ,case when InvNo is null then '' else InvNo end as InvNo
 	                        FROM 
-		                        M0005_ListMMTBDoc2";
+		                        M0005_ListMMTBDoc2
+                            ORDER BY DocNo DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -792,13 +793,13 @@ namespace TAKAKO_ERP_3LAYER.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"	SELECT 
-		                         DISTINCT 
                                  DocNo
 		                        ,DocDate
 		                        ,MoveDate
                                 ,Memo
 	                        FROM 
-		                        M0005_ListMMTBDoc3";
+		                        M0005_ListMMTBDoc3
+                            ORDER BY DocNo DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -1035,7 +1036,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         FROM 
                             M0005_ListMMTBDoc4
                         WHERE 
-                            DocNo = @DocNo";
+                            DocNo = @DocNo
+                        ORDER BY DocNo DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(DocNo);

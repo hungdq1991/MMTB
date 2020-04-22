@@ -48,7 +48,7 @@
             this.bbiStop = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTech = new DevExpress.XtraBars.BarButtonItem();
             this.bbiACC = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiNoUsed = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -85,7 +85,7 @@
             this.bbiStop,
             this.bbiTech,
             this.bbiACC,
-            this.barButtonItem1});
+            this.bbiNoUsed});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
             this.mainRibbonControl.MaxItemId = 23;
             this.mainRibbonControl.Name = "mainRibbonControl";
@@ -249,13 +249,13 @@
             this.bbiACC.Name = "bbiACC";
             this.bbiACC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiACC_ItemClick);
             // 
-            // barButtonItem1
+            // bbiNoUsed
             // 
-            this.barButtonItem1.Caption = "MMTB \r\nkhông sử dụng";
-            this.barButtonItem1.Id = 22;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.bbiNoUsed.Caption = "MMTB \r\nkhông sử dụng";
+            this.bbiNoUsed.Id = 22;
+            this.bbiNoUsed.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.bbiNoUsed.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.bbiNoUsed.Name = "bbiNoUsed";
             // 
             // mainRibbonPage
             // 
@@ -298,7 +298,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiConfirm);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiMoving);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNoUsed);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiACC);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Quản lý MMTB";
@@ -331,7 +331,7 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.bbiDisposal);
             this.ribbonPageGroup4.ItemLinks.Add(this.bbiMoving);
             this.ribbonPageGroup4.ItemLinks.Add(this.bbiTech);
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbiNoUsed);
             this.ribbonPageGroup4.ItemLinks.Add(this.bbiACC);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Quản lý MMTB";
@@ -376,7 +376,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiStop;
         private DevExpress.XtraBars.BarButtonItem bbiTech;
         private DevExpress.XtraBars.BarButtonItem bbiACC;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem bbiNoUsed;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
