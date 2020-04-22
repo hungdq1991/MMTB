@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using TAKAKO_ERP_3LAYER.DAO;
 using TAKAKO_ERP_3LAYER.DAL;
 using System.Collections.Generic;
+using DevExpress.XtraEditors;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -29,12 +30,14 @@ namespace TAKAKO_ERP_3LAYER.View
         public System_DAL _systemDAL = new System_DAL();
 
         //Tạo mới form theo kiểu True/False
-        public Form_M0002_Detail(Boolean _isNewValue)
+        public Form_M0002_Detail(Boolean _isNewValue, System_DAL systemDAL)
         {
             //
             InitializeComponent();
             //
             IsNewValue = _isNewValue;
+            //
+            _systemDAL = systemDAL;
         }
 
         //Update, delete _ form theo kiểu dữ liệu
@@ -258,33 +261,49 @@ namespace TAKAKO_ERP_3LAYER.View
             string curr_ClassifyDesc = txt_ClassifyDesc.Text.Trim();
             DateTime curr_ApplyDate = DateTime.Parse(date_ApplyDate.Text.Trim());
             int curr_InActive = cbx_InActive.SelectedIndex;
-            //Trường hợp thêm mới
-            if (IsNewValue)
+
+            if (CheckError() == true)
             {
-                Message = "Bạn muốn thêm mới Tên: " + sLook_NameEN.Text.ToString() + "?";
-                if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-                    , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+                //Trường hợp thêm mới
+                if (IsNewValue)
                 {
-                    if (CheckError() == true)
+                    Message = "Bạn muốn thêm mới Tên: " + curr_NameEN + "?";
+                    if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
+                        , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                     {
-                        if (M0002_DAO.Insert(curr_NameEN, curr_NameVN, curr_NameJP, curr_Group1, curr_Group2, curr_ClassifyID, curr_ClassifyDesc, curr_ApplyDate, curr_InActive, _systemDAL.userName))
+                        if (M0002_DAO.Insert(curr_NameEN
+                                                , curr_NameVN
+                                                , curr_NameJP
+                                                , curr_Group1
+                                                , curr_Group2
+                                                , curr_ClassifyID
+                                                , curr_ClassifyDesc
+                                                , curr_ApplyDate
+                                                , curr_InActive
+                                                , _systemDAL.userName))
                         {
-                            Message = "Lưu thành công Tên: \"" + sLook_NameEN.Text.ToString() + "\"!";
+                            Message = "Lưu thành công Tên: \"" + curr_NameEN + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
-            }
-            //Trường hợp sửa
-            else
-            {
-                Message = "Bạn muốn cập nhật Tên: " + sLook_NameEN.Text.ToString() + "?";
-                if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-                    , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+                //Trường hợp sửa
+                else
                 {
-                    if (CheckError() == true)
+                    Message = "Bạn muốn cập nhật Tên: " + curr_NameEN + "?";
+                    if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
+                        , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                     {
-                        if (M0002_DAO.Update(curr_NameEN, curr_NameVN, curr_NameJP, curr_Group1, curr_Group2, curr_ClassifyID, curr_ClassifyDesc, curr_ApplyDate, curr_InActive, _systemDAL.userName))
+                        if (M0002_DAO.Update(curr_NameEN
+                                                , curr_NameVN
+                                                , curr_NameJP
+                                                , curr_Group1
+                                                , curr_Group2
+                                                , curr_ClassifyID
+                                                , curr_ClassifyDesc
+                                                , curr_ApplyDate
+                                                , curr_InActive
+                                                , _systemDAL.userName))
                         {
                             Message = "Cập nhật thành công Tên: \"" + sLook_NameEN.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -326,19 +345,19 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             if (String.IsNullOrEmpty(sLook_NameEN.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Anh)\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Anh)\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sLook_NameEN.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(txt_NameVN.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Việt)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Việt)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_NameVN.Focus();
                 return false;
             }
             if (String.IsNullOrEmpty(txt_NameJP.Text.Trim()))
             {
-                MessageBox.Show("Hãy nhập \"Tên (t.Nhật)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hãy nhập \"Tên (Tiếng Nhật)\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_NameJP.Focus();
                 return false;
             }
@@ -371,6 +390,27 @@ namespace TAKAKO_ERP_3LAYER.View
                 }
             }
             return true;
+        }
+
+        private void sLook_NameEN_CloseUp(object sender, DevExpress.XtraEditors.Controls.CloseUpEventArgs e)
+        {
+            if (e.CloseMode == PopupCloseMode.Normal)
+            {
+                string _nameVN = "";
+                string _nameJP = "";
+
+                //Get index
+                SearchLookUpEdit editor = sender as SearchLookUpEdit;
+                int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
+
+                //Set value to variables
+                _nameVN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameVN"));
+                _nameJP = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameJP"));
+
+                //Set value to column NameVN, NameJP
+                txt_NameVN.EditValue = _nameVN;
+                txt_NameJP.EditValue = _nameJP;
+            }
         }
     }
 }

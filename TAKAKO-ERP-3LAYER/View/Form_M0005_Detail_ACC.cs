@@ -21,9 +21,10 @@ namespace TAKAKO_ERP_3LAYER.View
         #endregion
 
         //Khởi tạo form
-        public Form_M0005_Detail_ACC()
+        public Form_M0005_Detail_ACC(System_DAL systemDAL)
         {
             InitializeComponent();
+            _systemDAL = systemDAL;
         }
 
         //Update, delete _ form theo kiểu dữ liệu
@@ -41,6 +42,8 @@ namespace TAKAKO_ERP_3LAYER.View
 
             Setting_Init_Control();
             Setting_Init_Value();
+
+            bsiUser.Caption = _systemDAL.userName;
 
             GetInfo_gridView();
         }

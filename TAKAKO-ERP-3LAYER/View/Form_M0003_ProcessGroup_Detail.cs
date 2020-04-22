@@ -27,10 +27,12 @@ namespace TAKAKO_ERP_3LAYER.View
         public System_DAL _systemDAL = new System_DAL();
 
         //Tạo mới form theo kiểu True/False
-        public Form_M0003_ProcessCode_Detail(Boolean _isNewValue)
+        public Form_M0003_ProcessCode_Detail(Boolean _isNewValue, System_DAL systemDAL)
         {
             InitializeComponent();
             IsNewValue = _isNewValue;
+            //
+            _systemDAL = systemDAL;
         }
 
         //Update, delete _ form theo kiểu dữ liệu
@@ -202,14 +204,14 @@ namespace TAKAKO_ERP_3LAYER.View
                     if (CheckError() == true)
                     {
                         if (M0003_ProcessCode_DAO.Insert(curr_ProcessCode
-                                                        , curr_ProcessEN
-                                                        , curr_ProcessVN
-                                                        , curr_ProcessJP
-                                                        , curr_Point
-                                                        , curr_ApplyDate
-                                                        , curr_InActive
-                                                        , curr_Memo
-                                                        , _systemDAL.userName))
+                                                        ,curr_ProcessEN
+                                                        ,curr_ProcessVN
+                                                        ,curr_ProcessJP
+                                                        ,curr_Point
+                                                        ,curr_ApplyDate
+                                                        ,curr_InActive
+                                                        ,curr_Memo
+                                                        ,_systemDAL.userName))
                         {
                             Message = "Lưu thành công Công đoạn: \"" + curr_ProcessCode + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -227,13 +229,13 @@ namespace TAKAKO_ERP_3LAYER.View
                     if (CheckError() == true)
                     {
                         if (M0003_ProcessCode_DAO.Update(curr_ProcessCode
-                                                        , curr_ProcessEN
-                                                        , curr_ProcessVN
-                                                        , curr_ProcessJP
-                                                        , curr_ApplyDate
-                                                        , curr_InActive
-                                                        , curr_Memo
-                                                        , _systemDAL.userName))
+                                                        ,curr_ProcessEN
+                                                        ,curr_ProcessVN
+                                                        ,curr_ProcessJP
+                                                        ,curr_ApplyDate
+                                                        ,curr_InActive
+                                                        ,curr_Memo
+                                                        ,_systemDAL.userName))
                         {
                             {
                                 Message = "Cập nhật thành công Công đoạn: \"" + curr_ProcessCode + "\"!";

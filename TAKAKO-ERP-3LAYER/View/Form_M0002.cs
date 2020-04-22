@@ -17,11 +17,6 @@ namespace TAKAKO_ERP_3LAYER.View
         //
         public System_DAL _systemDAL = new System_DAL();
 
-        public Form_M0002()
-        {
-            InitializeComponent();
-        }
-
         public Form_M0002(System_DAL systemDAL)
         {
             InitializeComponent();
@@ -77,7 +72,7 @@ namespace TAKAKO_ERP_3LAYER.View
         }
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0002_Detail formDetail = new Form_M0002_Detail(AddNew))
+            using (Form_M0002_Detail formDetail = new Form_M0002_Detail(AddNew, _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;

@@ -31,7 +31,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiGroup_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0002 formDetail = new Form_M0002())
+            using (Form_M0002 formDetail = new Form_M0002(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -41,7 +41,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiProcess_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_ProcessCode formDetail = new Form_M0003_ProcessCode())
+            using (Form_M0003_ProcessCode formDetail = new Form_M0003_ProcessCode(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -51,7 +51,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiLine_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_Line formDetail = new Form_M0003_Line())
+            using (Form_M0003_Line formDetail = new Form_M0003_Line(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -61,7 +61,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiMakerModel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0004 formDetail = new Form_M0004())
+            using (Form_M0004 formDetail = new Form_M0004(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -71,7 +71,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiPartList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0012 formDetail = new Form_M0012())
+            using (Form_M0012 formDetail = new Form_M0012(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -81,7 +81,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0005 formDetail = new Form_M0005())
+            using (Form_M0005 formDetail = new Form_M0005(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -91,7 +91,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiConfirm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT())
+            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -101,7 +101,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiDisposal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0005_Detail_TL formDetail = new Form_M0005_Detail_TL())
+            using (Form_M0005_Detail_TL formDetail = new Form_M0005_Detail_TL(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -111,7 +111,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiMoving_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0005_Detail_DD formDetail = new Form_M0005_Detail_DD())
+            using (Form_M0005_Detail_DD formDetail = new Form_M0005_Detail_DD(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -126,7 +126,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiPart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0015_Master formDetail = new Form_M0015_Master())
+            using (Form_M0015_Master formDetail = new Form_M0015_Master(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -136,7 +136,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiBattery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0014 formDetail = new Form_M0014())
+            using (Form_M0014 formDetail = new Form_M0014(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -146,7 +146,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiOil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0013 formDetail = new Form_M0013())
+            using (Form_M0013 formDetail = new Form_M0013(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -161,7 +161,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiTech_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0006 formDetail = new Form_M0006())
+            using (Form_M0006 formDetail = new Form_M0006(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -171,7 +171,7 @@ namespace TAKAKO_ERP_3LAYER.View
 
         private void BbiACC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0005_Detail_ACC formDetail = new Form_M0005_Detail_ACC())
+            using (Form_M0005_Detail_ACC formDetail = new Form_M0005_Detail_ACC(_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;

@@ -51,6 +51,7 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -259,9 +260,10 @@
             this.bbiNew,
             this.bbiEdit,
             this.bbiDelete,
-            this.bbiRefresh});
+            this.bbiRefresh,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 20;
+            this.ribbonControl.MaxItemId = 21;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -333,10 +335,18 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(771, 22);
+            // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 20;
+            this.bsiUser.Name = "bsiUser";
             // 
             // Form_M0003_Process
             // 
@@ -385,5 +395,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ProcessCode;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_InActive;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

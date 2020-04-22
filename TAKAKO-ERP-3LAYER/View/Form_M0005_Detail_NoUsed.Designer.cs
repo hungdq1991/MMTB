@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0005_Detail_NoUsed));
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring3 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule5 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring4 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule6 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring1 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring2 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.gridCol_ProDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -121,6 +121,7 @@
             this.gridCol_Model1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -188,6 +189,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -208,15 +210,16 @@
             this.barButtonItem1,
             this.bbi_PopUp_DeleteRow,
             this.bbi_PopUp_AddNewRow,
-            this.bbiReport});
+            this.bbiReport,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 31;
+            this.ribbonControl.MaxItemId = 32;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(848, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(947, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -281,7 +284,7 @@
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition2;
+            this.workspaceManager1.TransitionType = pushTransition1;
             // 
             // barSubItem2
             // 
@@ -346,7 +349,7 @@
             // 
             // bbiReport
             // 
-            this.bbiReport.Caption = "Xuất BB không SD";
+            this.bbiReport.Caption = "Xuất biên bản không sử dụng";
             this.bbiReport.Id = 30;
             this.bbiReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.Image")));
             this.bbiReport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.LargeImage")));
@@ -386,15 +389,16 @@
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiReport);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Báo cáo";
             // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(848, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(947, 22);
             // 
             // panelControl1
             // 
@@ -418,7 +422,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 159);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(848, 73);
+            this.panelControl1.Size = new System.Drawing.Size(947, 73);
             this.panelControl1.TabIndex = 9;
             // 
             // sLook_ControlDept
@@ -582,7 +586,7 @@
             this.gridSplitContainer1.Location = new System.Drawing.Point(0, 232);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(848, 345);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(947, 345);
             this.gridSplitContainer1.TabIndex = 12;
             // 
             // gridControl
@@ -611,7 +615,7 @@
             this.repo_sLookUp_Code,
             this.repo_sLookUp_Plan,
             this.repo_sLookUp_Reason});
-            this.gridControl.Size = new System.Drawing.Size(848, 345);
+            this.gridControl.Size = new System.Drawing.Size(947, 345);
             this.gridControl.TabIndex = 8;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -639,22 +643,22 @@
             this.gridCol_Status,
             this.gridCol_Plan,
             this.gridCol_Solve});
-            gridFormatRule4.ApplyToRow = true;
-            gridFormatRule4.Name = "Disposal";
-            gridFormatRule4.Rule = formatConditionRuleDateOccuring3;
-            gridFormatRule5.Name = "Format0";
-            gridFormatRule5.Rule = formatConditionRuleDateOccuring4;
-            gridFormatRule5.Tag = new System.DateTime(2020, 3, 19, 14, 3, 58, 0);
-            gridFormatRule6.Column = this.gridCol_ProDate;
-            gridFormatRule6.ColumnApplyTo = this.gridCol_ProDate;
-            gridFormatRule6.Name = "ProDate";
-            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.White;
-            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue2.Expression = "[ProDate] Is Null";
-            gridFormatRule6.Rule = formatConditionRuleValue2;
-            this.gridView.FormatRules.Add(gridFormatRule4);
-            this.gridView.FormatRules.Add(gridFormatRule5);
-            this.gridView.FormatRules.Add(gridFormatRule6);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Name = "Disposal";
+            gridFormatRule1.Rule = formatConditionRuleDateOccuring1;
+            gridFormatRule2.Name = "Format0";
+            gridFormatRule2.Rule = formatConditionRuleDateOccuring2;
+            gridFormatRule2.Tag = new System.DateTime(2020, 3, 19, 14, 3, 58, 0);
+            gridFormatRule3.Column = this.gridCol_ProDate;
+            gridFormatRule3.ColumnApplyTo = this.gridCol_ProDate;
+            gridFormatRule3.Name = "ProDate";
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.White;
+            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue1.Expression = "[ProDate] Is Null";
+            gridFormatRule3.Rule = formatConditionRuleValue1;
+            this.gridView.FormatRules.Add(gridFormatRule1);
+            this.gridView.FormatRules.Add(gridFormatRule2);
+            this.gridView.FormatRules.Add(gridFormatRule3);
             this.gridView.GridControl = this.gridControl;
             this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
@@ -1213,11 +1217,18 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 31;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // Form_M0005_Detail_NoUsed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 599);
+            this.ClientSize = new System.Drawing.Size(947, 599);
             this.Controls.Add(this.gridSplitContainer1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.ribbonStatusBar);
@@ -1356,5 +1367,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_Reason;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
         private DevExpress.XtraBars.BarButtonItem bbiNew;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

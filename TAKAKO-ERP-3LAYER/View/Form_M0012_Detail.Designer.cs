@@ -138,7 +138,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(790, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(792, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -247,7 +247,7 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(790, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(792, 22);
             // 
             // gridControl
             // 
@@ -267,7 +267,7 @@
             this.repo_sLookUp_ItemCode,
             this.repo_TextEdit_Code,
             this.repo_TextEdit_PurCode});
-            this.gridControl.Size = new System.Drawing.Size(790, 418);
+            this.gridControl.Size = new System.Drawing.Size(792, 418);
             this.gridControl.TabIndex = 5;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -884,7 +884,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 599);
+            this.ClientSize = new System.Drawing.Size(792, 599);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);

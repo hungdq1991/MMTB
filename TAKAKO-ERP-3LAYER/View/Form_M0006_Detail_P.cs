@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -29,7 +30,7 @@ namespace TAKAKO_ERP_3LAYER.View
         public int Level;
         public int SizeL;
         public int SizeW;
-        public int SizeH;
+        public int SizeH; 
         public string Chuck3Jaw;
         public string Collet1;
         public string Collet2;
@@ -58,24 +59,30 @@ namespace TAKAKO_ERP_3LAYER.View
         public Boolean inActive_P;
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = false;
+        //
+        public System_DAL _systemDAL = new System_DAL();
         #endregion
         public Form_M0006_Detail_P()
         {
             InitializeComponent();
         }
         //Tạo mới form theo kiểu True/False
-        public Form_M0006_Detail_P(Boolean _isNewValue)
+        public Form_M0006_Detail_P(Boolean _isNewValue, System_DAL systemDAL)
         {
             InitializeComponent();
             IsNewValue = _isNewValue;
+            //
+            _systemDAL = systemDAL;
         }
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0006_Detail_P(DataRow _mainDataRow)
+        public Form_M0006_Detail_P(DataRow _mainDataRow, System_DAL systemDAL)
         {
             //
             InitializeComponent();
             //
             dataRow = _mainDataRow;
+            //
+            _systemDAL = systemDAL;
         }
         //Load form M0006_Detail
         private void Form_M0006_Detail_P_Load(object sender, EventArgs e)
@@ -530,7 +537,7 @@ namespace TAKAKO_ERP_3LAYER.View
                             if (M0006_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
                                     curr_NameJP, curr_Maker, curr_Model, curr_Level, curr_SizeL, curr_SizeW,
                                     curr_SizeH, curr_Chuck3Jaw, curr_Collet1, curr_Collet2, curr_Collet3,
-                                    curr_Voltage, curr_OperatingSys, curr_Wattage, curr_InActive, "IT"))
+                                    curr_Voltage, curr_OperatingSys, curr_Wattage, curr_InActive, _systemDAL.userName))
                             {
                                 Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
                             }
@@ -539,7 +546,7 @@ namespace TAKAKO_ERP_3LAYER.View
                             {
                                 if (M0006_MayTien_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
                                     curr_NameJP, curr_Maker, curr_Model, curr_Turret, curr_Horizontal, curr_Tailstock,
-                                    curr_AxisC, curr_InActive_T, "IT"))
+                                    curr_AxisC, curr_InActive_T, _systemDAL.userName))
                                 {
                                     Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
                                 }
@@ -550,7 +557,7 @@ namespace TAKAKO_ERP_3LAYER.View
                                 if (M0006_MayPhay_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
                                     curr_NameJP, curr_Maker, curr_Model, curr_TableL, curr_TableW, curr_Speed,
                                     curr_BTSize, curr_TipQty, curr_WaterLine, curr_AxisXYZ, curr_AxisA, curr_AxisB,
-                                    curr_AxisC_P, curr_InActive_P, "IT"))
+                                    curr_AxisC_P, curr_InActive_P, _systemDAL.userName))
                                 {
                                     Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
                                 }
@@ -578,11 +585,11 @@ namespace TAKAKO_ERP_3LAYER.View
                             //Cập nhật thông tin chung
                             if (CheckError_MMTB() == true)
                             {
-                                M0006_DAO.Update(curr_Code, "IT");
+                                M0006_DAO.Update(curr_Code, _systemDAL.userName);
                                 if (M0006_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
                                     curr_NameJP, curr_Maker, curr_Model, curr_Level, curr_SizeL, curr_SizeW,
                                     curr_SizeH, curr_Chuck3Jaw, curr_Collet1, curr_Collet2, curr_Collet3,
-                                    curr_Voltage, curr_OperatingSys, curr_Wattage, curr_InActive, "IT"))
+                                    curr_Voltage, curr_OperatingSys, curr_Wattage, curr_InActive, _systemDAL.userName))
                                 {
                                     MessageResult = "Đã cập nhật Thông tin chung:      " + sLook_Code.Text.ToString() + " !";
                                 }
@@ -596,10 +603,10 @@ namespace TAKAKO_ERP_3LAYER.View
                             {
                                 if (CheckError_MMTB_T() == true)
                                 {
-                                    M0006_MayTien_DAO.Update(curr_Code, "IT");
+                                    M0006_MayTien_DAO.Update(curr_Code, _systemDAL.userName);
                                     if ((M0006_MayTien_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
                                     curr_NameJP, curr_Maker, curr_Model, curr_Turret, curr_Horizontal, curr_Tailstock,
-                                    curr_AxisC, curr_InActive, "IT")))
+                                    curr_AxisC, curr_InActive, _systemDAL.userName)))
                                     {
                                         MessageResult = MessageResult + "\n" + "Đã cập nhật Thông tin Máy tiện:  " + sLook_Code.Text.ToString() + " !";
                                     }
@@ -614,11 +621,11 @@ namespace TAKAKO_ERP_3LAYER.View
                             {
                                 if (CheckError_MMTB_P() == true)
                                 {
-                                    M0006_MayPhay_DAO.Update(curr_Code, "IT");
+                                    M0006_MayPhay_DAO.Update(curr_Code, _systemDAL.userName);
                                     if ((M0006_MayPhay_DAO.Insert(curr_Code, curr_ACCCode, curr_NameEN, curr_NameVN,
                                     curr_NameJP, curr_Maker, curr_Model, curr_TableL, curr_TableW, curr_Speed,
                                     curr_BTSize, curr_TipQty, curr_WaterLine, curr_AxisXYZ, curr_AxisA, curr_AxisB,
-                                    curr_AxisC_P, curr_InActive_P, "IT")))
+                                    curr_AxisC_P, curr_InActive_P, _systemDAL.userName)))
                                     {
                                         MessageResult = MessageResult + "\n" + "Đã cập nhật Thông tin Máy phay: " + sLook_Code.Text.ToString() + " !";
                                     }

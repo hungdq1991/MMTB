@@ -7,6 +7,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 using TAKAKO_ERP_3LAYER.Report;
 using DevExpress.XtraReports.UI;
 
@@ -24,11 +25,13 @@ namespace TAKAKO_ERP_3LAYER.View
         public M0005_DAO M0005_DAO;
         public String DocNo = "";
         public Boolean InitValue = true;
+        public System_DAL _systemDAL = new System_DAL();
         #endregion
         //Khởi tạo form
-        public Form_M0005_Detail_DD()
+        public Form_M0005_Detail_DD(System_DAL systemDAL)
         {
             InitializeComponent();
+            _systemDAL = systemDAL;
         }
         //Update, delete _ form theo kiểu dữ liệu
         public Form_M0005_Detail_DD(String _docNo)
@@ -48,6 +51,8 @@ namespace TAKAKO_ERP_3LAYER.View
 
             Setting_Init_Control();
             Setting_Init_Value();
+
+            bsiUser.Caption = _systemDAL.userName;
 
             advBandedGridView1.AddNewRow();
         }

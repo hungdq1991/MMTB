@@ -35,6 +35,8 @@
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
+            this.M0001_Detail_User = new DevExpress.XtraBars.BarButtonItem();
+            this.bsi_User1 = new DevExpress.XtraBars.BarStaticItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.panel_Detail = new DevExpress.XtraEditors.PanelControl();
@@ -56,8 +58,6 @@
             this.label_NameEN = new DevExpress.XtraEditors.LabelControl();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
-            this.M0001_Detail_User = new DevExpress.XtraBars.BarButtonItem();
-            this.bsi_User1 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panel_Detail)).BeginInit();
             this.panel_Detail.SuspendLayout();
@@ -105,10 +105,10 @@
             // 
             // bbiRefresh
             // 
-            this.bbiRefresh.Caption = "Refresh";
+            this.bbiRefresh.Caption = "Reset";
             this.bbiRefresh.Id = 5;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Reset";
-            this.bbiRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiReset.ImageOptions.SvgImage")));
+            this.bbiRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiRefresh.ImageOptions.SvgImage")));
             this.bbiRefresh.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R));
             this.bbiRefresh.Name = "bbiRefresh";
             this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReset_ItemClick);
@@ -136,6 +136,20 @@
             this.bbiClose.Id = 12;
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
             this.bbiClose.Name = "bbiClose";
+            // 
+            // M0001_Detail_User
+            // 
+            this.M0001_Detail_User.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.M0001_Detail_User.Caption = "barButtonItem1";
+            this.M0001_Detail_User.Id = 14;
+            this.M0001_Detail_User.Name = "M0001_Detail_User";
+            // 
+            // bsi_User1
+            // 
+            this.bsi_User1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsi_User1.Caption = "barStaticItem1";
+            this.bsi_User1.Id = 15;
+            this.bsi_User1.Name = "bsi_User1";
             // 
             // mainRibbonPage
             // 
@@ -362,20 +376,6 @@
             this.bsiUser.Caption = "Username";
             this.bsiUser.Id = 26;
             this.bsiUser.Name = "bsiUser";
-            // 
-            // M0001_Detail_User
-            // 
-            this.M0001_Detail_User.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.M0001_Detail_User.Caption = "barButtonItem1";
-            this.M0001_Detail_User.Id = 14;
-            this.M0001_Detail_User.Name = "M0001_Detail_User";
-            // 
-            // bsi_User1
-            // 
-            this.bsi_User1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsi_User1.Caption = "barStaticItem1";
-            this.bsi_User1.Id = 15;
-            this.bsi_User1.Name = "bsi_User1";
             // 
             // Form_M0001_Detail
             // 

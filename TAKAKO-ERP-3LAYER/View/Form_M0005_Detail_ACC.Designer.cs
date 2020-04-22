@@ -82,6 +82,7 @@
             this.gridCol_Lifetime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_TextEdit_Lifetime = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridCol_StartDeprDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repo_ItemDate_StartDerprDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridCol_EndDeprDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_LineCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_LineName_EN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -95,7 +96,6 @@
             this.repo_sLookUp_NameEN_View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_sLookUp_Nation = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repositoryItemSearchLookUpEdit2View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.repo_ItemDate_StartDerprDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repo_ItemDate_EndDerprDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.repo_sLookUp_LineCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -110,6 +110,7 @@
             this.gridCol_Model1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
@@ -117,12 +118,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Code)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Lifetime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_NameEN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_NameEN_View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Nation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineCode)).BeginInit();
@@ -161,6 +162,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -183,15 +185,16 @@
             this.bbi_PopUp_AddNewRow,
             this.barButtonItem2,
             this.bCheck_Confirm,
-            this.bCheck_Disposal});
+            this.bCheck_Disposal,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 33;
+            this.ribbonControl.MaxItemId = 34;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(848, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(1072, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -362,19 +365,20 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(848, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1072, 22);
             // 
             // gridSplitContainer1
             // 
             this.gridSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridSplitContainer1.Grid = this.gridControl;
-            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 157);
+            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 159);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(848, 420);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(1072, 418);
             this.gridSplitContainer1.TabIndex = 12;
             // 
             // gridControl
@@ -402,7 +406,7 @@
             this.repo_TextEdit_Code,
             this.repo_sLookUp_Code,
             this.repo_TextEdit_Lifetime});
-            this.gridControl.Size = new System.Drawing.Size(848, 420);
+            this.gridControl.Size = new System.Drawing.Size(1072, 418);
             this.gridControl.TabIndex = 8;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -793,6 +797,17 @@
             this.gridCol_StartDeprDate.VisibleIndex = 18;
             this.gridCol_StartDeprDate.Width = 90;
             // 
+            // repo_ItemDate_StartDerprDate
+            // 
+            this.repo_ItemDate_StartDerprDate.AutoHeight = false;
+            this.repo_ItemDate_StartDerprDate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repo_ItemDate_StartDerprDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repo_ItemDate_StartDerprDate.Name = "repo_ItemDate_StartDerprDate";
+            this.repo_ItemDate_StartDerprDate.EditValueChanged += new System.EventHandler(this.Repo_ItemDate_StartDerprDate_EditValueChanged_1);
+            this.repo_ItemDate_StartDerprDate.Leave += new System.EventHandler(this.Repo_ItemDate_StartDerprDate_EditValueChanged_1);
+            // 
             // gridCol_EndDeprDate
             // 
             this.gridCol_EndDeprDate.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -993,17 +1008,6 @@
             this.repositoryItemSearchLookUpEdit2View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.repositoryItemSearchLookUpEdit2View.OptionsView.ShowGroupPanel = false;
             // 
-            // repo_ItemDate_StartDerprDate
-            // 
-            this.repo_ItemDate_StartDerprDate.AutoHeight = false;
-            this.repo_ItemDate_StartDerprDate.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_ItemDate_StartDerprDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_ItemDate_StartDerprDate.Name = "repo_ItemDate_StartDerprDate";
-            this.repo_ItemDate_StartDerprDate.EditValueChanged += new System.EventHandler(this.Repo_ItemDate_StartDerprDate_EditValueChanged_1);
-            this.repo_ItemDate_StartDerprDate.Leave += new System.EventHandler(this.Repo_ItemDate_StartDerprDate_EditValueChanged_1);
-            // 
             // repo_ItemDate_EndDerprDate
             // 
             this.repo_ItemDate_EndDerprDate.AutoHeight = false;
@@ -1115,11 +1119,18 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 33;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // Form_M0005_Detail_ACC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 599);
+            this.ClientSize = new System.Drawing.Size(1072, 599);
             this.Controls.Add(this.gridSplitContainer1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -1135,12 +1146,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Code)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Lifetime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_NameEN)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_NameEN_View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Nation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit2View)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_StartDerprDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_ItemDate_EndDerprDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_LineCode)).EndInit();
@@ -1229,5 +1240,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_InvDate;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_DocNo_Disposal;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_TextEdit_Lifetime;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

@@ -50,6 +50,7 @@
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -69,15 +70,16 @@
             this.bbiNew,
             this.bbiDelete,
             this.bbiRefresh,
-            this.bbiEdit});
+            this.bbiEdit,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 21;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(673, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(671, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -151,10 +153,11 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 487);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(673, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(671, 22);
             // 
             // gridControl
             // 
@@ -166,7 +169,7 @@
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1,
             this.repositoryItemCheckEdit2});
-            this.gridControl.Size = new System.Drawing.Size(673, 328);
+            this.gridControl.Size = new System.Drawing.Size(671, 328);
             this.gridControl.TabIndex = 4;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -214,7 +217,7 @@
             this.gridCol_ProcessNameEN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_ProcessNameEN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_ProcessNameEN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ProcessNameEN.Caption = "Tên (t.Anh)";
+            this.gridCol_ProcessNameEN.Caption = "Tên (Tiếng Anh)";
             this.gridCol_ProcessNameEN.FieldName = "ProcessEN";
             this.gridCol_ProcessNameEN.Name = "gridCol_ProcessNameEN";
             this.gridCol_ProcessNameEN.Visible = true;
@@ -229,7 +232,7 @@
             this.gridCol_ProcessNameVN.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_ProcessNameVN.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_ProcessNameVN.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ProcessNameVN.Caption = "Tên (t.Việt)";
+            this.gridCol_ProcessNameVN.Caption = "Tên (Tiếng Việt)";
             this.gridCol_ProcessNameVN.FieldName = "ProcessVN";
             this.gridCol_ProcessNameVN.Name = "gridCol_ProcessNameVN";
             this.gridCol_ProcessNameVN.Width = 130;
@@ -242,7 +245,7 @@
             this.gridCol_ProcessNameJP.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_ProcessNameJP.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_ProcessNameJP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ProcessNameJP.Caption = "Tên (t.Nhật)";
+            this.gridCol_ProcessNameJP.Caption = "Tên (Tiếng Nhật)";
             this.gridCol_ProcessNameJP.FieldName = "ProcessJP";
             this.gridCol_ProcessNameJP.Name = "gridCol_ProcessNameJP";
             this.gridCol_ProcessNameJP.Width = 130;
@@ -323,11 +326,18 @@
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 21;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // Form_M0003_ProcessCode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 509);
+            this.ClientSize = new System.Drawing.Size(671, 509);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -369,5 +379,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

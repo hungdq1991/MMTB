@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0005_Detail_DD));
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring1 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDateOccuring formatConditionRuleDateOccuring2 = new DevExpress.XtraEditors.FormatConditionRuleDateOccuring();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0005_Detail_DD));
             this.gridCol_OrgLineEN = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -56,9 +56,11 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_DeleteRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_AddNewRow = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiReport = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.sLook_ControlDept = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -131,8 +133,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbiReport = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -196,6 +197,7 @@
             // 
             // ribbonControl
             // 
+            this.ribbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -216,15 +218,16 @@
             this.barButtonItem1,
             this.bbi_PopUp_DeleteRow,
             this.bbi_PopUp_AddNewRow,
-            this.bbiReport});
+            this.bbiReport,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 31;
+            this.ribbonControl.MaxItemId = 32;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(848, 157);
+            this.ribbonControl.Size = new System.Drawing.Size(848, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -349,6 +352,15 @@
             this.bbi_PopUp_AddNewRow.Name = "bbi_PopUp_AddNewRow";
             this.bbi_PopUp_AddNewRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_PopUp_AddNewRow_ItemClick);
             // 
+            // bbiReport
+            // 
+            this.bbiReport.Caption = "Xuất BB di dời";
+            this.bbiReport.Id = 30;
+            this.bbiReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.Image")));
+            this.bbiReport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.LargeImage")));
+            this.bbiReport.Name = "bbiReport";
+            this.bbiReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReport_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -377,9 +389,16 @@
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "Xử lý trên lưới";
             // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiReport);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            // 
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
@@ -405,7 +424,7 @@
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(0, 157);
+            this.panelControl1.Location = new System.Drawing.Point(0, 159);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(848, 72);
             this.panelControl1.TabIndex = 9;
@@ -561,10 +580,10 @@
             // 
             this.gridSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridSplitContainer1.Grid = this.gridControl;
-            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 229);
+            this.gridSplitContainer1.Location = new System.Drawing.Point(0, 231);
             this.gridSplitContainer1.Name = "gridSplitContainer1";
             this.gridSplitContainer1.Panel1.Controls.Add(this.gridControl);
-            this.gridSplitContainer1.Size = new System.Drawing.Size(848, 348);
+            this.gridSplitContainer1.Size = new System.Drawing.Size(848, 346);
             this.gridSplitContainer1.TabIndex = 12;
             // 
             // gridControl
@@ -594,7 +613,7 @@
             this.repositoryItemTextEdit1,
             this.repo_TextEdit_Line,
             this.repo_sLookup_LineCode1});
-            this.gridControl.Size = new System.Drawing.Size(848, 348);
+            this.gridControl.Size = new System.Drawing.Size(848, 346);
             this.gridControl.TabIndex = 8;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridView1});
@@ -1370,20 +1389,12 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // ribbonPageGroup2
+            // bsiUser
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiReport);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
-            // 
-            // bbiReport
-            // 
-            this.bbiReport.Caption = "Xuất BB di dời";
-            this.bbiReport.Id = 30;
-            this.bbiReport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.Image")));
-            this.bbiReport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.LargeImage")));
-            this.bbiReport.Name = "bbiReport";
-            this.bbiReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReport_ItemClick);
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 31;
+            this.bsiUser.Name = "bsiUser";
             // 
             // Form_M0005_Detail_DD
             // 
@@ -1539,5 +1550,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraBars.BarButtonItem bbiReport;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

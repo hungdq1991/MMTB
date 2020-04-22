@@ -26,10 +26,12 @@ namespace TAKAKO_ERP_3LAYER.View
         //Tạo biến để ghi nhận New / Edit
         private Boolean IsNewValue = false;
         //Tạo mới form theo kiểu True/False
-        public Form_M0004_Detail(Boolean _isNewValue)
+        public Form_M0004_Detail(Boolean _isNewValue, System_DAL systemDAL)
         {
             InitializeComponent();
             IsNewValue = _isNewValue;
+            //
+            _systemDAL = systemDAL;
         }
 
         //Update, delete _ form theo kiểu dữ liệu
@@ -188,48 +190,54 @@ namespace TAKAKO_ERP_3LAYER.View
             string curr_Model = txt_Model.Text.Trim();
             int curr_InActive = cbx_InActive.SelectedIndex;
             string curr_Memo = txt_Memo.Text.Trim();
-            //Trường hợp thêm mới
-            if (IsNewValue)
+
+            if (CheckError() == true)
             {
-                if (String.IsNullOrEmpty(txt_Maker.Text.Trim()) || String.IsNullOrEmpty(txt_Model.Text.Trim()))
+                //Trường hợp thêm mới
+                if (IsNewValue)
                 {
-                    var result = MessageBox.Show("Thiếu thông tin \"Maker/Model\"", "Chú ý", MessageBoxButtons.OKCancel);
-                    if (result == DialogResult.Cancel)
+                    if (String.IsNullOrEmpty(curr_Maker) || String.IsNullOrEmpty(curr_Model))
                     {
-                        txt_Maker.Focus();
-                    }
-                    else
-                    {
-                        Message = "Bạn muốn thêm mới Tên: \"" + sLook_NameEN.Text.ToString() + ", Maker: " + txt_Maker.Text.Trim() + ", Model: " + txt_Model.Text.Trim() + "\"?";
-                        if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-                            , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+                        var result = MessageBox.Show("Thiếu thông tin \"Maker/Model\"", "Chú ý", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                        if (result == DialogResult.Cancel)
                         {
-                            if (CheckError() == true)
-                            {
-                                if (M0004_DAO.Insert(curr_NameEN, curr_NameVN, curr_NameJP, curr_Maker, curr_Model, curr_InActive, curr_Memo, _systemDAL.userName))
-                                {
-                                    Message = "Lưu thành công Tên: \"" + sLook_NameEN.Text.ToString() + ", Maker: " + txt_Maker.Text.Trim() + ", Model: " + txt_Model.Text.Trim() + "\"!";
-                                    MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
+                            txt_Maker.Focus();
+                        }
+                    }
+                    Message = "Bạn muốn thêm mới Tên: \"" + curr_NameEN + ", Maker: " + curr_Maker + ", Model: " + curr_Model + "\"?";
+                    if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
+                        , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+                    {
+                        if (M0004_DAO.Insert(curr_NameEN
+                                            ,curr_NameVN
+                                            ,curr_NameJP
+                                            ,curr_Maker
+                                            ,curr_Model
+                                            ,curr_InActive
+                                            ,curr_Memo
+                                            ,_systemDAL.userName))
+                        {
+                            Message = "Lưu thành công Tên: \"" + curr_NameEN + ", Maker: " + curr_Maker + ", Model: " + curr_Model + "\"!";
+                            MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
-            }
-
-            //Trường hợp sửa
-            else
-            {
-                Message = "Bạn muốn cập nhật Tên: " + sLook_NameEN.Text.ToString() + "?";
-                if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-                    , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
+                //Trường hợp sửa
+                else
                 {
-                    if (CheckError() == true)
+                    Message = "Bạn muốn cập nhật Tên: " + curr_NameEN + "?";
+                    if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
+                        , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                     {
-                        if (M0004_DAO.Update(curr_NameEN, curr_Maker, curr_Model, curr_InActive, curr_Memo,_systemDAL.userName))
+                        if (M0004_DAO.Update(curr_NameEN
+                                            ,curr_Maker
+                                            ,curr_Model
+                                            ,curr_InActive
+                                            ,curr_Memo
+                                            ,_systemDAL.userName))
                         {
                             {
-                                Message = "Cập nhật thành công Tên: \"" + sLook_NameEN.Text.ToString() + "\"!";
+                                Message = "Cập nhật thành công Tên: \"" + curr_NameEN + "\"!";
                                 MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
@@ -244,6 +252,7 @@ namespace TAKAKO_ERP_3LAYER.View
             Update_Control();
             sLook_NameEN.Focus();
         }
+
         //Click nút Delete
         private void BbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

@@ -16,13 +16,12 @@ namespace TAKAKO_ERP_3LAYER.View
         public System_DAL _systemDAL = new System_DAL();
 
         //Khởi tạo form
-        public Form_M0003_ProcessCode()
+        public Form_M0003_ProcessCode(System_DAL systemDAL)
         {
             InitializeComponent();
-        }
 
         //Khởi tạo form
-        public Form_M0003_ProcessCode(System_DAL systemDAL)
+        public Form_M0003_ProcessGroup(System_DAL systemDAL)
         {
             InitializeComponent();
 
@@ -50,10 +49,12 @@ namespace TAKAKO_ERP_3LAYER.View
         //Load form
         private void Form_M00031G_Load(object sender, System.EventArgs e)
         {
-
+            //
             _tempTable = new DataTable();
             //
             M0003_ProcessCode_DAO = new M0003_ProcessCode_DAO();
+            //
+            bsiUser.Caption = _systemDAL.userName;
             //Load Init
             GetInfo_Gridview();
         }
@@ -81,7 +82,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi click nút "Thêm mới"
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0003_ProcessCode_Detail formDetail = new Form_M0003_ProcessCode_Detail(AddNew))
+            using (Form_M0003_ProcessCode_Detail formDetail = new Form_M0003_ProcessCode_Detail(AddNew, _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;

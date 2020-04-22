@@ -83,7 +83,7 @@
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_DisposalDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DocNo_Disposal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bbiNoUsed = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView1)).BeginInit();
@@ -120,7 +120,7 @@
             this.bCheck_Disposal,
             this.bbiMoving,
             this.bCheck_NoUsed,
-            this.bbiNoUsed});
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 24;
             this.ribbonControl.Name = "ribbonControl";
@@ -128,7 +128,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(892, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(1027, 159);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -244,10 +244,11 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 485);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 565);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(892, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1027, 22);
             // 
             // gridControl
             // 
@@ -257,7 +258,7 @@
             this.gridControl.MainView = this.advBandedGridView1;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(892, 326);
+            this.gridControl.Size = new System.Drawing.Size(1027, 406);
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridView1});
@@ -973,21 +974,19 @@
             this.gridCol_DocNo_Disposal.OptionsColumn.FixedWidth = true;
             this.gridCol_DocNo_Disposal.Visible = true;
             // 
-            // bbiNoUsed
+            // bsiUser
             // 
-            this.bbiNoUsed.Caption = "Không sử dụng";
-            this.bbiNoUsed.Id = 23;
-            this.bbiNoUsed.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.bbiNoUsed.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.bbiNoUsed.Name = "bbiNoUsed";
-            this.bbiNoUsed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNoUsed_ItemClick);
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 23;
+            this.bsiUser.Name = "bsiUser";
             // 
             // Form_M0005
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(892, 507);
+            this.ClientSize = new System.Drawing.Size(1027, 587);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -1057,6 +1056,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraBars.BarCheckItem bCheck_NoUsed;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.BarButtonItem bbiNoUsed;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
     }
 }

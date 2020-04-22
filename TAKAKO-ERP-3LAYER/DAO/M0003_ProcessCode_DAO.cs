@@ -189,8 +189,8 @@ namespace TAKAKO_ERP_3LAYER.DAO
                         FROM
                         	M0003_ProcessCode
                         WHERE 
-                            ProcessCode = @ProcessCode 
-                        AND InActive = 0)";
+                                ProcessCode   = @ProcessCode
+                            AND InActive    = 0";
             SqlParameter[] sqlParameters = new SqlParameter[2];
             sqlParameters[0] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(ProcessCode);

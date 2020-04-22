@@ -16,11 +16,6 @@ namespace TAKAKO_ERP_3LAYER.View
         public System_DAL _systemDAL = new System_DAL();
 
         //Khởi tạo Form_M0005
-        public Form_M0005()
-        {
-            InitializeComponent();
-        }
-
         public Form_M0005(System_DAL systemDAL)
         {
             InitializeComponent();
@@ -37,6 +32,8 @@ namespace TAKAKO_ERP_3LAYER.View
             M0005_DAO = new M0005_DAO();
             //
             M0005_Line_DAO = new M0005_Line_DAO();
+            //
+            bsiUser.Caption = _systemDAL.userName;
             //Load Init
             GetInfo_advBandedGridView1();
         }
@@ -133,7 +130,7 @@ namespace TAKAKO_ERP_3LAYER.View
         private void gridControl_DoubleClick(object sender, EventArgs e)
         {
             //String param_DocNo = advBandedGridView1.GetFocusedDataRow()["DocNo_Confirm"].ToString();
-            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(advBandedGridView1.GetFocusedDataRow()["DocNo"].ToString()))
+            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(advBandedGridView1.GetFocusedDataRow()["DocNo"].ToString(), _systemDAL))
             {
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
                 formDetail.ShowDialog();
@@ -142,7 +139,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Tạo chứng từ nghiệm thu
         private void bbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT())
+            using (Form_M0005_Detail_NT formDetail = new Form_M0005_Detail_NT(_systemDAL))
             {
                 formDetail.StartPosition = FormStartPosition.CenterParent;
                 formDetail.ShowDialog();
@@ -151,7 +148,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Tạo chứng từ thanh lý 
         private void BbiDisposal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0005_Detail_TL formDetail = new Form_M0005_Detail_TL())
+            using (Form_M0005_Detail_TL formDetail = new Form_M0005_Detail_TL(_systemDAL))
             {
                 formDetail.StartPosition = FormStartPosition.CenterParent;
                 formDetail.ShowDialog();
@@ -160,7 +157,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Tạo chứng từ di dời
         private void BbiMoving_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0005_Detail_DD formDetail = new Form_M0005_Detail_DD())
+            using (Form_M0005_Detail_DD formDetail = new Form_M0005_Detail_DD(_systemDAL))
             {
                 formDetail.StartPosition = FormStartPosition.CenterParent;
                 formDetail.ShowDialog();

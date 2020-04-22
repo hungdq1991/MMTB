@@ -175,7 +175,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi click nút "Thêm mới"
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0006_Detail formDetail = new Form_M0006_Detail(AddNew))
+            using (Form_M0006_Detail formDetail = new Form_M0006_Detail(AddNew, _systemDAL))
             {
                 formDetail.ShowDialog();
                 Setting_Init_Form();
@@ -192,7 +192,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Nội dung hiển thị khi double click gridView
         private void GridControl_DoubleClick(object sender, EventArgs e)
         {
-            using (Form_M0006_Detail formDetail = new Form_M0006_Detail(gridView.GetFocusedDataRow()))
+            using (Form_M0006_Detail formDetail = new Form_M0006_Detail(gridView.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
                 Setting_Init_Form();
@@ -200,7 +200,7 @@ namespace TAKAKO_ERP_3LAYER.View
         }
         private void GridControl2_DoubleClick(object sender, EventArgs e)
         {
-            using (Form_M0006_Detail_T formDetail = new Form_M0006_Detail_T(gridView2.GetFocusedDataRow()))
+            using (Form_M0006_Detail_T formDetail = new Form_M0006_Detail_T(gridView2.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
                 Setting_Init_Form();
@@ -208,7 +208,7 @@ namespace TAKAKO_ERP_3LAYER.View
         }
         private void GridControl3_DoubleClick(object sender, EventArgs e)
         {
-            using (Form_M0006_Detail_P formDetail = new Form_M0006_Detail_P(gridView3.GetFocusedDataRow()))
+            using (Form_M0006_Detail_P formDetail = new Form_M0006_Detail_P(gridView3.GetFocusedDataRow(), _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterParent;
