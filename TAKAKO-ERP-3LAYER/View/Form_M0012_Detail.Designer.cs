@@ -75,6 +75,7 @@
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_sLookUp_InActive = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridCol_Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_sLookUp_PurCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -89,7 +90,6 @@
             this.gridCol_NameVN1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_TextEdit_Code = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridCol_Status = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -304,6 +304,7 @@
             this.gridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gridView.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.CustomRowCellEditForEditing += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.GridView_CustomRowCellEditForEditing);
+            this.gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.GridView_InitNewRow);
             this.gridView.ValidatingEditor += new DevExpress.XtraEditors.Controls.BaseContainerValidateEditorEventHandler(this.gridView_ValidatingEditor);
             // 
             // gridCol_SessionID
@@ -740,6 +741,14 @@
             this.gridView5.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView5.OptionsView.ShowGroupPanel = false;
             // 
+            // gridCol_Status
+            // 
+            this.gridCol_Status.Caption = "Ngưng sử dụng";
+            this.gridCol_Status.FieldName = "Status";
+            this.gridCol_Status.Name = "gridCol_Status";
+            this.gridCol_Status.Visible = true;
+            this.gridCol_Status.VisibleIndex = 0;
+            // 
             // gridCol_Memo
             // 
             this.gridCol_Memo.AppearanceCell.ForeColor = System.Drawing.Color.Black;
@@ -871,14 +880,6 @@
             this.popupMenu1.ItemLinks.Add(this.bbi_PopUp_Delete);
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
-            // 
-            // gridCol_Status
-            // 
-            this.gridCol_Status.Caption = "Ngưng sử dụng";
-            this.gridCol_Status.FieldName = "Status";
-            this.gridCol_Status.Name = "gridCol_Status";
-            this.gridCol_Status.Visible = true;
-            this.gridCol_Status.VisibleIndex = 0;
             // 
             // Form_M0012_Detail
             // 

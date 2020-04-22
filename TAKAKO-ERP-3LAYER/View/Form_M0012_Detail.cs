@@ -7,6 +7,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using TAKAKO_ERP_3LAYER.DAO;
+using TAKAKO_ERP_3LAYER.DAL;
 
 namespace TAKAKO_ERP_3LAYER.View
 {
@@ -18,12 +19,30 @@ namespace TAKAKO_ERP_3LAYER.View
         public M0004_DAO M0004_DAO;
         public M0012_DAO M0012_DAO;
         public Boolean InitValue = true;
-        public Boolean Edit = false;
-
+        public System_DAL _systemDAL = new System_DAL();
         //Khởi tạo form
         public Form_M0012_Detail()
         {
             InitializeComponent();
+        }
+        //Khởi tạo form theo nội dung InitValue
+        public Form_M0012_Detail(Boolean _InitValue, System_DAL systemDAL)
+        {
+            InitializeComponent();
+            InitValue = _InitValue;
+                //
+            _systemDAL = systemDAL;
+            
+        }
+        //Update, delete _ form theo kiểu dữ liệu
+        public Form_M0012_Detail(DataTable DetailTable, System_DAL systemDAL)
+        {
+            //
+            InitializeComponent();
+            //
+            _DetailTable = DetailTable;
+            //
+            _systemDAL = systemDAL;
         }
         //Update, delete _ form theo kiểu dữ liệu
         private void Form_M0012_Detail_Load(object sender, EventArgs e)
@@ -92,10 +111,7 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             _DetailTable.Clear();
             gridControl.DataSource = _DetailTable;
-            Edit = false;
             gridView.AddNewRow();
-            gridView.SetFocusedRowCellValue("ApplyDate", DateTime.Now);
-            gridView.SetFocusedRowCellValue("InActive", 0);
         }
         //Nhập thông tin LK
         //Hiển thị bảng pop up
@@ -121,8 +137,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Click chuột phải chọn Add new row
         private void bbi_PopUp_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
         {
-            gridView.AddNewRow();
-            gridView.SetFocusedRowCellValue("InActive", 0);
+            Clear_Data();
         }
         //Click nút Add new row
         private void bbi_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
@@ -373,7 +388,7 @@ namespace TAKAKO_ERP_3LAYER.View
         private void BbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
             Clear_Data();
-            Edit = false;
+            InitValue = true;
             Set_Enable_Control(true);
             //GridView
             gridCol_SessionID.OptionsColumn.AllowEdit = true;
@@ -386,7 +401,7 @@ namespace TAKAKO_ERP_3LAYER.View
         private void BbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
             Clear_Data();
-            Edit = true;
+            InitValue = false;
             AddValue_sLookUp_ItemCode();
             gridView.FocusedColumn = gridCol_ItemCode;
             Set_Enable_Control(false);
@@ -456,13 +471,10 @@ namespace TAKAKO_ERP_3LAYER.View
                         gridView.FocusedColumn = gridView.Columns["SessionID"];
                         return false;
                     }
-                }
                 //Mã hàng
-                for (int rows = 0; rows < gridView.RowCount; rows++)
-                {
                     string _itemCode;
                     _itemCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ItemCode"]));
-                    if (_itemCode == null)
+                    if (String.IsNullOrEmpty(_itemCode))
                     {
                         MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã hàng\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         gridView.Focus();
@@ -470,13 +482,10 @@ namespace TAKAKO_ERP_3LAYER.View
                         gridView.FocusedColumn = gridView.Columns["ItemCode"];
                         return false;
                     }
-                }
                 //Tên hàng
-                for (int rows = 0; rows < gridView.RowCount; rows++)
-                {
                     string _nameEN;
                     _nameEN = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["NameEN"]));
-                    if (_nameEN == null)
+                    if (String.IsNullOrEmpty(_nameEN))
                     {
                         MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Tên hàng\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         gridView.Focus();
@@ -484,13 +493,10 @@ namespace TAKAKO_ERP_3LAYER.View
                         gridView.FocusedColumn = gridView.Columns["NameEN"];
                         return false;
                     }
-                }
                 //Unit
-                for (int rows = 0; rows < gridView.RowCount; rows++)
-                {
-                    string _unit;
+                     string _unit;
                     _unit = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["Unit"]));
-                    if (_unit == null)
+                    if (String.IsNullOrEmpty(_unit))
                     {
                         MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Đvt\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         gridView.Focus();
@@ -498,13 +504,10 @@ namespace TAKAKO_ERP_3LAYER.View
                         gridView.FocusedColumn = gridView.Columns["Unit"];
                         return false;
                     }
-                }
                 //PurCode
-                for (int rows = 0; rows < gridView.RowCount; rows++)
-                {
                     string _purCode;
                     _purCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["PurCode"]));
-                    if (_purCode == null)
+                    if (String.IsNullOrEmpty(_purCode))
                     {
                         MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã mua hàng\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         gridView.Focus();
@@ -512,16 +515,11 @@ namespace TAKAKO_ERP_3LAYER.View
                         gridView.FocusedColumn = gridView.Columns["PurCode"];
                         return false;
                     }
-                }
                 //Trùng thông tin Mã hàng, Maker, Point, Lifetime, MinimumQty
-                for (int rows = 0; rows < gridView.RowCount; rows++)
-                {
-                    string _itemCode;
                     string _maker;
                     int _point;
                     int _minimumQty;
                     int _lifetime;
-                    _itemCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ItemCode"]));
                     _maker = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["Maker"]));
                     _point = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["Point"]));
                     _minimumQty = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["MinimumQty"]));
@@ -533,11 +531,9 @@ namespace TAKAKO_ERP_3LAYER.View
                         {
                             gridControl.DataSource = _tempTable;
                             MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã hàng\" đã có (trùng Maker, Điểm, Tuổi thọ và SL tối thiểu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            gridView.Focus();
+                            gridControl.DataSource = _DetailTable;
                             return false;
-                        }
-                        else
-                        {
-                            return true;
                         }
                     }
                     catch (Exception ex)
@@ -551,7 +547,7 @@ namespace TAKAKO_ERP_3LAYER.View
         //Load thông tin mã LK khi user cần Edit
         private void GridView_CustomRowCellEditForEditing(object sender, DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventArgs e)
         {
-            if (e.Column == gridCol_ItemCode && Edit == true)
+            if (e.Column == gridCol_ItemCode && InitValue == false)
             {
                 e.RepositoryItem = repo_sLookUp_ItemCode;
             }
@@ -587,6 +583,17 @@ namespace TAKAKO_ERP_3LAYER.View
                     e.ErrorText = "Mã LK/Dầu/Pin đã tồn tại trên lưới";
                 }
             }
+        }
+
+        private void GridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            gridView.SetFocusedRowCellValue("ApplyDate", DateTime.Now);
+            gridView.SetFocusedRowCellValue("InActive", 0);
+            gridView.SetFocusedRowCellValue("SessionID", 0);
+            gridView.SetFocusedRowCellValue("Point", 0);
+            gridView.SetFocusedRowCellValue("Lifetime", 0);
+            gridView.SetFocusedRowCellValue("MinimumQty", 0);
+            gridView.SetFocusedRowCellValue("Unit", "PCS");
         }
     }
 }

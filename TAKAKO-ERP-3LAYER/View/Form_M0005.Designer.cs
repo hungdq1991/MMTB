@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0005));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.gridCol_ACCDoc_Disposal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiNoUsed = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDisposal = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bCheck_Disposal = new DevExpress.XtraBars.BarCheckItem();
             this.bbiMoving = new DevExpress.XtraBars.BarButtonItem();
             this.bCheck_NoUsed = new DevExpress.XtraBars.BarCheckItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -83,7 +84,6 @@
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_DisposalDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DocNo_Disposal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView1)).BeginInit();
@@ -114,7 +114,7 @@
             this.bbiPrintPreview,
             this.bsiRecordsCount,
             this.bbiNew,
-            this.bbiEdit,
+            this.bbiNoUsed,
             this.bbiDisposal,
             this.bbiRefresh,
             this.bCheck_Disposal,
@@ -154,12 +154,14 @@
             this.bbiNew.Name = "bbiNew";
             this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNew_ItemClick);
             // 
-            // bbiEdit
+            // bbiNoUsed
             // 
-            this.bbiEdit.Caption = "Thanh lý";
-            this.bbiEdit.Id = 17;
-            this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
-            this.bbiEdit.Name = "bbiEdit";
+            this.bbiNoUsed.Caption = "Không sử dụng";
+            this.bbiNoUsed.Id = 17;
+            this.bbiNoUsed.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiEdit.ImageOptions.Image")));
+            this.bbiNoUsed.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiEdit.ImageOptions.LargeImage")));
+            this.bbiNoUsed.Name = "bbiNoUsed";
+            this.bbiNoUsed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNoUsed_ItemClick);
             // 
             // bbiDisposal
             // 
@@ -213,6 +215,13 @@
             this.bCheck_NoUsed.Name = "bCheck_NoUsed";
             this.bCheck_NoUsed.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BCheck_NoUsed_CheckedChanged);
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 23;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -228,8 +237,8 @@
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiMoving);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNoUsed);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNoUsed);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
@@ -305,18 +314,18 @@
             this.gridCol_DesLineEN,
             this.gridCol_DesGroupLineACC,
             this.gridCol_DesUsingDept});
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Column = this.gridCol_ACCDoc_Disposal;
-            gridFormatRule2.ColumnApplyTo = this.gridCol_ACCDoc_Disposal;
-            gridFormatRule2.Name = "Disposal";
-            formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            formatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.Black;
-            formatConditionRuleExpression2.Appearance.Options.UseBackColor = true;
-            formatConditionRuleExpression2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleExpression2.Expression = "StartsWith([ACCDoc_Disposal], \'FA\')";
-            formatConditionRuleExpression2.PredefinedName = "Disposal";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.advBandedGridView1.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.gridCol_ACCDoc_Disposal;
+            gridFormatRule1.ColumnApplyTo = this.gridCol_ACCDoc_Disposal;
+            gridFormatRule1.Name = "Disposal";
+            formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            formatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Black;
+            formatConditionRuleExpression1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleExpression1.Expression = "StartsWith([ACCDoc_Disposal], \'FA\')";
+            formatConditionRuleExpression1.PredefinedName = "Disposal";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.advBandedGridView1.FormatRules.Add(gridFormatRule1);
             this.advBandedGridView1.GridControl = this.gridControl;
             this.advBandedGridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridView1.Name = "advBandedGridView1";
@@ -974,13 +983,6 @@
             this.gridCol_DocNo_Disposal.OptionsColumn.FixedWidth = true;
             this.gridCol_DocNo_Disposal.Visible = true;
             // 
-            // bsiUser
-            // 
-            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiUser.Caption = "barStaticItem1";
-            this.bsiUser.Id = 23;
-            this.bsiUser.Name = "bsiUser";
-            // 
             // Form_M0005
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1011,7 +1013,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
         private DevExpress.XtraBars.BarButtonItem bbiNew;
-        private DevExpress.XtraBars.BarButtonItem bbiEdit;
+        private DevExpress.XtraBars.BarButtonItem bbiNoUsed;
         private DevExpress.XtraBars.BarButtonItem bbiDisposal;
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
         private DevExpress.XtraGrid.GridControl gridControl;

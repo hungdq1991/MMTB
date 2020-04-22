@@ -37,7 +37,7 @@ namespace TAKAKO_ERP_3LAYER.View
         {
             try
             {
-                _tempTable = M0012_DAO.GetInfo_M0012();
+                _tempTable = M0012_DAO.GetInfo_M0012(0);
                 if (_tempTable.Rows.Count > 0)
                 {
                     gridControl.DataSource = _tempTable;
@@ -48,6 +48,75 @@ namespace TAKAKO_ERP_3LAYER.View
             {
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        //Thêm mới
+        private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0012_Detail formDetail = new Form_M0012_Detail())
+            {
+                formDetail.StartPosition = FormStartPosition.CenterParent;
+                formDetail.ShowDialog();
+            }
+        }
+        //Lọc thông tin
+        private void filter_List()
+        {
+            Boolean _inActive = bCheck_InActive.Checked;
+            Boolean _Duplicate = bCheck_Duplicate.Checked;
+            try
+            {
+                if (_Duplicate == true && _inActive == true)
+                {
+                    DataTable _tempTable = M0012_DAO.GetInfo_M0012_Dup();
+                    if (_tempTable.Rows.Count > 0)
+                    {
+                        gridControl.DataSource = _tempTable.AsEnumerable()
+                            .Where(row => row.Field<Boolean>("InActive") == true).CopyToDataTable();
+                        bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                    }
+                }
+                if (_Duplicate == true && _inActive == false)
+                {
+                    DataTable _tempTable1 = M0012_DAO.GetInfo_M0012_Dup();
+                    if (_tempTable1.Rows.Count > 0)
+                    {
+                        gridControl.DataSource = _tempTable1;
+                        bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable1.Rows.Count + " records";
+                    }
+                }
+                if (_Duplicate == false && _inActive == true)
+                {
+                    DataTable _tempTable2 = M0012_DAO.GetInfo_M0012(1);
+                    if (_tempTable2.Rows.Count > 0)
+                    {
+                        gridControl.DataSource = _tempTable2;
+                        bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable2.Rows.Count + " records";
+                    }
+                }
+                if (_Duplicate == false && _inActive == false)
+                {
+                    DataTable _tempTable3 = M0012_DAO.GetInfo_M0012(0);
+                    if (_tempTable3.Rows.Count > 0)
+                    {
+                        gridControl.DataSource = _tempTable;
+                        bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable3.Rows.Count + " records";
+                    }
+                }
+            }
+            catch
+            {
+                gridControl.DataSource = "";
+            }
+        }
+
+        private void BCheck_InActive_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            filter_List();
+        }
+
+        private void BCheck_Duplicate_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            filter_List();
         }
     }
 }

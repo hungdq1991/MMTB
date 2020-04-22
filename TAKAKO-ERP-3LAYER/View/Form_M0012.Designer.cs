@@ -35,8 +35,11 @@
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.bCheck_InActive = new DevExpress.XtraBars.BarCheckItem();
+            this.bCheck_Duplicate = new DevExpress.XtraBars.BarCheckItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -65,6 +68,7 @@
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bbiCheckDup = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -82,9 +86,11 @@
             this.bbiNew,
             this.bbiEdit,
             this.bbiDelete,
-            this.bbiRefresh});
+            this.bbiRefresh,
+            this.bCheck_InActive,
+            this.bCheck_Duplicate});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 20;
+            this.ribbonControl.MaxItemId = 24;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -109,14 +115,15 @@
             // 
             // bbiNew
             // 
-            this.bbiNew.Caption = "New";
+            this.bbiNew.Caption = "Thêm mới/Chỉnh sửa";
             this.bbiNew.Id = 16;
             this.bbiNew.ImageOptions.ImageUri.Uri = "New";
             this.bbiNew.Name = "bbiNew";
+            this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNew_ItemClick);
             // 
             // bbiEdit
             // 
-            this.bbiEdit.Caption = "Edit";
+            this.bbiEdit.Caption = "Chỉnh sửa";
             this.bbiEdit.Id = 17;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEdit.Name = "bbiEdit";
@@ -135,10 +142,31 @@
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
             // 
+            // bCheck_InActive
+            // 
+            this.bCheck_InActive.Caption = "Ngưng sử dụng";
+            this.bCheck_InActive.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
+            this.bCheck_InActive.Id = 20;
+            this.bCheck_InActive.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.bCheck_InActive.ItemAppearance.Normal.Options.UseBackColor = true;
+            this.bCheck_InActive.Name = "bCheck_InActive";
+            this.bCheck_InActive.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BCheck_InActive_CheckedChanged);
+            // 
+            // bCheck_Duplicate
+            // 
+            this.bCheck_Duplicate.Caption = "Mã trùng          ";
+            this.bCheck_Duplicate.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
+            this.bCheck_Duplicate.Id = 23;
+            this.bCheck_Duplicate.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.bCheck_Duplicate.ItemAppearance.Normal.Options.UseBackColor = true;
+            this.bCheck_Duplicate.Name = "bCheck_Duplicate";
+            this.bCheck_Duplicate.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BCheck_Duplicate_CheckedChanged);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
@@ -148,11 +176,16 @@
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_InActive);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_Duplicate);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Lọc thông tin";
             // 
             // ribbonStatusBar
             // 
@@ -364,6 +397,7 @@
             this.gridCol_MinimumQty.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_MinimumQty.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_MinimumQty.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_MinimumQty.AppearanceHeader.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.gridCol_MinimumQty.Caption = "Tồn kho tối thiểu";
             this.gridCol_MinimumQty.DisplayFormat.FormatString = "#,###";
             this.gridCol_MinimumQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -371,7 +405,6 @@
             this.gridCol_MinimumQty.Name = "gridCol_MinimumQty";
             this.gridCol_MinimumQty.Visible = true;
             this.gridCol_MinimumQty.VisibleIndex = 8;
-            this.gridCol_MinimumQty.Width = 90;
             // 
             // gridCol_Lifetime
             // 
@@ -476,9 +509,9 @@
             this.gridCol_PriceRef.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridCol_PriceRef.FieldName = "Price";
             this.gridCol_PriceRef.Name = "gridCol_PriceRef";
+            this.gridCol_PriceRef.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
             this.gridCol_PriceRef.Visible = true;
             this.gridCol_PriceRef.VisibleIndex = 13;
-            this.gridCol_PriceRef.Width = 90;
             // 
             // gridCol_Cury
             // 
@@ -654,6 +687,15 @@
             this.gridCol_Memo.VisibleIndex = 23;
             this.gridCol_Memo.Width = 150;
             // 
+            // bbiCheckDup
+            // 
+            this.bbiCheckDup.Caption = "Mã trùng          ";
+            this.bbiCheckDup.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
+            this.bbiCheckDup.Id = 21;
+            this.bbiCheckDup.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.bbiCheckDup.ItemAppearance.Normal.Options.UseBackColor = true;
+            this.bbiCheckDup.Name = "bbiCheckDup";
+            // 
             // Form_M0012
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -713,5 +755,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_EffDate;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_SupplierID;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Supplier;
+        private DevExpress.XtraBars.BarCheckItem bCheck_InActive;
+        private DevExpress.XtraBars.BarCheckItem bCheck_Duplicate;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarCheckItem bbiCheckDup;
     }
 }
