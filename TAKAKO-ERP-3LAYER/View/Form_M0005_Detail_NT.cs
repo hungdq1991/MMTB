@@ -499,6 +499,7 @@ namespace MMTB.View
             gridView.SetRowCellValue(e.RowHandle, "Lifetime", 0);
             gridView.SetRowCellValue(e.RowHandle, "Status", 0);
             gridView.SetRowCellValue(e.RowHandle, "Result", 0);
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
 
             // Set focus in a specific cell
             gridView.Focus();
@@ -624,6 +625,7 @@ namespace MMTB.View
             _HeaderTable.Columns.Add("ConfirmDate", typeof(DateTime));
             _HeaderTable.Columns.Add("ControlDept", typeof(string));
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
+            _HeaderTable.Columns.Add("InputUser", typeof(string));
             _HeaderTable.Columns.Add("Column1", typeof(string));
             _HeaderTable.Columns.Add("Column2", typeof(string));
             _HeaderTable.Columns.Add("Column3", typeof(string));
@@ -649,6 +651,7 @@ namespace MMTB.View
             dtRow["ConfirmDate"] = date_Confirm.EditValue;
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
+            dtRow["InputUser"] = _systemDAL.userName;
             dtRow["Column1"] = "";
             dtRow["Column2"] = "";
             dtRow["Column3"] = "";
@@ -686,6 +689,7 @@ namespace MMTB.View
             _DetailTable.Columns.Add("Memo", typeof(string));
             _DetailTable.Columns.Add("InstDoc", typeof(string));
             _DetailTable.Columns.Add("DocNo", typeof(string));
+            _DetailTable.Columns.Add("InputUser", typeof(string));
         }
 
         //

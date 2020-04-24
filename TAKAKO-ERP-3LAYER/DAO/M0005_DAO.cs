@@ -66,6 +66,7 @@ namespace MMTB.DAO
 							,L1.DesLineEN
 							,L1.DesGroupLineACC
 							,L1.DesUsingDept 
+                            ,L.InputUser
                         FROM
                         	M0005_ListMMTB L
                          JOIN 
@@ -84,13 +85,15 @@ namespace MMTB.DAO
 							JOIN (SELECT 
 									 Code
 									,Max(ApplyDate) as ApplyDate
-								  FROM M0005_ListMMTBLine 
-								  GROUP BY Code) L2 
-							ON		L1.Code = L2.Code 
-								AND L1.ApplyDate = L2.ApplyDate) L1
-						ON
-							L.Code = L1.Code
-                        WHERE L1.DesLineCode != 'NoUsed' 
+								  FROM
+                                    M0005_ListMMTBLine 
+								  GROUP BY
+                                    Code
+                                ) L2 
+							ON  L1.Code         = L2.Code 
+                            AND L1.ApplyDate    = L2.ApplyDate) L1
+						ON  L.Code              = L1.Code
+                        WHERE L1.DesLineCode    != 'NoUsed' 
                         AND   L.DocNo_Disposal is null
                         ORDER BY L.Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -224,6 +227,7 @@ namespace MMTB.DAO
                             ,ConfirmDate
                             ,ControlDept
                             ,DocStatus
+                            ,InputUser
                             ,Column1
                             ,Column2
                             ,Column3
@@ -269,6 +273,7 @@ namespace MMTB.DAO
 		                    ,M.Memo
                             ,M.InstDoc
                             ,M.DocNo
+                            ,M.InputUser
 	                    FROM 
 		                    M0005_ListMMTB M
 	                    LEFT JOIN
@@ -424,7 +429,7 @@ namespace MMTB.DAO
 		                    ,M.Lifetime
 		                    ,M.StartDeprDate
 		                    ,M.EndDeprDate
-                            ,case when S.NetValue is null then 0 else CONVERT(decimal(16,4),S.NetValue) end as NetValue_Disposal
+                            ,CASE when S.NetValue is null then 0 else CONVERT(decimal(16,4),S.NetValue) end as NetValue_Disposal
 		                    ,L.DesProcessCode
 		                    ,L.DesLineCode
 		                    ,L.DesLineEN
@@ -497,18 +502,21 @@ namespace MMTB.DAO
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
-            StrQuery = @"	SELECT 
-		                         DISTINCT 
-                                 DocNo
-		                        ,DocDate
-		                        ,DisposalDate
-		                        ,case when EF_VendID is null then '' else RTRIM(EF_VendID) end as EF_VendID
-                                ,case when SupplierID is null then '' else SupplierID end as SupplierID
-		                        ,case when SupplierName is null then '' else SupplierName end as SupplierName
-		                        ,case when InvNo is null then '' else InvNo end as InvNo
-	                        FROM 
-		                        M0005_ListMMTBDoc2
-                            ORDER BY DocNo DESC";
+            StrQuery = @"SELECT DISTINCT 
+                             DocNo
+                            ,DocDate
+                            ,DisposalDate
+                            ,CASE
+                                WHEN EF_VendID is null THEN ''
+                                ELSE RTRIM(EF_VendID)
+                            END AS EF_VendID
+                            ,ISNULL(SupplierID,'') As SupplierID
+                            ,ISNULL(SupplierName,'') As SupplierName
+                            ,ISNULL(InvNo,'') As InvNo
+	                     FROM 
+		                     M0005_ListMMTBDoc2
+                         ORDER BY
+                            DocNo DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -522,15 +530,22 @@ namespace MMTB.DAO
             StrQuery = @"SELECT 
                              DocNo
                             ,DocDate
-		                    ,case when EF_VendID is null then '' else RTRIM(EF_VendID) end as EF_VendID
-                            ,isNull(SupplierID,'') as SupplierID
-		                    ,case when SupplierName is null then '' else SupplierName end as SupplierName
-		                    ,case when InvNo is null then '' else InvNo end as InvNo
-                            ,isNull(InvDate,convert(DateTime,'')) as InvDate
+		                    ,CASE
+                                WHEN EF_VendID is null then ''
+                                ELSE RTRIM(EF_VendID)
+                            END AS EF_VendID
+                            ,ISNULL(SupplierID,'') As SupplierID
+		                    ,ISNULL(SupplierName,'') As SupplierName
+		                    ,CASE
+                                WHEN InvNo is null then ''
+                                ELSE InvNo
+                            END AS InvNo
+                            ,ISNULL(InvDate,convert(DateTime,'')) as InvDate
                             ,DisposalDate
                             ,ControlDept
                             ,DocStatus
                             ,Memo
+                            ,InputUser
                             ,Column2
                             ,Column3
                             ,Column4
@@ -577,6 +592,7 @@ namespace MMTB.DAO
                             ,M.DisposalStatus
                             ,M.DocNo_Disposal
 		                    ,M.ControlDept
+                            ,M.InputUser
 	                    FROM 
 		                    M0005_ListMMTB M
 	                    LEFT JOIN
@@ -643,6 +659,7 @@ namespace MMTB.DAO
                             ,M.DisposalStatus
                             ,M.DocNo_Disposal
 		                    ,M.ControlDept
+                            ,M.InputUser
 	                    FROM 
 		                    M0005_ListMMTBDisposal_Temp M
 	                    LEFT JOIN
@@ -817,6 +834,7 @@ namespace MMTB.DAO
                             ,ControlDept
                             ,DocStatus
                             ,Memo
+                            ,InputUser
                             ,Column1
                             ,Column2
                             ,Column3
@@ -867,6 +885,7 @@ namespace MMTB.DAO
 					        ,MoveDate
 					        ,DocNo_Move
                             ,ApplyDate
+                            ,InputUser
 	                    FROM 
 		                    M0005_ListMMTBLine
                         WHERE 
@@ -913,6 +932,7 @@ namespace MMTB.DAO
 					        ,MoveDate
 					        ,DocNo_Move
                             ,ApplyDate
+                            ,InputUser
 	                    FROM 
 		                    M0005_ListMMTBMove_Temp
                         WHERE 
@@ -922,17 +942,20 @@ namespace MMTB.DAO
             sqlParameters[0].Value = Convert.ToString(DocNo);
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+
         //Lưu chứng từ di dời MMTB
         public bool Move_MMTB(DataTable listMMTB, DataTable listMMTBDoc3)
         {
             return conn.Move_MMTB(listMMTB, listMMTBDoc3);
         }
+
         //Xác nhận chứng từ di dời MMTB
         public bool Confirm_Move_MMTB(DataTable listMMTB, DataTable listMMTBDoc3)
         {
             return conn.Confirm_Move_MMTB(listMMTB, listMMTBDoc3);
         }
         #endregion
+
         #region Bổ sung thông tin của ACC
         //Xác nhận mã ACC
         public DataTable Check_M0005_ACCcode(string ACCcode)
@@ -970,10 +993,14 @@ namespace MMTB.DAO
                             ,DocDate
                             ,FromDate
                             ,ToDate
-                            ,case when DocStatus = 0 then N'Chuẩn bị' else N'Xác nhận' end as   DocStatus
+                            ,CASE
+                                WHEN DocStatus = 0 THEN N'Chuẩn bị'
+                                ELSE N'Xác nhận'
+                            END AS DocStatus
                         FROM 
                             M0005_ListMMTBDoc4
-                        ORDER BY DocNo DESC";
+                        ORDER BY
+                            DocNo DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -990,11 +1017,16 @@ namespace MMTB.DAO
                             ,DocDate
                             ,FromDate
                             ,ToDate
-                            ,case when DocStatus = 0 then N'Chuẩn bị' else N'Xác nhận' end as   DocStatus
+                            ,CASE
+                                when DocStatus = 0 then N'Chuẩn bị' 
+                                else N'Xác nhận'
+                            end as DocStatus
                         FROM 
                             M0005_ListMMTBDoc4
-                        WHERE DocStatus = 0
-                        ORDER BY DocNo DESC";
+                        WHERE
+                            DocStatus = 0
+                        ORDER BY
+                            DocNo DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -1012,8 +1044,7 @@ namespace MMTB.DAO
                             ,FromDate
                         FROM 
                             M0005_ListMMTBDoc4
-                        WHERE FromDate > @fromDate";
-
+                        WHERE FromDate  >   @fromDate";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@FromDate", SqlDbType.DateTime);
             sqlParameters[0].Value = Convert.ToDateTime(fromDate);
@@ -1033,11 +1064,13 @@ namespace MMTB.DAO
                             ,ToDate
                             ,DocStatus
                             ,ControlDept
+                            ,InputUser
                         FROM 
                             M0005_ListMMTBDoc4
                         WHERE 
                             DocNo = @DocNo
-                        ORDER BY DocNo DESC";
+                        ORDER BY
+                            DocNo DESC";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@DocNo", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString(DocNo);
@@ -1051,7 +1084,7 @@ namespace MMTB.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                            [Code]
+                             [Code]
                             ,[ACCcode]
                             ,[NameEN]
                             ,[NameVN]
@@ -1068,7 +1101,8 @@ namespace MMTB.DAO
                             ,[Reason]
                             ,[CurStatus]
                             ,[CurPlan]
-                            ,[Solve]                        
+                            ,[Solve]                     
+                            ,[InputUser]
                         FROM 
                             M0005_ListMMTBNoUsed
                         WHERE 
@@ -1096,7 +1130,10 @@ namespace MMTB.DAO
                         	,OrgCountry
                         	,ProDate
                         	,Lifetime
-                            ,case when S.NetValue is null then 0 else CONVERT(decimal(16,4),S.NetValue) end as NetValue
+                            ,CASE
+                                WHEN S.NetValue is null THEN 0
+                                ELSE CONVERT(decimal(16,4),S.NetValue)
+                            END AS NetValue
                         	,StartDeprDate
                         	,EndDeprDate
                             ,L2.Reason
@@ -1109,15 +1146,20 @@ namespace MMTB.DAO
 							(SELECT
 								 L1.Code
 								,L1.DesLineCode
-							FROM M0005_ListMMTBLine L1 
+							FROM
+                                M0005_ListMMTBLine L1 
 							JOIN (SELECT 
 									 Code
-									,Max(ApplyDate) as ApplyDate
-								  FROM M0005_ListMMTBLine 
-								  GROUP BY Code) L2 
-							ON		L1.Code = L2.Code 
-								AND L1.ApplyDate = L2.ApplyDate) L1
-							ON L.Code = L1.Code
+									,Max(ApplyDate) AS ApplyDate
+								  FROM
+                                    M0005_ListMMTBLine 
+								  GROUP BY
+                                    Code
+                                ) L2 
+							ON  L1.Code         = L2.Code 
+                            AND L1.ApplyDate    = L2.ApplyDate
+                            ) L1
+                        ON  L.Code = L1.Code
 						LEFT JOIN
 							(SELECT
 								  L1.Code
@@ -1129,33 +1171,39 @@ namespace MMTB.DAO
                                 M0005_ListMMTBNoUsed L1
 							JOIN (SELECT 
 									 Code
-									,Max(FromDate) as FromDate
-								  FROM M0005_ListMMTBNoUsed 
-								  GROUP BY Code) L2 
-							ON		L1.Code = L2.Code 
-								AND L1.FromDate = L2.FromDate) L2
+									,Max(FromDate) As FromDate
+								  FROM
+                                    M0005_ListMMTBNoUsed 
+								  GROUP BY
+                                    Code
+                                ) L2 
+							ON  L1.Code     = L2.Code 
+                            AND L1.FromDate = L2.FromDate
+                            ) L2
 						ON
-								L.Code = L2.Code
+                            L.Code = L2.Code
                         LEFT JOIN
-                                (SELECT 
-                                     S1.AssetID
-                                    ,S1.BookValue as NetValue
-                                FROM
-                                    [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist] S1
+                            (SELECT 
+                                 S1.AssetID
+                                ,S1.BookValue As NetValue
+                            FROM
+                                [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist] S1
                             JOIN 
                                 (SELECT
                                      AssetID
-                                    ,MAX(Crtd_DateTime) as Crtd_DateTime
+                                    ,MAX(Crtd_DateTime) As Crtd_DateTime
                                 FROM
                                     [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist]
                                 GROUP BY
-                                    AssetID) S2
-                            ON      S1.AssetID = S2.AssetID
-                                AND S1.Crtd_DateTime = S2.Crtd_DateTime) S
-                        ON 
-                            L.ACCcode = S.AssetID
-                        WHERE L1.DesLineCode = 'NoUsed'
-                        ORDER BY L.Code";
+                                    AssetID
+                                ) S2
+                            ON  S1.AssetID          = S2.AssetID
+                            AND S1.Crtd_DateTime    = S2.Crtd_DateTime) S
+                        ON  L.ACCcode               = S.AssetID
+                        WHERE
+                            L1.DesLineCode          = 'NoUsed'
+                        ORDER BY
+                            L.Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");

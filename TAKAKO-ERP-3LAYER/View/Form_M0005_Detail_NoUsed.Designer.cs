@@ -57,6 +57,7 @@
             this.bbi_PopUp_DeleteRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_AddNewRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbiReport = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -121,7 +122,7 @@
             this.gridCol_Model1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
+            this.gridCol_InputUser = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -355,6 +356,13 @@
             this.bbiReport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.LargeImage")));
             this.bbiReport.Name = "bbiReport";
             this.bbiReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReport_ItemClick);
+            // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 31;
+            this.bsiUser.Name = "bsiUser";
             // 
             // ribbonPage1
             // 
@@ -642,7 +650,8 @@
             this.gridCol_Reason,
             this.gridCol_Status,
             this.gridCol_Plan,
-            this.gridCol_Solve});
+            this.gridCol_Solve,
+            this.gridCol_InputUser});
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Name = "Disposal";
             gridFormatRule1.Rule = formatConditionRuleDateOccuring1;
@@ -669,6 +678,7 @@
             this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gridView.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView_InitNewRow);
             // 
             // gridCol_Code
             // 
@@ -1217,12 +1227,11 @@
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
             // 
-            // bsiUser
+            // gridCol_InputUser
             // 
-            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiUser.Caption = "barStaticItem1";
-            this.bsiUser.Id = 31;
-            this.bsiUser.Name = "bsiUser";
+            this.gridCol_InputUser.Caption = "InputUser";
+            this.gridCol_InputUser.FieldName = "InputUser";
+            this.gridCol_InputUser.Name = "gridCol_InputUser";
             // 
             // Form_M0005_Detail_NoUsed
             // 
@@ -1368,5 +1377,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
         private DevExpress.XtraBars.BarButtonItem bbiNew;
         private DevExpress.XtraBars.BarStaticItem bsiUser;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_InputUser;
     }
 }

@@ -55,6 +55,7 @@
             this.bbi_PopUp_DeleteRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_AddNewRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_Eport_Excel = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -135,7 +136,7 @@
             this.repo_TextEdit_InstDoc = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridCol_DocNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_DisposalStatus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -363,6 +364,13 @@
             this.bbi_Eport_Excel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbi_Eport_Excel.ImageOptions.LargeImage")));
             this.bbi_Eport_Excel.Name = "bbi_Eport_Excel";
             this.bbi_Eport_Excel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_Eport_Excel_ItemClick);
+            // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 32;
+            this.bsiUser.Name = "bsiUser";
             // 
             // ribbonPage1
             // 
@@ -762,7 +770,8 @@
             this.gridCol_Memo,
             this.gridCol_InstDoc,
             this.gridCol_DocNo,
-            this.gridCol_DisposalStatus});
+            this.gridCol_DisposalStatus,
+            this.gridColumn5});
             gridFormatRule1.ApplyToRow = true;
             gridFormatRule1.Name = "Disposal";
             gridFormatRule1.Rule = formatConditionRuleDateOccuring1;
@@ -1445,12 +1454,11 @@
             this.gridCol_DisposalStatus.FieldName = "DisposalStatus";
             this.gridCol_DisposalStatus.Name = "gridCol_DisposalStatus";
             // 
-            // bsiUser
+            // gridColumn5
             // 
-            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiUser.Caption = "barStaticItem1";
-            this.bsiUser.Id = 32;
-            this.bsiUser.Name = "bsiUser";
+            this.gridColumn5.Caption = "gridCol_InputUser";
+            this.gridColumn5.FieldName = "InputUser";
+            this.gridColumn5.Name = "gridColumn5";
             // 
             // Form_M0005_Detail_NT
             // 
@@ -1621,5 +1629,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem bbi_Eport_Excel;
         private DevExpress.XtraBars.BarStaticItem bsiUser;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
     }
 }

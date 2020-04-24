@@ -189,7 +189,8 @@ namespace MMTB.View
                 if (bCheck_Confirm.Checked)
                 {
                     gridControl.DataSource = _DetailTable.AsEnumerable()
-                        .Where(row => row.Field<string>("ACCcode") == null || row.Field<string>("ACCcode") == "").CopyToDataTable();
+                        .Where(row => row.Field<string>("ACCcode") == null 
+                                   || row.Field<string>("ACCcode") == "").CopyToDataTable();
                     bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
                 }
                 else
@@ -211,7 +212,10 @@ namespace MMTB.View
                 if (bCheck_Disposal.Checked)
                 {
                     gridControl.DataSource = _DetailTable.AsEnumerable()
-                        .Where(row => (row.Field<string>("ACCDoc_Disposal") == null && row.Field<string>("DocNo_Disposal") != null) || (row.Field<string>("ACCDoc_Disposal") == "" && row.Field<string>("DocNo_Disposal") != null)).CopyToDataTable();
+                        .Where(row => (row.Field<string>("ACCDoc_Disposal") == null
+                                    && row.Field<string>("DocNo_Disposal")  != null)
+                                    || (row.Field<string>("ACCDoc_Disposal") == ""
+                                        && row.Field<string>("DocNo_Disposal")  != null)).CopyToDataTable();
                     bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
                 }
                 else
@@ -341,6 +345,11 @@ namespace MMTB.View
                     MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
         }
     }
 }

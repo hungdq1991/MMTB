@@ -57,6 +57,7 @@
             this.bbi_PopUp_DeleteRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_AddNewRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbiReport = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -133,7 +134,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -360,6 +360,13 @@
             this.bbiReport.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReport.ImageOptions.LargeImage")));
             this.bbiReport.Name = "bbiReport";
             this.bbiReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReport_ItemClick);
+            // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 31;
+            this.bsiUser.Name = "bsiUser";
             // 
             // ribbonPage1
             // 
@@ -679,6 +686,7 @@
             this.advBandedGridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.advBandedGridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridView1.CustomRowCellEditForEditing += new DevExpress.XtraGrid.Views.Grid.CustomRowCellEditEventHandler(this.advBandedGridView1_CustomRowCellEditForEditing);
+            this.advBandedGridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.advBandedGridView1_InitNewRow);
             // 
             // gridBand1
             // 
@@ -1388,13 +1396,6 @@
             this.popupMenu1.ItemLinks.Add(this.bbi_PopUp_DeleteRow);
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
-            // 
-            // bsiUser
-            // 
-            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiUser.Caption = "barStaticItem1";
-            this.bsiUser.Id = 31;
-            this.bsiUser.Name = "bsiUser";
             // 
             // Form_M0005_Detail_DD
             // 

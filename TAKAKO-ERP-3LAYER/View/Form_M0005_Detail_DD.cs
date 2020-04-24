@@ -146,6 +146,7 @@ namespace MMTB.View
             _HeaderTable.Columns.Add("ControlDept", typeof(string));
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("Memo", typeof(string));
+            _HeaderTable.Columns.Add("InputUser", typeof(string));
             _HeaderTable.Columns.Add("Column1", typeof(string));
             _HeaderTable.Columns.Add("Column2", typeof(string));
             _HeaderTable.Columns.Add("Column3", typeof(string));
@@ -183,6 +184,7 @@ namespace MMTB.View
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
             dtRow["Memo"] = txt_Memo.Text;
+            dtRow["InputUser"] = _systemDAL.userName;
             dtRow["Column1"] = "";
             dtRow["Column2"] = "";
             dtRow["Column3"] = "";
@@ -224,6 +226,7 @@ namespace MMTB.View
             _DetailTable.Columns.Add("MoveDate", typeof(DateTime));
             _DetailTable.Columns.Add("DocNo_Move", typeof(string));
             _DetailTable.Columns.Add("ApplyDate", typeof(DateTime));
+            _DetailTable.Columns.Add("InputUser", typeof(string));
         }
         private void Define_DeleteRowTable()
         {
@@ -618,6 +621,11 @@ namespace MMTB.View
             {
                 MessageBox.Show("Chứng từ di dời chưa được xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void advBandedGridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            advBandedGridView1.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
         }
     }
 }
