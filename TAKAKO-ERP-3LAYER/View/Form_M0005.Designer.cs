@@ -49,7 +49,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.advBandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_Code = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_ACCCode = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_NameEN = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -60,30 +59,32 @@
             this.gridCol_Lifetime = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_StartDeprDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_EndDeprDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_DesProcessCode = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DesLineCode = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DesLineEN = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DesGroupLineACC = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DesUsingDept = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_ControlDept = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_ConfDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DocNo_Confirm = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_ACCDoc = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_SupplierID = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_SupplierName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_InvNo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_Series = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_OrgCountry = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_ProDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_Group1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_Group2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_InstDoc = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_DisposalDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DocNo_Disposal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridCol_Area = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView1)).BeginInit();
@@ -158,8 +159,8 @@
             // 
             this.bbiNoUsed.Caption = "Không sử dụng";
             this.bbiNoUsed.Id = 17;
-            this.bbiNoUsed.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiEdit.ImageOptions.Image")));
-            this.bbiNoUsed.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiEdit.ImageOptions.LargeImage")));
+            this.bbiNoUsed.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNoUsed.ImageOptions.Image")));
+            this.bbiNoUsed.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNoUsed.ImageOptions.LargeImage")));
             this.bbiNoUsed.Name = "bbiNoUsed";
             this.bbiNoUsed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNoUsed_ItemClick);
             // 
@@ -309,6 +310,7 @@
             this.gridCol_DisposalDate,
             this.gridCol_InstDoc,
             this.gridCol_ControlDept,
+            this.gridCol_Area,
             this.gridCol_DesProcessCode,
             this.gridCol_DesLineCode,
             this.gridCol_DesLineEN,
@@ -334,32 +336,6 @@
             this.advBandedGridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.advBandedGridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.AdvBandedGridView1_CustomColumnDisplayText);
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridBand1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridBand1.AppearanceHeader.Options.UseBackColor = true;
-            this.gridBand1.AppearanceHeader.Options.UseFont = true;
-            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand1.Caption = "Thông tin MMTB";
-            this.gridBand1.Columns.Add(this.gridCol_Code);
-            this.gridBand1.Columns.Add(this.gridCol_ACCCode);
-            this.gridBand1.Columns.Add(this.gridCol_NameEN);
-            this.gridBand1.Columns.Add(this.gridCol_NameVN);
-            this.gridBand1.Columns.Add(this.gridCol_NameJP);
-            this.gridBand1.Columns.Add(this.gridCol_Maker);
-            this.gridBand1.Columns.Add(this.gridCol_Model);
-            this.gridBand1.Columns.Add(this.gridCol_Lifetime);
-            this.gridBand1.Columns.Add(this.gridCol_StartDeprDate);
-            this.gridBand1.Columns.Add(this.gridCol_EndDeprDate);
-            this.gridBand1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 910;
             // 
             // gridCol_Code
             // 
@@ -557,27 +533,6 @@
             this.gridCol_EndDeprDate.Visible = true;
             this.gridCol_EndDeprDate.Width = 90;
             // 
-            // gridBand4
-            // 
-            this.gridBand4.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.gridBand4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridBand4.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridBand4.AppearanceHeader.Options.UseBackColor = true;
-            this.gridBand4.AppearanceHeader.Options.UseFont = true;
-            this.gridBand4.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand4.Caption = "Thông tin sử dụng";
-            this.gridBand4.Columns.Add(this.gridCol_DesProcessCode);
-            this.gridBand4.Columns.Add(this.gridCol_DesLineCode);
-            this.gridBand4.Columns.Add(this.gridCol_DesLineEN);
-            this.gridBand4.Columns.Add(this.gridCol_DesGroupLineACC);
-            this.gridBand4.Columns.Add(this.gridCol_DesUsingDept);
-            this.gridBand4.Columns.Add(this.gridCol_ControlDept);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.VisibleIndex = 1;
-            this.gridBand4.Width = 450;
-            // 
             // gridCol_DesProcessCode
             // 
             this.gridCol_DesProcessCode.AppearanceCell.ForeColor = System.Drawing.Color.Black;
@@ -669,27 +624,6 @@
             this.gridCol_ControlDept.FieldName = "ControlDept";
             this.gridCol_ControlDept.Name = "gridCol_ControlDept";
             this.gridCol_ControlDept.Visible = true;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.gridBand2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridBand2.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridBand2.AppearanceHeader.Options.UseBackColor = true;
-            this.gridBand2.AppearanceHeader.Options.UseFont = true;
-            this.gridBand2.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand2.Caption = "Thông tin nghiệm thu";
-            this.gridBand2.Columns.Add(this.gridCol_ConfDate);
-            this.gridBand2.Columns.Add(this.gridCol_DocNo_Confirm);
-            this.gridBand2.Columns.Add(this.gridCol_ACCDoc);
-            this.gridBand2.Columns.Add(this.gridCol_SupplierID);
-            this.gridBand2.Columns.Add(this.gridCol_SupplierName);
-            this.gridBand2.Columns.Add(this.gridCol_InvNo);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 2;
-            this.gridBand2.Width = 520;
             // 
             // gridCol_ConfDate
             // 
@@ -798,26 +732,6 @@
             this.gridCol_InvNo.OptionsColumn.AllowEdit = false;
             this.gridCol_InvNo.OptionsColumn.FixedWidth = true;
             this.gridCol_InvNo.Visible = true;
-            // 
-            // gridBand5
-            // 
-            this.gridBand5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridBand5.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridBand5.AppearanceHeader.Options.UseFont = true;
-            this.gridBand5.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand5.AppearanceHeader.Options.UseImage = true;
-            this.gridBand5.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand5.Caption = "Thông tin khác";
-            this.gridBand5.Columns.Add(this.gridCol_Series);
-            this.gridBand5.Columns.Add(this.gridCol_OrgCountry);
-            this.gridBand5.Columns.Add(this.gridCol_ProDate);
-            this.gridBand5.Columns.Add(this.gridCol_Group1);
-            this.gridBand5.Columns.Add(this.gridCol_Group2);
-            this.gridBand5.Columns.Add(this.gridCol_InstDoc);
-            this.gridBand5.Name = "gridBand5";
-            this.gridBand5.VisibleIndex = 3;
-            this.gridBand5.Width = 605;
             // 
             // gridCol_Series
             // 
@@ -928,24 +842,6 @@
             this.gridCol_InstDoc.Visible = true;
             this.gridCol_InstDoc.Width = 120;
             // 
-            // gridBand3
-            // 
-            this.gridBand3.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.gridBand3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridBand3.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridBand3.AppearanceHeader.Options.UseBackColor = true;
-            this.gridBand3.AppearanceHeader.Options.UseFont = true;
-            this.gridBand3.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand3.Caption = "Thông tin thanh lý";
-            this.gridBand3.Columns.Add(this.gridCol_DisposalDate);
-            this.gridBand3.Columns.Add(this.gridCol_DocNo_Disposal);
-            this.gridBand3.Columns.Add(this.gridCol_ACCDoc_Disposal);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 4;
-            this.gridBand3.Width = 240;
-            // 
             // gridCol_DisposalDate
             // 
             this.gridCol_DisposalDate.AppearanceCell.ForeColor = System.Drawing.Color.Black;
@@ -982,6 +878,125 @@
             this.gridCol_DocNo_Disposal.OptionsColumn.AllowEdit = false;
             this.gridCol_DocNo_Disposal.OptionsColumn.FixedWidth = true;
             this.gridCol_DocNo_Disposal.Visible = true;
+            // 
+            // gridCol_Area
+            // 
+            this.gridCol_Area.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_Area.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Area.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_Area.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_Area.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_Area.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_Area.Caption = "Vị trí";
+            this.gridCol_Area.FieldName = "Area";
+            this.gridCol_Area.Name = "gridCol_Area";
+            this.gridCol_Area.Visible = true;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridBand1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand1.AppearanceHeader.Options.UseBackColor = true;
+            this.gridBand1.AppearanceHeader.Options.UseFont = true;
+            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand1.Caption = "Thông tin MMTB";
+            this.gridBand1.Columns.Add(this.gridCol_Code);
+            this.gridBand1.Columns.Add(this.gridCol_ACCCode);
+            this.gridBand1.Columns.Add(this.gridCol_NameEN);
+            this.gridBand1.Columns.Add(this.gridCol_NameVN);
+            this.gridBand1.Columns.Add(this.gridCol_NameJP);
+            this.gridBand1.Columns.Add(this.gridCol_Maker);
+            this.gridBand1.Columns.Add(this.gridCol_Model);
+            this.gridBand1.Columns.Add(this.gridCol_Lifetime);
+            this.gridBand1.Columns.Add(this.gridCol_StartDeprDate);
+            this.gridBand1.Columns.Add(this.gridCol_EndDeprDate);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 910;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gridBand4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridBand4.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand4.AppearanceHeader.Options.UseBackColor = true;
+            this.gridBand4.AppearanceHeader.Options.UseFont = true;
+            this.gridBand4.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand4.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand4.Caption = "Thông tin sử dụng";
+            this.gridBand4.Columns.Add(this.gridCol_Area);
+            this.gridBand4.Columns.Add(this.gridCol_DesProcessCode);
+            this.gridBand4.Columns.Add(this.gridCol_DesLineCode);
+            this.gridBand4.Columns.Add(this.gridCol_DesLineEN);
+            this.gridBand4.Columns.Add(this.gridCol_DesGroupLineACC);
+            this.gridBand4.Columns.Add(this.gridCol_DesUsingDept);
+            this.gridBand4.Columns.Add(this.gridCol_ControlDept);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 1;
+            this.gridBand4.Width = 525;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gridBand2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridBand2.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand2.AppearanceHeader.Options.UseBackColor = true;
+            this.gridBand2.AppearanceHeader.Options.UseFont = true;
+            this.gridBand2.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand2.Caption = "Thông tin nghiệm thu";
+            this.gridBand2.Columns.Add(this.gridCol_ConfDate);
+            this.gridBand2.Columns.Add(this.gridCol_DocNo_Confirm);
+            this.gridBand2.Columns.Add(this.gridCol_ACCDoc);
+            this.gridBand2.Columns.Add(this.gridCol_SupplierID);
+            this.gridBand2.Columns.Add(this.gridCol_SupplierName);
+            this.gridBand2.Columns.Add(this.gridCol_InvNo);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 2;
+            this.gridBand2.Width = 520;
+            // 
+            // gridBand5
+            // 
+            this.gridBand5.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridBand5.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand5.AppearanceHeader.Options.UseFont = true;
+            this.gridBand5.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand5.AppearanceHeader.Options.UseImage = true;
+            this.gridBand5.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand5.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand5.Caption = "Thông tin khác";
+            this.gridBand5.Columns.Add(this.gridCol_Series);
+            this.gridBand5.Columns.Add(this.gridCol_OrgCountry);
+            this.gridBand5.Columns.Add(this.gridCol_ProDate);
+            this.gridBand5.Columns.Add(this.gridCol_Group1);
+            this.gridBand5.Columns.Add(this.gridCol_Group2);
+            this.gridBand5.Columns.Add(this.gridCol_InstDoc);
+            this.gridBand5.Name = "gridBand5";
+            this.gridBand5.VisibleIndex = 3;
+            this.gridBand5.Width = 605;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.AppearanceHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.gridBand3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridBand3.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand3.AppearanceHeader.Options.UseBackColor = true;
+            this.gridBand3.AppearanceHeader.Options.UseFont = true;
+            this.gridBand3.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand3.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand3.Caption = "Thông tin thanh lý";
+            this.gridBand3.Columns.Add(this.gridCol_DisposalDate);
+            this.gridBand3.Columns.Add(this.gridCol_DocNo_Disposal);
+            this.gridBand3.Columns.Add(this.gridCol_ACCDoc_Disposal);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 4;
+            this.gridBand3.Width = 240;
             // 
             // Form_M0005
             // 
@@ -1051,13 +1066,14 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_DisposalDate;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_DocNo_Disposal;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_ACCDoc_Disposal;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraBars.BarCheckItem bCheck_NoUsed;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarStaticItem bsiUser;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_Area;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
     }
 }

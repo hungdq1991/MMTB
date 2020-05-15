@@ -35,6 +35,7 @@
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -61,7 +62,6 @@
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -132,6 +132,13 @@
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
+            // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 20;
+            this.bsiUser.Name = "bsiUser";
             // 
             // ribbonPage1
             // 
@@ -572,13 +579,6 @@
             this.gridCol_Memo.VisibleIndex = 15;
             this.gridCol_Memo.Width = 150;
             // 
-            // bsiUser
-            // 
-            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiUser.Caption = "barStaticItem1";
-            this.bsiUser.Id = 20;
-            this.bsiUser.Name = "bsiUser";
-            // 
             // Form_M0014
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,7 +590,7 @@
             this.Name = "Form_M0014";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "QUẢN LÝ PIN THEO MMTB";
+            this.Text = "MASTER PIN THEO MAKER-MODEL MMTB";
             this.Load += new System.EventHandler(this.Form_M0014_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using MMTB.DAL;
 
 namespace MMTB.View
@@ -192,6 +193,32 @@ namespace MMTB.View
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
                 formDetail.Show();
             }
+        }
+
+        private void BbiSupport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M01_Request_Detail formDetail = new Form_M01_Request_Detail(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
+        }
+
+        private void BbiListRequest_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M01_Request formDetail = new Form_M01_Request(_systemDAL))
+            {
+                formDetail.Shown += Form_Menu_Shown;
+                formDetail.ShowDialog();
+                //formDetail.StartPosition = FormStartPosition.CenterScreen;
+                //formDetail.Show();
+            }
+        }
+
+        private void Form_Menu_Shown(object sender, System.EventArgs e)
+        {
+            (sender as Form).Location = new Point(15,0);
         }
     }
 }

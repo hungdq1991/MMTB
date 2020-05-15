@@ -95,7 +95,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -106,6 +108,8 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
@@ -116,6 +120,7 @@
     <Compile Include="DAO\M0003_Process_DAO.cs" />
     <Compile Include="DAO\M0003_Line_DAO.cs" />
     <Compile Include="DAO\M0004_DAO.cs" />
+    <Compile Include="DAO\M01_DAO.cs" />
     <Compile Include="DAO\M0006_MayTien_DAO.cs" />
     <Compile Include="DAO\M0006_MayPhay_DAO.cs" />
     <Compile Include="DAO\M0006_DAO.cs" />
@@ -209,6 +214,18 @@
     </Compile>
     <Compile Include="View\Form_M0003_ProcessGroup.Designer.cs">
       <DependentUpon>Form_M0003_ProcessGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M01_Request_Detail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M01_Request_Detail.Designer.cs">
+      <DependentUpon>Form_M01_Request_Detail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M01_Request.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M01_Request.Designer.cs">
+      <DependentUpon>Form_M01_Request.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_M0005_Detail_ACC.cs">
       <SubType>Form</SubType>
@@ -429,6 +446,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0004.resx">
       <DependentUpon>Form_M0004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M01_Request_Detail.resx">
+      <DependentUpon>Form_M01_Request_Detail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M01_Request.resx">
+      <DependentUpon>Form_M01_Request.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0005_Detail_ACC.resx">
       <DependentUpon>Form_M0005_Detail_ACC.cs</DependentUpon>

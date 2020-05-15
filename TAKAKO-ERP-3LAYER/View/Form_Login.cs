@@ -68,7 +68,7 @@ namespace MMTB.View
                     _systemDAL.userName = _userName;
 
                     Form_Menu _fonmMain = new Form_Menu(_systemDAL);
-                    _fonmMain.StartPosition = FormStartPosition.CenterScreen;
+                    _fonmMain.StartPosition = FormStartPosition.Manual;
                     _fonmMain.Show();
                 } else {
                     MessageBox.Show("Tên đăng nhập và mật khẩu không đúng!", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Information);

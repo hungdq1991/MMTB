@@ -129,7 +129,7 @@ namespace MMTB
         }
 
         /// <method>
-        /// SP Insert Invoice
+        /// SP Insert MMTB
         /// </method>
         public string Update_MMTB(DataTable _listMMTB,DataTable _listDelete,DataTable _listMMTBDoc1)
         {
@@ -426,6 +426,109 @@ namespace MMTB
             }
             conn.Close();
             //return result;
+            return true;
+        }
+        //Thông tin Request
+        public string Insert_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_REQUEST", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListRequest", _listRequest);
+            param = cmd.Parameters.AddWithValue("@tblListRequest_Delete", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListRequest_Doc", _listRequestDoc);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
+        //Bổ sung thông tin duyệt Request
+        public bool Update_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_UPDATE_REQUEST", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListRequest", _listRequest);
+            param = cmd.Parameters.AddWithValue("@tblListRequest_Delete", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListRequest_Doc", _listRequestDoc);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return true;
+        }
+        //Bổ sung thông tin duyệt Request
+        public bool Update_Request_IT(DataTable _listRequest, DataTable _listRequestDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_UPDATE_REQUEST_IT", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListRequest", _listRequest);
+            param = cmd.Parameters.AddWithValue("@tblListRequest_Doc", _listRequestDoc);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
             return true;
         }
         /// <method>

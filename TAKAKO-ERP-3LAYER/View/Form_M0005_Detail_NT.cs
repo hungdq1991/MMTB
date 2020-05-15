@@ -749,7 +749,7 @@ namespace MMTB.View
         private Boolean CheckError()
         {
             //NCC
-            if (String.IsNullOrEmpty(sLook_Supplier.Text.Trim()))
+            if (String.IsNullOrEmpty(Convert.ToString(sLook_Supplier.EditValue)))
             {
                 MessageBox.Show("Hãy nhập \"NCC\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sLook_Supplier.Focus();
@@ -762,7 +762,7 @@ namespace MMTB.View
                 txt_InvNo.Focus();
                 return false;
             }
-            if (String.IsNullOrEmpty(sLook_ControlDept.EditValue.ToString().Trim()))
+            if (String.IsNullOrEmpty(Convert.ToString(sLook_ControlDept.EditValue)))
             {
                 MessageBox.Show("Hãy nhập \"Bộ phận quản lý MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 sLook_ControlDept.Focus();
@@ -890,7 +890,7 @@ namespace MMTB.View
 
         private void bbi_Eport_Excel_ItemClick(object sender, ItemClickEventArgs e)
         {
-            string DocNo = sLook_DocNo.EditValue.ToString();
+            string DocNo = Convert.ToString(sLook_DocNo.EditValue);
             M0005_NT_Report rpt_NT = new M0005_NT_Report(DocNo);
             ReportPrintTool print = new ReportPrintTool(rpt_NT);
             rpt_NT.ShowPreviewDialog();

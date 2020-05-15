@@ -669,7 +669,7 @@ namespace MMTB.View
             int docStatus = cbx_Status.SelectedIndex;
             if (docStatus == 1)
             { 
-            string DocNo = sLook_DocNo.EditValue.ToString();
+            string DocNo = Convert.ToString(sLook_DocNo.EditValue);
             M0005_TL_Report rpt_TL = new M0005_TL_Report(DocNo);
             ReportPrintTool print = new ReportPrintTool(rpt_TL);
             rpt_TL.ShowPreviewDialog();

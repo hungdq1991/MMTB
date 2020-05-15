@@ -35,6 +35,7 @@
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -62,7 +63,9 @@
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
+            this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
+            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -85,6 +88,8 @@
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl.MaxItemId = 21;
             this.ribbonControl.Name = "ribbonControl";
+            this.ribbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
+            this.ribbonPageCategory1});
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
@@ -133,6 +138,13 @@
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
+            // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 20;
+            this.bsiUser.Name = "bsiUser";
             // 
             // ribbonPage1
             // 
@@ -582,12 +594,24 @@
             this.gridCol_Memo.VisibleIndex = 16;
             this.gridCol_Memo.Width = 150;
             // 
-            // bsiUser
+            // ribbonPageCategory1
             // 
-            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiUser.Caption = "barStaticItem1";
-            this.bsiUser.Id = 20;
-            this.bsiUser.Name = "bsiUser";
+            this.ribbonPageCategory1.Name = "ribbonPageCategory1";
+            this.ribbonPageCategory1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage2});
+            this.ribbonPageCategory1.Text = "ribbonPageCategory1";
+            // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2});
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "ribbonPage2";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
             // 
             // Form_M0013
             // 
@@ -600,7 +624,7 @@
             this.Name = "Form_M0013";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "QUẢN LÝ DẦU THEO MMTB";
+            this.Text = "MASTER DẦU THEO MAKER-MODEL MMTB";
             this.Load += new System.EventHandler(this.Form_M0013_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
@@ -646,5 +670,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItenNameEN;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItemNameVN;
         private DevExpress.XtraBars.BarStaticItem bsiUser;
+        private DevExpress.XtraBars.Ribbon.RibbonPageCategory ribbonPageCategory1;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }

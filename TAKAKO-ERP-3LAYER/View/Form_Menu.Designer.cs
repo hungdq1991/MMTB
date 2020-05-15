@@ -49,12 +49,16 @@
             this.bbiTech = new DevExpress.XtraBars.BarButtonItem();
             this.bbiACC = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNoUsed = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiNewRequest = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiListRequest = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             this.SuspendLayout();
@@ -85,14 +89,17 @@
             this.bbiStop,
             this.bbiTech,
             this.bbiACC,
-            this.bbiNoUsed});
+            this.bbiNoUsed,
+            this.bbiNewRequest,
+            this.bbiListRequest});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 23;
+            this.mainRibbonControl.MaxItemId = 25;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage,
             this.ribbonPage1,
-            this.ribbonPage2});
+            this.ribbonPage2,
+            this.ribbonPage3});
             this.mainRibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.mainRibbonControl.Size = new System.Drawing.Size(831, 159);
@@ -258,6 +265,23 @@
             this.bbiNoUsed.Name = "bbiNoUsed";
             this.bbiNoUsed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNoUsed_ItemClick);
             // 
+            // bbiNewRequest
+            // 
+            this.bbiNewRequest.Caption = "Lập yêu cầu";
+            this.bbiNewRequest.Id = 23;
+            this.bbiNewRequest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNewRequest.ImageOptions.Image")));
+            this.bbiNewRequest.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNewRequest.ImageOptions.LargeImage")));
+            this.bbiNewRequest.Name = "bbiNewRequest";
+            this.bbiNewRequest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiSupport_ItemClick);
+            // 
+            // bbiListRequest
+            // 
+            this.bbiListRequest.Caption = "Danh sách yêu cầu";
+            this.bbiListRequest.Id = 24;
+            this.bbiListRequest.ImageOptions.ImageUri.Uri = "ListBullets";
+            this.bbiListRequest.Name = "bbiListRequest";
+            this.bbiListRequest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiListRequest_ItemClick);
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
@@ -325,6 +349,19 @@
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Quản lý LK, Pin, Dầu";
             // 
+            // ribbonPage3
+            // 
+            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup3});
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "Chỉnh sửa chương trình";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiNewRequest);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiListRequest);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            // 
             // ribbonPageGroup4
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.bbiList);
@@ -346,7 +383,9 @@
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "Form_Menu";
             this.Ribbon = this.mainRibbonControl;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Menu_FormClosing);
+            this.Shown += new System.EventHandler(this.Form_Menu_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -381,5 +420,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarButtonItem bbiNewRequest;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem bbiListRequest;
     }
 }
