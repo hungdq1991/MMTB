@@ -841,6 +841,22 @@ namespace MMTB.View
                     gridView.FocusedColumn = gridView.Columns["Lifetime"];
                     return false;
                 }
+
+                //Ngày bắt đầu khấu hao < ngày nghiệm thu
+                DateTime _startDepr, _confDate;
+                if (!String.IsNullOrEmpty(Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["StartDeprDate"]))))
+                {
+                    _startDepr = Convert.ToDateTime(gridView.GetRowCellValue(rows, gridView.Columns["StartDeprDate"]));
+                    _confDate = Convert.ToDateTime(date_Confirm);
+                    if (_startDepr.Date < _confDate.Date)
+                    {
+                        MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Ngày bắt đầu khấu hao < Ngày nghiệm thu?\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        gridView.Focus();
+                        gridView.FocusedRowHandle = rows;
+                        gridView.FocusedColumn = gridView1.Columns["StartDeprDate"];
+                        return false;
+                    }
+                }
             }
             return true;
         }

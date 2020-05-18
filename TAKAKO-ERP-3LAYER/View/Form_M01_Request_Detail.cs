@@ -438,7 +438,6 @@ namespace MMTB.View
             {
                 try
                 {
-                    sLook_DocNo.Focus();
                     _DetailTable = advBandedGridView1.GridControl.DataSource as DataTable;
                     if (M01_DAO.Update_Request_IT(_DetailTable, GetValue_Header()))
                     {

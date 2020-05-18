@@ -112,6 +112,7 @@ namespace MMTB.DAO
 		                        ,DocDate
                                 ,ControlDept
                                 ,DocStatus
+                                ,ConfDate
                                 ,ReqMemo
 	                        FROM 
 		                        M01_Request_Doc

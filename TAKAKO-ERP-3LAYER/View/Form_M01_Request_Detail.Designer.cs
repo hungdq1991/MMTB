@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M01_Request_Detail));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression2 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleExpression formatConditionRuleExpression1 = new DevExpress.XtraEditors.FormatConditionRuleExpression();
             this.gridCol_6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
@@ -76,8 +76,11 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ReqDesc = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repo_TextEdit_ReqDesc = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridCol_Reason = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repo_TextEdit_Reason = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridCol_Memo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repo_TextEdit_Memo = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridCol_ConfUser = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_ConfDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -87,6 +90,7 @@
             this.gridCol_Confirm = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ITConfDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_ITMemo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repo_TextEdit_ITMemo = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridCol_10 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -104,6 +108,11 @@
             this.date_Doc = new DevExpress.XtraEditors.DateEdit();
             this.sLook_DocNo = new DevExpress.XtraEditors.SearchLookUpEdit();
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridCol_DocNo1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_DocDate1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_Status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ConfDate1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ReqMemo1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txt_ReqMemo = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -119,8 +128,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_ReqType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_ReqDesc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Reason)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Memo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Confirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_ITMemo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -364,7 +377,11 @@
             this.repo_sLookUp_Check,
             this.repo_sLookUp_ReqType,
             this.repo_sLookUp_Program,
-            this.repo_sLookUp_Confirm});
+            this.repo_sLookUp_Confirm,
+            this.repo_TextEdit_ReqDesc,
+            this.repo_TextEdit_Memo,
+            this.repo_TextEdit_ITMemo,
+            this.repo_TextEdit_Reason});
             this.gridControl.Size = new System.Drawing.Size(1027, 323);
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -404,18 +421,18 @@
             this.gridCol_8,
             this.gridCol_9,
             this.gridCol_10});
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Column = this.gridCol_6;
-            gridFormatRule2.ColumnApplyTo = this.gridCol_6;
-            gridFormatRule2.Name = "Disposal";
-            formatConditionRuleExpression2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            formatConditionRuleExpression2.Appearance.ForeColor = System.Drawing.Color.Black;
-            formatConditionRuleExpression2.Appearance.Options.UseBackColor = true;
-            formatConditionRuleExpression2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleExpression2.Expression = "StartsWith([ACCDoc_Disposal], \'FA\')";
-            formatConditionRuleExpression2.PredefinedName = "Disposal";
-            gridFormatRule2.Rule = formatConditionRuleExpression2;
-            this.advBandedGridView1.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.gridCol_6;
+            gridFormatRule1.ColumnApplyTo = this.gridCol_6;
+            gridFormatRule1.Name = "Disposal";
+            formatConditionRuleExpression1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            formatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Black;
+            formatConditionRuleExpression1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleExpression1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleExpression1.Expression = "StartsWith([ACCDoc_Disposal], \'FA\')";
+            formatConditionRuleExpression1.PredefinedName = "Disposal";
+            gridFormatRule1.Rule = formatConditionRuleExpression1;
+            this.advBandedGridView1.FormatRules.Add(gridFormatRule1);
             this.advBandedGridView1.GridControl = this.gridControl;
             this.advBandedGridView1.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridView1.Name = "advBandedGridView1";
@@ -699,12 +716,19 @@
             this.gridCol_ReqDesc.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_ReqDesc.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ReqDesc.Caption = "Diễn giải";
+            this.gridCol_ReqDesc.ColumnEdit = this.repo_TextEdit_ReqDesc;
             this.gridCol_ReqDesc.FieldName = "ReqDesc";
             this.gridCol_ReqDesc.Name = "gridCol_ReqDesc";
             this.gridCol_ReqDesc.OptionsColumn.AllowShowHide = false;
             this.gridCol_ReqDesc.OptionsColumn.FixedWidth = true;
             this.gridCol_ReqDesc.Visible = true;
             this.gridCol_ReqDesc.Width = 150;
+            // 
+            // repo_TextEdit_ReqDesc
+            // 
+            this.repo_TextEdit_ReqDesc.AutoHeight = false;
+            this.repo_TextEdit_ReqDesc.MaxLength = 100;
+            this.repo_TextEdit_ReqDesc.Name = "repo_TextEdit_ReqDesc";
             // 
             // gridCol_Reason
             // 
@@ -717,12 +741,19 @@
             this.gridCol_Reason.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_Reason.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_Reason.Caption = "Lý do";
+            this.gridCol_Reason.ColumnEdit = this.repo_TextEdit_Reason;
             this.gridCol_Reason.FieldName = "Reason";
             this.gridCol_Reason.Name = "gridCol_Reason";
             this.gridCol_Reason.OptionsColumn.AllowShowHide = false;
             this.gridCol_Reason.OptionsColumn.FixedWidth = true;
             this.gridCol_Reason.Visible = true;
             this.gridCol_Reason.Width = 150;
+            // 
+            // repo_TextEdit_Reason
+            // 
+            this.repo_TextEdit_Reason.AutoHeight = false;
+            this.repo_TextEdit_Reason.MaxLength = 100;
+            this.repo_TextEdit_Reason.Name = "repo_TextEdit_Reason";
             // 
             // gridCol_Memo
             // 
@@ -735,11 +766,18 @@
             this.gridCol_Memo.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_Memo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_Memo.Caption = "Ghi chú";
+            this.gridCol_Memo.ColumnEdit = this.repo_TextEdit_Memo;
             this.gridCol_Memo.FieldName = "Memo";
             this.gridCol_Memo.Name = "gridCol_Memo";
             this.gridCol_Memo.OptionsColumn.FixedWidth = true;
             this.gridCol_Memo.Visible = true;
             this.gridCol_Memo.Width = 120;
+            // 
+            // repo_TextEdit_Memo
+            // 
+            this.repo_TextEdit_Memo.AutoHeight = false;
+            this.repo_TextEdit_Memo.MaxLength = 100;
+            this.repo_TextEdit_Memo.Name = "repo_TextEdit_Memo";
             // 
             // gridCol_ConfUser
             // 
@@ -879,12 +917,19 @@
             this.gridCol_ITMemo.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_ITMemo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ITMemo.Caption = "Ghi chú";
+            this.gridCol_ITMemo.ColumnEdit = this.repo_TextEdit_ITMemo;
             this.gridCol_ITMemo.FieldName = "ITMemo";
             this.gridCol_ITMemo.Name = "gridCol_ITMemo";
             this.gridCol_ITMemo.OptionsColumn.AllowEdit = false;
             this.gridCol_ITMemo.OptionsColumn.FixedWidth = true;
             this.gridCol_ITMemo.Visible = true;
             this.gridCol_ITMemo.Width = 120;
+            // 
+            // repo_TextEdit_ITMemo
+            // 
+            this.repo_TextEdit_ITMemo.AutoHeight = false;
+            this.repo_TextEdit_ITMemo.MaxLength = 100;
+            this.repo_TextEdit_ITMemo.Name = "repo_TextEdit_ITMemo";
             // 
             // gridCol_10
             // 
@@ -1090,10 +1135,65 @@
             // 
             // searchLookUpEdit1View
             // 
+            this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridCol_DocNo1,
+            this.gridCol_DocDate1,
+            this.gridCol_Status,
+            this.gridCol_ConfDate1,
+            this.gridCol_ReqMemo1});
             this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridCol_DocNo1
+            // 
+            this.gridCol_DocNo1.Caption = "Số chứng từ";
+            this.gridCol_DocNo1.FieldName = "DocNo";
+            this.gridCol_DocNo1.Name = "gridCol_DocNo1";
+            this.gridCol_DocNo1.Visible = true;
+            this.gridCol_DocNo1.VisibleIndex = 0;
+            this.gridCol_DocNo1.Width = 60;
+            // 
+            // gridCol_DocDate1
+            // 
+            this.gridCol_DocDate1.Caption = "Ngày";
+            this.gridCol_DocDate1.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridCol_DocDate1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridCol_DocDate1.FieldName = "DocDate";
+            this.gridCol_DocDate1.Name = "gridCol_DocDate1";
+            this.gridCol_DocDate1.Visible = true;
+            this.gridCol_DocDate1.VisibleIndex = 1;
+            this.gridCol_DocDate1.Width = 60;
+            // 
+            // gridCol_Status
+            // 
+            this.gridCol_Status.Caption = "Xác nhận";
+            this.gridCol_Status.FieldName = "DocStatus";
+            this.gridCol_Status.Name = "gridCol_Status";
+            this.gridCol_Status.Visible = true;
+            this.gridCol_Status.VisibleIndex = 2;
+            this.gridCol_Status.Width = 60;
+            // 
+            // gridCol_ConfDate1
+            // 
+            this.gridCol_ConfDate1.Caption = "Ngày xác nhận";
+            this.gridCol_ConfDate1.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.gridCol_ConfDate1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridCol_ConfDate1.FieldName = "ConfDate";
+            this.gridCol_ConfDate1.Name = "gridCol_ConfDate1";
+            this.gridCol_ConfDate1.Visible = true;
+            this.gridCol_ConfDate1.VisibleIndex = 3;
+            this.gridCol_ConfDate1.Width = 60;
+            // 
+            // gridCol_ReqMemo1
+            // 
+            this.gridCol_ReqMemo1.Caption = "Ghi chú";
+            this.gridCol_ReqMemo1.FieldName = "ReqMemo";
+            this.gridCol_ReqMemo1.Name = "gridCol_ReqMemo1";
+            this.gridCol_ReqMemo1.Visible = true;
+            this.gridCol_ReqMemo1.VisibleIndex = 4;
+            this.gridCol_ReqMemo1.Width = 137;
             // 
             // labelControl5
             // 
@@ -1107,6 +1207,7 @@
             // 
             this.txt_ReqMemo.Location = new System.Drawing.Point(302, 50);
             this.txt_ReqMemo.Name = "txt_ReqMemo";
+            this.txt_ReqMemo.Properties.MaxLength = 100;
             this.txt_ReqMemo.Size = new System.Drawing.Size(291, 20);
             this.txt_ReqMemo.TabIndex = 23;
             // 
@@ -1167,8 +1268,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_ReqType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_ReqDesc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Reason)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_Memo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Confirm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_TextEdit_ITMemo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -1265,5 +1370,14 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_TextEdit_ReqDesc;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_TextEdit_Reason;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_TextEdit_Memo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repo_TextEdit_ITMemo;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_DocNo1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_DocDate1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_Status;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ConfDate1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ReqMemo1;
     }
 }

@@ -1055,7 +1055,7 @@
             this.gridCol_Lifetime.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_Lifetime.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_Lifetime.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridCol_Lifetime.Caption = "Tuổi thọ (Tháng)";
+            this.gridCol_Lifetime.Caption = "Số tháng khấu hao";
             this.gridCol_Lifetime.ColumnEdit = this.repo_TextEdit_Lifetime;
             this.gridCol_Lifetime.DisplayFormat.FormatString = "0.##";
             this.gridCol_Lifetime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;

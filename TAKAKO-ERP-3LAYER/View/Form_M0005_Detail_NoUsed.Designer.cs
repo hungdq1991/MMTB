@@ -102,6 +102,7 @@
             this.repo_sLookUp_Plan = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_Solve = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_InputUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_sLookUp_NameEN = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.repo_sLookUp_NameEN_View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.repo_sLookUp_Nation = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
@@ -122,7 +123,6 @@
             this.gridCol_Model1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridCol_InputUser = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -879,7 +879,7 @@
             this.gridCol_Lifetime.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_Lifetime.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_Lifetime.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_Lifetime.Caption = "Tuổi thọ (tháng)";
+            this.gridCol_Lifetime.Caption = "Số tháng khấu hao";
             this.gridCol_Lifetime.DisplayFormat.FormatString = "#";
             this.gridCol_Lifetime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridCol_Lifetime.FieldName = "Lifetime";
@@ -1070,6 +1070,12 @@
             this.gridCol_Solve.Visible = true;
             this.gridCol_Solve.VisibleIndex = 15;
             // 
+            // gridCol_InputUser
+            // 
+            this.gridCol_InputUser.Caption = "InputUser";
+            this.gridCol_InputUser.FieldName = "InputUser";
+            this.gridCol_InputUser.Name = "gridCol_InputUser";
+            // 
             // repo_sLookUp_NameEN
             // 
             this.repo_sLookUp_NameEN.AutoHeight = false;
@@ -1226,12 +1232,6 @@
             this.popupMenu1.ItemLinks.Add(this.bbi_PopUp_DeleteRow);
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
-            // 
-            // gridCol_InputUser
-            // 
-            this.gridCol_InputUser.Caption = "InputUser";
-            this.gridCol_InputUser.FieldName = "InputUser";
-            this.gridCol_InputUser.Name = "gridCol_InputUser";
             // 
             // Form_M0005_Detail_NoUsed
             // 
