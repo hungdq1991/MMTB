@@ -43,7 +43,7 @@ namespace MMTB.View
             Setting_Init_Control();
             Setting_Init_Value();
 
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
 
             GetInfo_gridView();
         }

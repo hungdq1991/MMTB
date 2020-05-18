@@ -50,7 +50,7 @@ namespace MMTB.View
             _tempTable = new DataTable();
             M0001_DAO = new M0001_DAO();
             //
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
             //Load Init
             GetInfo_Gridview();
         }

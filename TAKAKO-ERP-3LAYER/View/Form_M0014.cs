@@ -44,7 +44,7 @@ namespace MMTB.View
             M0014_DAO = new M0014_DAO();
 
             //
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
 
             GetInfo_GridView();
         }

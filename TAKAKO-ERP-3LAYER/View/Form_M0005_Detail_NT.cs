@@ -548,7 +548,7 @@ namespace MMTB.View
         private void Setting_Init_Control()
         {
             //Pass username
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
 
             //Định nghĩa datatable gán cho header
             Define_HeaderTable();

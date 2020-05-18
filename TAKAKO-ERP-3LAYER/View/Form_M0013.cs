@@ -24,7 +24,7 @@ namespace MMTB.View
             InitializeComponent();
             _systemDAL = systemDAL;
             //
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
         }
 
         private void GetInfo_GridView()

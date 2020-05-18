@@ -49,7 +49,7 @@ namespace MMTB.View
             //
             M0003_ProcessCode_DAO = new M0003_ProcessCode_DAO();
             //
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
             //Load Init
             GetInfo_Gridview();
         }

@@ -33,9 +33,10 @@ namespace MMTB.View
             //
             M01_DAO = new M01_DAO();
             //
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
             //Load Init
             GetInfo_advBandedGridView1();
+            Add_Value_repo_sLookUp_Check();
             Add_Value_repo_sLookUp_Confirm();
             AddValue_CBox_ReqType();
         }
@@ -81,7 +82,7 @@ namespace MMTB.View
                         if (_urgent == true && _unConfirm == true)
                         {
                             gridControl.DataSource = _tempTable.AsEnumerable()
-                                .Where(row => row.Field<Boolean>("Urgent") == true && row.Field<Int32>("ITConfirm") == 0).CopyToDataTable();
+                                .Where(row => row.Field<Boolean>("Urgent") == true && (row.Field<Int32>("ITConfirm") == 0 || row.Field<Int32>("ITConfirm") == 1 || row.Field<Int32>("ITConfirm") == 2)).CopyToDataTable();
                             bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                         }
                         if (_urgent == true && _unConfirm == false)
@@ -92,7 +93,7 @@ namespace MMTB.View
                         }
                         if (_urgent == false && _unConfirm == true)
                         {
-                            gridControl.DataSource = _tempTable.AsEnumerable().Where(row => row.Field<Int32>("ITConfirm") == 0).CopyToDataTable();
+                            gridControl.DataSource = _tempTable.AsEnumerable().Where(row => row.Field<Int32>("ITConfirm") == 0 || row.Field<Int32>("ITConfirm") == 1 || row.Field<Int32>("ITConfirm") == 2).CopyToDataTable();
                             bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                         }
                         if (_urgent == false && _unConfirm == false)
@@ -183,6 +184,29 @@ namespace MMTB.View
             repo_sLookUp_Confirm.DataSource = _ResultTable;
             repo_sLookUp_Confirm.ValueMember = "STT";
             repo_sLookUp_Confirm.DisplayMember = "Confirm";
+        }
+        /// <summary>
+        /// Điền dữ liệu cho ô kiểm tra chương trình có hay không
+        /// </summary>
+        private void Add_Value_repo_sLookUp_Check()
+        {
+            DataTable _ResultTable = new DataTable();
+            _ResultTable.Columns.Add("STT", typeof(int));
+            _ResultTable.Columns.Add("Check", typeof(string));
+
+            DataRow dtRow = _ResultTable.NewRow();
+            dtRow["STT"] = 0;
+            dtRow["Check"] = "Không";
+            _ResultTable.Rows.Add(dtRow);
+
+            DataRow dtRow2 = _ResultTable.NewRow();
+            dtRow2["STT"] = 1;
+            dtRow2["Check"] = "Có";
+            _ResultTable.Rows.Add(dtRow2);
+
+            repo_sLookUp_Check.DataSource = _ResultTable;
+            repo_sLookUp_Check.ValueMember = "STT";
+            repo_sLookUp_Check.DisplayMember = "Check";
         }
         //Kiểm tra yêu cầu cần xử lý gấp check changed
         private void BCheck_Urgent_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

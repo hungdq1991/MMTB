@@ -51,10 +51,12 @@
             this.gridCol_DocNo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_DocDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_PreUser = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridCol_Type = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridCol_Check = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_Program = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_ProgramName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_ReqType = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repo_sLookUp_ReqType = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_ReqDesc = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_Reason = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_Urgent = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -63,6 +65,8 @@
             this.gridCol_ConfDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridCol_ITConfirm = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repo_sLookUp_Confirm = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_ITConfDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_Status = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -74,10 +78,8 @@
             this.gridCol_5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridCol_8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.repo_sLookUp_ReqType = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.repo_sLookUp_Confirm = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.repo_sLookUp_Check = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridView1)).BeginInit();
@@ -85,6 +87,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Confirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Check)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // gridCol_6
@@ -243,7 +247,8 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repo_sLookUp_ReqType,
-            this.repo_sLookUp_Confirm});
+            this.repo_sLookUp_Confirm,
+            this.repo_sLookUp_Check});
             this.gridControl.Size = new System.Drawing.Size(1027, 406);
             this.gridControl.TabIndex = 7;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -260,7 +265,7 @@
             this.gridCol_DocNo,
             this.gridCol_DocDate,
             this.gridCol_PreUser,
-            this.gridCol_Type,
+            this.gridCol_Check,
             this.gridCol_Program,
             this.gridCol_ProgramName,
             this.gridCol_ReqType,
@@ -318,7 +323,7 @@
             this.gridBand1.Columns.Add(this.gridCol_DocNo);
             this.gridBand1.Columns.Add(this.gridCol_DocDate);
             this.gridBand1.Columns.Add(this.gridCol_PreUser);
-            this.gridBand1.Columns.Add(this.gridCol_Type);
+            this.gridBand1.Columns.Add(this.gridCol_Check);
             this.gridBand1.Columns.Add(this.gridCol_Program);
             this.gridBand1.Columns.Add(this.gridCol_ProgramName);
             this.gridBand1.Columns.Add(this.gridCol_ReqType);
@@ -355,6 +360,8 @@
             // 
             this.gridCol_DocDate.AppearanceCell.ForeColor = System.Drawing.Color.Black;
             this.gridCol_DocDate.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_DocDate.AppearanceCell.Options.UseTextOptions = true;
+            this.gridCol_DocDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_DocDate.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.gridCol_DocDate.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_DocDate.AppearanceHeader.Options.UseFont = true;
@@ -390,23 +397,24 @@
             this.gridCol_PreUser.Visible = true;
             this.gridCol_PreUser.Width = 90;
             // 
-            // gridCol_Type
+            // gridCol_Check
             // 
-            this.gridCol_Type.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_Type.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_Type.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_Type.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_Type.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_Type.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_Type.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_Type.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_Type.Caption = "Phân loại";
-            this.gridCol_Type.FieldName = "Type";
-            this.gridCol_Type.Name = "gridCol_Type";
-            this.gridCol_Type.OptionsColumn.AllowEdit = false;
-            this.gridCol_Type.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.gridCol_Type.OptionsColumn.AllowShowHide = false;
-            this.gridCol_Type.OptionsColumn.FixedWidth = true;
+            this.gridCol_Check.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Check.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_Check.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_Check.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Check.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_Check.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_Check.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_Check.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_Check.Caption = "Phân loại";
+            this.gridCol_Check.ColumnEdit = this.repo_sLookUp_Check;
+            this.gridCol_Check.FieldName = "Check";
+            this.gridCol_Check.Name = "gridCol_Check";
+            this.gridCol_Check.OptionsColumn.AllowEdit = false;
+            this.gridCol_Check.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.gridCol_Check.OptionsColumn.AllowShowHide = false;
+            this.gridCol_Check.OptionsColumn.FixedWidth = true;
             // 
             // gridCol_Program
             // 
@@ -464,6 +472,22 @@
             this.gridCol_ReqType.OptionsColumn.AllowGroup = DevExpress.Utils.DefaultBoolean.False;
             this.gridCol_ReqType.OptionsColumn.FixedWidth = true;
             this.gridCol_ReqType.Visible = true;
+            this.gridCol_ReqType.Width = 120;
+            // 
+            // repo_sLookUp_ReqType
+            // 
+            this.repo_sLookUp_ReqType.AutoHeight = false;
+            this.repo_sLookUp_ReqType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repo_sLookUp_ReqType.Name = "repo_sLookUp_ReqType";
+            this.repo_sLookUp_ReqType.PopupView = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // gridCol_ReqDesc
             // 
@@ -505,6 +529,8 @@
             // 
             this.gridCol_Urgent.AppearanceCell.ForeColor = System.Drawing.Color.Black;
             this.gridCol_Urgent.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_Urgent.AppearanceCell.Options.UseTextOptions = true;
+            this.gridCol_Urgent.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_Urgent.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
             this.gridCol_Urgent.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.gridCol_Urgent.AppearanceHeader.Options.UseFont = true;
@@ -512,12 +538,12 @@
             this.gridCol_Urgent.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_Urgent.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_Urgent.Caption = "Gấp";
+            this.gridCol_Urgent.ColumnEdit = this.repo_sLookUp_Check;
             this.gridCol_Urgent.FieldName = "Urgent";
             this.gridCol_Urgent.Name = "gridCol_Urgent";
             this.gridCol_Urgent.OptionsColumn.AllowEdit = false;
             this.gridCol_Urgent.OptionsColumn.FixedWidth = true;
             this.gridCol_Urgent.Visible = true;
-            this.gridCol_Urgent.Width = 30;
             // 
             // gridCol_ITMemo
             // 
@@ -556,7 +582,6 @@
             this.gridCol_ConfUser.Name = "gridCol_ConfUser";
             this.gridCol_ConfUser.OptionsColumn.AllowEdit = false;
             this.gridCol_ConfUser.OptionsColumn.FixedWidth = true;
-            this.gridCol_ConfUser.Visible = true;
             this.gridCol_ConfUser.Width = 90;
             // 
             // gridCol_ConfDate
@@ -596,7 +621,7 @@
             this.gridBand4.Columns.Add(this.gridCol_Dept);
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.VisibleIndex = 1;
-            this.gridBand4.Width = 225;
+            this.gridBand4.Width = 285;
             // 
             // gridCol_ITConfirm
             // 
@@ -616,7 +641,22 @@
             this.gridCol_ITConfirm.OptionsColumn.AllowEdit = false;
             this.gridCol_ITConfirm.OptionsColumn.FixedWidth = true;
             this.gridCol_ITConfirm.Visible = true;
-            this.gridCol_ITConfirm.Width = 60;
+            this.gridCol_ITConfirm.Width = 120;
+            // 
+            // repo_sLookUp_Confirm
+            // 
+            this.repo_sLookUp_Confirm.AutoHeight = false;
+            this.repo_sLookUp_Confirm.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repo_sLookUp_Confirm.Name = "repo_sLookUp_Confirm";
+            this.repo_sLookUp_Confirm.PopupView = this.gridView1;
+            // 
+            // gridView1
+            // 
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridCol_ITConfDate
             // 
@@ -786,35 +826,20 @@
             this.gridCol_8.Name = "gridCol_8";
             this.gridCol_8.Width = 135;
             // 
-            // repo_sLookUp_ReqType
+            // repo_sLookUp_Check
             // 
-            this.repo_sLookUp_ReqType.AutoHeight = false;
-            this.repo_sLookUp_ReqType.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repo_sLookUp_Check.AutoHeight = false;
+            this.repo_sLookUp_Check.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_sLookUp_ReqType.Name = "repo_sLookUp_ReqType";
-            this.repo_sLookUp_ReqType.PopupView = this.repositoryItemSearchLookUpEdit1View;
+            this.repo_sLookUp_Check.Name = "repo_sLookUp_Check";
+            this.repo_sLookUp_Check.PopupView = this.gridView2;
             // 
-            // repositoryItemSearchLookUpEdit1View
+            // gridView2
             // 
-            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
-            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // repo_sLookUp_Confirm
-            // 
-            this.repo_sLookUp_Confirm.AutoHeight = false;
-            this.repo_sLookUp_Confirm.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_sLookUp_Confirm.Name = "repo_sLookUp_Confirm";
-            this.repo_sLookUp_Confirm.PopupView = this.gridView1;
-            // 
-            // gridView1
-            // 
-            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // Form_M01_Request
             // 
@@ -838,6 +863,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Confirm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_Check)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -859,7 +886,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_DocNo;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_DocDate;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_PreUser;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_Type;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_Check;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_Program;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_ProgramName;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridCol_ReqType;
@@ -891,5 +918,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_Confirm;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_Check;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
     }
 }

@@ -30,7 +30,7 @@ namespace MMTB.View
             //Sử dụng DAO của M0003
             M0003_Line_DAO = new M0003_Line_DAO();
             //
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
             //Load Init
             GetInfo_Gridview();
         }

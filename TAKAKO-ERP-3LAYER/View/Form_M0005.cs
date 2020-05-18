@@ -33,7 +33,7 @@ namespace MMTB.View
             //
             M0005_Line_DAO = new M0005_Line_DAO();
             //
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
             //Load Init
             GetInfo_advBandedGridView1();
         }

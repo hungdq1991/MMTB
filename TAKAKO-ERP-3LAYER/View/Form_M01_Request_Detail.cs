@@ -62,7 +62,7 @@ namespace MMTB.View
             Setting_Init_Control();
             Setting_Init_Value();
             //
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
             //Load Init
             InitValue = true;
             //Set_Enable_Control(true);
@@ -508,7 +508,7 @@ namespace MMTB.View
         private void Setting_Init_Control()
         {
             //Pass username
-            bsiUser.Caption = _systemDAL.userName;
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
             //Định nghĩa datatable gán cho header
             Define_HeaderTable();
             //Định nghĩa datatable gán cho advBandedGridView1
