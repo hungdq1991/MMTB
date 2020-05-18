@@ -33,7 +33,6 @@ namespace MMTB
             return conn;
         }
 
-
         /// <method>
         /// Select Query
         /// </method>
@@ -170,6 +169,7 @@ namespace MMTB
             return result;
             //return true;
         }
+
         //Thanh lý MMTB_Chưa xác nhận
         public bool Disposal_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
         {
@@ -184,9 +184,6 @@ namespace MMTB
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
             param = cmd.Parameters.AddWithValue("@tblListMMTBDoc2", _listMMTBDoc2);
 
-            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
-            //returnParameter.Direction = ParameterDirection.ReturnValue;
-            //string result = "";
             try
             {
                 cmd.ExecuteNonQuery();
@@ -207,6 +204,7 @@ namespace MMTB
             //return result;
             return true;
         }
+
         //Thanh lý MMTB_Xác nhận
         public bool Confirm_Disposal_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
         {
@@ -221,9 +219,6 @@ namespace MMTB
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
             param = cmd.Parameters.AddWithValue("@tblListMMTBDoc2", _listMMTBDoc2);
 
-            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
-            //returnParameter.Direction = ParameterDirection.ReturnValue;
-            //string result = "";
             try
             {
                 cmd.ExecuteNonQuery();
@@ -244,6 +239,7 @@ namespace MMTB
             //return result;
             return true;
         }
+
         //Thanh lý MMTB_Chưa xác nhận
         public bool Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc3)
         {
@@ -258,9 +254,6 @@ namespace MMTB
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
             param = cmd.Parameters.AddWithValue("@tblListMMTBDoc3", _listMMTBDoc3);
 
-            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
-            //returnParameter.Direction = ParameterDirection.ReturnValue;
-            //string result = "";
             try
             {
                 cmd.ExecuteNonQuery();
@@ -281,6 +274,7 @@ namespace MMTB
             //return result;
             return true;
         }
+
         //Di dời MMTB_Xác nhận
         public bool Confirm_Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc3)
         {
@@ -295,9 +289,6 @@ namespace MMTB
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
             param = cmd.Parameters.AddWithValue("@tblListMMTBDoc3", _listMMTBDoc3);
 
-            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
-            //returnParameter.Direction = ParameterDirection.ReturnValue;
-            //string result = "";
             try
             {
                 cmd.ExecuteNonQuery();
@@ -318,6 +309,7 @@ namespace MMTB
             //return result;
             return true;
         }
+
         //ACC bổ sung thông tin MMTB
         public bool ACC_Update_MMTB(DataTable _listMMTB)
         {
@@ -326,13 +318,13 @@ namespace MMTB
             {
                 CommandType = CommandType.StoredProcedure
             };
+
             //Set timeout
             cmd.CommandTimeout = 300;
+
             //Add param
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
-            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
-            //returnParameter.Direction = ParameterDirection.ReturnValue;
-            //string result = "";
+
             try
             {
                 cmd.ExecuteNonQuery();
@@ -353,6 +345,7 @@ namespace MMTB
             //return result;
             return true;
         }
+
         //Bổ sung thông tin MMTB không sử dụng
         public string Update_MMTB_No_Used(DataTable _listMMTB, DataTable _listDelete, DataTable _listMMTBDoc4)
         {
@@ -393,6 +386,7 @@ namespace MMTB
             return result;
             //return true;
         }
+
         //Bổ sung danh mục LK, dầu, pin
         public bool Update_M0012(DataTable _listM0012)
         {
@@ -401,13 +395,12 @@ namespace MMTB
             {
                 CommandType = CommandType.StoredProcedure
             };
+
             //Set timeout
             cmd.CommandTimeout = 300;
+
             //Add param
             SqlParameter param = cmd.Parameters.AddWithValue("@tblListM0012", _listM0012);
-            //var returnParameter = cmd.Parameters.Add("@DocNo_Next", SqlDbType.Int);
-            //returnParameter.Direction = ParameterDirection.ReturnValue;
-            //string result = "";
             try
             {
                 cmd.ExecuteNonQuery();
@@ -599,161 +592,6 @@ namespace MMTB
         }
 
         /// <method>
-        /// SP Delete Invoice
-        /// </method>
-        public bool DeleteInvoice(string _invoiceNo, DataTable _tempListShipping)
-        {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_DELETE_INV", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            SqlParameter param = cmd.Parameters.AddWithValue("@InvoiceNo", _invoiceNo);
-            param = cmd.Parameters.AddWithValue("@tblShippingNo", _tempListShipping);
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            finally
-            {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return true;
-        }
-
-        /// <method>
-        /// Lock Shipping Instruction
-        /// </method>
-        public bool Lock_ShippingInstruction(string _shippingNo)
-        {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_LOCK_SHIPPING_INSTRUCTION", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            SqlParameter param = cmd.Parameters.AddWithValue("@ShippingNo", _shippingNo);
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            finally
-            {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return true;
-        }
-
-        /// <method>
-        /// UnLock Shipping Instruction
-        /// </method>
-        public bool UnLock_ShippingInstruction(string _shippingNo)
-        {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UNLOCK_SHIPPING_INSTRUCTION", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            SqlParameter param = cmd.Parameters.AddWithValue("@ShippingNo", _shippingNo);
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            finally
-            {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return true;
-        }
-
-        /// <method>
-        /// Revise Shipping Instruction
-        /// </method>
-        public bool Revise_ShippingInstruction(string _shippingNo)
-        {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_REVISE_SHIPPING_INSTRUCTION", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            SqlParameter param = cmd.Parameters.AddWithValue("@ShippingNo", _shippingNo);
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            finally
-            {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return true;
-        }
-
-        /// <method>
-        /// SP Merge Data
-        /// </method>
-        public bool Merge_Data()
-        {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_MERGE_DATA", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            finally
-            {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return true;
-        }
-
-        /// <method>
         /// Update Query
         /// </method>
         public bool executeUpdateQuery(String _query, SqlParameter[] sqlParameter)
@@ -803,69 +641,6 @@ namespace MMTB
                 conn.Close();
             }
             return true;
-        }
-
-        /// <method>
-        /// Select Invoice By Shipping No
-        /// </method>
-        public DataTable executeSelectInv_ByShippingNo(DataTable _shippingNo)
-        {
-            DataTable dt = new DataTable();
-            conn.Open();
-            try
-            {
-                using (var cmd = new SqlCommand("SP_TVC_SELECT_INV_BY_SHIPNO", conn))
-                using (var da = new SqlDataAdapter(cmd))
-                { 
-                    SqlParameter param = cmd.Parameters.AddWithValue("@tblShippingNo", _shippingNo);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    da.Fill(dt);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return dt;
-        }
-
-        /// <method>
-        /// Select Packing List By Shipping No
-        /// </method>
-        public DataTable executeSelectPL_ByShippingNo(DataTable _shippingNo)
-        {
-            DataTable dt = new DataTable();
-            conn.Open();
-            try
-            {
-                using (var cmd = new SqlCommand("SP_TVC_SELECT_PL_BY_SHIPNO", conn))
-                using (var da = new SqlDataAdapter(cmd))
-                {
-                    SqlParameter param = cmd.Parameters.AddWithValue("@tblShippingNo", _shippingNo);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    da.Fill(dt);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                // Close the SqlDataReader
-                // The SqlBulkCopy object is automatically closed at the end of the using block
-                conn.Close();
-            }
-            conn.Close();
-            return dt;
         }
     }
 }

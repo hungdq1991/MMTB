@@ -51,17 +51,36 @@ namespace MMTB.DAO
                             ,L.Column5
 							,L.Group1
 							,L.Group2
-							,CASE WHEN P.EF_PurCuryID IS NULL THEN '' ELSE P.EF_PurCuryID END AS Cury
-							,CASE WHEN P.EF_PurCuryPrice IS NULL THEN 0 ELSE P.EF_PurCuryPrice END AS Price
-							,CASE WHEN P.EF_EffDate is null THEN NULL ELSE P.EF_EffDate END AS EffDate
-							,CASE WHEN P.EF_VendID is null THEN '' ELSE P.EF_VendID END AS EF_VendID
-							,CASE WHEN P.EF_VendName is null THEN '' ELSE P.EF_VendName END AS EF_VendName
+							,CASE
+                                WHEN P.EF_PurCuryID IS NULL THEN ''
+                                ELSE P.EF_PurCuryID
+                            END AS Cury
+							,CASE
+                                WHEN P.EF_PurCuryPrice IS NULL THEN 0
+                                ELSE P.EF_PurCuryPrice
+                            END AS Price
+							,CASE
+                                WHEN P.EF_EffDate is NULL THEN NULL
+                                ELSE P.EF_EffDate
+                            END AS EffDate
+							,CASE
+                                WHEN P.EF_VendID is NULL THEN ''
+                                ELSE P.EF_VendID
+                            END AS EF_VendID
+							,CASE
+                                WHEN P.EF_VendName is NULL
+                                THEN '' ELSE P.EF_VendName
+                            END AS EF_VendName
 						FROM (SELECT 
 	                             ItemCode
                                 ,L.NameEN
                                 ,L.NameVN
                                 ,L.NameJP
-                                ,CASE WHEN SessionID = 1 THEN 'LK' ELSE (CASE WHEN SessionID = 4 THEN N'Dầu' ELSE  'Pin' END ) END as SessionID
+                                ,CASE
+                                    WHEN SessionID = 1 THEN 'LK'
+                                    WHEN SessionID = 4 THEN N'Dầu'
+                                    ELSE 'Pin'
+                                END as SessionID
                                 ,Maker
                                 ,Unit
                                 ,UnitMultDiv
@@ -91,7 +110,8 @@ namespace MMTB.DAO
                             LEFT JOIN
                                 M0002_GroupName N
                             ON
-                                L.NameEN = N.NameEN) L
+                                L.NameEN = N.NameEN
+                            ) L
                         LEFT JOIN
                             (SELECT 
                                  P.EF_InvtID
@@ -106,15 +126,22 @@ namespace MMTB.DAO
                                 (SELECT 
                                      EF_InvtID
                                     ,MAX(EF_EffDate) as EF_EffDate 
-                                FROM [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapPrice] 
-                                GROUP BY EF_InvtID) D
-                            ON P.EF_InvtID = D.EF_InvtID 
-                            AND P.EF_EffDate = D.EF_EffDate
-                            WHERE P.S4Future10 = 1) P
+                                FROM
+                                    [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapPrice] 
+                                GROUP BY
+                                    EF_InvtID
+                                ) D
+                            ON P.EF_InvtID      = D.EF_InvtID 
+                            AND P.EF_EffDate    = D.EF_EffDate
+                            WHERE P.S4Future10  = 1
+                            ) P
                         ON
-                            L.PurCode = P.EF_InvtID
-                        WHERE L.InActive = @InActive
-                        ORDER BY L.SessionID, L.ItemCode";
+                            L.PurCode           = P.EF_InvtID
+                        WHERE
+                            L.InActive          = @InActive
+                        ORDER BY
+                             L.SessionID
+                            ,L.ItemCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@InActive", SqlDbType.Int);
             sqlParameters[0].Value = Convert.ToInt32(InActive);
@@ -158,17 +185,36 @@ namespace MMTB.DAO
                             ,L.Column5
 							,L.Group1
 							,L.Group2
-							,CASE WHEN P.EF_PurCuryID IS NULL THEN '' ELSE P.EF_PurCuryID END AS Cury
-							,CASE WHEN P.EF_PurCuryPrice IS NULL THEN 0 ELSE P.EF_PurCuryPrice END AS Price
-							,CASE WHEN P.EF_EffDate is null THEN NULL ELSE P.EF_EffDate END AS EffDate
-							,CASE WHEN P.EF_VendID is null THEN '' ELSE P.EF_VendID END AS EF_VendID
-							,CASE WHEN P.EF_VendName is null THEN '' ELSE P.EF_VendName END AS EF_VendName
+							,CASE
+                                WHEN P.EF_PurCuryID IS NULL THEN ''
+                                ELSE P.EF_PurCuryID
+                            END AS Cury
+							,CASE
+                                WHEN P.EF_PurCuryPrice IS NULL THEN 0
+                                ELSE P.EF_PurCuryPrice
+                            END AS Price
+							,CASE
+                                WHEN P.EF_EffDate is null THEN NULL
+                                ELSE P.EF_EffDate
+                            END AS EffDate
+							,CASE
+                                WHEN P.EF_VendID is null THEN ''
+                                ELSE P.EF_VendID
+                            END AS EF_VendID
+							,CASE
+                                WHEN P.EF_VendName is null THEN ''
+                                ELSE P.EF_VendName
+                            END AS EF_VendName
 						FROM (SELECT 
 	                             ItemCode
                                 ,L.NameEN
                                 ,L.NameVN
                                 ,L.NameJP
-                                ,CASE WHEN SessionID = 1 THEN 'LK' ELSE (CASE WHEN SessionID = 4 THEN N'Dầu' ELSE  'Pin' END ) END as SessionID
+                                ,CASE
+                                    WHEN SessionID = 1 THEN 'LK'
+                                    WHEN SessionID = 4 THEN N'Dầu'
+                                    ELSE  'Pin'
+                                END as SessionID
                                 ,Maker
                                 ,Unit
                                 ,UnitMultDiv
@@ -198,7 +244,8 @@ namespace MMTB.DAO
                             LEFT JOIN
                                 M0002_GroupName N
                             ON
-                                L.NameEN = N.NameEN) L
+                                L.NameEN = N.NameEN
+                            ) L
                         LEFT JOIN
                             (SELECT 
                                  P.EF_InvtID
@@ -213,22 +260,30 @@ namespace MMTB.DAO
                                 (SELECT 
                                      EF_InvtID
                                     ,MAX(EF_EffDate) as EF_EffDate 
-                                FROM [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapPrice] 
-                                GROUP BY EF_InvtID) D
-                            ON P.EF_InvtID = D.EF_InvtID 
-                            AND P.EF_EffDate = D.EF_EffDate
-                            WHERE P.S4Future10 = 1) P
-                        ON
-                            L.PurCode = P.EF_InvtID
+                                FROM
+                                    [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapPrice] 
+                                GROUP BY
+                                    EF_InvtID
+                                ) D
+                            ON  P.EF_InvtID     = D.EF_InvtID 
+                            AND P.EF_EffDate    = D.EF_EffDate
+                            WHERE P.S4Future10  = 1
+                        ) P
+                        ON  L.PurCode = P.EF_InvtID
 					JOIN
-							(SELECT
-							ItemCode
-							,COUNT(ItemCode) as CountItem
-							FROM M0012_SupplyMMTB
-							Group by ItemCode
-							having COUNT(ItemCode) > 1) C
-					ON L.ItemCode = C.ItemCode
-                    ORDER BY L.ItemCode";
+                        (SELECT
+                             ItemCode
+                            ,COUNT(ItemCode) as CountItem
+                        FROM
+                            M0012_SupplyMMTB
+                        GROUP BY
+                            ItemCode
+                        HAVING COUNT
+                            (ItemCode) > 1
+                        ) C
+					ON  L.ItemCode  = C.ItemCode
+                    ORDER BY
+                        L.ItemCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -248,8 +303,8 @@ namespace MMTB.DAO
                         FROM 
 	                        [SOLOMON-SERVER].[TVCAPP].[dbo].[Inventory]
                         WHERE 
-                                InvtID like 'LM1%'
-                            and TranStatusCode = 'AC'";
+                            InvtID          like 'LM1%'
+                        AND TranStatusCode  =   'AC'";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@InvtID", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -267,8 +322,8 @@ namespace MMTB.DAO
                         FROM 
 	                        [SOLOMON-SERVER].[TVCAPP].[dbo].[Inventory]
                         WHERE 
-                                InvtID like 'LM2%'
-                            and TranStatusCode = 'AC'";
+                            InvtID          like 'LM2%'
+                        AND TranStatusCode  = 'AC'";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@InvtID", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -348,14 +403,15 @@ namespace MMTB.DAO
                                     FROM
                                         M0012_SupplyMMTB
                                     GROUP BY
-										ItemCode) L2
+										ItemCode
+                                    ) L2
                                 ON
-                                    L1.ItemCode = L2.ItemCode
-								AND	L1.ApplyDate = L2.ApplyDate
-									) L1
+                                    L1.ItemCode     = L2.ItemCode
+								AND	L1.ApplyDate    = L2.ApplyDate
+                                ) L1
                             ON
-                                L.ItemCode = L1.ItemCode
-                            AND L.ApplyDate = L1.ApplyDate";
+                                L.ItemCode          = L1.ItemCode
+                            AND L.ApplyDate         = L1.ApplyDate";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -374,19 +430,19 @@ namespace MMTB.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-							     ItemCode
-                                ,Maker
-                                ,Point
-                                ,MinimumQty
-                                ,Lifetime
-                            FROM
-                                M0012_SupplyMMTB
-                            WHERE
-                                ItemCode    = @ItemCode
-                            AND Maker       = @Maker
-                            AND Point       = @Point
-                            AND MinimumQty  = @MinimumQty
-                            AND Lifetime    = @Lifetime";
+                             ItemCode
+                            ,Maker
+                            ,Point
+                            ,MinimumQty
+                            ,Lifetime
+                        FROM
+                            M0012_SupplyMMTB
+                        WHERE
+                            ItemCode    = @ItemCode
+                        AND Maker       = @Maker
+                        AND Point       = @Point
+                        AND MinimumQty  = @MinimumQty
+                        AND Lifetime    = @Lifetime";
 
             SqlParameter[] sqlParameters = new SqlParameter[5];
             sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.VarChar);

@@ -93,6 +93,7 @@ namespace MMTB.View
                 sLook_DocNo.EditValue = DocNo;
             }
         }
+
         //Thêm thông tin combo box
         private void AddValue_CBox_Status(ComboBoxEdit comboBox)
         {
@@ -101,6 +102,7 @@ namespace MMTB.View
             Boolean.Add("Xác nhận");
             comboBox.Properties.Items.AddRange(Boolean);
         }
+
         //Thêm cột header
         private void Define_HeaderTable()
         {
@@ -117,11 +119,13 @@ namespace MMTB.View
             _HeaderTable.Columns.Add("ControlDept", typeof(string));
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("Memo", typeof(string));
+            _HeaderTable.Columns.Add("InputUser", typeof(string));
             _HeaderTable.Columns.Add("Column2", typeof(string));
             _HeaderTable.Columns.Add("Column3", typeof(string));
             _HeaderTable.Columns.Add("Column4", typeof(string));
             _HeaderTable.Columns.Add("Column5", typeof(string));
         }
+
         //Điền dữ liệu cho header
         private void AddValue_Header(DataTable _tempTable)
         {
@@ -143,7 +147,8 @@ namespace MMTB.View
             }
             txt_Memo.Text = _tempTable.Rows[0].Field<string>("Memo");
         }
-       //Giá trị bảng Header
+
+        //Giá trị bảng Header
         private DataTable GetValue_Header()
         {
             DataTable _tempTable = new DataTable();
@@ -168,6 +173,7 @@ namespace MMTB.View
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
             dtRow["Memo"] = txt_Memo.Text;
+            dtRow["InputUser"] = _systemDAL.userName;
             dtRow["Column2"] = "";
             dtRow["Column3"] = "";
             dtRow["Column4"] = "";
@@ -176,6 +182,7 @@ namespace MMTB.View
 
             return _tempTable;
         }
+
         //Định nghĩa cấu trúc datatable gán cho grid control
         private void Define_DetailTable()
         {
@@ -204,12 +211,15 @@ namespace MMTB.View
             _DetailTable.Columns.Add("DisposalStatus", typeof(int));
             _DetailTable.Columns.Add("DocNo", typeof(string));
             _DetailTable.Columns.Add("ControlDept", typeof(string));
+            _DetailTable.Columns.Add("InputUser", typeof(string));
         }
+
         //Xóa dòng trên gridView
         private void Define_DeleteRowTable()
         {
             _DeleteRowTable.Columns.Add("Code", typeof(string));
         }
+
         #region Add data to control
         //Điền dữ liệu bộ phận
         private void AddValue_sLook_ControlDept()
@@ -223,6 +233,7 @@ namespace MMTB.View
                 sLook_ControlDept.Properties.DisplayMember = "SectionID";
             }
         }
+
         //Điền dữ liệu cho ô Số chứng từ
         private void Add_Value_sLookUp_DocNo()
         {
@@ -346,6 +357,7 @@ namespace MMTB.View
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         //Xóa dữ liệu header & gridView
         private void Clear_Data()
         {
@@ -382,6 +394,7 @@ namespace MMTB.View
                 repo_sLookUp_Code.DisplayMember = "Code";
             }
         }
+
         //Hiển thị thông tin MMTB chưa thanh lý sau khi chọn lên gridView
         private void repo_sLookUp_Code_CloseUp(object sender, CloseUpEventArgs e)
         {
@@ -467,6 +480,7 @@ namespace MMTB.View
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "ControlDept", _controlDept);
             }
         }
+    
         //Click nút thêm mới
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -678,6 +692,11 @@ namespace MMTB.View
             {
                 MessageBox.Show("Chứng từ thanh lý chưa được xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
         }
     }
 }

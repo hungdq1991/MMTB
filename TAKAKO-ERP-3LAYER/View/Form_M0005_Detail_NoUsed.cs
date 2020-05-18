@@ -147,6 +147,7 @@ namespace MMTB.View
             _HeaderTable.Columns.Add("ToDate", typeof(DateTime));
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("ControlDept", typeof(string));
+            _HeaderTable.Columns.Add("InputUser", typeof(string));
         }
         //Điền dữ liệu cho header
         private void AddValue_Header(DataTable _tempTable)
@@ -179,6 +180,7 @@ namespace MMTB.View
             dtRow["ToDate"] = date_To.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
+            dtRow["InputUser"] = _systemDAL.userName;
 
             _tempTable.Rows.Add(dtRow);
 
@@ -206,6 +208,7 @@ namespace MMTB.View
             _DetailTable.Columns.Add("CurStatus", typeof(string));
             _DetailTable.Columns.Add("CurPlan", typeof(string));
             _DetailTable.Columns.Add("Solve", typeof(string));
+            _DetailTable.Columns.Add("InputUser", typeof(string));
         }
         //Xóa dòng trên gridView
         private void Define_DeleteRowTable()
@@ -578,6 +581,11 @@ namespace MMTB.View
             {
                 MessageBox.Show("Chứng từ chưa được xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            gridView.SetRowCellValue(e.RowHandle,"InputUser", _systemDAL.userName);
         }
     }
 }
