@@ -25,7 +25,11 @@ namespace MMTB.DAO
                             ,L.NameEN
                             ,L.NameVN
                             ,L.NameJP
-                            ,L.SessionID
+                            ,CASE 
+                                WHEN L.ClassifyID = 1 THEN 'LK'
+                                WHEN L.ClassifyID = 4 THEN 'Pin'
+                                WHEN L.ClassifyID = 5 THEN N'Dầu'
+                             END AS  ClassifyID
                             ,L.Maker
                             ,P.EF_PurUnit
                             ,L.Unit
@@ -76,11 +80,7 @@ namespace MMTB.DAO
                                 ,L.NameEN
                                 ,L.NameVN
                                 ,L.NameJP
-                                ,CASE
-                                    WHEN SessionID = 1 THEN 'LK'
-                                    WHEN SessionID = 4 THEN N'Dầu'
-                                    ELSE 'Pin'
-                                END as SessionID
+                                ,L.ClassifyID
                                 ,Maker
                                 ,Unit
                                 ,UnitMultDiv
@@ -140,7 +140,7 @@ namespace MMTB.DAO
                         WHERE
                             L.InActive          = @InActive
                         ORDER BY
-                             L.SessionID
+                             L.ClassifyID
                             ,L.ItemCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@InActive", SqlDbType.Int);
@@ -159,7 +159,7 @@ namespace MMTB.DAO
                             ,L.NameEN
                             ,L.NameVN
                             ,L.NameJP
-                            ,L.SessionID
+                            ,L.ClassifyID
                             ,L.Maker
                             ,P.EF_PurUnit
                             ,L.Unit
@@ -210,11 +210,7 @@ namespace MMTB.DAO
                                 ,L.NameEN
                                 ,L.NameVN
                                 ,L.NameJP
-                                ,CASE
-                                    WHEN SessionID = 1 THEN 'LK'
-                                    WHEN SessionID = 4 THEN N'Dầu'
-                                    ELSE  'Pin'
-                                END as SessionID
+                                ,L.ClassifyID
                                 ,Maker
                                 ,Unit
                                 ,UnitMultDiv
@@ -361,7 +357,8 @@ namespace MMTB.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                                 SessionID
+                                 L.ClassifyID
+								,L3.ClassifyDesc
 							    ,L.ItemCode
                                 ,NameEN
                                 ,NameVN
@@ -411,7 +408,15 @@ namespace MMTB.DAO
                                 ) L1
                             ON
                                 L.ItemCode          = L1.ItemCode
-                            AND L.ApplyDate         = L1.ApplyDate";
+                            AND L.ApplyDate         = L1.ApplyDate
+                            LEFT JOIN 
+                                    (SELECT 
+                                         ClassifyID
+                                        ,ClassifyDesc
+                                     FROM
+                                        M01_Classify) L3
+                            ON L.ClassifyID = L3.ClassifyID
+                            ORDER BY L3.ClassifyDesc, L.NameEN, L.ItemCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -462,6 +467,39 @@ namespace MMTB.DAO
         public bool Update_M0012(DataTable _listM0012)
         {
             return conn.Update_M0012(_listM0012);
+        }
+        //Lấy thông tin mã LK thay thế
+        public DataTable GetInfo_M0012_ItemCodeRe(string NameEN)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                                 L.ClassifyID
+								,L3.ClassifyDesc
+							    ,L.ItemCode
+                                ,NameEN
+                                ,NameVN
+                                ,NameJP
+                                ,Maker
+                                ,Unit
+                            FROM
+                                M0012_SupplyMMTB L
+                            LEFT JOIN 
+                                    (SELECT 
+                                         ClassifyID
+                                        ,ClassifyDesc
+                                     FROM
+                                        M01_Classify) L3
+                            ON L.ClassifyID = L3.ClassifyID
+                            WHERE 
+                                L.NameEN        = @NameEN
+                            ORDER BY L3.ClassifyDesc, L.NameEN, L.ItemCode";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString(NameEN);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
     }
 }

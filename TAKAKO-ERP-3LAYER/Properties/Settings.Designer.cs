@@ -32,5 +32,15 @@ namespace MMTB.Properties {
                 return ((string)(this["MMTB_TVCConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PC;Initial Catalog=MMTB_TEST;User ID=sa;Password=adm1nTVC")]
+        public string MMTB_TESTConnectionString {
+            get {
+                return ((string)(this["MMTB_TESTConnectionString"]));
+            }
+        }
     }
 }

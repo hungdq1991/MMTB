@@ -68,6 +68,8 @@ namespace MMTB.View
 
             Add_Value_sLookUp_DocNo();
 
+            AddValue_repo_sLookUp_Code();
+
             AddValue_sLook_ControlDept();
 
             AddValue_repo_sLookUp_Plan();
@@ -94,6 +96,105 @@ namespace MMTB.View
             Boolean.Add("Xác nhận");
             comboBox.Properties.Items.AddRange(Boolean);
         }
+        //Danh sách MMTB không sử dụng
+        private void AddValue_repo_sLookUp_Code()
+        {
+            DataTable tempTableCode = new DataTable();
+            tempTableCode = M0005_DAO.GetInfo_MMTB();
+            if (tempTableCode.Rows.Count > 0)
+            {
+                repo_sLookUp_Code.DataSource = tempTableCode;
+                repo_sLookUp_Code.ValueMember = "Code";
+                repo_sLookUp_Code.DisplayMember = "Code";
+            }
+        }
+        //Hiển thị thông tin MMTB chưa thanh lý sau khi chọn lên gridView
+
+        private void Repo_sLookUp_Code_CloseUp(object sender, DevExpress.XtraEditors.Controls.CloseUpEventArgs e)
+        {
+            if (e.CloseMode == PopupCloseMode.Normal)
+            {
+                string _code = "";
+                string _ACCcode = "";
+                string _nameEN = "";
+                string _nameVN = "";
+                string _nameJP = "";
+                string _maker = "";
+                string _model = "";
+                string _series = "";
+                string _orgCountry = "";
+                DateTime _proDate = DateTime.Now;
+                int _Lifetime = 0;
+                DateTime _startDeprDate = DateTime.Now;
+                DateTime _endDeprDate = DateTime.Now;
+                decimal _netValue = 0;
+                string _desProcessCode = "";
+                string _desLineCode = "";
+                string _desLineEN = "";
+                string _desGroupLineACC = "";
+                string _desUsingDept = "";
+                DateTime _disposalDate = DateTime.Now;
+                string _disposalMemo = "";
+                string _disposalStatus = "";
+                string _controlDept = "";
+
+                //Get index
+                SearchLookUpEdit editor = sender as SearchLookUpEdit;
+                int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
+
+                //Set value to variables
+                _code = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Code"));
+                _ACCcode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ACCcode"));
+                _nameEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameEN"));
+                _nameVN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameVN"));
+                _nameJP = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameJP"));
+                _maker = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Maker"));
+                _model = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Model"));
+                _series = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Series"));
+                _orgCountry = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("OrgCountry"));
+                if (editor.Properties.View.GetFocusedRowCellValue("ProDate") != null)
+                {
+                    _proDate = Convert.ToDateTime(editor.Properties.View.GetFocusedRowCellValue("ProDate"));
+                }
+                _Lifetime = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("Lifetime"));
+                _startDeprDate = Convert.ToDateTime(editor.Properties.View.GetFocusedRowCellValue("StartDeprDate"));
+                _endDeprDate = Convert.ToDateTime(editor.Properties.View.GetFocusedRowCellValue("EndDeprDate"));
+                _netValue = Convert.ToDecimal(editor.Properties.View.GetFocusedRowCellValue("NetValue_Disposal"));
+                _desProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesProcessCode"));
+                _desLineCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesLineCode"));
+                _desLineEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesLineEN"));
+                _desGroupLineACC = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesGroupLineACC"));
+                _desUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesUsingDept"));
+                _disposalMemo = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DisposalMemo"));
+                _disposalStatus = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DisposalStatus"));
+                _controlDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ControlDept"));
+                //Set value to column ACCcode, NameEN, NameVN, Maker, Model...
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Code", _code);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "ACCcode", _ACCcode);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameEN", _nameEN);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Maker", _maker);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Model", _model);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Series", _series);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgCountry", _orgCountry);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "ProDate", _proDate);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Lifetime", _Lifetime);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "StartDeprDate", _startDeprDate);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDeprDate);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NetValue_Disposal", _netValue);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesProcessCode", _desProcessCode);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesLineCode", _desLineCode);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesLineEN", _desLineEN);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesGroupLineACC", _desGroupLineACC);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesUsingDept", _desUsingDept);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DisposalDate", _disposalDate);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DisposalMemo", _disposalMemo);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DisposalStatus", _disposalStatus);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "ControlDept", _controlDept);
+            }
+        }
+
         //Thông tin cho repo_sLookUp_Plan
         private void AddValue_repo_sLookUp_Plan()
         {
@@ -587,5 +688,6 @@ namespace MMTB.View
         {
             gridView.SetRowCellValue(e.RowHandle,"InputUser", _systemDAL.userName);
         }
+
     }
 }

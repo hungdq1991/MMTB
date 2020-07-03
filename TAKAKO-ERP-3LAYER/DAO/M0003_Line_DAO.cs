@@ -257,7 +257,7 @@ namespace MMTB.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
 
-        //Lấy dữ liệu từ bảng M0003_Process (không có parammeter)
+        //Lấy dữ liệu từ bảng M0003_ProcessCode (không có parammeter)
         //nhập ProcessCode
         public DataTable GetInfo_M0003_ProcessCode()
         {

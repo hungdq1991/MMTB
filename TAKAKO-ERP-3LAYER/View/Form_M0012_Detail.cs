@@ -56,7 +56,7 @@ namespace MMTB.View
             //Load Init
             Setting_Init_Control();
             Setting_Init_Value();
-            AddValue_CBox_SessionID();
+            AddValue_CBox_ClassifyID();
             AddValue_sLookUp_NameEN();
             AddValue_sLookUp_WH1Code();
             AddValue_sLookUp_WH2Code();
@@ -66,7 +66,7 @@ namespace MMTB.View
         //Thông tin table cho gridView
         private void Define_DetailTable()
         {
-            _DetailTable.Columns.Add("SessionID", typeof(string));
+            _DetailTable.Columns.Add("ClassifyID", typeof(string));
             _DetailTable.Columns.Add("ItemCode", typeof(string));
             _DetailTable.Columns.Add("NameEN", typeof(string));
             _DetailTable.Columns.Add("NameVN", typeof(string));
@@ -167,8 +167,8 @@ namespace MMTB.View
             gridView.DeleteRow(row);
             _DetailTable.AcceptChanges();
         }
-        //Nhập liệu trên lưới - SessionID
-        private void AddValue_CBox_SessionID()
+        //Nhập liệu trên lưới - ClassifyID
+        private void AddValue_CBox_ClassifyID()
         {
             DataTable _ResultTable = new DataTable();
             _ResultTable.Columns.Add("ID", typeof(int));
@@ -189,9 +189,9 @@ namespace MMTB.View
             dtRow2["Tên"] = "Pin";
             _ResultTable.Rows.Add(dtRow2);
 
-            repo_sLookUp_SessionID.DataSource = _ResultTable;
-            repo_sLookUp_SessionID.ValueMember = "ID";
-            repo_sLookUp_SessionID.DisplayMember = "Tên";
+            repo_sLookUp_ClassifyID.DataSource = _ResultTable;
+            repo_sLookUp_ClassifyID.ValueMember = "ID";
+            repo_sLookUp_ClassifyID.DisplayMember = "Tên";
         }
         //Nhập liệu trên lưới - Tên LK
         private void AddValue_sLookUp_NameEN()
@@ -316,7 +316,7 @@ namespace MMTB.View
         //Điền thông tin LK
         private void Repo_sLookUp_ItemCode_CloseUp(object sender, CloseUpEventArgs e)
         {
-            int    _sessionID      = 1;
+            int    _ClassifyID      = 1;
             string _itemCode       = "";
             string _nameEN         = "";
             string _nameVN         = "";
@@ -340,7 +340,7 @@ namespace MMTB.View
             int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
 
             //Set value to variables
-            _sessionID = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("SessionID"));
+            _ClassifyID = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("ClassifyID"));
             _itemCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ItemCode"));
             _nameEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameEN"));
             _nameVN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameVN"));
@@ -360,7 +360,7 @@ namespace MMTB.View
             _memo = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Memo"));
 
             //Set value to column 
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "SessionID", _sessionID);
+            gridView.SetRowCellValue(gridView.FocusedRowHandle, "ClassifyID", _ClassifyID);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "ItemCode", _itemCode);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameEN", _nameEN);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
@@ -391,7 +391,7 @@ namespace MMTB.View
             InitValue = true;
             Set_Enable_Control(true);
             //GridView
-            gridCol_SessionID.OptionsColumn.AllowEdit = true;
+            gridCol_ClassifyID.OptionsColumn.AllowEdit = true;
             gridCol_NameEN.OptionsColumn.AllowEdit = true;
             gridCol_NameVN.OptionsColumn.AllowEdit = true;
             gridCol_NameJP.OptionsColumn.AllowEdit = true;
@@ -406,7 +406,7 @@ namespace MMTB.View
             gridView.FocusedColumn = gridCol_ItemCode;
             Set_Enable_Control(false);
             //GridView
-            gridCol_SessionID.OptionsColumn.AllowEdit = false;
+            gridCol_ClassifyID.OptionsColumn.AllowEdit = false;
             gridCol_NameEN.OptionsColumn.AllowEdit = false;
             gridCol_NameVN.OptionsColumn.AllowEdit = false;
             gridCol_NameJP.OptionsColumn.AllowEdit = false;
@@ -461,14 +461,14 @@ namespace MMTB.View
                 //Nhóm hàng
                 for (int rows = 0; rows < gridView.RowCount; rows++)
                 {
-                    int _sessionID;
-                    _sessionID = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["SessionID"]));
-                    if (_sessionID == 0 )
+                    int _ClassifyID;
+                    _ClassifyID = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["ClassifyID"]));
+                    if (_ClassifyID == 0 )
                     {
                         MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Nhóm hàng\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         gridView.Focus();
                         gridView.FocusedRowHandle = rows;
-                        gridView.FocusedColumn = gridView.Columns["SessionID"];
+                        gridView.FocusedColumn = gridView.Columns["ClassifyID"];
                         return false;
                     }
                 //Mã hàng
@@ -588,7 +588,7 @@ namespace MMTB.View
         {
             gridView.SetFocusedRowCellValue("ApplyDate", DateTime.Now);
             gridView.SetFocusedRowCellValue("InActive", 0);
-            gridView.SetFocusedRowCellValue("SessionID", 0);
+            gridView.SetFocusedRowCellValue("ClassifyID", 0);
             gridView.SetFocusedRowCellValue("Point", 0);
             gridView.SetFocusedRowCellValue("Lifetime", 0);
             gridView.SetFocusedRowCellValue("MinimumQty", 0);

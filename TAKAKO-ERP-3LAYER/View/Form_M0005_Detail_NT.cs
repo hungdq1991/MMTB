@@ -847,7 +847,7 @@ namespace MMTB.View
                 if (!String.IsNullOrEmpty(Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["StartDeprDate"]))))
                 {
                     _startDepr = Convert.ToDateTime(gridView.GetRowCellValue(rows, gridView.Columns["StartDeprDate"]));
-                    _confDate = Convert.ToDateTime(date_Confirm);
+                    _confDate = Convert.ToDateTime(date_Confirm.Text);
                     if (_startDepr.Date < _confDate.Date)
                     {
                         MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Ngày bắt đầu khấu hao < Ngày nghiệm thu?\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

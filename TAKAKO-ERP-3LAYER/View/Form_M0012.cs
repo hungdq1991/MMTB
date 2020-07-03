@@ -19,6 +19,11 @@ namespace MMTB.View
             InitializeComponent();
             _systemDAL = systemDAL;
         }
+        public Form_M0012()
+        {
+            InitializeComponent();
+        }
+
 
         private void Form_M0012_Load(object sender, EventArgs e)
         {
@@ -55,6 +60,11 @@ namespace MMTB.View
                 formDetail.ShowDialog();
             }
         }
+        //Thay đổi thông tin số lượng records khi filter
+        private void gridView_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            bsiRecordsCount.Caption =gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+        }
         //Lọc thông tin
         private void filter_List()
         {
@@ -71,6 +81,10 @@ namespace MMTB.View
                             .Where(row => row.Field<Boolean>("InActive") == true).CopyToDataTable();
                         bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                     }
+                    if (_tempTable.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không có mã hàng trùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 if (_Duplicate == true && _inActive == false)
                 {
@@ -79,6 +93,10 @@ namespace MMTB.View
                     {
                         gridControl.DataSource = _tempTable1;
                         bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable1.Rows.Count + " records";
+                    }
+                    if (_tempTable1.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không có mã hàng trùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 if (_Duplicate == false && _inActive == true)
@@ -89,13 +107,17 @@ namespace MMTB.View
                         gridControl.DataSource = _tempTable2;
                         bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable2.Rows.Count + " records";
                     }
+                    if (_tempTable2.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không có mã hàng hết hiệu lực giá!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 if (_Duplicate == false && _inActive == false)
                 {
                     DataTable _tempTable3 = M0012_DAO.GetInfo_M0012(0);
                     if (_tempTable3.Rows.Count > 0)
                     {
-                        gridControl.DataSource = _tempTable;
+                        gridControl.DataSource = _tempTable3;
                         bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable3.Rows.Count + " records";
                     }
                 }
@@ -114,6 +136,15 @@ namespace MMTB.View
         private void BCheck_Duplicate_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             filter_List();
+        }
+
+        private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridView.ClearColumnsFilter();
+            bCheck_Duplicate.Checked = false;
+            bCheck_InActive.Checked = false;
+            GetInfo_Gridview();
+            bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
         }
     }
 }

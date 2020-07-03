@@ -51,12 +51,20 @@
             this.bbiNoUsed = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNewRequest = new DevExpress.XtraBars.BarButtonItem();
             this.bbiListRequest = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiSummary = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAddModel = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiStopList = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiReplace = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiReplaceList = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAddItem = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -91,9 +99,16 @@
             this.bbiACC,
             this.bbiNoUsed,
             this.bbiNewRequest,
-            this.bbiListRequest});
+            this.bbiListRequest,
+            this.barButtonItem1,
+            this.bbiSummary,
+            this.bbiAddModel,
+            this.bbiStopList,
+            this.bbiReplace,
+            this.bbiReplaceList,
+            this.bbiAddItem});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 25;
+            this.mainRibbonControl.MaxItemId = 32;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage,
@@ -102,7 +117,7 @@
             this.ribbonPage3});
             this.mainRibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.mainRibbonControl.Size = new System.Drawing.Size(831, 159);
+            this.mainRibbonControl.Size = new System.Drawing.Size(865, 159);
             this.mainRibbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
             // bbiName
@@ -183,7 +198,7 @@
             // 
             // bbiPart
             // 
-            this.bbiPart.Caption = "LK";
+            this.bbiPart.Caption = "Master LK";
             this.bbiPart.Id = 13;
             this.bbiPart.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPart.ImageOptions.SvgImage")));
             this.bbiPart.Name = "bbiPart";
@@ -208,19 +223,17 @@
             // 
             // bbiBattery
             // 
-            this.bbiBattery.Caption = "Pin";
+            this.bbiBattery.Caption = "Master Pin";
             this.bbiBattery.Id = 16;
             this.bbiBattery.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiBattery.ImageOptions.SvgImage")));
             this.bbiBattery.Name = "bbiBattery";
-            this.bbiBattery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiBattery_ItemClick);
             // 
             // bbiOil
             // 
-            this.bbiOil.Caption = "Dầu";
+            this.bbiOil.Caption = "Master Dầu";
             this.bbiOil.Id = 17;
             this.bbiOil.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiOil.ImageOptions.SvgImage")));
             this.bbiOil.Name = "bbiOil";
-            this.bbiOil.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiOil_ItemClick);
             // 
             // bbiStock
             // 
@@ -232,7 +245,7 @@
             // 
             // bbiStop
             // 
-            this.bbiStop.Caption = "Danh mục LK ngưng SX";
+            this.bbiStop.Caption = "Cập nhật LK ngưng SX";
             this.bbiStop.Id = 19;
             this.bbiStop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiStop.ImageOptions.Image")));
             this.bbiStop.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiStop.ImageOptions.LargeImage")));
@@ -281,6 +294,64 @@
             this.bbiListRequest.ImageOptions.ImageUri.Uri = "ListBullets";
             this.bbiListRequest.Name = "bbiListRequest";
             this.bbiListRequest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiListRequest_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 25;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // bbiSummary
+            // 
+            this.bbiSummary.Caption = "Tổng hợp Master\r\nLK-pin-dầu\r\n";
+            this.bbiSummary.Id = 26;
+            this.bbiSummary.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiSummary.ImageOptions.Image")));
+            this.bbiSummary.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiSummary.ImageOptions.LargeImage")));
+            this.bbiSummary.Name = "bbiSummary";
+            this.bbiSummary.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiSummary_ItemClick);
+            // 
+            // bbiAddModel
+            // 
+            this.bbiAddModel.Caption = "Cập nhật Master theo\r\nMaker/Model MMTB ";
+            this.bbiAddModel.Id = 27;
+            this.bbiAddModel.ImageOptions.ImageUri.Uri = "AddItem";
+            this.bbiAddModel.Name = "bbiAddModel";
+            this.bbiAddModel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiAddModel_ItemClick);
+            // 
+            // bbiStopList
+            // 
+            this.bbiStopList.Caption = "Danh sách LK ngưng SX";
+            this.bbiStopList.Id = 28;
+            this.bbiStopList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiStopList.ImageOptions.Image")));
+            this.bbiStopList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiStopList.ImageOptions.LargeImage")));
+            this.bbiStopList.Name = "bbiStopList";
+            // 
+            // bbiReplace
+            // 
+            this.bbiReplace.Caption = "Cập nhật LK thay thế";
+            this.bbiReplace.Id = 29;
+            this.bbiReplace.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReplace.ImageOptions.Image")));
+            this.bbiReplace.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReplace.ImageOptions.LargeImage")));
+            this.bbiReplace.Name = "bbiReplace";
+            this.bbiReplace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReplace_ItemClick);
+            // 
+            // bbiReplaceList
+            // 
+            this.bbiReplaceList.Caption = "Danh sách\r\nLK thay thế";
+            this.bbiReplaceList.Id = 30;
+            this.bbiReplaceList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReplaceList.ImageOptions.Image")));
+            this.bbiReplaceList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReplaceList.ImageOptions.LargeImage")));
+            this.bbiReplaceList.Name = "bbiReplaceList";
+            // 
+            // bbiAddItem
+            // 
+            this.bbiAddItem.Caption = "Cập nhật Master theo\r\nMã LK/Pin/Dầu";
+            this.bbiAddItem.Id = 31;
+            this.bbiAddItem.ImageOptions.ImageUri.Uri = "AddItem";
+            this.bbiAddItem.Name = "bbiAddItem";
+            this.bbiAddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiAddItem_ItemClick);
             // 
             // mainRibbonPage
             // 
@@ -335,19 +406,31 @@
             this.ribbonPage2.Appearance.Options.UseFont = true;
             this.ribbonPage2.Appearance.Options.UseForeColor = true;
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup5});
             this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "Quản lý LK, pin, dầu";
+            this.ribbonPage2.Text = "Master LK, pin, dầu theo MMTB";
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiStock);
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiPart);
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiBattery);
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiOil);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiAddModel);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiAddItem);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiReplace);
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiStop);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Quản lý LK, Pin, Dầu";
+            this.ribbonPageGroup2.Text = "Xử lý";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiSummary);
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiPart);
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiBattery);
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiOil);
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiStock);
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiStopList);
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiReplaceList);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "Xem thông tin";
             // 
             // ribbonPage3
             // 
@@ -379,7 +462,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(831, 223);
+            this.ClientSize = new System.Drawing.Size(865, 223);
             this.Controls.Add(this.mainRibbonControl);
             this.Name = "Form_Menu";
             this.Ribbon = this.mainRibbonControl;
@@ -424,5 +507,13 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarButtonItem bbiListRequest;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem bbiSummary;
+        private DevExpress.XtraBars.BarButtonItem bbiAddModel;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraBars.BarButtonItem bbiStopList;
+        private DevExpress.XtraBars.BarButtonItem bbiReplace;
+        private DevExpress.XtraBars.BarButtonItem bbiReplaceList;
+        private DevExpress.XtraBars.BarButtonItem bbiAddItem;
     }
 }

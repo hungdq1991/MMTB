@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using DevExpress.Skins;
 using MMTB.DAL;
 
 namespace MMTB.View
@@ -122,30 +123,10 @@ namespace MMTB.View
 
         private void BbiStock_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+
         }
 
         private void BbiPart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (Form_M0015_Master formDetail = new Form_M0015_Master(_systemDAL))
-            {
-                formDetail.ShowDialog();
-                formDetail.StartPosition = FormStartPosition.CenterScreen;
-                formDetail.Show();
-            }
-        }
-
-        private void BbiBattery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (Form_M0014 formDetail = new Form_M0014(_systemDAL))
-            {
-                formDetail.ShowDialog();
-                formDetail.StartPosition = FormStartPosition.CenterScreen;
-                formDetail.Show();
-            }
-        }
-
-        private void BbiOil_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             using (Form_M0013 formDetail = new Form_M0013(_systemDAL))
             {
@@ -218,7 +199,47 @@ namespace MMTB.View
 
         private void Form_Menu_Shown(object sender, System.EventArgs e)
         {
-            (sender as Form).Location = new Point(15,0);
+            (sender as Form).Location = new Point(15, 0);
+        }
+
+        private void BbiSummary_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0013 formDetail = new Form_M0013(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
+        }
+
+        private void BbiAddModel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0013_1_ByModel formDetail = new Form_M0013_1_ByModel(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
+        }
+
+        private void BbiAddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0013_2_ByItem formDetail = new Form_M0013_2_ByItem(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
+        }
+
+        private void BbiReplace_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M0013_3_Replace formDetail = new Form_M0013_3_Replace(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
         }
     }
 }

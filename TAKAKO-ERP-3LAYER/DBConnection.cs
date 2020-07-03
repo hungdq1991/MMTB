@@ -524,6 +524,228 @@ namespace MMTB
             conn.Close();
             return true;
         }
+        //Thông tin Summary theo model MMTB
+        public string Insert_Summary_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_SUMMARY_BY_MODEL", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Delete", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
+        //Bổ sung thông tin duyệt Master theo model MMTB
+        public bool Update_Summary_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_UPDATE_SUMMARY_BY_MODEL", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Delete", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return true;
+        }
+        //Nhập và xác nhận Summary theo model MMTB
+        public string Insert_Confirm_Summary_ByModel(DataTable _listSummary, DataTable _listSummaryDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_SUMMARY_BY_MODEL", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
+        //Nhập Thông tin Summary theo mã LK/dầu/pin
+        public string Insert_Summary_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_SUMMARY_BY_ITEM", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Delete", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
+        //Bổ sung thông tin duyệt Master theo mã LK/dầu/pin
+        public bool Update_Summary_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_UPDATE_SUMMARY_BY_ITEM", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Delete", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return true;
+        }
+        //Nhập và xác nhận Summary theo mã LK/dầu/pin
+        public string Insert_Confirm_Summary_ByItem(DataTable _listSummary, DataTable _listSummaryDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_SUMMARY_BY_ITEM", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
         /// <method>
         /// SP Insert Invoice
         /// </method>

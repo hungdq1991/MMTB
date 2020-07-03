@@ -56,6 +56,7 @@
     <ApplicationIcon>logo_takako_pts.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v19.2, Version=19.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Charts.v19.2.Core, Version=19.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v19.2, Version=19.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Images.v19.2, Version=19.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -215,6 +216,18 @@
     <Compile Include="View\Form_M0003_ProcessGroup.Designer.cs">
       <DependentUpon>Form_M0003_ProcessGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Form_M0013_3_Replace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0013_3_Replace.Designer.cs">
+      <DependentUpon>Form_M0013_3_Replace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M0013_2_ByItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M0013_2_ByItem.Designer.cs">
+      <DependentUpon>Form_M0013_2_ByItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form_M01_Request_Detail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,23 +294,17 @@
     <Compile Include="View\Form_M0012_Detail.Designer.cs">
       <DependentUpon>Form_M0012_Detail.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_M0015_Master.cs">
+    <Compile Include="View\Form_M0013_1_ByModel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_M0015_Master.Designer.cs">
-      <DependentUpon>Form_M0015_Master.cs</DependentUpon>
+    <Compile Include="View\Form_M0013_1_ByModel.Designer.cs">
+      <DependentUpon>Form_M0013_1_ByModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form_M0015.cs">
+    <Compile Include="View\Form_M0013.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form_M0015.Designer.cs">
-      <DependentUpon>Form_M0015.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_M0014.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_M0014.Designer.cs">
-      <DependentUpon>Form_M0014.cs</DependentUpon>
+    <Compile Include="View\Form_M0013.Designer.cs">
+      <DependentUpon>Form_M0013.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -354,12 +361,6 @@
     </Compile>
     <Compile Include="View\Form_M0012.Designer.cs">
       <DependentUpon>Form_M0012.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form_M0013.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form_M0013.Designer.cs">
-      <DependentUpon>Form_M0013.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form_M0002_Detail.cs">
       <SubType>Form</SubType>
@@ -447,6 +448,12 @@
     <EmbeddedResource Include="View\Form_M0004.resx">
       <DependentUpon>Form_M0004.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0013_3_Replace.resx">
+      <DependentUpon>Form_M0013_3_Replace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0013_2_ByItem.resx">
+      <DependentUpon>Form_M0013_2_ByItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M01_Request_Detail.resx">
       <DependentUpon>Form_M01_Request_Detail.cs</DependentUpon>
     </EmbeddedResource>
@@ -495,17 +502,11 @@
     <EmbeddedResource Include="View\Form_M0012.resx">
       <DependentUpon>Form_M0012.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M0013_1_ByModel.resx">
+      <DependentUpon>Form_M0013_1_ByModel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0013.resx">
       <DependentUpon>Form_M0013.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_M0015_Master.resx">
-      <DependentUpon>Form_M0015_Master.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_M0015.resx">
-      <DependentUpon>Form_M0015.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form_M0014.resx">
-      <DependentUpon>Form_M0014.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Menu.resx">
       <DependentUpon>Form_Menu.cs</DependentUpon>

@@ -41,9 +41,10 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridCol_SessionID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ClassifyID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ItemCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_NameEN = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_NameVN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -68,7 +69,6 @@
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.bbiCheckDup = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -142,6 +142,7 @@
             this.bbiRefresh.Id = 19;
             this.bbiRefresh.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiRefresh.Name = "bbiRefresh";
+            this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiRefresh_ItemClick);
             // 
             // bCheck_InActive
             // 
@@ -197,6 +198,13 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(987, 22);
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 21;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // gridControl
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -213,7 +221,7 @@
             // 
             this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridCol_SessionID,
+            this.gridCol_ClassifyID,
             this.gridCol_ItemCode,
             this.gridCol_NameEN,
             this.gridCol_NameVN,
@@ -246,24 +254,25 @@
             this.gridView.OptionsView.ColumnAutoWidth = false;
             this.gridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gridView.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridView.ColumnFilterChanged += new System.EventHandler(this.gridView_ColumnFilterChanged);
             // 
-            // gridCol_SessionID
+            // gridCol_ClassifyID
             // 
-            this.gridCol_SessionID.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_SessionID.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_SessionID.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.gridCol_SessionID.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_SessionID.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_SessionID.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_SessionID.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_SessionID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_SessionID.Caption = "Nhóm hàng";
-            this.gridCol_SessionID.FieldName = "SessionID";
-            this.gridCol_SessionID.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.gridCol_SessionID.Name = "gridCol_SessionID";
-            this.gridCol_SessionID.Visible = true;
-            this.gridCol_SessionID.VisibleIndex = 0;
-            this.gridCol_SessionID.Width = 60;
+            this.gridCol_ClassifyID.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ClassifyID.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_ClassifyID.AppearanceHeader.FontStyleDelta = System.Drawing.FontStyle.Bold;
+            this.gridCol_ClassifyID.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ClassifyID.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_ClassifyID.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_ClassifyID.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_ClassifyID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_ClassifyID.Caption = "Nhóm hàng";
+            this.gridCol_ClassifyID.FieldName = "ClassifyID";
+            this.gridCol_ClassifyID.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.gridCol_ClassifyID.Name = "gridCol_ClassifyID";
+            this.gridCol_ClassifyID.Visible = true;
+            this.gridCol_ClassifyID.VisibleIndex = 0;
+            this.gridCol_ClassifyID.Width = 60;
             // 
             // gridCol_ItemCode
             // 
@@ -470,7 +479,7 @@
             this.gridCol_UnitMulDiv.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_UnitMulDiv.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_UnitMulDiv.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_UnitMulDiv.Caption = "Quy đổi";
+            this.gridCol_UnitMulDiv.Caption = "Quy đổi (M:Multi/D:Div)";
             this.gridCol_UnitMulDiv.FieldName = "UnitMultDiv";
             this.gridCol_UnitMulDiv.Name = "gridCol_UnitMulDiv";
             this.gridCol_UnitMulDiv.Visible = true;
@@ -487,7 +496,7 @@
             this.gridCol_CnvtQty.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_CnvtQty.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_CnvtQty.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_CnvtQty.Caption = "Hệ số quy đổi (M:Multi/D:Div)";
+            this.gridCol_CnvtQty.Caption = "Hệ số quy đổi";
             this.gridCol_CnvtQty.DisplayFormat.FormatString = "#,0";
             this.gridCol_CnvtQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridCol_CnvtQty.FieldName = "CnvFact";
@@ -689,13 +698,6 @@
             this.gridCol_Memo.VisibleIndex = 23;
             this.gridCol_Memo.Width = 150;
             // 
-            // bsiUser
-            // 
-            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.bsiUser.Caption = "barStaticItem1";
-            this.bsiUser.Id = 21;
-            this.bsiUser.Name = "bsiUser";
-            // 
             // bbiCheckDup
             // 
             this.bbiCheckDup.Caption = "Mã trùng          ";
@@ -745,7 +747,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_NameJP;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Group1;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Group2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridCol_SessionID;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ClassifyID;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Maker;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_PurUnit;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Unit;

@@ -69,7 +69,7 @@ namespace MMTB.DAO
                             ,L.InputUser
                         FROM
                         	M0005_ListMMTB L
-                         JOIN 
+                        LEFT JOIN 
                             M0002_GroupName N
                         ON 
                             L.NameEN = N.NameEN
@@ -80,9 +80,9 @@ namespace MMTB.DAO
 								,L1.DesLineCode
 								,L1.DesLineEN
 								,L1.DesGroupLineACC
-								,L1.DesUsingDept 
+								,L1.DesUsingDept
 							FROM M0005_ListMMTBLine L1 
-							JOIN (SELECT 
+							LEFT JOIN (SELECT 
 									 Code
 									,Max(ApplyDate) as ApplyDate
 								  FROM
@@ -93,8 +93,7 @@ namespace MMTB.DAO
 							ON  L1.Code         = L2.Code 
                             AND L1.ApplyDate    = L2.ApplyDate) L1
 						ON  L.Code              = L1.Code
-                        WHERE L1.DesLineCode    != 'NoUsed' 
-                        AND   L.DocNo_Disposal is null
+                        WHERE L.DocNo_Disposal is null
                         ORDER BY L.Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);

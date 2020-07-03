@@ -41,7 +41,7 @@ namespace MMTB.DAO
                             ,Column4
                             ,Column5
                         FROM
-                            MMTB_TVC.dbo.Sys_User
+                            Sys_User
                         WHERE
                             UserID    = CONCAT('',@userName,'')
                         AND Pw        = CONCAT('',@passWord,'')";
