@@ -1,6 +1,6 @@
 ﻿namespace MMTB.View
 {
-    partial class Form_M0012
+    partial class Form_M0012_Stock
     {
         /// <summary>
         /// Required designer variable.
@@ -31,12 +31,10 @@
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
-            this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bCheck_InActive = new DevExpress.XtraBars.BarCheckItem();
-            this.bCheck_Duplicate = new DevExpress.XtraBars.BarCheckItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -70,6 +68,11 @@
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bbiCheckDup = new DevExpress.XtraBars.BarCheckItem();
+            this.gridCol_WH2Stock = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_WH1Stock = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_WHTotal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -84,14 +87,13 @@
             this.ribbonControl.SearchEditItem,
             this.bbiPrintPreview,
             this.bsiRecordsCount,
-            this.bbiNew,
             this.bbiEdit,
             this.bbiDelete,
             this.bbiRefresh,
             this.bCheck_InActive,
-            this.bCheck_Duplicate});
+            this.barStaticItem1});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 24;
+            this.ribbonControl.MaxItemId = 25;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -113,14 +115,6 @@
             this.bsiRecordsCount.Caption = "RECORDS : 0";
             this.bsiRecordsCount.Id = 15;
             this.bsiRecordsCount.Name = "bsiRecordsCount";
-            // 
-            // bbiNew
-            // 
-            this.bbiNew.Caption = "Thêm mới/Chỉnh sửa";
-            this.bbiNew.Id = 16;
-            this.bbiNew.ImageOptions.ImageUri.Uri = "New";
-            this.bbiNew.Name = "bbiNew";
-            this.bbiNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiNew_ItemClick);
             // 
             // bbiEdit
             // 
@@ -154,21 +148,12 @@
             this.bCheck_InActive.Name = "bCheck_InActive";
             this.bCheck_InActive.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BCheck_InActive_CheckedChanged);
             // 
-            // bCheck_Duplicate
-            // 
-            this.bCheck_Duplicate.Caption = "Mã trùng          ";
-            this.bCheck_Duplicate.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
-            this.bCheck_Duplicate.Id = 23;
-            this.bCheck_Duplicate.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.bCheck_Duplicate.ItemAppearance.Normal.Options.UseBackColor = true;
-            this.bCheck_Duplicate.Name = "bCheck_Duplicate";
-            this.bCheck_Duplicate.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BCheck_Duplicate_CheckedChanged);
-            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
@@ -177,7 +162,6 @@
             // 
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
@@ -185,7 +169,6 @@
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_InActive);
-            this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_Duplicate);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Lọc thông tin";
             // 
@@ -244,6 +227,9 @@
             this.gridCol_PurCode,
             this.gridCol_WH1Code,
             this.gridCol_WH2Code,
+            this.gridCol_WH1Stock,
+            this.gridCol_WH2Stock,
+            this.gridCol_WHTotal,
             this.gridCol_ApplyDate,
             this.gridCol_InActive,
             this.gridCol_Memo});
@@ -466,8 +452,6 @@
             this.gridCol_PurUnit.Caption = "Đvt (mua)";
             this.gridCol_PurUnit.FieldName = "EF_PurUnit";
             this.gridCol_PurUnit.Name = "gridCol_PurUnit";
-            this.gridCol_PurUnit.Visible = true;
-            this.gridCol_PurUnit.VisibleIndex = 10;
             this.gridCol_PurUnit.Width = 60;
             // 
             // gridCol_UnitMulDiv
@@ -483,8 +467,6 @@
             this.gridCol_UnitMulDiv.Caption = "Quy đổi (M:Multi/D:Div)";
             this.gridCol_UnitMulDiv.FieldName = "UnitMultDiv";
             this.gridCol_UnitMulDiv.Name = "gridCol_UnitMulDiv";
-            this.gridCol_UnitMulDiv.Visible = true;
-            this.gridCol_UnitMulDiv.VisibleIndex = 11;
             this.gridCol_UnitMulDiv.Width = 60;
             // 
             // gridCol_CnvtQty
@@ -502,8 +484,6 @@
             this.gridCol_CnvtQty.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridCol_CnvtQty.FieldName = "CnvFact";
             this.gridCol_CnvtQty.Name = "gridCol_CnvtQty";
-            this.gridCol_CnvtQty.Visible = true;
-            this.gridCol_CnvtQty.VisibleIndex = 12;
             this.gridCol_CnvtQty.Width = 60;
             // 
             // gridCol_PriceRef
@@ -522,8 +502,6 @@
             this.gridCol_PriceRef.FieldName = "Price";
             this.gridCol_PriceRef.Name = "gridCol_PriceRef";
             this.gridCol_PriceRef.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
-            this.gridCol_PriceRef.Visible = true;
-            this.gridCol_PriceRef.VisibleIndex = 13;
             // 
             // gridCol_Cury
             // 
@@ -540,8 +518,6 @@
             this.gridCol_Cury.Caption = "Loại tiền";
             this.gridCol_Cury.FieldName = "Cury";
             this.gridCol_Cury.Name = "gridCol_Cury";
-            this.gridCol_Cury.Visible = true;
-            this.gridCol_Cury.VisibleIndex = 14;
             // 
             // gridCol_EffDate
             // 
@@ -558,8 +534,6 @@
             this.gridCol_EffDate.Caption = "Ngày hiệu lực giá";
             this.gridCol_EffDate.FieldName = "EffDate";
             this.gridCol_EffDate.Name = "gridCol_EffDate";
-            this.gridCol_EffDate.Visible = true;
-            this.gridCol_EffDate.VisibleIndex = 15;
             // 
             // gridCol_SupplierID
             // 
@@ -576,8 +550,6 @@
             this.gridCol_SupplierID.Caption = "Mã số NCC";
             this.gridCol_SupplierID.FieldName = "EF_VendID";
             this.gridCol_SupplierID.Name = "gridCol_SupplierID";
-            this.gridCol_SupplierID.Visible = true;
-            this.gridCol_SupplierID.VisibleIndex = 16;
             // 
             // gridCol_Supplier
             // 
@@ -592,8 +564,6 @@
             this.gridCol_Supplier.Caption = "Nhà cung cấp";
             this.gridCol_Supplier.FieldName = "EF_VendName";
             this.gridCol_Supplier.Name = "gridCol_Supplier";
-            this.gridCol_Supplier.Visible = true;
-            this.gridCol_Supplier.VisibleIndex = 17;
             // 
             // gridCol_PurCode
             // 
@@ -609,7 +579,7 @@
             this.gridCol_PurCode.FieldName = "PurCode";
             this.gridCol_PurCode.Name = "gridCol_PurCode";
             this.gridCol_PurCode.Visible = true;
-            this.gridCol_PurCode.VisibleIndex = 18;
+            this.gridCol_PurCode.VisibleIndex = 10;
             this.gridCol_PurCode.Width = 120;
             // 
             // gridCol_WH1Code
@@ -626,7 +596,7 @@
             this.gridCol_WH1Code.FieldName = "WH1Code";
             this.gridCol_WH1Code.Name = "gridCol_WH1Code";
             this.gridCol_WH1Code.Visible = true;
-            this.gridCol_WH1Code.VisibleIndex = 19;
+            this.gridCol_WH1Code.VisibleIndex = 11;
             this.gridCol_WH1Code.Width = 120;
             // 
             // gridCol_WH2Code
@@ -643,7 +613,7 @@
             this.gridCol_WH2Code.FieldName = "WH2Code";
             this.gridCol_WH2Code.Name = "gridCol_WH2Code";
             this.gridCol_WH2Code.Visible = true;
-            this.gridCol_WH2Code.VisibleIndex = 20;
+            this.gridCol_WH2Code.VisibleIndex = 12;
             this.gridCol_WH2Code.Width = 120;
             // 
             // gridCol_ApplyDate
@@ -662,7 +632,7 @@
             this.gridCol_ApplyDate.FieldName = "ApplyDate";
             this.gridCol_ApplyDate.Name = "gridCol_ApplyDate";
             this.gridCol_ApplyDate.Visible = true;
-            this.gridCol_ApplyDate.VisibleIndex = 21;
+            this.gridCol_ApplyDate.VisibleIndex = 16;
             this.gridCol_ApplyDate.Width = 90;
             // 
             // gridCol_InActive
@@ -679,7 +649,7 @@
             this.gridCol_InActive.FieldName = "InActive";
             this.gridCol_InActive.Name = "gridCol_InActive";
             this.gridCol_InActive.Visible = true;
-            this.gridCol_InActive.VisibleIndex = 22;
+            this.gridCol_InActive.VisibleIndex = 17;
             this.gridCol_InActive.Width = 90;
             // 
             // gridCol_Memo
@@ -696,7 +666,7 @@
             this.gridCol_Memo.FieldName = "Memo";
             this.gridCol_Memo.Name = "gridCol_Memo";
             this.gridCol_Memo.Visible = true;
-            this.gridCol_Memo.VisibleIndex = 23;
+            this.gridCol_Memo.VisibleIndex = 18;
             this.gridCol_Memo.Width = 150;
             // 
             // bbiCheckDup
@@ -708,7 +678,72 @@
             this.bbiCheckDup.ItemAppearance.Normal.Options.UseBackColor = true;
             this.bbiCheckDup.Name = "bbiCheckDup";
             // 
-            // Form_M0012
+            // gridCol_WH2Stock
+            // 
+            this.gridCol_WH2Stock.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WH2Stock.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_WH2Stock.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_WH2Stock.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WH2Stock.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_WH2Stock.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_WH2Stock.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_WH2Stock.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_WH2Stock.Caption = "Tồn kho tại TVC2";
+            this.gridCol_WH2Stock.FieldName = "WH2Stock";
+            this.gridCol_WH2Stock.Name = "gridCol_WH2Stock";
+            this.gridCol_WH2Stock.Visible = true;
+            this.gridCol_WH2Stock.VisibleIndex = 14;
+            // 
+            // gridCol_WH1Stock
+            // 
+            this.gridCol_WH1Stock.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WH1Stock.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_WH1Stock.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_WH1Stock.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WH1Stock.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_WH1Stock.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_WH1Stock.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_WH1Stock.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_WH1Stock.Caption = "Tồn kho tại TVC1";
+            this.gridCol_WH1Stock.FieldName = "WH1Stock";
+            this.gridCol_WH1Stock.Name = "gridCol_WH1Stock";
+            this.gridCol_WH1Stock.Visible = true;
+            this.gridCol_WH1Stock.VisibleIndex = 13;
+            // 
+            // gridCol_WHTotal
+            // 
+            this.gridCol_WHTotal.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WHTotal.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_WHTotal.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_WHTotal.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WHTotal.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_WHTotal.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_WHTotal.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_WHTotal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_WHTotal.Caption = "Tổng tồn kho";
+            this.gridCol_WHTotal.FieldName = "WHTotal";
+            this.gridCol_WHTotal.Name = "gridCol_WHTotal";
+            this.gridCol_WHTotal.Visible = true;
+            this.gridCol_WHTotal.VisibleIndex = 15;
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barStaticItem1);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
+            // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "Ghi chú: Số liệu tồn kho hiện tại trên chương trình Solomon";
+            this.barStaticItem1.Id = 24;
+            this.barStaticItem1.ItemAppearance.Disabled.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.barStaticItem1.ItemAppearance.Disabled.Options.UseFont = true;
+            this.barStaticItem1.ItemAppearance.Disabled.Options.UseForeColor = true;
+            this.barStaticItem1.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.barStaticItem1.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barStaticItem1.Name = "barStaticItem1";
+            // 
+            // Form_M0012_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -716,11 +751,11 @@
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0012";
+            this.Name = "Form_M0012_Stock";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "DANH MỤC DẦU, PIN, LINH KIỆN MMTB";
-            this.Load += new System.EventHandler(this.Form_M0012_Load);
+            this.Text = "TỒN KHO LINH KIỆN/PIN TRÊN CHƯƠNG TRÌNH SOLOMON";
+            this.Load += new System.EventHandler(this.Form_M0012_Stock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
@@ -736,7 +771,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiPrintPreview;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
-        private DevExpress.XtraBars.BarButtonItem bbiNew;
         private DevExpress.XtraBars.BarButtonItem bbiEdit;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
@@ -768,9 +802,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_SupplierID;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Supplier;
         private DevExpress.XtraBars.BarCheckItem bCheck_InActive;
-        private DevExpress.XtraBars.BarCheckItem bCheck_Duplicate;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarCheckItem bbiCheckDup;
         private DevExpress.XtraBars.BarStaticItem bsiUser;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_WH1Stock;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_WH2Stock;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_WHTotal;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }

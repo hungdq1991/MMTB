@@ -1132,7 +1132,7 @@
             this.Name = "Form_M0005_Detail_NoUsed";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "MÀN HÌNH CHI TIẾT MMTB KHÔNG SỬ DỤNG";
+            this.Text = "MÀN HÌNH ĐĂNG KÝ MMTB KHÔNG SỬ DỤNG";
             this.Load += new System.EventHandler(this.Form_M0005_Detail_NoUsed_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();

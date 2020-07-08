@@ -33,7 +33,7 @@ namespace MMTB.View
             //
             M01_DAO = new M01_DAO();
             //
-            bsiUser.Caption = _systemDAL.userName.ToUpper();
+            bsiUser.Caption = _systemDAL.userName.ToUpper().ToUpper();
             //Load Init
             GetInfo_advBandedGridView1();
             Add_Value_repo_sLookUp_Check();

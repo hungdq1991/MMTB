@@ -11,7 +11,6 @@ namespace MMTB.View
         public DataTable _tempTable;
         public M0004_DAO M0004_DAO;
         public const Boolean AddNew = true;
-
         //
         public System_DAL _systemDAL = new System_DAL();
 

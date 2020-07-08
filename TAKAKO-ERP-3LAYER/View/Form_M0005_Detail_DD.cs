@@ -34,10 +34,11 @@ namespace MMTB.View
             _systemDAL = systemDAL;
         }
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0005_Detail_DD(String _docNo)
+        public Form_M0005_Detail_DD(String _docNo, System_DAL systemDAL)
         {
             InitializeComponent();
             DocNo = _docNo;
+            _systemDAL = systemDAL;
         }
         //Load Form_M0005_Detail_DD
         private void Form_M0005_Detail_DD_Load(object sender, EventArgs e)
@@ -51,8 +52,6 @@ namespace MMTB.View
 
             Setting_Init_Control();
             Setting_Init_Value();
-
-            bsiUser.Caption = _systemDAL.userName.ToUpper();
 
             advBandedGridView1.AddNewRow();
         }
@@ -76,6 +75,7 @@ namespace MMTB.View
             AddValue_repo_sLookUp_Code();
 
             Add_Value_repo_sLookUp_ProcessCode();
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
         }
         //Giá trị khi khởi tạo form
         private void Setting_Init_Value()
@@ -138,7 +138,7 @@ namespace MMTB.View
         //Thêm cột header
         private void Define_HeaderTable()
         {
-            //Các cột theo bảng M0005_ListMMTB_Doc2
+            //Các cột theo bảng M0005_ListMMTB_Doc3
             _HeaderTable = new DataTable();
             _HeaderTable.Columns.Add("DocNo", typeof(string));
             _HeaderTable.Columns.Add("DocDate", typeof(DateTime));
@@ -147,8 +147,8 @@ namespace MMTB.View
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("Memo", typeof(string));
             _HeaderTable.Columns.Add("InputUser", typeof(string));
-            _HeaderTable.Columns.Add("Column1", typeof(string));
-            _HeaderTable.Columns.Add("Column2", typeof(string));
+            _HeaderTable.Columns.Add("ConfUser", typeof(string));
+            _HeaderTable.Columns.Add("ConfDate", typeof(DateTime));
             _HeaderTable.Columns.Add("Column3", typeof(string));
             _HeaderTable.Columns.Add("Column4", typeof(string));
             _HeaderTable.Columns.Add("Column5", typeof(string));
@@ -184,9 +184,9 @@ namespace MMTB.View
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
             dtRow["Memo"] = txt_Memo.Text;
-            dtRow["InputUser"] = _systemDAL.userName;
-            dtRow["Column1"] = "";
-            dtRow["Column2"] = "";
+            dtRow["InputUser"] = _systemDAL.userName.ToUpper();
+            dtRow["ConfUser"] = _systemDAL.userName.ToUpper();
+            dtRow["ConfDate"] = DateTime.Now;
             dtRow["Column3"] = "";
             dtRow["Column4"] = "";
             dtRow["Column5"] = "";
@@ -205,7 +205,7 @@ namespace MMTB.View
             _DetailTable.Columns.Add("NameJP", typeof(string));
             _DetailTable.Columns.Add("Maker", typeof(string));
             _DetailTable.Columns.Add("Model", typeof(string));
-            _DetailTable.Columns.Add("ConfDate", typeof(DateTime));
+            _DetailTable.Columns.Add("ConfirmDate", typeof(DateTime));
             _DetailTable.Columns.Add("DocNo_Confirm", typeof(string));
             _DetailTable.Columns.Add("ControlDept", typeof(string));
             _DetailTable.Columns.Add("OrgProcessCode", typeof(string));
@@ -354,7 +354,7 @@ namespace MMTB.View
                 string _nameJP = "";
                 string _maker = "";
                 string _model = "";
-                DateTime _confDate = DateTime.Now;
+                DateTime _confirmDate = DateTime.Now;
                 string _docNoConfirm = "";
                 string _controlDept = "";
                 string _orgProcessCode = "";
@@ -385,7 +385,7 @@ namespace MMTB.View
                 _nameJP = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameJP"));
                 _maker = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Maker"));
                 _model = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Model"));
-                _confDate = Convert.ToDateTime(editor.Properties.View.GetFocusedRowCellValue("ConfDate"));
+                _confirmDate = Convert.ToDateTime(editor.Properties.View.GetFocusedRowCellValue("ConfirmDate"));
                 _docNoConfirm = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DocNo_Confirm"));
                 _controlDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ControlDept"));
                 _orgProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("OrgProcessCode"));
@@ -412,7 +412,7 @@ namespace MMTB.View
                 advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "NameJP", _nameJP);
                 advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "Maker", _maker);
                 advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "Model", _model);
-                advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "ConfDate", _confDate);
+                advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "ConfirmDate", _confirmDate);
                 advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "DocNo_Confirm", _docNoConfirm);
                 advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "ControlDept", _controlDept);
                 advBandedGridView1.SetRowCellValue(advBandedGridView1.FocusedRowHandle, "OrgProcessCode", _orgProcessCode);
@@ -507,18 +507,36 @@ namespace MMTB.View
                             {
                                 MessageBox.Show("Đã lưu thành công chứng từ di dời!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
+                            Clear_Data();
+                            Add_Value_sLookUp_DocNo();
+                            AddValue_repo_sLookUp_Code();
+                            advBandedGridView1.AddNewRow();
                         }
-                        if (cbx_Status.SelectedIndex == 1)
+                        else if (cbx_Status.SelectedIndex == 1)
                         {
-                            if (M0005_DAO.Confirm_Move_MMTB(_DetailTable, GetValue_Header()))
+                            if (sLook_DocNo.EditValue == null)
                             {
-                                MessageBox.Show("Đã lưu thành công chứng từ di dời!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (M0005_DAO.Insert_Confirm_Move_MMTB(_DetailTable, GetValue_Header()))
+                                {
+                                    MessageBox.Show("Đã lưu thành công chứng từ di dời!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
+                            else
+                            {
+                                if (M0005_DAO.Confirm_Move_MMTB(_DetailTable, GetValue_Header()))
+                                {
+                                    MessageBox.Show("Đã lưu thành công chứng từ di dời!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            Clear_Data();
+                            Add_Value_sLookUp_DocNo();
+                            AddValue_repo_sLookUp_Code();
+                            advBandedGridView1.AddNewRow();
                         }
-                        Clear_Data();
-                        Add_Value_sLookUp_DocNo();
-                        AddValue_repo_sLookUp_Code();
-                        advBandedGridView1.AddNewRow();
+                        else
+                        {
+                            MessageBox.Show("Cập nhật không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -625,7 +643,7 @@ namespace MMTB.View
 
         private void advBandedGridView1_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
-            advBandedGridView1.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
+            advBandedGridView1.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName.ToUpper());
         }
     }
 }

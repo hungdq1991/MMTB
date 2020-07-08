@@ -155,6 +155,7 @@ namespace MMTB.DAO
                            string LineEN,
                            string LineVN,
                            string LineJP,
+                           string ProcessCode,
                            DateTime ApplyDate,
                            int InActive,
                            string Memo,
@@ -168,6 +169,7 @@ namespace MMTB.DAO
                                  LineEN     = @LineEN
                                 ,LineVN     = @LineVN
                                 ,LineJP     = @LineJP
+                                ,ProcessCode = @ProcessCode
                                 ,InActive   = @InActive
                                 ,Memo       = @Memo
                                 ,ModifyDate = GETDATE()
@@ -176,7 +178,7 @@ namespace MMTB.DAO
                                     LineCode    = @LineCode
                                 and ApplyDate = @ApplyDate
                                     ";
-            SqlParameter[] sqlParameters = new SqlParameter[8];
+            SqlParameter[] sqlParameters = new SqlParameter[9];
             sqlParameters[0] = new SqlParameter("@LineCode", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(LineCode);
             sqlParameters[1] = new SqlParameter("@LineEN", SqlDbType.NVarChar);
@@ -185,14 +187,16 @@ namespace MMTB.DAO
             sqlParameters[2].Value = Convert.ToString(LineVN);
             sqlParameters[3] = new SqlParameter("@LineJP", SqlDbType.NVarChar);
             sqlParameters[3].Value = Convert.ToString(LineJP);
-            sqlParameters[4] = new SqlParameter("@Memo", SqlDbType.NVarChar);
-            sqlParameters[4].Value = Convert.ToString(Memo);
-            sqlParameters[5] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
-            sqlParameters[5].Value = Convert.ToDateTime(ApplyDate);
-            sqlParameters[6] = new SqlParameter("@InActive", SqlDbType.Int);
-            sqlParameters[6].Value = Convert.ToInt32(InActive);
-            sqlParameters[7] = new SqlParameter("@InputUser", SqlDbType.Text);
-            sqlParameters[7].Value = Convert.ToString(_userName);
+            sqlParameters[4] = new SqlParameter("@ProcessCode", SqlDbType.NVarChar);
+            sqlParameters[4].Value = Convert.ToString(ProcessCode);
+            sqlParameters[5] = new SqlParameter("@Memo", SqlDbType.NVarChar);
+            sqlParameters[5].Value = Convert.ToString(Memo);
+            sqlParameters[6] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
+            sqlParameters[6].Value = Convert.ToDateTime(ApplyDate);
+            sqlParameters[7] = new SqlParameter("@InActive", SqlDbType.Int);
+            sqlParameters[7].Value = Convert.ToInt32(InActive);
+            sqlParameters[8] = new SqlParameter("@InputUser", SqlDbType.Text);
+            sqlParameters[8].Value = Convert.ToString(_userName);
 
             return conn.executeUpdateQuery(StrQuery, sqlParameters);
         }

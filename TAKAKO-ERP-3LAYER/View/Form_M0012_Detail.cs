@@ -21,9 +21,11 @@ namespace MMTB.View
         public Boolean InitValue = true;
         public System_DAL _systemDAL = new System_DAL();
         //Khởi tạo form
-        public Form_M0012_Detail()
+        public Form_M0012_Detail(DataRow dataRow, System_DAL systemDAL)
         {
             InitializeComponent();
+            //
+            _systemDAL = systemDAL;
         }
         //Khởi tạo form theo nội dung InitValue
         public Form_M0012_Detail(Boolean _InitValue, System_DAL systemDAL)
@@ -62,6 +64,7 @@ namespace MMTB.View
             AddValue_sLookUp_WH2Code();
             AddValue_sLookUp_PurCode();
             AddValue_CBox_InActive();
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
         }
         //Thông tin table cho gridView
         private void Define_DetailTable()
@@ -94,12 +97,14 @@ namespace MMTB.View
             _DetailTable.Columns.Add("Column4", typeof(string));
             _DetailTable.Columns.Add("Column5", typeof(string));
         }
+
         //Dữ liệu trên Form_M0012_Detail
         private void Setting_Init_Control()
         {
             //Định nghĩa datatable gán cho gridview
             Define_DetailTable();
             Define_DeleteRowTable();
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
         }
         //Giá trị khi khởi tạo form
         private void Setting_Init_Value()
@@ -181,13 +186,14 @@ namespace MMTB.View
 
             DataRow dtRow1 = _ResultTable.NewRow();
             dtRow1["ID"] = 4;
-            dtRow1["Tên"] = "Dầu";
+            dtRow1["Tên"] = "Pin";
             _ResultTable.Rows.Add(dtRow1);
 
             DataRow dtRow2 = _ResultTable.NewRow();
             dtRow2["ID"] = 5;
-            dtRow2["Tên"] = "Pin";
+            dtRow2["Tên"] = "Dầu";
             _ResultTable.Rows.Add(dtRow2);
+
 
             repo_sLookUp_ClassifyID.DataSource = _ResultTable;
             repo_sLookUp_ClassifyID.ValueMember = "ID";
@@ -213,7 +219,6 @@ namespace MMTB.View
                 string _nameEN = "";
                 string _nameVN = "";
                 string _nameJP = "";
-
                 //Get index
                 SearchLookUpEdit editor = sender as SearchLookUpEdit;
                 int index = editor.Properties.GetIndexByKeyValue(editor.EditValue);
@@ -226,7 +231,7 @@ namespace MMTB.View
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameEN", _nameEN);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
-            }
+           }
         }
         //Nhập liệu trên lưới - Mã tồn kho
         private void AddValue_sLookUp_WH1Code()
@@ -393,8 +398,6 @@ namespace MMTB.View
             //GridView
             gridCol_ClassifyID.OptionsColumn.AllowEdit = true;
             gridCol_NameEN.OptionsColumn.AllowEdit = true;
-            gridCol_NameVN.OptionsColumn.AllowEdit = true;
-            gridCol_NameJP.OptionsColumn.AllowEdit = true;
             gridCol_Unit.OptionsColumn.AllowEdit = true;
             gridCol_Maker.OptionsColumn.AllowEdit = true;
         }
@@ -408,8 +411,6 @@ namespace MMTB.View
             //GridView
             gridCol_ClassifyID.OptionsColumn.AllowEdit = false;
             gridCol_NameEN.OptionsColumn.AllowEdit = false;
-            gridCol_NameVN.OptionsColumn.AllowEdit = false;
-            gridCol_NameJP.OptionsColumn.AllowEdit = false;
             gridCol_Unit.OptionsColumn.AllowEdit = false;
             gridCol_Maker.OptionsColumn.AllowEdit = false;
         }
@@ -435,10 +436,11 @@ namespace MMTB.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0012_DAO.Update_M0012(_DetailTable))
+                        if (M0012_DAO.Insert_Supply_MMTB(_DetailTable))
                         {
                             MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_Data();
+                            Setting_Init_Value();
                         }
                     }
                 }
@@ -583,16 +585,20 @@ namespace MMTB.View
                 }
             }
         }
-
         private void GridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
-            gridView.SetFocusedRowCellValue("ApplyDate", DateTime.Now);
-            gridView.SetFocusedRowCellValue("InActive", 0);
-            gridView.SetFocusedRowCellValue("ClassifyID", 0);
-            gridView.SetFocusedRowCellValue("Point", 0);
-            gridView.SetFocusedRowCellValue("Lifetime", 0);
-            gridView.SetFocusedRowCellValue("MinimumQty", 0);
-            gridView.SetFocusedRowCellValue("Unit", "PCS");
+            gridView.SetRowCellValue(e.RowHandle, "ApplyDate", DateTime.Now);
+            gridView.SetRowCellValue(e.RowHandle, "InActive", 0);
+            gridView.SetRowCellValue(e.RowHandle, "ClassifyID", 0);
+            gridView.SetRowCellValue(e.RowHandle, "Point", 0);
+            gridView.SetRowCellValue(e.RowHandle, "Lifetime", 0);
+            gridView.SetRowCellValue(e.RowHandle, "MinimumQty", 0);
+            gridView.SetRowCellValue(e.RowHandle, "Unit", "PCS");
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName.ToUpper());
+            gridView.SetRowCellValue(e.RowHandle, "ModifyUser", _systemDAL.userName.ToUpper());
+            // Set focus in a specific cell
+            gridView.Focus();
+            gridView.FocusedRowHandle = e.RowHandle;
         }
     }
 }

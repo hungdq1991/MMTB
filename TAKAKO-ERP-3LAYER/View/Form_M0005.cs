@@ -33,7 +33,7 @@ namespace MMTB.View
             //
             M0005_Line_DAO = new M0005_Line_DAO();
             //
-            bsiUser.Caption = _systemDAL.userName.ToUpper();
+            bsiUser.Caption = _systemDAL.userName.ToUpper().ToUpper();
             //Load Init
             GetInfo_advBandedGridView1();
         }
@@ -90,7 +90,8 @@ namespace MMTB.View
                         }
                         if (_disposal == false && _noUsed == true)
                         {
-                            gridControl.DataSource = _tempTable.AsEnumerable().Where(row => row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
+                            gridControl.DataSource = _tempTable.AsEnumerable()
+                                .Where(row => row.Field<string>("DesLineCode") == "NoUsed").CopyToDataTable();
                             bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                         }
                         if (_disposal == false && _noUsed == false)

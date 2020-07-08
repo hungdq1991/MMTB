@@ -360,8 +360,8 @@ namespace MMTB.View
         private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             //Set value to new row
-            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
-            gridView.SetRowCellValue(e.RowHandle, "ConfUser", _systemDAL.userName);
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName.ToUpper());
+            gridView.SetRowCellValue(e.RowHandle, "ConfUser", _systemDAL.userName.ToUpper());
             gridView.SetRowCellValue(e.RowHandle, "InActive", 0);
             gridView.SetRowCellValue(e.RowHandle, "ApplyDate", DateTime.Today.Date);
 
@@ -425,7 +425,7 @@ namespace MMTB.View
         //Định nghĩa bảng Detail table
         private void Define_DetailTable()
         {
-            //Các cột theo bảng M0013_Summary_Replace
+            //Các cột theo bảng M0013_Master_Supply_Replace
             _DetailTable.Columns.Add("ClassifyID", typeof(string));
             _DetailTable.Columns.Add("ItemCode", typeof(string));
             _DetailTable.Columns.Add("NameEN", typeof(string));

@@ -1472,7 +1472,7 @@
             this.Name = "Form_M0005_Detail_NT";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "MÀN HÌNH CHI TIẾT NGHIỆM THU MMTB";
+            this.Text = "MÀN HÌNH ĐĂNG KÝ NGHIỆM THU MMTB";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_M0005_Detail_NT_FormClosing);
             this.Load += new System.EventHandler(this.Form_M0005_Detail_NT_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();

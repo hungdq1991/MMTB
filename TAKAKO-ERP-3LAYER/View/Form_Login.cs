@@ -65,7 +65,7 @@ namespace MMTB.View
                 {
                     this.Hide();
 
-                    _systemDAL.userName = _userName;
+                    _systemDAL.userName = _userName.ToUpper();
 
                     Form_Menu _fonmMain = new Form_Menu(_systemDAL);
                     _fonmMain.StartPosition = FormStartPosition.Manual;

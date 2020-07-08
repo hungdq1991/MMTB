@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Data;
 using System.Windows.Forms;
 using MMTB.DAO;
@@ -13,16 +12,13 @@ namespace MMTB.View
         public DataTable _tempTable;
         public M0002_DAO M0002_DAO;
         public const Boolean AddNew = true;
-
         //
         public System_DAL _systemDAL = new System_DAL();
-
         public Form_M0002(System_DAL systemDAL)
         {
             InitializeComponent();
             _systemDAL = systemDAL;
         }
-
         private void Form_M0002_Load(object sender, EventArgs e)
         {
             //

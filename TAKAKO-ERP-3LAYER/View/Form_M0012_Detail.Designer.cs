@@ -40,6 +40,7 @@
             this.bbi_PopUp_AddNewRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -77,6 +78,8 @@
             this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_Status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_InputUser = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ModifyUser = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_sLookUp_PurCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_PurCode1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,6 +93,8 @@
             this.gridCol_NameVN1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_TextEdit_Code = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridCol_ClassifyDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_Maker1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -130,9 +135,10 @@
             this.bbi_PopUp_Delete,
             this.bbi_PopUp_AddNewRow,
             this.bbiSave,
-            this.bbiClose});
+            this.bbiClose,
+            this.bsiUser});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 24;
+            this.ribbonControl.MaxItemId = 25;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -219,6 +225,13 @@
             this.bbiClose.Name = "bbiClose";
             this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiClose_ItemClick);
             // 
+            // bsiUser
+            // 
+            this.bsiUser.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.bsiUser.Caption = "barStaticItem1";
+            this.bsiUser.Id = 24;
+            this.bsiUser.Name = "bsiUser";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -244,6 +257,7 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
+            this.ribbonStatusBar.ItemLinks.Add(this.bsiUser);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 577);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
@@ -294,7 +308,9 @@
             this.gridCol_CnvFact,
             this.gridCol_ApplyDate,
             this.gridCol_InActive,
-            this.gridCol_Memo});
+            this.gridCol_Memo,
+            this.gridCol_InputUser,
+            this.gridCol_ModifyUser});
             this.gridView.GridControl = this.gridControl;
             this.gridView.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.gridView.Name = "gridView";
@@ -319,7 +335,7 @@
             this.gridCol_ClassifyID.AppearanceHeader.Options.UseForeColor = true;
             this.gridCol_ClassifyID.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_ClassifyID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_ClassifyID.Caption = "Nhóm hàng";
+            this.gridCol_ClassifyID.Caption = "Phân loại";
             this.gridCol_ClassifyID.ColumnEdit = this.repo_sLookUp_ClassifyID;
             this.gridCol_ClassifyID.FieldName = "ClassifyID";
             this.gridCol_ClassifyID.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
@@ -425,6 +441,8 @@
             this.gridCol_NameVN.FieldName = "NameVN";
             this.gridCol_NameVN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameVN.Name = "gridCol_NameVN";
+            this.gridCol_NameVN.OptionsColumn.AllowEdit = false;
+            this.gridCol_NameVN.OptionsColumn.ReadOnly = true;
             this.gridCol_NameVN.Visible = true;
             this.gridCol_NameVN.VisibleIndex = 3;
             this.gridCol_NameVN.Width = 120;
@@ -443,7 +461,9 @@
             this.gridCol_NameJP.FieldName = "NameJP";
             this.gridCol_NameJP.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameJP.Name = "gridCol_NameJP";
+            this.gridCol_NameJP.OptionsColumn.AllowEdit = false;
             this.gridCol_NameJP.OptionsColumn.AllowShowHide = false;
+            this.gridCol_NameJP.OptionsColumn.ReadOnly = true;
             this.gridCol_NameJP.Width = 120;
             // 
             // gridCol_Maker
@@ -768,6 +788,22 @@
             this.gridCol_Memo.VisibleIndex = 14;
             this.gridCol_Memo.Width = 150;
             // 
+            // gridCol_InputUser
+            // 
+            this.gridCol_InputUser.Caption = "gridColumn1";
+            this.gridCol_InputUser.FieldName = "InputUser";
+            this.gridCol_InputUser.Name = "gridCol_InputUser";
+            this.gridCol_InputUser.Visible = true;
+            this.gridCol_InputUser.VisibleIndex = 17;
+            // 
+            // gridCol_ModifyUser
+            // 
+            this.gridCol_ModifyUser.Caption = "gridColumn2";
+            this.gridCol_ModifyUser.FieldName = "ModifyUser";
+            this.gridCol_ModifyUser.Name = "gridCol_ModifyUser";
+            this.gridCol_ModifyUser.Visible = true;
+            this.gridCol_ModifyUser.VisibleIndex = 18;
+            // 
             // repo_sLookUp_PurCode
             // 
             this.repo_sLookUp_PurCode.AutoHeight = false;
@@ -837,9 +873,11 @@
             // gridView6
             // 
             this.gridView6.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridCol_ClassifyDesc,
             this.gridCol_ItemCode1,
             this.gridCol_NameEN1,
-            this.gridCol_NameVN1});
+            this.gridCol_NameVN1,
+            this.gridCol_Maker1});
             this.gridView6.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView6.Name = "gridView6";
             this.gridView6.OptionsSelection.EnableAppearanceFocusedCell = false;
@@ -851,7 +889,7 @@
             this.gridCol_ItemCode1.FieldName = "ItemCode";
             this.gridCol_ItemCode1.Name = "gridCol_ItemCode1";
             this.gridCol_ItemCode1.Visible = true;
-            this.gridCol_ItemCode1.VisibleIndex = 0;
+            this.gridCol_ItemCode1.VisibleIndex = 1;
             // 
             // gridCol_NameEN1
             // 
@@ -859,7 +897,7 @@
             this.gridCol_NameEN1.FieldName = "NameEN";
             this.gridCol_NameEN1.Name = "gridCol_NameEN1";
             this.gridCol_NameEN1.Visible = true;
-            this.gridCol_NameEN1.VisibleIndex = 1;
+            this.gridCol_NameEN1.VisibleIndex = 2;
             // 
             // gridCol_NameVN1
             // 
@@ -867,7 +905,7 @@
             this.gridCol_NameVN1.FieldName = "NameVN";
             this.gridCol_NameVN1.Name = "gridCol_NameVN1";
             this.gridCol_NameVN1.Visible = true;
-            this.gridCol_NameVN1.VisibleIndex = 2;
+            this.gridCol_NameVN1.VisibleIndex = 3;
             // 
             // repo_TextEdit_Code
             // 
@@ -880,6 +918,22 @@
             this.popupMenu1.ItemLinks.Add(this.bbi_PopUp_Delete);
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
+            // 
+            // gridCol_ClassifyDesc
+            // 
+            this.gridCol_ClassifyDesc.Caption = "Phân loại";
+            this.gridCol_ClassifyDesc.FieldName = "ClassifyDesc";
+            this.gridCol_ClassifyDesc.Name = "gridCol_ClassifyDesc";
+            this.gridCol_ClassifyDesc.Visible = true;
+            this.gridCol_ClassifyDesc.VisibleIndex = 0;
+            // 
+            // gridCol_Maker1
+            // 
+            this.gridCol_Maker1.Caption = "Maker";
+            this.gridCol_Maker1.FieldName = "Maker";
+            this.gridCol_Maker1.Name = "gridCol_Maker1";
+            this.gridCol_Maker1.Visible = true;
+            this.gridCol_Maker1.VisibleIndex = 4;
             // 
             // Form_M0012_Detail
             // 
@@ -983,5 +1037,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Unit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_SupplierName;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Status;
+        private DevExpress.XtraBars.BarStaticItem bsiUser;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_InputUser;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ModifyUser;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ClassifyDesc;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_Maker1;
     }
 }

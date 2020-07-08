@@ -1356,7 +1356,7 @@
             this.Name = "Form_M0005_Detail_TL";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "MÀN HÌNH CHI TIẾT THANH LÝ MMTB";
+            this.Text = "MÀN HÌNH ĐĂNG KÝ THANH LÝ MMTB";
             this.Load += new System.EventHandler(this.Form_M0005_Detail_TL_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();

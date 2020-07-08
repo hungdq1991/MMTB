@@ -539,7 +539,7 @@ namespace MMTB.View
                                                 ,curr_OperatingSys
                                                 ,curr_Wattage
                                                 ,curr_InActive
-                                                ,_systemDAL.userName))
+                                                ,_systemDAL.userName.ToUpper()))
                             {
                                 Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
                             }
@@ -558,7 +558,7 @@ namespace MMTB.View
                                                             ,curr_Tailstock
                                                             ,curr_AxisC
                                                             ,curr_InActive_T
-                                                            ,_systemDAL.userName))
+                                                            ,_systemDAL.userName.ToUpper()))
                                 {
                                     Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
                                 }
@@ -584,7 +584,7 @@ namespace MMTB.View
                                                             ,curr_AxisB
                                                             ,curr_AxisC_P
                                                             ,curr_InActive_P
-                                                            ,_systemDAL.userName))
+                                                            ,_systemDAL.userName.ToUpper()))
                                 {
                                     Message = "Lưu thành công Mã MMTB: \"" + sLook_Code.Text.ToString() + "\"!";
                                 }
@@ -613,7 +613,7 @@ namespace MMTB.View
                             //Cập nhật thông tin chung
                             if (CheckError_MMTB() == true)
                             {
-                                M0006_DAO.Update(curr_Code, _systemDAL.userName);
+                                M0006_DAO.Update(curr_Code, _systemDAL.userName.ToUpper());
                                 if (M0006_DAO.Insert(curr_Code
                                                     ,curr_ACCCode
                                                     ,curr_NameEN
@@ -633,7 +633,7 @@ namespace MMTB.View
                                                     ,curr_OperatingSys
                                                     ,curr_Wattage
                                                     ,curr_InActive
-                                                    ,_systemDAL.userName))
+                                                    ,_systemDAL.userName.ToUpper()))
                                 {
                                     MessageResult = "Đã cập nhật Thông tin chung: " + sLook_Code.Text.ToString() + " !";
                                 }
@@ -647,7 +647,7 @@ namespace MMTB.View
                             {
                                 if (CheckError_MMTB_T() == true)
                                 {
-                                    M0006_MayTien_DAO.Update(curr_Code, _systemDAL.userName);
+                                    M0006_MayTien_DAO.Update(curr_Code, _systemDAL.userName.ToUpper());
                                     if ((M0006_MayTien_DAO.Insert(curr_Code
                                                                  ,curr_ACCCode
                                                                  ,curr_NameEN
@@ -660,7 +660,7 @@ namespace MMTB.View
                                                                  ,curr_Tailstock
                                                                  ,curr_AxisC
                                                                  ,curr_InActive
-                                                                 ,_systemDAL.userName)))
+                                                                 ,_systemDAL.userName.ToUpper())))
                                     {
                                         MessageResult = MessageResult + "\n" + "Đã cập nhật Thông tin Máy tiện:  " + sLook_Code.Text.ToString() + " !";
                                     }
@@ -675,7 +675,7 @@ namespace MMTB.View
                             {
                                 if (CheckError_MMTB_P() == true)
                                 {
-                                    M0006_MayPhay_DAO.Update(curr_Code, _systemDAL.userName);
+                                    M0006_MayPhay_DAO.Update(curr_Code, _systemDAL.userName.ToUpper());
                                     if ((M0006_MayPhay_DAO.Insert(curr_Code
                                                                  ,curr_ACCCode
                                                                  ,curr_NameEN
@@ -694,7 +694,7 @@ namespace MMTB.View
                                                                  ,curr_AxisB
                                                                  ,curr_AxisC_P
                                                                  ,curr_InActive_P
-                                                                 ,_systemDAL.userName)))
+                                                                 ,_systemDAL.userName.ToUpper())))
                                     {
                                         MessageResult = MessageResult + "\n" + "Đã cập nhật Thông tin Máy phay: " + sLook_Code.Text.ToString() + " !";
                                     }

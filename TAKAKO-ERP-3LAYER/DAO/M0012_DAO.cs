@@ -148,6 +148,48 @@ namespace MMTB.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        //Load dữ liệu trên form xem thông tin tồn kho
+      //  public DataTable GetInfo_M0012_Stock(int InActive)
+      //  {
+      //      string StrQuery = "";
+      //      DataTable _tempDataTable = new DataTable();
+
+      //      StrQuery = @"SELECT
+						//	 L.ItemCode
+      //                      ,L.NameEN
+      //                      ,L.NameVN
+      //                      ,L.NameJP
+      //                      ,CASE 
+      //                          WHEN L.ClassifyID = 1 THEN 'LK'
+      //                          WHEN L.ClassifyID = 4 THEN 'Pin'
+      //                          WHEN L.ClassifyID = 5 THEN N'Dầu'
+      //                       END AS  ClassifyID
+      //                      ,L.Maker
+      //                      ,L.Unit
+      //                      ,L.Point
+      //                      ,L.MinimumQty
+      //                      ,L.Lifetime
+      //                      ,L.PurCode
+      //                      ,L.WH1Code
+      //                      ,L.WH2Code
+      //                      ,L.ApplyDate
+      //                      ,L.InActive
+      //                      ,L.Memo
+						//	,L.Group1
+						//	,L.Group2
+						//FROM 
+      //                      M0012_SupplyMMTB
+      //                  LEFT JOIN
+      //                      [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapPrice]
+      //                  ORDER BY
+      //                       L.ClassifyID
+      //                      ,L.ItemCode";
+      //      SqlParameter[] sqlParameters = new SqlParameter[1];
+      //      sqlParameters[0] = new SqlParameter("@InActive", SqlDbType.Int);
+      //      sqlParameters[0].Value = Convert.ToInt32(InActive);
+
+      //      return conn.executeSelectQuery(StrQuery, sqlParameters);
+      //  }
         //Lấy thông tin các mã hàng trùng
         public DataTable GetInfo_M0012_Dup()
         {
@@ -363,7 +405,7 @@ namespace MMTB.DAO
                                 ,NameEN
                                 ,NameVN
                                 ,NameJP
-                                ,Maker
+                                ,L.Maker
                                 ,Unit
                                 ,UnitMultDiv
                                 ,CnvFact
@@ -390,17 +432,20 @@ namespace MMTB.DAO
                             JOIN
                                 (SELECT 
                                      L1.ItemCode
+                                    ,L1.Maker
                                     ,L1.ApplyDate
                                 FROM
                                     M0012_SupplyMMTB L1
                                 JOIN
                                     (SELECT 
                                          ItemCode
+                                        ,Maker
                                         ,Max(ApplyDate) as ApplyDate
                                     FROM
                                         M0012_SupplyMMTB
                                     GROUP BY
-										ItemCode
+										 ItemCode
+                                        ,Maker
                                     ) L2
                                 ON
                                     L1.ItemCode     = L2.ItemCode
@@ -464,9 +509,9 @@ namespace MMTB.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Update M0012
-        public bool Update_M0012(DataTable _listM0012)
+        public bool Insert_Supply_MMTB(DataTable _listM0012)
         {
-            return conn.Update_M0012(_listM0012);
+            return conn.Insert_Supply_MMTB(_listM0012);
         }
         //Lấy thông tin mã LK thay thế
         public DataTable GetInfo_M0012_ItemCodeRe(string NameEN)

@@ -41,7 +41,8 @@ namespace MMTB.DAO
 	                        ,Column4
 	                        ,Column5
                         FROM 
-	                        M0002_GroupName";
+	                        M0002_GroupName
+                        ORDER BY NameEN";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
@@ -140,15 +141,19 @@ namespace MMTB.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"UPDATE  dbo.M0002_GroupName
-                            SET  NameVN     = @NameVN
-                                ,NameJP     = @NameJP
-                                ,Group1     = @Group1
-                                ,Group2     = @Group2
-                                ,ClassifyID = @ClassifyID
-                                ,ClassifyDesc = @ClassifyDesc
-                                ,ModifyDate = GETDATE()
-                                ,ModifyUser = @InputUser
-                            WHERE NameEN = @NameEN";
+                            SET  NameVN         = @NameVN
+                                ,NameJP         = @NameJP
+                                ,Group1         = @Group1
+                                ,Group2         = @Group2
+                                ,ClassifyID     = @ClassifyID
+                                ,ClassifyDesc   = @ClassifyDesc
+                                ,ModifyDate     = GETDATE()
+                                ,ModifyUser     = @InputUser
+                                ,InActive       = @InActive
+                            WHERE 
+                                NameEN         = @NameEN
+                            AND Group1         = @Group1
+                            AND Group2         = @Group2";
             SqlParameter[] sqlParameters = new SqlParameter[10];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(NameEN);
@@ -193,7 +198,6 @@ namespace MMTB.DAO
         public DataTable GetInfo_M0002_Check(string NameEN,
                                              string Group1,
                                              string Group2,
-                                             string ClassifyID,
                                              DateTime ApplyDate)
         {
             string StrQuery = "";
@@ -203,27 +207,23 @@ namespace MMTB.DAO
                         	NameEN,
                             Group1,
                             Group2,
-                            ClassifyID,
                             ApplyDate
                         FROM
                         	M0002_GroupName
                         WHERE 
                             (NameEN = @NameEN
                             and Group1 = @Group1
-                            and Group2 = @Group2
-                            and ClassifyID = @ClassifyID)
+                            and Group2 = @Group2)
                         or (NameEN = @NameEN and ApplyDate = @ApplyDate)";
-            SqlParameter[] sqlParameters = new SqlParameter[5];
+            SqlParameter[] sqlParameters = new SqlParameter[4];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(NameEN);
             sqlParameters[1] = new SqlParameter("@Group1", SqlDbType.NVarChar);
             sqlParameters[1].Value = Convert.ToString(Group1);
             sqlParameters[2] = new SqlParameter("@Group2", SqlDbType.NVarChar);
             sqlParameters[2].Value = Convert.ToString(Group2);
-            sqlParameters[3] = new SqlParameter("@ClassifyID", SqlDbType.Int);
-            sqlParameters[3].Value = Convert.ToInt32(ClassifyID);
-            sqlParameters[4] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
-            sqlParameters[4].Value = Convert.ToDateTime(ApplyDate);
+            sqlParameters[3] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
+            sqlParameters[3].Value = Convert.ToDateTime(ApplyDate);
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
@@ -268,7 +268,7 @@ namespace MMTB.DAO
             StrQuery = @"SELECT
                         	 N.NameEN
                             ,N.NameVN
-                            --,N.NameJP
+                            ,N.NameJP
                         FROM
                             M0001_Name N
                         INNER JOIN
@@ -299,7 +299,7 @@ namespace MMTB.DAO
             StrQuery = @"SELECT
                         	 N.NameEN
                             ,N.NameVN
-                            --,N.NameJP
+                            ,N.NameJP
                         FROM
                             M0001_Name N
                         INNER JOIN
@@ -373,7 +373,7 @@ namespace MMTB.DAO
         }
         //Lấy dữ liệu từ bảng M01_Classify (có parammeter)
         //từ ClassifyID -> lấy thông tin diễn giải Classify
-        public DataTable GetInfo_M01_ClassifyD(int ClassifyID)
+        public DataTable GetInfo_M01_ClassifyID(int ClassifyID)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
@@ -397,18 +397,18 @@ namespace MMTB.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                        	NameEN,
-                            NameVN,
-                            NameJP
+                        	 NameEN
+                            ,NameVN
+                            ,NameJP
                         FROM
                             M0002_GroupName
                         WHERE
                             InActive = 0
                         and ClassifyID in (2,3)
                         ORDER BY
-                            NameEN,
-                            NameVN,
-                            NameJP";
+                             NameEN
+                            ,NameVN
+                            ,NameJP";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");

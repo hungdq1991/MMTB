@@ -648,6 +648,7 @@
             this.gridCol_ACCDoc.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ACCDoc.Caption = "Số chứng từ nghiệm thu (ACC)";
             this.gridCol_ACCDoc.FieldName = "ACCDoc";
+            this.gridCol_ACCDoc.GroupInterval = DevExpress.XtraGrid.ColumnGroupInterval.DisplayText;
             this.gridCol_ACCDoc.Name = "gridCol_ACCDoc";
             this.gridCol_ACCDoc.Visible = true;
             this.gridCol_ACCDoc.VisibleIndex = 7;
@@ -665,7 +666,7 @@
             this.gridCol_ACCDocNo_Disposal.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_ACCDocNo_Disposal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_ACCDocNo_Disposal.Caption = "Số chứng từ thanh lý (ACC)";
-            this.gridCol_ACCDocNo_Disposal.FieldName = "ACCDocNo_Disposal";
+            this.gridCol_ACCDocNo_Disposal.FieldName = "ACCDoc_Disposal";
             this.gridCol_ACCDocNo_Disposal.Name = "gridCol_ACCDocNo_Disposal";
             this.gridCol_ACCDocNo_Disposal.Visible = true;
             this.gridCol_ACCDocNo_Disposal.VisibleIndex = 23;
@@ -1148,7 +1149,7 @@
             this.Name = "Form_M0005_Detail_ACC";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "MÀN HÌNH CHI TIẾT BỔ SUNG CHỨNG TỪ ACC";
+            this.Text = "   ";
             this.Load += new System.EventHandler(this.Form_M0005_Detail_ACC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();

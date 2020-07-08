@@ -400,7 +400,7 @@
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiReport);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Export";
             // 
             // ribbonStatusBar
             // 
@@ -886,7 +886,7 @@
             this.gridCol_ConfDate.Caption = "Ngày";
             this.gridCol_ConfDate.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.gridCol_ConfDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridCol_ConfDate.FieldName = "ConfDate";
+            this.gridCol_ConfDate.FieldName = "ConfirmDate";
             this.gridCol_ConfDate.Name = "gridCol_ConfDate";
             this.gridCol_ConfDate.OptionsColumn.AllowEdit = false;
             this.gridCol_ConfDate.Visible = true;
@@ -1409,7 +1409,7 @@
             this.Name = "Form_M0005_Detail_DD";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "MÀN HÌNH CHI TIẾT DI DỜI MMTB";
+            this.Text = "MÀN HÌNH ĐĂNG KÝ DI DỜI MMTB";
             this.Load += new System.EventHandler(this.Form_M0005_Detail_DD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();

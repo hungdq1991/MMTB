@@ -10,6 +10,7 @@ using MMTB.DAO;
 using MMTB.DAL;
 using MMTB.Report;
 using DevExpress.XtraReports.UI;
+using System.Globalization;
 
 namespace MMTB.View
 {
@@ -52,13 +53,14 @@ namespace MMTB.View
             M0003_Line_DAO = new M0003_Line_DAO();
             M0004_DAO = new M0004_DAO();
             M0005_DAO = new M0005_DAO();
-
+            
             _HeaderTable = new DataTable();
             _DetailTable = new DataTable();
             _DeleteRowTable = new DataTable();
 
             Setting_Init_Control();
             Setting_Init_Value();
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
         }
 
         #region Add data to control
@@ -296,6 +298,7 @@ namespace MMTB.View
             {
                 InitValue = true;
                 Clear_Data();
+                Set_Enable_Control(true);
             }
         }
 
@@ -381,15 +384,40 @@ namespace MMTB.View
                     try
                     {
                         string DocNo = "";
-
                         _DetailTable = gridView.GridControl.DataSource as DataTable;
-                        DocNo = M0005_DAO.Update_MMTB(_DetailTable, _DeleteRowTable, GetValue_Header());
-
-                        if (!String.IsNullOrEmpty(DocNo))
+                        if (cbx_Status.SelectedIndex == 0)
                         {
-                            MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
-                                , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DocNo = M0005_DAO.Insert_MMTB(_DetailTable, _DeleteRowTable, GetValue_Header());
+                            if (!String.IsNullOrEmpty(DocNo))
+                            {
+                                MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
+                                    , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear_Data();
+                                Set_Enable_Control(true);
+                                Add_Value_sLookUp_DocNo();
+                            }
+                        }
+                        else if (cbx_Status.SelectedIndex == 1)
+                        {
+                            if (sLook_DocNo.EditValue == null)
+                            {
+                                DocNo = M0005_DAO.Insert_Confirm_MMTB(_DetailTable, GetValue_Header());
+                                if (!String.IsNullOrEmpty(DocNo))
+                                {
+                                    MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
+                                    , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                if (M0005_DAO.Confirm_MMTB(_DetailTable, GetValue_Header()))
+                                {
+                                    MessageBox.Show("Đã xác nhận thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
                             Clear_Data();
+                            Set_Enable_Control(true);
+                            Add_Value_sLookUp_DocNo();
                         }
                         else
                         {
@@ -401,7 +429,7 @@ namespace MMTB.View
                         MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            }
+            }            
         }
 
         private void Form_M0005_Detail_NT_FormClosing(object sender, FormClosingEventArgs e)
@@ -499,7 +527,7 @@ namespace MMTB.View
             gridView.SetRowCellValue(e.RowHandle, "Lifetime", 0);
             gridView.SetRowCellValue(e.RowHandle, "Status", 0);
             gridView.SetRowCellValue(e.RowHandle, "Result", 0);
-            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName.ToUpper());
 
             // Set focus in a specific cell
             gridView.Focus();
@@ -510,8 +538,33 @@ namespace MMTB.View
         private void repo_ItemDate_StartDerprDate_EditValueChanged(object sender, EventArgs e)
         {
             int lifetime = Convert.ToInt32(gridView.GetRowCellValue(gridView.FocusedRowHandle, "Lifetime"));
-            DateTime endDerprDate = (sender as DevExpress.XtraEditors.DateEdit).DateTime.AddMonths(lifetime);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", endDerprDate);
+            DateTime _endDerprDate = (sender as DevExpress.XtraEditors.DateEdit).DateTime.AddMonths(lifetime);
+            gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDerprDate);
+            try
+            {
+                //Điều chỉnh ngày hết khấu hao về đầu tháng
+                int _month = Convert.ToInt32(_endDerprDate.Month);
+                string _monthEnd = "";
+                if (_month < 10)
+                {
+                    _monthEnd = "0" + Convert.ToString(_month);
+                }
+                else
+                {
+                    _monthEnd = Convert.ToString(_month);
+                }
+                string _end = "01" + _monthEnd + Convert.ToString(_endDerprDate.Year);
+                string format = "ddMMyyyy"; // define a date pattern according to your requirements  
+                CultureInfo provider = CultureInfo.InvariantCulture;
+                DateTime _endDate = DateTime.Now.Date;
+                _endDate = DateTime.ParseExact(_end, format, provider);
+                //Chuyển ngày hết khấu hao lên gridView
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void repo_TextEdit_Lifetime_EditValueChanged(object sender, EventArgs e)
@@ -519,6 +572,31 @@ namespace MMTB.View
             int lifetime = Convert.ToInt32((sender as DevExpress.XtraEditors.TextEdit).EditValue);
             DateTime _endDerprDate = Convert.ToDateTime(gridView.GetRowCellValue(gridView.FocusedRowHandle, "StartDeprDate")).AddMonths(lifetime);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDerprDate);
+            try
+            {
+                //Điều chỉnh ngày hết khấu hao về đầu tháng
+                int _month = Convert.ToInt32(_endDerprDate.Month);
+                string _monthEnd = "";
+                if (_month < 10)
+                {
+                    _monthEnd = "0" + Convert.ToString(_month);
+                }
+                else
+                {
+                    _monthEnd = Convert.ToString(_month);
+                }
+                string _end = "01" + _monthEnd + Convert.ToString(_endDerprDate.Year);
+                string format = "ddMMyyyy"; // define a date pattern according to your requirements  
+                CultureInfo provider = CultureInfo.InvariantCulture;
+                DateTime _endDate = DateTime.Now.Date;
+                _endDate = DateTime.ParseExact(_end, format, provider);
+                //Chuyển ngày hết khấu hao lên gridView
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void gridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
@@ -626,8 +704,8 @@ namespace MMTB.View
             _HeaderTable.Columns.Add("ControlDept", typeof(string));
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("InputUser", typeof(string));
-            _HeaderTable.Columns.Add("Column1", typeof(string));
-            _HeaderTable.Columns.Add("Column2", typeof(string));
+            _HeaderTable.Columns.Add("ConfUser", typeof(string));
+            _HeaderTable.Columns.Add("ConfDate", typeof(DateTime));
             _HeaderTable.Columns.Add("Column3", typeof(string));
             _HeaderTable.Columns.Add("Column4", typeof(string));
             _HeaderTable.Columns.Add("Column5", typeof(string));
@@ -651,9 +729,9 @@ namespace MMTB.View
             dtRow["ConfirmDate"] = date_Confirm.EditValue;
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
-            dtRow["InputUser"] = _systemDAL.userName;
-            dtRow["Column1"] = "";
-            dtRow["Column2"] = "";
+            dtRow["InputUser"] = _systemDAL.userName.ToUpper();
+            dtRow["ConfUser"] = _systemDAL.userName.ToUpper();
+            dtRow["ConfDate"] = DateTime.Now;
             dtRow["Column3"] = "";
             dtRow["Column4"] = "";
             dtRow["Column5"] = "";
@@ -830,7 +908,6 @@ namespace MMTB.View
                     gridView.FocusedColumn = gridView.Columns["OrgLineCode"];
                     return false;
                 }
-
                 //Lifetime
                 int lifeTime = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["Lifetime"]));
                 if (lifeTime < 36)

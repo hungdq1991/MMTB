@@ -345,6 +345,7 @@
             this.look_ClassifyID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.look_ClassifyID.Size = new System.Drawing.Size(57, 20);
             this.look_ClassifyID.TabIndex = 5;
+            this.look_ClassifyID.TextChanged += new System.EventHandler(this.Look_ClassifyID_Validated);
             this.look_ClassifyID.Validated += new System.EventHandler(this.Look_ClassifyID_Validated);
             // 
             // sLook_NameEN
@@ -358,6 +359,7 @@
             this.sLook_NameEN.Size = new System.Drawing.Size(300, 20);
             this.sLook_NameEN.TabIndex = 12;
             this.sLook_NameEN.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.sLook_NameEN_CloseUp);
+            this.sLook_NameEN.TextChanged += new System.EventHandler(this.sLook_NameEN_Validated);
             this.sLook_NameEN.Validated += new System.EventHandler(this.sLook_NameEN_Validated);
             // 
             // searchLookUpEdit1View

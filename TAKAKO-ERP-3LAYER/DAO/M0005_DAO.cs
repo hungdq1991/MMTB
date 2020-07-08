@@ -55,8 +55,8 @@ namespace MMTB.DAO
                         	,ConfirmDate
                         	,ControlDept
                          	,DisposalStatus
-                        	,L.Column2
-                        	,L.Column3
+                        	,L.ConfUser
+                        	,L.ConfDate
                         	,L.Column4
                         	,L.Column5
                             ,N.Group1
@@ -82,7 +82,7 @@ namespace MMTB.DAO
 								,L1.DesGroupLineACC
 								,L1.DesUsingDept
 							FROM M0005_ListMMTBLine L1 
-							LEFT JOIN (SELECT 
+							JOIN (SELECT 
 									 Code
 									,Max(ApplyDate) as ApplyDate
 								  FROM
@@ -94,6 +94,90 @@ namespace MMTB.DAO
                             AND L1.ApplyDate    = L2.ApplyDate) L1
 						ON  L.Code              = L1.Code
                         WHERE L.DocNo_Disposal is null
+                        ORDER BY L.Code";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Lấy thông tin trên gridControl_ACC bổ sung thông tin
+        public DataTable GetInfo_M0005_ACC()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	 L.Code
+                        	,ACCcode
+                        	,L.NameEN
+                        	,L.NameVN
+                        	,L.NameJP
+                        	,Maker
+                        	,Model
+                        	,Series
+                        	,OrgCountry
+                        	,ProDate
+                        	,Lifetime
+                        	,StartDeprDate
+                        	,EndDeprDate
+                        	,Status
+                        	,Result
+                        	,Memo
+                        	,InstDoc
+                        	,ACCDoc
+                        	,DocNo_Disposal
+                        	,ACCDoc_Disposal
+                        	,DisposalDate
+                            ,DisposalMemo
+                        	,DocNo
+                        	,DocDate
+                        	,EF_VendID
+                        	,SupplierID
+                        	,SupplierName
+                        	,InvNo
+                        	,InvDate
+                        	,ReceiptDate
+                        	,ConfirmDate
+                        	,ControlDept
+                         	,DisposalStatus
+                        	,L.ConfUser
+                        	,L.ConfDate
+                        	,L.Column4
+                        	,L.Column5
+                            ,N.Group1
+                            ,N.Group2
+							,L1.DesProcessCode
+							,L1.DesLineCode
+							,L1.DesLineEN
+							,L1.DesGroupLineACC
+							,L1.DesUsingDept 
+                            ,L.InputUser
+                        FROM
+                        	M0005_ListMMTB L
+                        LEFT JOIN 
+                            M0002_GroupName N
+                        ON 
+                            L.NameEN = N.NameEN
+						LEFT JOIN
+							(SELECT
+								 L1.Code
+								,L1.DesProcessCode
+								,L1.DesLineCode
+								,L1.DesLineEN
+								,L1.DesGroupLineACC
+								,L1.DesUsingDept
+							FROM M0005_ListMMTBLine L1 
+							JOIN (SELECT 
+									 Code
+									,Max(ApplyDate) as ApplyDate
+								  FROM
+                                    M0005_ListMMTBLine 
+								  GROUP BY
+                                    Code
+                                ) L2 
+							ON  L1.Code         = L2.Code 
+                            AND L1.ApplyDate    = L2.ApplyDate) L1
+						ON  L.Code              = L1.Code
                         ORDER BY L.Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
@@ -140,8 +224,8 @@ namespace MMTB.DAO
                         	,ConfirmDate
                         	,ControlDept
                          	,DisposalStatus
-                        	,L.Column2
-                        	,L.Column3
+                        	,L.ConfUser
+                        	,L.ConfDate
                         	,L.Column4
                         	,L.Column5
                             ,N.Group1
@@ -227,8 +311,8 @@ namespace MMTB.DAO
                             ,ControlDept
                             ,DocStatus
                             ,InputUser
-                            ,Column1
-                            ,Column2
+                            ,ConfUser
+                            ,ConfDate
                             ,Column3
                             ,Column4
                             ,Column5
@@ -401,12 +485,21 @@ namespace MMTB.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         
-        //Update info MMTB
-        public string Update_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
+        //Insert info MMTB
+        public string Insert_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
         {
-            return conn.Update_MMTB(listMMTB, _listDelete , listMMTBDoc1);
+            return conn.Insert_MMTB(listMMTB, _listDelete , listMMTBDoc1);
         }
-
+        //Update info MMTB
+        public bool Confirm_MMTB(DataTable listMMTB, DataTable listMMTBDoc1)
+        {
+            return conn.Confirm_MMTB(listMMTB, listMMTBDoc1);
+        }
+        //Insert & Update info MMTB
+        public string Insert_Confirm_MMTB(DataTable listMMTB, DataTable listMMTBDoc1)
+        {
+            return conn.Insert_Confirm_MMTB(listMMTB, listMMTBDoc1);
+        }
         #region Thanh lý MMTB
         //Lấy list MMTB chưa thanh lý
         public DataTable GetInfo_MMTB()
@@ -545,8 +638,8 @@ namespace MMTB.DAO
                             ,DocStatus
                             ,Memo
                             ,InputUser
-                            ,Column2
-                            ,Column3
+                            ,ConfUser
+                            ,ConfDate
                             ,Column4
                             ,Column5
                         FROM 
@@ -747,6 +840,11 @@ namespace MMTB.DAO
         {
             return conn.Confirm_Disposal_MMTB(listMMTB, listMMTBDoc2);
         }
+        //Lưu và Xác nhận chứng từ thanh lý MMTB
+        public bool Insert_Confirm_Disposal_MMTB(DataTable listMMTB, DataTable listMMTBDoc2)
+        {
+            return conn.Insert_Confirm_Disposal_MMTB(listMMTB, listMMTBDoc2);
+        }
         #endregion
         #region Di dời MMTB
         //Lấy list MMTB có thể di dời
@@ -763,7 +861,7 @@ namespace MMTB.DAO
 		                    ,M.NameJP
 		                    ,M.Maker
 		                    ,M.Model
-                            ,M.ConfDate
+                            ,M.ConfirmDate
                             ,M.DocNo_Confirm
                             ,M.ControlDept
                             ,M.OrgProcessCode
@@ -834,8 +932,8 @@ namespace MMTB.DAO
                             ,DocStatus
                             ,Memo
                             ,InputUser
-                            ,Column1
-                            ,Column2
+                            ,ConfUser
+                            ,ConfDate
                             ,Column3
                             ,Column4
                             ,Column5
@@ -863,7 +961,7 @@ namespace MMTB.DAO
 		                    ,NameJP
 		                    ,Maker
 		                    ,Model
-                            ,ConfDate
+                            ,ConfirmDate
                             ,DocNo_Confirm
                             ,ControlDept
 		                    ,OrgProcessCode
@@ -910,7 +1008,7 @@ namespace MMTB.DAO
 		                    ,NameJP
 		                    ,Maker
 		                    ,Model
-                            ,ConfDate
+                            ,ConfirmDate
                             ,DocNo_Confirm
                             ,ControlDept
 		                    ,OrgProcessCode
@@ -954,7 +1052,11 @@ namespace MMTB.DAO
             return conn.Confirm_Move_MMTB(listMMTB, listMMTBDoc3);
         }
         #endregion
-
+        //Xác nhận chứng từ di dời MMTB
+        public bool Insert_Confirm_Move_MMTB(DataTable listMMTB, DataTable listMMTBDoc3)
+        {
+            return conn.Insert_Confirm_Move_MMTB(listMMTB, listMMTBDoc3);
+        }
         #region Bổ sung thông tin của ACC
         //Xác nhận mã ACC
         public DataTable Check_M0005_ACCcode(string ACCcode)
@@ -975,9 +1077,9 @@ namespace MMTB.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Xác nhận bổ sung thông tin
-        public bool ACC_Update_MMTB(DataTable listMMTB)
+        public bool ACC_Confirm_MMTB(DataTable listMMTB)
         {
-            return conn.ACC_Update_MMTB(listMMTB);
+            return conn.ACC_Confirm_MMTB(listMMTB);
         }
         #endregion
         #region MMTB không sử dụng
@@ -1118,11 +1220,11 @@ namespace MMTB.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                        	 L.Code
-                        	,L.ACCcode
-                        	,L.NameEN
-                        	,L.NameVN
-                        	,L.NameJP
+                        	  L.Code
+                        	,ACCcode
+                        	,NameEN
+                        	,NameVN
+                        	,NameJP
                         	,Maker
                         	,Model
                         	,Series
@@ -1130,88 +1232,48 @@ namespace MMTB.DAO
                         	,ProDate
                         	,Lifetime
                             ,CASE
-                                WHEN S.NetValue is null THEN 0
-                                ELSE CONVERT(decimal(16,4),S.NetValue)
+                                WHEN NetValue is null THEN 0
+                                ELSE CONVERT(decimal(16,4),NetValue)
                             END AS NetValue
                         	,StartDeprDate
-                        	,EndDeprDate
-                            ,L2.Reason
-                            ,L2.CurStatus
-                            ,L2.CurPlan
-                            ,L2.Solve
+                        	,L.EndDeprDate
+                            ,Reason
+                            ,CurStatus
+                            ,CurPlan
+                            ,Solve
+                            ,InputUser
                         FROM
-                        	M0005_ListMMTB L
-						LEFT JOIN
-							(SELECT
-								 L1.Code
-								,L1.DesLineCode
-							FROM
-                                M0005_ListMMTBLine L1 
-							JOIN (SELECT 
-									 Code
-									,Max(ApplyDate) AS ApplyDate
-								  FROM
-                                    M0005_ListMMTBLine 
-								  GROUP BY
-                                    Code
-                                ) L2 
-							ON  L1.Code         = L2.Code 
-                            AND L1.ApplyDate    = L2.ApplyDate
-                            ) L1
-                        ON  L.Code = L1.Code
-						LEFT JOIN
-							(SELECT
-								  L1.Code
-                                 ,L1.Reason
-                                 ,L1.CurStatus
-                                 ,L1.CurPlan
-                                 ,L1.Solve
-							FROM 
-                                M0005_ListMMTBNoUsed L1
-							JOIN (SELECT 
-									 Code
-									,Max(FromDate) As FromDate
-								  FROM
-                                    M0005_ListMMTBNoUsed 
-								  GROUP BY
-                                    Code
-                                ) L2 
-							ON  L1.Code     = L2.Code 
-                            AND L1.FromDate = L2.FromDate
-                            ) L2
-						ON
-                            L.Code = L2.Code
-                        LEFT JOIN
+                        	M0005_ListMMTBNoUsed L
+                        JOIN
                             (SELECT 
-                                 S1.AssetID
-                                ,S1.BookValue As NetValue
+                                 Code
+                        	    ,MAX(ToDate) AS ToDate
                             FROM
-                                [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist] S1
-                            JOIN 
-                                (SELECT
-                                     AssetID
-                                    ,MAX(Crtd_DateTime) As Crtd_DateTime
-                                FROM
-                                    [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_XFAHist]
-                                GROUP BY
-                                    AssetID
-                                ) S2
-                            ON  S1.AssetID          = S2.AssetID
-                            AND S1.Crtd_DateTime    = S2.Crtd_DateTime) S
-                        ON  L.ACCcode               = S.AssetID
-                        WHERE
-                            L1.DesLineCode          = 'NoUsed'
+                                M0005_ListMMTBNoUsed
+                            GROUP BY Code) L1
+                        ON 
+                            L.Code     = L1.Code
+                        AND L.ToDate   = L1.ToDate
                         ORDER BY
                             L.Code";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Code", SqlDbType.Text);
             sqlParameters[0].Value = Convert.ToString("");
+
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         //Xác nhận bổ sung thông tin
-        public string Update_MMTB_No_Used(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc4 )
+        public string Insert_MMTB_No_Used(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc4 )
         {
-            return conn.Update_MMTB_No_Used(listMMTB,_listDelete, listMMTBDoc4);
+            return conn.Insert_MMTB_No_Used(listMMTB,_listDelete, listMMTBDoc4);
+        }
+        public bool Confirm_MMTB_No_Used(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc4)
+        {
+            return conn.Confirm_MMTB_No_Used(listMMTB, _listDelete, listMMTBDoc4);
+        }
+        public string Insert_Confirm_MMTB_No_Used(DataTable listMMTB, DataTable listMMTBDoc4)
+        {
+            return conn.Insert_Confirm_MMTB_No_Used(listMMTB, listMMTBDoc4);
         }
         #endregion
     }

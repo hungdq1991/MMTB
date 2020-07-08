@@ -325,6 +325,8 @@
             this.gridCol_InActive.Caption = "Ngưng sử dụng";
             this.gridCol_InActive.FieldName = "InActive";
             this.gridCol_InActive.Name = "gridCol_InActive";
+            this.gridCol_InActive.OptionsColumn.AllowEdit = false;
+            this.gridCol_InActive.OptionsColumn.ReadOnly = true;
             this.gridCol_InActive.Visible = true;
             this.gridCol_InActive.VisibleIndex = 7;
             this.gridCol_InActive.Width = 90;

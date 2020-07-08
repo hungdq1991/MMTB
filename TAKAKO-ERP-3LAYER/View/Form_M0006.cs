@@ -46,7 +46,7 @@ namespace MMTB.View
             M0006_MayPhay_DAO = new M0006_MayPhay_DAO();
             xtraTabControl1.SelectedTabPage = xtraTabPage1;
             //
-            bsiUser.Caption = _systemDAL.userName.ToUpper();
+            bsiUser.Caption = _systemDAL.userName.ToUpper().ToUpper();
             //Load Init
             GetInfo_Gridview();
         }

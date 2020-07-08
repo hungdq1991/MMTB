@@ -65,7 +65,7 @@ namespace MMTB.View
             Setting_Init_Control();
             Setting_Init_Value();
             //
-            bsiUser.Caption = _systemDAL.userName.ToUpper();
+            bsiUser.Caption = _systemDAL.userName.ToUpper().ToUpper();
             //Load Init
             InitValue = true;
 
@@ -404,7 +404,7 @@ namespace MMTB.View
                     {
                         if (CheckError() == true)
                         {
-                            DocNo = M0013_DAO.Insert_Summary_ByItem(_DetailTable, _DeleteRowTable, GetValue_Header());
+                            DocNo = M0013_DAO.Insert_Master_ByItem(_DetailTable, _DeleteRowTable, GetValue_Header());
                             if (!String.IsNullOrEmpty(DocNo))
                             {
                                 MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
@@ -420,7 +420,7 @@ namespace MMTB.View
                         {
                             if (CheckError() == true)
                             {
-                                DocNo = M0013_DAO.Insert_Confirm_Summary_ByItem(_DetailTable,  GetValue_Header());
+                                DocNo = M0013_DAO.Insert_Confirm_Master_ByItem(_DetailTable,  GetValue_Header());
 
                                 if (!String.IsNullOrEmpty(DocNo))
                                 {
@@ -435,7 +435,7 @@ namespace MMTB.View
                         {
                             if (CheckErrorConfirm() == true)
                             {
-                                if (M0013_DAO.Update_Summary_ByItem(_DetailTable, _DeleteRowTable, GetValue_Header()))
+                                if (M0013_DAO.Confirm_Master_ByItem(_DetailTable, _DeleteRowTable, GetValue_Header()))
                                 {
                                     MessageBox.Show("Đã xác nhận thành công!", "Thông báo",         MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     Clear_Data();
@@ -516,8 +516,8 @@ namespace MMTB.View
         private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
             //Set value to new row
-            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
-            gridView.SetRowCellValue(e.RowHandle, "ConfUser", _systemDAL.userName);
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName.ToUpper());
+            gridView.SetRowCellValue(e.RowHandle, "ConfUser", _systemDAL.userName.ToUpper());
             gridView.SetRowCellValue(e.RowHandle, "InActive", 0);
             gridView.SetRowCellValue(e.RowHandle, "ApplyDate", DateTime.Today.Date);
             gridView.SetRowCellValue(e.RowHandle, "QtyNeed", 1);
@@ -539,7 +539,7 @@ namespace MMTB.View
         private void Setting_Init_Control()
         {
             //Pass username
-            bsiUser.Caption = _systemDAL.userName.ToUpper();
+            bsiUser.Caption = _systemDAL.userName.ToUpper().ToUpper();
             //Định nghĩa datatable gán cho header
             Define_HeaderTable();
             //Định nghĩa datatable gán cho gridView
@@ -699,7 +699,7 @@ namespace MMTB.View
         //Định nghĩa bảng Detail table
         private void Define_DetailTable()
         {
-            //Các cột theo bảng M0013_Summary
+            //Các cột theo bảng M0013_Master_Supply
             _DetailTable.Columns.Add("DocNo", typeof(string));
             _DetailTable.Columns.Add("NameEN", typeof(string));
             _DetailTable.Columns.Add("NameVN", typeof(string));

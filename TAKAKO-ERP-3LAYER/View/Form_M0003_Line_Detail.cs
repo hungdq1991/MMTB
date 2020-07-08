@@ -239,7 +239,6 @@ namespace MMTB.View
             {
                 cbx_TVC.Enabled = false;
                 txt_LineCode.Enabled = false;
-                sLook_ProcessCode.Enabled = false;
                 sLookUp_GroupLineACC.Enabled = false;
                 sLookUp_UsingDept.Enabled = false;
                 txt_Point.Enabled = false;
@@ -336,7 +335,7 @@ namespace MMTB.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_Line_DAO.Insert(TVC, curr_LineCode, curr_LineEN, curr_LineVN, curr_LineJP, curr_ProcessCode, curr_GroupLineACC, curr_UsingDept, curr_Point, curr_ExpenseGroup, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName))
+                        if (M0003_Line_DAO.Insert(TVC, curr_LineCode, curr_LineEN, curr_LineVN, curr_LineJP, curr_ProcessCode, curr_GroupLineACC, curr_UsingDept, curr_Point, curr_ExpenseGroup, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName.ToUpper()))
                         {
                             Message = "Lưu thành công tên: \"" + txt_LineCode.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -353,7 +352,7 @@ namespace MMTB.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0003_Line_DAO.Update(curr_LineCode, curr_LineEN, curr_LineVN, curr_LineJP, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName))
+                        if (M0003_Line_DAO.Update(curr_LineCode, curr_LineEN, curr_LineVN, curr_LineJP, curr_ProcessCode, curr_ApplyDate, curr_InActive, curr_Memo, _systemDAL.userName.ToUpper()))
                         {
                             Message = "Cập nhật thành công tên: \"" + txt_LineCode.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

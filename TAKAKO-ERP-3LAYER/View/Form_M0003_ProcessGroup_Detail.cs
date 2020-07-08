@@ -211,7 +211,7 @@ namespace MMTB.View
                                                         ,curr_ApplyDate
                                                         ,curr_InActive
                                                         ,curr_Memo
-                                                        ,_systemDAL.userName))
+                                                        ,_systemDAL.userName.ToUpper()))
                         {
                             Message = "Lưu thành công Công đoạn: \"" + curr_ProcessCode + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -235,7 +235,7 @@ namespace MMTB.View
                                                         ,curr_ApplyDate
                                                         ,curr_InActive
                                                         ,curr_Memo
-                                                        ,_systemDAL.userName))
+                                                        ,_systemDAL.userName.ToUpper()))
                         {
                             {
                                 Message = "Cập nhật thành công Công đoạn: \"" + curr_ProcessCode + "\"!";

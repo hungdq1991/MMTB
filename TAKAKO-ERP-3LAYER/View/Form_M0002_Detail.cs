@@ -156,7 +156,7 @@ namespace MMTB.View
             DataTable tempTable = new DataTable();
             if (ClassifyID > 0)
             {
-                tempTable = M0002_DAO.GetInfo_M01_ClassifyD(ClassifyID);
+                tempTable = M0002_DAO.GetInfo_M01_ClassifyID(ClassifyID);
                 if (tempTable.Rows.Count > 0)
                 {
                     foreach (DataRow row in tempTable.Rows)
@@ -231,9 +231,7 @@ namespace MMTB.View
                 cbx_InActive.SelectedIndex = 0;
             }
         }
-
-        //Click nút New
-        private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void Clear_Data()
         {
             IsNewValue = true;
             sLook_NameEN.Enabled = true;
@@ -247,6 +245,12 @@ namespace MMTB.View
             date_ApplyDate.EditValue = DateTime.Today;
             cbx_InActive.Enabled = false;
             cbx_InActive.SelectedIndex = 0;
+        }
+
+        //Click nút New
+        private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Clear_Data();
         }
         //Click nút Save
         private void BbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -280,10 +284,11 @@ namespace MMTB.View
                                                 , curr_ClassifyDesc
                                                 , curr_ApplyDate
                                                 , curr_InActive
-                                                , _systemDAL.userName))
+                                                , _systemDAL.userName.ToUpper()))
                         {
                             Message = "Lưu thành công Tên: \"" + curr_NameEN + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear_Data();
                         }
                     }
                 }
@@ -303,10 +308,11 @@ namespace MMTB.View
                                                 , curr_ClassifyDesc
                                                 , curr_ApplyDate
                                                 , curr_InActive
-                                                , _systemDAL.userName))
+                                                , _systemDAL.userName.ToUpper()))
                         {
                             Message = "Cập nhật thành công Tên: \"" + sLook_NameEN.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear_Data();
                         }
                     }
                 }
@@ -379,9 +385,9 @@ namespace MMTB.View
                 date_ApplyDate.Focus();
                 return false;
             }
-            if (IsNewValue)
+            if (cbx_InActive.SelectedIndex == 0)
             {
-                DataTable _check = M0002_DAO.GetInfo_M0002_Check(sLook_NameEN.Text.Trim(), sLook_Group1.Text.Trim(), sLook_Group2.Text.Trim(), look_ClassifyID.EditValue.ToString(), DateTime.Parse(date_ApplyDate.Text.Trim()));
+                DataTable _check = M0002_DAO.GetInfo_M0002_Check(sLook_NameEN.Text.Trim(), sLook_Group1.Text.Trim(), sLook_Group2.Text.Trim(), DateTime.Parse(date_ApplyDate.Text.Trim()));
                 if (_check.Rows.Count > 0)
                 {
                     MessageBox.Show("Tên: " + sLook_NameEN.Text.ToString() + " đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

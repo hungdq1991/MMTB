@@ -95,45 +95,64 @@ namespace MMTB
             }
             return true;
         }
-
         /// <method>
-        /// SP Insert PO Query
+        /// Update Query
         /// </method>
-        public bool insertPO(DataTable _tempData)
+        public bool executeUpdateQuery(String _query, SqlParameter[] sqlParameter)
         {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_INSERT_PO", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            SqlParameter param = cmd.Parameters.AddWithValue("@tblPO", _tempData);
+            SqlCommand myCommand = new SqlCommand();
             try
             {
-                cmd.ExecuteNonQuery();
+                myCommand.Connection = openConnection();
+                myCommand.CommandText = _query;
+                myCommand.Parameters.AddRange(sqlParameter);
+                myAdapter.UpdateCommand = myCommand;
+                myCommand.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (SqlException e)
             {
-               MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
-               return false;
+                MessageBox.Show("Error - Connection.executeUpdateQuery - Query: " + _query + " \nException: " + e.StackTrace.ToString());
+                return false;
             }
             finally
             {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
                 conn.Close();
             }
-            conn.Close();
             return true;
         }
 
         /// <method>
-        /// SP Insert MMTB
+        /// Delete Query
         /// </method>
-        public string Update_MMTB(DataTable _listMMTB,DataTable _listDelete,DataTable _listMMTBDoc1)
+        public bool executeDeleteQuery(String _query, SqlParameter[] sqlParameter)
+        {
+            SqlCommand myCommand = new SqlCommand();
+            try
+            {
+                myCommand.Connection = openConnection();
+                myCommand.CommandText = _query;
+                myCommand.Parameters.AddRange(sqlParameter);
+                myAdapter.DeleteCommand = myCommand;
+                myCommand.ExecuteNonQuery();
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Error - Connection.executeUpdateQuery - Query: " + _query + " \nException: " + e.StackTrace.ToString());
+                return false;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return true;
+        }
+        /// <method>
+        /// SP Insert MMTB_Nghiệm thu MMTB
+        /// </method>
+        public string Insert_MMTB(DataTable _listMMTB,DataTable _listDelete,DataTable _listMMTBDoc1)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_MMTB", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_MMTB", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -169,12 +188,93 @@ namespace MMTB
             return result;
             //return true;
         }
+        /// <method>
+        /// SP Update MMTB_Xác nhận nghiệm thu MMTB
+        /// </method>
+        public bool Confirm_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc1)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_MMTB", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
 
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc1", _listMMTBDoc1);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+        /// <method>
+        /// SP Insert & confirm MMTB_Nghiệm thu và xác nhận MMTB
+        /// </method>
+        public string Insert_Confirm_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc1)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_MMTB", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc1", _listMMTBDoc1);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
         //Thanh lý MMTB_Chưa xác nhận
         public bool Disposal_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_TEMP_DISPOSAL_MMTB", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_DISPOSAL_MMTB_TEMP", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -209,7 +309,7 @@ namespace MMTB
         public bool Confirm_Disposal_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_DISPOSAL_MMTB", conn)
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_DISPOSAL_MMTB", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -239,12 +339,45 @@ namespace MMTB
             //return result;
             return true;
         }
+        //Thêm và xác nhận thanh lý MMTB
+        public bool Insert_Confirm_Disposal_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc2)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_DISPOSAL_MMTB", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc2", _listMMTBDoc2);
 
-        //Thanh lý MMTB_Chưa xác nhận
+            try
+            {
+                cmd.ExecuteNonQuery();
+                //result = returnParameter.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+        //Di dời MMTB_Chưa xác nhận
         public bool Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc3)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_TEMP_MOVE_MMTB", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_MOVE_MMTB_TEMP", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -279,7 +412,7 @@ namespace MMTB
         public bool Confirm_Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc3)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_MOVE_MMTB", conn)
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_MOVE_MMTB", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -309,12 +442,45 @@ namespace MMTB
             //return result;
             return true;
         }
-
-        //ACC bổ sung thông tin MMTB
-        public bool ACC_Update_MMTB(DataTable _listMMTB)
+        //Lưu và xác nhận di dời MMTB
+        public bool Insert_Confirm_Move_MMTB(DataTable _listMMTB, DataTable _listMMTBDoc3)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_MMTB_ACC", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_MOVE_MMTB", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            //Set timeout
+            cmd.CommandTimeout = 300;
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc3", _listMMTBDoc3);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                //result = returnParameter.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+        //ACC bổ sung thông tin MMTB
+        public bool ACC_Confirm_MMTB(DataTable _listMMTB)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_MMTB_ACC", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -347,10 +513,10 @@ namespace MMTB
         }
 
         //Bổ sung thông tin MMTB không sử dụng
-        public string Update_MMTB_No_Used(DataTable _listMMTB, DataTable _listDelete, DataTable _listMMTBDoc4)
+        public string Insert_MMTB_No_Used(DataTable _listMMTB, DataTable _listDelete, DataTable _listMMTBDoc4)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_MMTB_NO_USED", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_NO_USED_MMTB", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -386,12 +552,90 @@ namespace MMTB
             return result;
             //return true;
         }
-
-        //Bổ sung danh mục LK, dầu, pin
-        public bool Update_M0012(DataTable _listM0012)
+        //Xác nhận thông tin MMTB không sử dụng
+        public bool Confirm_MMTB_No_Used(DataTable _listMMTB, DataTable _listDelete, DataTable _listMMTBDoc4)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_M0012", conn)
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_NO_USED_MMTB", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblList_Code_MMTB", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc4", _listMMTBDoc4);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+        //Thêm và xác nhận thông tin MMTB không sử dụng
+        public string Insert_Confirm_MMTB_No_Used(DataTable _listMMTB, DataTable _listMMTBDoc4)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_NO_USED_MMTB", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListMMTB", _listMMTB);
+            param = cmd.Parameters.AddWithValue("@tblListMMTBDoc4", _listMMTBDoc4);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
+        //Danh mục LK, dầu, pin
+        public bool Insert_Supply_MMTB(DataTable _listM0012)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_SUPPLY_MMTB", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -462,10 +706,10 @@ namespace MMTB
             //return true;
         }
         //Bổ sung thông tin duyệt Request
-        public bool Update_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
+        public bool Confirm_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_REQUEST", conn)
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_REQUEST", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -493,11 +737,11 @@ namespace MMTB
             conn.Close();
             return true;
         }
-        //Bổ sung thông tin duyệt Request
-        public bool Update_Request_IT(DataTable _listRequest, DataTable _listRequestDoc)
+        //Bổ sung thông tin duyệt Request của IT
+        public bool Confirm_Request_IT(DataTable _listRequest, DataTable _listRequestDoc)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_REQUEST_IT", conn)
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_REQUEST_IT", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -524,11 +768,11 @@ namespace MMTB
             conn.Close();
             return true;
         }
-        //Thông tin Summary theo model MMTB
-        public string Insert_Summary_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        //Thông tin Master theo model MMTB
+        public string Insert_Master_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_INSERT_SUMMARY_BY_MODEL", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_MASTER_BY_MODEL", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -564,122 +808,11 @@ namespace MMTB
             return result;
             //return true;
         }
-        //Bổ sung thông tin duyệt Master theo model MMTB
-        public bool Update_Summary_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        //Xác nhận Master theo model MMTB
+        public bool Confirm_Master_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_SUMMARY_BY_MODEL", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            //Set timeout
-            cmd.CommandTimeout = 300;
-            //Add param
-            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
-            param = cmd.Parameters.AddWithValue("@tblListSummary_Delete", _listDelete);
-            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            finally
-            {
-                // Close the SqlDataReader
-                // The SqlBulkCopy object is automatically closed at the end of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return true;
-        }
-        //Nhập và xác nhận Summary theo model MMTB
-        public string Insert_Confirm_Summary_ByModel(DataTable _listSummary, DataTable _listSummaryDoc)
-        {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_SUMMARY_BY_MODEL", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            //Set timeout
-            cmd.CommandTimeout = 300;
-
-            //Add param
-            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
-            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
-
-            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
-            returnParameter.Direction = ParameterDirection.ReturnValue;
-            string result = "";
-            try
-            {
-                cmd.ExecuteNonQuery();
-                result = Convert.ToString(returnParameter.Value);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //return false;
-            }
-            finally
-            {
-                // Close the SqlDataReader.
-                // The SqlBulkCopy object is automatically closed at the end of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return result;
-            //return true;
-        }
-        //Nhập Thông tin Summary theo mã LK/dầu/pin
-        public string Insert_Summary_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
-        {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_INSERT_SUMMARY_BY_ITEM", conn)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-
-            //Set timeout
-            cmd.CommandTimeout = 300;
-
-            //Add param
-            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
-            param = cmd.Parameters.AddWithValue("@tblListSummary_Delete", _listDelete);
-            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
-
-            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
-            returnParameter.Direction = ParameterDirection.ReturnValue;
-            string result = "";
-            try
-            {
-                cmd.ExecuteNonQuery();
-                result = Convert.ToString(returnParameter.Value);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //return false;
-            }
-            finally
-            {
-                // Close the SqlDataReader.
-                // The SqlBulkCopy object is automatically closed at the end of the using block.
-                conn.Close();
-            }
-            conn.Close();
-            return result;
-            //return true;
-        }
-        //Bổ sung thông tin duyệt Master theo mã LK/dầu/pin
-        public bool Update_Summary_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
-        {
-            conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_SUMMARY_BY_ITEM", conn)
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_MASTER_BY_MODEL", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -707,11 +840,11 @@ namespace MMTB
             conn.Close();
             return true;
         }
-        //Nhập và xác nhận Summary theo mã LK/dầu/pin
-        public string Insert_Confirm_Summary_ByItem(DataTable _listSummary, DataTable _listSummaryDoc)
+        //Nhập và xác nhận Master theo model MMTB
+        public string Insert_Confirm_Master_ByModel(DataTable _listSummary, DataTable _listSummaryDoc)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_SUMMARY_BY_ITEM", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_MASTER_BY_MODEL", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -746,23 +879,60 @@ namespace MMTB
             return result;
             //return true;
         }
-        /// <method>
-        /// SP Insert Invoice
-        /// </method>
-        public bool Update_ShippingNo(DataTable _invoiceMS, DataTable _invoiceDetail_Init, DataTable _invoiceDetail, DataTable _PackingListDetail)
+        //Thông tin Master theo mã LK/pin/dầu
+        public string Insert_Master_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_UPDATE_SHIPPING_NORMAL", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_MASTER_BY_ITEM", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Delete", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
+        }
+        //Xác nhận Master theo mã LK/pin/dầu
+        public bool Confirm_Master_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_CONFIRM_MASTER_BY_ITEM", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
             //Set timeout
             cmd.CommandTimeout = 300;
             //Add param
-            SqlParameter param = cmd.Parameters.AddWithValue("@tblInvoiceMS", _invoiceMS);
-            param = cmd.Parameters.AddWithValue("@tblInvoiceInitDetail", _invoiceDetail_Init);
-            param = cmd.Parameters.AddWithValue("@tblInvoiceDetail", _invoiceDetail);
-            param = cmd.Parameters.AddWithValue("@tblPackingListDetail", _PackingListDetail);
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Delete", _listDelete);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
             try
             {
                 cmd.ExecuteNonQuery();
@@ -781,88 +951,44 @@ namespace MMTB
             conn.Close();
             return true;
         }
-
-        /// <method>
-        /// SP Revise Invoice
-        /// </method>
-        public bool ReviseInvoice(string _invoiceNo)
+        //Nhập và xác nhận Master theo mã LK/pin/dầu
+        public string Insert_Confirm_Master_ByItem(DataTable _listSummary, DataTable _listSummaryDoc)
         {
             conn.Open();
-            var cmd = new SqlCommand("SP_TVC_LOCK_INV", conn)
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_MASTER_BY_ITEM", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
-            SqlParameter param = cmd.Parameters.AddWithValue("@InvoiceNo", _invoiceNo);
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            param = cmd.Parameters.AddWithValue("@tblListSummary_Doc", _listSummaryDoc);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
             try
             {
                 cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                //return false;
             }
             finally
             {
-                // Close the SqlDataReader. The SqlBulkCopy
-                // object is automatically closed at the end
-                // of the using block.
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
                 conn.Close();
             }
             conn.Close();
-            return true;
-        }
-
-        /// <method>
-        /// Update Query
-        /// </method>
-        public bool executeUpdateQuery(String _query, SqlParameter[] sqlParameter)
-        {
-            SqlCommand myCommand = new SqlCommand();
-            try
-            {
-                myCommand.Connection = openConnection();
-                myCommand.CommandText = _query;
-                myCommand.Parameters.AddRange(sqlParameter);
-                myAdapter.UpdateCommand = myCommand;
-                myCommand.ExecuteNonQuery();
-            }
-            catch (SqlException e)
-            {
-                MessageBox.Show("Error - Connection.executeUpdateQuery - Query: " + _query + " \nException: " + e.StackTrace.ToString());
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return true;
-        }
-
-        /// <method>
-        /// Delete Query
-        /// </method>
-        public bool executeDeleteQuery(String _query, SqlParameter[] sqlParameter)
-        {
-            SqlCommand myCommand = new SqlCommand();
-            try
-            {
-                myCommand.Connection = openConnection();
-                myCommand.CommandText = _query;
-                myCommand.Parameters.AddRange(sqlParameter);
-                myAdapter.DeleteCommand = myCommand;
-                myCommand.ExecuteNonQuery();
-            }
-            catch (SqlException e)
-            {
-                MessageBox.Show("Error - Connection.executeUpdateQuery - Query: " + _query + " \nException: " + e.StackTrace.ToString());
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return true;
+            return result;
+            //return true;
         }
     }
 }

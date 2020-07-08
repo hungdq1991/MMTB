@@ -28,10 +28,11 @@ namespace MMTB.View
         }
 
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0005_Detail_ACC(String _docNo)
+        public Form_M0005_Detail_ACC(String _docNo, System_DAL systemDAL)
         {
             InitializeComponent();
             DocNo = _docNo;
+            _systemDAL = systemDAL;
         }
         //Load Form_M0005_Detail_ACC
         private void Form_M0005_Detail_ACC_Load(object sender, EventArgs e)
@@ -44,26 +45,24 @@ namespace MMTB.View
             Setting_Init_Value();
 
             bsiUser.Caption = _systemDAL.userName.ToUpper();
-
-            GetInfo_gridView();
         }
 
         //Dữ liệu trên Form_M0005_Detail_ACC
         private void Setting_Init_Control()
         {
-            //Định nghĩa datatable gán cho gridview
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
         }
         //Giá trị khi khởi tạo form
         private void Setting_Init_Value()
         {
-            Define_DetailTable();
+            GetInfo_gridView();
         }
         //Load dữ liệu
         private void GetInfo_gridView()
         {
             try
             {
-                _DetailTable = M0005_DAO.GetInfo_M0005();
+                _DetailTable = M0005_DAO.GetInfo_M0005_ACC();
                 if (_DetailTable.Rows.Count > 0)
                 {
                     gridControl.DataSource = _DetailTable;
@@ -79,41 +78,8 @@ namespace MMTB.View
         //Xóa dữ liệu gridView
         private void Clear_Data()
         {
-            gridControl.DataSource = _DetailTable;
+            GetInfo_gridView();
         }
-        //Hiển thị thông tin MMTB chưa thanh lý sau khi chọn lên gridView
-        private void Define_DetailTable()
-        {
-            string _ACCcode = "";
-            string _ACCDoc = "";
-            string _ACCDoc_Disposal = "";
-            string _invNo = "";
-            DateTime _invDate = DateTime.Now;
-            int _lifeTime = 0;
-            DateTime _startDeprDate = DateTime.Now;
-            DateTime _endDeprDate = DateTime.Now;
-
-            //Set value to variables
-            _ACCcode = Convert.ToString(gridView.GetFocusedRowCellValue("ACCcode"));
-            _ACCDoc = Convert.ToString(gridView.GetFocusedRowCellValue("ACCDoc"));
-            _ACCDoc_Disposal = Convert.ToString(gridView.GetFocusedRowCellValue("ACCDoc_Disposal"));
-            _invNo = Convert.ToString(gridView.GetFocusedRowCellValue("InvNo"));
-            _invDate = Convert.ToDateTime(gridView.GetFocusedRowCellValue("InvDate"));
-            _lifeTime = Convert.ToInt32(gridView.GetFocusedRowCellValue("Lifetime"));
-            _startDeprDate = Convert.ToDateTime(gridView.GetFocusedRowCellValue("StartDeprDate"));
-            _endDeprDate = Convert.ToDateTime(gridView.GetFocusedRowCellValue("EndDeprDate"));
-
-            //Set value to column ACCcode, NameEN, NameVN, Maker, Model...
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "ACCcode", _ACCcode);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "ACCDoc", _ACCDoc);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "ACCDoc_Disposal", _ACCDoc_Disposal);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "InvNo", _invNo);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "InvDate", _invDate);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "Lifetime", _lifeTime);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "StartDeprDate", _startDeprDate);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDeprDate);
-        }
-
         //Click nút Reset
         private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -136,8 +102,9 @@ namespace MMTB.View
                 {
                     if (CheckError() == true)
                     {
-                        Define_DetailTable();
-                        if (M0005_DAO.ACC_Update_MMTB(_DetailTable))
+                        DataTable _DetailTable = new DataTable();
+                        _DetailTable = gridControl.DataSource as DataTable;
+                        if (M0005_DAO.ACC_Confirm_MMTB(_DetailTable))
                         {
                             MessageBox.Show("Đã lưu thành công thông tin ACC!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_Data();
@@ -149,24 +116,12 @@ namespace MMTB.View
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
         }
-        //Bật hiện các nút điều khiển
-        private void Set_Enable_Control(Boolean IsEnable)
-        {
-            //Menu
-            bbiSave.Enabled = IsEnable;
-            bbiRefresh.Enabled = IsEnable;
-            //GridView
-            gridView.OptionsBehavior.Editable = IsEnable;
-            gridControl.EmbeddedNavigator.Buttons.Append.Visible = IsEnable;
-            gridControl.EmbeddedNavigator.Buttons.Remove.Visible = IsEnable;
-        }
         //Các tình huống cần kiểm tra lỗi
         public Boolean CheckError()
         {
-            if (bCheck_Confirm.Checked)
-            {
                 for (int rows = 0; rows < gridView.RowCount; rows++)
                 {
+                    //Ngày hóa đơn
                     DateTime _invDate;
                     _invDate = Convert.ToDateTime(gridView.GetRowCellValue(rows, gridView.Columns["InvDate"]));
                     if (_invDate == null)
@@ -177,8 +132,54 @@ namespace MMTB.View
                         gridView.FocusedColumn = gridView.Columns["InvDate"];
                         return false;
                     }
+                    //Lifetime
+                    int lifeTime = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["Lifetime"]));
+                    if (lifeTime < 36)
+                    {
+                        MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Tuổi thọ máy\" phải lớn hơn hoặc bằng 36", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        gridView.Focus();
+                        gridView.FocusedRowHandle = rows;
+                        gridView.FocusedColumn = gridView.Columns["Lifetime"];
+                        return false;
+                    }
+                    //Ngày bắt đầu khấu hao < ngày nghiệm thu
+                    DateTime _startDepr, _confDate;
+                    if (!String.IsNullOrEmpty(Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["StartDeprDate"]))))
+                    {
+                        _startDepr = Convert.ToDateTime(gridView.GetRowCellValue(rows, gridView.Columns["StartDeprDate"]));
+                        _confDate = Convert.ToDateTime(gridView.GetRowCellValue(rows, gridView.Columns["ConfirmDate"]));
+                        if (_startDepr.Date < _confDate.Date)
+                        {
+                            MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Ngày bắt đầu khấu hao < Ngày nghiệm thu?\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            gridView.Focus();
+                            gridView.FocusedRowHandle = rows;
+                            gridView.FocusedColumn = gridView.Columns["StartDeprDate"];
+                            return false;
+                        }
+                    }
+                    //Số chứng từ nghiệm thu
+                    string _ACCcode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCcode"]));
+                    string _ACCDoc = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCDoc"]));
+                    if (!String.IsNullOrEmpty(_ACCcode) && String.IsNullOrEmpty(_ACCDoc))
+                    {
+                        MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Số chứng từ nghiệm thu\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        gridView.Focus();
+                        gridView.FocusedRowHandle = rows;
+                        gridView.FocusedColumn = gridView.Columns["ACCDoc"];
+                        return false;
+                    }
+                    //Số chứng từ thanh lý
+                    string _disposalDoc = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["DocNo_Disposal"]));
+                    string _ACCDoc_Disposal = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCDoc_Disposal"]));
+                    if (!String.IsNullOrEmpty(_disposalDoc) && String.IsNullOrEmpty(_ACCDoc_Disposal))
+                    {
+                        MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Số chứng từ thanh lý\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        gridView.Focus();
+                        gridView.FocusedRowHandle = rows;
+                        gridView.FocusedColumn = gridView.Columns["ACCDoc_Disposal"];
+                        return false;
+                    }
                 }
-            }
             return true;
         }
         //Hiển thị các MMTB nghiệm thu chờ bổ sung chứng từ thanh lý ACC
@@ -195,13 +196,15 @@ namespace MMTB.View
                 }
                 else
                 {
-                    gridControl.DataSource = _DetailTable;
+                    GetInfo_gridView();
                     bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
                 }
             }
             catch
             {
-                gridControl.DataSource = "";
+                MessageBox.Show("Không có MMTB nghiệm thu cần bổ sung thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GetInfo_gridView();
+                bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
             }
         }
         //Hiển thị các MMTB thanh lý chờ bổ sung chứng từ thanh lý ACC
@@ -212,21 +215,20 @@ namespace MMTB.View
                 if (bCheck_Disposal.Checked)
                 {
                     gridControl.DataSource = _DetailTable.AsEnumerable()
-                        .Where(row => (row.Field<string>("ACCDoc_Disposal") == null
-                                    && row.Field<string>("DocNo_Disposal")  != null)
-                                    || (row.Field<string>("ACCDoc_Disposal") == ""
-                                        && row.Field<string>("DocNo_Disposal")  != null)).CopyToDataTable();
+                        .Where(row => row.Field<string>("DocNo_Disposal") != null && (row.Field<string>("ACCDoc_Disposal") == null || row.Field<string>("ACCDoc_Disposal") == "")).CopyToDataTable();
                     bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
                 }
                 else
                 {
-                    gridControl.DataSource = _DetailTable;
+                    GetInfo_gridView();
                     bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
                 }
             }
             catch
             {
-                gridControl.DataSource = "";
+                MessageBox.Show("Không có MMTB thanh lý cần bổ sung thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GetInfo_gridView();
+                bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
             }
         }
         //Kiểm tra mã ACC bị trùng trên lưới
@@ -275,8 +277,33 @@ namespace MMTB.View
         private void repo_ItemDate_StartDerprDate_EditValueChanged(object sender, EventArgs e)
         {
             int lifetime = Convert.ToInt32(gridView.GetRowCellValue(gridView.FocusedRowHandle, "Lifetime"));
-            DateTime endDerprDate = (sender as DevExpress.XtraEditors.DateEdit).DateTime.AddMonths(lifetime);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", endDerprDate);
+            DateTime _endDerprDate = (sender as DevExpress.XtraEditors.DateEdit).DateTime.AddMonths(lifetime);
+            gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDerprDate);
+            try
+            {
+                //Điều chỉnh ngày hết khấu hao về đầu tháng
+                int _month = Convert.ToInt32(_endDerprDate.Month);
+                string _monthEnd = "";
+                if (_month < 10)
+                {
+                    _monthEnd = "0" + Convert.ToString(_month);
+                }
+                else
+                {
+                    _monthEnd = Convert.ToString(_month);
+                }
+                string _end = "01" + _monthEnd + Convert.ToString(_endDerprDate.Year);
+                string format = "ddMMyyyy"; // define a date pattern according to your requirements  
+                CultureInfo provider = CultureInfo.InvariantCulture;
+                DateTime _endDate = DateTime.Now.Date;
+                _endDate = DateTime.ParseExact(_end, format, provider);
+                //Chuyển ngày hết khấu hao lên gridView
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         //Tính lại ngày kết thúc khấu hao khi thay đổi Lifetime
         private void repo_TextEdit_Lifetime_EditValueChanged(object sender, EventArgs e)
@@ -346,10 +373,9 @@ namespace MMTB.View
                 }
             }
         }
-
         private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
-            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName.ToUpper());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MMTB.View
 {
-    partial class Form_M0013
+    partial class Form_M0013_Pin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0013));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_M0013_Pin));
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -37,8 +37,10 @@
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
+            this.bbiLoad = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -50,6 +52,8 @@
             this.gridCol_Group1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Group2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Classify = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repo_sLookUp_Classify = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_ItemCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ItemCodeNew = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ItemNameEN = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -72,8 +76,6 @@
             this.gridCol_EffDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_PurCodeNew = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_PriceRefNew = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repo_sLookUp_Classify = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
-            this.repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -94,9 +96,10 @@
             this.bbiItem,
             this.bbiClose,
             this.bbiRefresh,
-            this.bsiUser});
+            this.bsiUser,
+            this.bbiLoad});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 21;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -130,7 +133,7 @@
             // 
             // bbiItem
             // 
-            this.bbiItem.Caption = "Thêm/Sửa theo Mã LK";
+            this.bbiItem.Caption = "Thêm/Sửa theo Mã LK/Pin/Dầu";
             this.bbiItem.Id = 17;
             this.bbiItem.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiItem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiItem.ImageOptions.SvgImage")));
@@ -160,10 +163,20 @@
             this.bsiUser.Id = 20;
             this.bsiUser.Name = "bsiUser";
             // 
+            // bbiLoad
+            // 
+            this.bbiLoad.Caption = "Tham khảo giá mua";
+            this.bbiLoad.Id = 21;
+            this.bbiLoad.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiLoad.ImageOptions.Image")));
+            this.bbiLoad.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiLoad.ImageOptions.LargeImage")));
+            this.bbiLoad.Name = "bbiLoad";
+            this.bbiLoad.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiLoad_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup2});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
@@ -178,6 +191,12 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiClose);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiLoad);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Xem thông tin";
             // 
             // ribbonStatusBar
             // 
@@ -383,6 +402,21 @@
             this.gridCol_Classify.Name = "gridCol_Classify";
             this.gridCol_Classify.Visible = true;
             this.gridCol_Classify.VisibleIndex = 4;
+            // 
+            // repo_sLookUp_Classify
+            // 
+            this.repo_sLookUp_Classify.AutoHeight = false;
+            this.repo_sLookUp_Classify.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repo_sLookUp_Classify.Name = "repo_sLookUp_Classify";
+            this.repo_sLookUp_Classify.PopupView = this.repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // gridCol_ItemCode
             // 
@@ -766,22 +800,7 @@
             this.gridCol_PriceRefNew.VisibleIndex = 26;
             this.gridCol_PriceRefNew.Width = 90;
             // 
-            // repo_sLookUp_Classify
-            // 
-            this.repo_sLookUp_Classify.AutoHeight = false;
-            this.repo_sLookUp_Classify.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repo_sLookUp_Classify.Name = "repo_sLookUp_Classify";
-            this.repo_sLookUp_Classify.PopupView = this.repositoryItemSearchLookUpEdit1View;
-            // 
-            // repositoryItemSearchLookUpEdit1View
-            // 
-            this.repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
-            this.repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
-            // 
-            // Form_M0013
+            // Form_M0013_Pin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -789,13 +808,13 @@
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "Form_M0013";
+            this.Name = "Form_M0013_Pin";
             this.Ribbon = this.ribbonControl;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "MASTER LINH KIỆN THEO MAKER-MODEL MMTB";
+            this.Text = "MASTER PIN THEO MAKER-MODEL MMTB";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form_M0013_Load);
+            this.Load += new System.EventHandler(this.Form_M0013_Pin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
@@ -852,5 +871,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_EffDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repo_sLookUp_Classify;
         private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraBars.BarButtonItem bbiLoad;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
     }
 }

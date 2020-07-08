@@ -36,10 +36,11 @@ namespace MMTB.View
             _systemDAL = systemDAL;
         }
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0005_Detail_NoUsed(String _docNo)
+        public Form_M0005_Detail_NoUsed(String _docNo, System_DAL systemDAL)
         {
             InitializeComponent();
             DocNo = _docNo;
+            _systemDAL = systemDAL;
         }
         //Load Form_M0005_Detail_NoUsed
         private void Form_M0005_Detail_NoUsed_Load(object sender, EventArgs e)
@@ -52,6 +53,7 @@ namespace MMTB.View
 
             Setting_Init_Control();
             Setting_Init_Value();
+            
         }
 
         //Dữ liệu trên Form_M0005_Detail_NoUsed
@@ -75,6 +77,8 @@ namespace MMTB.View
             AddValue_repo_sLookUp_Plan();
 
             AddValue_repo_sLookUp_Reason();
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
+            gridView.AddNewRow();
         }
         //Giá trị khi khởi tạo form
         private void Setting_Init_Value()
@@ -108,8 +112,7 @@ namespace MMTB.View
                 repo_sLookUp_Code.DisplayMember = "Code";
             }
         }
-        //Hiển thị thông tin MMTB chưa thanh lý sau khi chọn lên gridView
-
+        //Hiển thị thông tin MMTB khi chọn lên gridView
         private void Repo_sLookUp_Code_CloseUp(object sender, DevExpress.XtraEditors.Controls.CloseUpEventArgs e)
         {
             if (e.CloseMode == PopupCloseMode.Normal)
@@ -125,18 +128,9 @@ namespace MMTB.View
                 string _orgCountry = "";
                 DateTime _proDate = DateTime.Now;
                 int _Lifetime = 0;
+                decimal _netValue = 0;
                 DateTime _startDeprDate = DateTime.Now;
                 DateTime _endDeprDate = DateTime.Now;
-                decimal _netValue = 0;
-                string _desProcessCode = "";
-                string _desLineCode = "";
-                string _desLineEN = "";
-                string _desGroupLineACC = "";
-                string _desUsingDept = "";
-                DateTime _disposalDate = DateTime.Now;
-                string _disposalMemo = "";
-                string _disposalStatus = "";
-                string _controlDept = "";
 
                 //Get index
                 SearchLookUpEdit editor = sender as SearchLookUpEdit;
@@ -157,17 +151,10 @@ namespace MMTB.View
                     _proDate = Convert.ToDateTime(editor.Properties.View.GetFocusedRowCellValue("ProDate"));
                 }
                 _Lifetime = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("Lifetime"));
+                _netValue = Convert.ToDecimal(editor.Properties.View.GetFocusedRowCellValue("NetValue_Disposal"));
                 _startDeprDate = Convert.ToDateTime(editor.Properties.View.GetFocusedRowCellValue("StartDeprDate"));
                 _endDeprDate = Convert.ToDateTime(editor.Properties.View.GetFocusedRowCellValue("EndDeprDate"));
-                _netValue = Convert.ToDecimal(editor.Properties.View.GetFocusedRowCellValue("NetValue_Disposal"));
-                _desProcessCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesProcessCode"));
-                _desLineCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesLineCode"));
-                _desLineEN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesLineEN"));
-                _desGroupLineACC = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesGroupLineACC"));
-                _desUsingDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DesUsingDept"));
-                _disposalMemo = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DisposalMemo"));
-                _disposalStatus = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("DisposalStatus"));
-                _controlDept = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ControlDept"));
+
                 //Set value to column ACCcode, NameEN, NameVN, Maker, Model...
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "Code", _code);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "ACCcode", _ACCcode);
@@ -180,18 +167,9 @@ namespace MMTB.View
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "OrgCountry", _orgCountry);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "ProDate", _proDate);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "Lifetime", _Lifetime);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NetValue_Disposal", _netValue);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "StartDeprDate", _startDeprDate);
                 gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDeprDate);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NetValue_Disposal", _netValue);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesProcessCode", _desProcessCode);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesLineCode", _desLineCode);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesLineEN", _desLineEN);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesGroupLineACC", _desGroupLineACC);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DesUsingDept", _desUsingDept);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DisposalDate", _disposalDate);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DisposalMemo", _disposalMemo);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "DisposalStatus", _disposalStatus);
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "ControlDept", _controlDept);
             }
         }
 
@@ -281,7 +259,7 @@ namespace MMTB.View
             dtRow["ToDate"] = date_To.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
-            dtRow["InputUser"] = _systemDAL.userName;
+            dtRow["InputUser"] = _systemDAL.userName.ToUpper();
 
             _tempTable.Rows.Add(dtRow);
 
@@ -408,7 +386,7 @@ namespace MMTB.View
 
             _DetailTable.Clear();
             gridControl.DataSource = _DetailTable;
-
+            gridView.AddNewRow();
             sLook_DocNo.Focus();
         }
         //Click nút tạo mới
@@ -447,10 +425,10 @@ namespace MMTB.View
                         DataTable _tempTable = M0005_DAO.GetInfo_M0005_NoUsed();
                         gridControl.DataSource = _tempTable;
                     }
-                    else
+                    else if (sLook_DocNo.EditValue != null)
                     {
-                        DataTable _tempTable = M0005_DAO.GetInfo_M0005_NoUsed();
-                        gridControl.DataSource = _tempTable;
+                        MessageBox.Show("Chứng từ đã được lưu!", "Thông báo", MessageBoxButtons.OK);
+                        sLook_DocNo.Focus();
                     }
                 }
             }
@@ -524,12 +502,35 @@ namespace MMTB.View
                     {
                         string DocNo = "";
                         _DetailTable = gridView.GridControl.DataSource as DataTable;
-                        DocNo = M0005_DAO.Update_MMTB_No_Used(_DetailTable, _DeleteRowTable, GetValue_Header());
-
-                        if (!String.IsNullOrEmpty(DocNo))
+                        if (cbx_Status.SelectedIndex == 0)
                         {
-                            MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
-                                , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DocNo = M0005_DAO.Insert_MMTB_No_Used(_DetailTable, _DeleteRowTable, GetValue_Header());
+                            if (!String.IsNullOrEmpty(DocNo))
+                            {
+                                MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
+                                    , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear_Data();
+                                Add_Value_sLookUp_DocNo();
+                            }
+                        }
+                        else if (cbx_Status.SelectedIndex == 1)
+                        {
+                            if (sLook_DocNo.EditValue == null)
+                            {
+                                DocNo = M0005_DAO.Insert_Confirm_MMTB_No_Used(_DetailTable, GetValue_Header());
+                                if (!String.IsNullOrEmpty(DocNo))
+                                {
+                                    MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
+                                    , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                if (M0005_DAO.Confirm_MMTB_No_Used(_DetailTable, _DeleteRowTable, GetValue_Header()))
+                                {
+                                    MessageBox.Show("Đã xác nhận thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
                             Clear_Data();
                             Add_Value_sLookUp_DocNo();
                         }
@@ -686,7 +687,9 @@ namespace MMTB.View
 
         private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
-            gridView.SetRowCellValue(e.RowHandle,"InputUser", _systemDAL.userName);
+            gridView.SetRowCellValue(e.RowHandle,"Reason", "Không có KH");
+            gridView.SetRowCellValue(e.RowHandle,"CurPlan", "Bảo quản");
+            gridView.SetRowCellValue(e.RowHandle,"InputUser", _systemDAL.userName.ToUpper());
         }
 
     }

@@ -208,7 +208,7 @@ namespace MMTB.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0001_DAO.Insert_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive, _systemDAL.userName))
+                        if (M0001_DAO.Insert_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive, _systemDAL.userName.ToUpper()))
                         {
                             Message = "Lưu thành công name: \"" + txt_NameEN.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -225,7 +225,7 @@ namespace MMTB.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0001_DAO.Update_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive, _systemDAL.userName))
+                        if (M0001_DAO.Update_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive, _systemDAL.userName.ToUpper()))
                         {
                             Message = "Cập nhật thành công name: \"" + txt_NameEN.Text.ToString() + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

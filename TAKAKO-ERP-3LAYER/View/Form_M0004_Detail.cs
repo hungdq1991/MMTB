@@ -215,7 +215,7 @@ namespace MMTB.View
                                             ,curr_Model
                                             ,curr_InActive
                                             ,curr_Memo
-                                            ,_systemDAL.userName))
+                                            ,_systemDAL.userName.ToUpper()))
                         {
                             Message = "Lưu thành công Tên: \"" + curr_NameEN + ", Maker: " + curr_Maker + ", Model: " + curr_Model + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -234,7 +234,7 @@ namespace MMTB.View
                                             ,curr_Model
                                             ,curr_InActive
                                             ,curr_Memo
-                                            ,_systemDAL.userName))
+                                            ,_systemDAL.userName.ToUpper()))
                         {
                             {
                                 Message = "Cập nhật thành công Tên: \"" + curr_NameEN + "\"!";

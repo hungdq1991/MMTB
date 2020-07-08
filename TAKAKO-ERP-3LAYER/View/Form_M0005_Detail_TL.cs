@@ -36,10 +36,11 @@ namespace MMTB.View
             _systemDAL = systemDAL;
         }
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0005_Detail_TL(String _docNo)
+        public Form_M0005_Detail_TL(String _docNo, System_DAL systemDAL)
         {
             InitializeComponent();
             DocNo = _docNo;
+            _systemDAL = systemDAL;
         }
         //Load Form_M0005_Detail_TL
         private void Form_M0005_Detail_TL_Load(object sender, EventArgs e)
@@ -56,6 +57,7 @@ namespace MMTB.View
             Setting_Init_Value();
 
             gridView.AddNewRow();
+
         }
 
         //Dữ liệu trên Form_M0005_Detail_TL
@@ -120,8 +122,8 @@ namespace MMTB.View
             _HeaderTable.Columns.Add("DocStatus", typeof(int));
             _HeaderTable.Columns.Add("Memo", typeof(string));
             _HeaderTable.Columns.Add("InputUser", typeof(string));
-            _HeaderTable.Columns.Add("Column2", typeof(string));
-            _HeaderTable.Columns.Add("Column3", typeof(string));
+            _HeaderTable.Columns.Add("ConfUser", typeof(string));
+            _HeaderTable.Columns.Add("ConfDate", typeof(DateTime));
             _HeaderTable.Columns.Add("Column4", typeof(string));
             _HeaderTable.Columns.Add("Column5", typeof(string));
         }
@@ -173,9 +175,9 @@ namespace MMTB.View
             dtRow["ControlDept"] = sLook_ControlDept.EditValue;
             dtRow["DocStatus"] = cbx_Status.SelectedIndex;
             dtRow["Memo"] = txt_Memo.Text;
-            dtRow["InputUser"] = _systemDAL.userName;
-            dtRow["Column2"] = "";
-            dtRow["Column3"] = "";
+            dtRow["InputUser"] = _systemDAL.userName.ToUpper();
+            dtRow["ConfUser"] = _systemDAL.userName.ToUpper();
+            dtRow["ConfDate"] = DateTime.Now;
             dtRow["Column4"] = "";
             dtRow["Column5"] = "";
             _tempTable.Rows.Add(dtRow);
@@ -371,6 +373,7 @@ namespace MMTB.View
             date_Disposal.EditValue = DateTime.Now;
             sLook_ControlDept.EditValue = null;
             cbx_Status.SelectedIndex = 0;
+            txt_Memo.EditValue = null;
 
             _DetailTable.Clear();
             gridControl.DataSource = _DetailTable;
@@ -565,19 +568,36 @@ namespace MMTB.View
                         {
                             if (M0005_DAO.Disposal_MMTB(_DetailTable, GetValue_Header()))
                             {
-                                MessageBox.Show("Đã lưu thành công chứng từ nghiệm thu!", "Thông báo",     MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Đã lưu thành công chứng từ thanh lý!", "Thông báo",     MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
+                            Clear_Data();
+                            Add_Value_sLookUp_DocNo();
+                            gridView.AddNewRow();
                         }
-                        if (cbx_Status.SelectedIndex == 1)
+                        else if (cbx_Status.SelectedIndex == 1)
                         {
-                            if (M0005_DAO.Confirm_Disposal_MMTB(_DetailTable, GetValue_Header()))
+                            if (sLook_DocNo.EditValue == null)
                             {
-                                MessageBox.Show("Đã lưu thành công chứng từ nghiệm thu!", "Thông báo",             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                if (M0005_DAO.Insert_Confirm_Disposal_MMTB(_DetailTable, GetValue_Header()))
+                                {
+                                    MessageBox.Show("Đã lưu thành công chứng từ thanh lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
+                            else
+                            {
+                                if (M0005_DAO.Confirm_Disposal_MMTB(_DetailTable, GetValue_Header()))
+                                {
+                                    MessageBox.Show("Đã lưu thành công chứng từ thanh lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            Clear_Data();
+                            Add_Value_sLookUp_DocNo();
+                            gridView.AddNewRow();
                         }
-                        Clear_Data();
-                        Add_Value_sLookUp_DocNo();
-                        gridView.AddNewRow();
+                        else
+                        {
+                            MessageBox.Show("Cập nhật không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -622,13 +642,19 @@ namespace MMTB.View
                 sLook_ControlDept.Focus();
                 return false;
             }
+            if (String.IsNullOrEmpty(Convert.ToString(txt_Memo.EditValue)))
+            {
+                MessageBox.Show("Hãy nhập \"Lý do thanh lý MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_Memo.Focus();
+                return false;
+            }
             for (int rows = 0; rows < gridView.RowCount; rows++)
             {
                 string _disposalMemo;
                 _disposalMemo = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["DisposalMemo"]));
                 if (String.IsNullOrEmpty(_disposalMemo))
                 {
-                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Lý do thanh lý\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Lý do thanh lý MMTB\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     gridView.Focus();
                     gridView.FocusedRowHandle = rows;
                     gridView.FocusedColumn = gridView.Columns["DisposalMemo"];
@@ -696,7 +722,7 @@ namespace MMTB.View
 
         private void gridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {
-            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName);
+            gridView.SetRowCellValue(e.RowHandle, "InputUser", _systemDAL.userName.ToUpper());
         }
     }
 }

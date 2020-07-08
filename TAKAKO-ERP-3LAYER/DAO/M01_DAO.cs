@@ -222,14 +222,14 @@ namespace MMTB.DAO
             return conn.Insert_Request(_listRequest, _listDelete, _listRequestDoc);
         }
         //Cập nhật danh sách yêu cầu (duyệt)
-        public bool Update_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
+        public bool Confirm_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
         {
-            return conn.Update_Request(_listRequest, _listDelete, _listRequestDoc);
+            return conn.Confirm_Request(_listRequest, _listDelete, _listRequestDoc);
         }
         //Cập nhật danh sách yêu cầu (IT xác nhận)
-        public bool Update_Request_IT(DataTable _listRequest, DataTable _listRequestDoc)
+        public bool Confirm_Request_IT(DataTable _listRequest, DataTable _listRequestDoc)
         {
-            return conn.Update_Request_IT(_listRequest, _listRequestDoc);
+            return conn.Confirm_Request_IT(_listRequest, _listRequestDoc);
         }
     }
 }

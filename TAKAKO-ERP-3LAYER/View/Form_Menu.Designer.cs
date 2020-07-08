@@ -62,6 +62,7 @@
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -227,6 +228,7 @@
             this.bbiBattery.Id = 16;
             this.bbiBattery.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiBattery.ImageOptions.SvgImage")));
             this.bbiBattery.Name = "bbiBattery";
+            this.bbiBattery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiBattery_ItemClick);
             // 
             // bbiOil
             // 
@@ -234,6 +236,7 @@
             this.bbiOil.Id = 17;
             this.bbiOil.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiOil.ImageOptions.SvgImage")));
             this.bbiOil.Name = "bbiOil";
+            this.bbiOil.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiOil_ItemClick);
             // 
             // bbiStock
             // 
@@ -327,6 +330,7 @@
             this.bbiStopList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiStopList.ImageOptions.Image")));
             this.bbiStopList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiStopList.ImageOptions.LargeImage")));
             this.bbiStopList.Name = "bbiStopList";
+            this.bbiStopList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiStopList_ItemClick);
             // 
             // bbiReplace
             // 
@@ -335,7 +339,6 @@
             this.bbiReplace.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReplace.ImageOptions.Image")));
             this.bbiReplace.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReplace.ImageOptions.LargeImage")));
             this.bbiReplace.Name = "bbiReplace";
-            this.bbiReplace.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReplace_ItemClick);
             // 
             // bbiReplaceList
             // 
@@ -344,6 +347,7 @@
             this.bbiReplaceList.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReplaceList.ImageOptions.Image")));
             this.bbiReplaceList.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReplaceList.ImageOptions.LargeImage")));
             this.bbiReplaceList.Name = "bbiReplaceList";
+            this.bbiReplaceList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiReplaceList_ItemClick);
             // 
             // bbiAddItem
             // 
@@ -383,13 +387,13 @@
             this.ribbonPage1.Appearance.Options.UseFont = true;
             this.ribbonPage1.Appearance.Options.UseForeColor = true;
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup6});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Quản lý MMTB";
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiList);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiTech);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiConfirm);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDisposal);
@@ -397,7 +401,13 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNoUsed);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiACC);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Quản lý MMTB";
+            this.ribbonPageGroup1.Text = "Cập nhật thông tin MMTB";
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.ItemLinks.Add(this.bbiList);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.Text = "Xem thông tin";
             // 
             // ribbonPage2
             // 
@@ -515,5 +525,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiReplace;
         private DevExpress.XtraBars.BarButtonItem bbiReplaceList;
         private DevExpress.XtraBars.BarButtonItem bbiAddItem;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
     }
 }

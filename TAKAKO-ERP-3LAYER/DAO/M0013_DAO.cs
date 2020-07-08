@@ -16,10 +16,10 @@ namespace MMTB.DAO
         }
      
         /// <summary>
-        /// Load thông tin Master LK, pin, dầu
+        /// Load thông tin Master LK, pin, dầu (lấy giá mua)
         /// </summary>
         /// <returns></returns>
-        public DataTable GetInfo_M0013()
+        public DataTable GetInfo_M0013(string ClassifyID)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
@@ -46,10 +46,10 @@ namespace MMTB.DAO
                             ,L.Memo
                             ,L.ApplyDate
                             ,L.InActive
-                            ,L.Column1
-                            ,L.Column2
-                            ,L.Column3
-                            ,L.Column4
+                            ,L.InputUser
+                            ,L.InputDate
+                            ,L.ConfUser
+                            ,L.ConfDate
                             ,L.Column5
 							,CASE WHEN P.EF_PurCuryID IS NULL THEN '' ELSE P.EF_PurCuryID END AS EF_PurCuryID
 							,CASE WHEN P.EF_PurCuryPrice IS NULL THEN 0 ELSE P.EF_PurCuryPrice END AS EF_PurCuryPrice
@@ -58,7 +58,7 @@ namespace MMTB.DAO
 							,CASE WHEN P.EF_VendName is null THEN '' ELSE P.EF_VendName END AS EF_VendName
 							,CASE WHEN S.PurCode is null THEN '' ELSE S.PurCode END AS PurCode
                         FROM 
-	                        M0013_Summary L
+	                        M0013_Master_Supply L
                         JOIN
                             M0012_SupplyMMTB S
                         ON L.ItemCode = S.ItemCode
@@ -83,10 +83,62 @@ namespace MMTB.DAO
                             WHERE P.S4Future10 = 1) P
                         ON
                             S.PurCode = P.EF_InvtID
+                        WHERE 
+                            L.ClassifyID like @ClassifyID
                         ORDER BY L.NameEN, L.Model, L.ClassifyID, L.ItemCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
-            sqlParameters[0].Value = Convert.ToString("");
+            sqlParameters[0] = new SqlParameter("@ClassifyID", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString(ClassifyID);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        /// <summary>
+        /// Load thông tin Master LK, pin, dầu (không lấy giá mua)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetInfo_M0013_NoPrice(string ClassifyID)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+                             L.NameEN
+                            ,L.NameVN
+                            ,L.NameJP
+                            ,L.Maker
+                            ,L.Model 
+							,L.DocNo
+                            ,L.DocDate
+                            ,L.ClassifyID
+                            ,L.ItemCode
+                            ,S.NameEN as ItemNameEN
+                            ,S.NameVN as ItemNameVN
+                            ,L.ItemMaker
+                            ,S.Unit
+                            ,L.QtyNeed
+                            ,L.Lifetime
+                            ,L.Location
+                            ,L.Point
+                            ,L.Using
+                            ,L.Memo
+                            ,L.ApplyDate
+                            ,L.InActive
+                            ,L.InputUser
+                            ,L.InputDate
+                            ,L.ConfUser
+                            ,L.ConfDate
+                            ,L.Column5
+							,CASE WHEN S.PurCode is null THEN '' ELSE S.PurCode END AS PurCode
+                        FROM 
+	                        M0013_Master_Supply L
+                        JOIN
+                            M0012_SupplyMMTB S
+                        ON L.ItemCode = S.ItemCode
+                        WHERE 
+                            L.ClassifyID like @ClassifyID
+                        ORDER BY L.NameEN, L.Model, L.ClassifyID, L.ItemCode";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ClassifyID", SqlDbType.Text);
+            sqlParameters[0].Value = Convert.ToString(ClassifyID);
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         /// <summary>
@@ -116,7 +168,7 @@ namespace MMTB.DAO
                             ,ItemMaker
                             ,Unit
                         FROM
-                        	M0013_Summary
+                        	M0013_Master_Supply
                         WHERE 
                             Program = @Program
                         ORDER BY
@@ -152,9 +204,9 @@ namespace MMTB.DAO
                             ,D.InputUser as UserName
                             ,CASE WHEN D.ConfUser IS NULL THEN '' ELSE D.ConfUser END AS ConfUser
                         FROM
-                        	M0013_Summary S
+                        	M0013_Master_Supply S
 						JOIN
-							M0013_Summary_Doc D
+							M0013_Master_Supply_Doc D
 						ON
 							S.DocNo = D.DocNo
                         WHERE 
@@ -189,9 +241,9 @@ namespace MMTB.DAO
                             ,D.InputUser as UserName
                             ,CASE WHEN D.ConfUser IS NULL THEN '' ELSE D.ConfUser END AS ConfUser
                         FROM
-                        	M0013_Summary S
+                        	M0013_Master_Supply S
 						JOIN
-							M0013_Summary_Doc D
+							M0013_Master_Supply_Doc D
 						ON
 							S.DocNo = D.DocNo
                         WHERE 
@@ -237,7 +289,7 @@ namespace MMTB.DAO
                             ,InActiveDate
                             ,InActiveUser
                         FROM
-                        	M0013_Summary 
+                        	M0013_Master_Supply 
                         WHERE 
                             DocNo = @DocNo
                         ORDER BY 
@@ -283,7 +335,7 @@ namespace MMTB.DAO
                             ,InActiveDate
                             ,InActiveUser
                         FROM
-                        	M0013_Summary 
+                        	M0013_Master_Supply 
                         WHERE 
                             NameEN = @NameEN
                         AND Maker = @Maker
@@ -336,7 +388,7 @@ namespace MMTB.DAO
                             ,InActiveDate
                             ,InActiveUser
                         FROM
-                        	M0013_Summary 
+                        	M0013_Master_Supply 
                         WHERE 
                             ItemCode = @ItemCode
                         AND InActive = 0
@@ -363,7 +415,7 @@ namespace MMTB.DAO
                             ,Maker
                             ,Model_Item
                         FROM
-                        	M0013_Summary_Doc 
+                        	M0013_Master_Supply_Doc 
                         WHERE 
                             NameEN = @NameEN
                         AND Maker = @Maker
@@ -392,7 +444,7 @@ namespace MMTB.DAO
             StrQuery = @"SELECT
                             Model_Item
                         FROM
-                        	M0013_Summary_Doc 
+                        	M0013_Master_Supply_Doc 
                         WHERE 
                             Model_Item = @ItemCode
                         AND DocStatus = 0";
@@ -421,7 +473,7 @@ namespace MMTB.DAO
                             ,Lifetime
                             ,Point
                         FROM
-                        	M0013_Summary 
+                        	M0013_Master_Supply 
                         WHERE 
                             NameEN      = @NameEN
                         AND Maker       = @Maker
@@ -448,35 +500,35 @@ namespace MMTB.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
-        //Nhập danh sách summary theo model
-        public string Insert_Summary_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        //Thông tin Master theo model MMTB
+        public string Insert_Master_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
         {
-            return conn.Insert_Summary_ByModel(_listSummary, _listDelete, _listSummaryDoc);
+            return conn.Insert_Master_ByModel(_listSummary, _listDelete, _listSummaryDoc);
         }
-        //Cập nhật xác nhận danh sách summary theo model
-        public bool Update_Summary_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        //Xác nhận Master theo model MMTB
+        public bool Confirm_Master_ByModel(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
         {
-            return conn.Update_Summary_ByModel(_listSummary, _listDelete, _listSummaryDoc);
+            return conn.Confirm_Master_ByModel(_listSummary, _listDelete, _listSummaryDoc);
         }
-        //Cập nhật và xác nhận danh sách summary theo model
-        public string Insert_Confirm_Summary_ByModel(DataTable _listSummary, DataTable _listSummaryDoc)
+        //Nhập và xác nhận Master theo model MMTB
+        public string Insert_Confirm_Master_ByModel(DataTable _listSummary, DataTable _listSummaryDoc)
         {
-            return conn.Insert_Confirm_Summary_ByModel(_listSummary, _listSummaryDoc);
+            return conn.Insert_Confirm_Master_ByModel(_listSummary, _listSummaryDoc);
         }
-        //Nhập danh sách summary theo item
-        public string Insert_Summary_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        //Thông tin Master theo mã LK/pin/dầu
+        public string Insert_Master_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
         {
-            return conn.Insert_Summary_ByItem(_listSummary, _listDelete, _listSummaryDoc);
+            return conn.Insert_Master_ByItem(_listSummary, _listDelete, _listSummaryDoc);
         }
-        //Cập nhật xác nhận danh sách summary theo item
-        public bool Update_Summary_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
+        //Xác nhận Master theo mã LK/pin/dầu
+        public bool Confirm_Master_ByItem(DataTable _listSummary, DataTable _listDelete, DataTable _listSummaryDoc)
         {
-            return conn.Update_Summary_ByItem(_listSummary, _listDelete, _listSummaryDoc);
+            return conn.Confirm_Master_ByItem(_listSummary, _listDelete, _listSummaryDoc);
         }
-        //Cập nhật và xác nhận danh sách summary theo item
-        public string Insert_Confirm_Summary_ByItem(DataTable _listSummary, DataTable _listSummaryDoc)
+        //Nhập và xác nhận Master theo mã LK/pin/dầu
+        public string Insert_Confirm_Master_ByItem(DataTable _listSummary, DataTable _listSummaryDoc)
         {
-            return conn.Insert_Confirm_Summary_ByItem(_listSummary, _listSummaryDoc);
+            return conn.Insert_Confirm_Master_ByItem(_listSummary, _listSummaryDoc);
         }
 
         /// <summary>
@@ -484,7 +536,7 @@ namespace MMTB.DAO
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        ///Load dữ liệu từ M0013_Summary_Replace
+        ///Load dữ liệu từ M0013_Master_Supply_Replace
         public DataTable GetInfo_M0013_Replace()
         {
             string StrQuery = "";
@@ -510,7 +562,7 @@ namespace MMTB.DAO
                           ,InActiveDate
                           ,InActiveUser
                         FROM 
-	                        M0013_Summary_Replace L
+	                        M0013_Master_Supply_Replace L
                         ORDER BY L.ClassifyID, L.ItemCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
         sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
@@ -518,7 +570,7 @@ namespace MMTB.DAO
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
         /// <summary>
-        /// Check mã trùng trong M0013_Summary_Replace
+        /// Check mã trùng trong M0013_Master_Supply_Replace
         /// </summary>
         /// <param name="NameEN"></param>
         /// <param name="Maker"></param>
@@ -539,7 +591,7 @@ namespace MMTB.DAO
                             ,ItemCodeRe
                             ,MakerRe
                         FROM
-                        	M0013_Summary_Replace 
+                        	M0013_Master_Supply_Replace 
                         WHERE 
                             ItemCode        = @ItemCode
                         AND Maker           = @Maker

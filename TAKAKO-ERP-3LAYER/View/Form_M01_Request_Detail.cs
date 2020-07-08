@@ -413,7 +413,7 @@ namespace MMTB.View
                         }
                         if (cbx_Status.SelectedIndex == 1)
                         {
-                            if (M01_DAO.Update_Request(_DetailTable, _DeleteRowTable, GetValue_Header()))
+                            if (M01_DAO.Confirm_Request(_DetailTable, _DeleteRowTable, GetValue_Header()))
                             {
                                 MessageBox.Show("Đã xác nhận thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -439,7 +439,7 @@ namespace MMTB.View
                 try
                 {
                     _DetailTable = advBandedGridView1.GridControl.DataSource as DataTable;
-                    if (M01_DAO.Update_Request_IT(_DetailTable, GetValue_Header()))
+                    if (M01_DAO.Confirm_Request_IT(_DetailTable, GetValue_Header()))
                     {
                         MessageBox.Show("Đã xác nhận thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -667,8 +667,8 @@ namespace MMTB.View
                 Set_Edit_Control(false);
             }
             txt_ReqMemo.EditValue = _tempTable.Rows[0].Field<string>("ReqMemo").Trim();
-            _systemDAL.userName = _tempTable.Rows[0].Field<string>("UserName").Trim();
-            _systemDAL.userName = _tempTable.Rows[0].Field<string>("ConfUser").Trim();
+            _systemDAL.userName = _tempTable.Rows[0].Field<string>("UserName").Trim().ToUpper();
+            _systemDAL.userName = _tempTable.Rows[0].Field<string>("ConfUser").Trim().ToUpper();
         }
         //Detail table
         private void Define_DetailTable()
