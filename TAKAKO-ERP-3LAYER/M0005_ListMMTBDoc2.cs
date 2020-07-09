@@ -24,9 +24,11 @@ namespace MMTB
         public System.DateTime DisposalDate { get; set; }
         public string ControlDept { get; set; }
         public bool DocStatus { get; set; }
-        public string Column1 { get; set; }
-        public string Column2 { get; set; }
-        public string Column3 { get; set; }
+        public string Memo { get; set; }
+        public string InputUser { get; set; }
+        public Nullable<System.DateTime> InputDate { get; set; }
+        public string ConfUser { get; set; }
+        public Nullable<System.DateTime> ConfDate { get; set; }
         public string Column4 { get; set; }
         public string Column5 { get; set; }
     }

@@ -210,7 +210,9 @@ namespace MMTB.DAO
                              Program
                             ,ProgramDesc
                         FROM
-                            M01_Program";
+                            M01_Program
+                        ORDER BY
+                            Program";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Program", SqlDbType.VarChar);
             sqlParameters[0].Value = Convert.ToString("");
@@ -221,10 +223,15 @@ namespace MMTB.DAO
         {
             return conn.Insert_Request(_listRequest, _listDelete, _listRequestDoc);
         }
-        //Cập nhật danh sách yêu cầu (duyệt)
+        //Xác nhận danh sách yêu cầu
         public bool Confirm_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
         {
             return conn.Confirm_Request(_listRequest, _listDelete, _listRequestDoc);
+        }
+        //Nhập và xác nhận danh sách yêu cầu
+        public string Insert_Confirm_Request(DataTable _listRequest, DataTable _listRequestDoc)
+        {
+            return conn.Insert_Confirm_Request(_listRequest, _listRequestDoc);
         }
         //Cập nhật danh sách yêu cầu (IT xác nhận)
         public bool Confirm_Request_IT(DataTable _listRequest, DataTable _listRequestDoc)

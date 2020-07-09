@@ -148,7 +148,13 @@
     <Compile Include="M0005_ListMMTBDoc3.cs">
       <DependentUpon>MMTB_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="M0005_ListMMTBDoc4.cs">
+      <DependentUpon>MMTB_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="M0005_ListMMTBLine.cs">
+      <DependentUpon>MMTB_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="M0005_ListMMTBNoUsed.cs">
       <DependentUpon>MMTB_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="MMTB_DataSet.cs">

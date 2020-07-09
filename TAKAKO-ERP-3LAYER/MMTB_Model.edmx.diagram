@@ -5,11 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="0ae5801259534a7581898d51fd3d6d03" Name="Diagram1">
-        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTB" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBDoc1" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBLine" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBDoc2" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBDoc3" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTB" Width="2" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBDoc1" Width="2" PointX="4.875" PointY="0.5" />
+        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBDoc2" Width="2.5" PointX="7" PointY="0.5" />
+        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBDoc3" Width="2.5" PointX="7" PointY="5.125" />
+        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBNoUsed" Width="2.375" PointX="4.375" PointY="5.25" />
+        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBLine" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="MMTB_TVCModel.M0005_ListMMTBDoc4" Width="1.5" PointX="9.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

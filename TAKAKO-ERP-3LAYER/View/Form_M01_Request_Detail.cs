@@ -405,21 +405,33 @@ namespace MMTB.View
                                 MessageBox.Show("Thêm mới/Cập nhật thành công DocNo: " + DocNo.PadLeft(6, '0')
                                     , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 Clear_Data();
+                                Add_Value_sLookUp_DocNo();
+                            }
+                        }
+                        else if (cbx_Status.SelectedIndex == 1)
+                        {
+                            if (sLook_DocNo.EditValue == null)
+                            {
+                                DocNo = M01_DAO.Insert_Confirm_Request(_DetailTable, GetValue_Header());
+                                if (!String.IsNullOrEmpty(DocNo))
+                                {
+                                    MessageBox.Show("Đã xác nhận thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Thêm mới/Cập nhật không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (M01_DAO.Confirm_Request(_DetailTable, _DeleteRowTable, GetValue_Header()))
+                                {
+                                    MessageBox.Show("Đã xác nhận thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }
+                            Clear_Data();
+                            Add_Value_sLookUp_DocNo();
                         }
-                        if (cbx_Status.SelectedIndex == 1)
+                        else
                         {
-                            if (M01_DAO.Confirm_Request(_DetailTable, _DeleteRowTable, GetValue_Header()))
-                            {
-                                MessageBox.Show("Đã xác nhận thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            MessageBox.Show("Thêm mới/Cập nhật không thành công!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        Clear_Data();
-                        Add_Value_sLookUp_DocNo();
                     }
                     catch (Exception ex)
                     {

@@ -12,7 +12,7 @@ namespace MMTB
     using System;
     using System.Collections.Generic;
     
-    public partial class M0005_ListMMTB
+    public partial class M0005_ListMMTBNoUsed
     {
         public string Code { get; set; }
         public string ACCcode { get; set; }
@@ -25,34 +25,21 @@ namespace MMTB
         public string OrgCountry { get; set; }
         public Nullable<System.DateTime> ProDate { get; set; }
         public decimal Lifetime { get; set; }
+        public Nullable<int> NetValue { get; set; }
         public System.DateTime StartDeprDate { get; set; }
         public Nullable<System.DateTime> EndDeprDate { get; set; }
-        public Nullable<int> Result { get; set; }
-        public Nullable<int> Status { get; set; }
-        public string Memo { get; set; }
-        public string InstDoc { get; set; }
-        public string ACCDoc { get; set; }
-        public string DocNo_Disposal { get; set; }
-        public string ACCDoc_Disposal { get; set; }
-        public Nullable<System.DateTime> DisposalDate { get; set; }
-        public string DisposalMemo { get; set; }
+        public string Reason { get; set; }
+        public string CurStatus { get; set; }
+        public string CurPlan { get; set; }
+        public string Solve { get; set; }
         public string DocNo { get; set; }
         public Nullable<System.DateTime> DocDate { get; set; }
-        public string EF_VendID { get; set; }
-        public string SupplierID { get; set; }
-        public string SupplierName { get; set; }
-        public string InvNo { get; set; }
-        public Nullable<System.DateTime> InvDate { get; set; }
-        public Nullable<System.DateTime> ReceiptDate { get; set; }
-        public Nullable<System.DateTime> ConfirmDate { get; set; }
-        public string ControlDept { get; set; }
-        public Nullable<int> DisposalStatus { get; set; }
-        public Nullable<decimal> NetValue_Disposal { get; set; }
+        public Nullable<System.DateTime> FromDate { get; set; }
+        public Nullable<System.DateTime> ToDate { get; set; }
         public string InputUser { get; set; }
         public Nullable<System.DateTime> InputDate { get; set; }
         public string ConfUser { get; set; }
         public Nullable<System.DateTime> ConfDate { get; set; }
-        public string Column4 { get; set; }
         public string Column5 { get; set; }
     }
 }

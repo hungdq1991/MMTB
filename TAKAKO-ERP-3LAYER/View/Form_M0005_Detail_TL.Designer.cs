@@ -404,7 +404,7 @@
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiReport);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Export";
             // 
             // ribbonStatusBar
             // 

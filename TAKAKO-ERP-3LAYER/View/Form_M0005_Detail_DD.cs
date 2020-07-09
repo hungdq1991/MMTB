@@ -577,6 +577,12 @@ namespace MMTB.View
                 sLook_ControlDept.Focus();
                 return false;
             }
+            if (String.IsNullOrEmpty(Convert.ToString(txt_Memo.EditValue)))
+            {
+                MessageBox.Show("Hãy nhập \"Lý do di dời MMTB\"", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_Memo.Focus();
+                return false;
+            }
             for (int rows = 0; rows < advBandedGridView1.RowCount; rows++)
             {
                 string _desLineCode;

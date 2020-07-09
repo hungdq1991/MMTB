@@ -21,7 +21,7 @@ namespace MMTB
         public string NameJP { get; set; }
         public string Maker { get; set; }
         public string Model { get; set; }
-        public System.DateTime ConfDate { get; set; }
+        public Nullable<System.DateTime> ConfirmDate { get; set; }
         public string DocNo_Confirm { get; set; }
         public string ControlDept { get; set; }
         public string OrgUsingDept { get; set; }
@@ -46,8 +46,10 @@ namespace MMTB
         public Nullable<System.DateTime> DisposalDate { get; set; }
         public System.DateTime ApplyDate { get; set; }
         public Nullable<int> DisposalStatus { get; set; }
-        public string Column2 { get; set; }
-        public string Column3 { get; set; }
+        public string InputUser { get; set; }
+        public Nullable<System.DateTime> InputDate { get; set; }
+        public string ConfUser { get; set; }
+        public Nullable<System.DateTime> ConfDate { get; set; }
         public string Column4 { get; set; }
         public string Column5 { get; set; }
     }

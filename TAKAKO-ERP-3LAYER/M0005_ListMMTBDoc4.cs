@@ -12,14 +12,14 @@ namespace MMTB
     using System;
     using System.Collections.Generic;
     
-    public partial class M0005_ListMMTBDoc3
+    public partial class M0005_ListMMTBDoc4
     {
         public string DocNo { get; set; }
-        public Nullable<System.DateTime> DocDate { get; set; }
-        public System.DateTime MoveDate { get; set; }
-        public string ControlDept { get; set; }
+        public System.DateTime DocDate { get; set; }
+        public System.DateTime FromDate { get; set; }
+        public System.DateTime ToDate { get; set; }
         public bool DocStatus { get; set; }
-        public string Memo { get; set; }
+        public string ControlDept { get; set; }
         public string InputUser { get; set; }
         public Nullable<System.DateTime> InputDate { get; set; }
         public string ConfUser { get; set; }

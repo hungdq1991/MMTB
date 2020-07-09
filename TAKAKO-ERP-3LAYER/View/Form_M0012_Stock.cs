@@ -30,19 +30,19 @@ namespace MMTB.View
         }
         private void GetInfo_Gridview()
         {
-            try
-            {
-                _tempTable = M0012_DAO.GetInfo_M0012_Stock(0);
-                if (_tempTable.Rows.Count > 0)
-                {
-                    gridControl.DataSource = _tempTable;
-                    bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    _tempTable = M0012_DAO.GetInfo_M0012_Stock(0);
+            //    if (_tempTable.Rows.Count > 0)
+            //    {
+            //        gridControl.DataSource = _tempTable;
+            //        bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
         //Hiển thị dữ liệu và refresh gridview
         private void Setting_Init_Form()

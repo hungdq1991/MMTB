@@ -705,7 +705,7 @@ namespace MMTB
             return result;
             //return true;
         }
-        //Bổ sung thông tin duyệt Request
+        //Xác nhận thông tin Request
         public bool Confirm_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
         {
             conn.Open();
@@ -736,6 +736,45 @@ namespace MMTB
             }
             conn.Close();
             return true;
+        }
+        //Nhập và xác nhận thông tin Request
+        public string Insert_Confirm_Request(DataTable _listRequest, DataTable _listRequestDoc)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_CONFIRM_REQUEST", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListRequest", _listRequest);
+            param = cmd.Parameters.AddWithValue("@tblListRequest_Doc", _listRequestDoc);
+
+            var returnParameter = cmd.Parameters.Add("@DocNo", SqlDbType.NVarChar);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+            string result = "";
+            try
+            {
+                cmd.ExecuteNonQuery();
+                result = Convert.ToString(returnParameter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            return result;
+            //return true;
         }
         //Bổ sung thông tin duyệt Request của IT
         public bool Confirm_Request_IT(DataTable _listRequest, DataTable _listRequestDoc)
