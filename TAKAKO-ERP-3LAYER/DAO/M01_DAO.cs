@@ -40,7 +40,7 @@ namespace MMTB.DAO
                             ,D.ConfDate
                             ,CASE WHEN R.ITConfirm IS NULL THEN '' ELSE R.ITConfirm END AS ITConfirm 
                             ,R.ITConfDate
-                            ,CASE WHEN R.ITMemo IS NULL THEN '' ELSE R.ITMemo END AS ITMemo                  
+                            ,CASE WHEN R.ITMemo IS NULL THEN '' ELSE R.ITMemo END AS ITMemo          
                             ,R.Column1
                             ,R.Column2
                             ,R.Column3

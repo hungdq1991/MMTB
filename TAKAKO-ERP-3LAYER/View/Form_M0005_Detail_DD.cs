@@ -467,22 +467,22 @@ namespace MMTB.View
 
 
         //Click chuột phải chọn Delete row
-        private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            DataRow dtrow = _DeleteRowTable.NewRow();
-            dtrow["Code"] = advBandedGridView1.GetRowCellValue(advBandedGridView1.FocusedRowHandle, "Code");
-            _DeleteRowTable.Rows.Add(dtrow);
+        //private void bbi_PopUp_DeleteRow_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    DataRow dtrow = _DeleteRowTable.NewRow();
+        //    dtrow["Code"] = advBandedGridView1.GetRowCellValue(advBandedGridView1.FocusedRowHandle, "Code");
+        //    _DeleteRowTable.Rows.Add(dtrow);
 
-            //
-            var row = advBandedGridView1.FocusedRowHandle;
-            advBandedGridView1.DeleteRow(row);
-            _DetailTable.AcceptChanges();
-        }
+
+        //    var row = advBandedGridView1.FocusedRowHandle;
+        //    advBandedGridView1.DeleteRow(row);
+        //    _DetailTable.AcceptChanges();
+        //}
         //Click chuột phải chọn Add new row
-        private void bbi_PopUp_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            advBandedGridView1.AddNewRow();
-        }
+        //private void bbi_PopUp_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
+        //{
+        //    advBandedGridView1.AddNewRow();
+        //}
         //Click nút Add new row
         private void bbi_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
         {

@@ -822,6 +822,7 @@ namespace MMTB.View
 
             //Refresh value for sLookUp DocNo
             Add_Value_sLookUp_DocNo();
+            Add_Value_repo_sLookUp_NameEN();
 
             //Focus on the first item
             sLook_DocNo.Focus();

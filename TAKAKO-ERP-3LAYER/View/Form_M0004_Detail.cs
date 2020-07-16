@@ -219,6 +219,7 @@ namespace MMTB.View
                         {
                             Message = "Lưu thành công Tên: \"" + curr_NameEN + ", Maker: " + curr_Maker + ", Model: " + curr_Model + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear_Data();
                         }
                     }
                 }
@@ -239,6 +240,7 @@ namespace MMTB.View
                             {
                                 Message = "Cập nhật thành công Tên: \"" + curr_NameEN + "\"!";
                                 MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear_Data();
                             }
                         }
                     }
@@ -313,6 +315,18 @@ namespace MMTB.View
             {
                 MessageBox.Show("Hãy nhập \"Model\"", "Chú ý", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        //Xóa dữ liệu header & gridView
+        private void Clear_Data()
+        {
+            IsNewValue = true;
+            sLook_NameEN.EditValue = null;
+            txt_NameVN.EditValue = null;
+            txt_NameJP.EditValue = null;
+            txt_Maker.EditValue = null;
+            txt_Model.EditValue = null;
+            cbx_InActive.SelectedIndex = 0;
+            txt_Memo.EditValue = null;
         }
     }
 }

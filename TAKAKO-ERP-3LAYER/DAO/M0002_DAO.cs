@@ -397,18 +397,22 @@ namespace MMTB.DAO
             DataTable _tempDataTable = new DataTable();
 
             StrQuery = @"SELECT
-                        	 NameEN
-                            ,NameVN
-                            ,NameJP
+                        	 G.NameEN
+                            ,G.NameVN
+                            ,G.NameJP
                         FROM
-                            M0002_GroupName
+                            M0002_GroupName G
+                        JOIN
+                            M0001_Name N
+                        ON
+                            G.NameEN = N.NameEN
                         WHERE
-                            InActive = 0
-                        and ClassifyID in (2,3)
+                            G.InActive = 0
+                        and ClassifyID in (2,3) and N.InActive = 0
                         ORDER BY
-                             NameEN
-                            ,NameVN
-                            ,NameJP";
+                             G.NameEN
+                            ,G.NameVN
+                            ,G.NameJP";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");

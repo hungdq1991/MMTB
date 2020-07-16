@@ -285,7 +285,9 @@ namespace MMTB.DAO
                             ,Maker
                             ,Model
                         FROM
-                            M0004_MakerModel";
+                            M0004_MakerModel
+                        WHERE 
+                            InActive = 0";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");

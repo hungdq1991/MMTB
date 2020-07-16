@@ -342,7 +342,6 @@
             this.bbi_PopUp_DeleteRow.Id = 28;
             this.bbi_PopUp_DeleteRow.ImageOptions.ImageUri.Uri = "Delete";
             this.bbi_PopUp_DeleteRow.Name = "bbi_PopUp_DeleteRow";
-            this.bbi_PopUp_DeleteRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_PopUp_DeleteRow_ItemClick);
             // 
             // bbi_PopUp_AddNewRow
             // 
@@ -350,7 +349,6 @@
             this.bbi_PopUp_AddNewRow.Id = 29;
             this.bbi_PopUp_AddNewRow.ImageOptions.ImageUri.Uri = "AddItem";
             this.bbi_PopUp_AddNewRow.Name = "bbi_PopUp_AddNewRow";
-            this.bbi_PopUp_AddNewRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_PopUp_AddNewRow_ItemClick);
             // 
             // bbiReport
             // 
