@@ -59,7 +59,7 @@ namespace MMTB.View
         }
         private void GridControl_DoubleClick(object sender, EventArgs e)
         {
-            using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow(), _systemDAL))
+            using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow(), false, _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -77,7 +77,7 @@ namespace MMTB.View
         }
         private void BbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow(), _systemDAL))
+            using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow(), false,_systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;
@@ -86,7 +86,7 @@ namespace MMTB.View
         }
         private void BbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow(), _systemDAL))
+            using (Form_M0002_Detail formDetail = new Form_M0002_Detail(gridView.GetFocusedDataRow(), false, _systemDAL))
             {
                 formDetail.ShowDialog();
                 formDetail.StartPosition = FormStartPosition.CenterScreen;

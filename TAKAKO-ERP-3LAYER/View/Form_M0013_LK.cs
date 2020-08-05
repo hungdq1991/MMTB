@@ -78,6 +78,8 @@ namespace MMTB.View
         //Nhấn nút Refresh
         private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Set_Enable_Control(false);
+            GetInfo_GridView();
             gridView.ClearColumnsFilter();
         }
         //Nhấn nút Close
@@ -122,6 +124,7 @@ namespace MMTB.View
                 _tempTable = M0013_DAO.GetInfo_M0013("1");
                 if (_tempTable.Rows.Count > 0)
                 {
+                    Set_Enable_Control(true);
                     gridControl.DataSource = _tempTable;
                     bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                 }
@@ -130,6 +133,21 @@ namespace MMTB.View
             {
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void Set_Enable_Control(Boolean IsEnable)
+        {
+            gridCol_PurCode.Visible = IsEnable;
+            gridCol_VendID.Visible = IsEnable;
+            gridCol_VendName.Visible = IsEnable;
+            gridCol_Cury.Visible = IsEnable;
+            gridCol_PriceRef.Visible = IsEnable;
+            gridCol_EffDate.Visible = IsEnable;
+            gridCol_PurCodeRe.Visible = IsEnable;
+            gridCol_VendIDRe.Visible = IsEnable;
+            gridCol_VendNameRe.Visible = IsEnable;
+            gridCol_CuryRe.Visible = IsEnable;
+            gridCol_PriceRefRe.Visible = IsEnable;
+            gridCol_EffDateRe.Visible = IsEnable;
         }
     }
 }

@@ -82,7 +82,7 @@ namespace MMTB.View
                     }
                     if (_tempTable.Rows.Count == 0)
                     {
-                        MessageBox.Show("Không có mã hàng trùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Không có mã hàng có thay đổi thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 if (_Duplicate == true && _inActive == false)
@@ -95,7 +95,7 @@ namespace MMTB.View
                     }
                     if (_tempTable1.Rows.Count == 0)
                     {
-                        MessageBox.Show("Không có mã hàng trùng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Không có mã hàng có thay đổi thông tin!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 if (_Duplicate == false && _inActive == true)

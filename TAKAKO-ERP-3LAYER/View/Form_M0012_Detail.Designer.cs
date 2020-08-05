@@ -88,13 +88,13 @@
             this.gridCol_SupplierName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_sLookUp_ItemCode = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridCol_ClassifyDesc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ItemCode1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_NameEN1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_NameVN1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_Maker1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repo_TextEdit_Code = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridCol_ClassifyDesc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_Maker1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
@@ -199,7 +199,7 @@
             this.bbi_PopUp_Delete.Id = 20;
             this.bbi_PopUp_Delete.ImageOptions.ImageUri.Uri = "Delete";
             this.bbi_PopUp_Delete.Name = "bbi_PopUp_Delete";
-            this.bbi_PopUp_Delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_PopUp_DeleteRow_ItemClick);
+            this.bbi_PopUp_Delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Bbi_DeleteRow_ItemClick);
             // 
             // bbi_PopUp_AddNewRow
             // 
@@ -207,7 +207,7 @@
             this.bbi_PopUp_AddNewRow.Id = 21;
             this.bbi_PopUp_AddNewRow.ImageOptions.ImageUri.Uri = "AddItem";
             this.bbi_PopUp_AddNewRow.Name = "bbi_PopUp_AddNewRow";
-            this.bbi_PopUp_AddNewRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_PopUp_AddNewRow_ItemClick);
+            this.bbi_PopUp_AddNewRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_AddNewRow_ItemClick);
             // 
             // bbiSave
             // 
@@ -540,7 +540,7 @@
             this.gridCol_Point.FieldName = "Point";
             this.gridCol_Point.Name = "gridCol_Point";
             this.gridCol_Point.Visible = true;
-            this.gridCol_Point.VisibleIndex = 7;
+            this.gridCol_Point.VisibleIndex = 8;
             // 
             // gridCol_MinimumQty
             // 
@@ -559,7 +559,7 @@
             this.gridCol_MinimumQty.FieldName = "MinimumQty";
             this.gridCol_MinimumQty.Name = "gridCol_MinimumQty";
             this.gridCol_MinimumQty.Visible = true;
-            this.gridCol_MinimumQty.VisibleIndex = 8;
+            this.gridCol_MinimumQty.VisibleIndex = 7;
             this.gridCol_MinimumQty.Width = 90;
             // 
             // gridCol_WH1Code
@@ -670,8 +670,6 @@
             this.gridCol_UnitMultDiv.Caption = "Quy đổi";
             this.gridCol_UnitMultDiv.FieldName = "UnitMultDiv";
             this.gridCol_UnitMultDiv.Name = "gridCol_UnitMultDiv";
-            this.gridCol_UnitMultDiv.Visible = true;
-            this.gridCol_UnitMultDiv.VisibleIndex = 15;
             this.gridCol_UnitMultDiv.Width = 60;
             // 
             // gridCol_CnvFact
@@ -689,8 +687,6 @@
             this.gridCol_CnvFact.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridCol_CnvFact.FieldName = "CnvFact";
             this.gridCol_CnvFact.Name = "gridCol_CnvFact";
-            this.gridCol_CnvFact.Visible = true;
-            this.gridCol_CnvFact.VisibleIndex = 16;
             this.gridCol_CnvFact.Width = 60;
             // 
             // gridCol_ApplyDate
@@ -711,8 +707,7 @@
             this.gridCol_ApplyDate.ColumnEdit = this.repo_DateEdit_;
             this.gridCol_ApplyDate.FieldName = "ApplyDate";
             this.gridCol_ApplyDate.Name = "gridCol_ApplyDate";
-            this.gridCol_ApplyDate.Visible = true;
-            this.gridCol_ApplyDate.VisibleIndex = 12;
+            this.gridCol_ApplyDate.OptionsColumn.AllowEdit = false;
             this.gridCol_ApplyDate.Width = 90;
             // 
             // repo_DateEdit_
@@ -740,8 +735,7 @@
             this.gridCol_InActive.ColumnEdit = this.repo_sLookUp_InActive;
             this.gridCol_InActive.FieldName = "InActive";
             this.gridCol_InActive.Name = "gridCol_InActive";
-            this.gridCol_InActive.Visible = true;
-            this.gridCol_InActive.VisibleIndex = 13;
+            this.gridCol_InActive.OptionsColumn.AllowEdit = false;
             this.gridCol_InActive.Width = 90;
             // 
             // repo_sLookUp_InActive
@@ -785,7 +779,7 @@
             this.gridCol_Memo.FieldName = "Memo";
             this.gridCol_Memo.Name = "gridCol_Memo";
             this.gridCol_Memo.Visible = true;
-            this.gridCol_Memo.VisibleIndex = 14;
+            this.gridCol_Memo.VisibleIndex = 12;
             this.gridCol_Memo.Width = 150;
             // 
             // gridCol_InputUser
@@ -793,16 +787,12 @@
             this.gridCol_InputUser.Caption = "gridColumn1";
             this.gridCol_InputUser.FieldName = "InputUser";
             this.gridCol_InputUser.Name = "gridCol_InputUser";
-            this.gridCol_InputUser.Visible = true;
-            this.gridCol_InputUser.VisibleIndex = 17;
             // 
             // gridCol_ModifyUser
             // 
             this.gridCol_ModifyUser.Caption = "gridColumn2";
             this.gridCol_ModifyUser.FieldName = "ModifyUser";
             this.gridCol_ModifyUser.Name = "gridCol_ModifyUser";
-            this.gridCol_ModifyUser.Visible = true;
-            this.gridCol_ModifyUser.VisibleIndex = 18;
             // 
             // repo_sLookUp_PurCode
             // 
@@ -883,6 +873,14 @@
             this.gridView6.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView6.OptionsView.ShowGroupPanel = false;
             // 
+            // gridCol_ClassifyDesc
+            // 
+            this.gridCol_ClassifyDesc.Caption = "Phân loại";
+            this.gridCol_ClassifyDesc.FieldName = "ClassifyDesc";
+            this.gridCol_ClassifyDesc.Name = "gridCol_ClassifyDesc";
+            this.gridCol_ClassifyDesc.Visible = true;
+            this.gridCol_ClassifyDesc.VisibleIndex = 0;
+            // 
             // gridCol_ItemCode1
             // 
             this.gridCol_ItemCode1.Caption = "Mã hàng";
@@ -907,6 +905,14 @@
             this.gridCol_NameVN1.Visible = true;
             this.gridCol_NameVN1.VisibleIndex = 3;
             // 
+            // gridCol_Maker1
+            // 
+            this.gridCol_Maker1.Caption = "Maker";
+            this.gridCol_Maker1.FieldName = "Maker";
+            this.gridCol_Maker1.Name = "gridCol_Maker1";
+            this.gridCol_Maker1.Visible = true;
+            this.gridCol_Maker1.VisibleIndex = 4;
+            // 
             // repo_TextEdit_Code
             // 
             this.repo_TextEdit_Code.AutoHeight = false;
@@ -918,22 +924,6 @@
             this.popupMenu1.ItemLinks.Add(this.bbi_PopUp_Delete);
             this.popupMenu1.Name = "popupMenu1";
             this.popupMenu1.Ribbon = this.ribbonControl;
-            // 
-            // gridCol_ClassifyDesc
-            // 
-            this.gridCol_ClassifyDesc.Caption = "Phân loại";
-            this.gridCol_ClassifyDesc.FieldName = "ClassifyDesc";
-            this.gridCol_ClassifyDesc.Name = "gridCol_ClassifyDesc";
-            this.gridCol_ClassifyDesc.Visible = true;
-            this.gridCol_ClassifyDesc.VisibleIndex = 0;
-            // 
-            // gridCol_Maker1
-            // 
-            this.gridCol_Maker1.Caption = "Maker";
-            this.gridCol_Maker1.FieldName = "Maker";
-            this.gridCol_Maker1.Name = "gridCol_Maker1";
-            this.gridCol_Maker1.Visible = true;
-            this.gridCol_Maker1.VisibleIndex = 4;
             // 
             // Form_M0012_Detail
             // 

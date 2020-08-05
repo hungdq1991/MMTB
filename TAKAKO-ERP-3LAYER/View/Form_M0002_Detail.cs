@@ -23,7 +23,7 @@ namespace MMTB.View
         private Boolean inActive;
 
         //Tạo biến để ghi nhận New / Edit
-        private Boolean IsNewValue = false;
+        private Boolean IsNewValue = true;
         private const string LinhKien = "1";
 
         //
@@ -41,12 +41,14 @@ namespace MMTB.View
         }
 
         //Update, delete _ form theo kiểu dữ liệu
-        public Form_M0002_Detail(DataRow _mainDataRow,System_DAL systemDAL)
+        public Form_M0002_Detail(DataRow _mainDataRow, Boolean _isNewValue, System_DAL systemDAL)
         {
             //
             InitializeComponent();
             //
             dataRow = _mainDataRow;
+            //
+            IsNewValue = _isNewValue;
             //
             _systemDAL = systemDAL;
         }
@@ -56,8 +58,6 @@ namespace MMTB.View
         {
             //
             M0002_DAO = new M0002_DAO();
-            //
-            sLookUpEdit_NameEN();
             //
             sLookUpEdit_Group1();
             //
@@ -94,26 +94,19 @@ namespace MMTB.View
                 sLook_NameEN.Properties.DisplayMember = "NameEN";
             }
         }
-        //Lấy kết quả ô NameEN, điền dữ liệu tương ứng cho ô NameVN, NameJP
-        private void sLook_NameEN_Validated(object sender, EventArgs e)
+        //Lấy nội dung ô NameEN-chỉnh sửa
+        private void sLookUpEdit_NameEN_Edit()
         {
-            string tempNameEN = sLook_NameEN.Text.Trim();
             DataTable tempTable = new DataTable();
-            if (IsNewValue && !String.IsNullOrEmpty(tempNameEN))
+            tempTable = M0002_DAO.GetInfo_M0002_Name();
+            if (tempTable.Rows.Count > 0)
             {
-                tempTable = M0002_DAO.GetInfo_Name(tempNameEN);
-
-                if (tempTable.Rows.Count > 0)
-                {
-                    foreach (DataRow row in tempTable.Rows)
-                    {
-                        txt_NameVN.Text = row.Field<string>("NameVN");
-                        txt_NameJP.Text = row.Field<string>("NameJP");
-                    }
-                }
+                sLook_NameEN.Properties.DataSource = tempTable;
+                sLook_NameEN.Properties.ValueMember = "NameEN";
+                sLook_NameEN.Properties.DisplayMember = "NameEN";
             }
         }
-        //Điền dữ liệu cho ô Group1
+         //Điền dữ liệu cho ô Group1
         private void sLookUpEdit_Group1()
         {
             DataTable tempTable = new DataTable();
@@ -152,9 +145,9 @@ namespace MMTB.View
         //Lấy kết quả ô ClassifyID điền vào ô txt_ClassifyDesc
         private void Look_ClassifyID_Validated(object sender, EventArgs e)
         {
-            int ClassifyID = int.Parse(look_ClassifyID.Text.Trim());
+            string ClassifyID = look_ClassifyID.Text.Trim();
             DataTable tempTable = new DataTable();
-            if (ClassifyID > 0)
+            if (!String.IsNullOrEmpty(ClassifyID))
             {
                 tempTable = M0002_DAO.GetInfo_M01_ClassifyID(ClassifyID);
                 if (tempTable.Rows.Count > 0)
@@ -184,6 +177,7 @@ namespace MMTB.View
             }
             else
             {
+                sLook_NameEN.EditValue = "";
                 nameEN = Convert.ToString(dataRow[0]);
                 nameVN = Convert.ToString(dataRow[1]);
                 nameJP = Convert.ToString(dataRow[2]);
@@ -201,16 +195,15 @@ namespace MMTB.View
         {
             if (IsNewValue)
             {
-                sLook_NameEN.Enabled = true;
+                sLookUpEdit_NameEN();
                 bbiDelete.Enabled = false;
             }
             else
             {
-                sLook_NameEN.Enabled = false;
+                sLookUpEdit_NameEN_Edit();
                 bbiDelete.Enabled = true;
             }
         }
-
         //Lấy dữ liệu trên form
         private void Update_Control()
         {
@@ -233,7 +226,6 @@ namespace MMTB.View
         }
         private void Clear_Data()
         {
-            IsNewValue = true;
             sLook_NameEN.Enabled = true;
             sLook_NameEN.EditValue = "";
             txt_NameVN.Text = "";
@@ -251,6 +243,15 @@ namespace MMTB.View
         private void BbiNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Clear_Data();
+            IsNewValue = true;
+            sLookUpEdit_NameEN();
+        }
+        //Click nút Edit
+        private void BbiEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Clear_Data();
+            IsNewValue = false;
+            sLookUpEdit_NameEN_Edit();
         }
         //Click nút Save
         private void BbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -289,6 +290,7 @@ namespace MMTB.View
                             Message = "Lưu thành công Tên: \"" + curr_NameEN + "\"!";
                             MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Clear_Data();
+                            sLookUpEdit_NameEN();
                         }
                     }
                 }
@@ -310,9 +312,18 @@ namespace MMTB.View
                                                 , curr_InActive
                                                 , _systemDAL.userName.ToUpper()))
                         {
-                            Message = "Cập nhật thành công Tên: \"" + sLook_NameEN.Text.ToString() + "\"!";
-                            MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear_Data();
+                            if (M0002_DAO.InActive(curr_NameEN 
+                                                , curr_Group1
+                                                , curr_Group2
+                                                , curr_ClassifyID
+                                                , _systemDAL.userName.ToUpper()))
+                            {
+                                Message = "Cập nhật thành công Tên: \"" + sLook_NameEN.Text.ToString() + "\"!";
+                                MessageBox.Show(Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear_Data();
+                                sLookUpEdit_NameEN_Edit();
+                            }
+
                         }
                     }
                 }
@@ -385,9 +396,9 @@ namespace MMTB.View
                 date_ApplyDate.Focus();
                 return false;
             }
-            if (cbx_InActive.SelectedIndex == 0)
+            if (IsNewValue == false)
             {
-                DataTable _check = M0002_DAO.GetInfo_M0002_Check(sLook_NameEN.Text.Trim(), sLook_Group1.Text.Trim(), sLook_Group2.Text.Trim(), DateTime.Parse(date_ApplyDate.Text.Trim()));
+                DataTable _check = M0002_DAO.GetInfo_M0002_Check(sLook_NameEN.Text.Trim(), sLook_Group1.Text.Trim(), sLook_Group2.Text.Trim(), look_ClassifyID.Text.Trim(), DateTime.Parse(date_ApplyDate.Text.Trim()));
                 if (_check.Rows.Count > 0)
                 {
                     MessageBox.Show("Tên: " + sLook_NameEN.Text.ToString() + " đã có", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -397,13 +408,16 @@ namespace MMTB.View
             }
             return true;
         }
-
         private void sLook_NameEN_CloseUp(object sender, DevExpress.XtraEditors.Controls.CloseUpEventArgs e)
         {
             if (e.CloseMode == PopupCloseMode.Normal)
             {
                 string _nameVN = "";
                 string _nameJP = "";
+                string _group1 = "";
+                string _group2 = "";
+                string _classifyID = "1";
+                string _classifyDesc = "LK";
 
                 //Get index
                 SearchLookUpEdit editor = sender as SearchLookUpEdit;
@@ -412,10 +426,18 @@ namespace MMTB.View
                 //Set value to variables
                 _nameVN = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameVN"));
                 _nameJP = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("NameJP"));
+                _group1 = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Group1"));
+                _group2 = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Group2"));
+                _classifyID = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ClassifyID"));
+                _classifyDesc = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("ClassifyDesc"));
 
                 //Set value to column NameVN, NameJP
                 txt_NameVN.EditValue = _nameVN;
                 txt_NameJP.EditValue = _nameJP;
+                sLook_Group1.EditValue = _group1;
+                sLook_Group2.EditValue = _group2;
+                look_ClassifyID.EditValue = _classifyID;
+                txt_ClassifyDesc.EditValue = _classifyDesc;
             }
         }
     }

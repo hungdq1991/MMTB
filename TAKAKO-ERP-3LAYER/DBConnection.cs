@@ -631,7 +631,7 @@ namespace MMTB
             return result;
             //return true;
         }
-        //Danh mục LK, dầu, pin
+        //Thêm danh mục LK, dầu, pin
         public bool Insert_Supply_MMTB(DataTable _listM0012)
         {
             conn.Open();
@@ -665,6 +665,41 @@ namespace MMTB
             //return result;
             return true;
         }
+        //Cập nhật Danh mục LK, dầu, pin
+        public bool Update_Supply_MMTB(DataTable _listM0012)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_UPDATE_SUPPLY_MMTB", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListM0012", _listM0012);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                //result = returnParameter.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+
         //Thông tin Request
         public string Insert_Request(DataTable _listRequest, DataTable _listDelete, DataTable _listRequestDoc)
         {
@@ -1028,6 +1063,106 @@ namespace MMTB
             conn.Close();
             return result;
             //return true;
+        }
+        
+        //Nhập mã LK/pin/dầu thay thế (Replace)
+        public bool Insert_Item_Replace(DataTable _listSummary)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_ITEM_REPLACE", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+        //InActive mã LK/pin/dầu thay thế (Replace)
+        public bool InActive_Item_Replace(DataTable _listSummary)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INACTIVE_ITEM_REPLACE", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+        //Nhập mã LK/pin/dầu ngưng sử dụng (Cancel)
+        public bool Insert_Item_Cancel(DataTable _listSummary)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_ITEM_CANCEL", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
         }
     }
 }

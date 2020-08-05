@@ -35,9 +35,13 @@
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bCheck_InActive = new DevExpress.XtraBars.BarCheckItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemHypertextLabel1 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -64,16 +68,20 @@
             this.gridCol_PurCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_WH1Code = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_WH2Code = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_WH1Stock = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_WH2Stock = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_WHTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_ApplyDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Memo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bbiCheckDup = new DevExpress.XtraBars.BarCheckItem();
-            this.gridCol_WH2Stock = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_WH1Stock = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridCol_WHTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.gridCol_Status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_MakerRe = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridCol_ItemCodeRe = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
@@ -91,12 +99,17 @@
             this.bbiDelete,
             this.bbiRefresh,
             this.bCheck_InActive,
-            this.barStaticItem1});
+            this.barStaticItem1,
+            this.barHeaderItem1,
+            this.barEditItem1,
+            this.barButtonItem1});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 25;
+            this.ribbonControl.MaxItemId = 28;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
+            this.ribbonControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemHypertextLabel1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl.Size = new System.Drawing.Size(987, 159);
@@ -146,14 +159,53 @@
             this.bCheck_InActive.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.bCheck_InActive.ItemAppearance.Normal.Options.UseBackColor = true;
             this.bCheck_InActive.Name = "bCheck_InActive";
-            this.bCheck_InActive.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BCheck_InActive_CheckedChanged);
+            // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "Ghi chú: Số liệu tồn kho hiện tại trên chương trình Solomon";
+            this.barStaticItem1.Id = 24;
+            this.barStaticItem1.ItemAppearance.Disabled.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.barStaticItem1.ItemAppearance.Disabled.Options.UseFont = true;
+            this.barStaticItem1.ItemAppearance.Disabled.Options.UseForeColor = true;
+            this.barStaticItem1.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.barStaticItem1.ItemAppearance.Normal.Options.UseForeColor = true;
+            this.barStaticItem1.Name = "barStaticItem1";
+            // 
+            // barHeaderItem1
+            // 
+            this.barHeaderItem1.Appearance.BackColor = System.Drawing.Color.Red;
+            this.barHeaderItem1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.barHeaderItem1.Appearance.ForeColor = System.Drawing.Color.Yellow;
+            this.barHeaderItem1.Appearance.Options.UseBackColor = true;
+            this.barHeaderItem1.Appearance.Options.UseBorderColor = true;
+            this.barHeaderItem1.Appearance.Options.UseFont = true;
+            this.barHeaderItem1.Appearance.Options.UseForeColor = true;
+            this.barHeaderItem1.Appearance.Options.UseTextOptions = true;
+            this.barHeaderItem1.Caption = "Số liệu tồn kho trên Solomon tại thời điểm xem báo cáo!";
+            this.barHeaderItem1.Id = 25;
+            this.barHeaderItem1.Name = "barHeaderItem1";
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemHypertextLabel1;
+            this.barEditItem1.Id = 26;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemHypertextLabel1
+            // 
+            this.repositoryItemHypertextLabel1.Name = "repositoryItemHypertextLabel1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Cần đặt hàng (Tồn kho < Tồn kho tối thiểu)";
+            this.barButtonItem1.Id = 27;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup1});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
@@ -165,12 +217,6 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tasks";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_InActive);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Lọc thông tin";
             // 
             // ribbonStatusBar
             // 
@@ -206,12 +252,15 @@
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridCol_ClassifyID,
             this.gridCol_ItemCode,
+            this.gridCol_Status,
             this.gridCol_NameEN,
             this.gridCol_NameVN,
             this.gridCol_NameJP,
             this.gridCol_Group1,
             this.gridCol_Group2,
             this.gridCol_Maker,
+            this.gridCol_ItemCodeRe,
+            this.gridCol_MakerRe,
             this.gridCol_MinimumQty,
             this.gridCol_Lifetime,
             this.gridCol_Unit,
@@ -293,7 +342,7 @@
             this.gridCol_NameEN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameEN.Name = "gridCol_NameEN";
             this.gridCol_NameEN.Visible = true;
-            this.gridCol_NameEN.VisibleIndex = 2;
+            this.gridCol_NameEN.VisibleIndex = 3;
             this.gridCol_NameEN.Width = 120;
             // 
             // gridCol_NameVN
@@ -311,7 +360,7 @@
             this.gridCol_NameVN.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_NameVN.Name = "gridCol_NameVN";
             this.gridCol_NameVN.Visible = true;
-            this.gridCol_NameVN.VisibleIndex = 3;
+            this.gridCol_NameVN.VisibleIndex = 4;
             this.gridCol_NameVN.Width = 120;
             // 
             // gridCol_NameJP
@@ -346,7 +395,7 @@
             this.gridCol_Group1.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_Group1.Name = "gridCol_Group1";
             this.gridCol_Group1.Visible = true;
-            this.gridCol_Group1.VisibleIndex = 4;
+            this.gridCol_Group1.VisibleIndex = 5;
             this.gridCol_Group1.Width = 120;
             // 
             // gridCol_Group2
@@ -364,7 +413,7 @@
             this.gridCol_Group2.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
             this.gridCol_Group2.Name = "gridCol_Group2";
             this.gridCol_Group2.Visible = true;
-            this.gridCol_Group2.VisibleIndex = 5;
+            this.gridCol_Group2.VisibleIndex = 6;
             this.gridCol_Group2.Width = 120;
             // 
             // gridCol_Maker
@@ -381,7 +430,7 @@
             this.gridCol_Maker.FieldName = "Maker";
             this.gridCol_Maker.Name = "gridCol_Maker";
             this.gridCol_Maker.Visible = true;
-            this.gridCol_Maker.VisibleIndex = 6;
+            this.gridCol_Maker.VisibleIndex = 7;
             this.gridCol_Maker.Width = 120;
             // 
             // gridCol_MinimumQty
@@ -401,7 +450,7 @@
             this.gridCol_MinimumQty.FieldName = "MinimumQty";
             this.gridCol_MinimumQty.Name = "gridCol_MinimumQty";
             this.gridCol_MinimumQty.Visible = true;
-            this.gridCol_MinimumQty.VisibleIndex = 8;
+            this.gridCol_MinimumQty.VisibleIndex = 12;
             // 
             // gridCol_Lifetime
             // 
@@ -419,7 +468,7 @@
             this.gridCol_Lifetime.FieldName = "Lifetime";
             this.gridCol_Lifetime.Name = "gridCol_Lifetime";
             this.gridCol_Lifetime.Visible = true;
-            this.gridCol_Lifetime.VisibleIndex = 7;
+            this.gridCol_Lifetime.VisibleIndex = 11;
             // 
             // gridCol_Unit
             // 
@@ -435,7 +484,7 @@
             this.gridCol_Unit.FieldName = "Unit";
             this.gridCol_Unit.Name = "gridCol_Unit";
             this.gridCol_Unit.Visible = true;
-            this.gridCol_Unit.VisibleIndex = 9;
+            this.gridCol_Unit.VisibleIndex = 8;
             this.gridCol_Unit.Width = 60;
             // 
             // gridCol_PurUnit
@@ -498,9 +547,11 @@
             this.gridCol_PriceRef.Caption = "Giá tham khảo";
             this.gridCol_PriceRef.DisplayFormat.FormatString = "#,###.##";
             this.gridCol_PriceRef.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridCol_PriceRef.FieldName = "Price";
+            this.gridCol_PriceRef.FieldName = "EF_PurCuryPrice";
             this.gridCol_PriceRef.Name = "gridCol_PriceRef";
             this.gridCol_PriceRef.UnboundType = DevExpress.Data.UnboundColumnType.Boolean;
+            this.gridCol_PriceRef.Visible = true;
+            this.gridCol_PriceRef.VisibleIndex = 22;
             // 
             // gridCol_Cury
             // 
@@ -515,8 +566,10 @@
             this.gridCol_Cury.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_Cury.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_Cury.Caption = "Loại tiền";
-            this.gridCol_Cury.FieldName = "Cury";
+            this.gridCol_Cury.FieldName = "EF_PurCuryID";
             this.gridCol_Cury.Name = "gridCol_Cury";
+            this.gridCol_Cury.Visible = true;
+            this.gridCol_Cury.VisibleIndex = 21;
             // 
             // gridCol_EffDate
             // 
@@ -531,8 +584,10 @@
             this.gridCol_EffDate.AppearanceHeader.Options.UseTextOptions = true;
             this.gridCol_EffDate.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridCol_EffDate.Caption = "Ngày hiệu lực giá";
-            this.gridCol_EffDate.FieldName = "EffDate";
+            this.gridCol_EffDate.FieldName = "EF_EffDate";
             this.gridCol_EffDate.Name = "gridCol_EffDate";
+            this.gridCol_EffDate.Visible = true;
+            this.gridCol_EffDate.VisibleIndex = 23;
             // 
             // gridCol_SupplierID
             // 
@@ -549,6 +604,8 @@
             this.gridCol_SupplierID.Caption = "Mã số NCC";
             this.gridCol_SupplierID.FieldName = "EF_VendID";
             this.gridCol_SupplierID.Name = "gridCol_SupplierID";
+            this.gridCol_SupplierID.Visible = true;
+            this.gridCol_SupplierID.VisibleIndex = 19;
             // 
             // gridCol_Supplier
             // 
@@ -563,6 +620,8 @@
             this.gridCol_Supplier.Caption = "Nhà cung cấp";
             this.gridCol_Supplier.FieldName = "EF_VendName";
             this.gridCol_Supplier.Name = "gridCol_Supplier";
+            this.gridCol_Supplier.Visible = true;
+            this.gridCol_Supplier.VisibleIndex = 20;
             // 
             // gridCol_PurCode
             // 
@@ -578,7 +637,7 @@
             this.gridCol_PurCode.FieldName = "PurCode";
             this.gridCol_PurCode.Name = "gridCol_PurCode";
             this.gridCol_PurCode.Visible = true;
-            this.gridCol_PurCode.VisibleIndex = 10;
+            this.gridCol_PurCode.VisibleIndex = 18;
             this.gridCol_PurCode.Width = 120;
             // 
             // gridCol_WH1Code
@@ -595,7 +654,7 @@
             this.gridCol_WH1Code.FieldName = "WH1Code";
             this.gridCol_WH1Code.Name = "gridCol_WH1Code";
             this.gridCol_WH1Code.Visible = true;
-            this.gridCol_WH1Code.VisibleIndex = 11;
+            this.gridCol_WH1Code.VisibleIndex = 13;
             this.gridCol_WH1Code.Width = 120;
             // 
             // gridCol_WH2Code
@@ -612,8 +671,62 @@
             this.gridCol_WH2Code.FieldName = "WH2Code";
             this.gridCol_WH2Code.Name = "gridCol_WH2Code";
             this.gridCol_WH2Code.Visible = true;
-            this.gridCol_WH2Code.VisibleIndex = 12;
+            this.gridCol_WH2Code.VisibleIndex = 14;
             this.gridCol_WH2Code.Width = 120;
+            // 
+            // gridCol_WH1Stock
+            // 
+            this.gridCol_WH1Stock.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WH1Stock.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_WH1Stock.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_WH1Stock.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WH1Stock.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_WH1Stock.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_WH1Stock.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_WH1Stock.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_WH1Stock.Caption = "Tồn kho tại TVC1";
+            this.gridCol_WH1Stock.DisplayFormat.FormatString = "#";
+            this.gridCol_WH1Stock.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridCol_WH1Stock.FieldName = "WH1Stock";
+            this.gridCol_WH1Stock.Name = "gridCol_WH1Stock";
+            this.gridCol_WH1Stock.Visible = true;
+            this.gridCol_WH1Stock.VisibleIndex = 15;
+            // 
+            // gridCol_WH2Stock
+            // 
+            this.gridCol_WH2Stock.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WH2Stock.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_WH2Stock.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_WH2Stock.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WH2Stock.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_WH2Stock.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_WH2Stock.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_WH2Stock.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_WH2Stock.Caption = "Tồn kho tại TVC2";
+            this.gridCol_WH2Stock.DisplayFormat.FormatString = "#";
+            this.gridCol_WH2Stock.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridCol_WH2Stock.FieldName = "WH2Stock";
+            this.gridCol_WH2Stock.Name = "gridCol_WH2Stock";
+            this.gridCol_WH2Stock.Visible = true;
+            this.gridCol_WH2Stock.VisibleIndex = 16;
+            // 
+            // gridCol_WHTotal
+            // 
+            this.gridCol_WHTotal.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WHTotal.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_WHTotal.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_WHTotal.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_WHTotal.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_WHTotal.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_WHTotal.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_WHTotal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_WHTotal.Caption = "Tổng tồn kho";
+            this.gridCol_WHTotal.DisplayFormat.FormatString = "#";
+            this.gridCol_WHTotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridCol_WHTotal.FieldName = "WHStock";
+            this.gridCol_WHTotal.Name = "gridCol_WHTotal";
+            this.gridCol_WHTotal.Visible = true;
+            this.gridCol_WHTotal.VisibleIndex = 17;
             // 
             // gridCol_ApplyDate
             // 
@@ -630,8 +743,6 @@
             this.gridCol_ApplyDate.Caption = "Ngày hiệu lực";
             this.gridCol_ApplyDate.FieldName = "ApplyDate";
             this.gridCol_ApplyDate.Name = "gridCol_ApplyDate";
-            this.gridCol_ApplyDate.Visible = true;
-            this.gridCol_ApplyDate.VisibleIndex = 16;
             this.gridCol_ApplyDate.Width = 90;
             // 
             // gridCol_InActive
@@ -647,8 +758,6 @@
             this.gridCol_InActive.Caption = "Ngưng sử dụng";
             this.gridCol_InActive.FieldName = "InActive";
             this.gridCol_InActive.Name = "gridCol_InActive";
-            this.gridCol_InActive.Visible = true;
-            this.gridCol_InActive.VisibleIndex = 17;
             this.gridCol_InActive.Width = 90;
             // 
             // gridCol_Memo
@@ -664,8 +773,6 @@
             this.gridCol_Memo.Caption = "Ghi chú";
             this.gridCol_Memo.FieldName = "Memo";
             this.gridCol_Memo.Name = "gridCol_Memo";
-            this.gridCol_Memo.Visible = true;
-            this.gridCol_Memo.VisibleIndex = 18;
             this.gridCol_Memo.Width = 150;
             // 
             // bbiCheckDup
@@ -677,76 +784,87 @@
             this.bbiCheckDup.ItemAppearance.Normal.Options.UseBackColor = true;
             this.bbiCheckDup.Name = "bbiCheckDup";
             // 
-            // gridCol_WH2Stock
-            // 
-            this.gridCol_WH2Stock.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_WH2Stock.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_WH2Stock.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridCol_WH2Stock.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_WH2Stock.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_WH2Stock.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_WH2Stock.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_WH2Stock.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_WH2Stock.Caption = "Tồn kho tại TVC2";
-            this.gridCol_WH2Stock.FieldName = "WH2Stock";
-            this.gridCol_WH2Stock.Name = "gridCol_WH2Stock";
-            this.gridCol_WH2Stock.Visible = true;
-            this.gridCol_WH2Stock.VisibleIndex = 14;
-            // 
-            // gridCol_WH1Stock
-            // 
-            this.gridCol_WH1Stock.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_WH1Stock.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_WH1Stock.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridCol_WH1Stock.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_WH1Stock.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_WH1Stock.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_WH1Stock.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_WH1Stock.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_WH1Stock.Caption = "Tồn kho tại TVC1";
-            this.gridCol_WH1Stock.FieldName = "WH1Stock";
-            this.gridCol_WH1Stock.Name = "gridCol_WH1Stock";
-            this.gridCol_WH1Stock.Visible = true;
-            this.gridCol_WH1Stock.VisibleIndex = 13;
-            // 
-            // gridCol_WHTotal
-            // 
-            this.gridCol_WHTotal.AppearanceCell.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_WHTotal.AppearanceCell.Options.UseForeColor = true;
-            this.gridCol_WHTotal.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridCol_WHTotal.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridCol_WHTotal.AppearanceHeader.Options.UseFont = true;
-            this.gridCol_WHTotal.AppearanceHeader.Options.UseForeColor = true;
-            this.gridCol_WHTotal.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridCol_WHTotal.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridCol_WHTotal.Caption = "Tổng tồn kho";
-            this.gridCol_WHTotal.FieldName = "WHTotal";
-            this.gridCol_WHTotal.Name = "gridCol_WHTotal";
-            this.gridCol_WHTotal.Visible = true;
-            this.gridCol_WHTotal.VisibleIndex = 15;
-            // 
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.barStaticItem1);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
-            // barStaticItem1
+            // labelControl1
             // 
-            this.barStaticItem1.Caption = "Ghi chú: Số liệu tồn kho hiện tại trên chương trình Solomon";
-            this.barStaticItem1.Id = 24;
-            this.barStaticItem1.ItemAppearance.Disabled.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.barStaticItem1.ItemAppearance.Disabled.Options.UseFont = true;
-            this.barStaticItem1.ItemAppearance.Disabled.Options.UseForeColor = true;
-            this.barStaticItem1.ItemAppearance.Normal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.barStaticItem1.ItemAppearance.Normal.Options.UseForeColor = true;
-            this.barStaticItem1.Name = "barStaticItem1";
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 20F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
+            this.labelControl1.Location = new System.Drawing.Point(75, 67);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(760, 33);
+            this.labelControl1.TabIndex = 8;
+            this.labelControl1.Text = "Số liệu tồn kho trên Solomon tại thời điểm xem báo cáo!";
+            // 
+            // gridCol_Status
+            // 
+            this.gridCol_Status.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.gridCol_Status.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_Status.AppearanceCell.Options.UseBackColor = true;
+            this.gridCol_Status.AppearanceCell.Options.UseFont = true;
+            this.gridCol_Status.AppearanceCell.Options.UseTextOptions = true;
+            this.gridCol_Status.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_Status.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_Status.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_Status.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_Status.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_Status.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_Status.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_Status.Caption = "Ngưng SD";
+            this.gridCol_Status.FieldName = "Status";
+            this.gridCol_Status.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.gridCol_Status.Name = "gridCol_Status";
+            this.gridCol_Status.Visible = true;
+            this.gridCol_Status.VisibleIndex = 2;
+            // 
+            // gridCol_MakerRe
+            // 
+            this.gridCol_MakerRe.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gridCol_MakerRe.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_MakerRe.AppearanceCell.Options.UseBackColor = true;
+            this.gridCol_MakerRe.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_MakerRe.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_MakerRe.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_MakerRe.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_MakerRe.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_MakerRe.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_MakerRe.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_MakerRe.Caption = "Maker";
+            this.gridCol_MakerRe.FieldName = "MakerRe";
+            this.gridCol_MakerRe.Name = "gridCol_MakerRe";
+            this.gridCol_MakerRe.Visible = true;
+            this.gridCol_MakerRe.VisibleIndex = 10;
+            // 
+            // gridCol_ItemCodeRe
+            // 
+            this.gridCol_ItemCodeRe.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.gridCol_ItemCodeRe.AppearanceCell.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ItemCodeRe.AppearanceCell.Options.UseBackColor = true;
+            this.gridCol_ItemCodeRe.AppearanceCell.Options.UseForeColor = true;
+            this.gridCol_ItemCodeRe.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gridCol_ItemCodeRe.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridCol_ItemCodeRe.AppearanceHeader.Options.UseFont = true;
+            this.gridCol_ItemCodeRe.AppearanceHeader.Options.UseForeColor = true;
+            this.gridCol_ItemCodeRe.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridCol_ItemCodeRe.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridCol_ItemCodeRe.Caption = "Mã LK/Pin thay thế";
+            this.gridCol_ItemCodeRe.FieldName = "ItemCodeRe";
+            this.gridCol_ItemCodeRe.Name = "gridCol_ItemCodeRe";
+            this.gridCol_ItemCodeRe.Visible = true;
+            this.gridCol_ItemCodeRe.VisibleIndex = 9;
             // 
             // Form_M0012_Stock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(987, 599);
+            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -756,6 +874,7 @@
             this.Text = "TỒN KHO LINH KIỆN/PIN TRÊN CHƯƠNG TRÌNH SOLOMON";
             this.Load += new System.EventHandler(this.Form_M0012_Stock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             this.ResumeLayout(false);
@@ -801,13 +920,20 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_SupplierID;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_Supplier;
         private DevExpress.XtraBars.BarCheckItem bCheck_InActive;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarCheckItem bbiCheckDup;
         private DevExpress.XtraBars.BarStaticItem bsiUser;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_WH1Stock;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_WH2Stock;
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_WHTotal;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarHeaderItem barHeaderItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel repositoryItemHypertextLabel1;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_Status;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_ItemCodeRe;
+        private DevExpress.XtraGrid.Columns.GridColumn gridCol_MakerRe;
     }
 }

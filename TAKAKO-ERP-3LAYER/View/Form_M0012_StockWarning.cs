@@ -6,19 +6,19 @@ using MMTB.DAL;
 
 namespace MMTB.View
 {
-    public partial class Form_M0012_Stock : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class Form_M0012_StockWarning : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public DataTable _tempTable;
         public M0012_DAO M0012_DAO;
         public const Boolean AddNew = true;
         //
         public System_DAL _systemDAL = new System_DAL();
-        public Form_M0012_Stock(System_DAL systemDAL)
+        public Form_M0012_StockWarning(System_DAL systemDAL)
         {
             InitializeComponent();
             _systemDAL = systemDAL;
         }
-        private void Form_M0012_Stock_Load(object sender, EventArgs e)
+        private void Form_M0012_StockWarning_Load(object sender, EventArgs e)
         {
             _tempTable = new DataTable();
             //
@@ -32,7 +32,7 @@ namespace MMTB.View
         {
             try
             {
-                _tempTable = M0012_DAO.GetInfo_M0012_Stock();
+                _tempTable = M0012_DAO.GetInfo_M0012_StockWarning();
                 if (_tempTable.Rows.Count > 0)
                 {
                     gridControl.DataSource = _tempTable;

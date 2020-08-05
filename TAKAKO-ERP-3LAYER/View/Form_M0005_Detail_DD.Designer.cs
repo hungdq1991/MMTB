@@ -704,7 +704,7 @@
             this.gridBand1.Columns.Add(this.gridCol_Model);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 680;
+            this.gridBand1.Width = 590;
             // 
             // gridCol_Code
             // 
@@ -807,7 +807,6 @@
             this.gridCol_NameJP.Name = "gridCol_NameJP";
             this.gridCol_NameJP.OptionsColumn.AllowEdit = false;
             this.gridCol_NameJP.OptionsColumn.FixedWidth = true;
-            this.gridCol_NameJP.Visible = true;
             this.gridCol_NameJP.Width = 90;
             // 
             // gridCol_Maker

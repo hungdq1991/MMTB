@@ -78,9 +78,9 @@ namespace MMTB.View
             _DetailTable.Columns.Add("Unit", typeof(string));
             _DetailTable.Columns.Add("UnitMultDiv", typeof(string));
             _DetailTable.Columns.Add("CnvFact", typeof(int));
-            _DetailTable.Columns.Add("Point", typeof(int));
-            _DetailTable.Columns.Add("MinimumQty", typeof(int));
             _DetailTable.Columns.Add("Lifetime", typeof(int));
+            _DetailTable.Columns.Add("MinimumQty", typeof(int));
+            _DetailTable.Columns.Add("Point", typeof(int));
             _DetailTable.Columns.Add("PurCode", typeof(string));
             _DetailTable.Columns.Add("WH1Code", typeof(string));
             _DetailTable.Columns.Add("WH2Code", typeof(string));
@@ -117,6 +117,7 @@ namespace MMTB.View
             _DetailTable.Clear();
             gridControl.DataSource = _DetailTable;
             gridView.AddNewRow();
+            AddValue_sLookUp_ItemCode();
         }
         //Nhập thông tin LK
         //Hiển thị bảng pop up
@@ -142,7 +143,8 @@ namespace MMTB.View
         //Click chuột phải chọn Add new row
         private void bbi_PopUp_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Clear_Data();
+            gridView.AddNewRow();
+            gridView.SetFocusedRowCellValue("InActive", 0);
         }
         //Click nút Add new row
         private void bbi_AddNewRow_ItemClick(object sender, ItemClickEventArgs e)
@@ -354,9 +356,9 @@ namespace MMTB.View
             _unit = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Unit"));
             _unitMultDiv = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("UnitMultDiv"));
             _cnvFact = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("CnvFact"));
-            _point = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("Point"));
-            _minimumQty = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("MinimumQty"));
             _lifetime = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("Lifetime"));
+            _minimumQty = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("MinimumQty"));
+            _point = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("Point"));
             _purCode = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("PurCode"));
             _wh1Code = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("WH1Code"));
             _wh2Code = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("WH2Code"));
@@ -374,9 +376,9 @@ namespace MMTB.View
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "Unit", _unit);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "UnitMultDiv", _unitMultDiv);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "CnvFact", _cnvFact);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "Point", _point);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "MinimumQty", _minimumQty);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "Lifetime", _lifetime);
+            gridView.SetRowCellValue(gridView.FocusedRowHandle, "MinimumQty", _minimumQty);
+            gridView.SetRowCellValue(gridView.FocusedRowHandle, "Point", _point);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "PurCode", _purCode);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "WH1Code", _wh1Code);
             gridView.SetRowCellValue(gridView.FocusedRowHandle, "WH2Code", _wh2Code);
@@ -395,24 +397,13 @@ namespace MMTB.View
             Clear_Data();
             InitValue = true;
             Set_Enable_Control(true);
-            //GridView
-            gridCol_ClassifyID.OptionsColumn.AllowEdit = true;
-            gridCol_NameEN.OptionsColumn.AllowEdit = true;
-            gridCol_Unit.OptionsColumn.AllowEdit = true;
-            gridCol_Maker.OptionsColumn.AllowEdit = true;
         }
         private void BbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
             Clear_Data();
             InitValue = false;
-            AddValue_sLookUp_ItemCode();
             gridView.FocusedColumn = gridCol_ItemCode;
             Set_Enable_Control(false);
-            //GridView
-            gridCol_ClassifyID.OptionsColumn.AllowEdit = false;
-            gridCol_NameEN.OptionsColumn.AllowEdit = false;
-            gridCol_Unit.OptionsColumn.AllowEdit = false;
-            gridCol_Maker.OptionsColumn.AllowEdit = false;
         }
         //Click nút Reset
         private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -436,12 +427,28 @@ namespace MMTB.View
                 {
                     if (CheckError() == true)
                     {
-                        if (M0012_DAO.Insert_Supply_MMTB(_DetailTable))
+                        if (InitValue)
                         {
-                            MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Clear_Data();
-                            Setting_Init_Value();
+                            if (M0012_DAO.Insert_Supply_MMTB(_DetailTable))
+                            {
+                                MessageBox.Show("Đã lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear_Data();
+                                Setting_Init_Value();
+                            }
                         }
+                        else
+                        {
+                            if (M0012_DAO.Update_Supply_MMTB(_DetailTable))
+                            {
+                                MessageBox.Show("Đã cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Clear_Data();
+                                Setting_Init_Value();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm mới/Cập nhật không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
@@ -452,20 +459,22 @@ namespace MMTB.View
         //Bật hiện các nút điều khiển
         private void Set_Enable_Control(Boolean IsEnable)
         {
-            //Menu
-            bbi_PopUp_Delete.Enabled = IsEnable;
+            //gridview
+            gridCol_ClassifyID.OptionsColumn.AllowEdit = IsEnable;
+            gridCol_NameEN.OptionsColumn.AllowEdit = IsEnable;
+            gridCol_Maker.OptionsColumn.AllowEdit = IsEnable;
+            gridCol_Unit.OptionsColumn.AllowEdit = IsEnable;
         }
         //Các tình huống cần kiểm tra lỗi
         public Boolean CheckError()
         {
             if (InitValue)
-            {
-                //Nhóm hàng
+            {//Nhóm hàng
                 for (int rows = 0; rows < gridView.RowCount; rows++)
                 {
                     int _ClassifyID;
                     _ClassifyID = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["ClassifyID"]));
-                    if (_ClassifyID == 0 )
+                    if (_ClassifyID == 0)
                     {
                         MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Nhóm hàng\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         gridView.Focus();
@@ -473,7 +482,7 @@ namespace MMTB.View
                         gridView.FocusedColumn = gridView.Columns["ClassifyID"];
                         return false;
                     }
-                //Mã hàng
+                    //Mã hàng
                     string _itemCode;
                     _itemCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ItemCode"]));
                     if (String.IsNullOrEmpty(_itemCode))
@@ -484,7 +493,7 @@ namespace MMTB.View
                         gridView.FocusedColumn = gridView.Columns["ItemCode"];
                         return false;
                     }
-                //Tên hàng
+                    //Tên hàng
                     string _nameEN;
                     _nameEN = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["NameEN"]));
                     if (String.IsNullOrEmpty(_nameEN))
@@ -495,8 +504,8 @@ namespace MMTB.View
                         gridView.FocusedColumn = gridView.Columns["NameEN"];
                         return false;
                     }
-                //Unit
-                     string _unit;
+                    //Unit
+                    string _unit;
                     _unit = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["Unit"]));
                     if (String.IsNullOrEmpty(_unit))
                     {
@@ -506,7 +515,7 @@ namespace MMTB.View
                         gridView.FocusedColumn = gridView.Columns["Unit"];
                         return false;
                     }
-                //PurCode
+                    //PurCode
                     string _purCode;
                     _purCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["PurCode"]));
                     if (String.IsNullOrEmpty(_purCode))
@@ -517,7 +526,7 @@ namespace MMTB.View
                         gridView.FocusedColumn = gridView.Columns["PurCode"];
                         return false;
                     }
-                //Trùng thông tin Mã hàng, Maker, Point, Lifetime, MinimumQty
+                    //Trùng thông tin Mã hàng, Maker, Point, Lifetime, MinimumQty
                     string _maker;
                     int _point;
                     int _minimumQty;

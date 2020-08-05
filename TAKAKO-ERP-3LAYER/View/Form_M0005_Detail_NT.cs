@@ -258,6 +258,7 @@ namespace MMTB.View
                 {
                     _HeaderTable.Clear();
                     _HeaderTable = M0005_DAO.GetInfo_M0005_NT_Header(DocNo);
+         
 
                     if (_HeaderTable.Rows.Count > 0)
                     {

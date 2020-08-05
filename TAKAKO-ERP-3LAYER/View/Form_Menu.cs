@@ -220,23 +220,39 @@ namespace MMTB.View
         }
         private void BbiStock_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            using (Form_M0012_Stock formDetail = new Form_M0012_Stock(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
         }
         private void BbiReplace_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-        }
-        private void BbiReplaceList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
+            using (Form_M0012_Replace formDetail = new Form_M0012_Replace(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
         }
         private void BbiStop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            using (Form_M0012_Cancel formDetail = new Form_M0012_Cancel(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
         }
-        private void BbiStopList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BbiPur_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            using (Form_M0012_StockWarning formDetail = new Form_M0012_StockWarning(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
         }
     }
 }

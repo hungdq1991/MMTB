@@ -97,7 +97,7 @@
             this.bbiNew,
             this.bbiClose});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 26;
+            this.ribbonControl.MaxItemId = 27;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -121,12 +121,13 @@
             // 
             // bbiEdit
             // 
-            this.bbiEdit.Caption = "Save";
+            this.bbiEdit.Caption = "Chỉnh sửa";
             this.bbiEdit.Id = 17;
             this.bbiEdit.ImageOptions.Image = global::MMTB.Properties.Resources.save_32x32;
             this.bbiEdit.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEdit.ImageOptions.LargeImage = global::MMTB.Properties.Resources.save_32x32;
             this.bbiEdit.Name = "bbiEdit";
+            this.bbiEdit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiEdit_ItemClick);
             // 
             // bbiDelete
             // 
@@ -191,6 +192,7 @@
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiSave);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiReset);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiClose);
@@ -359,8 +361,6 @@
             this.sLook_NameEN.Size = new System.Drawing.Size(300, 20);
             this.sLook_NameEN.TabIndex = 12;
             this.sLook_NameEN.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.sLook_NameEN_CloseUp);
-            this.sLook_NameEN.TextChanged += new System.EventHandler(this.sLook_NameEN_Validated);
-            this.sLook_NameEN.Validated += new System.EventHandler(this.sLook_NameEN_Validated);
             // 
             // searchLookUpEdit1View
             // 
@@ -411,27 +411,29 @@
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(11, 432);
+            this.labelControl1.Location = new System.Drawing.Point(11, 420);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(84, 13);
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "Ngưng sử dụng";
+            this.labelControl1.Visible = false;
             // 
             // cbx_InActive
             // 
-            this.cbx_InActive.Location = new System.Drawing.Point(119, 431);
+            this.cbx_InActive.Location = new System.Drawing.Point(119, 419);
             this.cbx_InActive.MenuManager = this.ribbonControl;
             this.cbx_InActive.Name = "cbx_InActive";
             this.cbx_InActive.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbx_InActive.Size = new System.Drawing.Size(100, 20);
             this.cbx_InActive.TabIndex = 17;
+            this.cbx_InActive.Visible = false;
             // 
             // Form_M0002_Detail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 467);
+            this.ClientSize = new System.Drawing.Size(462, 444);
             this.Controls.Add(this.cbx_InActive);
             this.Controls.Add(this.sLook_Group2);
             this.Controls.Add(this.sLook_Group1);

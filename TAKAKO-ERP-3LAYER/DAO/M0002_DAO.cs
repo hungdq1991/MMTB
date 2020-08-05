@@ -140,20 +140,44 @@ namespace MMTB.DAO
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
 
-            StrQuery = @"UPDATE  dbo.M0002_GroupName
-                            SET  NameVN         = @NameVN
-                                ,NameJP         = @NameJP
-                                ,Group1         = @Group1
-                                ,Group2         = @Group2
-                                ,ClassifyID     = @ClassifyID
-                                ,ClassifyDesc   = @ClassifyDesc
-                                ,ModifyDate     = GETDATE()
-                                ,ModifyUser     = @InputUser
-                                ,InActive       = @InActive
-                            WHERE 
-                                NameEN         = @NameEN
-                            AND Group1         = @Group1
-                            AND Group2         = @Group2";
+            StrQuery = @"INSERT INTO [M0002_GroupName]
+                            ([NameEN]
+                            ,[NameVN]
+                            ,[NameJP]
+                            ,[Group1]
+                            ,[Group2]
+                            ,[ClassifyID]
+                            ,[ClassifyDesc]
+                            ,[ApplyDate]
+                            ,[InActive]
+                            ,[InputDate]
+                            ,[InputUser]
+                            ,[ModifyDate]
+                            ,[ModifyUser]
+                            ,[Column1]
+                            ,[Column2]
+                            ,[Column3]
+                            ,[Column4]
+                            ,[Column5])
+                        VALUES
+                            (@NameEN
+                            ,@NameVN
+                            ,@NameJP
+                            ,@Group1
+                            ,@Group2
+                            ,@ClassifyID
+                            ,@ClassifyDesc
+                            ,@ApplyDate
+                            ,@InActive
+                            ,GETDATE()
+                            ,@InputUser
+                            ,NULL
+                            ,NULL
+                            ,NULL
+                            ,NULL
+                            ,NULL
+                            ,NULL
+                            ,NULL)";
             SqlParameter[] sqlParameters = new SqlParameter[10];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(NameEN);
@@ -176,6 +200,40 @@ namespace MMTB.DAO
             sqlParameters[9] = new SqlParameter("@InputUser", SqlDbType.Text);
             sqlParameters[9].Value = Convert.ToString(_userName);
 
+            return conn.executeInsertQuery(StrQuery, sqlParameters);
+        }
+        //Tạo class InActive
+        public bool InActive(string NameEN,
+                           string Group1,
+                           string Group2,
+                           string ClassifyID,
+                           string _userName)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"UPDATE  dbo.M0002_GroupName
+                            SET  
+                                 InActive       = 1
+                                ,ModifyDate     = GETDATE()
+                                ,ModifyUser     = @InputUser
+                            WHERE 
+                                NameEN         = @NameEN
+                            AND (Group1         <> @Group1
+                            OR Group2         <> @Group2
+                            OR ClassifyID     <> @ClassifyID)";
+            SqlParameter[] sqlParameters = new SqlParameter[5];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(NameEN);
+            sqlParameters[1] = new SqlParameter("@Group1", SqlDbType.NVarChar);
+            sqlParameters[1].Value = Convert.ToString(Group1);
+            sqlParameters[2] = new SqlParameter("@Group2", SqlDbType.NVarChar);
+            sqlParameters[2].Value = Convert.ToString(Group2);
+            sqlParameters[3] = new SqlParameter("@ClassifyID", SqlDbType.Int);
+            sqlParameters[3].Value = Convert.ToInt32(ClassifyID);
+            sqlParameters[4] = new SqlParameter("@InputUser", SqlDbType.Text);
+            sqlParameters[4].Value = Convert.ToString(_userName);
+
             return conn.executeUpdateQuery(StrQuery, sqlParameters);
         }
         //Tạo class Delete
@@ -194,10 +252,29 @@ namespace MMTB.DAO
 
             return conn.executeDeleteQuery(StrQuery, sqlParameters);
         }
-        //Tạo class Check
+        //Tạo class Check khi thêm mới
+        public DataTable GetInfo_M0002_Check_Dup(string NameEN)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	NameEN
+                        FROM
+                        	M0002_GroupName
+                        WHERE 
+                            NameEN = @NameEN";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(NameEN);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Tạo class Check khi chỉnh sửa
         public DataTable GetInfo_M0002_Check(string NameEN,
                                              string Group1,
                                              string Group2,
+                                             string ClassifyID,
                                              DateTime ApplyDate)
         {
             string StrQuery = "";
@@ -207,28 +284,35 @@ namespace MMTB.DAO
                         	NameEN,
                             Group1,
                             Group2,
-                            ApplyDate
+                            ClassifyID,
+                            ApplyDate,
+                            InActive
                         FROM
                         	M0002_GroupName
                         WHERE 
                             (NameEN = @NameEN
-                            and Group1 = @Group1
-                            and Group2 = @Group2)
-                        or (NameEN = @NameEN and ApplyDate = @ApplyDate)";
-            SqlParameter[] sqlParameters = new SqlParameter[4];
+                            AND Group1 = @Group1
+                            AND Group2 = @Group2
+                            AND ClassifyID = @ClassifyID
+                            AND InActive = 0)
+                            OR
+                            (NameEN = @NameEN AND ApplyDate = @ApplyDate)";
+            SqlParameter[] sqlParameters = new SqlParameter[5];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(NameEN);
             sqlParameters[1] = new SqlParameter("@Group1", SqlDbType.NVarChar);
             sqlParameters[1].Value = Convert.ToString(Group1);
             sqlParameters[2] = new SqlParameter("@Group2", SqlDbType.NVarChar);
             sqlParameters[2].Value = Convert.ToString(Group2);
-            sqlParameters[3] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
-            sqlParameters[3].Value = Convert.ToDateTime(ApplyDate);
+            sqlParameters[3] = new SqlParameter("@ClassifyID", SqlDbType.NVarChar);
+            sqlParameters[3].Value = Convert.ToString(ClassifyID);
+            sqlParameters[4] = new SqlParameter("@ApplyDate", SqlDbType.DateTime);
+            sqlParameters[4].Value = Convert.ToDateTime(ApplyDate);
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
-         //Lấy dữ liệu từ bảng M0001_Name (không có parammeter)_Điều kiện InActive = 0 và Name = 1
-         //nhập NameEN
+        //Lấy dữ liệu từ bảng M0001_Name (không có parammeter)_Điều kiện InActive = 0 và Name = 1
+        //nhập NameEN
         public DataTable GetInfo_M0001_Name()
         {
             string StrQuery = "";
@@ -237,7 +321,7 @@ namespace MMTB.DAO
             StrQuery = @"SELECT
                         	 N.NameEN
                             ,N.NameVN
-                           --,N.NameJP
+                            ,N.NameJP
                         FROM
                             M0001_Name N
                         INNER JOIN
@@ -249,9 +333,40 @@ namespace MMTB.DAO
 								InActive = 0
                                 AND Name = 1) N1
                         ON
-                            N.NameEn = N1.NameEN
+                            N.NameEN = N1.NameEN
+                        WHERE N.NameEN NOT IN
+                               (SELECT NameEN 
+                                FROM M0002_GroupName)
                         ORDER BY
                             N.NameEN";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Lấy dữ liệu từ bảng M0002_Name (không có parammeter)_Điều kiện InActive = 0 
+        //nhập NameEN cần edit
+        public DataTable GetInfo_M0002_Name()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	 NameEN
+                            ,NameVN
+                            ,NameJP
+                            ,Group1
+                            ,Group2
+                            ,ClassifyID
+                            ,ClassifyDesc
+                            ,ApplyDate
+                            ,InActive
+                        FROM
+                            M0002_GroupName
+                        WHERE InActive = 0
+                        ORDER BY
+                            NameEN";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString("");
@@ -373,7 +488,7 @@ namespace MMTB.DAO
         }
         //Lấy dữ liệu từ bảng M01_Classify (có parammeter)
         //từ ClassifyID -> lấy thông tin diễn giải Classify
-        public DataTable GetInfo_M01_ClassifyID(int ClassifyID)
+        public DataTable GetInfo_M01_ClassifyID(string ClassifyID)
         {
             string StrQuery = "";
             DataTable _tempDataTable = new DataTable();
@@ -385,7 +500,7 @@ namespace MMTB.DAO
                         WHERE
                             ClassifyID = @ClassifyID";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@ClassifyID", SqlDbType.Int);
+            sqlParameters[0] = new SqlParameter("@ClassifyID", SqlDbType.NVarChar);
             sqlParameters[0].Value = Convert.ToString(ClassifyID);
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);

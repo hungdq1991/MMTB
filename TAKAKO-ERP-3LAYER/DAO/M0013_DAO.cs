@@ -34,9 +34,11 @@ namespace MMTB.DAO
                             ,L.DocDate
                             ,L.ClassifyID
                             ,L.ItemCode
+                            ,Re.ItemCodeRe
                             ,S.NameEN as ItemNameEN
                             ,S.NameVN as ItemNameVN
                             ,L.ItemMaker
+                            ,Re.MakerRe
                             ,S.Unit
                             ,L.QtyNeed
                             ,L.Lifetime
@@ -57,11 +59,17 @@ namespace MMTB.DAO
 							,CASE WHEN P.EF_VendID is null THEN '' ELSE P.EF_VendID END AS EF_VendID
 							,CASE WHEN P.EF_VendName is null THEN '' ELSE P.EF_VendName END AS EF_VendName
 							,CASE WHEN S.PurCode is null THEN '' ELSE S.PurCode END AS PurCode
+							,Re.PurCode AS PurCodeRe
+							,Re.EF_VendID AS EF_VendIDRe
+							,Re.EF_VendName AS EF_VendNameRe
+							,Re.EF_PurCuryID AS EF_PurCuryIDRe
+							,Re.EF_PurCuryPrice AS EF_PurCuryPriceRe
+							,Re.EF_EffDate AS EF_EffDateRe
                         FROM 
 	                        M0013_Master_Supply L
                         JOIN
-                            M0012_SupplyMMTB S
-                        ON L.ItemCode = S.ItemCode
+                            M0012_SupplyMMTB S 
+                        ON L.ItemCode = S.ItemCode AND S.InActive = 0 AND L.InActive = 0
                         LEFT JOIN
                             (SELECT 
                                  P.EF_InvtID
@@ -83,7 +91,47 @@ namespace MMTB.DAO
                             WHERE P.S4Future10 = 1) P
                         ON
                             S.PurCode = P.EF_InvtID
-                        WHERE 
+                        --Thông tin mã thay thế
+                        LEFT JOIN
+						(
+					       SELECT 
+						         R.ItemCode
+						        ,R.ItemCodeRe
+								,R.MakerRe
+						        ,CASE WHEN Se.PurCode is null THEN '' ELSE Se.PurCode END AS PurCode
+						        ,CASE WHEN Pe.EF_PurCuryID IS NULL THEN '' ELSE Pe.EF_PurCuryID END AS EF_PurCuryID
+						        ,CASE WHEN Pe.EF_PurCuryPrice IS NULL THEN 0 ELSE Pe.EF_PurCuryPrice END AS EF_PurCuryPrice
+						        ,CASE WHEN Pe.EF_EffDate is null THEN NULL ELSE Pe.EF_EffDate END AS EF_EffDate
+						        ,CASE WHEN Pe.EF_VendID is null THEN '' ELSE Pe.EF_VendID END AS EF_VendID
+						        ,CASE WHEN Pe.EF_VendName is null THEN '' ELSE Pe.EF_VendName END AS EF_VendName
+					        FROM M0012_SupplyMMTB_Replace R 
+					        JOIN
+                                M0012_SupplyMMTB Se
+                                ON R.ItemCodeRe = Se.ItemCode AND R.InActive = 0 AND Se.InActive = 0
+					        LEFT JOIN
+                                    (SELECT 
+                                         P.EF_InvtID
+                                        ,P.EF_PurCuryID
+                                        ,P.EF_PurCuryPrice
+                                        ,P.EF_EffDate
+                                        ,P.EF_VendID
+                                        ,P.EF_VendName
+                                        ,P.EF_PurUnit
+                                    FROM [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapPrice] P
+                                    JOIN 
+                                        (SELECT 
+                                             EF_InvtID
+                                            ,MAX(EF_EffDate) as EF_EffDate 
+                                        FROM [SOLOMON-SERVER].[TVCAPP].[dbo].[xt_CPMapPrice] 
+                                        GROUP BY EF_InvtID) D
+                                    ON P.EF_InvtID = D.EF_InvtID 
+                                    AND P.EF_EffDate = D.EF_EffDate
+                                    WHERE P.S4Future10 = 1 ) Pe
+                                ON
+                                    Se.PurCode = Pe.EF_InvtID ) Re
+						ON
+							L.ItemCode = Re.ItemCode
+						WHERE 
                             L.ClassifyID like @ClassifyID
                         ORDER BY L.NameEN, L.Model, L.ClassifyID, L.ItemCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
@@ -110,9 +158,11 @@ namespace MMTB.DAO
                             ,L.DocDate
                             ,L.ClassifyID
                             ,L.ItemCode
+                            ,R.ItemCodeRe
                             ,S.NameEN as ItemNameEN
                             ,S.NameVN as ItemNameVN
                             ,L.ItemMaker
+                            ,R.MakerRe
                             ,S.Unit
                             ,L.QtyNeed
                             ,L.Lifetime
@@ -132,9 +182,12 @@ namespace MMTB.DAO
 	                        M0013_Master_Supply L
                         JOIN
                             M0012_SupplyMMTB S
-                        ON L.ItemCode = S.ItemCode
+                        ON L.ItemCode = S.ItemCode AND S.InActive = 0 AND L.InActive = 0
+                        LEFT JOIN
+                            M0012_SupplyMMTB_Replace R
+                        ON L.ItemCode = R.ItemCode AND R.InActive = 0
                         WHERE 
-                            L.ClassifyID like @ClassifyID
+                            L.ClassifyID like @ClassifyID 
                         ORDER BY L.NameEN, L.Model, L.ClassifyID, L.ItemCode";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@ClassifyID", SqlDbType.Text);
@@ -160,13 +213,6 @@ namespace MMTB.DAO
                             ,NameJP AS NameJP
                             ,Maker
                             ,Model
-                            ,ClassifyID                            
-                            ,ItemCode
-                            ,ItemNameEN AS ItemNameEN 
-                            ,ItemNameVN AS ItemNameVN
-                            ,ItemNameJP AS ItemNameJP
-                            ,ItemMaker
-                            ,Unit
                         FROM
                         	M0013_Master_Supply
                         WHERE 
@@ -529,87 +575,6 @@ namespace MMTB.DAO
         public string Insert_Confirm_Master_ByItem(DataTable _listSummary, DataTable _listSummaryDoc)
         {
             return conn.Insert_Confirm_Master_ByItem(_listSummary, _listSummaryDoc);
-        }
-
-        /// <summary>
-        /// Liên quan nghiệp vụ xác định mã LK/Pin/Dầu thay thế
-        /// </summary>
-        /// <param name=""></param>
-        /// <returns></returns>
-        ///Load dữ liệu từ M0013_Master_Supply_Replace
-        public DataTable GetInfo_M0013_Replace()
-        {
-            string StrQuery = "";
-        DataTable _tempDataTable = new DataTable();
-
-        StrQuery = @"SELECT 
-                           ClassifyID
-                          ,ItemCode
-                          ,NameEN
-                          ,NameVN
-                          ,NameJP
-                          ,Maker
-                          ,Unit
-                          ,ItemCodeRe
-                          ,NameENRe
-                          ,NameVNRe
-                          ,NameJPRe
-                          ,MakerRe
-                          ,UnitRe
-                          ,Memo
-                          ,ApplyDate
-                          ,InActive
-                          ,InActiveDate
-                          ,InActiveUser
-                        FROM 
-	                        M0013_Master_Supply_Replace L
-                        ORDER BY L.ClassifyID, L.ItemCode";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-        sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.Text);
-        sqlParameters[0].Value = Convert.ToString("");
-            return conn.executeSelectQuery(StrQuery, sqlParameters);
-        }
-        /// <summary>
-        /// Check mã trùng trong M0013_Master_Supply_Replace
-        /// </summary>
-        /// <param name="NameEN"></param>
-        /// <param name="Maker"></param>
-        /// <param name="Model"></param>
-        /// <param name="ItemCode"></param>
-        /// <param name="QtyNeed"></param>
-        /// <param name="Lifetime"></param>
-        /// <param name="Point"></param>
-        /// <returns></returns>
-        public DataTable GetInfo_M0013_CheckReplace(string ItemCode, string Maker, string ItemCodeRe, string MakerRe)
-        {
-            string StrQuery = "";
-            DataTable _tempDataTable = new DataTable();
-
-            StrQuery = @"SELECT
-                             ItemCode
-                            ,Maker
-                            ,ItemCodeRe
-                            ,MakerRe
-                        FROM
-                        	M0013_Master_Supply_Replace 
-                        WHERE 
-                            ItemCode        = @ItemCode
-                        AND Maker           = @Maker
-                        AND ItemCodeRe      = @ItemCodeRe
-                        AND MakerRe         = @MakerRe";
-
-            SqlParameter[] sqlParameters = new SqlParameter[4];
-
-            sqlParameters[0] = new SqlParameter("@ItemCode", SqlDbType.NVarChar);
-            sqlParameters[0].Value = Convert.ToString(ItemCode);
-            sqlParameters[1] = new SqlParameter("@Maker", SqlDbType.NVarChar);
-            sqlParameters[1].Value = Convert.ToString(Maker);
-            sqlParameters[2] = new SqlParameter("@ItemCodeRe", SqlDbType.NVarChar);
-            sqlParameters[2].Value = Convert.ToString(ItemCodeRe);
-            sqlParameters[3] = new SqlParameter("@MakerRe", SqlDbType.NVarChar);
-            sqlParameters[3].Value = Convert.ToString(MakerRe);
-
-            return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
     }
 }

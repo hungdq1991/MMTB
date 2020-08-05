@@ -605,7 +605,7 @@ namespace MMTB.View
         //Hiển thị bảng Pop up
         private void gridControl_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Right) return;
+            if (e.Button != MouseButtons.Left) return;
             var currentRow = advBandedGridView1.FocusedRowHandle;
             var focusRowView = (DataRowView)advBandedGridView1.GetFocusedRow();
 
