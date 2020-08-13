@@ -228,6 +228,18 @@
     <Compile Include="View\Form_M0012_Cancel.Designer.cs">
       <DependentUpon>Form_M0012_Cancel.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Form_M01_GroupEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M01_GroupEmail.Designer.cs">
+      <DependentUpon>Form_M01_GroupEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form_M01_TelEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_M01_TelEmail.Designer.cs">
+      <DependentUpon>Form_M01_TelEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form_M0012_StockWarning.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,6 +504,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0012_Cancel.resx">
       <DependentUpon>Form_M0012_Cancel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M01_GroupEmail.resx">
+      <DependentUpon>Form_M01_GroupEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_M01_TelEmail.resx">
+      <DependentUpon>Form_M01_TelEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_M0012_StockWarning.resx">
       <DependentUpon>Form_M0012_StockWarning.cs</DependentUpon>

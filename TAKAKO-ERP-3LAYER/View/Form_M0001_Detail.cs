@@ -223,7 +223,7 @@ namespace MMTB.View
                 if ((MessageBox.Show(Message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                     , MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes))
                 {
-                    if (CheckError() == true)
+                    if (CheckError() == true && CheckError1() == true)
                     {
                         if (M0001_DAO.Update_Name(curr_NameEN, curr_NameVN, curr_NameJP, curr_Name, curr_Group1, curr_Group2, curr_Line, curr_InActive, _systemDAL.userName.ToUpper()))
                         {
@@ -295,6 +295,41 @@ namespace MMTB.View
                 MessageBox.Show("Hãy chọn \"Yes\" ít nhất 1 trong 4 nhóm: \"Tên / Nhóm trung/ Nhóm đại/ Line\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbx_Name.Focus();
                 return false;
+            }
+            return true;
+        }
+        public Boolean CheckError1()
+        {
+            try
+            { 
+                string nameEN = txt_NameEN.Text.Trim();
+                string group1 = txt_NameEN.Text.Trim();
+                string group2 = txt_NameEN.Text.Trim();
+                string message = "";
+                DataTable _tempTable = M0001_DAO.GetInfo_M0001_NameEN(nameEN);
+                DataTable _tempTable1 = M0001_DAO.GetInfo_M0001_Group1(nameEN);
+                DataTable _tempTable2 = M0001_DAO.GetInfo_M0001_Group2(nameEN);
+                if (_tempTable.Rows.Count > 0 && cbx_Name.SelectedIndex == 0)
+                {
+                    message = "Tên đang sử dụng trong Phân nhóm!";
+                }
+                if (_tempTable1.Rows.Count > 0 && cbx_Group1.SelectedIndex == 0)
+                {
+                    message = message + "\n" +"Tên đang sử dụng làm Nhóm trung trong Phân nhóm!";
+                }
+                if (_tempTable2.Rows.Count > 0 && cbx_Group2.SelectedIndex == 0)
+                {
+                    message = message + "\n" + "Tên đang sử dụng làm Nhóm đại trong Phân nhóm!";
+                }
+                if (!String.IsNullOrEmpty(message))
+                {
+                    MessageBox.Show(message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return true;
         }

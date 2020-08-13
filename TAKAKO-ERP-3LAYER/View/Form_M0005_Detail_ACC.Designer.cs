@@ -992,8 +992,6 @@
             this.gridCol_InputUser.Caption = "InputUser";
             this.gridCol_InputUser.FieldName = "InputUser";
             this.gridCol_InputUser.Name = "gridCol_InputUser";
-            this.gridCol_InputUser.Visible = true;
-            this.gridCol_InputUser.VisibleIndex = 24;
             // 
             // repo_sLookUp_NameEN
             // 

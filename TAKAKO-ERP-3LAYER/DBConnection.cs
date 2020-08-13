@@ -1131,11 +1131,112 @@ namespace MMTB
             //return result;
             return true;
         }
+
         //Nhập mã LK/pin/dầu ngưng sử dụng (Cancel)
         public bool Insert_Item_Cancel(DataTable _listSummary)
         {
             conn.Open();
             var cmd = new SqlCommand("SP_TVC_INSERT_ITEM_CANCEL", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+
+        //Nhập thông tin NV mới
+        public bool Insert_TelEmail(DataTable _listSummary)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INSERT_TEL_EMAIL", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+        //Bổ sung thông tin Email ĐT
+        public bool Update_TelEmail(DataTable _listSummary)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_UPDATE_TEL_EMAIL", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+
+            //Set timeout
+            cmd.CommandTimeout = 300;
+
+            //Add param
+            SqlParameter param = cmd.Parameters.AddWithValue("@tblListSummary", _listSummary);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return false;
+            }
+            finally
+            {
+                // Close the SqlDataReader.
+                // The SqlBulkCopy object is automatically closed at the end of the using block.
+                conn.Close();
+            }
+            conn.Close();
+            //return result;
+            return true;
+        }
+        //InActive Email ĐT
+        public bool InActive_TelEmail(DataTable _listSummary)
+        {
+            conn.Open();
+            var cmd = new SqlCommand("SP_TVC_INACTIVE_TEL_EMAIL", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };

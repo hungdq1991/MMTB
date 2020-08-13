@@ -238,5 +238,112 @@ namespace MMTB.DAO
         {
             return conn.Confirm_Request_IT(_listRequest, _listRequestDoc);
         }
+
+        //Thông tin IT
+        //Lấy thông tin Email, ĐT
+        public DataTable GetInfo_M01_TelEmail()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+                           MSNV
+                          ,Name
+	                      ,CASE WHEN H.DepartID IS NULL THEN 'OTHER' ELSE H.DepartID END AS DepartID
+	                      ,CASE WHEN H.PositionID IS NULL THEN 'OTHER' ELSE H.PositionID END AS PositionID
+                          ,E.Phone
+                          ,IntPhone
+                          ,HandPhone
+                          ,E.Email
+                          ,Memo
+                          ,ApplyDate
+                          ,InActiveIntPhone
+	                      ,InActiveEmail                       
+                          ,PwEmail
+	                      ,CASE WHEN H.Status = 'I' THEN 'X' ELSE '' END AS Status
+                      FROM [M01_TelEmail] E
+                      LEFT JOIN [hr-server1].[TAKHRAPP].[dbo].[xt_HREmployee] H
+                      ON E.MSNV = H.EmployeeID
+                      WHERE E.InActiveIntPhone = 0 AND E.InActiveEmail = 0
+                      ORDER BY DepartID, PositionID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@MSNV", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Lấy thông tin MSNV
+        public DataTable GetInfo_M01_MSNV()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+                           EmployeeID
+                          ,Name00
+                      FROM [hr-server1].[TAKHRAPP].[dbo].[xt_HREmployee]
+                      WHERE Status = 'A'
+                      AND EmployeeID NOT IN (SELECT MSNV
+                                             FROM M01_TelEmail)";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@EmployeeID", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Lấy thông tin MSNV cần InActie
+        public DataTable GetInfo_M01_MSNV_Stop()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+                           MSNV
+                          ,Name
+                      FROM M01_TelEmail
+                      WHERE Status = X AND ( InActiveIntPhone = 0 OR InActiveEmail = 0)";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@MSNV", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        //Nhập và xác nhận danh sách yêu cầu
+        public bool Insert_TelEmail(DataTable _listTelEmail)
+        {
+            return conn.Insert_TelEmail(_listTelEmail);
+        }
+        //Cập nhật danh sách yêu cầu (IT xác nhận)
+        public bool InActive_TelEmail(DataTable _listTelEmail)
+        {
+            return conn.InActive_TelEmail(_listTelEmail);
+        }
+        //Quản lý group email
+        //Lấy thông tin Email, ĐT
+        public DataTable GetInfo_M01_GroupEmail()
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT 
+                           GroupEmail
+                          ,Memo
+                          ,MSNV
+                          ,Name
+	                      ,CASE WHEN H.DepartID IS NULL THEN '' ELSE H.DepartID END AS DepartID
+	                      ,CASE WHEN H.PositionID IS NULL THEN '' ELSE H.PositionID END AS PositionID
+                          ,E.Email
+                          ,Memo
+                          ,ApplyDate
+	                      ,InActive                    
+                          ,PwEmail
+	                      ,CASE WHEN H.Status = 'I' THEN 'X' ELSE '' END AS Status
+                      FROM [M01_GroupEmail] E
+                      LEFT JOIN [hr-server1].[TAKHRAPP].[dbo].[xt_HREmployee] H
+                      ON E.MSNV = H.EmployeeID
+                      WHERE E.InActive = 0
+                      ORDER BY GroupEmail, DepartID, PositionID";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@MSNV", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString("");
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
     }
 }

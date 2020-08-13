@@ -55,8 +55,8 @@ namespace MMTB.View
         {
             using (Form_M0012_Detail formDetail = new Form_M0012_Detail(AddNew, _systemDAL))
             {
-                formDetail.StartPosition = FormStartPosition.CenterParent;
                 formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterParent;
             }
         }
         //Thay đổi thông tin số lượng records khi filter
@@ -142,15 +142,6 @@ namespace MMTB.View
             bCheck_InActive.Checked = false;
             GetInfo_Gridview();
             bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
-        }
-        private void GridControl_DoubleClick(object sender, EventArgs e)
-        {
-            using (Form_M0012_Detail formDetail = new Form_M0012_Detail(gridView.GetFocusedDataRow(), _systemDAL))
-            {
-                formDetail.ShowDialog();
-                formDetail.StartPosition = FormStartPosition.CenterScreen;
-                Setting_Init_Form();
-            }
         }
     }
 }

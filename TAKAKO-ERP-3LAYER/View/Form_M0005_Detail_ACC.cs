@@ -157,28 +157,28 @@ namespace MMTB.View
                             return false;
                         }
                     }
-                    //Số chứng từ nghiệm thu
-                    string _ACCcode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCcode"]));
-                    string _ACCDoc = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCDoc"]));
-                    if (!String.IsNullOrEmpty(_ACCcode) && String.IsNullOrEmpty(_ACCDoc))
-                    {
-                        MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Số chứng từ nghiệm thu\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        gridView.Focus();
-                        gridView.FocusedRowHandle = rows;
-                        gridView.FocusedColumn = gridView.Columns["ACCDoc"];
-                        return false;
-                    }
-                    //Số chứng từ thanh lý
-                    string _disposalDoc = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["DocNo_Disposal"]));
-                    string _ACCDoc_Disposal = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCDoc_Disposal"]));
-                    if (!String.IsNullOrEmpty(_disposalDoc) && String.IsNullOrEmpty(_ACCDoc_Disposal))
-                    {
-                        MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Số chứng từ thanh lý\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        gridView.Focus();
-                        gridView.FocusedRowHandle = rows;
-                        gridView.FocusedColumn = gridView.Columns["ACCDoc_Disposal"];
-                        return false;
-                    }
+                    ////Số chứng từ nghiệm thu
+                    //string _ACCcode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCcode"]));
+                    //string _ACCDoc = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCDoc"]));
+                    //if (!String.IsNullOrEmpty(_ACCcode) && String.IsNullOrEmpty(_ACCDoc))
+                    //{
+                    //    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Số chứng từ nghiệm thu\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    gridView.Focus();
+                    //    gridView.FocusedRowHandle = rows;
+                    //    gridView.FocusedColumn = gridView.Columns["ACCDoc"];
+                    //    return false;
+                    //}
+                    ////Số chứng từ thanh lý
+                    //string _disposalDoc = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["DocNo_Disposal"]));
+                    //string _ACCDoc_Disposal = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ACCDoc_Disposal"]));
+                    //if (!String.IsNullOrEmpty(_disposalDoc) && String.IsNullOrEmpty(_ACCDoc_Disposal))
+                    //{
+                    //    MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Số chứng từ thanh lý\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    gridView.Focus();
+                    //    gridView.FocusedRowHandle = rows;
+                    //    gridView.FocusedColumn = gridView.Columns["ACCDoc_Disposal"];
+                    //    return false;
+                    //}
                 }
             return true;
         }
@@ -191,7 +191,7 @@ namespace MMTB.View
                 {
                     gridControl.DataSource = _DetailTable.AsEnumerable()
                         .Where(row => row.Field<string>("ACCcode") == null 
-                                   || row.Field<string>("ACCcode") == "").CopyToDataTable();
+                                   || row.Field<string>("ACCcode") == "" || row.Field<string>("ACCDoc") == "" || row.Field<string>("ACCDoc") == null).CopyToDataTable();
                     bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _DetailTable.Rows.Count + " records";
                 }
                 else

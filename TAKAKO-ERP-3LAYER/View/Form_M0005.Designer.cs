@@ -43,9 +43,11 @@
             this.bbiMoving = new DevExpress.XtraBars.BarButtonItem();
             this.bCheck_NoUsed = new DevExpress.XtraBars.BarCheckItem();
             this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
+            this.bbiExcel = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.advBandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
@@ -121,9 +123,10 @@
             this.bCheck_Disposal,
             this.bbiMoving,
             this.bCheck_NoUsed,
-            this.bsiUser});
+            this.bsiUser,
+            this.bbiExcel});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 24;
+            this.ribbonControl.MaxItemId = 25;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -208,7 +211,7 @@
             // 
             // bCheck_NoUsed
             // 
-            this.bCheck_NoUsed.Caption = "Không sử dụng";
+            this.bCheck_NoUsed.Caption = "Không sử dụng ";
             this.bCheck_NoUsed.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.AfterText;
             this.bCheck_NoUsed.Id = 22;
             this.bCheck_NoUsed.ItemAppearance.Normal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -223,11 +226,20 @@
             this.bsiUser.Id = 23;
             this.bsiUser.Name = "bsiUser";
             // 
+            // bbiExcel
+            // 
+            this.bbiExcel.Caption = "Xuất Excel";
+            this.bbiExcel.Id = 24;
+            this.bbiExcel.ImageOptions.ImageUri.Uri = "ExportToXLSX";
+            this.bbiExcel.Name = "bbiExcel";
+            this.bbiExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiExcel_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
@@ -250,6 +262,11 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.bCheck_NoUsed);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Filter";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiExcel);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // ribbonStatusBar
             // 
@@ -1075,5 +1092,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraBars.BarButtonItem bbiExcel;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }

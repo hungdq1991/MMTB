@@ -366,25 +366,33 @@ namespace MMTB.View
             _inActive = Convert.ToInt32(editor.Properties.View.GetFocusedRowCellValue("InActive"));
             _memo = Convert.ToString(editor.Properties.View.GetFocusedRowCellValue("Memo"));
 
-            //Set value to column 
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "ClassifyID", _ClassifyID);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "ItemCode", _itemCode);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameEN", _nameEN);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "Maker", _maker);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "Unit", _unit);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "UnitMultDiv", _unitMultDiv);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "CnvFact", _cnvFact);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "Lifetime", _lifetime);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "MinimumQty", _minimumQty);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "Point", _point);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "PurCode", _purCode);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "WH1Code", _wh1Code);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "WH2Code", _wh2Code);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "ApplyDate", _applyDate);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "InActive", _inActive);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "Memo", _memo);
+            //Set value to column
+            if (IsDuplicatedRowFound(_itemCode,"ItemCode"))
+            {
+                MessageBox.Show("Mã LK/Dầu/Pin đã tồn tại trên lưới", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                gridView.FocusedColumn = gridCol_ItemCode;
+            }
+            else
+            {
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "ClassifyID", _ClassifyID);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "ItemCode", _itemCode);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameEN", _nameEN);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameVN", _nameVN);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "NameJP", _nameJP);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Maker", _maker);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Unit", _unit);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "UnitMultDiv", _unitMultDiv);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "CnvFact", _cnvFact);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Lifetime", _lifetime);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "MinimumQty", _minimumQty);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Point", _point);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "PurCode", _purCode);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "WH1Code", _wh1Code);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "WH2Code", _wh2Code);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "ApplyDate", _applyDate);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "InActive", _inActive);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "Memo", _memo);
+            }
         }
         //Xóa dòng trên gridView
         private void Define_DeleteRowTable()
@@ -552,6 +560,53 @@ namespace MMTB.View
                     }
                 }
             }
+            else
+            {
+                for (int rows = 0; rows < gridView.RowCount; rows++)
+                {
+                    //Mã hàng
+                    string _itemCode;
+                    _itemCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["ItemCode"]));
+                    if (String.IsNullOrEmpty(_itemCode))
+                    {
+                        MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã hàng\" chưa được nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        gridView.Focus();
+                        gridView.FocusedRowHandle = rows;
+                        gridView.FocusedColumn = gridView.Columns["ItemCode"];
+                        return false;
+                    }
+                    //Trùng thông tin Mã hàng, Maker, Point, Lifetime, MinimumQty
+                    string _maker;
+                    int _point;
+                    int _minimumQty;
+                    int _lifetime;
+                    string _purCode;
+                    string _WH1Code;
+                    string _WH2Code;
+                    _maker = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["Maker"]));
+                    _point = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["Point"]));
+                    _minimumQty = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["MinimumQty"]));
+                    _lifetime = Convert.ToInt32(gridView.GetRowCellValue(rows, gridView.Columns["Lifetime"]));
+                    _purCode = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["PurCode"]));
+                    _WH1Code = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["WH1Code"]));
+                    _WH2Code = Convert.ToString(gridView.GetRowCellValue(rows, gridView.Columns["WH2Code"]));
+                    try
+                    {
+                        DataTable _tempTable = M0012_DAO.GetInfo_M0012_Check1(_itemCode, _maker, _point, _minimumQty, _lifetime, _purCode, _WH1Code, _WH2Code);
+                        if (_tempTable.Rows.Count > 0)
+                        {
+                            MessageBox.Show("Dòng " + (rows + 1) + ", cột \"Mã hàng\" đã có (trùng Maker, Điểm, Tuổi thọ và SL tối thiểu, mã mua hàng, mã tồn kho!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            gridView.Focus();
+                            gridControl.DataSource = _DetailTable;
+                            return false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
             return true;
         }
         //Load thông tin mã LK khi user cần Edit
@@ -584,15 +639,26 @@ namespace MMTB.View
         //Kiểm tra mã LK trùng khi nhập liệu
         private void gridView_ValidatingEditor(object sender, BaseContainerValidateEditorEventArgs e)
         {
-            if (gridView.FocusedColumn == gridCol_ItemCode)
+            if (InitValue)
             {
-                string _itemCode = (string)e.Value;
-                e.Valid = !IsDuplicatedRowFound(_itemCode, "ItemCode");
-                if (!e.Valid)
+                if (gridView.FocusedColumn == gridCol_ItemCode)
                 {
-                    e.ErrorText = "Mã LK/Dầu/Pin đã tồn tại trên lưới";
+                    try
+                    {
+                        string _itemCode = (string)e.Value;
+                        e.Valid = !IsDuplicatedRowFound(_itemCode, "ItemCode");
+                        if (!e.Valid)
+                        {
+                            e.ErrorText = "Mã LK/Dầu/Pin đã tồn tại trên lưới";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Vui lòng chọn mã hàng!" + "\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        gridView.FocusedColumn = gridCol_ItemCode;
+                    }
                 }
-            }
+            }        
         }
         private void GridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
         {

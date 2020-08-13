@@ -254,5 +254,25 @@ namespace MMTB.View
                 formDetail.Show();
             }
         }
+
+        private void BbiTelEmail_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M01_TelEmail formDetail = new Form_M01_TelEmail(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
+        }
+
+        private void BbiGEmail_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_M01_GroupEmail formDetail = new Form_M01_GroupEmail(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
+        }
     }
 }

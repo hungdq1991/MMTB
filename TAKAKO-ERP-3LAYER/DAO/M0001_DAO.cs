@@ -198,5 +198,57 @@ namespace MMTB.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        //Kiểm tra thông tin có sử dụng trong M0002_GroupName
+        public DataTable GetInfo_M0001_NameEN(string NameEN)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	NameEN
+                        FROM
+                        	M0002_GroupName
+                        WHERE 
+                            NameEN = @NameEN";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(NameEN);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        public DataTable GetInfo_M0001_Group1(string NameEN)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	Group1
+                        FROM
+                        	M0002_GroupName
+                        WHERE 
+                            Group1 = @NameEN";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(NameEN);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+        public DataTable GetInfo_M0001_Group2(string NameEN)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                        	Group2
+                        FROM
+                        	M0002_GroupName
+                        WHERE 
+                            Group2 = @NameEN";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@NameEN", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(NameEN);
+
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
     }
 }

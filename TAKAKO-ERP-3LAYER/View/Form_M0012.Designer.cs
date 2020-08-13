@@ -216,7 +216,6 @@
             this.gridControl.TabIndex = 5;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
-            this.gridControl.DoubleClick += new System.EventHandler(this.GridControl_DoubleClick);
             // 
             // gridView
             // 

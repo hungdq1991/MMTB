@@ -58,6 +58,8 @@
             this.bbiReplaceList = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAddItem = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPur = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTelEmail = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiGEmail = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -68,6 +70,8 @@
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             this.SuspendLayout();
@@ -107,15 +111,18 @@
             this.bbiReplace,
             this.bbiReplaceList,
             this.bbiAddItem,
-            this.bbiPur});
+            this.bbiPur,
+            this.bbiTelEmail,
+            this.bbiGEmail});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 33;
+            this.mainRibbonControl.MaxItemId = 35;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage,
             this.ribbonPage1,
             this.ribbonPage2,
-            this.ribbonPage3});
+            this.ribbonPage3,
+            this.ribbonPage4});
             this.mainRibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.mainRibbonControl.Size = new System.Drawing.Size(865, 159);
@@ -352,9 +359,25 @@
             // 
             this.bbiPur.Caption = "Cần đặt mua \r\nLK/Pin";
             this.bbiPur.Id = 32;
-            this.bbiPur.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.bbiPur.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPur.ImageOptions.SvgImage")));
             this.bbiPur.Name = "bbiPur";
             this.bbiPur.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiPur_ItemClick);
+            // 
+            // bbiTelEmail
+            // 
+            this.bbiTelEmail.Caption = "ĐT-Email NV";
+            this.bbiTelEmail.Id = 33;
+            this.bbiTelEmail.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiTelEmail.ImageOptions.SvgImage")));
+            this.bbiTelEmail.Name = "bbiTelEmail";
+            this.bbiTelEmail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiTelEmail_ItemClick);
+            // 
+            // bbiGEmail
+            // 
+            this.bbiGEmail.Caption = "Group Email";
+            this.bbiGEmail.Id = 34;
+            this.bbiGEmail.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiGEmail.ImageOptions.SvgImage")));
+            this.bbiGEmail.Name = "bbiGEmail";
+            this.bbiGEmail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiGEmail_ItemClick);
             // 
             // mainRibbonPage
             // 
@@ -406,7 +429,7 @@
             // 
             this.ribbonPageGroup6.ItemLinks.Add(this.bbiList);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Xem thông tin";
+            this.ribbonPageGroup6.Text = "Thông tin";
             // 
             // ribbonPage2
             // 
@@ -452,6 +475,19 @@
             this.ribbonPageGroup3.ItemLinks.Add(this.bbiNewRequest);
             this.ribbonPageGroup3.ItemLinks.Add(this.bbiListRequest);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            // 
+            // ribbonPage4
+            // 
+            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup7});
+            this.ribbonPage4.Name = "ribbonPage4";
+            this.ribbonPage4.Text = "Thông tin IT";
+            // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.ItemLinks.Add(this.bbiTelEmail);
+            this.ribbonPageGroup7.ItemLinks.Add(this.bbiGEmail);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             // 
             // ribbonPageGroup4
             // 
@@ -524,5 +560,9 @@
         private DevExpress.XtraBars.BarButtonItem bbiAddItem;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem bbiPur;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage4;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarButtonItem bbiTelEmail;
+        private DevExpress.XtraBars.BarButtonItem bbiGEmail;
     }
 }

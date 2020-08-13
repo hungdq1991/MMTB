@@ -3,6 +3,8 @@ using System.Data;
 using System.Windows.Forms;
 using MMTB.DAO;
 using MMTB.DAL;
+using DevExpress.XtraPrinting;
+using DevExpress.Export;
 
 namespace MMTB.View
 {
@@ -193,7 +195,47 @@ namespace MMTB.View
                 e.DisplayText = "";
             }
         }
+        //Xuất file excel
+        private void BbiExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ExportExcel("");
+        }
+        //Xuất excel
+        private void ExportExcel(string fileName)
+        {
+            try
+            {
+                if (advBandedGridView1.FocusedRowHandle <0)
+                {
 
+                }
+                else
+                {
+                    var dialog = new SaveFileDialog();
+                    dialog.Title = @"Export file excel";
+                    dialog.FileName = fileName;
+                    dialog.Filter = @"Microsoft Excel|*.xlsx";
 
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        advBandedGridView1.ColumnPanelRowHeight = 40;
+                        advBandedGridView1.OptionsPrint.AutoWidth = AutoSize;
+                        advBandedGridView1.OptionsPrint.ShowPrintExportProgress = true;
+                        advBandedGridView1.OptionsPrint.AllowCancelPrintExport = true;
+                        XlsxExportOptions options = new XlsxExportOptions();
+                        options.TextExportMode = TextExportMode.Text;
+                        options.ExportMode = XlsxExportMode.SingleFile;
+                        options.SheetName = @"List";
+                        ExportSettings.DefaultExportType = ExportType.Default;
+                        advBandedGridView1.ExportToXlsx(dialog.FileName, options);
+                        MessageBox.Show("Xuất dũ liệu thành công!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Lỗi" + e, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

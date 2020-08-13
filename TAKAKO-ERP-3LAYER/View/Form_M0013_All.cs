@@ -3,13 +3,10 @@ using System.Data;
 using System.Windows.Forms;
 using MMTB.DAO;
 using MMTB.DAL;
-using System.Drawing;
-using System.Collections.Generic;
 using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using DevExpress.XtraEditors.Controls;
-using MMTB.Report;
-using DevExpress.XtraReports.UI;
+using DevExpress.XtraPrinting;
+using DevExpress.Export;
+using DevExpress.SpreadsheetSource;
 
 namespace MMTB.View
 {
@@ -33,7 +30,7 @@ namespace MMTB.View
 
             _systemDAL = systemDAL;
         }
-        private void GetInfo_GridView()
+        private void GetInfo_advBandedGridView1()
         {
             try
             {
@@ -41,7 +38,7 @@ namespace MMTB.View
                 if (_tempTable.Rows.Count > 0)
                 {
                     gridControl.DataSource = _tempTable;
-                    bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                 }
             }
             catch (Exception ex)
@@ -73,14 +70,14 @@ namespace MMTB.View
             //
             bsiUser.Caption = _systemDAL.userName.ToUpper().ToUpper();
             Add_Value_Classify();
-            GetInfo_GridView();
+            GetInfo_advBandedGridView1();
         }
         //Nhấn nút Refresh
         private void BbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Set_Enable_Control(false);
-            GetInfo_GridView();
-            gridView.ClearColumnsFilter();
+            GetInfo_advBandedGridView1();
+            advBandedGridView1.ClearColumnsFilter();
         }
         //Nhấn nút Close
         private void BbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -112,9 +109,9 @@ namespace MMTB.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GridView_ColumnFilterChanged(object sender, EventArgs e)
+        private void advBandedGridView1_ColumnFilterChanged(object sender, EventArgs e)
         {
-            bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+            bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
         }
 
         private void BbiLoad_ItemClick(object sender, ItemClickEventArgs e)
@@ -126,7 +123,7 @@ namespace MMTB.View
                 {
                     Set_Enable_Control(true);
                     gridControl.DataSource = _tempTable;
-                    bsiRecordsCount.Caption = gridView.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
+                    bsiRecordsCount.Caption = advBandedGridView1.RowCount.ToString() + " of " + _tempTable.Rows.Count + " records";
                 }
             }
             catch (Exception ex)
@@ -148,6 +145,48 @@ namespace MMTB.View
             gridCol_CuryRe.Visible = IsEnable;
             gridCol_PriceRefRe.Visible = IsEnable;
             gridCol_EffDateRe.Visible = IsEnable;
+        }
+        //Xuất file excel
+        private void BbiExcel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ExportExcel("");
+        }
+        //Xuất excel
+        private void ExportExcel(string fileName)
+        {
+            try
+            {
+                if (advBandedGridView1.FocusedRowHandle < 0)
+                {
+
+                }
+                else
+                {
+                    var dialog = new SaveFileDialog();
+                    dialog.Title = @"Export file excel";
+                    dialog.FileName = fileName;
+                    dialog.Filter = @"Microsoft Excel|*.xlsx";
+
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        advBandedGridView1.ColumnPanelRowHeight = 40;
+                        advBandedGridView1.OptionsPrint.AutoWidth = AutoSize;
+                        advBandedGridView1.OptionsPrint.ShowPrintExportProgress = true;
+                        advBandedGridView1.OptionsPrint.AllowCancelPrintExport = true;
+                        XlsxExportOptions options = new XlsxExportOptions();
+                        options.TextExportMode = TextExportMode.Text;
+                        options.ExportMode = XlsxExportMode.SingleFile;
+                        options.SheetName = @"List";
+                        ExportSettings.DefaultExportType = ExportType.Default;
+                        advBandedGridView1.ExportToXlsx(dialog.FileName, options);
+                        MessageBox.Show("Xuất dũ liệu thành công!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Lỗi" + e, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
