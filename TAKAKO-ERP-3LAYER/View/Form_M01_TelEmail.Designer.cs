@@ -83,7 +83,6 @@
             this.gridCol_Unit4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Maker4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
-            this.None = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridCol_MSNV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_Name = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -99,6 +98,7 @@
             this.gridCol_InActiveIntPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InActiveEmail = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridCol_InputUser = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.None = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
@@ -115,8 +115,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_MSNV_Stop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.None)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.None)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -215,6 +215,7 @@
             this.bbiExcel.Id = 32;
             this.bbiExcel.ImageOptions.ImageUri.Uri = "ExportToXLSX";
             this.bbiExcel.Name = "bbiExcel";
+            this.bbiExcel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bbiExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiExcel_ItemClick);
             // 
             // ribbonPage1
@@ -546,11 +547,6 @@
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
             // 
-            // None
-            // 
-            this.None.AutoHeight = false;
-            this.None.Name = "None";
-            // 
             // gridView
             // 
             this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -740,8 +736,6 @@
             this.gridCol_HandPhone.FieldName = "HandPhone";
             this.gridCol_HandPhone.Name = "gridCol_HandPhone";
             this.gridCol_HandPhone.OptionsColumn.FixedWidth = true;
-            this.gridCol_HandPhone.Visible = true;
-            this.gridCol_HandPhone.VisibleIndex = 7;
             this.gridCol_HandPhone.Width = 100;
             // 
             // gridCol_Memo
@@ -758,7 +752,7 @@
             this.gridCol_Memo.Name = "gridCol_Memo";
             this.gridCol_Memo.OptionsColumn.FixedWidth = true;
             this.gridCol_Memo.Visible = true;
-            this.gridCol_Memo.VisibleIndex = 8;
+            this.gridCol_Memo.VisibleIndex = 7;
             this.gridCol_Memo.Width = 120;
             // 
             // gridCol_Status
@@ -778,7 +772,7 @@
             this.gridCol_Status.Name = "gridCol_Status";
             this.gridCol_Status.OptionsColumn.FixedWidth = true;
             this.gridCol_Status.Visible = true;
-            this.gridCol_Status.VisibleIndex = 9;
+            this.gridCol_Status.VisibleIndex = 8;
             // 
             // gridCol_ApplyDate
             // 
@@ -835,6 +829,11 @@
             this.gridCol_InputUser.FieldName = "InputUser";
             this.gridCol_InputUser.Name = "gridCol_InputUser";
             // 
+            // None
+            // 
+            this.None.AutoHeight = false;
+            this.None.Name = "None";
+            // 
             // Form_M01_TelEmail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -868,8 +867,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repo_sLookUp_MSNV_Stop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSearchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.None)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.None)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

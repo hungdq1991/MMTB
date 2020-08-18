@@ -788,7 +788,7 @@
             this.Ribbon = this.ribbonControl;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "DANH SÁCH EMAIL + SĐT CNV TVC";
+            this.Text = "DANH SÁCH GROUP EMAIL TVC";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form_M01_GroupEmail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
