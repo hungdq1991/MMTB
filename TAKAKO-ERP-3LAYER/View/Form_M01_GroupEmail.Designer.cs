@@ -212,6 +212,7 @@
             this.bbiExcel.Id = 32;
             this.bbiExcel.ImageOptions.ImageUri.Uri = "ExportToXLSX";
             this.bbiExcel.Name = "bbiExcel";
+            this.bbiExcel.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bbiExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiExcel_ItemClick);
             // 
             // ribbonPage1

@@ -274,5 +274,15 @@ namespace MMTB.View
                 formDetail.Show();
             }
         }
+
+        private void BbiChangePw_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (Form_ChangePw formDetail = new Form_ChangePw(_systemDAL))
+            {
+                formDetail.ShowDialog();
+                formDetail.StartPosition = FormStartPosition.CenterScreen;
+                formDetail.Show();
+            }
+        }
     }
 }

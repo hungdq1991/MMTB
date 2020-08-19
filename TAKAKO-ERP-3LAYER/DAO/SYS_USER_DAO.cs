@@ -54,5 +54,26 @@ namespace MMTB.DAO
 
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
+        public bool ChangePw(string _userName, string _passWordNew)
+        {
+            string StrQuery = "";
+          
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"UPDATE  dbo.Sys_User
+                            SET  Pw     = @_passWordNew, 
+                            ModifyDate = GETDATE(),
+                            ModifyUser = @_userName
+                            WHERE UserID = @_userName";
+
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@_passWordNew", SqlDbType.NVarChar);
+            sqlParameters[0].Value = Convert.ToString(_passWordNew);
+            sqlParameters[1] = new SqlParameter("@_userName", SqlDbType.NVarChar);
+            sqlParameters[1].Value = Convert.ToString(_userName);
+
+            return conn.executeUpdateQuery(StrQuery, sqlParameters);
+        }
     }
 }
+

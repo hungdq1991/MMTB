@@ -60,6 +60,7 @@
             this.bbiPur = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTelEmail = new DevExpress.XtraBars.BarButtonItem();
             this.bbiGEmail = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiChangePw = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -113,9 +114,10 @@
             this.bbiAddItem,
             this.bbiPur,
             this.bbiTelEmail,
-            this.bbiGEmail});
+            this.bbiGEmail,
+            this.bbiChangePw});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 35;
+            this.mainRibbonControl.MaxItemId = 36;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.mainRibbonPage,
@@ -379,6 +381,14 @@
             this.bbiGEmail.Name = "bbiGEmail";
             this.bbiGEmail.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiGEmail_ItemClick);
             // 
+            // bbiChangePw
+            // 
+            this.bbiChangePw.Caption = "Đổi password";
+            this.bbiChangePw.Id = 35;
+            this.bbiChangePw.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.bbiChangePw.Name = "bbiChangePw";
+            this.bbiChangePw.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BbiChangePw_ItemClick);
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
@@ -474,6 +484,7 @@
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.bbiNewRequest);
             this.ribbonPageGroup3.ItemLinks.Add(this.bbiListRequest);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiChangePw);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             // 
             // ribbonPage4
@@ -564,5 +575,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem bbiTelEmail;
         private DevExpress.XtraBars.BarButtonItem bbiGEmail;
+        private DevExpress.XtraBars.BarButtonItem bbiChangePw;
     }
 }

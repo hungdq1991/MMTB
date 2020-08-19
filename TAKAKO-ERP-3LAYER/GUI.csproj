@@ -210,6 +210,12 @@
     <Compile Include="View\Form_Flash.Designer.cs">
       <DependentUpon>Form_Flash.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Form_ChangePw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form_ChangePw.Designer.cs">
+      <DependentUpon>Form_ChangePw.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form_Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +473,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Flash.resx">
       <DependentUpon>Form_Flash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form_ChangePw.resx">
+      <DependentUpon>Form_ChangePw.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form_Login.resx">
       <DependentUpon>Form_Login.cs</DependentUpon>

@@ -68,7 +68,7 @@ namespace MMTB.View
             M0013_DAO = new M0013_DAO();
 
             //
-            bsiUser.Caption = _systemDAL.userName.ToUpper().ToUpper();
+            bsiUser.Caption = _systemDAL.userName.ToUpper();
             Add_Value_Classify();
             GetInfo_advBandedGridView1();
         }
