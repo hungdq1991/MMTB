@@ -536,38 +536,6 @@ namespace MMTB.View
             gridView.FocusedColumn = gridCol_Code;
         }
 
-        private void repo_ItemDate_StartDerprDate_EditValueChanged(object sender, EventArgs e)
-        {
-            int lifetime = Convert.ToInt32(gridView.GetRowCellValue(gridView.FocusedRowHandle, "Lifetime"));
-            DateTime _endDerprDate = (sender as DevExpress.XtraEditors.DateEdit).DateTime.AddMonths(lifetime);
-            gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDerprDate);
-            try
-            {
-                //Điều chỉnh ngày hết khấu hao về đầu tháng
-                int _month = Convert.ToInt32(_endDerprDate.Month);
-                string _monthEnd = "";
-                if (_month < 10)
-                {
-                    _monthEnd = "0" + Convert.ToString(_month);
-                }
-                else
-                {
-                    _monthEnd = Convert.ToString(_month);
-                }
-                string _end = "01" + _monthEnd + Convert.ToString(_endDerprDate.Year);
-                string format = "ddMMyyyy"; // define a date pattern according to your requirements  
-                CultureInfo provider = CultureInfo.InvariantCulture;
-                DateTime _endDate = DateTime.Now.Date;
-                _endDate = DateTime.ParseExact(_end, format, provider);
-                //Chuyển ngày hết khấu hao lên gridView
-                gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDate);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void repo_TextEdit_Lifetime_EditValueChanged(object sender, EventArgs e)
         {
             int lifetime = Convert.ToInt32((sender as DevExpress.XtraEditors.TextEdit).EditValue);
@@ -993,6 +961,40 @@ namespace MMTB.View
             M0005_NT_Report rpt_NT = new M0005_NT_Report(DocNo);
             ReportPrintTool print = new ReportPrintTool(rpt_NT);
             rpt_NT.ShowPreviewDialog();
+        }
+
+        private void Repo_ItemDate_StartDerprDate_Leave(object sender, EventArgs e)
+        {
+            int lifetime = Convert.ToInt32(gridView.GetRowCellValue(gridView.FocusedRowHandle, "Lifetime"));
+            DateTime _beginDeprDate = (sender as DevExpress.XtraEditors.DateEdit).DateTime;
+            gridView.SetRowCellValue(gridView.FocusedRowHandle, "StartDeprDate", _beginDeprDate);
+            try
+            {
+                //Điều chỉnh ngày hết khấu hao về đầu tháng
+                DateTime _endDerprDate = Convert.ToDateTime(gridView.GetRowCellValue(gridView.FocusedRowHandle, "StartDeprDate")).AddMonths(lifetime);
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDerprDate);
+                int _month = Convert.ToInt32(_endDerprDate.Month);
+                string _monthEnd = "";
+                if (_month < 10)
+                {
+                    _monthEnd = "0" + Convert.ToString(_month);
+                }
+                else
+                {
+                    _monthEnd = Convert.ToString(_month);
+                }
+                string _end = "01" + _monthEnd + Convert.ToString(_endDerprDate.Year);
+                string format = "ddMMyyyy"; // define a date pattern according to your requirements  
+                CultureInfo provider = CultureInfo.InvariantCulture;
+                DateTime _endDate = DateTime.Now.Date;
+                _endDate = DateTime.ParseExact(_end, format, provider);
+                //Chuyển ngày hết khấu hao lên gridView
+                gridView.SetRowCellValue(gridView.FocusedRowHandle, "EndDeprDate", _endDate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

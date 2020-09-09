@@ -11,3 +11,10 @@
         }
     }
 }
+
+namespace MMTB.MMTB_DataSetTableAdapters {
+    
+    
+    public partial class mmtb_NT_TableAdapter {
+    }
+}

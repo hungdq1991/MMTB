@@ -1107,7 +1107,7 @@
             this.repo_ItemDate_StartDerprDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repo_ItemDate_StartDerprDate.Name = "repo_ItemDate_StartDerprDate";
-            this.repo_ItemDate_StartDerprDate.EditValueChanged += new System.EventHandler(this.repo_ItemDate_StartDerprDate_EditValueChanged);
+            this.repo_ItemDate_StartDerprDate.Leave += new System.EventHandler(this.Repo_ItemDate_StartDerprDate_Leave);
             // 
             // gridCol_EndDeprDate
             // 

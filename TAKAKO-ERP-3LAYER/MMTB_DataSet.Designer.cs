@@ -416,6 +416,8 @@ namespace MMTB {
             
             private global::System.Data.DataColumn columnOrgLineCode;
             
+            private global::System.Data.DataColumn columnDocDate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public MMTB_NT_TableDataTable() {
@@ -579,6 +581,14 @@ namespace MMTB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DocDateColumn {
+                get {
+                    return this.columnDocDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -630,7 +640,8 @@ namespace MMTB {
                         string Status, 
                         string Result, 
                         string OrgGroupLineACC, 
-                        string OrgLineCode) {
+                        string OrgLineCode, 
+                        System.DateTime DocDate) {
                 MMTB_NT_TableRow rowMMTB_NT_TableRow = ((MMTB_NT_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfirmDate,
@@ -648,7 +659,8 @@ namespace MMTB {
                         Status,
                         Result,
                         OrgGroupLineACC,
-                        OrgLineCode};
+                        OrgLineCode,
+                        DocDate};
                 rowMMTB_NT_TableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMMTB_NT_TableRow);
                 return rowMMTB_NT_TableRow;
@@ -694,6 +706,7 @@ namespace MMTB {
                 this.columnResult = base.Columns["Result"];
                 this.columnOrgGroupLineACC = base.Columns["OrgGroupLineACC"];
                 this.columnOrgLineCode = base.Columns["OrgLineCode"];
+                this.columnDocDate = base.Columns["DocDate"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -731,6 +744,8 @@ namespace MMTB {
                 base.Columns.Add(this.columnOrgGroupLineACC);
                 this.columnOrgLineCode = new global::System.Data.DataColumn("OrgLineCode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrgLineCode);
+                this.columnDocDate = new global::System.Data.DataColumn("DocDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDocDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCode}, true));
                 this.columnConfirmDate.AllowDBNull = false;
@@ -2593,6 +2608,22 @@ namespace MMTB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime DocDate {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableMMTB_NT_Table.DocDateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DocDate\' in table \'MMTB_NT_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.DocDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsReceiptDateNull() {
                 return this.IsNull(this.tableMMTB_NT_Table.ReceiptDateColumn);
             }
@@ -2721,6 +2752,18 @@ namespace MMTB {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetOrgLineCodeNull() {
                 this[this.tableMMTB_NT_Table.OrgLineCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsDocDateNull() {
+                return this.IsNull(this.tableMMTB_NT_Table.DocDateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetDocDateNull() {
+                this[this.tableMMTB_NT_Table.DocDateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4146,6 +4189,7 @@ namespace MMTB.MMTB_DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Result", "Result");
             tableMapping.ColumnMappings.Add("OrgGroupLineACC", "OrgGroupLineACC");
             tableMapping.ColumnMappings.Add("OrgLineCode", "OrgLineCode");
+            tableMapping.ColumnMappings.Add("DocDate", "DocDate");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4162,8 +4206,8 @@ namespace MMTB.MMTB_DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        D.DocNo, D.ReceiptDate, D.InvNo, D.ConfirmDate, D.ControlDept, M.NameEN, M.Model, M.Series, M.Maker, M.ProDate, M.Code, CASE WHEN M.Status = 0 THEN N'Mới' WHEN M.Status = 1 THEN N'Cũ' END AS Status, 
-                         CASE WHEN M.Result = 0 THEN N'Đạt (OK)' WHEN M.Result = 1 THEN N'Không đạt (NG)' END AS Result, M.Memo, L.OrgGroupLineACC, L.OrgLineCode
+            this._commandCollection[0].CommandText = @"SELECT        D.DocNo, D.DocDate, D.ReceiptDate, D.InvNo, D.ConfirmDate, D.ControlDept, M.NameEN, M.Model, M.Series, M.Maker, M.ProDate, M.Code, CASE WHEN M.Status = 0 THEN N'Mới' WHEN M.Status = 1 THEN N'Cũ' END AS Status,
+                          CASE WHEN M.Result = 0 THEN N'Đạt (OK)' WHEN M.Result = 1 THEN N'Không đạt (NG)' END AS Result, M.Memo, L.OrgGroupLineACC, L.OrgLineCode
 FROM            M0005_ListMMTBDoc1 AS D INNER JOIN
                          M0005_ListMMTB AS M ON D.DocNo = M.DocNo LEFT OUTER JOIN
                              (SELECT        DocNo_Confirm, Code, OrgLineCode, OrgGroupLineACC, MIN(ApplyDate) AS ApplyDate
