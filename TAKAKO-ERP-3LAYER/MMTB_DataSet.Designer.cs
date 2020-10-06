@@ -418,6 +418,22 @@ namespace MMTB {
             
             private global::System.Data.DataColumn columnDocDate;
             
+            private global::System.Data.DataColumn columnNameVN;
+            
+            private global::System.Data.DataColumn columnStartDeprDate;
+            
+            private global::System.Data.DataColumn columnLifetime;
+            
+            private global::System.Data.DataColumn columnEF_VendID;
+            
+            private global::System.Data.DataColumn columnSupplierID;
+            
+            private global::System.Data.DataColumn columnSupplierName;
+            
+            private global::System.Data.DataColumn columnACCcode;
+            
+            private global::System.Data.DataColumn columnInvNo1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public MMTB_NT_TableDataTable() {
@@ -589,6 +605,70 @@ namespace MMTB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn NameVNColumn {
+                get {
+                    return this.columnNameVN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn StartDeprDateColumn {
+                get {
+                    return this.columnStartDeprDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn LifetimeColumn {
+                get {
+                    return this.columnLifetime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn EF_VendIDColumn {
+                get {
+                    return this.columnEF_VendID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SupplierIDColumn {
+                get {
+                    return this.columnSupplierID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn SupplierNameColumn {
+                get {
+                    return this.columnSupplierName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ACCcodeColumn {
+                get {
+                    return this.columnACCcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn InvNo1Column {
+                get {
+                    return this.columnInvNo1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -641,7 +721,15 @@ namespace MMTB {
                         string Result, 
                         string OrgGroupLineACC, 
                         string OrgLineCode, 
-                        System.DateTime DocDate) {
+                        System.DateTime DocDate, 
+                        string NameVN, 
+                        System.DateTime StartDeprDate, 
+                        decimal Lifetime, 
+                        string EF_VendID, 
+                        string SupplierID, 
+                        string SupplierName, 
+                        string ACCcode, 
+                        string InvNo1) {
                 MMTB_NT_TableRow rowMMTB_NT_TableRow = ((MMTB_NT_TableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ConfirmDate,
@@ -660,7 +748,15 @@ namespace MMTB {
                         Result,
                         OrgGroupLineACC,
                         OrgLineCode,
-                        DocDate};
+                        DocDate,
+                        NameVN,
+                        StartDeprDate,
+                        Lifetime,
+                        EF_VendID,
+                        SupplierID,
+                        SupplierName,
+                        ACCcode,
+                        InvNo1};
                 rowMMTB_NT_TableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMMTB_NT_TableRow);
                 return rowMMTB_NT_TableRow;
@@ -707,6 +803,14 @@ namespace MMTB {
                 this.columnOrgGroupLineACC = base.Columns["OrgGroupLineACC"];
                 this.columnOrgLineCode = base.Columns["OrgLineCode"];
                 this.columnDocDate = base.Columns["DocDate"];
+                this.columnNameVN = base.Columns["NameVN"];
+                this.columnStartDeprDate = base.Columns["StartDeprDate"];
+                this.columnLifetime = base.Columns["Lifetime"];
+                this.columnEF_VendID = base.Columns["EF_VendID"];
+                this.columnSupplierID = base.Columns["SupplierID"];
+                this.columnSupplierName = base.Columns["SupplierName"];
+                this.columnACCcode = base.Columns["ACCcode"];
+                this.columnInvNo1 = base.Columns["InvNo1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -746,6 +850,22 @@ namespace MMTB {
                 base.Columns.Add(this.columnOrgLineCode);
                 this.columnDocDate = new global::System.Data.DataColumn("DocDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDocDate);
+                this.columnNameVN = new global::System.Data.DataColumn("NameVN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNameVN);
+                this.columnStartDeprDate = new global::System.Data.DataColumn("StartDeprDate", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStartDeprDate);
+                this.columnLifetime = new global::System.Data.DataColumn("Lifetime", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLifetime);
+                this.columnEF_VendID = new global::System.Data.DataColumn("EF_VendID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEF_VendID);
+                this.columnSupplierID = new global::System.Data.DataColumn("SupplierID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplierID);
+                this.columnSupplierName = new global::System.Data.DataColumn("SupplierName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSupplierName);
+                this.columnACCcode = new global::System.Data.DataColumn("ACCcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACCcode);
+                this.columnInvNo1 = new global::System.Data.DataColumn("InvNo1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInvNo1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCode}, true));
                 this.columnConfirmDate.AllowDBNull = false;
@@ -769,6 +889,15 @@ namespace MMTB {
                 this.columnResult.MaxLength = 14;
                 this.columnOrgGroupLineACC.MaxLength = 10;
                 this.columnOrgLineCode.MaxLength = 10;
+                this.columnNameVN.AllowDBNull = false;
+                this.columnNameVN.MaxLength = 100;
+                this.columnStartDeprDate.AllowDBNull = false;
+                this.columnLifetime.AllowDBNull = false;
+                this.columnEF_VendID.MaxLength = 10;
+                this.columnSupplierID.MaxLength = 10;
+                this.columnSupplierName.MaxLength = 60;
+                this.columnACCcode.MaxLength = 10;
+                this.columnInvNo1.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2624,6 +2753,119 @@ namespace MMTB {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string NameVN {
+                get {
+                    return ((string)(this[this.tableMMTB_NT_Table.NameVNColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.NameVNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public System.DateTime StartDeprDate {
+                get {
+                    return ((global::System.DateTime)(this[this.tableMMTB_NT_Table.StartDeprDateColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.StartDeprDateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public decimal Lifetime {
+                get {
+                    return ((decimal)(this[this.tableMMTB_NT_Table.LifetimeColumn]));
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.LifetimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string EF_VendID {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NT_Table.EF_VendIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EF_VendID\' in table \'MMTB_NT_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.EF_VendIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SupplierID {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NT_Table.SupplierIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SupplierID\' in table \'MMTB_NT_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.SupplierIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string SupplierName {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NT_Table.SupplierNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SupplierName\' in table \'MMTB_NT_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.SupplierNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ACCcode {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NT_Table.ACCcodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACCcode\' in table \'MMTB_NT_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.ACCcodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string InvNo1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableMMTB_NT_Table.InvNo1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InvNo1\' in table \'MMTB_NT_Table\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableMMTB_NT_Table.InvNo1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsReceiptDateNull() {
                 return this.IsNull(this.tableMMTB_NT_Table.ReceiptDateColumn);
             }
@@ -2764,6 +3006,66 @@ namespace MMTB {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDocDateNull() {
                 this[this.tableMMTB_NT_Table.DocDateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEF_VendIDNull() {
+                return this.IsNull(this.tableMMTB_NT_Table.EF_VendIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEF_VendIDNull() {
+                this[this.tableMMTB_NT_Table.EF_VendIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSupplierIDNull() {
+                return this.IsNull(this.tableMMTB_NT_Table.SupplierIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSupplierIDNull() {
+                this[this.tableMMTB_NT_Table.SupplierIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsSupplierNameNull() {
+                return this.IsNull(this.tableMMTB_NT_Table.SupplierNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetSupplierNameNull() {
+                this[this.tableMMTB_NT_Table.SupplierNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsACCcodeNull() {
+                return this.IsNull(this.tableMMTB_NT_Table.ACCcodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetACCcodeNull() {
+                this[this.tableMMTB_NT_Table.ACCcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsInvNo1Null() {
+                return this.IsNull(this.tableMMTB_NT_Table.InvNo1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetInvNo1Null() {
+                this[this.tableMMTB_NT_Table.InvNo1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -4190,6 +4492,14 @@ namespace MMTB.MMTB_DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("OrgGroupLineACC", "OrgGroupLineACC");
             tableMapping.ColumnMappings.Add("OrgLineCode", "OrgLineCode");
             tableMapping.ColumnMappings.Add("DocDate", "DocDate");
+            tableMapping.ColumnMappings.Add("NameVN", "NameVN");
+            tableMapping.ColumnMappings.Add("StartDeprDate", "StartDeprDate");
+            tableMapping.ColumnMappings.Add("Lifetime", "Lifetime");
+            tableMapping.ColumnMappings.Add("EF_VendID", "EF_VendID");
+            tableMapping.ColumnMappings.Add("SupplierID", "SupplierID");
+            tableMapping.ColumnMappings.Add("SupplierName", "SupplierName");
+            tableMapping.ColumnMappings.Add("ACCcode", "ACCcode");
+            tableMapping.ColumnMappings.Add("InvNo1", "InvNo1");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4206,8 +4516,9 @@ namespace MMTB.MMTB_DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        D.DocNo, D.DocDate, D.ReceiptDate, D.InvNo, D.ConfirmDate, D.ControlDept, M.NameEN, M.Model, M.Series, M.Maker, M.ProDate, M.Code, CASE WHEN M.Status = 0 THEN N'Mới' WHEN M.Status = 1 THEN N'Cũ' END AS Status,
-                          CASE WHEN M.Result = 0 THEN N'Đạt (OK)' WHEN M.Result = 1 THEN N'Không đạt (NG)' END AS Result, M.Memo, L.OrgGroupLineACC, L.OrgLineCode
+            this._commandCollection[0].CommandText = @"SELECT        D.DocNo, D.DocDate, D.ReceiptDate, D.InvNo, D.ConfirmDate, D.ControlDept, M.NameEN, M.NameVN, M.Model, M.Series, M.Maker, M.ProDate, M.Code, M.StartDeprDate, M.Lifetime, D.EF_VendID, D.SupplierID, D.SupplierName, D.InvNo, M.ACCcode,
+                         CASE WHEN M.Status = 0 THEN N'Mới' WHEN M.Status = 1 THEN N'Cũ' END AS Status, CASE WHEN M.Result = 0 THEN N'Đạt (OK)' WHEN M.Result = 1 THEN N'Không đạt (NG)' END AS Result, M.Memo, L.OrgGroupLineACC, 
+                         L.OrgLineCode
 FROM            M0005_ListMMTBDoc1 AS D INNER JOIN
                          M0005_ListMMTB AS M ON D.DocNo = M.DocNo LEFT OUTER JOIN
                              (SELECT        DocNo_Confirm, Code, OrgLineCode, OrgGroupLineACC, MIN(ApplyDate) AS ApplyDate

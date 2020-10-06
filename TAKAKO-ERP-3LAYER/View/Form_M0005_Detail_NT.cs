@@ -588,6 +588,24 @@ namespace MMTB.View
                     }
                 }
             }
+            if (gridView.FocusedColumn == gridCol_ACCCode)
+            {
+                string _acccode = (string)e.Value;
+                e.Valid = !IsDublicatedRowFound(_acccode, "ACCcode");
+                if (!e.Valid)
+                {
+                    e.ErrorText = "Mã MMTB đã tồn tại trên lưới";
+                }
+                else
+                {
+                    DataTable _tempDataTable = M0005_DAO.GetInfo_M0005_CheckACC(_acccode);
+                    if (_tempDataTable.Rows.Count > 0)
+                    {
+                        e.Valid = false;
+                        e.ErrorText = "Mã MMTB đã tồn tại trong cơ sở dữ liệu";
+                    }
+                }
+            }
         }
         #endregion
 
@@ -915,7 +933,7 @@ namespace MMTB.View
             bbiRefresh.Enabled = IsEnable;
             bbi_AddNewRow.Enabled = IsEnable;
             bbi_DeleteRow.Enabled = IsEnable;
-            bbi_Eport_Excel.Enabled = !IsEnable;
+            bbi_Export_NT.Enabled = !IsEnable;
 
             //PopUp
             bbi_PopUp_AddNewRow.Enabled = IsEnable;
@@ -954,15 +972,22 @@ namespace MMTB.View
             return false;
         }
         #endregion
-
-        private void bbi_Eport_Excel_ItemClick(object sender, ItemClickEventArgs e)
+        //In form BBNT
+        private void bbi_Export_NT_ItemClick(object sender, ItemClickEventArgs e)
         {
             string DocNo = Convert.ToString(sLook_DocNo.EditValue);
             M0005_NT_Report rpt_NT = new M0005_NT_Report(DocNo);
             ReportPrintTool print = new ReportPrintTool(rpt_NT);
             rpt_NT.ShowPreviewDialog();
         }
-
+        //In form ĐK MMTB
+        private void bbi_Export_DK_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string DocNo = Convert.ToString(sLook_DocNo.EditValue);
+            M0005_DK_Report rpt_NT = new M0005_DK_Report(DocNo);
+            ReportPrintTool print = new ReportPrintTool(rpt_NT);
+            rpt_NT.ShowPreviewDialog();
+        }
         private void Repo_ItemDate_StartDerprDate_Leave(object sender, EventArgs e)
         {
             int lifetime = Convert.ToInt32(gridView.GetRowCellValue(gridView.FocusedRowHandle, "Lifetime"));

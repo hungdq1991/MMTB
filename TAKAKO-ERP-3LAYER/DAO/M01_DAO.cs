@@ -264,7 +264,7 @@ namespace MMTB.DAO
                       FROM [M01_TelEmail] E
                       LEFT JOIN [hr-server1].[TAKHRAPP].[dbo].[xt_HREmployee] H
                       ON E.MSNV = H.EmployeeID
-                      WHERE E.InActiveIntPhone = 0 AND E.InActiveEmail = 0
+                      WHERE (E.InActiveIntPhone = 0 AND IntPhone IS NOT NULL) OR (E.InActiveEmail = 0 AND E.Email IS NOT NULL)
                       ORDER BY DepartID, PositionID";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@MSNV", SqlDbType.VarChar);

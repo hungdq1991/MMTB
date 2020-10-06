@@ -299,7 +299,7 @@
             this.label_ApplyDate.Appearance.ForeColor = System.Drawing.Color.Black;
             this.label_ApplyDate.Appearance.Options.UseFont = true;
             this.label_ApplyDate.Appearance.Options.UseForeColor = true;
-            this.label_ApplyDate.Location = new System.Drawing.Point(11, 394);
+            this.label_ApplyDate.Location = new System.Drawing.Point(11, 389);
             this.label_ApplyDate.Name = "label_ApplyDate";
             this.label_ApplyDate.Size = new System.Drawing.Size(75, 13);
             this.label_ApplyDate.TabIndex = 4;
@@ -319,7 +319,7 @@
             // date_ApplyDate
             // 
             this.date_ApplyDate.EditValue = null;
-            this.date_ApplyDate.Location = new System.Drawing.Point(119, 393);
+            this.date_ApplyDate.Location = new System.Drawing.Point(119, 388);
             this.date_ApplyDate.MenuManager = this.ribbonControl;
             this.date_ApplyDate.Name = "date_ApplyDate";
             this.date_ApplyDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -335,7 +335,7 @@
             this.date_ApplyDate.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.date_ApplyDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.date_ApplyDate.Size = new System.Drawing.Size(300, 20);
-            this.date_ApplyDate.TabIndex = 6;
+            this.date_ApplyDate.TabIndex = 5;
             // 
             // look_ClassifyID
             // 
@@ -346,7 +346,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.look_ClassifyID.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.look_ClassifyID.Size = new System.Drawing.Size(57, 20);
-            this.look_ClassifyID.TabIndex = 5;
+            this.look_ClassifyID.TabIndex = 4;
             this.look_ClassifyID.TextChanged += new System.EventHandler(this.Look_ClassifyID_Validated);
             this.look_ClassifyID.Validated += new System.EventHandler(this.Look_ClassifyID_Validated);
             // 
@@ -359,7 +359,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.sLook_NameEN.Properties.PopupView = this.searchLookUpEdit1View;
             this.sLook_NameEN.Size = new System.Drawing.Size(300, 20);
-            this.sLook_NameEN.TabIndex = 12;
+            this.sLook_NameEN.TabIndex = 1;
             this.sLook_NameEN.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.sLook_NameEN_CloseUp);
             // 
             // searchLookUpEdit1View
@@ -378,7 +378,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.sLook_Group1.Properties.PopupView = this.gridView1;
             this.sLook_Group1.Size = new System.Drawing.Size(300, 20);
-            this.sLook_Group1.TabIndex = 13;
+            this.sLook_Group1.TabIndex = 2;
             // 
             // gridView1
             // 
@@ -396,7 +396,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.sLook_Group2.Properties.PopupView = this.searchLookUpEdit2View;
             this.sLook_Group2.Size = new System.Drawing.Size(300, 20);
-            this.sLook_Group2.TabIndex = 14;
+            this.sLook_Group2.TabIndex = 3;
             // 
             // searchLookUpEdit2View
             // 

@@ -341,7 +341,7 @@
             formatConditionRuleExpression1.Appearance.ForeColor = System.Drawing.Color.Black;
             formatConditionRuleExpression1.Appearance.Options.UseBackColor = true;
             formatConditionRuleExpression1.Appearance.Options.UseForeColor = true;
-            formatConditionRuleExpression1.Expression = "StartsWith([ACCDoc_Disposal], \'FA\')";
+            formatConditionRuleExpression1.Expression = "StartsWith([DocNo_Disposal], \'0\')";
             formatConditionRuleExpression1.PredefinedName = "Disposal";
             gridFormatRule1.Rule = formatConditionRuleExpression1;
             this.advBandedGridView1.FormatRules.Add(gridFormatRule1);
@@ -352,6 +352,7 @@
             this.advBandedGridView1.OptionsBehavior.ReadOnly = true;
             this.advBandedGridView1.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.advBandedGridView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.advBandedGridView1.ColumnFilterChanged += new System.EventHandler(this.advBandedGridView1_ColumnFilterChanged);
             this.advBandedGridView1.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.AdvBandedGridView1_CustomColumnDisplayText);
             // 
             // gridBand1

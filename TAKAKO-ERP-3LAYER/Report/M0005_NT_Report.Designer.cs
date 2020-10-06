@@ -39,6 +39,7 @@
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.xrLabel150 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel17 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine49 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine48 = new DevExpress.XtraReports.UI.XRLine();
@@ -334,6 +335,7 @@
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel150,
             this.xrLabel17,
             this.xrLine49,
             this.xrLine48,
@@ -361,6 +363,21 @@
             this.xrLabel12});
             this.Detail.HeightF = 45F;
             this.Detail.Name = "Detail";
+            // 
+            // xrLabel150
+            // 
+            this.xrLabel150.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NameVN]")});
+            this.xrLabel150.Font = new System.Drawing.Font("Arial", 8F);
+            this.xrLabel150.LocationFloat = new DevExpress.Utils.PointFloat(29.81979F, 21.87497F);
+            this.xrLabel150.Multiline = true;
+            this.xrLabel150.Name = "xrLabel150";
+            this.xrLabel150.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel150.SizeF = new System.Drawing.SizeF(160F, 21.125F);
+            this.xrLabel150.StylePriority.UseFont = false;
+            this.xrLabel150.StylePriority.UseTextAlignment = false;
+            this.xrLabel150.Text = "xrLabel13";
+            this.xrLabel150.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrLabel17
             // 
@@ -517,7 +534,7 @@
             // xrLabel20
             // 
             this.xrLabel20.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ProDate]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[StartDeprDate]")});
             this.xrLabel20.Font = new System.Drawing.Font("Arial", 8F);
             this.xrLabel20.LocationFloat = new DevExpress.Utils.PointFloat(500F, 0F);
             this.xrLabel20.Multiline = true;
@@ -610,11 +627,11 @@
             this.xrLabel13.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NameEN]")});
             this.xrLabel13.Font = new System.Drawing.Font("Arial", 8F);
-            this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(31F, 0F);
+            this.xrLabel13.LocationFloat = new DevExpress.Utils.PointFloat(29.81979F, 0F);
             this.xrLabel13.Multiline = true;
             this.xrLabel13.Name = "xrLabel13";
             this.xrLabel13.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel13.SizeF = new System.Drawing.SizeF(160F, 42.99998F);
+            this.xrLabel13.SizeF = new System.Drawing.SizeF(160F, 21.125F);
             this.xrLabel13.StylePriority.UseFont = false;
             this.xrLabel13.StylePriority.UseTextAlignment = false;
             this.xrLabel13.Text = "xrLabel13";
@@ -629,7 +646,7 @@
             this.xrLabel12.Multiline = true;
             this.xrLabel12.Name = "xrLabel12";
             this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel12.SizeF = new System.Drawing.SizeF(93F, 43F);
+            this.xrLabel12.SizeF = new System.Drawing.SizeF(95F, 43F);
             this.xrLabel12.StylePriority.UseFont = false;
             this.xrLabel12.StylePriority.UseTextAlignment = false;
             this.xrLabel12.Text = "xrLabel12";
@@ -1225,7 +1242,7 @@
             // xrLabel26
             // 
             this.xrLabel26.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ConfirmDate]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ReceiptDate]")});
             this.xrLabel26.Font = new System.Drawing.Font("Arial", 8F);
             this.xrLabel26.LocationFloat = new DevExpress.Utils.PointFloat(586.0001F, 270F);
             this.xrLabel26.Multiline = true;
@@ -3786,5 +3803,6 @@
         private DevExpress.XtraReports.UI.DetailBand Detail1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel149;
         private DevExpress.XtraReports.UI.XRLabel xrLabel148;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel150;
     }
 }

@@ -186,8 +186,8 @@ namespace MMTB.View
             string curr_NameEN = sLook_NameEN.Text.Trim();
             string curr_NameVN = txt_NameVN.Text.Trim();
             string curr_NameJP = txt_NameJP.Text.Trim();
-            string curr_Maker = txt_Maker.Text.Trim();
-            string curr_Model = txt_Model.Text.Trim();
+            string curr_Maker = txt_Maker.Text.Trim().ToUpper();
+            string curr_Model = txt_Model.Text.Trim().ToUpper();
             int curr_InActive = cbx_InActive.SelectedIndex;
             string curr_Memo = txt_Memo.Text.Trim();
 
@@ -320,6 +320,8 @@ namespace MMTB.View
         private void Clear_Data()
         {
             IsNewValue = true;
+            sLookUpEdit_NameEN();
+            sLook_NameEN.Focus();
             sLook_NameEN.EditValue = null;
             txt_NameVN.EditValue = null;
             txt_NameJP.EditValue = null;

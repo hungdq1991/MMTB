@@ -73,6 +73,7 @@
             // 
             // mainRibbonControl
             // 
+            this.mainRibbonControl.ColorScheme = DevExpress.XtraBars.Ribbon.RibbonControlColorScheme.Blue;
             this.mainRibbonControl.ExpandCollapseItem.Id = 0;
             this.mainRibbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.mainRibbonControl.ExpandCollapseItem,
@@ -202,7 +203,7 @@
             this.cbx_Group1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbx_Group1.Size = new System.Drawing.Size(121, 20);
-            this.cbx_Group1.TabIndex = 8;
+            this.cbx_Group1.TabIndex = 4;
             // 
             // label_Group1
             // 
@@ -226,7 +227,7 @@
             this.cbx_Name.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbx_Name.Size = new System.Drawing.Size(121, 20);
-            this.cbx_Name.TabIndex = 6;
+            this.cbx_Name.TabIndex = 3;
             // 
             // label_Name
             // 
@@ -248,7 +249,7 @@
             this.cbx_InActive.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbx_InActive.Size = new System.Drawing.Size(121, 20);
-            this.cbx_InActive.TabIndex = 4;
+            this.cbx_InActive.TabIndex = 7;
             // 
             // cbx_Line
             // 
@@ -258,7 +259,7 @@
             this.cbx_Line.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbx_Line.Size = new System.Drawing.Size(121, 20);
-            this.cbx_Line.TabIndex = 3;
+            this.cbx_Line.TabIndex = 6;
             // 
             // cbx_Group2
             // 
@@ -269,7 +270,7 @@
             this.cbx_Group2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbx_Group2.Size = new System.Drawing.Size(121, 20);
-            this.cbx_Group2.TabIndex = 3;
+            this.cbx_Group2.TabIndex = 5;
             // 
             // txt_NameJP
             // 

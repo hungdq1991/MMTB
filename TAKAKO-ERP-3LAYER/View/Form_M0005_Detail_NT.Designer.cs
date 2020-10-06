@@ -54,8 +54,9 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_DeleteRow = new DevExpress.XtraBars.BarButtonItem();
             this.bbi_PopUp_AddNewRow = new DevExpress.XtraBars.BarButtonItem();
-            this.bbi_Eport_Excel = new DevExpress.XtraBars.BarButtonItem();
+            this.bbi_Export_NT = new DevExpress.XtraBars.BarButtonItem();
             this.bsiUser = new DevExpress.XtraBars.BarStaticItem();
+            this.bbi_Export_DK = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -210,10 +211,11 @@
             this.barButtonItem1,
             this.bbi_PopUp_DeleteRow,
             this.bbi_PopUp_AddNewRow,
-            this.bbi_Eport_Excel,
-            this.bsiUser});
+            this.bbi_Export_NT,
+            this.bsiUser,
+            this.bbi_Export_DK});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 33;
+            this.ribbonControl.MaxItemId = 34;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -356,14 +358,13 @@
             this.bbi_PopUp_AddNewRow.Name = "bbi_PopUp_AddNewRow";
             this.bbi_PopUp_AddNewRow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_PopUp_AddNewRow_ItemClick);
             // 
-            // bbi_Eport_Excel
+            // bbi_Export_NT
             // 
-            this.bbi_Eport_Excel.Caption = "Xuất biên bản nghiệm thu";
-            this.bbi_Eport_Excel.Id = 31;
-            this.bbi_Eport_Excel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbi_Eport_Excel.ImageOptions.Image")));
-            this.bbi_Eport_Excel.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbi_Eport_Excel.ImageOptions.LargeImage")));
-            this.bbi_Eport_Excel.Name = "bbi_Eport_Excel";
-            this.bbi_Eport_Excel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_Eport_Excel_ItemClick);
+            this.bbi_Export_NT.Caption = "Xuất biên bản nghiệm thu";
+            this.bbi_Export_NT.Id = 31;
+            this.bbi_Export_NT.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbi_Eport_Excel.ImageOptions.SvgImage")));
+            this.bbi_Export_NT.Name = "bbi_Export_NT";
+            this.bbi_Export_NT.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_Export_NT_ItemClick);
             // 
             // bsiUser
             // 
@@ -371,6 +372,14 @@
             this.bsiUser.Caption = "barStaticItem1";
             this.bsiUser.Id = 32;
             this.bsiUser.Name = "bsiUser";
+            // 
+            // bbi_Export_DK
+            // 
+            this.bbi_Export_DK.Caption = "Xuất phiếu ĐK MMTB";
+            this.bbi_Export_DK.Id = 33;
+            this.bbi_Export_DK.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.bbi_Export_DK.Name = "bbi_Export_DK";
+            this.bbi_Export_DK.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbi_Export_DK_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -402,7 +411,8 @@
             // 
             // ribbonPageGroup2
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbi_Eport_Excel);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbi_Export_NT);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbi_Export_DK);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Export";
             // 
@@ -1627,8 +1637,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridCol_DisposalStatus;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.BarButtonItem bbi_Eport_Excel;
+        private DevExpress.XtraBars.BarButtonItem bbi_Export_NT;
         private DevExpress.XtraBars.BarStaticItem bsiUser;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraBars.BarButtonItem bbi_Export_DK;
     }
 }

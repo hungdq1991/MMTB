@@ -192,6 +192,12 @@
     <Compile Include="Report\M0005_NoUsed_Report.Designer.cs">
       <DependentUpon>M0005_NoUsed_Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\M0005_DK_Report.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\M0005_DK_Report.Designer.cs">
+      <DependentUpon>M0005_DK_Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\M0005_TL_Report.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -464,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\M0005_NoUsed_Report.resx">
       <DependentUpon>M0005_NoUsed_Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\M0005_DK_Report.resx">
+      <DependentUpon>M0005_DK_Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\M0005_TL_Report.resx">
       <DependentUpon>M0005_TL_Report.cs</DependentUpon>

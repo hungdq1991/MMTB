@@ -484,7 +484,24 @@ namespace MMTB.DAO
             sqlParameters[0].Value = Convert.ToString(Code);
             return conn.executeSelectQuery(StrQuery, sqlParameters);
         }
-        
+        //Check mã TS ACC đã có
+        public DataTable GetInfo_M0005_CheckACC(string ACCcode)
+        {
+            string StrQuery = "";
+            DataTable _tempDataTable = new DataTable();
+
+            StrQuery = @"SELECT
+                             ACCcode
+                        FROM 
+                             M0005_ListMMTB
+                        WHERE 
+                            ACCcode = @ACCcode";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@ACCcode", SqlDbType.VarChar);
+            sqlParameters[0].Value = Convert.ToString(ACCcode);
+            return conn.executeSelectQuery(StrQuery, sqlParameters);
+        }
+
         //Insert info MMTB
         public string Insert_MMTB(DataTable listMMTB, DataTable _listDelete, DataTable listMMTBDoc1)
         {

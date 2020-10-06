@@ -191,9 +191,9 @@ namespace MMTB.View
         private void BbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string Message = "";
-            string curr_NameEN = txt_NameEN.Text.Trim();
-            string curr_NameVN = txt_NameVN.Text.Trim();
-            string curr_NameJP = txt_NameJP.Text.Trim();
+            string curr_NameEN = txt_NameEN.Text.Trim().ToUpper();
+            string curr_NameVN = txt_NameVN.Text.Trim().ToUpper();
+            string curr_NameJP = txt_NameJP.Text.Trim().ToUpper();
             int curr_Name = cbx_Name.SelectedIndex;
             int curr_Group1 = cbx_Group1.SelectedIndex;
             int curr_Group2 = cbx_Group2.SelectedIndex;
@@ -290,7 +290,7 @@ namespace MMTB.View
                     return false;
                 }
             }
-            if ((cbx_Name.SelectedIndex == 0) & (cbx_Group1.SelectedIndex == 0) & (cbx_Group1.SelectedIndex == 0) & (cbx_Line.SelectedIndex == 0))
+            if ((cbx_Name.SelectedIndex == 0) & (cbx_Group1.SelectedIndex == 0) & (cbx_Group2.SelectedIndex == 0) & (cbx_Line.SelectedIndex == 0))
             {
                 MessageBox.Show("Hãy chọn \"Yes\" ít nhất 1 trong 4 nhóm: \"Tên / Nhóm trung/ Nhóm đại/ Line\"!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cbx_Name.Focus();
